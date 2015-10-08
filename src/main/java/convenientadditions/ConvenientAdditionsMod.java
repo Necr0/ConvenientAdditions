@@ -15,7 +15,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = ConvenientAdditionsMod.MODID, version = ConvenientAdditionsMod.VERSION)
 public class ConvenientAdditionsMod
 {
-    public static final String MODID = "convinientexpansion";
+    public static final String MODID = "convenientadditions";
     public static final String VERSION = "1.0";
     
     @SidedProxy(modId=MODID,serverSide=Reference.commonProxyClassPath,clientSide=Reference.clientProxyClassPath)
