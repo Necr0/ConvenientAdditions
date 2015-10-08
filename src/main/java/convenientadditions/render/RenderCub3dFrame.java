@@ -55,7 +55,7 @@ public class RenderCub3dFrame extends TileEntitySpecialRenderer
             if (tileFrame.getStackInSlot(0) != null)
             {
                 float scaleFactor = getGhostItemScaleFactor(tileFrame.getStackInSlot(0));
-                float rotationAngle =0F;
+                float rotationAngle = (float)(System.currentTimeMillis()%5000)/5000F*360F;
                 EntityItem ghostEntityItem = new EntityItem(tileFrame.getWorldObj());
                 ghostEntityItem.hoverStart = 0.0F;
                 ghostEntityItem.setEntityItemStack(tileFrame.getStackInSlot(0));
