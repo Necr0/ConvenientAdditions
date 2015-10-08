@@ -1,15 +1,15 @@
 # Tiles
-tile.convinientadditions:assembler.name=Three-Dimensional Assembler
-tile.convinientadditions:frame.name=Assembly Frame
-tile.convinientadditions:composter.name=Composter
+tile.convenientadditions:assembler.name=Three-Dimensional Assembler
+tile.convenientadditions:frame.name=Assembly Frame
+tile.convenientadditions:composter.name=Composter
 
 # TE
-tileentity.convinientadditions:frame.name=Assembly Frame
-tileentity.convinientadditions:composter.name=Composter
+tileentity.convenientadditions:frame.name=Assembly Frame
+tileentity.convenientadditions:composter.name=Composter
 
 # Items
-item.convinientadditions:compost.name=Compost
+item.convenientadditions:compost.name=Compost
 
 # Inventory
-inventory.convinientadditions:frame.name=Assembly Frame
-inventory.convinientadditions:composter.name=Composter
+inventory.convenientadditions:frame.name=Assembly Frame
+inventory.convenientadditions:composter.name=Composter

@@ -272,6 +272,8 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 			return 1100;
 		else if(itemStack.getItem()==Items.dye)
 			return 227;
+		else if(itemStack.getItem()==Items.bone)
+			return 230;
 		return 0;
 	}
 	
