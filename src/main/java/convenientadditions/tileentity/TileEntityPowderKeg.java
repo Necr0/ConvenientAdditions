@@ -3,6 +3,7 @@ package convenientadditions.tileentity;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.init.Reference;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,9 +11,8 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
 
-public class TileEntityCub3dFrame extends TileEntity implements IInventory {
+public class TileEntityPowderKeg extends TileEntity implements IInventory {
 
 	public ItemStack[] inventory=new ItemStack[1];
 	
@@ -114,7 +114,7 @@ public class TileEntityCub3dFrame extends TileEntity implements IInventory {
     
 	@Override
 	public String getInventoryName() {
-		return "inventory."+ConvenientAdditionsMod.MODID+":"+Reference.frameBlockName+".name";
+		return "inventory."+ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName+".name";
 	}
 
 	@Override
@@ -124,7 +124,7 @@ public class TileEntityCub3dFrame extends TileEntity implements IInventory {
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 1;
+		return 64;
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class TileEntityCub3dFrame extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
-		return true;
+		return itemStack.getItem()==Items.gunpowder&&!itemStack.hasTagCompound()&&itemStack.getItemDamage()==0;
 	}
 
 }

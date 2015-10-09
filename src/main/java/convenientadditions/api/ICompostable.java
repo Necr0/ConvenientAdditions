@@ -13,4 +13,8 @@ public interface ICompostable {
 	 * only compostable with a specific damage or nbt value
 	 */
 	public boolean isCompostable(ItemStack itemStack);
+	/* Returns rather the item can be used in the
+	 * composter to generate spores at random
+	 */
+	public boolean hasShroomSpores(ItemStack itemStack);
 }

@@ -3,6 +3,7 @@ package convenientadditions.proxy;
 import convenientadditions.init.Reference;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityCub3dFrame;
+import convenientadditions.tileentity.TileEntityPowderKeg;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -42,6 +43,7 @@ public class CommonProxy
     {
         GameRegistry.registerTileEntity(TileEntityCub3dFrame.class, Reference.frameBlockName);
         GameRegistry.registerTileEntity(TileEntityComposter.class, Reference.composterBlockName);
+        GameRegistry.registerTileEntity(TileEntityPowderKeg.class, Reference.powderKegBlockName);
     }
 
     public void registerEntityTrackers()

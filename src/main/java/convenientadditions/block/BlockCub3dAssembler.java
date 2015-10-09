@@ -25,7 +25,7 @@ public class BlockCub3dAssembler extends Block {
 	
 	public BlockCub3dAssembler() {
 		super(Material.iron);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.assemblerBlockName).setHardness(4F).setResistance(8F).setStepSound(soundTypeMetal);
+		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.assemblerBlockName).setHardness(4F).setResistance(8F).setStepSound(soundTypeMetal).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 	
 	@Override

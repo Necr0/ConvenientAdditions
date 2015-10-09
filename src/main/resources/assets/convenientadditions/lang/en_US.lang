@@ -2,14 +2,31 @@
 tile.convenientadditions:assembler.name=Three-Dimensional Assembler
 tile.convenientadditions:frame.name=Assembly Frame
 tile.convenientadditions:composter.name=Composter
+tile.convenientadditions:compostSoil.name=Compost Soil
+tile.convenientadditions:compostSoilTilled.name=Tilled Compost Soil
+tile.convenientadditions:powderKeg.name=Powder Keg
 
-# TE
+# TEs
 tileentity.convenientadditions:frame.name=Assembly Frame
 tileentity.convenientadditions:composter.name=Composter
 
 # Items
 item.convenientadditions:compost.name=Compost
+item.convenientadditions:fertilizer.name=Fertilizer
+item.convenientadditions:dirtChunk.name=Dirt Chunk
 
-# Inventory
+# Inventories
 inventory.convenientadditions:frame.name=Assembly Frame
+inventory.convenientadditions:powderKeg.name=Powder Keg
 inventory.convenientadditions:composter.name=Composter
+
+# CTabs
+itemGroup.convenientadditions=Convenient Additions
+
+# Tooltips
+tooltip.convenientadditions:compost=Can be used on dirt or farmland.
+tooltip.convenientadditions:compostSpores=(contains mushroom spores)
+tooltip.convenientadditions:fertilizer=Can be used on plants.
+
+# Messages
+message.convenientadditions:gunpowderStored= / 64 gunpowder stored.

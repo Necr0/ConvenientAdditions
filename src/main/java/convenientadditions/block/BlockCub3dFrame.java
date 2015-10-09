@@ -3,6 +3,7 @@ package convenientadditions.block;
 import java.util.Random;
 
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.init.Helper;
 import convenientadditions.init.Reference;
 import convenientadditions.tileentity.TileEntityCub3dFrame;
 import net.minecraft.block.Block;
@@ -24,7 +25,7 @@ public class BlockCub3dFrame extends BlockContainer {
 
 	public BlockCub3dFrame() {
 		super(Material.glass);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.frameBlockName).setHardness(.5F).setResistance(4F).setStepSound(soundTypeGlass);
+		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.frameBlockName).setHardness(.5F).setResistance(4F).setStepSound(soundTypeGlass).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
 	@Override
@@ -38,7 +39,6 @@ public class BlockCub3dFrame extends BlockContainer {
     {
         this.blockIcon = null;
     }
-	
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
@@ -55,7 +55,7 @@ public class BlockCub3dFrame extends BlockContainer {
             	}
             }else{
             	if(frame.getStackInSlot(0)!=null){
-            		world.spawnEntityInWorld(new EntityItem(world, x+.5, y+.5, z+.5, frame.getStackInSlot(0)));
+            		Helper.spawnItemInPlace(world, x+.5, y+1.2, z+.5, frame.getStackInSlot(0));
             		frame.setInventorySlotContents(0, null);
             	}
             }

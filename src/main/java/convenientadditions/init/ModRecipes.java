@@ -8,7 +8,9 @@ import cub3d.api.recipes.ShapedCub3dRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class ModRecipes {
 	public static void init(){
@@ -77,5 +79,24 @@ public class ModRecipes {
 			    "ppp",
 			    's', "slabWood",
 			    'p', "plankWood"));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
+				"cc",
+			    "cc",
+			    'c', new ItemStack(ModItems.itemCompost)));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
+				"cc",
+			    "cc",
+			    'c', new ItemStack(ModItems.itemCompost,1,1)));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.dirt),
+				"dd",
+			    "dd",
+			    'd', new ItemStack(ModItems.itemDirtChunk)));
+		
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), new ItemStack(Blocks.dirt), new ItemStack(ModItems.itemCompost)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), new ItemStack(Blocks.dirt), new ItemStack(ModItems.itemCompost,1,1)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), new ItemStack(ModBlocks.compostSoilBlock)));
 	}
 }

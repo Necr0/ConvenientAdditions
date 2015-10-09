@@ -5,6 +5,7 @@ import java.util.Random;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.api.ICompostable;
+import convenientadditions.init.Helper;
 import convenientadditions.init.ModItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,9 +31,10 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 	public boolean processing=false;
 	public int content=0;
 	public int progress=0;
+	public boolean spores=true;
 	
 	public static int capacity=25000;
-	public static int progressPeriod=3000;
+	public static int progressPeriod=2100;
 	public static int progressContent=2500;
 	
 	@Override
@@ -41,6 +43,7 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 		this.processing=nbt.getBoolean("processing");
 		this.content=nbt.getInteger("content");
 		this.progress=nbt.getInteger("progress");
+		this.spores=nbt.getBoolean("spores");
 	}
 	
 	@Override
@@ -49,6 +52,7 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 		nbt.setBoolean("processing", processing);
 		nbt.setInteger("content", content);
 		nbt.setInteger("progress", progress);
+		nbt.setBoolean("progress", spores);
 	}
 	
 	public int getContentCapacityPercentage(){
@@ -65,55 +69,29 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 					progress=0;
 					content-=progressContent;
 					EntityItem item=null;
+					Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemCompost,1,this.spores?1:0));
 					switch(rnd.nextInt(6)){
 						case 0:
-							spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(Blocks.dirt));
+							Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemDirtChunk));
 							break;
 						case 1:
-							spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(ModItems.itemCompost));
+							Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemDirtChunk));
 							break;
 						case 2:
-							spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(Blocks.dirt));
-							spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(Blocks.dirt));
-							break;
-						case 3:
-							spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(ModItems.itemCompost));
-							spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(ModItems.itemCompost));
-							break;
-						case 4:
-							if(rnd.nextInt(6)==0)
-								spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(Blocks.grass));
-							else if(rnd.nextInt(25)==0)
-								spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.1, (double)zCoord+.5, new ItemStack(Blocks.mycelium));
+							Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemFertilizer));
 							break;
 						default:
 							break;
 					}
+					if(rnd.nextInt(28)==0)
+						this.spores=false;
 				}
 				if(content>=capacity){
 					List<EntityPlayer> players=worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord-2, yCoord-2, zCoord-2, xCoord+3, yCoord+3, zCoord+3));
 					for(EntityPlayer p:players){
-						switch(rnd.nextInt(600)){
+						switch(rnd.nextInt(120)){
 							case 0:
-								p.addPotionEffect(new PotionEffect(2, 200, 0));
-								break;
-							case 1:
-								p.addPotionEffect(new PotionEffect(4, 200, 0));
-								break;
-							case 2:
-								p.addPotionEffect(new PotionEffect(15, 200, 0));
-								break;
-							case 3:
-								p.addPotionEffect(new PotionEffect(17, 200, 0));
-								break;
-							case 4:
-								p.addPotionEffect(new PotionEffect(18, 200, 0));
-								break;
-							case 5:
-								p.addPotionEffect(new PotionEffect(19, 150, 0));
-								break;
-							case 6:
-								p.addPotionEffect(new PotionEffect(9, 400, 0));
+								p.addPotionEffect(new PotionEffect(9, 200, 0));
 								break;
 							default:
 								break;
@@ -123,9 +101,11 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 				this.markDirty();
 				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			}else{
-				progress=0;
+				this.progress=0;
+				if(this.content==0)
+	    			this.spores=false;
 				if(processing){
-					processing=false;
+					this.processing=false;
 					this.markDirty();
 					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				}
@@ -179,6 +159,10 @@ public class TileEntityComposter extends TileEntity implements IInventory {
     {
     	this.content+=getContentValue(itemStack);
     	this.processing=(content>=progressContent);
+    	if(itemStack.getItem() instanceof ICompostable &&  ((ICompostable)itemStack.getItem()).hasShroomSpores(itemStack))
+    		this.spores=true;
+    	else if(itemStack.getItem()==Items.mushroom_stew||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.red_mushroom)||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.brown_mushroom))
+    		this.spores=true;
         this.markDirty();
         worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     }
@@ -275,11 +259,5 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 		else if(itemStack.getItem()==Items.bone)
 			return 230;
 		return 0;
-	}
-	
-	public void spawnItemInPlace(World w,double x,double y,double z,ItemStack i){
-		EntityItem e=new EntityItem(w, x, y, z, i);
-		e.setVelocity(0, 0, 0);
-		w.spawnEntityInWorld(e);
 	}
 }

@@ -18,7 +18,7 @@ public class BlockComposter extends BlockContainer {
 
 	public BlockComposter() {
 		super(Material.wood);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeWood);
+		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeWood).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
     @Override
