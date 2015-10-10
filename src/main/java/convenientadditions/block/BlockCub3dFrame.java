@@ -2,10 +2,6 @@ package convenientadditions.block;
 
 import java.util.Random;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Helper;
-import convenientadditions.init.Reference;
-import convenientadditions.tileentity.TileEntityCub3dFrame;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -16,8 +12,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.init.Helper;
+import convenientadditions.init.Reference;
+import convenientadditions.tileentity.TileEntityCub3dFrame;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -1,33 +1,22 @@
 package convenientadditions.block;
 
-import static net.minecraftforge.common.util.ForgeDirection.UP;
-
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Helper;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.Reference;
-import convenientadditions.tileentity.TileEntityCub3dFrame;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCompostSoil extends Block {
 

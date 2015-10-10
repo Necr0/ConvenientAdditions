@@ -1,9 +1,5 @@
 package convenientadditions.block;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.ModBlocks;
-import convenientadditions.init.Reference;
-import convenientadditions.tileentity.TileEntityCub3dFrame;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -13,6 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.init.Reference;
+import convenientadditions.tileentity.TileEntityCub3dFrame;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import cub3d.api.Cub3dCraftingManager;

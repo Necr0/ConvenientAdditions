@@ -1,8 +1,8 @@
 package convenientadditions.item;
 
+import net.minecraft.item.Item;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.init.Reference;
-import net.minecraft.item.Item;
 
 public class ItemDirtChunk extends Item {
 	public ItemDirtChunk(){

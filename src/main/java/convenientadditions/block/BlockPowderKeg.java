@@ -10,7 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -153,8 +152,12 @@ public class BlockPowderKeg extends BlockContainer {
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block b)
     {
-        if(b==Blocks.fire)
+        if(Helper.checkForFire(world, x, y, z))
         	this.explode(world,x,y,z);
+        else if (world.isBlockIndirectlyGettingPowered(x, y, z))
+        {
+        	this.explode(world,x,y,z);
+        }
     }
     
     @Override
@@ -177,10 +180,13 @@ public class BlockPowderKeg extends BlockContainer {
     		TileEntityPowderKeg k=(TileEntityPowderKeg)w.getTileEntity(x, y, z);
     		if(k.getStackInSlot(0)==null)
     			return false;
-    		float strenght=(float)k.getStackInSlot(0).stackSize/2.5F;
-    		k.setInventorySlotContents(0, null);
-    		w.setBlockToAir(x, y, z);
-    		w.createExplosion(null, (double)x+.5, (double)y+.5, (double)z+.5, strenght, true);
+    		if(!w.isRemote){
+	    		float strenght=(float)k.getStackInSlot(0).stackSize/1.8F;
+	    		k.setInventorySlotContents(0, null);
+	    		w.setBlockToAir(x, y, z);
+	    		w.createExplosion(null, (double)x+.5, (double)y+.5, (double)z+.5, strenght, true);
+	    	}
+    		return true;
     	}
     	return false;
     }

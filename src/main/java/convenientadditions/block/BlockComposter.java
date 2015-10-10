@@ -1,16 +1,15 @@
 package convenientadditions.block;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Reference;
-import convenientadditions.tileentity.TileEntityComposter;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.init.Reference;
+import convenientadditions.tileentity.TileEntityComposter;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

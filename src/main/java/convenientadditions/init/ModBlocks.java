@@ -8,7 +8,6 @@ import convenientadditions.block.BlockCub3dAssembler;
 import convenientadditions.block.BlockCub3dFrame;
 import convenientadditions.block.BlockPowderKeg;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
 public class ModBlocks

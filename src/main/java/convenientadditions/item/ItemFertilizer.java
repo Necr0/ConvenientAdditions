@@ -3,18 +3,15 @@ package convenientadditions.item;
 import java.util.List;
 import java.util.Random;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Reference;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockNetherWart;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.init.Reference;
 
 public class ItemFertilizer extends Item {
 	public ItemFertilizer(){
