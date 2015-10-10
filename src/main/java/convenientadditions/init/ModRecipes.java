@@ -7,6 +7,7 @@ import cub3d.api.matchers.TypeMatcher;
 import cub3d.api.recipes.ShapedCub3dRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -15,8 +16,9 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class ModRecipes {
 	public static void init(){
 		IItemMatcher n=null;
-		IItemMatcher d=new TypeMatcher(Items.diamond);
-		IItemMatcher s=new TypeMatcher(Items.nether_star);
+		IItemMatcher g=new TypeMatcher(Items.gold_ingot);
+		IItemMatcher s=new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.stone));
+		IItemMatcher p=new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.stone_pressure_plate));
 		Cub3dCraftingManager.getInstance().addRecipe(
 				new ShapedCub3dRecipe(
 					new IItemMatcher[][][]{
@@ -25,7 +27,7 @@ public class ModRecipes {
 									n,n,n
 								},
 								new IItemMatcher[]{
-									n,d,n
+									n,p,n
 								},
 								new IItemMatcher[]{
 									n,n,n
@@ -33,28 +35,28 @@ public class ModRecipes {
 						},
 						new IItemMatcher[][]{
 								new IItemMatcher[]{
-									n,d,n
+									n,g,n
 								},
 								new IItemMatcher[]{
-									d,s,d
+									g,new TypeMatcher(Items.skull),g
 								},
 								new IItemMatcher[]{
-									n,d,n
+									n,g,n
 								}
 						},
 						new IItemMatcher[][]{
 								new IItemMatcher[]{
-									n,n,n
+									s,s,s
 								},
 								new IItemMatcher[]{
-									n,d,n
+									s,new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.redstone_block)),s
 								},
 								new IItemMatcher[]{
-									n,n,n
+									s,s,s
 								}
 						}
 				}
-				, new ItemStack(Blocks.diamond_block,3)
+				, new ItemStack(ModBlocks.playerInterfaceBlock)
 			)
 		);
 		
