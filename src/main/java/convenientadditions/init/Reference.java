@@ -9,7 +9,7 @@ public class Reference {
     public static final String compostSoilBlockName = "compostSoil";
     public static final String compostSoilTilledBlockName = "compostSoilTilled";
     public static final String powderKegBlockName = "powderKeg";
-    public static final String fuseBlockName = "fuseBlock";
+    public static final String playerInterfaceBlockName = "playerInterface";
     //
     public static final String compostItemName = "compost";
     public static final String fertilizerItemName = "fertilizer";

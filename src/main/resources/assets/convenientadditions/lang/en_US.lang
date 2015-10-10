@@ -5,6 +5,7 @@ tile.convenientadditions:composter.name=Composter
 tile.convenientadditions:compostSoil.name=Compost Soil
 tile.convenientadditions:compostSoilTilled.name=Tilled Compost Soil
 tile.convenientadditions:powderKeg.name=Powder Keg
+tile.convenientadditions:playerInterface.name=Player Interface
 
 # TEs
 tileentity.convenientadditions:frame.name=Assembly Frame
@@ -19,6 +20,7 @@ item.convenientadditions:dirtChunk.name=Dirt Chunk
 inventory.convenientadditions:frame.name=Assembly Frame
 inventory.convenientadditions:powderKeg.name=Powder Keg
 inventory.convenientadditions:composter.name=Composter
+inventory.convenientadditions:playerInterface.name=Player Interface
 
 # CTabs
 itemGroup.convenientadditions=Convenient Additions

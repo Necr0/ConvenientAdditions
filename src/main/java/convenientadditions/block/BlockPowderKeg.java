@@ -155,9 +155,7 @@ public class BlockPowderKeg extends BlockContainer {
         if(Helper.checkForFire(world, x, y, z))
         	this.explode(world,x,y,z);
         else if (world.isBlockIndirectlyGettingPowered(x, y, z))
-        {
         	this.explode(world,x,y,z);
-        }
     }
     
     @Override
@@ -181,7 +179,7 @@ public class BlockPowderKeg extends BlockContainer {
     		if(k.getStackInSlot(0)==null)
     			return false;
     		if(!w.isRemote){
-	    		float strenght=(float)k.getStackInSlot(0).stackSize/1.8F;
+	    		float strenght=(float)k.getStackInSlot(0).stackSize/1.5F;
 	    		k.setInventorySlotContents(0, null);
 	    		w.setBlockToAir(x, y, z);
 	    		w.createExplosion(null, (double)x+.5, (double)y+.5, (double)z+.5, strenght, true);
