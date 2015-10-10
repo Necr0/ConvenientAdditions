@@ -3,12 +3,14 @@ package convenientadditions.block;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -19,7 +21,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.init.Helper;
 import convenientadditions.init.Reference;
@@ -121,7 +122,7 @@ public class BlockPowderKeg extends BlockContainer {
 	        	}else if(!keg.isItemValidForSlot(0, current)){
 	        		if(current.getItem()==Items.flint_and_steel){
 	        			current.damageItem(1, player);
-	        			if(explode())
+	        			if(explode(world,x,y,z))
 	        				return true;
 	        		}
 	    			return false;
@@ -150,9 +151,37 @@ public class BlockPowderKeg extends BlockContainer {
     }
     
     @Override
-    public void onBlockDestroyedByExplosion(World p_1, int p_2, int p_3, int p_4, Explosion p_5){explode();}
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block b)
+    {
+        if(b==Blocks.fire)
+        	this.explode(world,x,y,z);
+    }
     
-    public boolean explode(){
+    @Override
+    public void onEntityCollidedWithBlock(World w, int x, int y, int z, Entity e)
+    {
+        if (e instanceof EntityArrow && !w.isRemote)
+        {
+            EntityArrow entityarrow = (EntityArrow)e;
+
+            if (entityarrow.isBurning())
+	            this.explode(w, x, y, z);
+        }
+    }
+    
+    @Override
+    public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion p_5){explode(world,x,y,z);}
+    
+    public boolean explode(World w,int x,int y,int z){
+    	if(w.getTileEntity(x, y, z)!=null&&w.getTileEntity(x, y, z) instanceof TileEntityPowderKeg){
+    		TileEntityPowderKeg k=(TileEntityPowderKeg)w.getTileEntity(x, y, z);
+    		if(k.getStackInSlot(0)==null)
+    			return false;
+    		float strenght=(float)k.getStackInSlot(0).stackSize/2.5F;
+    		k.setInventorySlotContents(0, null);
+    		w.setBlockToAir(x, y, z);
+    		w.createExplosion(null, (double)x+.5, (double)y+.5, (double)z+.5, strenght, true);
+    	}
     	return false;
     }
     
