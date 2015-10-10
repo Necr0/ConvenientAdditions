@@ -30,7 +30,7 @@ public class BlockCompostSoilTilled extends Block {
 
 	public BlockCompostSoilTilled() {
 		super(Material.ground);
-		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilTilledBlockName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
+		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilTilledBlockName).setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
 	}
 	
 	@Override
