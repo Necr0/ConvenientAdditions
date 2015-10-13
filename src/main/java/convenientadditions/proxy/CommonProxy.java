@@ -1,12 +1,14 @@
 package convenientadditions.proxy;
 
+import net.minecraft.world.World;
 import convenientadditions.init.Reference;
+import convenientadditions.init.TickHandler;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityCub3dFrame;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;
-import net.minecraft.world.World;
-import cpw.mods.fml.common.registry.EntityRegistry;
+import convenientadditions.tileentity.TileEntityProximitySensor;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy
@@ -46,6 +48,7 @@ public class CommonProxy
         GameRegistry.registerTileEntity(TileEntityComposter.class, Reference.composterBlockName);
         GameRegistry.registerTileEntity(TileEntityPowderKeg.class, Reference.powderKegBlockName);
         GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, Reference.playerInterfaceBlockName);
+        GameRegistry.registerTileEntity(TileEntityProximitySensor.class, Reference.proximitySensorBlockName);
     }
 
     public void registerEntityTrackers()
@@ -54,6 +57,7 @@ public class CommonProxy
 
     public void registerTickHandlers()
     {
+    	FMLCommonHandler.instance().bus().register(new TickHandler());
     }
 
     public void InitRendering()

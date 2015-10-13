@@ -6,6 +6,7 @@ tile.convenientadditions:compostSoil.name=Compost Soil
 tile.convenientadditions:compostSoilTilled.name=Tilled Compost Soil
 tile.convenientadditions:powderKeg.name=Powder Keg
 tile.convenientadditions:playerInterface.name=Player Interface
+tile.convenientadditions:proximitySensor.name=Proximity Sensor
 
 # TEs
 tileentity.convenientadditions:frame.name=Assembly Frame
@@ -15,6 +16,7 @@ tileentity.convenientadditions:composter.name=Composter
 item.convenientadditions:compost.name=Compost
 item.convenientadditions:fertilizer.name=Fertilizer
 item.convenientadditions:dirtChunk.name=Dirt Chunk
+item.convenientadditions:sunstone.name=Sunstone
 
 # Inventories
 inventory.convenientadditions:frame.name=Assembly Frame
@@ -29,6 +31,9 @@ itemGroup.convenientadditions=Convenient Additions
 tooltip.convenientadditions:compost=Can be used on dirt or farmland.
 tooltip.convenientadditions:compostSpores=(contains mushroom spores)
 tooltip.convenientadditions:fertilizer=Can be used on plants.
+tooltip.convenientadditions:sunstone=The sun shall light your way!
+tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
+tooltip.convenientadditions:sunstoneInactive=(right click to activate)
 
 # Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.

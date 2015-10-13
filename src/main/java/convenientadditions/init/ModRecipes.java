@@ -19,46 +19,6 @@ public class ModRecipes {
 		IItemMatcher g=new TypeMatcher(Items.gold_ingot);
 		IItemMatcher s=new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.stone));
 		IItemMatcher p=new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.stone_pressure_plate));
-		Cub3dCraftingManager.getInstance().addRecipe(
-				new ShapedCub3dRecipe(
-					new IItemMatcher[][][]{
-						new IItemMatcher[][]{
-								new IItemMatcher[]{
-									n,n,n
-								},
-								new IItemMatcher[]{
-									n,p,n
-								},
-								new IItemMatcher[]{
-									n,n,n
-								}
-						},
-						new IItemMatcher[][]{
-								new IItemMatcher[]{
-									n,g,n
-								},
-								new IItemMatcher[]{
-									g,new TypeMatcher(Items.skull),g
-								},
-								new IItemMatcher[]{
-									n,g,n
-								}
-						},
-						new IItemMatcher[][]{
-								new IItemMatcher[]{
-									s,s,s
-								},
-								new IItemMatcher[]{
-									s,new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.redstone_block)),s
-								},
-								new IItemMatcher[]{
-									s,s,s
-								}
-						}
-				}
-				, new ItemStack(ModBlocks.playerInterfaceBlock)
-			)
-		);
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.frameBlock,3),
 				"lbl",
@@ -85,7 +45,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
 				"cc",
 			    "cc",
-			    'c', new ItemStack(ModItems.itemCompost)));
+			    'c', ModItems.itemCompost));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
 				"cc",
@@ -97,8 +57,36 @@ public class ModRecipes {
 			    "dd",
 			    'd', new ItemStack(ModItems.itemDirtChunk)));
 		
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), new ItemStack(Blocks.dirt), new ItemStack(ModItems.itemCompost)));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), new ItemStack(Blocks.dirt), new ItemStack(ModItems.itemCompost,1,1)));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), new ItemStack(ModBlocks.compostSoilBlock)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, ModItems.itemCompost));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, new ItemStack(ModItems.itemCompost,1,1)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), ModBlocks.compostSoilBlock));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.powderKegBlock),
+				"psp",
+			    "pgp",
+			    "psp",
+			    'p', "plankWood",
+			    's', "slabWood",
+			    'g', Items.gunpowder));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemSunstone),
+				"grg",
+			    "dld",
+			    "grg",
+			    'l', Blocks.redstone_lamp,
+			    'd', Items.diamond,
+			    'd', Items.redstone,
+			    'g', Items.glowstone_dust));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
+				"epe",
+			    "gsg",
+			    "srs",
+			    'e', Items.ender_pearl,
+			    'p', Blocks.stone_pressure_plate,
+			    'g', "ingotGold",
+			    's', Items.glowstone_dust,
+			    'r', Blocks.redstone_block));
+
 	}
 }

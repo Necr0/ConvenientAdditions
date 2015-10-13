@@ -26,7 +26,7 @@ public class ConvenientAdditionsMod
     public static CreativeTabs CREATIVETAB=new CreativeTabs(MODID) {
 		@Override
 		public Item getTabIconItem() {
-			return ItemBlock.getItemFromBlock(ModBlocks.composterBlock);
+			return ItemBlock.getItemFromBlock(ModBlocks.playerInterfaceBlock);
 		}
 	};
     
@@ -38,6 +38,7 @@ public class ConvenientAdditionsMod
     	ModItems.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();
+    	PROXY.registerTickHandlers();
     }
     
 

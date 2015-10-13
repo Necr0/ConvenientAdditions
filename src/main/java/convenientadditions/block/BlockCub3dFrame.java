@@ -24,7 +24,8 @@ public class BlockCub3dFrame extends BlockContainer {
 
 	public BlockCub3dFrame() {
 		super(Material.glass);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.frameBlockName).setHardness(.5F).setResistance(4F).setStepSound(soundTypeGlass).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.frameBlockName).setHardness(.5F).setResistance(4F).setStepSound(soundTypeGlass).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
+		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.textureNoneBlockName);
 	}
 
 	@Override

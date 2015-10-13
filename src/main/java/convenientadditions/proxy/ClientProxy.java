@@ -1,5 +1,8 @@
 package convenientadditions.proxy;
 
+import net.minecraft.item.ItemBlock;
+import net.minecraft.world.World;
+import net.minecraftforge.client.MinecraftForgeClient;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.render.RenderComposter;
 import convenientadditions.render.RenderCub3dFrame;
@@ -7,9 +10,6 @@ import convenientadditions.render.item.RenderComposterItem;
 import convenientadditions.render.item.RenderCub3dFrameItem;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityCub3dFrame;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
