@@ -16,8 +16,10 @@ public class Reference {
     public static final String fertilizerItemName = "fertilizer";
     public static final String dirtChunkItemName = "dirtChunk";
     public static final String sunstoneItemName = "sunstone";
+    public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
     //
     public static final String tempLightBlockName = "tempLight";
+    public static final String redstonePulseBlockName = "redstonePulse";
     public static final String textureNoneBlockName = "textureNone";
     //
     public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";

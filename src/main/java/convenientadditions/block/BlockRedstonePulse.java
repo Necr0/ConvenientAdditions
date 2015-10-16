@@ -9,26 +9,40 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.init.Reference;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTempLight extends Block {
-	
-	public BlockTempLight(float intensisty) {
+public class BlockRedstonePulse extends Block {
+
+	public BlockRedstonePulse() {
 		super(Material.fire);
 		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.tempLightBlockName)
-		.setLightLevel(intensisty)
 		.setTickRandomly(true)
 		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.textureNoneBlockName);
 		this.setBlockBounds(0, 0, 0, 0, 0, 0);
 	}
-
+	
 	@Override
-	public void updateTick(World world,int x,int y,int z,Random r){
-		world.setBlockToAir(x, y, z);
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
+		if(world.isRemote&&random.nextInt(8)==0){
+			world.spawnParticle("reddust", x+.25+(random.nextDouble()/2), y+.25+(random.nextDouble()/2), z+.25+(random.nextDouble()/2), 1D, 0D, 0D);
+		}
+	}
+	
+	@Override
+	public int isProvidingWeakPower(IBlockAccess world,int x,int y,int z,int side){
+		return 15;
 	}
 	
 	@Override
 	public boolean isAir(IBlockAccess world,int x,int y,int z){
 		return true;
+	}
+	
+	@Override
+	public void updateTick(World world,int x,int y,int z,Random r){
+		world.setBlockToAir(x, y, z);
 	}
 
 	public int getRenderType()

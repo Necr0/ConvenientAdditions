@@ -1,17 +1,14 @@
 package convenientadditions.init;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cub3d.api.Cub3dCraftingManager;
-import cub3d.api.matchers.IItemMatcher;
-import cub3d.api.matchers.TypeMatcher;
-import cub3d.api.recipes.ShapedCub3dRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cub3d.api.matchers.IItemMatcher;
+import cub3d.api.matchers.TypeMatcher;
 
 public class ModRecipes {
 	public static void init(){
@@ -69,7 +66,7 @@ public class ModRecipes {
 			    's', "slabWood",
 			    'g', Items.gunpowder));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemSunstone),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunstone.FULLY_CHARGED.copy(),
 				"grg",
 			    "dld",
 			    "grg",

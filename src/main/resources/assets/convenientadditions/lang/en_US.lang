@@ -17,6 +17,7 @@ item.convenientadditions:compost.name=Compost
 item.convenientadditions:fertilizer.name=Fertilizer
 item.convenientadditions:dirtChunk.name=Dirt Chunk
 item.convenientadditions:sunstone.name=Sunstone
+item.convenientadditions:redstonePulseEmitter.name=Redstone Pulse Emitter
 
 # Inventories
 inventory.convenientadditions:frame.name=Assembly Frame
@@ -34,6 +35,9 @@ tooltip.convenientadditions:fertilizer=Can be used on plants.
 tooltip.convenientadditions:sunstone=The sun shall light your way!
 tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
 tooltip.convenientadditions:sunstoneInactive=(right click to activate)
+tooltip.convenientadditions:sunstoneDrained=(stay in sunlight to charge)
+tooltip.convenientadditions:sunstoneCharge=%p% charged
+tooltip.convenientadditions:redstonePulseEmitter=(right click to emit pulse)
 
 # Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.

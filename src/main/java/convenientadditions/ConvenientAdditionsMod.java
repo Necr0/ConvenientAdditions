@@ -1,8 +1,11 @@
 package convenientadditions;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentDamage;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraftforge.common.DungeonHooks;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModRecipes;
@@ -34,8 +37,8 @@ public class ConvenientAdditionsMod
     public void preinit(FMLPreInitializationEvent event)
     {
     	ModBlocks.init();
-    	ModRecipes.init();
     	ModItems.init();
+    	ModRecipes.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();
     	PROXY.registerTickHandlers();

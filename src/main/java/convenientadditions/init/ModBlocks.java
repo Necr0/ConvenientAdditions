@@ -6,9 +6,10 @@ import convenientadditions.block.BlockCompostSoilTilled;
 import convenientadditions.block.BlockComposter;
 import convenientadditions.block.BlockCub3dAssembler;
 import convenientadditions.block.BlockCub3dFrame;
-import convenientadditions.block.BlockProximitySensor;
 import convenientadditions.block.BlockPlayerInterface;
 import convenientadditions.block.BlockPowderKeg;
+import convenientadditions.block.BlockProximitySensor;
+import convenientadditions.block.BlockRedstonePulse;
 import convenientadditions.block.BlockTempLight;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -24,6 +25,7 @@ public class ModBlocks
     public static final BlockPlayerInterface playerInterfaceBlock = new BlockPlayerInterface();
     public static final BlockProximitySensor proximitySensorBlock = new BlockProximitySensor();
     public static final BlockTempLight tempLightBlock = new BlockTempLight(.5F);
+    public static final BlockRedstonePulse redstonePulseBlock = new BlockRedstonePulse();
 
     public static void init()
     {
@@ -36,5 +38,6 @@ public class ModBlocks
         GameRegistry.registerBlock(playerInterfaceBlock,Reference.playerInterfaceBlockName);
         GameRegistry.registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
         GameRegistry.registerBlock(tempLightBlock,Reference.tempLightBlockName);
+        GameRegistry.registerBlock(redstonePulseBlock,Reference.redstonePulseBlockName);
     }
 }
