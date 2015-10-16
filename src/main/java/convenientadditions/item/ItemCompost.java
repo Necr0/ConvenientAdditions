@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
@@ -51,7 +52,7 @@ public class ItemCompost extends Item {
 	{
 		list.add(StatCollector.translateToLocal("tooltip."+ConvenientAdditionsMod.MODID+":"+Reference.compostItemName));
 		if(stack.getItemDamage()==1)
-			list.add(StatCollector.translateToLocal("tooltip."+ConvenientAdditionsMod.MODID+":"+Reference.compostItemName+"Spores"));
+			list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip."+ConvenientAdditionsMod.MODID+":"+Reference.compostItemName+"Spores"));
 	}
 	
 	@Override

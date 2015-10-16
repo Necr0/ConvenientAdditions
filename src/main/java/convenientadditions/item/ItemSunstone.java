@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -65,11 +66,11 @@ public class ItemSunstone extends Item {
 		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:sunstone"));
 		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneCharge").replace("%c", ""+getItemCharge(stack)).replace("%C", ""+getMaxItemCharge()).replace("%p", ""+(int)((double)getItemCharge(stack)/(double)getMaxItemCharge()*100)));
 		if(isActive(stack))
-			list.add(StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneActive"));
+			list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneActive"));
 		else if(getItemCharge(stack)==0)
-			list.add(StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneDrained"));
+			list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneDrained"));
 		else
-			list.add(StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneInactive"));
+			list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneInactive"));
 	}
 	
 	public int getItemCharge(ItemStack stack){
@@ -89,7 +90,7 @@ public class ItemSunstone extends Item {
 	}
 	
 	public int getMaxItemCharge(){
-		return 36000;
+		return 60000;
 	}
 	
 	@Override

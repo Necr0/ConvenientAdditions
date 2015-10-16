@@ -36,7 +36,7 @@ tooltip.convenientadditions:sunstone=The sun shall light your way!
 tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
 tooltip.convenientadditions:sunstoneInactive=(right click to activate)
 tooltip.convenientadditions:sunstoneDrained=(stay in sunlight to charge)
-tooltip.convenientadditions:sunstoneCharge=%p% charged
+tooltip.convenientadditions:sunstoneCharge=%c/%C charges (%p%)
 tooltip.convenientadditions:redstonePulseEmitter=(right click to emit pulse)
 
 # Messages

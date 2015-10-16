@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
@@ -47,6 +48,6 @@ public class ItemRedstonePulseEmitter extends Item {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip."+ConvenientAdditionsMod.MODID+":"+Reference.redstonePulseEmitterItemName));
+		list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip."+ConvenientAdditionsMod.MODID+":"+Reference.redstonePulseEmitterItemName));
 	}
 }
