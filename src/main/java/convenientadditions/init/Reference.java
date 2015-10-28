@@ -1,14 +1,10 @@
 package convenientadditions.init;
 
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraftforge.common.util.EnumHelper;
 
 public class Reference {
     public static final String modName = "Convenient Additions";
 	//
     public static final String oreTitaniumBlockName = "oreTitanium";
-    public static final String assemblerBlockName = "assembler";
-    public static final String frameBlockName = "frame";
     public static final String composterBlockName = "composter";
     public static final String compostSoilBlockName = "compostSoil";
     public static final String compostSoilTilledBlockName = "compostSoilTilled";

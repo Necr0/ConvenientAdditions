@@ -1,7 +1,5 @@
 # Tiles
 tile.convenientadditions:oreTitanium.name=Titanium Ore
-tile.convenientadditions:assembler.name=Three-Dimensional Assembler
-tile.convenientadditions:frame.name=Assembly Frame
 tile.convenientadditions:composter.name=Composter
 tile.convenientadditions:compostSoil.name=Compost Soil
 tile.convenientadditions:compostSoilTilled.name=Tilled Compost Soil
@@ -11,8 +9,10 @@ tile.convenientadditions:proximitySensor.name=Proximity Sensor
 tile.convenientadditions:redstonePulseDispenser.name=Redstone Pulse Dispenser
 
 # TEs
-tileentity.convenientadditions:frame.name=Assembly Frame
 tileentity.convenientadditions:composter.name=Composter
+tileentity.convenientadditions:playerInterface.name=Player Interface
+tileentity.convenientadditions:powderKeg.name=Powder Keg
+tileentity.convenientadditions:proximitySensor.name=Proximity Sensor
 
 # Items
 item.convenientadditions:ingotTitanium.name=Titanium Ingot
@@ -28,7 +28,6 @@ item.convenientadditions:sunstone.name=Sunstone
 item.convenientadditions:redstonePulseEmitter.name=Redstone Pulse Emitter
 
 # Inventories
-inventory.convenientadditions:frame.name=Assembly Frame
 inventory.convenientadditions:powderKeg.name=Powder Keg
 inventory.convenientadditions:composter.name=Composter
 inventory.convenientadditions:playerInterface.name=Player Interface

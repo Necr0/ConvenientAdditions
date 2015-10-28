@@ -4,7 +4,6 @@ import net.minecraft.world.World;
 import convenientadditions.init.Reference;
 import convenientadditions.init.TickHandler;
 import convenientadditions.tileentity.TileEntityComposter;
-import convenientadditions.tileentity.TileEntityCub3dFrame;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;
 import convenientadditions.tileentity.TileEntityProximitySensor;
@@ -44,7 +43,6 @@ public class CommonProxy
 
     public void registerTileEntities()
     {
-        GameRegistry.registerTileEntity(TileEntityCub3dFrame.class, Reference.frameBlockName);
         GameRegistry.registerTileEntity(TileEntityComposter.class, Reference.composterBlockName);
         GameRegistry.registerTileEntity(TileEntityPowderKeg.class, Reference.powderKegBlockName);
         GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, Reference.playerInterfaceBlockName);

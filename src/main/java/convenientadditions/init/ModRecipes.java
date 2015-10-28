@@ -2,32 +2,13 @@ package convenientadditions.init;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cub3d.api.matchers.IItemMatcher;
-import cub3d.api.matchers.TypeMatcher;
 
 public class ModRecipes {
 	public static void init(){
-		/*GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.frameBlock,3),
-				"lbl",
-			    "b b",
-			    "lbl",
-			    'l', "dyeBlue",
-			    'b', new ItemStack(Blocks.iron_bars)));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.assemblerBlock),
-				"lbl",
-			    "brb",
-			    "lbl",
-			    'l', "dyeBlue",
-			    'b', new ItemStack(Blocks.iron_bars),
-			    'r', new ItemStack(Blocks.redstone_block)));*/
-
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.composterBlock),
 				"s s",
 			    "s s",

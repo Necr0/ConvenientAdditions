@@ -4,8 +4,6 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.block.BlockCompostSoil;
 import convenientadditions.block.BlockCompostSoilTilled;
 import convenientadditions.block.BlockComposter;
-import convenientadditions.block.BlockCub3dAssembler;
-import convenientadditions.block.BlockCub3dFrame;
 import convenientadditions.block.BlockPlayerInterface;
 import convenientadditions.block.BlockPowderKeg;
 import convenientadditions.block.BlockProximitySensor;
@@ -18,8 +16,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ModBlocks
 {
     public static final BlockTitaniumOre oreTitaniumBlock = new BlockTitaniumOre();
-    public static final BlockCub3dAssembler assemblerBlock = new BlockCub3dAssembler();
-    public static final BlockCub3dFrame frameBlock = new BlockCub3dFrame();
     public static final BlockComposter composterBlock = new BlockComposter();
     public static final BlockCompostSoil compostSoilBlock = new BlockCompostSoil();
     public static final BlockCompostSoilTilled compostSoilTilledBlock = new BlockCompostSoilTilled();
@@ -32,8 +28,6 @@ public class ModBlocks
     public static void init()
     {
         GameRegistry.registerBlock(oreTitaniumBlock,Reference.oreTitaniumBlockName);
-        GameRegistry.registerBlock(assemblerBlock,Reference.assemblerBlockName);
-        GameRegistry.registerBlock(frameBlock,Reference.frameBlockName);
         GameRegistry.registerBlock(composterBlock,Reference.composterBlockName);
         GameRegistry.registerBlock(compostSoilBlock,Reference.compostSoilBlockName);
         GameRegistry.registerBlock(compostSoilTilledBlock,Reference.compostSoilTilledBlockName);
