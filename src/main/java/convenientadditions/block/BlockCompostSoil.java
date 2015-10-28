@@ -57,7 +57,7 @@ public class BlockCompostSoil extends Block {
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
     	ItemStack current=player.inventory.getStackInSlot(player.inventory.currentItem);
-    	if(!(current.getItem() instanceof ItemHoe))
+    	if(current==null||!(current.getItem() instanceof ItemHoe))
         	return false;
     	if(!world.isRemote&&world.getBlock(x,y+1,z).isAir(world, x, y+1, z)){
     		current.damageItem(1, player);

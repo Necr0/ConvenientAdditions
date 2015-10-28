@@ -11,11 +11,13 @@ import convenientadditions.block.BlockPowderKeg;
 import convenientadditions.block.BlockProximitySensor;
 import convenientadditions.block.BlockRedstonePulse;
 import convenientadditions.block.BlockTempLight;
+import convenientadditions.block.BlockTitaniumOre;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
 public class ModBlocks
 {
+    public static final BlockTitaniumOre oreTitaniumBlock = new BlockTitaniumOre();
     public static final BlockCub3dAssembler assemblerBlock = new BlockCub3dAssembler();
     public static final BlockCub3dFrame frameBlock = new BlockCub3dFrame();
     public static final BlockComposter composterBlock = new BlockComposter();
@@ -29,6 +31,7 @@ public class ModBlocks
 
     public static void init()
     {
+        GameRegistry.registerBlock(oreTitaniumBlock,Reference.oreTitaniumBlockName);
         GameRegistry.registerBlock(assemblerBlock,Reference.assemblerBlockName);
         GameRegistry.registerBlock(frameBlock,Reference.frameBlockName);
         GameRegistry.registerBlock(composterBlock,Reference.composterBlockName);

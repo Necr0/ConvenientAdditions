@@ -27,13 +27,13 @@ public class ItemFertilizer extends Item {
     	Block b=world.getBlock(x, y, z);
     	if(b instanceof IGrowable){
     		IGrowable grow=(IGrowable)b;
-    		if(grow.func_149851_a(world, x, y, z, true)){
+    		if(grow.func_149851_a(world, x, y, z, world.isRemote)){
     			ret=true;
     			if(!world.isRemote)
     				itemStack.stackSize--;
     		}
     		for(int i=0;i<(2+rnd.nextInt(1));i++){
-    			if(grow.func_149851_a(world, x, y, z, true)&&!world.isRemote)
+    			if(grow.func_149851_a(world, x, y, z, world.isRemote)&&!world.isRemote&&grow.func_149852_a(world, world.rand, x, y, z)&&world.getBlock(x,y,z)==b)
     					grow.func_149853_b(world, rnd, x, y, z);
     		}
     	}

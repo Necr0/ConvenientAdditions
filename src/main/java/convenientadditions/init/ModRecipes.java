@@ -2,6 +2,7 @@ package convenientadditions.init;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -12,12 +13,7 @@ import cub3d.api.matchers.TypeMatcher;
 
 public class ModRecipes {
 	public static void init(){
-		IItemMatcher n=null;
-		IItemMatcher g=new TypeMatcher(Items.gold_ingot);
-		IItemMatcher s=new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.stone));
-		IItemMatcher p=new TypeMatcher(ItemBlock.getItemFromBlock(Blocks.stone_pressure_plate));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.frameBlock,3),
+		/*GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.frameBlock,3),
 				"lbl",
 			    "b b",
 			    "lbl",
@@ -30,7 +26,7 @@ public class ModRecipes {
 			    "lbl",
 			    'l', "dyeBlue",
 			    'b', new ItemStack(Blocks.iron_bars),
-			    'r', new ItemStack(Blocks.redstone_block)));
+			    'r', new ItemStack(Blocks.redstone_block)));*/
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.composterBlock),
 				"s s",
@@ -42,20 +38,14 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
 				"cc",
 			    "cc",
-			    'c', ModItems.itemCompost));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
-				"cc",
-			    "cc",
-			    'c', new ItemStack(ModItems.itemCompost,1,1)));
+			    'c', "chunkCompost"));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.dirt),
 				"dd",
 			    "dd",
 			    'd', new ItemStack(ModItems.itemDirtChunk)));
 		
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, ModItems.itemCompost));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, new ItemStack(ModItems.itemCompost,1,1)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, "chunkCompost"));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), ModBlocks.compostSoilBlock));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.powderKegBlock),
@@ -68,12 +58,12 @@ public class ModRecipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunstone.FULLY_CHARGED.copy(),
 				"grg",
-			    "dld",
+			    "tdt",
 			    "grg",
-			    'l', Blocks.redstone_lamp,
-			    'd', Items.diamond,
-			    'd', Items.redstone,
-			    'g', Items.glowstone_dust));
+			    't', "ingotTitanium",
+			    'd', "gemDiamond",
+			    'r', "dustRedstone",
+			    'g', "dustGlowstone"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
 				"epe",
@@ -82,8 +72,45 @@ public class ModRecipes {
 			    'e', Items.ender_pearl,
 			    'p', Blocks.stone_pressure_plate,
 			    'g', "ingotGold",
-			    's', Items.glowstone_dust,
-			    'r', Blocks.redstone_block));
+			    's', "dustGlowstone",
+			    'r', "blockRedstone"));
+		
+		//TITANIUM TOOLS
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumPickaxe),
+				"ttt",
+			    " s ",
+			    " s ",
+			    't', "ingotTitanium",
+			    's', "stickWood"));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumAxe),
+				"tt",
+			    "ts",
+			    " s",
+			    't', "ingotTitanium",
+			    's', "stickWood"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSpade),
+				"t",
+			    "s",
+			    "s",
+			    't', "ingotTitanium",
+			    's', "stickWood"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumHoe),
+				"tt",
+			    " s",
+			    " s",
+			    't', "ingotTitanium",
+			    's', "stickWood"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSword),
+				"t",
+			    "t",
+			    "s",
+			    't', "ingotTitanium",
+			    's', "stickWood"));
+		
+		GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
 	}
 }
