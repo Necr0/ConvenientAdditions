@@ -61,35 +61,35 @@ public class ModRecipes {
 				"ttt",
 			    " s ",
 			    " s ",
-			    't', "ingotTitanium",
+			    't', ModItems.ingotTitanium,
 			    's', "stickWood"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumAxe),
 				"tt",
 			    "ts",
 			    " s",
-			    't', "ingotTitanium",
+			    't', ModItems.ingotTitanium,
 			    's', "stickWood"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSpade),
 				"t",
 			    "s",
 			    "s",
-			    't', "ingotTitanium",
+			    't', ModItems.ingotTitanium,
 			    's', "stickWood"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumHoe),
 				"tt",
 			    " s",
 			    " s",
-			    't', "ingotTitanium",
+			    't', ModItems.ingotTitanium,
 			    's', "stickWood"));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSword),
 				"t",
 			    "t",
 			    "s",
-			    't', "ingotTitanium",
+			    't', ModItems.ingotTitanium,
 			    's', "stickWood"));
 		
 		GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
