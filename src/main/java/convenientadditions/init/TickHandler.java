@@ -42,7 +42,7 @@ public class TickHandler {
 	        		}
         		}else{
         			if(!world.provider.hasNoSky&&!world.isRaining()&&world.isDaytime()&&world.canBlockSeeTheSky((int)player.posX,(int)player.posY,(int)player.posZ)){
-        				ModItems.itemSunstone.chargeItem(stack, 24);
+        				ModItems.itemSunstone.chargeItem(stack, 20);
         			}
         		}
         	}

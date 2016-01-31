@@ -42,6 +42,7 @@ public class ItemRedstonePulseEmitter extends Item {
         		}
     		}
     	}
+    	player.swingItem();
     	return itemStack;
     }
     

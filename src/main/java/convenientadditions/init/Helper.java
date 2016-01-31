@@ -8,8 +8,11 @@ import net.minecraft.world.World;
 public class Helper {
 	public static void spawnItemInPlace(World w,double x,double y,double z,ItemStack i){
 		EntityItem e=new EntityItem(w, x, y, z, i);
-		e.setVelocity(0, 0, 0);
-		w.spawnEntityInWorld(e);
+		e.motionX = 0;
+		e.motionY = 0;
+		e.motionZ = 0;
+		if(!w.isRemote)
+			w.spawnEntityInWorld(e);
 	}
 	
 	public static boolean checkForFire(World world,int x,int y,int z){

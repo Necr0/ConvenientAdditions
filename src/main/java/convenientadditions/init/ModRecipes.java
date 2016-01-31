@@ -45,13 +45,32 @@ public class ModRecipes {
 			    'd', "gemDiamond",
 			    'r', "dustRedstone",
 			    'g', "dustGlowstone"));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstonePulseEmitter),
+				"e",
+				"r",
+			    "t",
+			    't', "ingotTitanium",
+			    'r', Blocks.redstone_torch,
+			    'e', Items.ender_pearl));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
-				"epe",
-			    "gsg",
+				"tpt",
+			    "geg",
 			    "srs",
+			    't', "ingotTitanium",
 			    'e', Items.ender_pearl,
 			    'p', Blocks.stone_pressure_plate,
+			    'g', "ingotGold",
+			    's', "dustGlowstone",
+			    'r', "blockRedstone"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.proximitySensorBlock),
+				"sgs",
+			    "tet",
+			    "rgr",
+			    't', "ingotTitanium",
+			    'e', Items.ender_eye,
 			    'g', "ingotGold",
 			    's', "dustGlowstone",
 			    'r', "blockRedstone"));

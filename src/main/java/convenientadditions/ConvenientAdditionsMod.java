@@ -10,9 +10,11 @@ import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
+import convenientadditions.init.ModThaumcraftAspects;
 import convenientadditions.init.Reference;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -28,6 +30,8 @@ public class ConvenientAdditionsMod
     public static final String VERSION = "1.0";
     
     public static final ToolMaterial TOOLMATERIAL_TITANIUM=EnumHelper.addToolMaterial("TITANIUM", 3, 906, 7F, 2.3F, 20);
+    
+	public static boolean thaumcraftLoaded = false;
     
     @SidedProxy(modId=MODID,serverSide=Reference.commonProxyClassPath,clientSide=Reference.clientProxyClassPath)
     public static CommonProxy PROXY;
@@ -50,6 +54,8 @@ public class ConvenientAdditionsMod
     	PROXY.registerRenderers();
     	PROXY.registerTickHandlers();
     	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
+
+    	thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
     }
     
 
@@ -64,5 +70,7 @@ public class ConvenientAdditionsMod
     public void postinit(FMLPostInitializationEvent event)
     {
     	GameRegistry.registerWorldGenerator( new OreTitaniumWorldGen(), 0 );
+
+    	ModThaumcraftAspects.init();
     }
 }
