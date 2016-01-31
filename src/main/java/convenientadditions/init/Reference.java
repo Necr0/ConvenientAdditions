@@ -13,6 +13,7 @@ public class Reference {
     public static final String proximitySensorBlockName = "proximitySensor";
     //
     public static final String ingotTitaniumItemName = "ingotTitanium";
+    public static final String nuggetTitaniumItemName = "nuggetTitanium";
     public static final String pickaxeTitaniumItemName = "pickaxeTitanium";
     public static final String axeTitaniumItemName = "axeTitanium";
     public static final String spadeTitaniumItemName = "spadeTitanium";
@@ -22,6 +23,7 @@ public class Reference {
     public static final String fertilizerItemName = "fertilizer";
     public static final String dirtChunkItemName = "dirtChunk";
     public static final String sunstoneItemName = "sunstone";
+    public static final String sunlightRingItemName = "sunlightRing";
     public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
     //
     public static final String tempLightBlockName = "tempLight";

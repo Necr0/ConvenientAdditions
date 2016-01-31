@@ -8,6 +8,7 @@ public class ModOredict {
 	public static void registerOres(){
 		OreDictionary.registerOre("oreTitanium", ModBlocks.oreTitaniumBlock);
 		OreDictionary.registerOre("ingotTitanium", ModItems.ingotTitanium);
+		OreDictionary.registerOre("nuggetTitanium", ModItems.nuggetTitanium);
 
 		OreDictionary.registerOre("soil", ModBlocks.compostSoilBlock);
 		OreDictionary.registerOre("soil", Blocks.dirt);

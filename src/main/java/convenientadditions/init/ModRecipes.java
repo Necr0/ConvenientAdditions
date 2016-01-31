@@ -112,5 +112,11 @@ public class ModRecipes {
 			    's', "stickWood"));
 		
 		GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.nuggetTitanium,9), new ItemStack(ModItems.ingotTitanium)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
+				"ttt",
+				"ttt",
+				"ttt",
+				't', new ItemStack(ModItems.nuggetTitanium)));
 	}
 }

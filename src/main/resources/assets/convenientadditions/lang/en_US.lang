@@ -16,6 +16,7 @@ tileentity.convenientadditions:proximitySensor.name=Proximity Sensor
 
 # Items
 item.convenientadditions:ingotTitanium.name=Titanium Ingot
+item.convenientadditions:nuggetTitanium.name=Titanium Nugget
 item.convenientadditions:pickaxeTitanium.name=Titanium Pickaxe
 item.convenientadditions:axeTitanium.name=Titanium Axe
 item.convenientadditions:spadeTitanium.name=Titanium Shovel
@@ -26,6 +27,8 @@ item.convenientadditions:fertilizer.name=Fertilizer
 item.convenientadditions:dirtChunk.name=Dirt Chunk
 item.convenientadditions:sunstone.name=Sunstone
 item.convenientadditions:redstonePulseEmitter.name=Redstone Pulse Emitter
+# Baubles
+item.convenientadditions:sunstone.name=Ring of Sunlight
 
 # Inventories
 inventory.convenientadditions:powderKeg.name=Powder Keg

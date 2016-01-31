@@ -1,19 +1,18 @@
 package convenientadditions.init;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraftforge.common.util.EnumHelper;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemDirtChunk;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemRedstonePulseEmitter;
 import convenientadditions.item.ItemSunstone;
-import convenientadditions.item.ItemTitaniumAxe;
-import convenientadditions.item.ItemTitaniumHoe;
-import convenientadditions.item.ItemTitaniumPickaxe;
-import convenientadditions.item.ItemTitaniumSpade;
-import convenientadditions.item.ItemTitaniumSword;
+import convenientadditions.item.baubles.ItemSunlightRing;
+import convenientadditions.item.tools.ItemTitaniumAxe;
+import convenientadditions.item.tools.ItemTitaniumHoe;
+import convenientadditions.item.tools.ItemTitaniumPickaxe;
+import convenientadditions.item.tools.ItemTitaniumSpade;
+import convenientadditions.item.tools.ItemTitaniumSword;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
@@ -25,6 +24,9 @@ public class ModItems {
     public static final ItemRedstonePulseEmitter itemRedstonePulseEmitter = new ItemRedstonePulseEmitter();
     //dummy
     public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_ingot");
+    public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_nugget");
+    //baubles
+    public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
 
     public static final Item itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.axeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_axe");
     public static final Item itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.pickaxeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_pickaxe");
@@ -35,6 +37,7 @@ public class ModItems {
     public static void init()
     {
         GameRegistry.registerItem(ingotTitanium,Reference.ingotTitaniumItemName);
+        GameRegistry.registerItem(nuggetTitanium,Reference.nuggetTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumPickaxe,Reference.pickaxeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumAxe,Reference.axeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumSpade,Reference.spadeTitaniumItemName);

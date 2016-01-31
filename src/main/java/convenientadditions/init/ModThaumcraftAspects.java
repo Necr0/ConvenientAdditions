@@ -9,6 +9,7 @@ public class ModThaumcraftAspects {
 	public static void init(){
 		ThaumcraftApi.registerObjectTag("oreTitanium", new AspectList().add(Aspect.METAL,4).add(Aspect.EARTH,1));
 		ThaumcraftApi.registerObjectTag("ingotTitanium", new AspectList().add(Aspect.METAL,4));
+		ThaumcraftApi.registerObjectTag("nuggetTitanium", new AspectList().add(Aspect.METAL,1));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.composterBlock), new AspectList().add(Aspect.TREE,5).add(Aspect.EXCHANGE,2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.playerInterfaceBlock), new AspectList().add(Aspect.MAN,1).add(Aspect.MECHANISM,2).add(Aspect.VOID,2).add(Aspect.TRAVEL,4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.proximitySensorBlock), new AspectList().add(Aspect.MAN,1).add(Aspect.MECHANISM,2).add(Aspect.SENSES,2).add(Aspect.ENERGY,4));
