@@ -2,6 +2,7 @@ package convenientadditions.init;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -45,6 +46,14 @@ public class ModRecipes {
 			    'd', "gemDiamond",
 			    'r', "dustRedstone",
 			    'g', "dustGlowstone"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunlightRing.FULLY_CHARGED.copy(),
+				"ysy",
+			    "t t",
+			    "yty",
+			    't', "ingotTitanium",
+			    's', ModItems.itemSunstone,
+			    'y', Items.string));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstonePulseEmitter),
 				"e",

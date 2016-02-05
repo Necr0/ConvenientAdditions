@@ -28,7 +28,7 @@ item.convenientadditions:dirtChunk.name=Dirt Chunk
 item.convenientadditions:sunstone.name=Sunstone
 item.convenientadditions:redstonePulseEmitter.name=Redstone Pulse Emitter
 # Baubles
-item.convenientadditions:sunstone.name=Ring of Sunlight
+item.convenientadditions:sunlightRing.name=Ring of Sunlight
 
 # Inventories
 inventory.convenientadditions:powderKeg.name=Powder Keg
@@ -39,6 +39,7 @@ inventory.convenientadditions:playerInterface.name=Player Interface
 itemGroup.convenientadditions=Convenient Additions
 
 # Tooltips
+tooltip.convenientadditions:charge=%c/%C charges (%p%)
 tooltip.convenientadditions:compost=Can be used on dirt or farmland.
 tooltip.convenientadditions:compostSpores=(contains mushroom spores)
 tooltip.convenientadditions:fertilizer=Can be used on plants.
@@ -46,7 +47,6 @@ tooltip.convenientadditions:sunstone=The sun shall light your way!
 tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
 tooltip.convenientadditions:sunstoneInactive=(right click to activate)
 tooltip.convenientadditions:sunstoneDrained=(stay in sunlight to charge)
-tooltip.convenientadditions:sunstoneCharge=%c/%C charges (%p%)
 tooltip.convenientadditions:redstonePulseEmitter=(right click to emit pulse)
 
 # Messages

@@ -13,20 +13,23 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.api.ItemChargable;
+import convenientadditions.api.ItemSunlightChargable;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSunlightRing extends Item implements IBauble {
+public class ItemSunlightRing extends ItemSunlightChargable implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSunlightRing(){
-		super();
+		super(60000,true,true,21);
 		this.setHasSubtypes(true)
 			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightRingItemName)
 			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightRingItemName)
@@ -34,7 +37,7 @@ public class ItemSunlightRing extends Item implements IBauble {
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);
-		chargeItem(FULLY_CHARGED, getMaxItemCharge());
+		chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
 	}
 
 	@Override
@@ -44,10 +47,10 @@ public class ItemSunlightRing extends Item implements IBauble {
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		World world=player.worldObj;
-		if(world.isRemote)
+		if(player.worldObj.isRemote)
 			return;
 		
+		WorldServer world=(WorldServer)player.worldObj;
 		Random random = new Random();
 		ModItems.itemSunlightRing.chargeItem(itemstack, -1);;
 		for(int x=0;x<9;x++){
@@ -63,9 +66,6 @@ public class ItemSunlightRing extends Item implements IBauble {
 					}
         		}
     		}
-		}
-		if(!world.provider.hasNoSky&&!world.isRaining()&&world.isDaytime()&&world.canBlockSeeTheSky((int)player.posX,(int)player.posY,(int)player.posZ)){
-			ModItems.itemSunlightRing.chargeItem(itemstack, 21);
 		}
 	}
 
@@ -89,28 +89,7 @@ public class ItemSunlightRing extends Item implements IBauble {
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
 		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:sunstone"));
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneCharge").replace("%c", ""+getItemCharge(stack)).replace("%C", ""+getMaxItemCharge()).replace("%p", ""+(int)((double)getItemCharge(stack)/(double)getMaxItemCharge()*100)));
-		list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneDrained"));
-	}
-	
-	public int getItemCharge(ItemStack stack){
-		if(stack.hasTagCompound()){
-			NBTTagCompound nbt=stack.getTagCompound();
-			if(nbt.hasKey("CHARGE")){
-				return nbt.getInteger("CHARGE");
-			}else{
-				nbt.setInteger("CHARGE", 0);
-			}
-		}else{
-			NBTTagCompound nbt=new NBTTagCompound();
-			nbt.setInteger("CHARGE", 0);
-			stack.setTagCompound(nbt);
-		}
-		return 0;
-	}
-	
-	public int getMaxItemCharge(){
-		return 60000;
+		super.addInformation(stack,player,list,par4);
 	}
 	
 	@Override
@@ -120,21 +99,9 @@ public class ItemSunlightRing extends Item implements IBauble {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
     }
-	
-	public void chargeItem(ItemStack stack,int amount){
-		if(stack.hasTagCompound()){
-			NBTTagCompound nbt=stack.getTagCompound();
-			if(nbt.hasKey("CHARGE")){
-				int val=nbt.getInteger("CHARGE")+amount;
-				nbt.setInteger("CHARGE", val>0?(val>getMaxItemCharge()?getMaxItemCharge():val):0);
-			}else{
-				nbt.setInteger("CHARGE", amount>0?(amount>getMaxItemCharge()?getMaxItemCharge():amount):0);
-			}
-		}else{
-			NBTTagCompound nbt=new NBTTagCompound();
-			nbt.setInteger("CHARGE", amount>0?(amount>getMaxItemCharge()?getMaxItemCharge():amount):0);
-			stack.setTagCompound(nbt);
-		}
-	}
 
+	@Override
+	public boolean isSunlightChargable(ItemStack item,int slot) {
+		return slot>=-4&&slot<=9;
+	}
 }

@@ -23,15 +23,17 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = ConvenientAdditionsMod.MODID, version = ConvenientAdditionsMod.VERSION)
+@Mod(modid = ConvenientAdditionsMod.MODID, version = ConvenientAdditionsMod.VERSION,dependencies = ConvenientAdditionsMod.DEPENDENCIES)
 public class ConvenientAdditionsMod
 {
     public static final String MODID = "convenientadditions";
     public static final String VERSION = "1.0";
+    public static final String DEPENDENCIES = "required-after:Baubles;after:Thaumcraft";
     
     public static final ToolMaterial TOOLMATERIAL_TITANIUM=EnumHelper.addToolMaterial("TITANIUM", 3, 906, 7F, 2.3F, 20);
     
 	public static boolean thaumcraftLoaded = false;
+	public static boolean baublesLoaded = false;
     
     @SidedProxy(modId=MODID,serverSide=Reference.commonProxyClassPath,clientSide=Reference.clientProxyClassPath)
     public static CommonProxy PROXY;
@@ -56,6 +58,7 @@ public class ConvenientAdditionsMod
     	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
 
     	thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
+    	baublesLoaded = Loader.isModLoaded("Baubles");
     }
     
 

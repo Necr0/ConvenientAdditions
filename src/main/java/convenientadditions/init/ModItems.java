@@ -47,6 +47,7 @@ public class ModItems {
         GameRegistry.registerItem(itemCompost,Reference.compostItemName);
         GameRegistry.registerItem(itemDirtChunk,Reference.dirtChunkItemName);
         GameRegistry.registerItem(itemSunstone,Reference.sunstoneItemName);
+        GameRegistry.registerItem(itemSunlightRing,Reference.sunlightRingItemName);
         GameRegistry.registerItem(itemRedstonePulseEmitter,Reference.redstonePulseEmitterItemName);
     }
 }

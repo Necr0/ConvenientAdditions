@@ -1,52 +1,54 @@
 package convenientadditions.init;
 
-import java.util.Random;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.WorldServer;
+import baubles.api.BaublesApi;
+import convenientadditions.api.IChargable;
+import convenientadditions.api.IPlayerInventoryTick;
+import convenientadditions.api.ISunlightChargable;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.relauncher.Side;
 
 public class TickHandler {
 	@SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent e)
     {
-		if(e.side==Side.CLIENT)
-			return;
-        EntityPlayer player = e.player;
-		WorldServer world = (WorldServer)player.worldObj;
-		Random random = new Random();
-        InventoryPlayer inv = player.inventory;
-        for(int i=0;i<9;i++){
-        	ItemStack stack=inv.getStackInSlot(i);
-        	if(stack!=null&&stack.getItem()==ModItems.itemSunstone){
-        		if(ModItems.itemSunstone.isActive(stack)){
-	        		ModItems.itemSunstone.chargeItem(stack, -1);
-	        		for(int x=0;x<9;x++){
-	        			for(int y=0;y<9;y++){
-	        				for(int z=0;z<9;z++){
-	        					int 	x1=x-4+(int)player.posX,
-	        							y1=y-4+(int)player.posY,
-	        							z1=z-4+(int)player.posZ;
-	        					Block b=world.getBlock(x1, y1, z1);
-	        					if(b.isAir(world,x1,y1,z1)&&b!=ModBlocks.tempLightBlock){
-	        						world.setBlock(x1, y1, z1, ModBlocks.tempLightBlock, 0, 3);
-	        						world.scheduleBlockUpdate(x1, y1, z1, ModBlocks.tempLightBlock, 20+random.nextInt(20));
-	        					}
-	                		}
-	            		}
-	        		}
-        		}else{
-        			if(!world.provider.hasNoSky&&!world.isRaining()&&world.isDaytime()&&world.canBlockSeeTheSky((int)player.posX,(int)player.posY,(int)player.posZ)){
-        				ModItems.itemSunstone.chargeItem(stack, 20);
-        			}
-        		}
-        	}
-        }
+		EntityPlayer player = e.player;
+		//BAUBLES SUNLIGHT
+		IInventory baublesInv=BaublesApi.getBaubles(player);
+		for(int i=0;i<baublesInv.getSizeInventory();i++){
+			ItemStack stack=baublesInv.getStackInSlot(-i-1);
+			if(stack!=null && stack.getItem() instanceof ISunlightChargable && stack.getItem() instanceof IChargable){
+				ISunlightChargable sitem=(ISunlightChargable)(stack.getItem());
+				if(sitem.isSunlightChargable(stack, -i-1)){
+					if(e.player.worldObj.provider.hasNoSky&&!e.player.worldObj.isRaining()&&e.player.worldObj.isDaytime()&&e.player.worldObj.canBlockSeeTheSky((int)player.posX,(int)player.posY,(int)player.posZ)){
+						((IChargable)sitem).chargeItem(stack, sitem.getSunlightChargeRate(stack, -i-1));
+					}
+				}
+			}
+		}
+		//VANILLA SUNLIGHT
+		IInventory playerInv=player.inventory;
+		for(int i=0;i<playerInv.getSizeInventory();i++){
+			ItemStack stack=playerInv.getStackInSlot(i);
+			if(stack!=null && stack.getItem() instanceof ISunlightChargable && stack.getItem() instanceof IChargable){
+				ISunlightChargable sitem=(ISunlightChargable)(stack.getItem());
+				if(sitem.isSunlightChargable(stack, i)){
+					if(e.player.worldObj.provider.hasNoSky&&!e.player.worldObj.isRaining()&&e.player.worldObj.isDaytime()&&e.player.worldObj.canBlockSeeTheSky((int)player.posX,(int)player.posY,(int)player.posZ)){
+						((IChargable)sitem).chargeItem(stack, sitem.getSunlightChargeRate(stack, i));
+					}
+				}
+			}
+		}
+		//VANILLA TICKABLE
+		for(int i=0;i<playerInv.getSizeInventory();i++){
+			ItemStack stack=playerInv.getStackInSlot(i);
+			if(stack!=null && stack.getItem() instanceof IPlayerInventoryTick){
+				((IPlayerInventoryTick)stack.getItem()).onPlayerInventoryTick(stack, i, player);;
+			}
+		}
+		
     }
 
 }
