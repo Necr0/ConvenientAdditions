@@ -24,6 +24,7 @@ public class Reference {
     public static final String dirtChunkItemName = "dirtChunk";
     public static final String sunstoneItemName = "sunstone";
     public static final String sunlightRingItemName = "sunlightRing";
+    public static final String saturationRingItemName = "saturationRing";
     public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
     //
     public static final String tempLightBlockName = "tempLight";

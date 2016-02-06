@@ -29,6 +29,7 @@ item.convenientadditions:sunstone.name=Sunstone
 item.convenientadditions:redstonePulseEmitter.name=Redstone Pulse Emitter
 # Baubles
 item.convenientadditions:sunlightRing.name=Ring of Sunlight
+item.convenientadditions:saturationRing.name=Ring of Saturation
 
 # Inventories
 inventory.convenientadditions:powderKeg.name=Powder Keg
@@ -48,6 +49,7 @@ tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
 tooltip.convenientadditions:sunstoneInactive=(right click to activate)
 tooltip.convenientadditions:sunstoneDrained=(stay in sunlight to charge)
 tooltip.convenientadditions:redstonePulseEmitter=(right click to emit pulse)
+tooltip.convenientadditions:saturationRing=Shall your stomach never growl!
 
 # Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.

@@ -7,6 +7,7 @@ import convenientadditions.item.ItemDirtChunk;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemRedstonePulseEmitter;
 import convenientadditions.item.ItemSunstone;
+import convenientadditions.item.baubles.ItemSaturationRing;
 import convenientadditions.item.baubles.ItemSunlightRing;
 import convenientadditions.item.tools.ItemTitaniumAxe;
 import convenientadditions.item.tools.ItemTitaniumHoe;
@@ -27,7 +28,8 @@ public class ModItems {
     public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_nugget");
     //baubles
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
-
+    public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
+    //ttools
     public static final Item itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.axeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_axe");
     public static final Item itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.pickaxeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_pickaxe");
     public static final Item itemTitaniumSpade=new ItemTitaniumSpade(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.spadeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_spade");
@@ -36,18 +38,23 @@ public class ModItems {
     
     public static void init()
     {
+    	//dummy
         GameRegistry.registerItem(ingotTitanium,Reference.ingotTitaniumItemName);
         GameRegistry.registerItem(nuggetTitanium,Reference.nuggetTitaniumItemName);
+    	//ttools
         GameRegistry.registerItem(itemTitaniumPickaxe,Reference.pickaxeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumAxe,Reference.axeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumSpade,Reference.spadeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumHoe,Reference.hoeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumSword,Reference.swordTitaniumItemName);
+        //misc
         GameRegistry.registerItem(itemFertilizer,Reference.fertilizerItemName);
         GameRegistry.registerItem(itemCompost,Reference.compostItemName);
         GameRegistry.registerItem(itemDirtChunk,Reference.dirtChunkItemName);
         GameRegistry.registerItem(itemSunstone,Reference.sunstoneItemName);
-        GameRegistry.registerItem(itemSunlightRing,Reference.sunlightRingItemName);
         GameRegistry.registerItem(itemRedstonePulseEmitter,Reference.redstonePulseEmitterItemName);
+        //baubles
+        GameRegistry.registerItem(itemSunlightRing,Reference.sunlightRingItemName);
+        GameRegistry.registerItem(itemSaturationRing,Reference.saturationRingItemName);
     }
 }
