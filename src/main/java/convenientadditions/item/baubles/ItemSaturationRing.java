@@ -56,10 +56,10 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
 			Random random = new Random();
 			if(random.nextInt(50)==0){
 				if(p.getFoodStats().getSaturationLevel()<1.1f){
-					p.getFoodStats().setFoodSaturationLevel(p.getFoodStats().getSaturationLevel()+.14f);
+					p.getFoodStats().setFoodSaturationLevel(p.getFoodStats().getSaturationLevel()+.12f);
 				}
 			}
-			ModItems.itemSunlightRing.chargeItem(itemstack, -2);
+			chargeItem(itemstack, -2);
 		}
 	}
 
