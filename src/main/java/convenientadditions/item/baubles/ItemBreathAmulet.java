@@ -18,14 +18,14 @@ import convenientadditions.init.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSaturationRing extends ItemSunlightChargable implements IBauble {
+public class ItemBreathAmulet extends ItemSunlightChargable implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
-	public ItemSaturationRing(){
-		super(8000,true,true,3);
+	public ItemBreathAmulet(){
+		super(10000,true,true,5);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.saturationRingItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.saturationRingItemName)
+			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.breathAmuletItemName)
+			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.breathAmuletItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
@@ -35,7 +35,7 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.RING;
+		return BaubleType.AMULET;
 	}
 
 	@Override
@@ -45,13 +45,11 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
 		if(getCharge(itemstack)>=2){
 			WorldServer world=(WorldServer)player.worldObj;
 			EntityPlayer p=(EntityPlayer)player;
-			Random random = new Random();
-			if(random.nextInt(60)==0){
-				if(p.getFoodStats().getSaturationLevel()<1.1f){
-					p.getFoodStats().setFoodSaturationLevel(p.getFoodStats().getSaturationLevel()+.12f);
-				}
+			int air=p.getAir();
+			if(air<20){
+				p.setAir(20);
+				chargeItem(itemstack, -2*(20-air));
 			}
-			chargeItem(itemstack, -1);
 		}
 	}
 
@@ -74,7 +72,7 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:saturationRing"));
+		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:breathAmulet"));
 		super.addInformation(stack,player,list,par4);
 	}
 	

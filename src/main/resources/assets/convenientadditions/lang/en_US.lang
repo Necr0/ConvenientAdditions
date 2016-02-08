@@ -30,6 +30,18 @@ item.convenientadditions:redstonePulseEmitter.name=Redstone Pulse Emitter
 # Baubles
 item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
+item.convenientadditions:breathAmulet.name=Amulet of Breath
+# Goo
+item.convenientadditions:royalGoo.name=Royal Goo
+item.convenientadditions:kittyGoo.name=Kitty Goo
+item.convenientadditions:pinkGoo.name=Pink Goo
+item.convenientadditions:stoneGoo.name=Stone Goo
+item.convenientadditions:blazingGoo.name=Blazing Goo
+item.convenientadditions:enderGoo.name=Ender Goo
+item.convenientadditions:undeadGoo.name=Undead Goo
+item.convenientadditions:shroomGoo.name=Shroom Goo
+item.convenientadditions:honeyGoo.name=Honey Goo
+item.convenientadditions:boomGoo.name=Boom Goo
 
 # Inventories
 inventory.convenientadditions:powderKeg.name=Powder Keg
@@ -50,6 +62,7 @@ tooltip.convenientadditions:sunstoneInactive=(right click to activate)
 tooltip.convenientadditions:sunstoneDrained=(stay in sunlight to charge)
 tooltip.convenientadditions:redstonePulseEmitter=(right click to emit pulse)
 tooltip.convenientadditions:saturationRing=Shall your stomach never growl!
+tooltip.convenientadditions:breathAmulet=I breathe in deep, and I close my eyes.
 
 # Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.

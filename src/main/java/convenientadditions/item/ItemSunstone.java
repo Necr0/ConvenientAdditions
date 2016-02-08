@@ -37,7 +37,7 @@ public class ItemSunstone extends ItemSunlightChargable implements IPlayerInvent
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);
-		chargeItem(FULLY_CHARGED, getCharge(FULLY_CHARGED));
+		chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
 	}
 
     @SideOnly(Side.CLIENT)

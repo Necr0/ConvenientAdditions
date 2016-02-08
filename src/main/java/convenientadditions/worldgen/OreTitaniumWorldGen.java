@@ -11,7 +11,7 @@ import convenientadditions.init.ModBlocks;
 import convenientadditions.init.Reference;
 import cpw.mods.fml.common.IWorldGenerator;
 
-//Took and modified from Fireballs AE2 mod
+//Taken and modified from Fireball's AE2 mod
 
 public class OreTitaniumWorldGen implements IWorldGenerator {
 	private final WorldGenMinable ore;

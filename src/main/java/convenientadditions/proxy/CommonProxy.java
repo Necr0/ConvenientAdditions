@@ -1,6 +1,8 @@
 package convenientadditions.proxy;
 
 import net.minecraft.world.World;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.entity.EntityGooItem;
 import convenientadditions.init.Reference;
 import convenientadditions.init.TickHandler;
 import convenientadditions.tileentity.TileEntityComposter;
@@ -8,6 +10,7 @@ import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;
 import convenientadditions.tileentity.TileEntityProximitySensor;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy
@@ -22,6 +25,7 @@ public class CommonProxy
 
     public void registerEntities()
     {
+    	EntityRegistry.registerModEntity(EntityGooItem.class, Reference.gooItemEntityName, Reference.gooItemEntityId, ConvenientAdditionsMod.INSTANCE, 128, 5, true);
     }
 
     public World getClientWorld()

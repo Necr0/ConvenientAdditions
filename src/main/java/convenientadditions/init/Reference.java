@@ -22,14 +22,32 @@ public class Reference {
     public static final String compostItemName = "compost";
     public static final String fertilizerItemName = "fertilizer";
     public static final String dirtChunkItemName = "dirtChunk";
+    public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
     public static final String sunstoneItemName = "sunstone";
+    //baubles
     public static final String sunlightRingItemName = "sunlightRing";
     public static final String saturationRingItemName = "saturationRing";
-    public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
+    public static final String breathAmuletItemName = "breathAmulet";
+    //goo
+    public static final String royalGooItemName = "royalGoo";
+    public static final String kittyGooItemName = "kittyGoo";
+    public static final String pinkGooItemName = "pinkGoo";
+    public static final String stoneGooItemName = "stoneGoo";
+    public static final String blazingGooItemName = "blazingGoo";
+    public static final String enderGooItemName = "enderGoo";
+    public static final String undeadGooItemName = "undeadGoo";
+    public static final String shroomGooItemName = "shroomGoo";
+    public static final String honeyGooItemName = "honeyGoo";
+    public static final String boomGooItemName = "boomGoo";
+    //slimeEntities
+    public static final String gooItemEntityName = "gooItem";
+    public static final int gooItemEntityId = 0;
+    public static final String goozillaEntityName = "goozilla";
     //
     public static final String tempLightBlockName = "tempLight";
     public static final String redstonePulseBlockName = "redstonePulse";
     public static final String textureNoneBlockName = "textureNone";
+    //
     //
     public static final int titaniumPerCluster=4;
     public static final int titaniumOresClusterAmount=10;

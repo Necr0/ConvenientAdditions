@@ -4,6 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -60,7 +61,15 @@ public class ModRecipes {
 			    "t t",
 			    "yty",
 			    't', "ingotTitanium",
-			    's', Items.golden_carrot,
+			    'g', Items.golden_carrot,
+			    'y', Items.string));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBreathAmulet.FULLY_CHARGED.copy(),
+				"yty",
+			    "t t",
+			    "ypy",
+			    't', "ingotTitanium",
+			    'p', new ItemStack(Items.potionitem,1,8269),
 			    'y', Items.string));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstonePulseEmitter),
