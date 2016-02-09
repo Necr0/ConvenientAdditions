@@ -13,8 +13,8 @@ import net.minecraft.world.WorldServer;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.api.ItemSunlightChargable;
-import convenientadditions.init.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

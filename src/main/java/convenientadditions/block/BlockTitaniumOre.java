@@ -3,7 +3,7 @@ package convenientadditions.block;
 import java.util.Random;
 
 import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Reference;
+import convenientadditions.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;

@@ -11,8 +11,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
-import convenientadditions.init.Reference;
 
 public class ItemRedstonePulseEmitter extends Item {
 	public ItemRedstonePulseEmitter() {

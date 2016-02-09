@@ -33,5 +33,9 @@ public class ItemSunlightChargable extends ItemChargable implements ISunlightCha
 		super.addInformation(item, player, list, par4);
 		list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneDrained"));
 	}
-
+	
+	@Override
+	public boolean canApplyDrain(ItemStack item){
+		return true;
+	}
 }

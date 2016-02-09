@@ -1,4 +1,4 @@
-package convenientadditions.init;
+package convenientadditions;
 
 
 public class Reference {
@@ -47,6 +47,12 @@ public class Reference {
     public static final String tempLightBlockName = "tempLight";
     public static final String redstonePulseBlockName = "redstonePulse";
     public static final String textureNoneBlockName = "textureNone";
+    //
+    //
+    public static final int enchantmentIdBase=133;
+    public static final int enchantmentChargeEfficiencyId=0;
+    public static final int enchantmentCapacityId=1;
+    public static final int enchantmentDrainId=2;
     //
     //
     public static final int titaniumPerCluster=4;

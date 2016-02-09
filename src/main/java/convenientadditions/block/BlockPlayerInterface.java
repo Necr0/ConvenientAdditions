@@ -1,7 +1,7 @@
 package convenientadditions.block;
 
 import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Reference;
+import convenientadditions.Reference;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

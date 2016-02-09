@@ -15,8 +15,8 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
-import convenientadditions.init.Reference;
 
 public class BlockCompostSoil extends Block {
 

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Reference;
+import convenientadditions.Reference;
 
 public class ItemFertilizer extends Item {
 	public ItemFertilizer(){

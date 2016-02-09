@@ -15,11 +15,11 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.api.IPlayerInventoryTick;
 import convenientadditions.api.ItemSunlightChargable;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
-import convenientadditions.init.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

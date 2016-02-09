@@ -2,9 +2,9 @@ package convenientadditions.proxy;
 
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.TickHandler;
 import convenientadditions.entity.EntityGooItem;
-import convenientadditions.init.Reference;
-import convenientadditions.init.TickHandler;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;

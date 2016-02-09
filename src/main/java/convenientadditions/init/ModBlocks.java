@@ -1,6 +1,7 @@
 package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.block.BlockCompostSoil;
 import convenientadditions.block.BlockCompostSoilTilled;
 import convenientadditions.block.BlockComposter;

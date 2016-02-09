@@ -1,4 +1,4 @@
-package convenientadditions.init;
+package convenientadditions;
 
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;

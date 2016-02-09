@@ -2,8 +2,8 @@ package convenientadditions;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import convenientadditions.init.ModBlocks;
@@ -11,7 +11,7 @@ import convenientadditions.init.ModItems;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModThaumcraftAspects;
-import convenientadditions.init.Reference;
+import convenientadditions.item.enchantments.EnchantmentHelper;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
 import cpw.mods.fml.common.Loader;
@@ -55,6 +55,7 @@ public class ConvenientAdditionsMod
     	ModItems.init();
     	ModOredict.registerOres();
     	ModRecipes.init();
+    	EnchantmentHelper.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();
     	PROXY.registerTickHandlers();

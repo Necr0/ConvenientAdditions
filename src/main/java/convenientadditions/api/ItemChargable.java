@@ -3,10 +3,10 @@ package convenientadditions.api;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
 public abstract class ItemChargable extends Item implements IChargable {
@@ -83,5 +83,30 @@ public abstract class ItemChargable extends Item implements IChargable {
 	{
 		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:charge").replace("%c", ""+getCharge(item)).replace("%C", ""+getChargeCapacity(item)).replace("%p", ""+(int)((double)getCharge(item)/(double)getChargeCapacity(item)*100)));
 		super.addInformation(item, player, list, par4);
+	}
+	
+	@Override
+	public boolean canApplyCapacity(ItemStack item){
+		return true;
+	}
+	
+	@Override
+	public boolean canApplyChargeEfficiency(ItemStack item){
+		return true;
+	}
+	
+	@Override
+	public boolean isItemTool(ItemStack item){
+		return true;
+	}
+	
+	@Override
+	public int getItemEnchantability(){
+		return 0;
+	}
+	
+	@Override
+	public int getItemEnchantability(ItemStack item){
+		return 1;
 	}
 }

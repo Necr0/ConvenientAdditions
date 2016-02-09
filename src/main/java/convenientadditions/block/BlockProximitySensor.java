@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Reference;
+import convenientadditions.Reference;
 import convenientadditions.tileentity.TileEntityProximitySensor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -43,6 +43,11 @@ item.convenientadditions:shroomGoo.name=Shroom Goo
 item.convenientadditions:honeyGoo.name=Honey Goo
 item.convenientadditions:boomGoo.name=Boom Goo
 
+# Enchantment
+enchantment.capacity=Capacity
+enchantment.chargeEfficiency=Charge Efficiency
+enchantment.drain=Drain
+
 # Inventories
 inventory.convenientadditions:powderKeg.name=Powder Keg
 inventory.convenientadditions:composter.name=Composter

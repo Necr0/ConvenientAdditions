@@ -3,7 +3,7 @@ package convenientadditions.tileentity;
 import java.util.List;
 
 import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.init.Reference;
+import convenientadditions.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
