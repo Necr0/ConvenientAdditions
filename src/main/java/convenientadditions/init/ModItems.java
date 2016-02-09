@@ -2,8 +2,8 @@ package convenientadditions.init;
 
 import net.minecraft.item.Item;
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
-import convenientadditions.item.ItemDirtChunk;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemRedstonePulseEmitter;
 import convenientadditions.item.ItemSunstone;
@@ -44,6 +44,7 @@ public class ModItems {
     	//dummy
         GameRegistry.registerItem(ingotTitanium,Reference.ingotTitaniumItemName);
         GameRegistry.registerItem(nuggetTitanium,Reference.nuggetTitaniumItemName);
+        GameRegistry.registerItem(itemDirtChunk,Reference.dirtChunkItemName);
     	//ttools
         GameRegistry.registerItem(itemTitaniumPickaxe,Reference.pickaxeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumAxe,Reference.axeTitaniumItemName);
@@ -53,7 +54,6 @@ public class ModItems {
         //misc
         GameRegistry.registerItem(itemFertilizer,Reference.fertilizerItemName);
         GameRegistry.registerItem(itemCompost,Reference.compostItemName);
-        GameRegistry.registerItem(itemDirtChunk,Reference.dirtChunkItemName);
         GameRegistry.registerItem(itemSunstone,Reference.sunstoneItemName);
         GameRegistry.registerItem(itemRedstonePulseEmitter,Reference.redstonePulseEmitterItemName);
         //baubles
