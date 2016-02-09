@@ -2,7 +2,12 @@ package convenientadditions.api;
 
 import java.util.List;
 
+import convenientadditions.Reference;
+import convenientadditions.item.enchantments.EnchantmentUtil;
+import net.minecraft.block.BlockAnvil;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerRepair;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
@@ -19,7 +24,8 @@ public class ItemSunlightChargable extends ItemChargable implements ISunlightCha
 
 	@Override
 	public int getSunlightChargeRate(ItemStack item,int slot) {
-		return chargeRate;
+		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentDrainId+Reference.enchantmentIdBase, item);
+		return (int)(chargeRate*EnchantmentUtil.enchantmentScaleFactor[lvl]);
 	}
 
 	@Override

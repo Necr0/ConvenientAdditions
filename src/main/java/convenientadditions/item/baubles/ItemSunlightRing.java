@@ -48,7 +48,7 @@ public class ItemSunlightRing extends ItemSunlightChargable implements IBauble {
 		if(ModItems.itemSunlightRing.getCharge(itemstack)>0){
 			WorldServer world=(WorldServer)player.worldObj;
 			Random random = new Random();
-			ModItems.itemSunlightRing.chargeItem(itemstack, -1);;
+    		consumeCharge(itemstack, 1);
 			for(int x=0;x<9;x++){
 				for(int y=0;y<9;y++){
 					for(int z=0;z<9;z++){

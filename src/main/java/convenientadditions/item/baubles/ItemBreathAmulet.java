@@ -48,7 +48,7 @@ public class ItemBreathAmulet extends ItemSunlightChargable implements IBauble {
 			int air=p.getAir();
 			if(air<20){
 				p.setAir(20);
-				chargeItem(itemstack, -2*(20-air));
+	    		consumeCharge(itemstack, 2*(20-air));
 			}
 		}
 	}

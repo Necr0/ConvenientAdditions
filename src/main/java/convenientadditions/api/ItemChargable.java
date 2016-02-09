@@ -1,7 +1,11 @@
 package convenientadditions.api;
 
 import java.util.List;
+import java.util.Random;
 
+import convenientadditions.Reference;
+import convenientadditions.item.enchantments.EnchantmentUtil;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -40,7 +44,8 @@ public abstract class ItemChargable extends Item implements IChargable {
 
 	@Override
 	public int getChargeCapacity(ItemStack item) {
-		return capacity;
+		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentCapacityId+Reference.enchantmentIdBase, item);
+		return (int)(capacity*EnchantmentUtil.enchantmentScaleFactor[lvl]);
 	}
 
 	@Override
@@ -64,6 +69,14 @@ public abstract class ItemChargable extends Item implements IChargable {
 			item.getTagCompound().setInteger("CHARGE", cap);
 			return charge+amount-cap;
 		}
+	}
+	
+	public int consumeCharge(ItemStack item, int amount){
+		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentChargeEfficiencyId+Reference.enchantmentIdBase, item);
+		double prop=new Random().nextDouble()*EnchantmentUtil.enchantmentScaleFactor[lvl];
+		if(prop<=1)
+			return -chargeItem(item, -amount);
+		return amount;
 	}
 
 	@Override

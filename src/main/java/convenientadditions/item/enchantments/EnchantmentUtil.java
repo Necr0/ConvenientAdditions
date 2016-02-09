@@ -9,7 +9,7 @@ import convenientadditions.Reference;
 import convenientadditions.api.IChargable;
 import convenientadditions.api.ISunlightChargable;
 
-public class EnchantmentHelper {
+public class EnchantmentUtil {
 	public static final EnumEnchantmentType sunlightChargable=EnumHelper.addEnchantmentType("sunlightChargable");
 	public static final EnumEnchantmentType chargable=EnumHelper.addEnchantmentType("chargable");
 	
@@ -18,6 +18,8 @@ public class EnchantmentHelper {
 	public static final EnchantmentCapacity capacity=new EnchantmentCapacity();
 	public static final EnchantmentChargeEfficiency chargeEfficiency=new EnchantmentChargeEfficiency();
 	public static final EnchantmentDrain drain=new EnchantmentDrain();
+	
+	public static final double[] enchantmentScaleFactor=new double[]{1,1.8191959205d,2.32456436379d,2.75447075381d,3.14169859725d,3.5d};
 	
 	public static abstract class EnchantmentBase extends Enchantment{
 		public EnchantmentBase(int enchantmentId,int enchantmentWeight,EnumEnchantmentType enchantmentType) {
@@ -38,6 +40,11 @@ public class EnchantmentHelper {
 	    public int getMaxEnchantability(int p_77317_1_)
 	    {
 	        return super.getMinEnchantability(p_77317_1_) + 50;
+	    }
+	    
+	    public int getMaxLevel()
+	    {
+	        return 5;
 	    }
 	}
 	
@@ -78,9 +85,9 @@ public class EnchantmentHelper {
 	}
 	
 	public static void init(){
-		Enchantment.addToBookList(capacity);
-		Enchantment.addToBookList(chargeEfficiency);
-		Enchantment.addToBookList(drain);
+		//Enchantment.addToBookList(capacity);
+		//Enchantment.addToBookList(chargeEfficiency);
+		//Enchantment.addToBookList(drain);
 		addToEnchantmentList(capacity);
 		addToEnchantmentList(chargeEfficiency);
 		addToEnchantmentList(drain);

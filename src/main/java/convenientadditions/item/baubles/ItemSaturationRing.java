@@ -51,7 +51,7 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
 					p.getFoodStats().setFoodSaturationLevel(p.getFoodStats().getSaturationLevel()+.12f);
 				}
 			}
-			chargeItem(itemstack, -1);
+    		consumeCharge(itemstack, 1);
 		}
 	}
 

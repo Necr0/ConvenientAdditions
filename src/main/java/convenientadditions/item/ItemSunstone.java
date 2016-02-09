@@ -106,7 +106,7 @@ public class ItemSunstone extends ItemSunlightChargable implements IPlayerInvent
 		WorldServer world = (WorldServer)player.worldObj;
 		Random random = new Random();
 		if(ModItems.itemSunstone.isActive(item)){
-    		ModItems.itemSunstone.chargeItem(item, -1);
+    		consumeCharge(item, 1);
     		for(int x=0;x<9;x++){
     			for(int y=0;y<9;y++){
     				for(int z=0;z<9;z++){

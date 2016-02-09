@@ -11,7 +11,7 @@ import convenientadditions.init.ModItems;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModThaumcraftAspects;
-import convenientadditions.item.enchantments.EnchantmentHelper;
+import convenientadditions.item.enchantments.EnchantmentUtil;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
 import cpw.mods.fml.common.Loader;
@@ -55,7 +55,7 @@ public class ConvenientAdditionsMod
     	ModItems.init();
     	ModOredict.registerOres();
     	ModRecipes.init();
-    	EnchantmentHelper.init();
+    	EnchantmentUtil.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();
     	PROXY.registerTickHandlers();
