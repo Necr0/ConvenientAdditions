@@ -2,7 +2,7 @@ package convenientadditions.item.slime;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.entity.EntityGooItem;
+import convenientadditions.api.IFuelItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -13,7 +13,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemGoo extends ItemFood {
+public class ItemGoo extends ItemFood implements IFuelItem {
 	public boolean edible;
 	public boolean fireImmunity;
 	public boolean explosionImmunity;
@@ -65,6 +65,7 @@ public class ItemGoo extends ItemFood {
 	static {
 		blazing.fireImmunity=true;
 		blazing.waterSensitvity=true;
+		blazing.
 		ender.waterSensitvity=true;
 		undead.setPotionEffect(17, 5, 1, .18f);
 		undead.sunlightSensitvity=true;
@@ -97,4 +98,17 @@ public class ItemGoo extends ItemFood {
 		newE.setVelocity(location.motionX, location.motionY, location.motionZ);
         return newE;
     }
+
+	@Override
+	public boolean isFuelItem(ItemStack item) {
+		return (item.getItem()==blazing);
+	}
+
+	@Override
+	public int getFuelTime(ItemStack item) {
+        if(item.getItem()==blazing){
+        	return 400;
+        }
+		return 0;
+	}
 }

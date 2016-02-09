@@ -1,4 +1,4 @@
-package convenientadditions.entity;
+package convenientadditions.item.slime;
 
 import java.util.Random;
 
@@ -25,7 +25,6 @@ public class EntityGooItem extends EntityItem {
 		this.explosionImmunity=false;
 		this.waterSensitivity=false;
 		this.sunlightSensitivity=false;
-	    this.lifespan = 72000;
 	    this.delayBeforeCanPickup = 20;
 	}
 	
@@ -36,7 +35,6 @@ public class EntityGooItem extends EntityItem {
 		this.explosionImmunity=explosionImmunity;
 		this.waterSensitivity=waterSensitivity;
 		this.sunlightSensitivity=sunlightSensitivity;
-	    this.lifespan = 72000;
 	    this.delayBeforeCanPickup = 20;
 	}
 
@@ -47,7 +45,6 @@ public class EntityGooItem extends EntityItem {
 		this.explosionImmunity=explosionImmunity;
 		this.waterSensitivity=waterSensitivity;
 		this.sunlightSensitivity=sunlightSensitivity;
-	    this.lifespan = 72000;
 	    this.delayBeforeCanPickup = 20;
 	}
 
@@ -59,7 +56,6 @@ public class EntityGooItem extends EntityItem {
 		this.waterSensitivity=waterSensitivity;
 		this.sunlightSensitivity=sunlightSensitivity;
     	System.out.println("create");
-	    this.lifespan = 72000;
 	    this.delayBeforeCanPickup = 20;
 	}
 

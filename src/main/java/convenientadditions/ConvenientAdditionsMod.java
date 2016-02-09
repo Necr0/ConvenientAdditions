@@ -70,6 +70,7 @@ public class ConvenientAdditionsMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+    	GameRegistry.registerFuelHandler(new ConAddFuelHandler());
     	PROXY.InitRendering();
     	PROXY.registerEntities();
     }
@@ -78,7 +79,6 @@ public class ConvenientAdditionsMod
     public void postinit(FMLPostInitializationEvent event)
     {
     	GameRegistry.registerWorldGenerator( new OreTitaniumWorldGen(), 0 );
-
     	ModThaumcraftAspects.init();
     }
 }

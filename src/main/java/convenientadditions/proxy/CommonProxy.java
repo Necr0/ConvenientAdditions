@@ -4,7 +4,7 @@ import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.TickHandler;
-import convenientadditions.entity.EntityGooItem;
+import convenientadditions.item.slime.EntityGooItem;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;
