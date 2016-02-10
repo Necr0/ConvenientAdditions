@@ -28,6 +28,8 @@ public class Reference {
     public static final String sunlightRingItemName = "sunlightRing";
     public static final String saturationRingItemName = "saturationRing";
     public static final String breathAmuletItemName = "breathAmulet";
+    public static final String chargingRingItemName = "chargingRing";
+    public static final int chargingRingBaseCharge = 7;
     //goo
     public static final String royalGooItemName = "royalGoo";
     public static final String kittyGooItemName = "kittyGoo";

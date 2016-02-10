@@ -8,6 +8,7 @@ import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemRedstonePulseEmitter;
 import convenientadditions.item.ItemSunstone;
 import convenientadditions.item.baubles.ItemBreathAmulet;
+import convenientadditions.item.baubles.ItemChargingRing;
 import convenientadditions.item.baubles.ItemSaturationRing;
 import convenientadditions.item.baubles.ItemSunlightRing;
 import convenientadditions.item.slime.ItemGoo;
@@ -32,6 +33,7 @@ public class ModItems {
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
     public static final ItemBreathAmulet itemBreathAmulet = new ItemBreathAmulet();
+    public static final ItemChargingRing itemChargingRing = new ItemChargingRing();
     //ttools
     public static final Item itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.axeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_axe");
     public static final Item itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.pickaxeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_pickaxe");
@@ -60,6 +62,7 @@ public class ModItems {
         GameRegistry.registerItem(itemSunlightRing,Reference.sunlightRingItemName);
         GameRegistry.registerItem(itemSaturationRing,Reference.saturationRingItemName);
         GameRegistry.registerItem(itemBreathAmulet,Reference.breathAmuletItemName);
+        GameRegistry.registerItem(itemChargingRing,Reference.chargingRingItemName);
         //goo
         ItemGoo.init();
     }
