@@ -46,6 +46,7 @@ public class ItemGoo extends ItemFood implements IFuelItem {
         	if(!world.isRemote){
         		stack.stackSize--;
         		world.createExplosion(null, player.posX, player.posY+player.eyeHeight-.01d, player.posZ, 1.0f, false);
+        		player.swingItem();
         	}
         }
         return stack;

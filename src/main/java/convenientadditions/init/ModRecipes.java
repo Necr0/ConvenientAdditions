@@ -71,6 +71,15 @@ public class ModRecipes {
 			    't', "ingotTitanium",
 			    'p', new ItemStack(Items.potionitem,1,8269),
 			    'y', Items.string));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemChargingRing.FULLY_CHARGED.copy(),
+				"yry",
+			    "gsg",
+			    "ygy",
+			    'r', "blockRedstone",
+			    'g', "dustGlowstone",
+			    's', ModItems.itemSunlightRing,
+			    'y', Items.string));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstonePulseEmitter),
 				"e",
