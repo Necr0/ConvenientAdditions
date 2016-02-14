@@ -30,6 +30,7 @@ public class Reference {
     public static final String breathAmuletItemName = "breathAmulet";
     public static final String chargingRingItemName = "chargingRing";
     public static final int chargingRingBaseCharge = 7;
+    public static final String floatingBeltItemName = "floatingBelt";
     //goo
     public static final String royalGooItemName = "royalGoo";
     public static final String kittyGooItemName = "kittyGoo";

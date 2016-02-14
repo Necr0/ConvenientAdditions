@@ -1,4 +1,4 @@
-package convenientadditions.api;
+package convenientadditions.api.item;
 
 import java.util.List;
 import java.util.Random;
@@ -73,7 +73,8 @@ public abstract class ItemChargable extends Item implements IChargable {
 	
 	public int consumeCharge(ItemStack item, int amount){
 		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentChargeEfficiencyId+Reference.enchantmentIdBase, item);
-		double prop=new Random().nextDouble()*EnchantmentUtil.enchantmentScaleFactor[lvl];
+		double propFactor=(EnchantmentUtil.enchantmentScaleFactor[lvl]-1)+1;
+		double prop=new Random().nextDouble()*propFactor;
 		if(prop<=1)
 			return -chargeItem(item, -amount);
 		return amount;

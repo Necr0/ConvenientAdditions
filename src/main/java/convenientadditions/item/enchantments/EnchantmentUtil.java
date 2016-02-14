@@ -6,8 +6,8 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import convenientadditions.Reference;
-import convenientadditions.api.IChargable;
-import convenientadditions.api.ISunlightChargable;
+import convenientadditions.api.item.IChargable;
+import convenientadditions.api.item.ISunlightChargable;
 
 public class EnchantmentUtil {
 	public static final EnumEnchantmentType sunlightChargable=EnumHelper.addEnchantmentType("sunlightChargable");
@@ -19,7 +19,7 @@ public class EnchantmentUtil {
 	public static final EnchantmentChargeEfficiency chargeEfficiency=new EnchantmentChargeEfficiency();
 	public static final EnchantmentDrain drain=new EnchantmentDrain();
 	
-	public static final double[] enchantmentScaleFactor=new double[]{1,1.8191959205d,2.32456436379d,2.75447075381d,3.14169859725d,3.5d};
+	public static final double[] enchantmentScaleFactor=new double[]{1,1.4d,1.75d,2.05d,2.3d,2.55d};
 	
 	public static abstract class EnchantmentBase extends Enchantment{
 		public EnchantmentBase(int enchantmentId,int enchantmentWeight,EnumEnchantmentType enchantmentType) {
@@ -44,7 +44,7 @@ public class EnchantmentUtil {
 	    
 	    public int getMaxLevel()
 	    {
-	        return 5;
+	        return 3;
 	    }
 	}
 	
@@ -57,6 +57,11 @@ public class EnchantmentUtil {
 	    public boolean canApply(ItemStack stack)
 	    {
 	        return super.canApply(stack)&&((IChargable)stack.getItem()).canApplyCapacity(stack);
+	    }
+	    
+	    public int getMaxLevel()
+	    {
+	        return 5;
 	    }
 	}
 	

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.api.ICompostable;
+import convenientadditions.api.item.ICompostable;
 import convenientadditions.init.Helper;
 import convenientadditions.init.ModItems;
 import net.minecraft.entity.item.EntityItem;

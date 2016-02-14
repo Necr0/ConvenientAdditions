@@ -14,7 +14,7 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.ItemSunlightChargable;
+import convenientadditions.api.item.ItemSunlightChargable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -22,7 +22,7 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSaturationRing(){
-		super(8000,true,true,3);
+		super(12000,true,true,2);
 		this.setHasSubtypes(true)
 			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.saturationRingItemName)
 			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.saturationRingItemName)
@@ -51,7 +51,7 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
 					p.getFoodStats().setFoodSaturationLevel(p.getFoodStats().getSaturationLevel()+.12f);
 				}
 			}
-    		consumeCharge(itemstack, 1);
+    		consumeCharge(itemstack, 9);
 		}
 	}
 

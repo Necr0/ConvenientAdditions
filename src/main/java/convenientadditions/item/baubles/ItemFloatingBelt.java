@@ -17,20 +17,19 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IChargable;
 import convenientadditions.api.item.ItemSunlightChargable;
 import convenientadditions.item.enchantments.EnchantmentUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
+public class ItemFloatingBelt extends ItemSunlightChargable implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
-	public ItemChargingRing(){
-		super(120000,true,true,5);
+	public ItemFloatingBelt(){
+		super(152000,true,true,16);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargingRingItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.chargingRingItemName)
+			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.floatingBeltItemName)
+			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.floatingBeltItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
@@ -40,52 +39,64 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.RING;
+		return BaubleType.BELT;
 	}
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		if(player.worldObj.isRemote)
-			return;
-		if(getCharge(itemstack)>0){
-			int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentChargeEfficiencyId+Reference.enchantmentIdBase, itemstack);
-			int maxRemaining=(int)(Reference.chargingRingBaseCharge*EnchantmentUtil.enchantmentScaleFactor[lvl]);
-			int chargeRemaining=Math.min(getCharge(itemstack), maxRemaining);
-			IInventory invPlayer=((EntityPlayer)player).inventory;
-			IInventory invBaubles=BaublesApi.getBaubles((EntityPlayer)player);
-			for(int i=-4;i<invPlayer.getSizeInventory();i++){
-				if(chargeRemaining==0)
-					return;
-				if(i<0){
-					ItemStack target=invBaubles.getStackInSlot(-i-1);
-					if(target!=null&&target.getItem() instanceof IChargable&&target.getItem()!=this){
-						IChargable tar=(IChargable)target.getItem();
-						if(tar.isChargable(target)){
-							int rm=tar.chargeItem(target, chargeRemaining);
-							this.chargeItem(itemstack, -(chargeRemaining-rm)*2);
-							chargeRemaining=rm;
-						}
-					}
-				}else{
-					ItemStack target=invPlayer.getStackInSlot(i);
-					if(target!=null&&target.getItem() instanceof IChargable){
-						IChargable tar=(IChargable)target.getItem();
-						if(tar.isChargable(target)){
-							int rm=tar.chargeItem(target, chargeRemaining);
-							this.chargeItem(itemstack, -(chargeRemaining-rm)*2);
-							chargeRemaining=rm;
-						}
-					}
-				}
+		int charge=getCharge(itemstack);
+		EntityPlayer eplayer=(EntityPlayer)player;
+		if(charge>=120){
+			if(eplayer.capabilities.isFlying){
+				if(!player.worldObj.isRemote)
+					consumeCharge(itemstack, 160);
+			}else if(charge<800){
+				eplayer.capabilities.allowFlying=false;
+				eplayer.capabilities.isFlying=false;
+			}else{
+				eplayer.capabilities.allowFlying=true;
 			}
+		}else{
+			eplayer.capabilities.allowFlying=false;
+			eplayer.capabilities.isFlying=false;
 		}
 	}
 
 	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {}
-
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		boolean flag=false;
+		EntityPlayer eplayer=(EntityPlayer)player;
+		IInventory baublesInv=BaublesApi.getBaubles(eplayer);
+		for(int i=0;i<4;i++){
+			ItemStack stack=baublesInv.getStackInSlot(i);
+			if(stack!=null&&stack.getItem()==this){
+				flag=true;
+				break;
+			}
+		}
+		if(!flag){
+			eplayer.capabilities.allowFlying=false;
+			eplayer.capabilities.isFlying=false;
+		}
+	}
+	
 	@Override
-	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {}
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+		boolean flag=false;
+		EntityPlayer eplayer=(EntityPlayer)player;
+		IInventory baublesInv=BaublesApi.getBaubles(eplayer);
+		for(int i=0;i<4;i++){
+			ItemStack stack=baublesInv.getStackInSlot(i);
+			if(stack!=null&&stack.getItem()==this){
+				flag=true;
+				break;
+			}
+		}
+		if(!flag){
+			eplayer.capabilities.allowFlying=false;
+			eplayer.capabilities.isFlying=false;
+		}
+	}
 
 	@Override
 	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
@@ -100,7 +111,7 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:chargingRing"));
+		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:floatingBelt"));
 		super.addInformation(stack,player,list,par4);
 	}
 	

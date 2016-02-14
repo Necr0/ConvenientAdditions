@@ -1,4 +1,4 @@
-package convenientadditions.api;
+package convenientadditions.api.item;
 
 import net.minecraft.item.ItemStack;
 

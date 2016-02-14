@@ -1,6 +1,6 @@
 package convenientadditions;
 
-import convenientadditions.api.IFuelItem;
+import convenientadditions.api.item.IFuelItem;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.IFuelHandler;
 

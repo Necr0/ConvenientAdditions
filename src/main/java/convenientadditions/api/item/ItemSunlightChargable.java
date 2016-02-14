@@ -1,6 +1,7 @@
-package convenientadditions.api;
+package convenientadditions.api.item;
 
 import java.util.List;
+import java.util.Random;
 
 import convenientadditions.Reference;
 import convenientadditions.item.enchantments.EnchantmentUtil;
@@ -14,18 +15,19 @@ import net.minecraft.util.StatCollector;
 
 public class ItemSunlightChargable extends ItemChargable implements ISunlightChargable {
 
-	private int chargeRate;
+	protected int chargeRate;
 	
 	protected ItemSunlightChargable(int capacity, boolean showDurabilityBar,
 			boolean showTooltips, int sunlightChargeRate) {
 		super(capacity, showDurabilityBar, showTooltips);
 		chargeRate=sunlightChargeRate;
 	}
-
+	
 	@Override
 	public int getSunlightChargeRate(ItemStack item,int slot) {
 		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentDrainId+Reference.enchantmentIdBase, item);
-		return (int)(chargeRate*EnchantmentUtil.enchantmentScaleFactor[lvl]);
+		double amp=(EnchantmentUtil.enchantmentScaleFactor[lvl]-1)+1;
+		return (int)(chargeRate*amp);
 	}
 
 	@Override

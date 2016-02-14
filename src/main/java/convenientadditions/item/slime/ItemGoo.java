@@ -2,7 +2,7 @@ package convenientadditions.item.slime;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.IFuelItem;
+import convenientadditions.api.item.IFuelItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
