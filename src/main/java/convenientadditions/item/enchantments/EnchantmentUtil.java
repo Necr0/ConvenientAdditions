@@ -1,7 +1,6 @@
 package convenientadditions.item.enchantments;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentDigging;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
@@ -19,7 +18,7 @@ public class EnchantmentUtil {
 	public static final EnchantmentChargeEfficiency chargeEfficiency=new EnchantmentChargeEfficiency();
 	public static final EnchantmentDrain drain=new EnchantmentDrain();
 	
-	public static final double[] enchantmentScaleFactor=new double[]{1,1.4d,1.75d,2.05d,2.3d,2.55d};
+	public static final double[] enchantmentScaleFactor=new double[]{1,1.4d,1.75d,2.05d,2.3d,2.55d,2.75d,2.9d,3.0d,3.5d};
 	
 	public static abstract class EnchantmentBase extends Enchantment{
 		public EnchantmentBase(int enchantmentId,int enchantmentWeight,EnumEnchantmentType enchantmentType) {

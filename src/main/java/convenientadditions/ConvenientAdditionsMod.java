@@ -36,7 +36,6 @@ public class ConvenientAdditionsMod
     public static final ToolMaterial TOOLMATERIAL_TITANIUM=EnumHelper.addToolMaterial("TITANIUM", 3, 906, 7F, 2.3F, 20);
     
 	public static boolean thaumcraftLoaded = false;
-	public static boolean baublesLoaded = false;
     
     @SidedProxy(modId=MODID,serverSide=Reference.commonProxyClassPath,clientSide=Reference.clientProxyClassPath)
     public static CommonProxy PROXY;
@@ -62,7 +61,6 @@ public class ConvenientAdditionsMod
     	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
 
     	thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
-    	baublesLoaded = Loader.isModLoaded("Baubles");
     }
     
 

@@ -3,15 +3,14 @@ package convenientadditions.api.item;
 import java.util.List;
 import java.util.Random;
 
-import convenientadditions.Reference;
-import convenientadditions.item.enchantments.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
+import convenientadditions.Reference;
+import convenientadditions.item.enchantments.EnchantmentUtil;
 
 public abstract class ItemChargable extends Item implements IChargable {
 	
