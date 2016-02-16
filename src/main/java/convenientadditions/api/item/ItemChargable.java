@@ -3,6 +3,7 @@ package convenientadditions.api.item;
 import java.util.List;
 import java.util.Random;
 
+import javafx.collections.SetChangeListener;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -10,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import convenientadditions.Reference;
+import convenientadditions.api.MathHelper;
 import convenientadditions.item.enchantments.EnchantmentUtil;
 
 public abstract class ItemChargable extends Item implements IChargable {
@@ -40,6 +42,18 @@ public abstract class ItemChargable extends Item implements IChargable {
 			return 0;
 		}
 	}
+	
+	@Override
+	public void setItemCharge(ItemStack item, int amount) {
+		if(item.hasTagCompound()){
+			NBTTagCompound nbt=item.getTagCompound();
+			nbt.setInteger("CHARGE", amount);
+		}else{
+			NBTTagCompound nbt=new NBTTagCompound();
+			nbt.setInteger("CHARGE", amount);
+			item.setTagCompound(nbt);
+		}
+	}
 
 	@Override
 	public int getChargeCapacity(ItemStack item) {
@@ -54,20 +68,16 @@ public abstract class ItemChargable extends Item implements IChargable {
 
 	@Override
 	public int chargeItem(ItemStack item, int amount) {
-		int charge=getCharge(item);
-		int cap=getChargeCapacity(item);
-		if(charge+amount<=cap){
-			if(charge+amount>=0){
-				item.getTagCompound().setInteger("CHARGE", charge+amount);
-				return 0;
-			}else{
-				item.getTagCompound().setInteger("CHARGE", 0);
-				return charge+amount;
-			}
-		}else{
-			item.getTagCompound().setInteger("CHARGE", cap);
-			return charge+amount-cap;
-		}
+		int ret=MathHelper.overflow(getCharge(item), amount, getChargeCapacity(item));
+		setItemCharge(item, getCharge(item)+amount-ret);
+		return ret;
+	}
+	
+	@Override
+	public int dischargeItem(ItemStack item, int amount) {
+		int ret=MathHelper.drain(getCharge(item), amount);
+		setItemCharge(item, getCharge(item)-ret);
+		return ret;
 	}
 	
 	public int consumeCharge(ItemStack item, int amount){
@@ -75,14 +85,14 @@ public abstract class ItemChargable extends Item implements IChargable {
 		double propFactor=(EnchantmentUtil.enchantmentScaleFactor[lvl]-1)+1;
 		double prop=new Random().nextDouble()*propFactor;
 		if(prop<=1)
-			return -chargeItem(item, -amount);
+			return dischargeItem(item, amount);
 		return amount;
 	}
 
 	@Override
     public boolean showDurabilityBar(ItemStack item)
     {
-        return showDurBar;
+        return showDurBar&&getDurabilityForDisplay(item)!=1D;
     }
     
 	@Override

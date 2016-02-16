@@ -50,7 +50,7 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
 		if(getCharge(itemstack)>0){
 			int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentChargeEfficiencyId+Reference.enchantmentIdBase, itemstack);
 			int maxRemaining=(int)(Reference.chargingRingBaseCharge*EnchantmentUtil.enchantmentScaleFactor[lvl]);
-			int chargeRemaining=Math.min(getCharge(itemstack), maxRemaining);
+			int chargeRemaining=Math.min(getCharge(itemstack), maxRemaining/2);
 			IInventory invPlayer=((EntityPlayer)player).inventory;
 			IInventory invBaubles=BaublesApi.getBaubles((EntityPlayer)player);
 			for(int i=-4;i<invPlayer.getSizeInventory();i++){
@@ -61,9 +61,9 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
 					if(target!=null&&target.getItem() instanceof IChargable&&target.getItem()!=this){
 						IChargable tar=(IChargable)target.getItem();
 						if(tar.isChargable(target)){
-							int rm=tar.chargeItem(target, chargeRemaining);
-							this.chargeItem(itemstack, -(chargeRemaining-rm)*2);
-							chargeRemaining=rm;
+							int overflow=tar.chargeItem(target, chargeRemaining);
+							dischargeItem(itemstack, (chargeRemaining-overflow)*2);
+							chargeRemaining=overflow;
 						}
 					}
 				}else{
@@ -71,9 +71,9 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
 					if(target!=null&&target.getItem() instanceof IChargable){
 						IChargable tar=(IChargable)target.getItem();
 						if(tar.isChargable(target)){
-							int rm=tar.chargeItem(target, chargeRemaining);
-							this.chargeItem(itemstack, -(chargeRemaining-rm)*2);
-							chargeRemaining=rm;
+							int overflow=tar.chargeItem(target, chargeRemaining);
+							dischargeItem(itemstack, (chargeRemaining-overflow)*2);
+							chargeRemaining=overflow;
 						}
 					}
 				}
