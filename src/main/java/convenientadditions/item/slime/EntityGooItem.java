@@ -2,6 +2,7 @@ package convenientadditions.item.slime;
 
 import java.util.Random;
 
+import convenientadditions.Helper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
@@ -78,9 +79,9 @@ public class EntityGooItem extends EntityItem {
     {
     	if(this.handleWaterMovement()&&waterSensitivity&&rnd.nextInt(21)==0)
     		this.setDead();
-    	if(this.worldObj.isDaytime() && !this.worldObj.isRaining() && this.worldObj.canBlockSeeTheSky((int)this.posX,(int)this.posY,(int)this.posZ)&&sunlightSensitivity&&rnd.nextInt(15)==0)
+    	if(this.worldObj.isDaytime() && !this.worldObj.isRaining() && Helper.canEntitySeeSky(this)&&sunlightSensitivity&&rnd.nextInt(15)==0)
     		this.setFire(5);
-    	if(this.worldObj.isRaining() && this.worldObj.canBlockSeeTheSky((int)this.posX,(int)this.posY,(int)this.posZ)&&waterSensitivity&&rnd.nextInt(21)==0)
+    	if(this.worldObj.isRaining() && Helper.canEntitySeeSky(this)&&waterSensitivity&&rnd.nextInt(21)==0)
     		this.setDead();
     	super.onUpdate();
     }
@@ -98,7 +99,7 @@ public class EntityGooItem extends EntityItem {
     @Override
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
-    	super.readEntityFromNBT(par1NBTTagCompound);;
+    	super.readEntityFromNBT(par1NBTTagCompound);
     	this.isImmuneToFire=par1NBTTagCompound.getBoolean("fireImmunity");
         this.explosionImmunity=par1NBTTagCompound.getBoolean("explosionImmunity");
         this.waterSensitivity=par1NBTTagCompound.getBoolean("waterSensitivity");

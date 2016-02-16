@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Helper;
 import convenientadditions.api.item.ICompostable;
-import convenientadditions.init.Helper;
 import convenientadditions.init.ModItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

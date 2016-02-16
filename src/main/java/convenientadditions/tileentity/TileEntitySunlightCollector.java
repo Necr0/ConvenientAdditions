@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
+import convenientadditions.Helper;
 import convenientadditions.api.tileentity.ISidedChargeDistributor;
 import convenientadditions.api.tileentity.TileEntityChargeContainer;
-import convenientadditions.init.Helper;
 import convenientadditions.init.ModItems;
 
 public class TileEntitySunlightCollector extends TileEntityChargeContainer implements ISidedChargeDistributor {
@@ -21,11 +21,13 @@ public class TileEntitySunlightCollector extends TileEntityChargeContainer imple
 	
 	@Override
 	public void updateEntity(){
-		boolean flag=false;
+		if(this.worldObj.isRemote)
+			return;
     	if(this.worldObj.isDaytime() && !this.worldObj.isRaining() && this.worldObj.canBlockSeeTheSky(this.xCoord,this.yCoord,this.zCoord)){
     		if(this.fillCharge(32)!=32){
-    			flag=true;
+    			this.markDirty();
     		}
+    		System.out.println(this.getContainedCharge()+"/"+this.getChargeCapacity());
     	}
 	}
 

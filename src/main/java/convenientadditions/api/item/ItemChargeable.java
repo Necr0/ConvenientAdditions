@@ -14,12 +14,12 @@ import convenientadditions.Reference;
 import convenientadditions.api.MathHelper;
 import convenientadditions.item.enchantments.EnchantmentUtil;
 
-public abstract class ItemChargable extends Item implements IChargable {
+public abstract class ItemChargeable extends Item implements IChargeable {
 	
 	private int capacity;
 	private boolean showDurBar;
 	
-	protected ItemChargable(int capacity,boolean showDurabilityBar,boolean showTooltips){
+	protected ItemChargeable(int capacity,boolean showDurabilityBar,boolean showTooltips){
 		super();
 		this.capacity=capacity;
 		this.showDurBar=showDurabilityBar;
@@ -62,7 +62,7 @@ public abstract class ItemChargable extends Item implements IChargable {
 	}
 
 	@Override
-	public boolean isChargable(ItemStack item) {
+	public boolean isChargeable(ItemStack item) {
 		return true;
 	}
 
@@ -92,7 +92,7 @@ public abstract class ItemChargable extends Item implements IChargable {
 	@Override
     public boolean showDurabilityBar(ItemStack item)
     {
-        return showDurBar&&getDurabilityForDisplay(item)!=1D;
+        return showDurBar&&getDurabilityForDisplay(item)!=0D;
     }
     
 	@Override

@@ -17,13 +17,13 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IChargable;
-import convenientadditions.api.item.ItemSunlightChargable;
+import convenientadditions.api.item.IChargeable;
+import convenientadditions.api.item.ItemSunlightChargeable;
 import convenientadditions.item.enchantments.EnchantmentUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
+public class ItemChargingRing extends ItemSunlightChargeable implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemChargingRing(){
@@ -58,9 +58,9 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
 					return;
 				if(i<0){
 					ItemStack target=invBaubles.getStackInSlot(-i-1);
-					if(target!=null&&target.getItem() instanceof IChargable&&target.getItem()!=this){
-						IChargable tar=(IChargable)target.getItem();
-						if(tar.isChargable(target)){
+					if(target!=null&&target.getItem() instanceof IChargeable&&target.getItem()!=this){
+						IChargeable tar=(IChargeable)target.getItem();
+						if(tar.isChargeable(target)){
 							int overflow=tar.chargeItem(target, chargeRemaining);
 							dischargeItem(itemstack, (chargeRemaining-overflow)*2);
 							chargeRemaining=overflow;
@@ -68,9 +68,9 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
 					}
 				}else{
 					ItemStack target=invPlayer.getStackInSlot(i);
-					if(target!=null&&target.getItem() instanceof IChargable){
-						IChargable tar=(IChargable)target.getItem();
-						if(tar.isChargable(target)){
+					if(target!=null&&target.getItem() instanceof IChargeable){
+						IChargeable tar=(IChargeable)target.getItem();
+						if(tar.isChargeable(target)){
 							int overflow=tar.chargeItem(target, chargeRemaining);
 							dischargeItem(itemstack, (chargeRemaining-overflow)*2);
 							chargeRemaining=overflow;
@@ -113,7 +113,7 @@ public class ItemChargingRing extends ItemSunlightChargable implements IBauble {
     }
 
 	@Override
-	public boolean isSunlightChargable(ItemStack item,int slot) {
+	public boolean isSunlightChargeable(ItemStack item,int slot) {
 		return slot>=-4&&slot<=9;
 	}
 }

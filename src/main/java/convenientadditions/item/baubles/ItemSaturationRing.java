@@ -14,11 +14,11 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.ItemSunlightChargable;
+import convenientadditions.api.item.ItemSunlightChargeable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSaturationRing extends ItemSunlightChargable implements IBauble {
+public class ItemSaturationRing extends ItemSunlightChargeable implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSaturationRing(){
@@ -87,7 +87,7 @@ public class ItemSaturationRing extends ItemSunlightChargable implements IBauble
     }
 
 	@Override
-	public boolean isSunlightChargable(ItemStack item,int slot) {
+	public boolean isSunlightChargeable(ItemStack item,int slot) {
 		return slot>=-4&&slot<=9;
 	}
 }

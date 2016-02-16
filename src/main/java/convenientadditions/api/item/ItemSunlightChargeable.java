@@ -13,11 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
-public class ItemSunlightChargable extends ItemChargable implements ISunlightChargable {
+public class ItemSunlightChargeable extends ItemChargeable implements ISunlightChargeable {
 
 	protected int chargeRate;
 	
-	protected ItemSunlightChargable(int capacity, boolean showDurabilityBar,
+	protected ItemSunlightChargeable(int capacity, boolean showDurabilityBar,
 			boolean showTooltips, int sunlightChargeRate) {
 		super(capacity, showDurabilityBar, showTooltips);
 		chargeRate=sunlightChargeRate;
@@ -31,7 +31,7 @@ public class ItemSunlightChargable extends ItemChargable implements ISunlightCha
 	}
 
 	@Override
-	public boolean isSunlightChargable(ItemStack item,int slot) {
+	public boolean isSunlightChargeable(ItemStack item,int slot) {
 		return true;
 	}
 	

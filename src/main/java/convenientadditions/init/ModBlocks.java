@@ -9,6 +9,7 @@ import convenientadditions.block.BlockPlayerInterface;
 import convenientadditions.block.BlockPowderKeg;
 import convenientadditions.block.BlockProximitySensor;
 import convenientadditions.block.BlockRedstonePulse;
+import convenientadditions.block.BlockSunlightCollector;
 import convenientadditions.block.BlockTempLight;
 import convenientadditions.block.BlockTitaniumOre;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -25,6 +26,7 @@ public class ModBlocks
     public static final BlockProximitySensor proximitySensorBlock = new BlockProximitySensor();
     public static final BlockTempLight tempLightBlock = new BlockTempLight(.5F);
     public static final BlockRedstonePulse redstonePulseBlock = new BlockRedstonePulse();
+    public static final BlockSunlightCollector sunlightCollectorBlock = new BlockSunlightCollector();
 
     public static void init()
     {
@@ -37,5 +39,6 @@ public class ModBlocks
         GameRegistry.registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
         GameRegistry.registerBlock(tempLightBlock,Reference.tempLightBlockName);
         GameRegistry.registerBlock(redstonePulseBlock,Reference.redstonePulseBlockName);
+        GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
     }
 }

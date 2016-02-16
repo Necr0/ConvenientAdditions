@@ -5,8 +5,8 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IChargable;
-import convenientadditions.api.item.ISunlightChargable;
+import convenientadditions.api.item.IChargeable;
+import convenientadditions.api.item.ISunlightChargeable;
 
 public class EnchantmentUtil {
 	public static final EnumEnchantmentType sunlightChargable=EnumHelper.addEnchantmentType("sunlightChargable");
@@ -27,8 +27,8 @@ public class EnchantmentUtil {
 
 	    public boolean canApply(ItemStack stack)
 	    {
-	        return ((this.type==chargable)&&(stack.getItem() instanceof IChargable))||
-	        		((this.type==sunlightChargable)&&(stack.getItem() instanceof ISunlightChargable));
+	        return ((this.type==chargable)&&(stack.getItem() instanceof IChargeable))||
+	        		((this.type==sunlightChargable)&&(stack.getItem() instanceof ISunlightChargeable));
 	    }
 	    
 	    public int getMinEnchantability(int p_77321_1_)
@@ -55,7 +55,7 @@ public class EnchantmentUtil {
 
 	    public boolean canApply(ItemStack stack)
 	    {
-	        return super.canApply(stack)&&((IChargable)stack.getItem()).canApplyCapacity(stack);
+	        return super.canApply(stack)&&((IChargeable)stack.getItem()).canApplyCapacity(stack);
 	    }
 	    
 	    public int getMaxLevel()
@@ -72,7 +72,7 @@ public class EnchantmentUtil {
 
 	    public boolean canApply(ItemStack stack)
 	    {
-	        return super.canApply(stack)&&((IChargable)stack.getItem()).canApplyChargeEfficiency(stack);
+	        return super.canApply(stack)&&((IChargeable)stack.getItem()).canApplyChargeEfficiency(stack);
 	    }
 	}
 	
@@ -84,7 +84,7 @@ public class EnchantmentUtil {
 
 	    public boolean canApply(ItemStack stack)
 	    {
-	        return super.canApply(stack)&&((ISunlightChargable)stack.getItem()).canApplyDrain(stack);
+	        return super.canApply(stack)&&((ISunlightChargeable)stack.getItem()).canApplyDrain(stack);
 	    }
 	}
 	

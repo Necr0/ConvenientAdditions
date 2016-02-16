@@ -17,13 +17,13 @@ import net.minecraft.world.WorldServer;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IPlayerInventoryTick;
-import convenientadditions.api.item.ItemSunlightChargable;
+import convenientadditions.api.item.ItemSunlightChargeable;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSunstone extends ItemSunlightChargable implements IPlayerInventoryTick {
+public class ItemSunstone extends ItemSunlightChargeable implements IPlayerInventoryTick {
 	public static ItemStack FULLY_CHARGED;
     @SideOnly(Side.CLIENT)
     protected IIcon itemIconInactive;
@@ -125,7 +125,7 @@ public class ItemSunstone extends ItemSunlightChargable implements IPlayerInvent
 	}
 
 	@Override
-	public boolean isSunlightChargable(ItemStack item,int slot) {
+	public boolean isSunlightChargeable(ItemStack item,int slot) {
 		return !isActive(item)&&slot>=0&&slot<=9;
 	}
 }

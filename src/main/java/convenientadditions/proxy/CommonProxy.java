@@ -9,6 +9,7 @@ import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;
 import convenientadditions.tileentity.TileEntityProximitySensor;
+import convenientadditions.tileentity.TileEntitySunlightCollector;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -51,6 +52,7 @@ public class CommonProxy
         GameRegistry.registerTileEntity(TileEntityPowderKeg.class, Reference.powderKegBlockName);
         GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, Reference.playerInterfaceBlockName);
         GameRegistry.registerTileEntity(TileEntityProximitySensor.class, Reference.proximitySensorBlockName);
+        GameRegistry.registerTileEntity(TileEntitySunlightCollector.class, Reference.sunlightCollectorBlockName);
     }
 
     public void registerEntityTrackers()

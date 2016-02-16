@@ -1,8 +1,10 @@
-package convenientadditions.init;
+package convenientadditions;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class Helper {
@@ -23,4 +25,8 @@ public class Helper {
     			world.getBlock(x, y-1, z)==Blocks.fire||
     			world.getBlock(x, y, z-1)==Blocks.fire;
     }
+	
+	public static boolean canEntitySeeSky(Entity e){
+		return e.worldObj.canBlockSeeTheSky(MathHelper.floor_double(e.posX), MathHelper.floor_double(e.posY), MathHelper.floor_double(e.posZ));
+	}
 }
