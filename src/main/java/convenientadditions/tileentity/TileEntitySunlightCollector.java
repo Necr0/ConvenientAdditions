@@ -23,11 +23,10 @@ public class TileEntitySunlightCollector extends TileEntityChargeContainer imple
 	public void updateEntity(){
 		if(this.worldObj.isRemote)
 			return;
-    	if(this.worldObj.isDaytime() && !this.worldObj.isRaining() && this.worldObj.canBlockSeeTheSky(this.xCoord,this.yCoord,this.zCoord)){
+    	if(this.worldObj.isDaytime() && !this.worldObj.isRaining() && this.worldObj.canBlockSeeTheSky(this.xCoord,this.yCoord+1,this.zCoord)){
     		if(this.fillCharge(32)!=32){
     			this.markDirty();
     		}
-    		System.out.println(this.getContainedCharge()+"/"+this.getChargeCapacity());
     	}
 	}
 

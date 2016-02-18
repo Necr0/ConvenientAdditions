@@ -116,5 +116,14 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 		this.containedCharge=containedCharge+amount-ret;
 		return ret;
 	}
-	
+
+	@Override
+	public double getChargePercentage(ForgeDirection f) {
+		return MathHelper.percentage(containedCharge, chargeCapacity);
+	}
+
+	@Override
+	public double getChargePercentage() {
+		return MathHelper.percentage(containedCharge, chargeCapacity);
+	}
 }

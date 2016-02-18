@@ -15,4 +15,6 @@ public interface ISidedChargeContainer {
 	public void setContainedCharge(int amount);
 	public int drainCharge(int amount);
 	public int fillCharge(int amount);
+	public double getChargePercentage(ForgeDirection f);
+	public double getChargePercentage();
 }

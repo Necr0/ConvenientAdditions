@@ -7,6 +7,7 @@ tile.convenientadditions:powderKeg.name=Powder Keg
 tile.convenientadditions:playerInterface.name=Player Interface
 tile.convenientadditions:proximitySensor.name=Proximity Sensor
 tile.convenientadditions:redstonePulseDispenser.name=Redstone Pulse Dispenser
+tile.convenientadditions:sunlightCollector.name=Sunlight Collector
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter

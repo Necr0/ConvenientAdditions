@@ -1,10 +1,8 @@
 package convenientadditions;
 
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
 import baubles.api.BaublesApi;
 import convenientadditions.api.item.IChargeable;
 import convenientadditions.api.item.IPlayerInventoryTick;
