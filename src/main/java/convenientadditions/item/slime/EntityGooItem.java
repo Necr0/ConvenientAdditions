@@ -2,7 +2,7 @@ package convenientadditions.item.slime;
 
 import java.util.Random;
 
-import convenientadditions.Helper;
+import convenientadditions.api.util.Helper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;

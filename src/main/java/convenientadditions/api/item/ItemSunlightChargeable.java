@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import convenientadditions.Reference;
-import convenientadditions.item.enchantments.EnchantmentUtil;
+import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.block.BlockAnvil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;

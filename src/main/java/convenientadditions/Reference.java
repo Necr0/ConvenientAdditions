@@ -12,6 +12,7 @@ public class Reference {
     public static final String playerInterfaceBlockName = "playerInterface";
     public static final String proximitySensorBlockName = "proximitySensor";
     public static final String sunlightCollectorBlockName = "sunlightCollector";
+    public static final String chargeAccumulatorBlockName = "chargeAccumulator";
     //
     public static final String ingotTitaniumItemName = "ingotTitanium";
     public static final String nuggetTitaniumItemName = "nuggetTitanium";

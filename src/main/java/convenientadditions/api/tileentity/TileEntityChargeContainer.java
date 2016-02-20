@@ -2,7 +2,7 @@ package convenientadditions.api.tileentity;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.MathHelper;
+import convenientadditions.api.util.MathHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -66,20 +66,34 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 
 	@Override
 	public void setContainedCharge(ForgeDirection f, int amount) {
-		this.containedCharge=amount;
+		if(!worldObj.isRemote){
+			this.containedCharge=amount;
+			this.markDirty();
+		}
+    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
 	public int drainCharge(ForgeDirection f, int amount) {
 		int ret=MathHelper.drain(containedCharge, amount);
-		this.containedCharge=containedCharge-ret;
+		if(!worldObj.isRemote){
+			this.containedCharge=containedCharge-ret;
+			this.markDirty();
+		}
+    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	
 		return ret;
 	}
 
 	@Override
 	public int fillCharge(ForgeDirection f, int amount) {
 		int ret=MathHelper.overflow(containedCharge, amount, chargeCapacity);
-		this.containedCharge=containedCharge+amount-ret;
+		if(!worldObj.isRemote){
+			this.containedCharge=containedCharge+amount-ret;
+			this.markDirty();
+		}
+    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	
 		return ret;
 	}
 
@@ -100,20 +114,34 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 
 	@Override
 	public void setContainedCharge(int amount) {
-		this.containedCharge=amount;
+		if(!worldObj.isRemote){
+			this.containedCharge=amount;
+			this.markDirty();
+		}
+    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
 	public int drainCharge(int amount) {
 		int ret=MathHelper.drain(containedCharge, amount);
-		this.containedCharge=containedCharge-ret;
+		if(!worldObj.isRemote){
+			this.containedCharge=containedCharge-ret;
+			this.markDirty();
+		}
+    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	
 		return ret;
 	}
 
 	@Override
 	public int fillCharge(int amount) {
 		int ret=MathHelper.overflow(containedCharge, amount, chargeCapacity);
-		this.containedCharge=containedCharge+amount-ret;
+		if(!worldObj.isRemote){
+			this.containedCharge=containedCharge+amount-ret;
+			this.markDirty();
+		}
+    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	
 		return ret;
 	}
 

@@ -11,8 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import convenientadditions.Reference;
-import convenientadditions.api.MathHelper;
-import convenientadditions.item.enchantments.EnchantmentUtil;
+import convenientadditions.api.util.EnchantmentUtil;
+import convenientadditions.api.util.MathHelper;
 
 public abstract class ItemChargeable extends Item implements IChargeable {
 	

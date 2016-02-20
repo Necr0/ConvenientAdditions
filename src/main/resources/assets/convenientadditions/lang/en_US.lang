@@ -8,6 +8,7 @@ tile.convenientadditions:playerInterface.name=Player Interface
 tile.convenientadditions:proximitySensor.name=Proximity Sensor
 tile.convenientadditions:redstonePulseDispenser.name=Redstone Pulse Dispenser
 tile.convenientadditions:sunlightCollector.name=Sunlight Collector
+tile.convenientadditions:chargeAccumulator.name=Charge Accumulator
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter

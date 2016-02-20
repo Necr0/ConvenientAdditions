@@ -2,7 +2,7 @@ package convenientadditions.block;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.MathHelper;
+import convenientadditions.api.util.MathHelper;
 import convenientadditions.tileentity.TileEntitySunlightCollector;
 import cpw.mods.fml.common.WorldAccessContainer;
 import cpw.mods.fml.relauncher.Side;

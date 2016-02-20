@@ -6,12 +6,14 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
+import convenientadditions.api.ConAddAPI;
+import convenientadditions.api.item.FuelItemFuelHandler;
+import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModThaumcraftAspects;
-import convenientadditions.item.enchantments.EnchantmentUtil;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
 import cpw.mods.fml.common.Loader;
@@ -57,7 +59,7 @@ public class ConvenientAdditionsMod
     	EnchantmentUtil.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();
-    	PROXY.registerTickHandlers();
+    	ConAddAPI.init();
     	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
 
     	thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
@@ -68,7 +70,6 @@ public class ConvenientAdditionsMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	GameRegistry.registerFuelHandler(new ConAddFuelHandler());
     	PROXY.InitRendering();
     	PROXY.registerEntities();
     }

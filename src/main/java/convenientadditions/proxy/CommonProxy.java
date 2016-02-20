@@ -3,8 +3,9 @@ package convenientadditions.proxy;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.TickHandler;
+import convenientadditions.api.item.ChargeTickHandler;
 import convenientadditions.item.slime.EntityGooItem;
+import convenientadditions.tileentity.TileEntityChargeAccumulator;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;
@@ -53,6 +54,7 @@ public class CommonProxy
         GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, Reference.playerInterfaceBlockName);
         GameRegistry.registerTileEntity(TileEntityProximitySensor.class, Reference.proximitySensorBlockName);
         GameRegistry.registerTileEntity(TileEntitySunlightCollector.class, Reference.sunlightCollectorBlockName);
+        GameRegistry.registerTileEntity(TileEntityChargeAccumulator.class, Reference.chargeAccumulatorBlockName);
     }
 
     public void registerEntityTrackers()
@@ -61,7 +63,6 @@ public class CommonProxy
 
     public void registerTickHandlers()
     {
-    	FMLCommonHandler.instance().bus().register(new TickHandler());
     }
 
     public void InitRendering()

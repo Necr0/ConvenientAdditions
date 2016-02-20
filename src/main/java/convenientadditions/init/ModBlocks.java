@@ -2,6 +2,7 @@ package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
+import convenientadditions.block.BlockChargeAccumulator;
 import convenientadditions.block.BlockCompostSoil;
 import convenientadditions.block.BlockCompostSoilTilled;
 import convenientadditions.block.BlockComposter;
@@ -27,6 +28,7 @@ public class ModBlocks
     public static final BlockTempLight tempLightBlock = new BlockTempLight(.5F);
     public static final BlockRedstonePulse redstonePulseBlock = new BlockRedstonePulse();
     public static final BlockSunlightCollector sunlightCollectorBlock = new BlockSunlightCollector();
+    public static final BlockChargeAccumulator chargeAccumulatorBlock = new BlockChargeAccumulator();
 
     public static void init()
     {
@@ -40,5 +42,6 @@ public class ModBlocks
         GameRegistry.registerBlock(tempLightBlock,Reference.tempLightBlockName);
         GameRegistry.registerBlock(redstonePulseBlock,Reference.redstonePulseBlockName);
         GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
+        GameRegistry.registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
     }
 }
