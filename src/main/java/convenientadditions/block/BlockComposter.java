@@ -18,7 +18,7 @@ public class BlockComposter extends BlockContainer {
 	public BlockComposter() {
 		super(Material.wood);
 		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeWood).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
-		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.textureNoneBlockName);
+		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName+"Block");
 	}
 
     @Override
@@ -42,13 +42,6 @@ public class BlockComposter extends BlockContainer {
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TileEntityComposter();
 	}
-
-	@Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister)
-    {
-        this.blockIcon = null;
-    }
 
     @Override
     public boolean renderAsNormalBlock()
