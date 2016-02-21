@@ -3,6 +3,7 @@ package convenientadditions.tileentity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.api.tileentity.ISidedChargeAcceptor;
+import convenientadditions.api.tileentity.ISidedChargeDistributor;
 import convenientadditions.api.tileentity.TileEntityChargeDistributor;
 
 public class TileEntityChargeTube extends TileEntityChargeDistributor implements ISidedChargeAcceptor {
@@ -73,5 +74,10 @@ public class TileEntityChargeTube extends TileEntityChargeDistributor implements
 	@Override
 	public boolean isAcceptingCharge() {
 		return true;
+	}
+	
+	public boolean isConnected(ForgeDirection f) {
+		TileEntity te=worldObj.getTileEntity(xCoord+f.offsetX, yCoord+f.offsetY, zCoord+f.offsetZ);
+		return (te!=null)&&((te instanceof ISidedChargeAcceptor&&((ISidedChargeAcceptor)te).isAcceptingCharge(f.getOpposite()))||(te instanceof ISidedChargeDistributor&&((ISidedChargeDistributor)te).isDistributingCharge(f.getOpposite())));
 	}
 }
