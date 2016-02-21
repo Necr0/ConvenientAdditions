@@ -14,6 +14,7 @@ import convenientadditions.block.BlockTitaniumOre;
 import convenientadditions.block.charge.BlockChargeAccumulator;
 import convenientadditions.block.charge.BlockChargeTube;
 import convenientadditions.block.charge.BlockSunlightCollector;
+import convenientadditions.block.item.ItemBlockChargeTube;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
@@ -45,6 +46,6 @@ public class ModBlocks
         GameRegistry.registerBlock(redstonePulseBlock,Reference.redstonePulseBlockName);
         GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
         GameRegistry.registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
-        GameRegistry.registerBlock(chargeTubeBlock,Reference.chargeTubeBlockName);
+        GameRegistry.registerBlock(chargeTubeBlock,ItemBlockChargeTube.class,Reference.chargeTubeBlockName);
     }
 }
