@@ -6,6 +6,7 @@ import convenientadditions.Reference;
 import convenientadditions.api.item.ChargeTickHandler;
 import convenientadditions.item.slime.EntityGooItem;
 import convenientadditions.tileentity.TileEntityChargeAccumulator;
+import convenientadditions.tileentity.TileEntityChargeTube;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityPowderKeg;
@@ -55,6 +56,7 @@ public class CommonProxy
         GameRegistry.registerTileEntity(TileEntityProximitySensor.class, Reference.proximitySensorBlockName);
         GameRegistry.registerTileEntity(TileEntitySunlightCollector.class, Reference.sunlightCollectorBlockName);
         GameRegistry.registerTileEntity(TileEntityChargeAccumulator.class, Reference.chargeAccumulatorBlockName);
+        GameRegistry.registerTileEntity(TileEntityChargeTube.class, Reference.chargeTubeBlockName);
     }
 
     public void registerEntityTrackers()

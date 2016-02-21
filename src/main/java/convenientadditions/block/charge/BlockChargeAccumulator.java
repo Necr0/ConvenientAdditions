@@ -1,23 +1,21 @@
-package convenientadditions.block;
+package convenientadditions.block.charge;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.util.MathHelper;
-import convenientadditions.tileentity.TileEntitySunlightCollector;
-import cpw.mods.fml.common.WorldAccessContainer;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.tileentity.TileEntityChargeAccumulator;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSunlightCollector extends BlockContainer {
+public class BlockChargeAccumulator extends BlockMachineConfigurable {
 	@SideOnly(Side.CLIENT)
-	public IIcon blockIconTop;
+	public IIcon blockIconOutlet;
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIconSide1;
 	@SideOnly(Side.CLIENT)
@@ -27,22 +25,15 @@ public class BlockSunlightCollector extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIconBottom;
 
-	public BlockSunlightCollector() {
+	public BlockChargeAccumulator() {
 		super(Material.rock);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
-		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName);
+		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.chargeAccumulatorBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new TileEntitySunlightCollector();
+		return new TileEntityChargeAccumulator();
 	}
-
-    @Override
-    public boolean hasTileEntity()
-    {
-        return true;
-    }
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -50,10 +41,13 @@ public class BlockSunlightCollector extends BlockContainer {
     {
     	TileEntity te=blockAccess.getTileEntity(x, y, z);
     	double chargePercentage=0;
-    	if(te!=null&&te instanceof TileEntitySunlightCollector)
-    		chargePercentage=((TileEntitySunlightCollector)te).getChargePercentage();
+    	if(te!=null&&te instanceof TileEntityChargeAccumulator){
+    		if(((TileEntityChargeAccumulator)te).isDistributingCharge(ForgeDirection.getOrientation(side)))
+    			return blockIconOutlet;
+    		chargePercentage=((TileEntityChargeAccumulator)te).getChargePercentage();
+    	}
         return side==0?blockIconBottom:
-        	side==1?blockIconTop:
+        	side==1?blockIconBottom:
         		chargePercentage<20d?blockIcon:
         			chargePercentage<53.3d?blockIconSide1:
             			chargePercentage<86.6d?blockIconSide2:
@@ -64,7 +58,7 @@ public class BlockSunlightCollector extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side,int meta)
 	{
-		return side==0?blockIconBottom:(side==1?blockIconTop:blockIcon);
+		return side==0?blockIconBottom:(side==1?blockIconBottom:blockIcon);
 	}
 	
 	@Override
@@ -75,7 +69,7 @@ public class BlockSunlightCollector extends BlockContainer {
 	    this.blockIconSide1 = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName+"_side_1");
 	    this.blockIconSide2 = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName+"_side_2");
 	    this.blockIconSide3 = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName+"_side_3");
-	    this.blockIconTop = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName+"_top");
 	    this.blockIconBottom = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName+"_bottom");
+	    this.blockIconOutlet = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.chargeAccumulatorBlockName+"_outlet");
 	}
 }

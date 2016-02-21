@@ -9,6 +9,7 @@ tile.convenientadditions:proximitySensor.name=Proximity Sensor
 tile.convenientadditions:redstonePulseDispenser.name=Redstone Pulse Dispenser
 tile.convenientadditions:sunlightCollector.name=Sunlight Collector
 tile.convenientadditions:chargeAccumulator.name=Charge Accumulator
+tile.convenientadditions:chargeTube.name=Charge Tube
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter
@@ -24,6 +25,7 @@ item.convenientadditions:axeTitanium.name=Titanium Axe
 item.convenientadditions:spadeTitanium.name=Titanium Shovel
 item.convenientadditions:hoeTitanium.name=Titanium Hoe
 item.convenientadditions:swordTitanium.name=Titanium Sword
+item.convenientadditions:titaniumWrench.name=Titanium Wrench
 item.convenientadditions:compost.name=Compost
 item.convenientadditions:fertilizer.name=Fertilizer
 item.convenientadditions:dirtChunk.name=Dirt Chunk

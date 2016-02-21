@@ -2,7 +2,6 @@ package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.block.BlockChargeAccumulator;
 import convenientadditions.block.BlockCompostSoil;
 import convenientadditions.block.BlockCompostSoilTilled;
 import convenientadditions.block.BlockComposter;
@@ -10,9 +9,11 @@ import convenientadditions.block.BlockPlayerInterface;
 import convenientadditions.block.BlockPowderKeg;
 import convenientadditions.block.BlockProximitySensor;
 import convenientadditions.block.BlockRedstonePulse;
-import convenientadditions.block.BlockSunlightCollector;
 import convenientadditions.block.BlockTempLight;
 import convenientadditions.block.BlockTitaniumOre;
+import convenientadditions.block.charge.BlockChargeAccumulator;
+import convenientadditions.block.charge.BlockChargeTube;
+import convenientadditions.block.charge.BlockSunlightCollector;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
@@ -29,6 +30,7 @@ public class ModBlocks
     public static final BlockRedstonePulse redstonePulseBlock = new BlockRedstonePulse();
     public static final BlockSunlightCollector sunlightCollectorBlock = new BlockSunlightCollector();
     public static final BlockChargeAccumulator chargeAccumulatorBlock = new BlockChargeAccumulator();
+    public static final BlockChargeTube chargeTubeBlock = new BlockChargeTube();
 
     public static void init()
     {
@@ -43,5 +45,6 @@ public class ModBlocks
         GameRegistry.registerBlock(redstonePulseBlock,Reference.redstonePulseBlockName);
         GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
         GameRegistry.registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
+        GameRegistry.registerBlock(chargeTubeBlock,Reference.chargeTubeBlockName);
     }
 }

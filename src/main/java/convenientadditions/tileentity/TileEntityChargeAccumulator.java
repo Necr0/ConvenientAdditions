@@ -3,9 +3,9 @@ package convenientadditions.tileentity;
 import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.api.tileentity.ISidedChargeAcceptor;
 import convenientadditions.api.tileentity.ISidedChargeDistributor;
-import convenientadditions.api.tileentity.TileEntityChargeDistributor;
+import convenientadditions.api.tileentity.TileEntityChargeDistributorConfigurable;
 
-public class TileEntityChargeAccumulator extends TileEntityChargeDistributor implements ISidedChargeDistributor, ISidedChargeAcceptor {
+public class TileEntityChargeAccumulator extends TileEntityChargeDistributorConfigurable implements ISidedChargeDistributor, ISidedChargeAcceptor {
 
 	public TileEntityChargeAccumulator() {
 		super(240000,256);
@@ -18,7 +18,7 @@ public class TileEntityChargeAccumulator extends TileEntityChargeDistributor imp
 
 	@Override
 	public boolean isAcceptingCharge(ForgeDirection f) {
-		return true;
+		return !isDistributingCharge(f);
 	}
 
 	@Override
@@ -30,4 +30,5 @@ public class TileEntityChargeAccumulator extends TileEntityChargeDistributor imp
 	public boolean isAcceptingCharge() {
 		return true;
 	}
+	
 }

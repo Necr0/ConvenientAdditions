@@ -16,4 +16,32 @@ public class MathHelper {
 	public static double percentage(int amount,int capacity){
 		return fraction(amount,capacity)*100d;
 	}
+	
+	public static class Bitmask{
+		long a;
+		public Bitmask(long a){
+			this.a=a;
+		}
+		public void set(long a){
+			this.a=a;
+		}
+		public void setBit(int a,boolean b){
+			if(b)
+				this.a=this.a|(1<<a);
+			else
+				this.a=this.a&(~(1<<a));
+		}
+		public boolean getBit(int a){
+			return (this.a&(1<<a))!=0;
+		}
+		public boolean[] getArray(int lenght){
+			boolean[] ret=new boolean[lenght];
+			for(int i=0;i<lenght;i++)
+				ret[i]=getBit(i);
+			return ret;
+		}
+		public long get(){
+			return a;
+		}
+	}
 }

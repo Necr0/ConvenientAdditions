@@ -9,6 +9,11 @@ public class TileEntitySunlightCollector extends TileEntityChargeDistributor {
 	}
 	
 	@Override
+	public boolean isDistributingCharge(ForgeDirection f) {
+		return f!=ForgeDirection.UP;
+	}
+	
+	@Override
 	public void updateEntity(){
 		super.updateEntity();
 		if(this.worldObj.isRemote)

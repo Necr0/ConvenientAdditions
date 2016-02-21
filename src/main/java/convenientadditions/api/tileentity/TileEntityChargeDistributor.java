@@ -15,7 +15,8 @@ public class TileEntityChargeDistributor extends TileEntityChargeContainer imple
 	@Override
 	public void updateEntity(){
 		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
-			tryPush(f);
+			if(isDistributingCharge(f)&&getChargeDistrubutionRate(f)>0)
+				tryPush(f);
 		}
 	}
 
@@ -31,13 +32,14 @@ public class TileEntityChargeDistributor extends TileEntityChargeContainer imple
 	
 	public void tryPush(ForgeDirection f){
 		TileEntity te=worldObj.getTileEntity(xCoord+f.offsetX, yCoord+f.offsetY, zCoord+f.offsetZ);
+		ForgeDirection oof=f.getOpposite();
 		if(te!=null&&te instanceof ISidedChargeAcceptor){
 			ISidedChargeAcceptor ac=(ISidedChargeAcceptor)te;
-			if(ac.isAcceptingCharge(f)){
-				int rate=Math.min(ac.getChargeAcceptionRate(),getChargeDistrubutionRate(f));
+			if(ac.isAcceptingCharge(oof)){
+				int rate=Math.min(ac.getChargeAcceptionRate(oof),getChargeDistrubutionRate(f));
 				rate=Math.min(rate,getContainedCharge(f));
-				int overflow=ac.fillCharge(rate);
-				this.drainCharge(rate-overflow);
+				int overflow=ac.fillCharge(oof,rate);
+				this.drainCharge(f,rate-overflow);
 			}
 		}
 	}

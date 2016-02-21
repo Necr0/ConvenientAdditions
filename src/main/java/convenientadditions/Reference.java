@@ -13,6 +13,7 @@ public class Reference {
     public static final String proximitySensorBlockName = "proximitySensor";
     public static final String sunlightCollectorBlockName = "sunlightCollector";
     public static final String chargeAccumulatorBlockName = "chargeAccumulator";
+    public static final String chargeTubeBlockName = "chargeTube";
     //
     public static final String ingotTitaniumItemName = "ingotTitanium";
     public static final String nuggetTitaniumItemName = "nuggetTitanium";
@@ -26,6 +27,7 @@ public class Reference {
     public static final String dirtChunkItemName = "dirtChunk";
     public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
     public static final String sunstoneItemName = "sunstone";
+    public static final String titaniumWrenchItemName = "titaniumWrench";
     //baubles
     public static final String sunlightRingItemName = "sunlightRing";
     public static final String saturationRingItemName = "saturationRing";

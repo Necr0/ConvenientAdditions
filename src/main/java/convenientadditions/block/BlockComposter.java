@@ -67,10 +67,4 @@ public class BlockComposter extends BlockContainer {
     {
         return false;
     }
-
-    @Override
-    public boolean hasTileEntity()
-    {
-        return true;
-    }
 }

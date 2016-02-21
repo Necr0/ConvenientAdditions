@@ -18,6 +18,7 @@ import convenientadditions.item.tools.ItemTitaniumHoe;
 import convenientadditions.item.tools.ItemTitaniumPickaxe;
 import convenientadditions.item.tools.ItemTitaniumSpade;
 import convenientadditions.item.tools.ItemTitaniumSword;
+import convenientadditions.item.tools.ItemTitaniumWrench;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
@@ -42,6 +43,7 @@ public class ModItems {
     public static final Item itemTitaniumSpade=new ItemTitaniumSpade(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.spadeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_spade");
     public static final Item itemTitaniumHoe=new ItemTitaniumHoe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.hoeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_hoe");
     public static final Item itemTitaniumSword=new ItemTitaniumSword(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.swordTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_sword");
+    public static final ItemTitaniumWrench itemTitaniumWrench=new ItemTitaniumWrench();
     
     public static void init()
     {
@@ -55,6 +57,7 @@ public class ModItems {
         GameRegistry.registerItem(itemTitaniumSpade,Reference.spadeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumHoe,Reference.hoeTitaniumItemName);
         GameRegistry.registerItem(itemTitaniumSword,Reference.swordTitaniumItemName);
+        GameRegistry.registerItem(itemTitaniumWrench,Reference.titaniumWrenchItemName);
         //misc
         GameRegistry.registerItem(itemFertilizer,Reference.fertilizerItemName);
         GameRegistry.registerItem(itemCompost,Reference.compostItemName);
