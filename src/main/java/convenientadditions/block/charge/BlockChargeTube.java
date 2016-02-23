@@ -60,7 +60,7 @@ public class BlockChargeTube extends BlockMachine {
 	            	double offsetX_1=(d.offsetX!=1?(1d/16d):(.5d));
 	            	double offsetY_1=(d.offsetY!=1?(1d/16d):(.5d));
 	            	double offsetZ_1=(d.offsetZ!=1?(1d/16d):(.5d));
-	        		temp.add(AxisAlignedBB.getBoundingBox(x+this.maxX/2+offsetX,y+this.maxY/2+offsetY,z+this.maxZ/2+offsetZ,x+this.maxX/2+offsetX_1,y+this.maxY/2+offsetY_1,z+this.maxZ/2+offsetZ_1));
+	        		temp.add(AxisAlignedBB.getBoundingBox(x+.5d+offsetX,y+.5d+offsetY,z+.5d+offsetZ,x+.5d+offsetX_1,y+.5d+offsetY_1,z+.5d+offsetZ_1));
 	        	}
 	        }
         }
@@ -70,6 +70,19 @@ public class BlockChargeTube extends BlockMachine {
 	        {
 	            list.add(bb);
 	        }
+        }
+    }
+    
+    public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+        TileEntity te=world.getTileEntity(x, y, z);
+        if(te!=null&&te instanceof TileEntityChargeTube){
+        	TileEntityChargeTube tube=(TileEntityChargeTube)te;
+	    	this.minX=tube.isConnected(ForgeDirection.WEST)?0:(6d/16d);
+	    	this.minY=tube.isConnected(ForgeDirection.DOWN)?0:(6d/16d);
+	    	this.minZ=tube.isConnected(ForgeDirection.NORTH)?0:(6d/16d);
+	    	this.maxX=tube.isConnected(ForgeDirection.EAST)?1:(10d/16d);
+	    	this.maxY=tube.isConnected(ForgeDirection.UP)?1:(10d/16d);
+	    	this.maxZ=tube.isConnected(ForgeDirection.SOUTH)?1:(10d/16d);
         }
     }
 }
