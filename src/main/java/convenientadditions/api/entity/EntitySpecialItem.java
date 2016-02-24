@@ -1,4 +1,4 @@
-package convenientadditions.entity;
+package convenientadditions.api.entity;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;

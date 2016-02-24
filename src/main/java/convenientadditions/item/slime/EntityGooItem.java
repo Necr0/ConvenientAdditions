@@ -56,7 +56,6 @@ public class EntityGooItem extends EntityItem {
 		this.explosionImmunity=explosionImmunity;
 		this.waterSensitivity=waterSensitivity;
 		this.sunlightSensitivity=sunlightSensitivity;
-    	System.out.println("create");
 	    this.delayBeforeCanPickup = 20;
 	}
 
