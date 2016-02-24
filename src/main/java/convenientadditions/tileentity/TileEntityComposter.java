@@ -5,6 +5,7 @@ import java.util.Random;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.api.item.ICompostable;
+import convenientadditions.api.registry.CompostRegistry;
 import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModItems;
 import net.minecraft.entity.item.EntityItem;
@@ -199,65 +200,6 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 	}
 	
 	public int getContentValue(ItemStack itemStack){
-		if(itemStack.getItem() instanceof ICompostable&&((ICompostable)itemStack.getItem()).isCompostable(itemStack))
-			return ((ICompostable)itemStack.getItem()).getCompostingMass(itemStack);
-		for(int i:OreDictionary.getOreIDs(itemStack)){
-			if(OreDictionary.getOreName(i).startsWith("crop"))
-				return 1200;
-			else if(OreDictionary.getOreName(i).startsWith("food"))
-				if(itemStack.getItem() instanceof ItemFood)
-					return ((ItemFood)itemStack.getItem()).func_150905_g(itemStack)*400;
-				else
-					return 1200;
-			else if(OreDictionary.getOreName(i).equals("treeLeaves"))
-				return 200;
-			else if(OreDictionary.getOreName(i).equals("treeSapling"))
-				return 800;
-			else if(OreDictionary.getOreName(i).startsWith("seed"))
-				return 130;
-		}
-		if(itemStack.getItem() instanceof ItemFood)
-			return ((ItemFood)itemStack.getItem()).func_150905_g(itemStack)*400;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.tallgrass))
-			return 230;
-		else if(itemStack.getItem() instanceof ItemDoublePlant)
-			return 350;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.cactus))
-			return 500;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.hay_block))
-			return 10700;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.waterlily))
-			return 400;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.red_mushroom)||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.brown_mushroom))
-			return 400;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.red_flower)||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.yellow_flower))
-			return 250;
-		else if(itemStack.getItem()==Items.reeds)
-			return 250;
-		else if(itemStack.getItem()==Items.cake)
-			return 2400;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.vine))
-			return 300;
-		else if(itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.pumpkin))
-			return 1400;
-		else if(itemStack.getItem()==Items.feather)
-			return 110;
-		else if(itemStack.getItem()==Items.egg)
-			return 230;
-		else if(itemStack.getItem()==Items.slime_ball)
-			return 130;
-		else if(itemStack.getItem()==Items.wheat_seeds)
-			return 170;
-		else if(itemStack.getItem()==Items.melon_seeds)
-			return 100;
-		else if(itemStack.getItem()==Items.pumpkin_seeds)
-			return 100;
-		else if(itemStack.getItem()==Items.nether_wart)
-			return 1100;
-		else if(itemStack.getItem()==Items.dye)
-			return 227;
-		else if(itemStack.getItem()==Items.bone)
-			return 230;
-		return 0;
+		return CompostRegistry.getCompostingMass(itemStack);
 	}
 }
