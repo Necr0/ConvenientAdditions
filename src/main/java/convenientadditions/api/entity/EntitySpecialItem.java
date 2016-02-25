@@ -3,12 +3,12 @@ package convenientadditions.api.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import convenientadditions.api.registry.BehaviourRegistry;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import convenientadditions.api.registry.BehaviourRegistry;
 
 public abstract class EntitySpecialItem extends EntityItem {
 	List<IEntitySpecialItemBehaviour> behaviour=new ArrayList<IEntitySpecialItemBehaviour>();

@@ -2,7 +2,6 @@ package convenientadditions.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityProximitySensor extends TileEntity {
 	@Override

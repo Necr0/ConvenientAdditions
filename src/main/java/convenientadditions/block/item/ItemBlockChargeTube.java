@@ -1,13 +1,13 @@
 package convenientadditions.block.item;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.IIcon;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockChargeTube extends ItemBlock {
 

@@ -2,9 +2,9 @@ package convenientadditions.api.tileentity;
 
 import java.util.HashMap;
 
-import convenientadditions.api.util.MathHelper;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
+import convenientadditions.api.util.MathHelper;
 
 
 public abstract class TileEntityChargeDistributorConfigurable extends TileEntityChargeDistributor implements IConfigurable {

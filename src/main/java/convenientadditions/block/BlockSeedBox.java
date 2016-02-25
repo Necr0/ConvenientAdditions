@@ -10,7 +10,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.block.BlockConfigurable;
-import convenientadditions.tileentity.TileEntityChargeAccumulator;
 import convenientadditions.tileentity.TileEntitySeedBox;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

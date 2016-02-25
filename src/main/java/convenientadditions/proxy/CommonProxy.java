@@ -3,7 +3,6 @@ package convenientadditions.proxy;
 import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.ChargeTickHandler;
 import convenientadditions.entity.CAEntitySpecialItem;
 import convenientadditions.item.slime.EntityGooItem;
 import convenientadditions.tileentity.TileEntityChargeAccumulator;
@@ -14,7 +13,6 @@ import convenientadditions.tileentity.TileEntityPowderKeg;
 import convenientadditions.tileentity.TileEntityProximitySensor;
 import convenientadditions.tileentity.TileEntitySeedBox;
 import convenientadditions.tileentity.TileEntitySunlightCollector;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 

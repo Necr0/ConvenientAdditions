@@ -1,17 +1,12 @@
 package convenientadditions.api.tileentity;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.util.MathHelper;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import convenientadditions.api.util.MathHelper;
 
 public abstract class TileEntityChargeContainer extends TileEntity implements ISidedChargeContainer {
 

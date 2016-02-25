@@ -7,7 +7,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import convenientadditions.api.ConAddAPI;
-import convenientadditions.api.item.FuelItemFuelHandler;
 import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;

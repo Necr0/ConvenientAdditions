@@ -3,7 +3,6 @@ package convenientadditions.api.item;
 import java.util.List;
 import java.util.Random;
 
-import javafx.collections.SetChangeListener;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

@@ -1,7 +1,6 @@
 package convenientadditions.item.baubles;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;

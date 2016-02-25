@@ -1,17 +1,14 @@
 package convenientadditions.api.item;
 
 import java.util.List;
-import java.util.Random;
 
-import convenientadditions.Reference;
-import convenientadditions.api.util.EnchantmentUtil;
-import net.minecraft.block.BlockAnvil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerRepair;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import convenientadditions.Reference;
+import convenientadditions.api.util.EnchantmentUtil;
 
 public class ItemSunlightChargeable extends ItemChargeable implements ISunlightChargeable {
 

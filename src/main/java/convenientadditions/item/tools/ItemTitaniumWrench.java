@@ -1,12 +1,12 @@
 package convenientadditions.item.tools;
 
-import cofh.api.block.IDismantleable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import cofh.api.block.IDismantleable;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import cpw.mods.fml.relauncher.Side;

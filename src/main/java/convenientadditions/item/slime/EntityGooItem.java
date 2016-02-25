@@ -2,16 +2,12 @@ package convenientadditions.item.slime;
 
 import java.util.Random;
 
-import convenientadditions.api.util.Helper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.BlockFluidFinite;
+import convenientadditions.api.util.Helper;
 
 public class EntityGooItem extends EntityItem {
 

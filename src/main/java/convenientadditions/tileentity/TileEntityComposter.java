@@ -3,19 +3,12 @@ package convenientadditions.tileentity;
 import java.util.List;
 import java.util.Random;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.api.item.ICompostable;
-import convenientadditions.api.registry.compost.CompostRegistry;
-import convenientadditions.api.util.Helper;
-import convenientadditions.init.ModItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemDoublePlant;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -24,8 +17,11 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.api.item.ICompostable;
+import convenientadditions.api.registry.compost.CompostRegistry;
+import convenientadditions.api.util.Helper;
+import convenientadditions.init.ModItems;
 
 public class TileEntityComposter extends TileEntity implements IInventory {
 	
