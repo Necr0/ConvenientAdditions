@@ -26,7 +26,7 @@ public class SeedBoxItemBehaviourRegistry {
 		ArrayList<IEntitySpecialItemBehaviour> ret=new ArrayList<IEntitySpecialItemBehaviour>();
 		for(ISeedBoxItemBehaviourRegistryEntry e:REGISTRY){
 			if(e.hasSpecialBehaviour(stack))
-				e.getSpecialBehaviour(stack);
+				ret.add(e.getSpecialBehaviour(stack));
 		}
 		return ret;
 	}

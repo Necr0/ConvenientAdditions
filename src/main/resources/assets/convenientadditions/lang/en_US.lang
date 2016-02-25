@@ -77,5 +77,7 @@ tooltip.convenientadditions:breathAmulet=I breathe in deep, and I close my eyes.
 tooltip.convenientadditions:chargingRing=Run really fast! (not really)
 tooltip.convenientadditions:floatingBelt=Fly you fool!
 
+# Entity
+
 # Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.

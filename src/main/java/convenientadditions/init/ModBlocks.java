@@ -9,6 +9,7 @@ import convenientadditions.block.BlockPlayerInterface;
 import convenientadditions.block.BlockPowderKeg;
 import convenientadditions.block.BlockProximitySensor;
 import convenientadditions.block.BlockRedstonePulse;
+import convenientadditions.block.BlockSeedBox;
 import convenientadditions.block.BlockTempLight;
 import convenientadditions.block.BlockTitaniumOre;
 import convenientadditions.block.charge.BlockChargeAccumulator;
@@ -32,6 +33,7 @@ public class ModBlocks
     public static final BlockSunlightCollector sunlightCollectorBlock = new BlockSunlightCollector();
     public static final BlockChargeAccumulator chargeAccumulatorBlock = new BlockChargeAccumulator();
     public static final BlockChargeTube chargeTubeBlock = new BlockChargeTube();
+    public static final BlockSeedBox seedBoxBlock = new BlockSeedBox();
 
     public static void init()
     {
@@ -46,6 +48,7 @@ public class ModBlocks
         GameRegistry.registerBlock(redstonePulseBlock,Reference.redstonePulseBlockName);
         GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
         GameRegistry.registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
+        GameRegistry.registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
         GameRegistry.registerBlock(chargeTubeBlock,ItemBlockChargeTube.class,Reference.chargeTubeBlockName);
     }
 }
