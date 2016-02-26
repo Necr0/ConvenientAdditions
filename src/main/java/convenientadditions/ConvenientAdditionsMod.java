@@ -9,6 +9,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import convenientadditions.api.ConAddAPI;
 import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModCAAPI;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
@@ -53,6 +54,7 @@ public class ConvenientAdditionsMod
     {
     	ModBlocks.init();
     	ModItems.init();
+    	ModCAAPI.init();
     	ModOredict.registerOres();
     	ModRecipes.init();
     	EnchantmentUtil.init();

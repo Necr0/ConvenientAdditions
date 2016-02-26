@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -32,12 +33,16 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	@Override
 	public void readFromNBT(NBTTagCompound nbt){
 		super.readFromNBT(nbt);
+		System.out.println("read");
 		if(nbt.hasKey("OUTLET")){
 			byte in=nbt.getByte("OUTLET");
 			MathHelper.Bitmask mask=new MathHelper.Bitmask(in);
 			for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
 				outletSides.put(f,mask.getBit(f.ordinal()));
 			}
+		}
+		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+			System.out.println(f.name()+":"+outletSides.get(f));
 		}
 	}
 	
@@ -58,10 +63,16 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 		writeToNBT(nbt);
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbt);
 	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	{
+		readFromNBT(pkt.func_148857_g());
+	}
 
 	@Override
 	public boolean configureSide(ForgeDirection f) {
-		outletSides.put(f, !outletSides.get(f));
+		this.outletSides.put(f, !outletSides.get(f));
 		this.markDirty();
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		return true;
@@ -99,6 +110,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
         		item.addBehaviour(b);
         	}
         	item.setVelocity(0d, 0d, 0d);
+        	item.delayBeforeCanPickup=20;
             this.worldObj.spawnEntityInWorld(item);
         }
     }

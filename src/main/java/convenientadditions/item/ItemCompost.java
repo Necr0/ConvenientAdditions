@@ -36,7 +36,7 @@ public class ItemCompost extends Item {
 			else if(b==Blocks.farmland)
 				world.setBlock(x, y, z, ModBlocks.compostSoilTilledBlock, 0, 3);
 			else if(b==Blocks.grass){
-				if(itemStack.getItemDamage()==1&&new Random().nextInt(34)==0)
+				if(itemStack.getItemDamage()==1&&new Random().nextInt(64)==0)
 					world.setBlock(x, y, z, Blocks.mycelium, 0, 3);
 				else
 					world.setBlock(x, y, z, ModBlocks.compostSoilBlock, 0, 3);

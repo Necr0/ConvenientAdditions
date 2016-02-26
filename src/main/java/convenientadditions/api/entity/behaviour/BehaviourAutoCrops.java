@@ -25,10 +25,10 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 
 	@Override
 	public void onItemEntityUpdate(EntityItem item) {
-		if(item.onGround){
+		World w=item.worldObj;
+		int x=MathHelper.floor_double(item.posX),y=MathHelper.floor_double(item.posY)-1,z=MathHelper.floor_double(item.posZ);
+		if(item.onGround&&w.getBlock(x, y+1, z).isAir(w, x, y, z)){
 			Item i=item.getEntityItem().getItem();
-			World w=item.worldObj;
-			int x=MathHelper.floor_double(item.posX),y=MathHelper.floor_double(item.posY)-1,z=MathHelper.floor_double(item.posZ);
 			Block b=item.worldObj.getBlock(x,y,z);
 			ForgeDirection up=ForgeDirection.UP;
 			if(i==Items.nether_wart&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.nether_wart))

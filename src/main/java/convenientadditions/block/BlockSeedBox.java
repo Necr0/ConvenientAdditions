@@ -17,14 +17,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockSeedBox extends BlockConfigurable {
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIconOutlet;
-	@SideOnly(Side.CLIENT)
-	public IIcon blockIconSide1;
-	@SideOnly(Side.CLIENT)
-	public IIcon blockIconSide2;
-	@SideOnly(Side.CLIENT)
-	public IIcon blockIconSide3;
-	@SideOnly(Side.CLIENT)
-	public IIcon blockIconBottom;
 
 	public BlockSeedBox() {
 		super(Material.wood);
@@ -45,22 +37,21 @@ public class BlockSeedBox extends BlockConfigurable {
     		if(((TileEntitySeedBox)te).isOutput(ForgeDirection.getOrientation(side)))
     			return blockIconOutlet;
     	}
-        return (side==1||side==0)?blockIconBottom:blockIcon;
+        return blockIcon;
     }
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side,int meta)
 	{
-		return (side==0||side==1)?blockIconBottom:blockIcon;
+		return (side==1)?blockIconOutlet:blockIcon;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-	    this.blockIcon = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName+"_side_0");
-	    this.blockIconBottom = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName+"_bottom");
-	    this.blockIconOutlet = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.chargeAccumulatorBlockName+"_outlet");
+	    this.blockIcon = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.seedBoxBlockName);
+	    this.blockIconOutlet = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.seedBoxBlockName+"_outlet");
 	}
 }
