@@ -79,6 +79,19 @@ tooltip.convenientadditions:breathAmulet=I breathe in deep, and I close my eyes.
 tooltip.convenientadditions:chargingRing=Run really fast! (not really)
 tooltip.convenientadditions:floatingBelt=Fly you fool!
 
+tooltip.convenientadditions:compostDegraded0=Perfect!
+tooltip.convenientadditions:compostDegraded1=Subtly degraded.
+tooltip.convenientadditions:compostDegraded2=Very slightly degraded.
+tooltip.convenientadditions:compostDegraded3=Slightly degraded.
+tooltip.convenientadditions:compostDegraded4=A little bit degraded.
+tooltip.convenientadditions:compostDegraded5=Partially degraded.
+tooltip.convenientadditions:compostDegraded6=Somewhat degraded.
+tooltip.convenientadditions:compostDegraded7=Quite degraded.
+tooltip.convenientadditions:compostDegraded8=Notably degraded.
+tooltip.convenientadditions:compostDegraded9=Very degraded.
+tooltip.convenientadditions:compostDegraded10=Miserably degraded.
+
+
 # Entity
 
 # Messages

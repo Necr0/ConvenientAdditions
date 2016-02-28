@@ -54,13 +54,13 @@ public class ConvenientAdditionsMod
     {
     	ModBlocks.init();
     	ModItems.init();
-    	ModCAAPI.init();
     	ModOredict.registerOres();
     	ModRecipes.init();
     	EnchantmentUtil.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();
     	ConAddAPI.init();
+    	ModCAAPI.init();
     	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
 
     	thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");

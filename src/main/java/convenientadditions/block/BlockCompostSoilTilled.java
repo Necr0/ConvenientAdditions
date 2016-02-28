@@ -4,13 +4,16 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockStainedGlass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -65,13 +68,20 @@ public class BlockCompostSoilTilled extends Block {
 	public void updateTick(World world,int x,int y,int z,Random r){
 		if(!world.isRemote){
 			Block b=world.getBlock(x,y+1,z);
+			int meta=world.getBlockMetadata(x, y, z);
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
 				b.updateTick(world, x, y+1, z, r);
-				if(r.nextInt(3)==0)
+				if((r.nextDouble()*3)<=((.2*meta)+3))
 					b.updateTick(world, x, y+1, z, r);
+				if(r.nextBoolean()){
+					if(meta<10)
+						world.setBlockMetadataWithNotify(x, y, z, meta+1, 2+4);
+					else
+						world.setBlock(x, y, z, Blocks.farmland);
+				}
 			}
 			if(b.getMaterial().isSolid())
-				world.setBlock(x, y, z, ModBlocks.compostSoilBlock, 0, 2);
+				world.setBlock(x, y, z, ModBlocks.compostSoilBlock, meta, 2);
 		}
 	}
 	
@@ -135,5 +145,10 @@ public class BlockCompostSoilTilled extends Block {
     public boolean renderAsNormalBlock()
     {
         return false;
+    }
+	
+    public int damageDropped(int p_149692_1_)
+    {
+        return p_149692_1_;
     }
 }

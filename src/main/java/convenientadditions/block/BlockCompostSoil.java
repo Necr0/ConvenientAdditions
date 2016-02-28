@@ -7,6 +7,7 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
@@ -59,11 +60,13 @@ public class BlockCompostSoil extends Block {
     	ItemStack current=player.inventory.getStackInSlot(player.inventory.currentItem);
     	if(current==null||!(current.getItem() instanceof ItemHoe))
         	return false;
-    	if(!world.isRemote&&world.getBlock(x,y+1,z).isAir(world, x, y+1, z)){
-    		current.damageItem(1, player);
-    		world.setBlock(x, y, z, ModBlocks.compostSoilTilledBlock, 0, 3);
+    	if(world.getBlock(x,y+1,z).isAir(world, x, y+1, z)){
+    		if(!world.isRemote){
+				current.damageItem(1, player);
+	    		world.setBlock(x, y, z, ModBlocks.compostSoilTilledBlock, world.getBlockMetadata(x, y, z), 3);
+    		}
+        	world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.stepSound.getStepResourcePath(), (this.stepSound.getVolume() + 1.0F) / 2.0F, this.stepSound.getPitch() * 0.8F);
     	}
-    	world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.stepSound.getStepResourcePath(), (this.stepSound.getVolume() + 1.0F) / 2.0F, this.stepSound.getPitch() * 0.8F);
     	return true;
     }
 	
@@ -77,10 +80,22 @@ public class BlockCompostSoil extends Block {
 		if(!world.isRemote){
 			Block b=world.getBlock(x,y+1,z);
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
+				int meta=world.getBlockMetadata(x, y, z);
 				b.updateTick(world, x, y+1, z, r);
-				if(r.nextInt(3)==0)
+				if((r.nextDouble()*3)<=((.2*meta)+3))
 					b.updateTick(world, x, y+1, z, r);
+				if(r.nextBoolean()){
+					if(meta<10)
+						world.setBlockMetadataWithNotify(x, y, z, meta+1, 2+4);
+					else
+						world.setBlock(x, y, z, Blocks.dirt);
+				}
 			}
 		}
 	}
+	
+    public int damageDropped(int p_149692_1_)
+    {
+        return p_149692_1_;
+    }
 }

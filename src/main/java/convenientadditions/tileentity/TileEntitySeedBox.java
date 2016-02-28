@@ -1,6 +1,9 @@
 package convenientadditions.tileentity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -33,16 +36,12 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	@Override
 	public void readFromNBT(NBTTagCompound nbt){
 		super.readFromNBT(nbt);
-		System.out.println("read");
 		if(nbt.hasKey("OUTLET")){
 			byte in=nbt.getByte("OUTLET");
 			MathHelper.Bitmask mask=new MathHelper.Bitmask(in);
 			for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
 				outletSides.put(f,mask.getBit(f.ordinal()));
 			}
-		}
-		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
-			System.out.println(f.name()+":"+outletSides.get(f));
 		}
 	}
 	
@@ -105,13 +104,17 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
     {
         if (itemStack != null && itemStack.stackSize > 0)
         {
-        	CAEntitySpecialItem item=new CAEntitySpecialItem(this.worldObj,this.xCoord+0.5,this.yCoord-0.3,this.zCoord+0.5,itemStack);
-        	for(IEntitySpecialItemBehaviour b:SeedBoxItemBehaviourRegistry.getItemBehaviour(itemStack)){
-        		item.addBehaviour(b);
+        	List<ForgeDirection> outputs=getValidOutputDirections();
+        	if(outputs.size()>0){
+        		ForgeDirection output=(ForgeDirection) outputs.toArray()[new Random().nextInt(outputs.size())];
+	        	CAEntitySpecialItem item=new CAEntitySpecialItem(this.worldObj,this.xCoord+0.5+(output.offsetX*0.8),this.yCoord+0.5+(output.offsetY*0.8),this.zCoord+0.5+(output.offsetZ*0.8),itemStack);
+	        	for(IEntitySpecialItemBehaviour b:SeedBoxItemBehaviourRegistry.getItemBehaviour(itemStack)){
+	        		item.addBehaviour(b);
+	        	}
+	        	item.setVelocity(0d, 0d, 0d);
+	        	item.delayBeforeCanPickup=20;
+	            this.worldObj.spawnEntityInWorld(item);
         	}
-        	item.setVelocity(0d, 0d, 0d);
-        	item.delayBeforeCanPickup=20;
-            this.worldObj.spawnEntityInWorld(item);
         }
     }
     
@@ -153,7 +156,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack stack,int side) {
-		return !isOutput(ForgeDirection.getOrientation(side));
+		return !isOutput(ForgeDirection.getOrientation(side))&&getValidOutputDirections().size()>0;
 	}
 
 	@Override
@@ -163,5 +166,19 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	
 	public boolean isOutput(ForgeDirection f){
 		return this.outletSides.get(f);
+	}
+	
+	public boolean canOutput(ForgeDirection f){
+		int x=xCoord+f.offsetX,y=yCoord+f.offsetY,z=zCoord+f.offsetZ;
+		return isOutput(f)&&!worldObj.getBlock(x,y,z).isBlockSolid(worldObj, x,y,z, f.getOpposite().ordinal());
+	}
+	
+	public List<ForgeDirection> getValidOutputDirections(){
+		ArrayList<ForgeDirection> ret=new ArrayList<ForgeDirection>();
+		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+			if(canOutput(f))
+				ret.add(f);
+		}
+		return ret;
 	}
 }

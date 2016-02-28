@@ -28,7 +28,7 @@ public class ItemCompost extends Item {
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int no_idea, float no_clue, float what, float are_these)
     {
 		Block b=world.getBlock(x, y, z);
-		if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass))
+		if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&world.getBlockMetadata(x, y, z)!=0)))
     		return false;
 		if(!world.isRemote){
 			if(b==Blocks.dirt)
@@ -40,6 +40,8 @@ public class ItemCompost extends Item {
 					world.setBlock(x, y, z, Blocks.mycelium, 0, 3);
 				else
 					world.setBlock(x, y, z, ModBlocks.compostSoilBlock, 0, 3);
+			}else if(b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock){
+				world.setBlockMetadataWithNotify(x, y, z, 0, 2+4);
 			}
 			itemStack.stackSize--;
 		}

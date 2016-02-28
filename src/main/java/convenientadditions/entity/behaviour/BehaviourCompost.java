@@ -37,7 +37,9 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 				w.setBlock(x, y, z, ModBlocks.compostSoilBlock, 0, 2);
 			else if(b==Blocks.farmland)
 				w.setBlock(x, y, z, ModBlocks.compostSoilTilledBlock, 0, 2);
-			else 
+			else if((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&w.getBlockMetadata(x, y, z)!=0)
+				w.setBlockMetadataWithNotify(x, y, z, 0, 2+4);
+			else
 				return;
 			item.getEntityItem().stackSize--;
 			if(item.getEntityItem().stackSize<1)

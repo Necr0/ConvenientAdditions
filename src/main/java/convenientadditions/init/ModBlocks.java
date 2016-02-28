@@ -16,6 +16,7 @@ import convenientadditions.block.charge.BlockChargeAccumulator;
 import convenientadditions.block.charge.BlockChargeTube;
 import convenientadditions.block.charge.BlockSunlightCollector;
 import convenientadditions.block.item.ItemBlockChargeTube;
+import convenientadditions.block.item.ItemBlockCompostSoil;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
@@ -39,7 +40,6 @@ public class ModBlocks
     {
         GameRegistry.registerBlock(oreTitaniumBlock,Reference.oreTitaniumBlockName);
         GameRegistry.registerBlock(composterBlock,Reference.composterBlockName);
-        GameRegistry.registerBlock(compostSoilBlock,Reference.compostSoilBlockName);
         GameRegistry.registerBlock(compostSoilTilledBlock,Reference.compostSoilTilledBlockName);
         GameRegistry.registerBlock(powderKegBlock,Reference.powderKegBlockName);
         GameRegistry.registerBlock(playerInterfaceBlock,Reference.playerInterfaceBlockName);
@@ -49,6 +49,7 @@ public class ModBlocks
         GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
         GameRegistry.registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
         GameRegistry.registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
+        GameRegistry.registerBlock(compostSoilBlock,ItemBlockCompostSoil.class,Reference.compostSoilBlockName);
         GameRegistry.registerBlock(chargeTubeBlock,ItemBlockChargeTube.class,Reference.chargeTubeBlockName);
     }
 }

@@ -16,7 +16,7 @@ public class BehaviourFloaty implements IEntitySpecialItemBehaviour {
 
 	@Override
 	public void onItemEntityUpdate(EntityItem item) {
-		item.motionY+=.2f;
+		item.motionY+=.035f;
 	}
 
 }
