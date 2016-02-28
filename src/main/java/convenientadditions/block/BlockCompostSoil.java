@@ -79,17 +79,17 @@ public class BlockCompostSoil extends Block {
 	public void updateTick(World world,int x,int y,int z,Random r){
 		if(!world.isRemote){
 			Block b=world.getBlock(x,y+1,z);
+			int meta=world.getBlockMetadata(x, y, z);
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
-				int meta=world.getBlockMetadata(x, y, z);
 				b.updateTick(world, x, y+1, z, r);
 				if((r.nextDouble()*3)<=((.2*meta)+3))
 					b.updateTick(world, x, y+1, z, r);
-				if(r.nextBoolean()){
-					if(meta<10)
-						world.setBlockMetadataWithNotify(x, y, z, meta+1, 2+4);
-					else
-						world.setBlock(x, y, z, Blocks.dirt);
-				}
+			}
+			if(r.nextBoolean()){
+				if(meta<10)
+					world.setBlockMetadataWithNotify(x, y, z, meta+1, 2+4);
+				else
+					world.setBlock(x, y, z, Blocks.dirt);
 			}
 		}
 	}

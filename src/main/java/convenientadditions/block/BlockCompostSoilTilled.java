@@ -73,11 +73,13 @@ public class BlockCompostSoilTilled extends Block {
 				b.updateTick(world, x, y+1, z, r);
 				if((r.nextDouble()*3)<=((.2*meta)+3))
 					b.updateTick(world, x, y+1, z, r);
-				if(r.nextBoolean()){
-					if(meta<10)
-						world.setBlockMetadataWithNotify(x, y, z, meta+1, 2+4);
-					else
-						world.setBlock(x, y, z, Blocks.farmland);
+			}
+			if(r.nextBoolean()){
+				if(meta<10)
+					world.setBlockMetadataWithNotify(x, y, z, meta+1, 2+4);
+				else{
+					world.setBlock(x, y, z, Blocks.farmland);
+					return;
 				}
 			}
 			if(b.getMaterial().isSolid())
