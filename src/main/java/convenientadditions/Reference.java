@@ -29,6 +29,7 @@ public class Reference {
     public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
     public static final String sunstoneItemName = "sunstone";
     public static final String titaniumWrenchItemName = "titaniumWrench";
+    public static final String blazingRockItemName = "blazingRock";
     //baubles
     public static final String sunlightRingItemName = "sunlightRing";
     public static final String saturationRingItemName = "saturationRing";

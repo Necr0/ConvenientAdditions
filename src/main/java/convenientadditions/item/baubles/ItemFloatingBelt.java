@@ -121,6 +121,6 @@ public class ItemFloatingBelt extends ItemSunlightChargeable implements IBauble 
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return slot>=-4&&slot<=9;
+		return slot>=-5&&slot<=9;
 	}
 }

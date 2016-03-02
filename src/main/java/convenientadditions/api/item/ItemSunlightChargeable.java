@@ -14,8 +14,7 @@ public class ItemSunlightChargeable extends ItemChargeable implements ISunlightC
 
 	protected int chargeRate;
 	
-	protected ItemSunlightChargeable(int capacity, boolean showDurabilityBar,
-			boolean showTooltips, int sunlightChargeRate) {
+	public ItemSunlightChargeable(int capacity, boolean showDurabilityBar,boolean showTooltips, int sunlightChargeRate) {
 		super(capacity, showDurabilityBar, showTooltips);
 		chargeRate=sunlightChargeRate;
 	}

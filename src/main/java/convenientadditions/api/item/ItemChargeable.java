@@ -18,7 +18,7 @@ public abstract class ItemChargeable extends Item implements IChargeable {
 	private int capacity;
 	private boolean showDurBar;
 	
-	protected ItemChargeable(int capacity,boolean showDurabilityBar,boolean showTooltips){
+	public ItemChargeable(int capacity,boolean showDurabilityBar,boolean showTooltips){
 		super();
 		this.capacity=capacity;
 		this.showDurBar=showDurabilityBar;

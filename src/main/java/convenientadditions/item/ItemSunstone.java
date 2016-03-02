@@ -87,9 +87,9 @@ public class ItemSunstone extends ItemSunlightChargeable implements IPlayerInven
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public int chargeItem(ItemStack item,int amount)
+    public int consumeCharge(ItemStack item,int amount)
     {
-        int ret=super.chargeItem(item, amount);
+        int ret=super.consumeCharge(item, amount);
         if(this.getCharge(item)==0)
         	item.setItemDamage(0);
         return ret;
@@ -126,6 +126,6 @@ public class ItemSunstone extends ItemSunlightChargeable implements IPlayerInven
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return !isActive(item)&&slot>=0&&slot<=9;
+		return !isActive(item)&&(slot>=0&&slot<=9||slot==-5);
 	}
 }

@@ -3,6 +3,7 @@ package convenientadditions.init;
 import net.minecraft.item.Item;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
+import convenientadditions.item.ItemBlazingRock;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemRedstonePulseEmitter;
@@ -27,6 +28,7 @@ public class ModItems {
     public static final ItemCompost itemCompost = new ItemCompost();
     public static final ItemSunstone itemSunstone = new ItemSunstone();
     public static final ItemRedstonePulseEmitter itemRedstonePulseEmitter = new ItemRedstonePulseEmitter();
+    public static final ItemBlazingRock itemBlazingRock = new ItemBlazingRock();
     //dummy
     public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_ingot");
     public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setTextureName(ConvenientAdditionsMod.MODID+":titanium_nugget");
@@ -63,6 +65,7 @@ public class ModItems {
         GameRegistry.registerItem(itemCompost,Reference.compostItemName);
         GameRegistry.registerItem(itemSunstone,Reference.sunstoneItemName);
         GameRegistry.registerItem(itemRedstonePulseEmitter,Reference.redstonePulseEmitterItemName);
+        GameRegistry.registerItem(itemBlazingRock,Reference.blazingRockItemName);
         //baubles
         GameRegistry.registerItem(itemSunlightRing,Reference.sunlightRingItemName);
         GameRegistry.registerItem(itemSaturationRing,Reference.saturationRingItemName);

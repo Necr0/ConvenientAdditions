@@ -22,11 +22,11 @@ public class ChargeTickHandler {
 			IInventory baublesInv=BaublesApi.getBaubles(player);
 			for(int i=0;i<baublesInv.getSizeInventory();i++){
 				ItemStack stack=baublesInv.getStackInSlot(i);
-				if(stack!=null && stack.getItem() instanceof ISunlightChargeable && stack.getItem() instanceof IChargeable){
+				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());
 					if(sitem.isSunlightChargeable(stack, -i-1)){
 						if(player.worldObj.isDaytime() && !player.worldObj.isRaining() && e.player.worldObj.canBlockSeeTheSky((int)player.posX,(int)player.posY,(int)player.posZ)){
-							((IChargeable)sitem).chargeItem(stack, sitem.getSunlightChargeRate(stack, -i-1));
+							sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, -i-1));
 						}
 					}
 				}
@@ -35,11 +35,11 @@ public class ChargeTickHandler {
 			IInventory playerInv=player.inventory;
 			for(int i=0;i<playerInv.getSizeInventory();i++){
 				ItemStack stack=playerInv.getStackInSlot(i);
-				if(stack!=null && stack.getItem() instanceof ISunlightChargeable && stack.getItem() instanceof IChargeable){
+				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());
 					if(sitem.isSunlightChargeable(stack, i)){
 						if(player.worldObj.isDaytime() && !player.worldObj.isRaining() && Helper.canEntitySeeSky(player)){
-							((IChargeable)sitem).chargeItem(stack, sitem.getSunlightChargeRate(stack, i));
+							sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, i));
 						}
 					}
 				}

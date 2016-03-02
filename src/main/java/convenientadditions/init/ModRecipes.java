@@ -78,6 +78,22 @@ public class ModRecipes {
 			    'g', "dustGlowstone",
 			    's', ModItems.itemSunlightRing,
 			    'y', Items.string));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.chargeTubeBlock,
+				"tr ",
+			    "rgr",
+			    " rt",
+			    'r', "dustRedstone",
+			    'g', "ingotGold",
+			    't', "ingotTitanium"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.seedBoxBlock,
+				"tpt",
+			    "php",
+			    "tpt",
+			    'h', Blocks.hopper,
+			    'p', "plankWood",
+			    't', "ingotTitanium"));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstonePulseEmitter),
 				"e",
