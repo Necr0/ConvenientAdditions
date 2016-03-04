@@ -5,5 +5,5 @@ import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
 
 public interface ISeedBoxItemBehaviourRegistryEntry {
 	public boolean hasSpecialBehaviour(ItemStack stack);
-	public IEntitySpecialItemBehaviour getSpecialBehaviour(ItemStack stack);
+	public long getDiscriminator(ItemStack stack);
 }

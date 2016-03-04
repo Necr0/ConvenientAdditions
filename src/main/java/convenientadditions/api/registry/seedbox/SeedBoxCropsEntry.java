@@ -7,7 +7,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import convenientadditions.api.ConAddAPI;
 import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
-import convenientadditions.api.registry.BehaviourRegistry;
+import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 
 public class SeedBoxCropsEntry implements ISeedBoxItemBehaviourRegistryEntry {
 
@@ -24,8 +24,8 @@ public class SeedBoxCropsEntry implements ISeedBoxItemBehaviourRegistryEntry {
 	}
 
 	@Override
-	public IEntitySpecialItemBehaviour getSpecialBehaviour(ItemStack stack) {
-		return BehaviourRegistry.getBehaviour(ConAddAPI.NAME+":"+"autoCrops");
+	public long getDiscriminator(ItemStack stack) {
+		return BehaviourRegistry.API_DISCRIMINATORS.get(0);
 	}
 	
 }

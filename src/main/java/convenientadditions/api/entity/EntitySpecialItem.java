@@ -8,10 +8,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import convenientadditions.api.registry.BehaviourRegistry;
+import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 
 public abstract class EntitySpecialItem extends EntityItem {
-	List<IEntitySpecialItemBehaviour> behaviour=new ArrayList<IEntitySpecialItemBehaviour>();
+	List<Long> behaviour=new ArrayList<Long>();
 
 	public EntitySpecialItem(World p_i1711_1_) {
 		super(p_i1711_1_);
@@ -27,13 +27,13 @@ public abstract class EntitySpecialItem extends EntityItem {
 	
 	public void addBehaviour(IEntitySpecialItemBehaviour... behaviours){
 		for(IEntitySpecialItemBehaviour b:behaviours){
-			behaviour.add(b);
+			behaviour.add(BehaviourRegistry.getDiscriminator(b));
 		}
 	}
 	
-	public void addBehaviour(String... behaviours){
-		for(String b:behaviours){
-			behaviour.add(BehaviourRegistry.getBehaviour(b));
+	public void addBehaviour(Long... behaviours){
+		for(Long b:behaviours){
+			behaviour.add(b);
 		}
 	}
 	
@@ -44,8 +44,8 @@ public abstract class EntitySpecialItem extends EntityItem {
     	NBTTagCompound bnbt=new NBTTagCompound();
     	bnbt.setInteger("COUNT", behaviour.size());
     	int i=0;
-    	for(IEntitySpecialItemBehaviour b:behaviour){
-    		bnbt.setString("B"+i,BehaviourRegistry.getName(b));
+    	for(long b:behaviour){
+    		bnbt.setLong("B"+i,b);
     		i++;
     	}
         par1NBTTagCompound.setTag("BEHAVIOUR", bnbt);
@@ -55,11 +55,11 @@ public abstract class EntitySpecialItem extends EntityItem {
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
     	super.readEntityFromNBT(par1NBTTagCompound);
-    	this.behaviour=new ArrayList<IEntitySpecialItemBehaviour>();
+    	this.behaviour=new ArrayList<Long>();
     	if(par1NBTTagCompound.hasKey("BEHAVIOUR")){
 	    	NBTTagCompound bnbt=par1NBTTagCompound.getCompoundTag("BEHAVIOUR");
 	    	for(int i=0;i<bnbt.getInteger("COUNT");i++){
-	    		addBehaviour(bnbt.getString("B"+i));
+	    		addBehaviour(bnbt.getLong("B"+i));
 	    	}
     	}
     }
@@ -70,16 +70,16 @@ public abstract class EntitySpecialItem extends EntityItem {
     public void onCreate()
     {
     	System.out.println("exist");
-    	for(IEntitySpecialItemBehaviour b:behaviour){
-    		b.onCreate(this);
-    	}    	
+    	for(long b:behaviour){
+    		BehaviourRegistry.getBehaviour(b).onCreate(this);
+    	}
     }
     
     @Override
     public void onUpdate()
     {
-    	for(IEntitySpecialItemBehaviour b:behaviour){
-    		b.onItemEntityUpdate(this);
+    	for(long b:behaviour){
+    		BehaviourRegistry.getBehaviour(b).onItemEntityUpdate(this);
     	}
     	super.onUpdate();
     }
@@ -88,8 +88,8 @@ public abstract class EntitySpecialItem extends EntityItem {
     public boolean attackEntityFrom(DamageSource source, float damage)
     {
     	boolean flag=false;
-    	for(IEntitySpecialItemBehaviour b:behaviour){
-    		if(!b.onAttackItemEntityFrom(this, source, damage))
+    	for(long b:behaviour){
+    		if(!BehaviourRegistry.getBehaviour(b).onAttackItemEntityFrom(this, source, damage))
     			flag=true;
     	}
     	if(flag)

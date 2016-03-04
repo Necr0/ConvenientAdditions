@@ -14,19 +14,19 @@ public class SeedBoxItemBehaviourRegistry {
 		REGISTRY.add(entry);
 	}
 	
-	public static void addItemBehaviour(ItemStack stack,IEntitySpecialItemBehaviour behaviour){
-		REGISTRY.add(new SeedBoxEntitySpecialItemEntry(stack,behaviour));
+	public static void addItemBehaviour(ItemStack stack,long discriminator){
+		REGISTRY.add(new SeedBoxEntitySpecialItemEntry(stack,discriminator));
 	}
 	
-	public static void addItemBehaviour(ItemStack stack,IEntitySpecialItemBehaviour behaviour,boolean ignoreDamage,boolean ignoreNBT){
-		REGISTRY.add(new SeedBoxEntitySpecialItemEntry(stack,behaviour,ignoreDamage,ignoreNBT));
+	public static void addItemBehaviour(ItemStack stack,long discriminator,boolean ignoreDamage,boolean ignoreNBT){
+		REGISTRY.add(new SeedBoxEntitySpecialItemEntry(stack,discriminator,ignoreDamage,ignoreNBT));
 	}
 	
-	public static List<IEntitySpecialItemBehaviour> getItemBehaviour(ItemStack stack){
-		ArrayList<IEntitySpecialItemBehaviour> ret=new ArrayList<IEntitySpecialItemBehaviour>();
+	public static List<Long> getItemBehaviour(ItemStack stack){
+		ArrayList<Long> ret=new ArrayList<Long>();
 		for(ISeedBoxItemBehaviourRegistryEntry e:REGISTRY){
 			if(e.hasSpecialBehaviour(stack))
-				ret.add(e.getSpecialBehaviour(stack));
+				ret.add(e.getDiscriminator(stack));
 		}
 		return ret;
 	}

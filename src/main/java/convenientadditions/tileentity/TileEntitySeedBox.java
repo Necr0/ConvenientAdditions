@@ -108,7 +108,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
         	if(outputs.size()>0){
         		ForgeDirection output=(ForgeDirection) outputs.toArray()[new Random().nextInt(outputs.size())];
 	        	CAEntitySpecialItem item=new CAEntitySpecialItem(this.worldObj,this.xCoord+0.5+(output.offsetX*0.8),this.yCoord+0.5+(output.offsetY*0.8),this.zCoord+0.5+(output.offsetZ*0.8),itemStack);
-	        	for(IEntitySpecialItemBehaviour b:SeedBoxItemBehaviourRegistry.getItemBehaviour(itemStack)){
+	        	for(long b:SeedBoxItemBehaviourRegistry.getItemBehaviour(itemStack)){
 	        		item.addBehaviour(b);
 	        	}
 	        	item.setVelocity(0d, 0d, 0d);

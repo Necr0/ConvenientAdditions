@@ -5,17 +5,17 @@ import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
 
 public class SeedBoxEntitySpecialItemEntry implements ISeedBoxItemBehaviourRegistryEntry{
 	public ItemStack stack;
-	public IEntitySpecialItemBehaviour behaviour;
+	public long discriminator;
 	public boolean ignoreDamage=true,ignoreNBT=true;
 	
-	public SeedBoxEntitySpecialItemEntry(ItemStack stack,IEntitySpecialItemBehaviour behaviour){
+	public SeedBoxEntitySpecialItemEntry(ItemStack stack,long discriminator){
 		this.stack=stack;
-		this.behaviour=behaviour;
+		this.discriminator=discriminator;
 	}
 	
-	public SeedBoxEntitySpecialItemEntry(ItemStack stack,IEntitySpecialItemBehaviour behaviour,boolean ignoreDamage,boolean ignoreNBT){
+	public SeedBoxEntitySpecialItemEntry(ItemStack stack,long discriminator,boolean ignoreDamage,boolean ignoreNBT){
 		this.stack=stack;
-		this.behaviour=behaviour;
+		this.discriminator=discriminator;
 		this.ignoreDamage=ignoreDamage;
 		this.ignoreNBT=ignoreNBT;
 	}
@@ -38,7 +38,7 @@ public class SeedBoxEntitySpecialItemEntry implements ISeedBoxItemBehaviourRegis
 					);
 	}
 	
-	public IEntitySpecialItemBehaviour getSpecialBehaviour(ItemStack stack){
-		return this.behaviour;
+	public long getDiscriminator(ItemStack stack){
+		return this.discriminator;
 	}
 }
