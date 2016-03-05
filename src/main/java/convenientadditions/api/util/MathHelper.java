@@ -1,5 +1,7 @@
 package convenientadditions.api.util;
 
+import java.util.UUID;
+
 public class MathHelper {
 	public static int overflow(int base,int increment,int capacity){
 		return ((base+increment)>capacity)?(base+increment-capacity ):(((base+increment)<0)?(base+increment):0);
@@ -17,6 +19,17 @@ public class MathHelper {
 		return fraction(amount,capacity)*100d;
 	}
 	
+	public static long[] UUIDtoLONG(UUID uuid){
+		long[] ret=new long[2];
+		ret[0]=uuid.getMostSignificantBits();
+		ret[1]=uuid.getLeastSignificantBits();
+		return ret;
+	}
+
+	
+	public static UUID LONGtoUUID(long[] longs){
+		return new UUID(longs[0], longs[1]);
+	}
 	public static class Bitmask{
 		long a;
 		public Bitmask(long a){

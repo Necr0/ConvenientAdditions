@@ -2,10 +2,12 @@ package convenientadditions.api.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import cpw.mods.fml.client.FMLClientHandler;
 
 public class Helper {
 	public static void spawnItemInPlace(World w,double x,double y,double z,ItemStack i){
@@ -28,5 +30,13 @@ public class Helper {
 	
 	public static boolean canEntitySeeSky(Entity e){
 		return e.worldObj.canBlockSeeTheSky(MathHelper.floor_double(e.posX), MathHelper.floor_double(e.posY), MathHelper.floor_double(e.posZ));
+	}
+	
+	public static EntityPlayer getClientPlayer(){
+		return FMLClientHandler.instance().getClient().thePlayer;
+	}
+	
+	public static World getClientWorld(){
+		return FMLClientHandler.instance().getClient().theWorld;
 	}
 }

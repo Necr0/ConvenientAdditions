@@ -31,7 +31,7 @@ public abstract class EntitySpecialItem extends EntityItem {
 		}
 	}
 	
-	public void addBehaviour(Long... behaviours){
+	public void addBehaviour(long... behaviours){
 		for(Long b:behaviours){
 			behaviour.add(b);
 		}
