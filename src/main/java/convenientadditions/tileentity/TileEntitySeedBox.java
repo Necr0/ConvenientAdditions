@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
+import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
 import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
@@ -114,6 +114,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	        	item.setVelocity(0d, 0d, 0d);
 	        	item.delayBeforeCanPickup=20;
 	            this.worldObj.spawnEntityInWorld(item);
+	            item.updateBehaviours();
         	}
         }
     }

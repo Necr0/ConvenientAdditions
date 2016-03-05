@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
-import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
 import convenientadditions.api.util.Helper;
 
 public class BehaviourSensitivitySunlight implements IEntitySpecialItemBehaviour {

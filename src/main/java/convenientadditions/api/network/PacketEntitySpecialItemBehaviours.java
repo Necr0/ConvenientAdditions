@@ -15,7 +15,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 
-public abstract class PacketEntitySpecialItemBehaviours extends PacketBase<PacketEntitySpecialItemBehaviours> {
+public abstract class PacketEntitySpecialItemBehaviours<P extends PacketEntitySpecialItemBehaviours> extends PacketBase<P> {
 	int id;
 	int count;
 	long[] behaviours;
@@ -29,6 +29,19 @@ public abstract class PacketEntitySpecialItemBehaviours extends PacketBase<Packe
 	}
 	
 	public PacketEntitySpecialItemBehaviours(EntitySpecialItem ent,List<Long> behaviours){
+		this.id=ent.getEntityId();
+		Long[] out=behaviours.toArray(new Long[behaviours.size()]);
+		this.behaviours=ArrayUtils.toPrimitive(out);
+		this.count=this.behaviours.length;
+	}
+	
+	public void setInformation(EntitySpecialItem ent,long... behaviours){
+		this.id=ent.getEntityId();
+		this.count=behaviours.length;
+		this.behaviours=behaviours;
+	}
+	
+	public void setInformation(EntitySpecialItem ent,List<Long> behaviours){
 		this.id=ent.getEntityId();
 		Long[] out=behaviours.toArray(new Long[behaviours.size()]);
 		this.behaviours=ArrayUtils.toPrimitive(out);
@@ -55,12 +68,12 @@ public abstract class PacketEntitySpecialItemBehaviours extends PacketBase<Packe
 	}
 
 	@Override
-	public PacketEntitySpecialItemBehaviours onMessage(PacketEntitySpecialItemBehaviours message, MessageContext ctx) {
+	public P onMessage(PacketEntitySpecialItemBehaviours message, MessageContext ctx) {
 		if(ctx.side==Side.CLIENT){
-			Entity ent=Helper.getClientWorld().getEntityByID(id);
+			Entity ent=Helper.getClientWorld().getEntityByID(message.id);
 			if(ent!=null&&ent instanceof EntitySpecialItem){
 				EntitySpecialItem item=(EntitySpecialItem)ent;
-				item.addBehaviour(this.behaviours);
+				item.addBehaviour(message.behaviours);
 			}
 		}
 		return null;

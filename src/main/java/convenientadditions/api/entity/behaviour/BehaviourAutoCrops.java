@@ -11,7 +11,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
 
 public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 

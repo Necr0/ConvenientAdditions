@@ -11,6 +11,7 @@ import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModCAAPI;
 import convenientadditions.init.ModItems;
+import convenientadditions.init.ModNetworking;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModThaumcraftAspects;
@@ -56,6 +57,7 @@ public class ConvenientAdditionsMod
     	ModItems.init();
     	ModOredict.registerOres();
     	ModRecipes.init();
+    	ModNetworking.init();
     	EnchantmentUtil.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();

@@ -8,7 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
+import convenientadditions.api.network.PacketEntitySpecialItemBehaviours;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 public abstract class EntitySpecialItem extends EntityItem {
 	List<Long> behaviour=new ArrayList<Long>();
@@ -96,4 +100,18 @@ public abstract class EntitySpecialItem extends EntityItem {
     		return false;
     	return super.attackEntityFrom(source, damage);
     }
+    
+    public void updateBehaviours(){
+    	try {
+			PacketEntitySpecialItemBehaviours p=getCleanBehaviourPacket();
+			p.setInformation(this, this.behaviour);
+			getSimpleNetworkWrapper().sendToAllAround(p, new TargetPoint(this.dimension, this.posX, this.posY, this.posZ, 120));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    };
+    
+    public abstract PacketEntitySpecialItemBehaviours getCleanBehaviourPacket();
+    
+    public abstract SimpleNetworkWrapper getSimpleNetworkWrapper();
 }

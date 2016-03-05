@@ -2,7 +2,6 @@ package convenientadditions.api.entity.behaviour;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
-import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
 
 public class BehaviourImmunityFire implements IEntitySpecialItemBehaviour {
 

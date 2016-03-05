@@ -1,4 +1,4 @@
-package convenientadditions.api.entity;
+package convenientadditions.api.entity.behaviour;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;

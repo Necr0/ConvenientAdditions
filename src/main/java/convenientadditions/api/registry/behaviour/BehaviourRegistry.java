@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
 import convenientadditions.api.entity.behaviour.BehaviourAutoCrops;
 import convenientadditions.api.entity.behaviour.BehaviourFloaty;
 import convenientadditions.api.entity.behaviour.BehaviourHeavy;
@@ -12,6 +11,7 @@ import convenientadditions.api.entity.behaviour.BehaviourImmunityExplosion;
 import convenientadditions.api.entity.behaviour.BehaviourImmunityFire;
 import convenientadditions.api.entity.behaviour.BehaviourSensitivitySunlight;
 import convenientadditions.api.entity.behaviour.BehaviourSensitivityWater;
+import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 
 public class BehaviourRegistry {
 	public static final HashMap<Long, IEntitySpecialItemBehaviour> REGISTRY=new HashMap<Long, IEntitySpecialItemBehaviour>();

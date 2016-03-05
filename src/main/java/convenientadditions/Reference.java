@@ -48,6 +48,8 @@ public class Reference {
     public static final String shroomGooItemName = "shroomGoo";
     public static final String honeyGooItemName = "honeyGoo";
     public static final String boomGooItemName = "boomGoo";
+    //packets
+    public static final int specialItemEntityBehavioursDisc = 0;
     //slimeEntities
     public static final String gooItemEntityName = "gooItem";
     public static final int gooItemEntityId = 0;

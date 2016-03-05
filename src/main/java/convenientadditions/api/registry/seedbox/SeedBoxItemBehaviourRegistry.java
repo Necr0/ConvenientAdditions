@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
-import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
+import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 
 public class SeedBoxItemBehaviourRegistry {
 	public static final List<ISeedBoxItemBehaviourRegistryEntry> REGISTRY=new ArrayList<ISeedBoxItemBehaviourRegistryEntry>();

@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import convenientadditions.api.ConAddAPI;
-import convenientadditions.api.entity.IEntitySpecialItemBehaviour;
+import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 
 public class SeedBoxCropsEntry implements ISeedBoxItemBehaviourRegistryEntry {
