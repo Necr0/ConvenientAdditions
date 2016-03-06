@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IFuelItem;
+import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.entity.CAEntitySpecialItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -62,19 +63,6 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 	public static final ItemGoo honey=new ItemGoo(Reference.honeyGooItemName,Reference.honeyGooItemName,3,4f);
 	public static final ItemGoo boom=new ItemGoo(Reference.boomGooItemName,Reference.boomGooItemName);
 	
-	//3=expl
-	//4=fire
-	//5=sunl
-	//6=watr
-	static {
-		blazing.behaviours.add(4l);
-		blazing.behaviours.add(6l);
-		ender.behaviours.add(6l);
-		undead.setPotionEffect(17, 5, 1, .18f);
-		undead.behaviours.add(5l);
-		boom.behaviours.add(3l);
-	}
-	
 	public static void init(){
 		GameRegistry.registerItem(royal,Reference.royalGooItemName);
 		GameRegistry.registerItem(kitty,Reference.kittyGooItemName);
@@ -86,6 +74,14 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 		GameRegistry.registerItem(shroom,Reference.shroomGooItemName);
 		GameRegistry.registerItem(honey,Reference.honeyGooItemName);
 		GameRegistry.registerItem(boom,Reference.boomGooItemName);
+		
+		blazing.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("immunityFire"));
+		blazing.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sensitivityWater"));
+		ender.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sensitivityWater"));
+		undead.setPotionEffect(17, 5, 1, .18f);
+		undead.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sensitivitySunlight"));
+		stone.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("heavy"));
+		boom.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("immunityExplosion"));
 	}
 	
 	@Override

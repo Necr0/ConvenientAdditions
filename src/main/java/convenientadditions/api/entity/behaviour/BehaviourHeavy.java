@@ -15,7 +15,7 @@ public class BehaviourHeavy implements IEntitySpecialItemBehaviour {
 
 	@Override
 	public void onItemEntityUpdate(EntityItem item) {
-		item.motionY-=.35f;
+		item.motionY-=.05f;
 	}
 
 }

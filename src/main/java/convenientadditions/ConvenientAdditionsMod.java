@@ -53,6 +53,7 @@ public class ConvenientAdditionsMod
     @EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
+    	ConAddAPI.init();
     	ModBlocks.init();
     	ModItems.init();
     	ModOredict.registerOres();
@@ -61,7 +62,6 @@ public class ConvenientAdditionsMod
     	EnchantmentUtil.init();
     	PROXY.registerTileEntities();
     	PROXY.registerRenderers();
-    	ConAddAPI.init();
     	ModCAAPI.init();
     	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
 

@@ -1,8 +1,6 @@
 package convenientadditions.api.registry.behaviour;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import convenientadditions.api.entity.behaviour.BehaviourAutoCrops;
 import convenientadditions.api.entity.behaviour.BehaviourFloaty;
@@ -17,7 +15,7 @@ public class BehaviourRegistry {
 	public static final HashMap<Long, IEntitySpecialItemBehaviour> REGISTRY=new HashMap<Long, IEntitySpecialItemBehaviour>();
 	private static boolean registered=false;
 	
-	public static List<Long> API_DISCRIMINATORS=new ArrayList<Long>();
+	public static HashMap<String,Long> API_DISCRIMINATORS=new HashMap<String,Long>();
 	
 	public static long addBehaviour(IEntitySpecialItemBehaviour behaviour){
 		long ret=getUnoccupiedDiscrimiator();
@@ -60,12 +58,12 @@ public class BehaviourRegistry {
 	}
 	
 	private static void initBehaviours(){
-		API_DISCRIMINATORS.add(addBehaviour(new BehaviourAutoCrops()));
-		API_DISCRIMINATORS.add(addBehaviour(new BehaviourFloaty()));
-		API_DISCRIMINATORS.add(addBehaviour(new BehaviourHeavy()));
-		API_DISCRIMINATORS.add(addBehaviour(new BehaviourImmunityExplosion()));
-		API_DISCRIMINATORS.add(addBehaviour(new BehaviourImmunityFire()));
-		API_DISCRIMINATORS.add(addBehaviour(new BehaviourSensitivitySunlight()));
-		API_DISCRIMINATORS.add(addBehaviour(new BehaviourSensitivityWater()));
+		API_DISCRIMINATORS.put("autoCrops",addBehaviour(new BehaviourAutoCrops()));
+		API_DISCRIMINATORS.put("floaty",addBehaviour(new BehaviourFloaty()));
+		API_DISCRIMINATORS.put("heavy",addBehaviour(new BehaviourHeavy()));
+		API_DISCRIMINATORS.put("immunityExplosion",addBehaviour(new BehaviourImmunityExplosion()));
+		API_DISCRIMINATORS.put("immunityFire",addBehaviour(new BehaviourImmunityFire()));
+		API_DISCRIMINATORS.put("sensitivitySunlight",addBehaviour(new BehaviourSensitivitySunlight()));
+		API_DISCRIMINATORS.put("sensitivityWater",addBehaviour(new BehaviourSensitivityWater()));
 	}
 }
