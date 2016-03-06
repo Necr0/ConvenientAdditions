@@ -3,6 +3,8 @@ package convenientadditions.api.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,7 +17,8 @@ import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 public abstract class EntitySpecialItem extends EntityItem {
-	List<Long> behaviour=new ArrayList<Long>();
+	public List<Long> behaviour=new ArrayList<Long>();
+	private boolean behaviourUpdateScheduled=false;
 
 	public EntitySpecialItem(World p_i1711_1_) {
 		super(p_i1711_1_);
@@ -39,6 +42,10 @@ public abstract class EntitySpecialItem extends EntityItem {
 		for(Long b:behaviours){
 			behaviour.add(b);
 		}
+	}
+	
+	public void addBehaviour(List<Long> behaviours){
+		this.behaviour=behaviours;
 	}
 	
     @Override
@@ -68,6 +75,10 @@ public abstract class EntitySpecialItem extends EntityItem {
     	}
     }
     
+    public void scheduleBehaviourUpdate(){
+    	this.behaviourUpdateScheduled=true;
+    }
+    
     ///
     // Isn't necessarily triggered!
     ///
@@ -82,6 +93,10 @@ public abstract class EntitySpecialItem extends EntityItem {
     @Override
     public void onUpdate()
     {
+    	if(behaviourUpdateScheduled){
+    		updateBehaviours();
+    		behaviourUpdateScheduled=false;
+    	}
     	for(long b:behaviour){
     		BehaviourRegistry.getBehaviour(b).onItemEntityUpdate(this);
     	}

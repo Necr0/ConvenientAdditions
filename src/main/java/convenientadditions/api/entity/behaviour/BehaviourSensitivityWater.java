@@ -1,5 +1,7 @@
 package convenientadditions.api.entity.behaviour;
 
+import java.util.Random;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
 
@@ -10,13 +12,19 @@ public class BehaviourSensitivityWater implements IEntitySpecialItemBehaviour {
 
 	@Override
 	public boolean onAttackItemEntityFrom(EntityItem item, DamageSource source,float damage) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public void onItemEntityUpdate(EntityItem item) {
-		if(item.handleWaterMovement())
-    		item.attackEntityFrom(DamageSource.drown, .5f);
+		Random rnd=new Random();
+		if(item.handleWaterMovement()){
+    		if(item.worldObj.isRemote&&rnd.nextInt(3)==0){
+    			item.worldObj.spawnParticle("bubble", item.posX, item.posY+.1d, item.posZ, 0, .25d, 0);
+    			if(rnd.nextBoolean())
+    				item.attackEntityFrom(DamageSource.drown, 1f);
+    		}
+    	}
 	}
 
 }

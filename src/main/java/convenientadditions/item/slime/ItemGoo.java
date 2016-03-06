@@ -1,5 +1,7 @@
 package convenientadditions.item.slime;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -8,14 +10,12 @@ import net.minecraft.world.World;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IFuelItem;
+import convenientadditions.entity.CAEntitySpecialItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemGoo extends ItemFood implements IFuelItem {
 	public boolean edible;
-	public boolean fireImmunity;
-	public boolean explosionImmunity;
-	public boolean waterSensitvity;
-	public boolean sunlightSensitvity;
+	public ArrayList<Long> behaviours;
 	
 	public ItemGoo(String name,String texture){
 		super(0,0,false);
@@ -24,6 +24,7 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 		.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
 		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 		this.edible=false;
+		this.behaviours=new ArrayList<Long>();
 	}
 	
 	public ItemGoo(String name,String texture,int foodLevel,float saturation){
@@ -33,6 +34,7 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 		.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
 		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 		this.edible=true;
+		this.behaviours=new ArrayList<Long>();
 	}
 	
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
@@ -60,14 +62,17 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 	public static final ItemGoo honey=new ItemGoo(Reference.honeyGooItemName,Reference.honeyGooItemName,3,4f);
 	public static final ItemGoo boom=new ItemGoo(Reference.boomGooItemName,Reference.boomGooItemName);
 	
+	//3=expl
+	//4=fire
+	//5=sunl
+	//6=watr
 	static {
-		blazing.fireImmunity=true;
-		blazing.waterSensitvity=true;
-		blazing.
-		ender.waterSensitvity=true;
+		blazing.behaviours.add(4l);
+		blazing.behaviours.add(6l);
+		ender.behaviours.add(6l);
 		undead.setPotionEffect(17, 5, 1, .18f);
-		undead.sunlightSensitvity=true;
-		boom.explosionImmunity=true;
+		undead.behaviours.add(5l);
+		boom.behaviours.add(3l);
 	}
 	
 	public static void init(){
@@ -92,8 +97,11 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 	@Override
 	public Entity createEntity(World world, Entity location, ItemStack itemstack)
     {
-		EntityGooItem newE=new EntityGooItem(world,location.posX,location.posY,location.posZ,itemstack,((ItemGoo)itemstack.getItem()).fireImmunity, ((ItemGoo)itemstack.getItem()).explosionImmunity, ((ItemGoo)itemstack.getItem()).waterSensitvity, ((ItemGoo)itemstack.getItem()).sunlightSensitvity);
+		CAEntitySpecialItem newE=new CAEntitySpecialItem(world, location.posX, location.posY, location.posZ, itemstack);
 		newE.setVelocity(location.motionX, location.motionY, location.motionZ);
+		newE.addBehaviour(((ItemGoo)itemstack.getItem()).behaviours);
+		newE.delayBeforeCanPickup=20;
+		newE.scheduleBehaviourUpdate();
         return newE;
     }
 
