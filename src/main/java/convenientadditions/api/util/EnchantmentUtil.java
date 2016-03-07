@@ -5,8 +5,8 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IChargeable;
-import convenientadditions.api.item.ISunlightChargeable;
+import convenientadditions.api.item.charge.IChargeable;
+import convenientadditions.api.item.charge.ISunlightChargeable;
 
 public class EnchantmentUtil {
 	public static boolean registered=false;

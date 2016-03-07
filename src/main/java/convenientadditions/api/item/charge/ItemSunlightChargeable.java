@@ -1,4 +1,4 @@
-package convenientadditions.api.item;
+package convenientadditions.api.item.charge;
 
 import java.util.List;
 

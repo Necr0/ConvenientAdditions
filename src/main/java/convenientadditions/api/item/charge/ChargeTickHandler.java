@@ -1,9 +1,10 @@
-package convenientadditions.api.item;
+package convenientadditions.api.item.charge;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import baubles.api.BaublesApi;
+import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.api.util.Helper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;

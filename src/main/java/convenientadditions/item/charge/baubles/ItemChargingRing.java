@@ -15,7 +15,7 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IChargeable;
+import convenientadditions.api.item.charge.IChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import cpw.mods.fml.relauncher.Side;

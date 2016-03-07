@@ -1,7 +1,7 @@
 package convenientadditions.api;
 
-import convenientadditions.api.item.ChargeTickHandler;
 import convenientadditions.api.item.FuelItemFuelHandler;
+import convenientadditions.api.item.charge.ChargeTickHandler;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.api.registry.compost.CompostRegistry;
 import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
