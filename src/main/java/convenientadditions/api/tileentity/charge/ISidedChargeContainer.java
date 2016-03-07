@@ -1,4 +1,4 @@
-package convenientadditions.api.tileentity;
+package convenientadditions.api.tileentity.charge;
 
 import net.minecraftforge.common.util.ForgeDirection;
 

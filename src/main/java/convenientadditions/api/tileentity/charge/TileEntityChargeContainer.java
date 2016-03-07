@@ -1,4 +1,4 @@
-package convenientadditions.api.tileentity;
+package convenientadditions.api.tileentity.charge;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

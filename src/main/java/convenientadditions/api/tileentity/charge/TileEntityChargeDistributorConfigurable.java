@@ -1,9 +1,10 @@
-package convenientadditions.api.tileentity;
+package convenientadditions.api.tileentity.charge;
 
 import java.util.HashMap;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
+import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
 
 

@@ -1,9 +1,9 @@
 package convenientadditions.tileentity.charge;
 
 import net.minecraftforge.common.util.ForgeDirection;
-import convenientadditions.api.tileentity.ISidedChargeAcceptor;
-import convenientadditions.api.tileentity.ISidedChargeDistributor;
-import convenientadditions.api.tileentity.TileEntityChargeDistributorConfigurable;
+import convenientadditions.api.tileentity.charge.ISidedChargeAcceptor;
+import convenientadditions.api.tileentity.charge.ISidedChargeDistributor;
+import convenientadditions.api.tileentity.charge.TileEntityChargeDistributorConfigurable;
 
 public class TileEntityChargeAccumulator extends TileEntityChargeDistributorConfigurable implements ISidedChargeDistributor, ISidedChargeAcceptor {
 
