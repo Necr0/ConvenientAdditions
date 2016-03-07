@@ -13,11 +13,11 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.ItemSunlightChargeable;
+import convenientadditions.item.ItemSunlightChargeableBehaviour;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBreathAmulet extends ItemSunlightChargeable implements IBauble {
+public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemBreathAmulet(){

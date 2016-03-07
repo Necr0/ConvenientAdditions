@@ -17,13 +17,12 @@ import net.minecraft.world.WorldServer;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IPlayerInventoryTick;
-import convenientadditions.api.item.ItemSunlightChargeable;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSunstone extends ItemSunlightChargeable implements IPlayerInventoryTick {
+public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick {
 	public static ItemStack FULLY_CHARGED;
     @SideOnly(Side.CLIENT)
     protected IIcon itemIconInactive;

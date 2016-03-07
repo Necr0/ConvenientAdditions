@@ -14,11 +14,11 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.ItemSunlightChargeable;
+import convenientadditions.item.ItemSunlightChargeableBehaviour;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemFloatingBelt extends ItemSunlightChargeable implements IBauble {
+public class ItemFloatingBelt extends ItemSunlightChargeableBehaviour implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemFloatingBelt(){

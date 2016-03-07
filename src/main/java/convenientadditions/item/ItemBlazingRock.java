@@ -8,11 +8,10 @@ import net.minecraft.item.ItemStack;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IFuelItem;
-import convenientadditions.api.item.ItemSunlightChargeable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBlazingRock extends ItemSunlightChargeable implements IFuelItem {
+public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements IFuelItem {
 	public static ItemStack FULLY_CHARGED;
 
 	public ItemBlazingRock() {

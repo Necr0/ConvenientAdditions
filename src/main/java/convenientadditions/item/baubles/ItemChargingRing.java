@@ -16,12 +16,12 @@ import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IChargeable;
-import convenientadditions.api.item.ItemSunlightChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
+import convenientadditions.item.ItemSunlightChargeableBehaviour;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemChargingRing extends ItemSunlightChargeable implements IBauble {
+public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemChargingRing(){
