@@ -1,7 +1,6 @@
 package convenientadditions.api.registry.seedbox;
 
 import net.minecraft.item.ItemStack;
-import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 
 public class SeedBoxEntitySpecialItemEntry implements ISeedBoxItemBehaviourRegistryEntry{
 	public ItemStack stack;

@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelChargeTube;
 import convenientadditions.render.model.ModelChargeTubeConnector;
-import convenientadditions.tileentity.TileEntityChargeTube;
+import convenientadditions.tileentity.charge.TileEntityChargeTube;
 import cpw.mods.fml.client.FMLClientHandler;
 
 public class RenderChargeTube extends TileEntitySpecialRenderer

@@ -1,4 +1,4 @@
-package convenientadditions.entity;
+package convenientadditions.entity.specialitem;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

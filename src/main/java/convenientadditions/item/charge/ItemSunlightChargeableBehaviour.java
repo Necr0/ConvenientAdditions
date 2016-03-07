@@ -1,13 +1,11 @@
-package convenientadditions.item;
+package convenientadditions.item.charge;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import convenientadditions.api.entity.behaviour.BehaviourSunlightChargeable;
 import convenientadditions.api.item.ItemSunlightChargeable;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
-import convenientadditions.entity.CAEntitySpecialItem;
-import convenientadditions.item.slime.ItemGoo;
+import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 
 public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightChargeable {
 	public ItemSunlightChargeableBehaviour(int capacity,

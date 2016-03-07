@@ -7,8 +7,8 @@ import convenientadditions.init.ModBlocks;
 import convenientadditions.render.RenderChargeTube;
 import convenientadditions.render.RenderComposter;
 import convenientadditions.render.item.RenderComposterItem;
-import convenientadditions.tileentity.TileEntityChargeTube;
 import convenientadditions.tileentity.TileEntityComposter;
+import convenientadditions.tileentity.charge.TileEntityChargeTube;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 

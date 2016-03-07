@@ -1,7 +1,6 @@
 package convenientadditions.api.entity.behaviour;
 
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import convenientadditions.api.item.ISunlightChargeable;

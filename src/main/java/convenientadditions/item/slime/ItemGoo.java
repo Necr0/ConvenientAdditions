@@ -11,7 +11,7 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IFuelItem;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
-import convenientadditions.entity.CAEntitySpecialItem;
+import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemGoo extends ItemFood implements IFuelItem {

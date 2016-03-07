@@ -1,4 +1,4 @@
-package convenientadditions.tileentity;
+package convenientadditions.tileentity.seedbox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,11 +16,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
 import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
-import convenientadditions.entity.CAEntitySpecialItem;
+import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 
 public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IConfigurable {
 

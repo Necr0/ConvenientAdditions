@@ -7,8 +7,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
 
 public class ItemBlockCompostSoil extends ItemBlock {
 

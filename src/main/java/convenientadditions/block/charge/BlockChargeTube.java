@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.tileentity.TileEntityChargeTube;
+import convenientadditions.tileentity.charge.TileEntityChargeTube;
 
 public class BlockChargeTube extends BlockMachine {
 

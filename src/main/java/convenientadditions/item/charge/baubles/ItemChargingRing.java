@@ -1,4 +1,4 @@
-package convenientadditions.item.baubles;
+package convenientadditions.item.charge.baubles;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
-import convenientadditions.item.ItemSunlightChargeableBehaviour;
+import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

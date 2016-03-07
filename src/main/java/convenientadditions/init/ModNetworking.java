@@ -2,7 +2,6 @@ package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.network.PacketEntitySpecialItemBehaviours;
 import convenientadditions.network.CAEntitySpecialItemBehavioursPacket;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;

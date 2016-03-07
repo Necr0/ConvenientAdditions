@@ -1,4 +1,4 @@
-package convenientadditions.item;
+package convenientadditions.item.charge;
 
 import java.util.List;
 import java.util.Random;

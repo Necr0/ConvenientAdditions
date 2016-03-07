@@ -1,4 +1,4 @@
-package convenientadditions.item.baubles;
+package convenientadditions.item.charge.baubles;
 
 import java.util.List;
 import java.util.Random;
@@ -14,7 +14,7 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.item.ItemSunlightChargeableBehaviour;
+import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
