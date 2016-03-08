@@ -33,6 +33,7 @@ public class SeedBoxItemBehaviourRegistry {
 	public static void init(){
 		if(!registered){
 			addEntry(new SeedBoxCropsEntry());
+			addEntry(new SeedBoxBehaviourProviderEntry());
 			registered=true;
 		}
 	}
