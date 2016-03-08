@@ -8,7 +8,7 @@ public class MathHelper {
 	}
 	
 	public static int drain(int base,int decrement){
-		return (((base-decrement)<0)?(decrement-(base-decrement)):decrement);
+		return (((base-decrement)<0)?(decrement+(base-decrement)):decrement);
 	}
 	
 	public static double fraction(int amount,int capacity){
