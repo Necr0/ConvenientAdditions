@@ -1,5 +1,7 @@
 package convenientadditions.api.registry.seedbox;
 
+import java.util.List;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -22,8 +24,8 @@ public class SeedBoxCropsEntry implements ISeedBoxItemBehaviourRegistryEntry {
 	}
 
 	@Override
-	public long getDiscriminator(ItemStack stack) {
-		return BehaviourRegistry.API_DISCRIMINATORS.get(0);
+	public void getDiscriminators(ItemStack stack,List<Long> behaviours) {
+		behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("autoCrops"));
 	}
 	
 }

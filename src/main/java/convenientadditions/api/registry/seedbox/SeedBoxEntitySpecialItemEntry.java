@@ -1,5 +1,7 @@
 package convenientadditions.api.registry.seedbox;
 
+import java.util.List;
+
 import net.minecraft.item.ItemStack;
 
 public class SeedBoxEntitySpecialItemEntry implements ISeedBoxItemBehaviourRegistryEntry{
@@ -37,7 +39,7 @@ public class SeedBoxEntitySpecialItemEntry implements ISeedBoxItemBehaviourRegis
 					);
 	}
 	
-	public long getDiscriminator(ItemStack stack){
-		return this.discriminator;
+	public void getDiscriminators(ItemStack stack,List<Long> behaviours){
+		behaviours.add(this.discriminator);
 	}
 }
