@@ -1,5 +1,7 @@
 package convenientadditions.item.charge;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -25,7 +27,9 @@ public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightCharge
     {
 		CAEntitySpecialItem newE=new CAEntitySpecialItem(world, location.posX, location.posY, location.posZ, itemstack);
 		newE.setVelocity(location.motionX, location.motionY, location.motionZ);
-		newE.addBehaviour(BehaviourRegistry.API_DISCRIMINATORS.get("sunlightChargeable"));
+		ArrayList<Long> cont=new ArrayList<Long>();
+		this.getBehaviours(itemstack,cont);
+		newE.addBehaviour(cont);
 		newE.delayBeforeCanPickup=20;
 		newE.scheduleBehaviourUpdate();
         return newE;
