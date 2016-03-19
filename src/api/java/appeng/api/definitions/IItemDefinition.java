@@ -24,10 +24,10 @@
 package appeng.api.definitions;
 
 
-import com.google.common.base.Optional;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import com.google.common.base.Optional;
 
 
 public interface IItemDefinition extends IComparableDefinition

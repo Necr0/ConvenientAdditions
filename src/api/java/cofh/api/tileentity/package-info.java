@@ -5,6 +5,6 @@
 @API(apiVersion = CoFHAPIProps.VERSION, owner = "CoFHAPI", provides = "CoFHAPI|tileentity")
 package cofh.api.tileentity;
 
+import net.minecraftforge.fml.common.API;
 import cofh.api.CoFHAPIProps;
-import cpw.mods.fml.common.API;
 

@@ -5,10 +5,9 @@ import java.util.LinkedHashMap;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.common.FMLLog;
 
 import org.apache.logging.log4j.Level;
-
-import cpw.mods.fml.common.FMLLog;
 
 public class ResearchCategories {
 	

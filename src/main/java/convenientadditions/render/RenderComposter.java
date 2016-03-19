@@ -3,6 +3,7 @@ package convenientadditions.render;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 import org.lwjgl.opengl.GL11;
 
@@ -10,7 +11,6 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelComposter;
 import convenientadditions.render.model.ModelComposterContent;
 import convenientadditions.tileentity.TileEntityComposter;
-import cpw.mods.fml.client.FMLClientHandler;
 
 public class RenderComposter extends TileEntitySpecialRenderer
 {

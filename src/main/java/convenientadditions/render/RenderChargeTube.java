@@ -3,7 +3,7 @@ package convenientadditions.render;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 import org.lwjgl.opengl.GL11;
 
@@ -11,7 +11,6 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelChargeTube;
 import convenientadditions.render.model.ModelChargeTubeConnector;
 import convenientadditions.tileentity.charge.TileEntityChargeTube;
-import cpw.mods.fml.client.FMLClientHandler;
 
 public class RenderChargeTube extends TileEntitySpecialRenderer
 {

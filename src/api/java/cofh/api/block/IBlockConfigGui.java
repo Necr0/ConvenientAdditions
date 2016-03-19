@@ -2,7 +2,6 @@ package cofh.api.block;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Implement this interface on blocks which have a GUI that needs a tool (e.g., multimeter) to open.

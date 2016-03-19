@@ -5,6 +5,6 @@
 @API(apiVersion = CoFHAPIProps.VERSION, owner = "CoFHAPI", provides = "CoFHAPI|block")
 package cofh.api.block;
 
+import net.minecraftforge.fml.common.API;
 import cofh.api.CoFHAPIProps;
-import cpw.mods.fml.common.API;
 

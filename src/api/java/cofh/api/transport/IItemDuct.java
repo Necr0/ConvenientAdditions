@@ -1,7 +1,6 @@
 package cofh.api.transport;
 
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * This interface is implemented on ItemDucts. Use it to attempt to eject items into an entry point.

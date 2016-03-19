@@ -7,9 +7,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraftforge.fml.common.IWorldGenerator;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
-import cpw.mods.fml.common.IWorldGenerator;
 
 //Taken and modified from Fireball's AE2 mod
 

@@ -1,6 +1,5 @@
 package thaumcraft.api.aspects;
 
-import net.minecraftforge.common.util.ForgeDirection;
 
 
 /**

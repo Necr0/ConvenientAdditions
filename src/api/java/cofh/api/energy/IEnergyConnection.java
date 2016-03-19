@@ -1,6 +1,5 @@
 package cofh.api.energy;
 
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Implement this interface on TileEntities which should connect to energy transportation blocks. This is intended for blocks which generate energy but do not

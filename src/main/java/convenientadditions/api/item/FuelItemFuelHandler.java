@@ -1,8 +1,8 @@
 package convenientadditions.api.item;
 
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.IFuelHandler;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.IFuelHandler;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class FuelItemFuelHandler implements IFuelHandler {
 	

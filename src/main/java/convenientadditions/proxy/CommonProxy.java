@@ -1,6 +1,8 @@
 package convenientadditions.proxy;
 
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.entity.specialitem.CAEntitySpecialItem;
@@ -12,8 +14,6 @@ import convenientadditions.tileentity.charge.TileEntityChargeAccumulator;
 import convenientadditions.tileentity.charge.TileEntityChargeTube;
 import convenientadditions.tileentity.charge.TileEntitySunlightCollector;
 import convenientadditions.tileentity.seedbox.TileEntitySeedBox;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy
 {

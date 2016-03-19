@@ -25,7 +25,6 @@ package appeng.api.util;
 
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 
 
 /**

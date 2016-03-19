@@ -24,7 +24,6 @@
 package appeng.api.implementations.tiles;
 
 
-import net.minecraftforge.common.util.ForgeDirection;
 
 
 /**

@@ -25,8 +25,6 @@ package appeng.api.networking;
 
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
-
 import appeng.api.parts.IPart;
 import appeng.api.util.AECableType;
 

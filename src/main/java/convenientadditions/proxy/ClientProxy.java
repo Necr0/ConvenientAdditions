@@ -3,14 +3,14 @@ package convenientadditions.proxy;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.render.RenderChargeTube;
 import convenientadditions.render.RenderComposter;
 import convenientadditions.render.item.RenderComposterItem;
 import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.charge.TileEntityChargeTube;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy
 {

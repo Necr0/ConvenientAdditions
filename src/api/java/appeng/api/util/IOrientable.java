@@ -24,7 +24,6 @@
 package appeng.api.util;
 
 
-import net.minecraftforge.common.util.ForgeDirection;
 
 
 /**

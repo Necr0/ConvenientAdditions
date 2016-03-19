@@ -3,13 +3,12 @@ package convenientadditions.api.item.charge;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import baubles.api.BaublesApi;
 import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.api.util.Helper;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.relauncher.Side;
 
 public class ChargeTickHandler {
 	private static boolean chargeTickHandlerRegistered=false;

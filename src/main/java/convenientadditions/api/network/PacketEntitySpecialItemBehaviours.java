@@ -10,8 +10,6 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import convenientadditions.api.entity.EntitySpecialItem;
 import convenientadditions.api.util.Helper;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import cpw.mods.fml.relauncher.Side;
 
 public abstract class PacketEntitySpecialItemBehaviours<P extends PacketEntitySpecialItemBehaviours> extends PacketBase<P> {
 	int id;

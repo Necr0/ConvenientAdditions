@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import convenientadditions.api.item.charge.ItemSunlightChargeable;
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 
 public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightChargeable {

@@ -31,7 +31,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
-
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IComparableDefinition;
 import appeng.api.definitions.IItemDefinition;

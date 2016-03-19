@@ -1,6 +1,5 @@
 package convenientadditions.tileentity.charge;
 
-import net.minecraftforge.common.util.ForgeDirection;
 import convenientadditions.api.tileentity.charge.TileEntityChargeDistributor;
 
 public class TileEntitySunlightCollector extends TileEntityChargeDistributor {

@@ -26,9 +26,9 @@ package appeng.api.features;
 
 import javax.annotation.Nullable;
 
-import com.mojang.authlib.GameProfile;
-
 import net.minecraft.entity.player.EntityPlayer;
+
+import com.mojang.authlib.GameProfile;
 
 
 /**

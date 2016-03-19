@@ -1,7 +1,6 @@
 package convenientadditions.api.tileentity.charge;
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityChargeDistributor extends TileEntityChargeContainer implements ISidedChargeDistributor {
 

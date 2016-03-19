@@ -7,12 +7,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IFuelItem;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.entity.specialitem.CAEntitySpecialItem;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemGoo extends ItemFood implements IFuelItem {
 	public boolean edible;

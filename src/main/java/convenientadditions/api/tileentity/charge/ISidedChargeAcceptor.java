@@ -1,6 +1,5 @@
 package convenientadditions.api.tileentity.charge;
 
-import net.minecraftforge.common.util.ForgeDirection;
 
 public interface ISidedChargeAcceptor extends ISidedChargeContainer {
 	public int getChargeAcceptionRate(ForgeDirection f);

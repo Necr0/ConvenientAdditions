@@ -3,7 +3,6 @@ package cofh.api.inventory;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Implement this interface on TileEntities which should handle items.

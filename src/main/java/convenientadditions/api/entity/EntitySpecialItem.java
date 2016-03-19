@@ -8,11 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 import convenientadditions.api.network.PacketEntitySpecialItemBehaviours;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 public abstract class EntitySpecialItem extends EntityItem {
 	public List<Long> behaviour=new ArrayList<Long>();

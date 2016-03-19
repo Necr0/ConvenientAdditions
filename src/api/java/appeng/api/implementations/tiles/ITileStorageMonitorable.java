@@ -24,8 +24,6 @@
 package appeng.api.implementations.tiles;
 
 
-import net.minecraftforge.common.util.ForgeDirection;
-
 import appeng.api.networking.security.BaseActionSource;
 import appeng.api.storage.IStorageMonitorable;
 

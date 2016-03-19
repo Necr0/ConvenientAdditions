@@ -24,12 +24,11 @@
 package appeng.api.parts;
 
 
-import java.io.IOException;
-
 import io.netty.buffer.ByteBuf;
 
+import java.io.IOException;
+
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.ForgeDirection;
 
 
 /**

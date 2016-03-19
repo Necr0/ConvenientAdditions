@@ -28,8 +28,6 @@ import java.util.EnumSet;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
-
 import appeng.api.IAppEngApi;
 import appeng.api.util.IReadOnlyCollection;
 
