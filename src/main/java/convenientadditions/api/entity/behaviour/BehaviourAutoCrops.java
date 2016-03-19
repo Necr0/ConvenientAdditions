@@ -1,12 +1,15 @@
 package convenientadditions.api.entity.behaviour;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
@@ -25,12 +28,13 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 	public void onItemEntityUpdate(EntityItem item) {
 		World w=item.worldObj;
 		int x=MathHelper.floor_double(item.posX),y=MathHelper.floor_double(item.posY)-1,z=MathHelper.floor_double(item.posZ);
-		if(item.onGround&&w.getBlock(x, y+1, z).isAir(w, x, y, z)){
+		BlockPos pos=new BlockPos(x, y, z);
+		if(item.onGround&&w.getBlockState(pos).getBlock().isAir(w, new BlockPos(x,y+1,z))){
 			Item i=item.getEntityItem().getItem();
-			Block b=item.worldObj.getBlock(x,y,z);
-			ForgeDirection up=ForgeDirection.UP;
-			if(i==Items.nether_wart&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.nether_wart))
-				w.setBlock(x, y+1, z, Blocks.nether_wart);
+			Block b=item.worldObj.getBlockState(pos).getBlock();
+			EnumFacing up=EnumFacing.UP;
+			if(i==Items.nether_wart&&b.canSustainPlant(w, pos, up, (IPlantable)Items.nether_wart))
+				w.setBlockState(pos, Blocks.nether_wart);
 			else if(i==Items.potato&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.potato))
 				w.setBlock(x, y+1, z, Blocks.potatoes);
 			else if(i==Items.carrot&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.carrot))

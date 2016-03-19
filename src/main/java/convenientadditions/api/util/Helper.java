@@ -5,6 +5,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -20,16 +21,16 @@ public class Helper {
 	}
 	
 	public static boolean checkForFire(World world,int x,int y,int z){
-    	return world.getBlock(x+1, y, z)==Blocks.fire||
-    			world.getBlock(x, y+1, z)==Blocks.fire||
-    			world.getBlock(x, y, z+1)==Blocks.fire||
-    			world.getBlock(x-1, y, z)==Blocks.fire||
-    			world.getBlock(x, y-1, z)==Blocks.fire||
-    			world.getBlock(x, y, z-1)==Blocks.fire;
+    	return world.getBlockState(new BlockPos(x+1, y, z)).getBlock()==Blocks.fire||
+    			world.getBlockState(new BlockPos(x, y+1, z)).getBlock()==Blocks.fire||
+				world.getBlockState(new BlockPos(x, y, z+1)).getBlock()==Blocks.fire||
+				world.getBlockState(new BlockPos(x-1, y, z)).getBlock()==Blocks.fire||
+				world.getBlockState(new BlockPos(x, y-1, z)).getBlock()==Blocks.fire||
+				world.getBlockState(new BlockPos(x, y, z-1)).getBlock()==Blocks.fire;
     }
 	
 	public static boolean canEntitySeeSky(Entity e){
-		return e.worldObj.canBlockSeeTheSky(MathHelper.floor_double(e.posX), MathHelper.floor_double(e.posY), MathHelper.floor_double(e.posZ));
+		return e.worldObj.canBlockSeeSky(new BlockPos(MathHelper.floor_double(e.posX), MathHelper.floor_double(e.posY), MathHelper.floor_double(e.posZ)));
 	}
 	
 	public static EntityPlayer getClientPlayer(){

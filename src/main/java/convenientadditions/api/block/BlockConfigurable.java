@@ -3,6 +3,8 @@ package convenientadditions.api.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import convenientadditions.api.tileentity.IConfigurable;
 
@@ -11,12 +13,13 @@ public abstract class BlockConfigurable extends BlockContainer {
 		super(p_i45386_1_);
 	}
 
-	public boolean rotateBlock(World worldObj, int x, int y, int z, ForgeDirection axis)
+    @Override
+	public boolean rotateBlock(World worldObj, BlockPos pos, EnumFacing axis)
     {
-    	TileEntity te=worldObj.getTileEntity(x, y, z);
+    	TileEntity te=worldObj.getTileEntity(pos);
         if(te!=null&&te instanceof IConfigurable){
         	return ((IConfigurable)te).configureSide(axis);
         }
-        return super.rotateBlock(worldObj, x, y, z, axis);
+        return super.rotateBlock(worldObj, pos, axis);
     }
 }
