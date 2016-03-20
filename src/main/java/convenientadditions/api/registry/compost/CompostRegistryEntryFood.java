@@ -12,6 +12,6 @@ public class CompostRegistryEntryFood implements ICompostRegistryEntry{
 
 	@Override
 	public int getCompostingMass(ItemStack stack) {
-		return ((ItemFood)stack.getItem()).func_150905_g(stack)*400;
+		return ((ItemFood)stack.getItem()).getHealAmount(stack)*400;
 	}
 }

@@ -3,17 +3,18 @@ package convenientadditions.api.tileentity.charge;
 import java.util.HashMap;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
 
 
 public abstract class TileEntityChargeDistributorConfigurable extends TileEntityChargeDistributor implements IConfigurable {
 
-	public HashMap<ForgeDirection, Boolean> outletSides=new HashMap<ForgeDirection, Boolean>();
+	public HashMap<EnumFacing, Boolean> outletSides=new HashMap<ForgeDirection, Boolean>();
 	
 	public TileEntityChargeDistributorConfigurable(int chargeCapacity,int chargeDistributionRate) {
 		super(chargeCapacity, chargeDistributionRate);
-		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+		for(EnumFacing f:EnumFacing.VALUES){
 			outletSides.put(f, false);
 		}
 	}
@@ -24,7 +25,7 @@ public abstract class TileEntityChargeDistributorConfigurable extends TileEntity
 		if(nbt.hasKey("OUTLET")){
 			byte in=nbt.getByte("OUTLET");
 			MathHelper.Bitmask mask=new MathHelper.Bitmask(in);
-			for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+			for(EnumFacing f:EnumFacing.VALUES){
 				outletSides.put(f,mask.getBit(f.ordinal()));
 			}
 		}
@@ -34,7 +35,7 @@ public abstract class TileEntityChargeDistributorConfigurable extends TileEntity
 	public void writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		MathHelper.Bitmask mask=new MathHelper.Bitmask(0);
-		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+		for(EnumFacing f:EnumFacing.VALUES){
 			mask.setBit(f.ordinal(), outletSides.get(f));
 		}
 		nbt.setByte("OUTLET", (byte)mask.get());
@@ -42,17 +43,17 @@ public abstract class TileEntityChargeDistributorConfigurable extends TileEntity
 	
 
 	@Override
-	public int getChargeDistrubutionRate(ForgeDirection f) {
+	public int getChargeDistrubutionRate(EnumFacing f) {
 		return chargeDistributionRate;
 	}
 
 	@Override
-	public boolean isDistributingCharge(ForgeDirection f) {
+	public boolean isDistributingCharge(EnumFacing f) {
 		return outletSides.get(f);
 	}
 
 	@Override
-	public boolean configureSide(ForgeDirection f) {
+	public boolean configureSide(EnumFacing f) {
 		outletSides.put(f, !outletSides.get(f));
 		this.markDirty();
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);

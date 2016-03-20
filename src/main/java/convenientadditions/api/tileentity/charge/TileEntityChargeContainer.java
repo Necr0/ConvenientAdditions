@@ -5,6 +5,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import convenientadditions.api.util.MathHelper;
 
 public abstract class TileEntityChargeContainer extends TileEntity implements ISidedChargeContainer {
@@ -44,22 +45,22 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 	}
 
 	@Override
-	public int getContainedCharge(ForgeDirection f) {
+	public int getContainedCharge(EnumFacing f) {
 		return containedCharge;
 	}
 
 	@Override
-	public int getChargeCapacity(ForgeDirection f) {
+	public int getChargeCapacity(EnumFacing f) {
 		return chargeCapacity;
 	}
 
 	@Override
-	public boolean isChargable(ForgeDirection f) {
+	public boolean isChargable(EnumFacing f) {
 		return true;
 	}
 
 	@Override
-	public void setContainedCharge(ForgeDirection f, int amount) {
+	public void setContainedCharge(EnumFacing f, int amount) {
 		if(!worldObj.isRemote){
 			this.containedCharge=amount;
 			this.markDirty();
@@ -68,7 +69,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 	}
 
 	@Override
-	public int drainCharge(ForgeDirection f, int amount) {
+	public int drainCharge(EnumFacing f, int amount) {
 		int ret=MathHelper.drain(containedCharge, amount);
 		if(!worldObj.isRemote){
 			this.containedCharge=containedCharge-ret;
@@ -80,7 +81,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 	}
 
 	@Override
-	public int fillCharge(ForgeDirection f, int amount) {
+	public int fillCharge(EnumFacing f, int amount) {
 		int ret=MathHelper.overflow(containedCharge, amount, chargeCapacity);
 		if(!worldObj.isRemote){
 			this.containedCharge=containedCharge+amount-ret;
@@ -140,7 +141,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 	}
 
 	@Override
-	public double getChargePercentage(ForgeDirection f) {
+	public double getChargePercentage(EnumFacing f) {
 		return MathHelper.percentage(containedCharge, chargeCapacity);
 	}
 

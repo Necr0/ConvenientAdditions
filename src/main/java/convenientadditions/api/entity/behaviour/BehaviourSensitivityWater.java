@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 
 public class BehaviourSensitivityWater implements IEntitySpecialItemBehaviour {
 
@@ -20,7 +21,7 @@ public class BehaviourSensitivityWater implements IEntitySpecialItemBehaviour {
 		Random rnd=new Random();
 		if(item.handleWaterMovement()){
     		if(item.worldObj.isRemote&&rnd.nextInt(3)==0){
-    			item.worldObj.spawnParticle("bubble", item.posX, item.posY+.1d, item.posZ, 0, .25d, 0);
+    			item.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, item.posX, item.posY+.1d, item.posZ, 0, .25d, 0);
     			if(rnd.nextBoolean())
     				item.attackEntityFrom(DamageSource.drown, 1f);
     		}

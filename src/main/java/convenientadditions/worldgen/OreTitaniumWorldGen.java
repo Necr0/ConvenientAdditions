@@ -2,15 +2,12 @@ package convenientadditions.worldgen;
 	
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import convenientadditions.Reference;
-import convenientadditions.init.ModBlocks;
 
 //Taken and modified from Fireball's AE2 mod
 
@@ -19,7 +16,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 
 	public OreTitaniumWorldGen()
 	{
-		final BlockState ores = new BlockState(ModBlocks.oreTitaniumBlock);
+		final BlockState ores = new BlockState();
 
 		this.ore = new WorldGenMinable( ores, Reference.titaniumPerCluster );
 	}

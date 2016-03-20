@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
 import baubles.api.BaublesApi;
 import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.api.util.Helper;
@@ -25,7 +26,7 @@ public class ChargeTickHandler {
 				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());
 					if(sitem.isSunlightChargeable(stack, -i-1)){
-						if(player.worldObj.isDaytime() && !player.worldObj.isRaining() && e.player.worldObj.canBlockSeeTheSky((int)player.posX,(int)player.posY,(int)player.posZ)){
+						if(player.worldObj.isDaytime() && !player.worldObj.isRaining() && Helper.canEntitySeeSky(player)){
 							sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, -i-1));
 						}
 					}

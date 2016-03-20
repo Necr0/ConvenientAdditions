@@ -1,6 +1,7 @@
 package convenientadditions.api.tileentity.charge;
 
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityChargeDistributor extends TileEntityChargeContainer implements ISidedChargeDistributor {
 
@@ -13,25 +14,25 @@ public class TileEntityChargeDistributor extends TileEntityChargeContainer imple
 	
 	@Override
 	public void updateEntity(){
-		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+		for(EnumFacing f:EnumFacing.VALUES){
 			if(isDistributingCharge(f)&&getChargeDistrubutionRate(f)>0)
 				tryPush(f);
 		}
 	}
 
 	@Override
-	public int getChargeDistrubutionRate(ForgeDirection f) {
+	public int getChargeDistrubutionRate(EnumFacing f) {
 		return chargeDistributionRate;
 	}
 
 	@Override
-	public boolean isDistributingCharge(ForgeDirection f) {
+	public boolean isDistributingCharge(EnumFacing f) {
 		return true;
 	}
 	
-	public void tryPush(ForgeDirection f){
+	public void tryPush(EnumFacing f){
 		TileEntity te=worldObj.getTileEntity(xCoord+f.offsetX, yCoord+f.offsetY, zCoord+f.offsetZ);
-		ForgeDirection oof=f.getOpposite();
+		EnumFacing oof=f.getOpposite();
 		if(te!=null&&te instanceof ISidedChargeAcceptor){
 			ISidedChargeAcceptor ac=(ISidedChargeAcceptor)te;
 			if(ac.isAcceptingCharge(oof)){
