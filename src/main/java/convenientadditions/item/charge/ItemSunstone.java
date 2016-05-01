@@ -12,6 +12,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
@@ -21,34 +22,17 @@ import convenientadditions.init.ModItems;
 
 public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick {
 	public static ItemStack FULLY_CHARGED;
-    @SideOnly(Side.CLIENT)
-    protected IIcon itemIconInactive;
     
 	public ItemSunstone(){
 		super(60000,true,true,20);
 		this.setHasSubtypes(true)
 			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.sunstoneItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.sunstoneItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);
 		chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
 	}
-
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int dmg)
-    {
-		return dmg==0?itemIconInactive:itemIcon;
-    }
-	
-	@Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister)
-    {
-        this.itemIcon = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunstoneItemName+"_active");
-        this.itemIconInactive = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.sunstoneItemName+"_inactive");
-    }
 	
 	@Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)

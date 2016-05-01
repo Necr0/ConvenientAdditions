@@ -1,6 +1,7 @@
 package convenientadditions.api.tileentity.charge;
 
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 
 public class TileEntityChargeDistributor extends TileEntityChargeContainer implements ISidedChargeDistributor {
@@ -31,7 +32,7 @@ public class TileEntityChargeDistributor extends TileEntityChargeContainer imple
 	}
 	
 	public void tryPush(EnumFacing f){
-		TileEntity te=worldObj.getTileEntity(xCoord+f.offsetX, yCoord+f.offsetY, zCoord+f.offsetZ);
+		TileEntity te=worldObj.getTileEntity(this.pos);
 		EnumFacing oof=f.getOpposite();
 		if(te!=null&&te instanceof ISidedChargeAcceptor){
 			ISidedChargeAcceptor ac=(ISidedChargeAcceptor)te;

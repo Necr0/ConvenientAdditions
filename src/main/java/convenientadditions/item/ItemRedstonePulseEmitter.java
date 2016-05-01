@@ -17,7 +17,6 @@ import convenientadditions.init.ModBlocks;
 public class ItemRedstonePulseEmitter extends Item {
 	public ItemRedstonePulseEmitter() {
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.redstonePulseEmitterItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.redstonePulseEmitterItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setMaxStackSize(1);
 	}

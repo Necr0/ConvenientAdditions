@@ -22,7 +22,7 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 		super(0,0,false);
 		this.setHasSubtypes(false)
 		.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+name)
-		.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
+		//.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
 		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 		this.edible=false;
 		this.behaviours=new ArrayList<Long>();
@@ -32,7 +32,7 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 		super(foodLevel,saturation,false);
 		this.setHasSubtypes(false)
 		.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+name)
-		.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
+		//.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
 		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 		this.edible=true;
 		this.behaviours=new ArrayList<Long>();
@@ -96,7 +96,7 @@ public class ItemGoo extends ItemFood implements IFuelItem {
 		CAEntitySpecialItem newE=new CAEntitySpecialItem(world, location.posX, location.posY, location.posZ, itemstack);
 		newE.setVelocity(location.motionX, location.motionY, location.motionZ);
 		newE.addBehaviour(((ItemGoo)itemstack.getItem()).behaviours);
-		newE.delayBeforeCanPickup=20;
+		//newE.delayBeforeCanPickup=20;
 		newE.scheduleBehaviourUpdate();
         return newE;
     }

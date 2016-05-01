@@ -56,7 +56,7 @@ public abstract class TileEntityChargeDistributorConfigurable extends TileEntity
 	public boolean configureSide(EnumFacing f) {
 		outletSides.put(f, !outletSides.get(f));
 		this.markDirty();
-		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		this.worldObj.markBlockForUpdate(this.pos);
 		return true;
 	}
 	

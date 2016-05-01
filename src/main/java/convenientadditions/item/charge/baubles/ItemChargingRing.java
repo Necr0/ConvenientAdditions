@@ -10,6 +10,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
@@ -27,7 +28,6 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 		super(120000,true,true,5);
 		this.setHasSubtypes(true)
 			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargingRingItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.chargingRingItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);

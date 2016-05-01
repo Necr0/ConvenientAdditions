@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
@@ -16,7 +17,6 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
 	public ItemBlazingRock() {
 		super(48000, true, true, 12);
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.blazingRockItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.blazingRockItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);

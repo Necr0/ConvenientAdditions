@@ -29,7 +29,7 @@ public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightCharge
 		ArrayList<Long> cont=new ArrayList<Long>();
 		this.getBehaviours(itemstack,cont);
 		newE.addBehaviour(cont);
-		newE.delayBeforeCanPickup=20;
+		//newE.delayBeforeCanPickup=20;
 		newE.scheduleBehaviourUpdate();
         return newE;
     }

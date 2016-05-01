@@ -1,5 +1,16 @@
 package convenientadditions;
 
+import convenientadditions.api.ConAddAPI;
+import convenientadditions.api.util.EnchantmentUtil;
+import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModCAAPI;
+import convenientadditions.init.ModItems;
+import convenientadditions.init.ModNetworking;
+import convenientadditions.init.ModOredict;
+import convenientadditions.init.ModRecipes;
+import convenientadditions.init.ModThaumcraftAspects;
+import convenientadditions.proxy.CommonProxy;
+import convenientadditions.worldgen.OreTitaniumWorldGen;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -15,17 +26,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import convenientadditions.api.ConAddAPI;
-import convenientadditions.api.util.EnchantmentUtil;
-import convenientadditions.init.ModBlocks;
-import convenientadditions.init.ModCAAPI;
-import convenientadditions.init.ModItems;
-import convenientadditions.init.ModNetworking;
-import convenientadditions.init.ModOredict;
-import convenientadditions.init.ModRecipes;
-import convenientadditions.init.ModThaumcraftAspects;
-import convenientadditions.proxy.CommonProxy;
-import convenientadditions.worldgen.OreTitaniumWorldGen;
 
 @Mod(modid = ConvenientAdditionsMod.MODID, version = ConvenientAdditionsMod.VERSION,dependencies = ConvenientAdditionsMod.DEPENDENCIES)
 public class ConvenientAdditionsMod

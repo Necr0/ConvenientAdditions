@@ -12,7 +12,7 @@ import convenientadditions.Reference;
 
 public class ItemTitaniumWrench extends Item {
 	public ItemTitaniumWrench(){
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.titaniumWrenchItemName).setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.titaniumWrenchItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.titaniumWrenchItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 	
 	@Override
