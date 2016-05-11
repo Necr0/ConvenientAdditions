@@ -10,7 +10,7 @@ import net.minecraft.util.EnumFacing;
 
 public abstract class TileEntityChargeDistributorConfigurable extends TileEntityChargeDistributor implements IConfigurable {
 
-	public HashMap<EnumFacing, Boolean> outletSides=new HashMap<ForgeDirection, Boolean>();
+	public HashMap<EnumFacing, Boolean> outletSides=new HashMap<EnumFacing, Boolean>();
 	
 	public TileEntityChargeDistributorConfigurable(int chargeCapacity,int chargeDistributionRate) {
 		super(chargeCapacity, chargeDistributionRate);

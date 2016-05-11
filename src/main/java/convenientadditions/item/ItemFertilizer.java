@@ -8,9 +8,12 @@ import convenientadditions.Reference;
 import convenientadditions.api.item.IModelResourceLocationProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -20,22 +23,22 @@ public class ItemFertilizer extends Item implements IModelResourceLocationProvid
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.fertilizerItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 	
-
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int no_idea, float no_clue, float what, float are_these)
+	@Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
     {
     	boolean ret=false;
-		Random rnd=new Random();
-    	Block b=world.getBlock(x, y, z);
+		IBlockState state=world.getBlockState(pos);
+    	Block b=state.getBlock();
     	if(b instanceof IGrowable){
     		IGrowable grow=(IGrowable)b;
-    		if(grow.func_149851_a(world, x, y, z, world.isRemote)){
+    		if(grow.canGrow(world, pos, state, world.isRemote)){
     			ret=true;
     			if(!world.isRemote)
     				itemStack.stackSize--;
     		}
-    		for(int i=0;i<(2+rnd.nextInt(1));i++){
-    			if(grow.func_149851_a(world, x, y, z, world.isRemote)&&!world.isRemote&&grow.func_149852_a(world, world.rand, x, y, z)&&world.getBlock(x,y,z)==b)
-    					grow.func_149853_b(world, rnd, x, y, z);
+    		for(int i=0;i<(2+world.rand.nextInt(1));i++){
+    			if(grow.canGrow(world, pos, state, world.isRemote) && !world.isRemote && grow.canUseBonemeal(world, world.rand, pos, state))
+    					grow.grow(world, world.rand, pos, state);
     		}
     	}
     	return ret;

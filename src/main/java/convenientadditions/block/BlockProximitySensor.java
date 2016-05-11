@@ -15,7 +15,7 @@ public class BlockProximitySensor extends BlockContainer {
 
 	public BlockProximitySensor() {
 		super(Material.iron);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.proximitySensorBlockName).setHardness(4F).setResistance(8F).setStepSound(soundTypeMetal).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.proximitySensorBlockName).setHardness(4F).setResistance(8F).setStepSound(soundTypeMetal).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 	
     public boolean hasComparatorInputOverride(){return true;}

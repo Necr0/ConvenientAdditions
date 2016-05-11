@@ -35,13 +35,13 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbt);
+		return new S35PacketUpdateTileEntity(this.pos, 1, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		readFromNBT(pkt.func_148857_g());
+		readFromNBT(pkt.getNbtCompound());
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=amount;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	this.worldObj.markBlockForUpdate(pos);
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	this.worldObj.markBlockForUpdate(pos);
     	
 		return ret;
 	}
@@ -87,7 +87,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge+amount-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	this.worldObj.markBlockForUpdate(pos);
     	
 		return ret;
 	}
@@ -113,7 +113,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=amount;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	this.worldObj.markBlockForUpdate(pos);
 	}
 
 	@Override
@@ -123,7 +123,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	this.worldObj.markBlockForUpdate(pos);
     	
 		return ret;
 	}
@@ -135,7 +135,7 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge+amount-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    	this.worldObj.markBlockForUpdate(pos);
     	
 		return ret;
 	}

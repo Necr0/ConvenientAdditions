@@ -23,7 +23,7 @@ public class BlockChargeAccumulator extends BlockMachineConfigurable {
 
 	public BlockChargeAccumulator() {
 		super(Material.rock);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.chargeAccumulatorBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargeAccumulatorBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
 	@Override

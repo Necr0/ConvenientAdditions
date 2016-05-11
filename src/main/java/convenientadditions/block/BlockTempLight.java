@@ -14,7 +14,7 @@ public class BlockTempLight extends Block {
 	
 	public BlockTempLight(float intensisty) {
 		super(Material.fire);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.tempLightBlockName)
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.tempLightBlockName)
 		.setLightLevel(intensisty)
 		.setTickRandomly(true)
 		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.textureNoneBlockName);

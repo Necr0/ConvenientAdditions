@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 public class BlockTitaniumOre extends Block {
 	public BlockTitaniumOre() {
 		super(Material.rock);
-		this.setHardness(3.0F).setResistance(5.0F).setStepSound(soundTypePiston).setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.oreTitaniumBlockName).setBlockTextureName(ConvenientAdditionsMod.MODID+":titanium_ore").setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setHardness(3.0F).setResistance(5.0F).setStepSound(soundTypePiston).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.oreTitaniumBlockName).setBlockTextureName(ConvenientAdditionsMod.MODID+":titanium_ore").setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 		this.setHarvestLevel("pickaxe", 2);
     }
 	

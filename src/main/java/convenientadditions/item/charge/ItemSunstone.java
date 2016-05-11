@@ -5,6 +5,7 @@ import java.util.Random;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
 import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
@@ -13,6 +14,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -20,7 +22,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick {
+public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick,IModelResourceLocationProvider {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSunstone(){
@@ -90,13 +92,11 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
     		for(int x=0;x<9;x++){
     			for(int y=0;y<9;y++){
     				for(int z=0;z<9;z++){
-    					int 	x1=x-4+(int)player.posX,
-    							y1=y-4+(int)player.posY,
-    							z1=z-4+(int)player.posZ;
-    					Block b=world.getBlock(x1, y1, z1);
-    					if(b.isAir(world,x1,y1,z1)&&b!=ModBlocks.tempLightBlock){
-    						world.setBlock(x1, y1, z1, ModBlocks.tempLightBlock, 0, 3);
-    						world.scheduleBlockUpdate(x1, y1, z1, ModBlocks.tempLightBlock, 20+random.nextInt(20));
+    					BlockPos pos=new BlockPos(x-4+(int)player.posX,y-4+(int)player.posY,z-4+(int)player.posZ);
+    					Block b=world.getBlockState(pos).getBlock();
+    					if(b.isAir(world,pos)&&b!=ModBlocks.tempLightBlock){
+    						world.setBlockState(pos, ModBlocks.tempLightBlock.getStateFromMeta(0), 3);
+    						world.scheduleBlockUpdate(pos, ModBlocks.tempLightBlock, 20+random.nextInt(20), 0);
     					}
             		}
         		}

@@ -15,7 +15,7 @@ public class BlockRedstonePulse extends Block {
 
 	public BlockRedstonePulse() {
 		super(Material.fire);
-		this.setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.redstonePulseBlockName)
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.redstonePulseBlockName)
 		.setTickRandomly(true)
 		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.textureNoneBlockName);
 		this.setBlockBounds(0, 0, 0, 0, 0, 0);

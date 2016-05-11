@@ -32,20 +32,21 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 			Item i=item.getEntityItem().getItem();
 			Block b=item.worldObj.getBlockState(pos).getBlock();
 			EnumFacing up=EnumFacing.UP;
+			BlockPos pos_e=new BlockPos(x,y+1,z);
 			if(i==Items.nether_wart&&b.canSustainPlant(w, pos, up, (IPlantable)Items.nether_wart))
-				w.setBlockState(pos, Blocks.nether_wart);
-			else if(i==Items.potato&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.potato))
-				w.setBlock(x, y+1, z, Blocks.potatoes);
-			else if(i==Items.carrot&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.carrot))
-				w.setBlock(x, y+1, z, Blocks.carrots);
-			else if(i==Items.wheat_seeds&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.wheat_seeds))
-				w.setBlock(x, y+1, z, Blocks.wheat);
-			else if(i==Items.melon_seeds&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.melon_seeds))
-				w.setBlock(x, y+1, z, Blocks.melon_stem);
-			else if(i==Items.pumpkin_seeds&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Items.pumpkin_seeds))
-				w.setBlock(x, y+1, z, Blocks.pumpkin_stem);
-			else if(i==ItemBlock.getItemFromBlock(Blocks.sapling)&&b.canSustainPlant(w, x, y, z, up, (IPlantable)Blocks.sapling))
-				w.setBlock(x, y+1, z, Blocks.sapling, item.getEntityItem().getItemDamage(), 2);
+				w.setBlockState(pos_e, Blocks.nether_wart.getStateFromMeta(0), 2);
+			else if(i==Items.potato&&b.canSustainPlant(w, pos, up, (IPlantable)Items.potato))
+				w.setBlockState(pos_e, Blocks.potatoes.getStateFromMeta(0), 2);
+			else if(i==Items.carrot&&b.canSustainPlant(w, pos, up, (IPlantable)Items.carrot))
+				w.setBlockState(pos_e, Blocks.carrots.getStateFromMeta(0), 2);
+			else if(i==Items.wheat_seeds&&b.canSustainPlant(w, pos, up, (IPlantable)Items.wheat_seeds))
+				w.setBlockState(pos_e, Blocks.wheat.getStateFromMeta(0), 2);
+			else if(i==Items.melon_seeds&&b.canSustainPlant(w, pos, up, (IPlantable)Items.melon_seeds))
+				w.setBlockState(pos_e, Blocks.melon_stem.getStateFromMeta(0), 2);
+			else if(i==Items.pumpkin_seeds&&b.canSustainPlant(w, pos, up, (IPlantable)Items.pumpkin_seeds))
+				w.setBlockState(pos_e, Blocks.pumpkin_stem.getStateFromMeta(0), 2);
+			else if(i==ItemBlock.getItemFromBlock(Blocks.sapling)&&b.canSustainPlant(w, pos, up, (IPlantable)Blocks.sapling))
+				w.setBlockState(pos_e, Blocks.sapling.getStateFromMeta(item.getEntityItem().getItemDamage()), 2);
 			else
 				return;
 			item.getEntityItem().stackSize--;

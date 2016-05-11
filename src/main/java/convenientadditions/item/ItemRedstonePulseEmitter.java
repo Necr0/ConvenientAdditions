@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -30,13 +31,11 @@ public class ItemRedstonePulseEmitter extends Item implements IModelResourceLoca
     		for(int x=0;x<11;x++){
     			for(int y=0;y<11;y++){
     				for(int z=0;z<11;z++){
-    					int 	x1=x-5+(int)player.posX,
-    							y1=y-5+(int)player.posY,
-    							z1=z-5+(int)player.posZ;
-    					Block b=world.getBlock(x1, y1, z1);
-    					if(b.isAir(world, x1, y1, z1)&&b!=ModBlocks.redstonePulseBlock){
-    						world.setBlock(x1, y1, z1, ModBlocks.redstonePulseBlock, 0, 3);
-    						world.scheduleBlockUpdate(x1, y1, z1, ModBlocks.redstonePulseBlock, 8);
+    					BlockPos pos=new BlockPos(x-5+(int)player.posX,y-5+(int)player.posY,z-5+(int)player.posZ);
+    					Block b=world.getBlockState(pos).getBlock();
+    					if(b.isAir(world, pos)&&b!=ModBlocks.redstonePulseBlock){
+    						world.setBlockState(pos, ModBlocks.redstonePulseBlock.getStateFromMeta(0), 3);
+    						world.scheduleBlockUpdate(pos, ModBlocks.redstonePulseBlock, 8, 0);
     					}
             		}
         		}

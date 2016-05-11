@@ -22,7 +22,7 @@ public class BlockCompostSoil extends Block {
 
 	public BlockCompostSoil() {
 		super(Material.ground);
-		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setBlockName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 	
 	@Override
