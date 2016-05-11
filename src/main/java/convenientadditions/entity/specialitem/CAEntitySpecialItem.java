@@ -1,12 +1,12 @@
 package convenientadditions.entity.specialitem;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import convenientadditions.api.entity.EntitySpecialItem;
 import convenientadditions.api.network.PacketEntitySpecialItemBehaviours;
 import convenientadditions.init.ModNetworking;
 import convenientadditions.network.CAEntitySpecialItemBehavioursPacket;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 public class CAEntitySpecialItem extends EntitySpecialItem {
 	public CAEntitySpecialItem(World p_i1711_1_) {

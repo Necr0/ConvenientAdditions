@@ -1,13 +1,13 @@
 package convenientadditions.block.charge;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.tileentity.charge.TileEntitySunlightCollector;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.tileentity.charge.TileEntitySunlightCollector;
 
 public class BlockSunlightCollector extends BlockMachine {
 	@SideOnly(Side.CLIENT)

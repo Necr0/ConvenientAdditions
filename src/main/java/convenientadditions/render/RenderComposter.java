@@ -1,16 +1,15 @@
 package convenientadditions.render;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.FMLClientHandler;
-
 import org.lwjgl.opengl.GL11;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelComposter;
 import convenientadditions.render.model.ModelComposterContent;
 import convenientadditions.tileentity.TileEntityComposter;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 public class RenderComposter extends TileEntitySpecialRenderer
 {
@@ -20,7 +19,7 @@ public class RenderComposter extends TileEntitySpecialRenderer
     public RenderComposter(){}
 
     @Override
-    public void renderTileEntityAt(TileEntity tileEntity, double d0, double d1, double d2, float f)
+    public void renderTileEntityAt(TileEntity tileEntity, double d0, double d1, double d2, float f, int dest)
     {
         if (tileEntity instanceof TileEntityComposter)
         {

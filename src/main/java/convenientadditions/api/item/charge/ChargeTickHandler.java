@@ -1,5 +1,8 @@
 package convenientadditions.api.item.charge;
 
+import baubles.api.BaublesApi;
+import convenientadditions.api.item.IPlayerInventoryTick;
+import convenientadditions.api.util.Helper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -7,9 +10,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import baubles.api.BaublesApi;
-import convenientadditions.api.item.IPlayerInventoryTick;
-import convenientadditions.api.util.Helper;
 
 public class ChargeTickHandler {
 	private static boolean chargeTickHandlerRegistered=false;

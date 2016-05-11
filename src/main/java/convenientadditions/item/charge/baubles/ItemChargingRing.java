@@ -2,6 +2,15 @@ package convenientadditions.item.charge.baubles;
 
 import java.util.List;
 
+import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
+import baubles.api.IBauble;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.api.item.charge.IChargeable;
+import convenientadditions.api.util.EnchantmentUtil;
+import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,16 +21,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import baubles.api.BaubleType;
-import baubles.api.BaublesApi;
-import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.item.charge.IChargeable;
-import convenientadditions.api.util.EnchantmentUtil;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 
-public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements IBauble,IModelResourceLocationProvider {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemChargingRing(){

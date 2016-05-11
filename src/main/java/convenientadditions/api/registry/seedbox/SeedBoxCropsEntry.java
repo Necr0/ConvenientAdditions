@@ -2,12 +2,12 @@ package convenientadditions.api.registry.seedbox;
 
 import java.util.List;
 
+import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 
 public class SeedBoxCropsEntry implements ISeedBoxItemBehaviourRegistryEntry {
 

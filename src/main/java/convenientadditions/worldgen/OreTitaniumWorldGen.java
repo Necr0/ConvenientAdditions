@@ -2,12 +2,12 @@ package convenientadditions.worldgen;
 	
 import java.util.Random;
 
+import convenientadditions.Reference;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import convenientadditions.Reference;
 
 //Taken and modified from Fireball's AE2 mod
 

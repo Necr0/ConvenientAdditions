@@ -2,14 +2,14 @@ package convenientadditions.tileentity;
 
 import java.util.List;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
 
 public class TileEntityPlayerInterface extends TileEntity implements IInventory {
 

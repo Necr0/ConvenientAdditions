@@ -2,6 +2,10 @@ package convenientadditions.block;
 
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.util.Helper;
+import convenientadditions.tileentity.TileEntityPowderKeg;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -19,10 +23,6 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.util.Helper;
-import convenientadditions.tileentity.TileEntityPowderKeg;
 
 public class BlockPowderKeg extends BlockContainer {
 	@SideOnly(Side.CLIENT)

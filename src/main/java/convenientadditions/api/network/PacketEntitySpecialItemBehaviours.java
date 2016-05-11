@@ -1,17 +1,15 @@
 package convenientadditions.api.network;
 
-import io.netty.buffer.ByteBuf;
-
 import java.util.List;
-
-import net.minecraft.entity.Entity;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.relauncher.Side;
 
 import org.apache.commons.lang3.ArrayUtils;
 
 import convenientadditions.api.entity.EntitySpecialItem;
 import convenientadditions.api.util.Helper;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
 
 public abstract class PacketEntitySpecialItemBehaviours<P extends PacketEntitySpecialItemBehaviours> extends PacketBase<P> {
 	int id;

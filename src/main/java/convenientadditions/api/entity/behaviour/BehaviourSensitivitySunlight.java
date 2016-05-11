@@ -2,9 +2,9 @@ package convenientadditions.api.entity.behaviour;
 
 import java.util.Random;
 
+import convenientadditions.api.util.Helper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
-import convenientadditions.api.util.Helper;
 
 public class BehaviourSensitivitySunlight implements IEntitySpecialItemBehaviour {
 

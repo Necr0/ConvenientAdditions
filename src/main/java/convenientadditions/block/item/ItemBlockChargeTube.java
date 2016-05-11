@@ -1,10 +1,10 @@
 package convenientadditions.block.item;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
 
 public class ItemBlockChargeTube extends ItemBlock {
 

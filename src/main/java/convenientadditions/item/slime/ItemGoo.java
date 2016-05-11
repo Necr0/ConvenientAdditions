@@ -2,19 +2,20 @@ package convenientadditions.item.slime;
 
 import java.util.ArrayList;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IFuelItem;
+import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.api.registry.behaviour.BehaviourRegistry;
+import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.item.IFuelItem;
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
-import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 
-public class ItemGoo extends ItemFood implements IFuelItem {
+public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocationProvider {
 	public boolean edible;
 	public ArrayList<Long> behaviours;
 	

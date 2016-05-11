@@ -1,13 +1,13 @@
 package convenientadditions.block;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.tileentity.TileEntityPlayerInterface;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.tileentity.TileEntityPlayerInterface;
 
 public class BlockPlayerInterface extends BlockContainer {
 	@SideOnly(Side.CLIENT)

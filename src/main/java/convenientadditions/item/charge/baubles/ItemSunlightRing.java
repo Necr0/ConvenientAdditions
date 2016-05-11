@@ -3,6 +3,14 @@ package convenientadditions.item.charge.baubles;
 import java.util.List;
 import java.util.Random;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModItems;
+import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,23 +19,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.init.ModBlocks;
-import convenientadditions.init.ModItems;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 
-public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements IBauble,IModelResourceLocationProvider {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSunlightRing(){
 		super(60000,true,true,21);
 		this.setHasSubtypes(true)
 			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightRingItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightRingItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);

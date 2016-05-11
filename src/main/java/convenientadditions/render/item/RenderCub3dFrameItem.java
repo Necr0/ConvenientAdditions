@@ -1,14 +1,13 @@
 package convenientadditions.render.item;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.FMLClientHandler;
-
 import org.lwjgl.opengl.GL11;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelCub3dFrame;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 public class RenderCub3dFrameItem implements IItemRenderer {
 

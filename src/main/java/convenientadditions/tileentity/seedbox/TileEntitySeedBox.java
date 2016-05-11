@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
+import convenientadditions.api.tileentity.IConfigurable;
+import convenientadditions.api.util.MathHelper;
+import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -13,12 +19,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
-import convenientadditions.api.tileentity.IConfigurable;
-import convenientadditions.api.util.MathHelper;
-import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 
 public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IConfigurable {
 

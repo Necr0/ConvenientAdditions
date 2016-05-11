@@ -3,6 +3,9 @@ package convenientadditions.item;
 import java.util.List;
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,10 +13,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
 
-public class ItemFertilizer extends Item {
+public class ItemFertilizer extends Item implements IModelResourceLocationProvider {
 	public ItemFertilizer(){
 		super();
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.fertilizerItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);

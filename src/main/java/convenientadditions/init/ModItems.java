@@ -1,7 +1,5 @@
 package convenientadditions.init;
 
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
@@ -14,13 +12,14 @@ import convenientadditions.item.charge.baubles.ItemChargingRing;
 import convenientadditions.item.charge.baubles.ItemFloatingBelt;
 import convenientadditions.item.charge.baubles.ItemSaturationRing;
 import convenientadditions.item.charge.baubles.ItemSunlightRing;
-import convenientadditions.item.slime.ItemGoo;
 import convenientadditions.item.tools.ItemTitaniumAxe;
 import convenientadditions.item.tools.ItemTitaniumHoe;
 import convenientadditions.item.tools.ItemTitaniumPickaxe;
 import convenientadditions.item.tools.ItemTitaniumSpade;
 import convenientadditions.item.tools.ItemTitaniumSword;
 import convenientadditions.item.tools.ItemTitaniumWrench;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
 public class ModItems {

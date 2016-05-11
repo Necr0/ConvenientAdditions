@@ -1,15 +1,17 @@
 package convenientadditions.entity.behaviour;
 
+import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
+import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
-import convenientadditions.init.ModBlocks;
-import convenientadditions.init.ModItems;
 
 public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 
@@ -25,8 +27,8 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 		int x=MathHelper.floor_double(item.posX),y=MathHelper.floor_double(item.posY)-1,z=MathHelper.floor_double(item.posZ);
 		if(item.onGround){
 			Item i=item.getEntityItem().getItem();
-			Block b=item.worldObj.getBlock(x,y,z);
-			ForgeDirection up=ForgeDirection.UP;
+			Block b=item.worldObj.getBlockState(new BlockPos(x, y, z)).getBlock();
+			EnumFacing up=EnumFacing.UP;
 			if(i!=ModItems.itemCompost)
 				return;
 			if(b==Blocks.dirt||b==Blocks.grass)

@@ -3,6 +3,12 @@ package convenientadditions.item.charge.baubles;
 import java.util.List;
 import java.util.Random;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,13 +18,8 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 
-public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implements IBauble,IModelResourceLocationProvider {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSaturationRing(){

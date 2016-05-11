@@ -1,14 +1,13 @@
 package convenientadditions.render.item;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.FMLClientHandler;
-
 import org.lwjgl.opengl.GL11;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelComposter;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 public class RenderComposterItem implements IItemRenderer {
 

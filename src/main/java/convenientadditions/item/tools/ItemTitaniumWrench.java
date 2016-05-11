@@ -1,16 +1,17 @@
 package convenientadditions.item.tools;
 
+import cofh.api.block.IDismantleable;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import cofh.api.block.IDismantleable;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
 
-public class ItemTitaniumWrench extends Item {
+public class ItemTitaniumWrench extends Item implements IModelResourceLocationProvider {
 	public ItemTitaniumWrench(){
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.titaniumWrenchItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}

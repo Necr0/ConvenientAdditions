@@ -1,10 +1,10 @@
 package convenientadditions.api.entity.behaviour;
 
+import convenientadditions.api.item.charge.ISunlightChargeable;
+import convenientadditions.api.util.Helper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import convenientadditions.api.item.charge.ISunlightChargeable;
-import convenientadditions.api.util.Helper;
 
 public class BehaviourSunlightChargeable implements IEntitySpecialItemBehaviour {
 

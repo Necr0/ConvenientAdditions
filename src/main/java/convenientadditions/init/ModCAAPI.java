@@ -1,9 +1,9 @@
 package convenientadditions.init;
 
-import net.minecraft.item.ItemStack;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
 import convenientadditions.entity.behaviour.BehaviourCompost;
+import net.minecraft.item.ItemStack;
 
 public class ModCAAPI {
 	public static Long compostDiscriminator;

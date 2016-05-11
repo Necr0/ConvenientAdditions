@@ -3,6 +3,10 @@ package convenientadditions.item;
 import java.util.List;
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -10,11 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.init.ModBlocks;
 
-public class ItemRedstonePulseEmitter extends Item {
+public class ItemRedstonePulseEmitter extends Item implements IModelResourceLocationProvider {
 	public ItemRedstonePulseEmitter() {
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.redstonePulseEmitterItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)

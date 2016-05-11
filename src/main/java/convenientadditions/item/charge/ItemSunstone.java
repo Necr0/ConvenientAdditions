@@ -3,6 +3,11 @@ package convenientadditions.item.charge;
 import java.util.List;
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IPlayerInventoryTick;
+import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,11 +19,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.item.IPlayerInventoryTick;
-import convenientadditions.init.ModBlocks;
-import convenientadditions.init.ModItems;
 
 public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick {
 	public static ItemStack FULLY_CHARGED;

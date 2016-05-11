@@ -2,13 +2,13 @@ package convenientadditions.block.charge;
 
 import java.util.ArrayList;
 
+import cofh.api.block.IDismantleable;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import cofh.api.block.IDismantleable;
 
 public abstract class BlockMachine extends BlockContainer implements IDismantleable {
 

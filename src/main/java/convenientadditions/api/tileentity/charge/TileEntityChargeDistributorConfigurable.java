@@ -2,10 +2,10 @@ package convenientadditions.api.tileentity.charge;
 
 import java.util.HashMap;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 
 
 public abstract class TileEntityChargeDistributorConfigurable extends TileEntityChargeDistributor implements IConfigurable {

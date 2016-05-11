@@ -3,6 +3,10 @@ package convenientadditions.item;
 import java.util.List;
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,11 +17,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.init.ModBlocks;
 
-public class ItemCompost extends Item {
+public class ItemCompost extends Item implements IModelResourceLocationProvider {
 	public ItemCompost(){
 		super();
 		this.setHasSubtypes(true).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);

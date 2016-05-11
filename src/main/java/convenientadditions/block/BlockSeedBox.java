@@ -1,14 +1,14 @@
 package convenientadditions.block;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.block.BlockConfigurable;
+import convenientadditions.tileentity.seedbox.TileEntitySeedBox;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.api.block.BlockConfigurable;
-import convenientadditions.tileentity.seedbox.TileEntitySeedBox;
 
 public class BlockSeedBox extends BlockConfigurable {
 	@SideOnly(Side.CLIENT)

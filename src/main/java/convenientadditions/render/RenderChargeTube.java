@@ -1,16 +1,16 @@
 package convenientadditions.render;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.FMLClientHandler;
-
 import org.lwjgl.opengl.GL11;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelChargeTube;
 import convenientadditions.render.model.ModelChargeTubeConnector;
 import convenientadditions.tileentity.charge.TileEntityChargeTube;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 public class RenderChargeTube extends TileEntitySpecialRenderer
 {
@@ -20,7 +20,7 @@ public class RenderChargeTube extends TileEntitySpecialRenderer
     public RenderChargeTube(){}
 
     @Override
-    public void renderTileEntityAt(TileEntity tileEntity, double d0, double d1, double d2, float f)
+    public void renderTileEntityAt(TileEntity tileEntity, double d0, double d1, double d2, float f, int dest)
     {
         if (tileEntity instanceof TileEntityChargeTube)
         {
@@ -35,7 +35,7 @@ public class RenderChargeTube extends TileEntitySpecialRenderer
             GL11.glPopMatrix();
             GL11.glPopMatrix();
             TileEntityChargeTube t=(TileEntityChargeTube) tileEntity;
-            for(ForgeDirection d:ForgeDirection.VALID_DIRECTIONS){
+            for(EnumFacing d:EnumFacing.VALUES){
             	if(t.isConnected(d)){
 	                GL11.glPushMatrix();
 	                FMLClientHandler.instance().getClient().renderEngine.bindTexture(test_1);

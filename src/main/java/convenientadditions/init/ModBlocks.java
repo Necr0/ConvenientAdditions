@@ -1,6 +1,5 @@
 package convenientadditions.init;
 
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.block.BlockCompostSoil;
@@ -18,6 +17,7 @@ import convenientadditions.block.charge.BlockChargeTube;
 import convenientadditions.block.charge.BlockSunlightCollector;
 import convenientadditions.block.item.ItemBlockChargeTube;
 import convenientadditions.block.item.ItemBlockCompostSoil;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
 public class ModBlocks

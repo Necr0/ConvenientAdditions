@@ -2,6 +2,12 @@ package convenientadditions.item.charge.baubles;
 
 import java.util.List;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
+import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,21 +15,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 
-public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble,IModelResourceLocationProvider {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemBreathAmulet(){
 		super(10000,true,true,5);
 		this.setHasSubtypes(true)
 			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.breathAmuletItemName)
-			.setTextureName(ConvenientAdditionsMod.MODID+":"+Reference.breathAmuletItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
