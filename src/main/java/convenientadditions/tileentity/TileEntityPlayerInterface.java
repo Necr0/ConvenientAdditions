@@ -10,8 +10,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ITickable;
 
-public class TileEntityPlayerInterface extends TileEntity implements IInventory {
+public class TileEntityPlayerInterface extends TileEntity implements IInventory, ITickable {
 
 	@Override
 	public int getSizeInventory() {
@@ -23,7 +24,7 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory 
 	}
 	
 	@Override
-	public void updateEntity(){
+	public void update(){
 		boolean t=hasTarget();
 		int m=worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
 		if(t&&m!=1)

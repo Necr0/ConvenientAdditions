@@ -2,10 +2,11 @@ package convenientadditions.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
 
-public class TileEntityProximitySensor extends TileEntity {
+public class TileEntityProximitySensor extends TileEntity implements ITickable {
 	@Override
-	public void updateEntity(){
+	public void update(){
 		int s=getStenght();
 		int m=worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
 		if(s!=m&&!worldObj.isRemote)

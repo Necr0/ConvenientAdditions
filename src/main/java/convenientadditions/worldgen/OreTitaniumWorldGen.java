@@ -3,7 +3,10 @@ package convenientadditions.worldgen;
 import java.util.Random;
 
 import convenientadditions.Reference;
+import convenientadditions.init.ModBlocks;
 import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -16,7 +19,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 
 	public OreTitaniumWorldGen()
 	{
-		final BlockState ores = new BlockState();
+		final IBlockState ores = ModBlocks.oreTitaniumBlock.getStateFromMeta(0);
 
 		this.ore = new WorldGenMinable( ores, Reference.titaniumPerCluster );
 	}
@@ -30,7 +33,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 		{
 			final int x = ( chunkX << 4 ) + 8;
 			final int z = ( chunkZ << 4 ) + 8;
-			seaLevel = w.getHeightValue( x, z );
+			seaLevel = w.getChunksLowestHorizon( x, z );
 		}
 
 		final double oreDepthMultiplier = Reference.titaniumOresClusterAmount * seaLevel / 64;
@@ -42,7 +45,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 			final int cx = chunkX * 16 + r.nextInt( 22 );
 			final int cy = r.nextInt( 20 * seaLevel / 64 ) + r.nextInt( 12 * seaLevel / 64 ) + 6 * seaLevel / 64;
 			final int cz = chunkZ * 16 + r.nextInt( 22 );
-			whichOre.generate( w, r, cx, cy, cz );
+			whichOre.generate( w, r, new BlockPos(cx,cy,cz) );
 		}
 	}
 

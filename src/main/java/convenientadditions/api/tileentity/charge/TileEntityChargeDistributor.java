@@ -2,8 +2,9 @@ package convenientadditions.api.tileentity.charge;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 
-public class TileEntityChargeDistributor extends TileEntityChargeContainer implements ISidedChargeDistributor {
+public class TileEntityChargeDistributor extends TileEntityChargeContainer implements ISidedChargeDistributor, ITickable {
 
 	public int chargeDistributionRate;
 	
@@ -13,7 +14,7 @@ public class TileEntityChargeDistributor extends TileEntityChargeContainer imple
 	}
 	
 	@Override
-	public void updateEntity(){
+	public void update(){
 		for(EnumFacing f:EnumFacing.VALUES){
 			if(isDistributingCharge(f)&&getChargeDistrubutionRate(f)>0)
 				tryPush(f);

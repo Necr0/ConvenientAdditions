@@ -22,8 +22,9 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ITickable;
 
-public class TileEntityComposter extends TileEntity implements IInventory {
+public class TileEntityComposter extends TileEntity implements IInventory, ITickable {
 	
 	public boolean processing=false;
 	public int content=0;
@@ -57,7 +58,7 @@ public class TileEntityComposter extends TileEntity implements IInventory {
 	}
 	
 	@Override
-	public void updateEntity(){
+	public void update(){
 		Random rnd=new Random();
 		if(!worldObj.isRemote){
 			if(content>=progressContent){
