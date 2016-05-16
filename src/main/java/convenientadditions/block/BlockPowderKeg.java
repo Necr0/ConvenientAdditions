@@ -6,9 +6,9 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.util.Helper;
 import convenientadditions.tileentity.TileEntityPowderKeg;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,18 +18,16 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPowderKeg extends BlockContainer {
-	@SideOnly(Side.CLIENT)
-	public IIcon blockIconTop;
-	@SideOnly(Side.CLIENT)
-	public IIcon blockIconBottom;
-
+	
 	public BlockPowderKeg() {
 		super(Material.wood);
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeWood).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
@@ -40,33 +38,17 @@ public class BlockPowderKeg extends BlockContainer {
 		return new TileEntityPowderKeg();
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side,int meta)
-	{
-		return side==0?blockIconBottom:(side==1?blockIconTop:blockIcon);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-	    this.blockIcon = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName+"_side");
-	    this.blockIconTop = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName+"_top");
-	    this.blockIconBottom = iconRegister.registerIcon(ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName+"_bottom");
-	}
-
     @Override
-    public void breakBlock(World world, int x, int y, int z, Block par5, int par6)
+    public void breakBlock(World world, BlockPos pos, IBlockState state)
     {
-        dropItems(world, x, y, z);
-        super.breakBlock(world, x, y, z, par5, par6);
+        dropItems(world, pos);
+        super.breakBlock(world, pos, state);
     }
 
-    private void dropItems(World world, int x, int y, int z)
+    private void dropItems(World world, BlockPos pos)
     {
         Random rand = new Random();
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(pos);
 
         if (!(tileEntity instanceof IInventory))
         {
@@ -84,7 +66,7 @@ public class BlockPowderKeg extends BlockContainer {
                 float rx = rand.nextFloat() * 0.8F + 0.1F;
                 float ry = rand.nextFloat() * 0.8F + 0.1F;
                 float rz = rand.nextFloat() * 0.8F + 0.1F;
-                EntityItem entityItem = new EntityItem(world, x + rx, y + ry, z + rz, new ItemStack(item.getItem(), item.stackSize, item.getItemDamage()));
+                EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, new ItemStack(item.getItem(), item.stackSize, item.getItemDamage()));
 
                 if (item.hasTagCompound())
                 {
@@ -102,12 +84,12 @@ public class BlockPowderKeg extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
     {
 
 		ItemStack current=player.inventory.getStackInSlot(player.inventory.currentItem);
-    	if (world.getTileEntity(x, y, z) instanceof TileEntityPowderKeg){
-        	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(x, y, z);
+    	if (world.getTileEntity(pos) instanceof TileEntityPowderKeg){
+        	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(pos);
     		if (!player.isSneaking()){
 	        	if(current==null){
 	        		if(world.isRemote)
@@ -118,7 +100,7 @@ public class BlockPowderKeg extends BlockContainer {
 	        	}else if(!keg.isItemValidForSlot(0, current)){
 	        		if(current.getItem()==Items.flint_and_steel){
 	        			current.damageItem(1, player);
-	        			if(explode(world,x,y,z))
+	        			if(explode(world,pos))
 	        				return true;
 	        		}
 	    			return false;
@@ -139,7 +121,7 @@ public class BlockPowderKeg extends BlockContainer {
 	        		}
 		        }
         	}else if(keg.getStackInSlot(0)!=null&&current==null&&!world.isRemote){
-	        	Helper.spawnItemInPlace(world, x+.5, y+1.2, z+.5, keg.getStackInSlot(0));
+	        	Helper.spawnItemInPlace(world, pos.getX()+.5, pos.getY()+1.2, pos.getZ()+.5, keg.getStackInSlot(0));
 	    		keg.setInventorySlotContents(0, null);
             }
     	}
@@ -147,39 +129,38 @@ public class BlockPowderKeg extends BlockContainer {
     }
     
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, Block b)
+    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbour)
     {
-        if(Helper.checkForFire(world, x, y, z))
-        	this.explode(world,x,y,z);
-        else if (world.isBlockIndirectlyGettingPowered(x, y, z))
-        	this.explode(world,x,y,z);
+    	if(world instanceof World)
+	        if(Helper.checkForFire(world, pos)||((World)world).isBlockIndirectlyGettingPowered(pos)>0)
+	        	this.explode((World)world,pos);
     }
     
     @Override
-    public void onEntityCollidedWithBlock(World w, int x, int y, int z, Entity e)
+    public void onEntityCollidedWithBlock(World w, BlockPos pos, Entity e)
     {
         if (e instanceof EntityArrow && !w.isRemote)
         {
             EntityArrow entityarrow = (EntityArrow)e;
 
             if (entityarrow.isBurning())
-	            this.explode(w, x, y, z);
+	            this.explode(w, pos);
         }
     }
     
     @Override
-    public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion p_5){explode(world,x,y,z);}
+    public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion p_5){explode(world,pos);}
     
-    public boolean explode(World w,int x,int y,int z){
-    	if(w.getTileEntity(x, y, z)!=null&&w.getTileEntity(x, y, z) instanceof TileEntityPowderKeg){
-    		TileEntityPowderKeg k=(TileEntityPowderKeg)w.getTileEntity(x, y, z);
+    public boolean explode(World w,BlockPos pos){
+    	if(w.getTileEntity(pos)!=null&&w.getTileEntity(pos) instanceof TileEntityPowderKeg){
+    		TileEntityPowderKeg k=(TileEntityPowderKeg)w.getTileEntity(pos);
     		if(k.getStackInSlot(0)==null)
     			return false;
     		if(!w.isRemote){
 	    		float strenght=(float)k.getStackInSlot(0).stackSize/1.5F;
 	    		k.setInventorySlotContents(0, null);
-	    		w.setBlockToAir(x, y, z);
-	    		w.createExplosion(null, (double)x+.5, (double)y+.5, (double)z+.5, strenght, true);
+	    		w.setBlockToAir(pos);
+	    		w.createExplosion(null, (double)pos.getX()+.5, (double)pos.getY()+.5, (double)pos.getZ()+.5, strenght, true);
 	    	}
     		return true;
     	}

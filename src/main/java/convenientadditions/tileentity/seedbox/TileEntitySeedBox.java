@@ -19,15 +19,16 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IConfigurable {
 
-	public HashMap<ForgeDirection, Boolean> outletSides=new HashMap<ForgeDirection, Boolean>();
+	public HashMap<EnumFacing, Boolean> outletSides=new HashMap<EnumFacing, Boolean>();
 	
 	public TileEntitySeedBox() {
 		super();
-		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
-			outletSides.put(f, (f!=ForgeDirection.DOWN?false:true));
+		for(EnumFacing f:EnumFacing.VALUES){
+			outletSides.put(f, (f!=EnumFacing.DOWN?false:true));
 		}
 	}
 	
@@ -37,7 +38,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 		if(nbt.hasKey("OUTLET")){
 			byte in=nbt.getByte("OUTLET");
 			MathHelper.Bitmask mask=new MathHelper.Bitmask(in);
-			for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+			for(EnumFacing f:EnumFacing.VALUES){
 				outletSides.put(f,mask.getBit(f.ordinal()));
 			}
 		}
@@ -47,7 +48,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	public void writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		MathHelper.Bitmask mask=new MathHelper.Bitmask(0);
-		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+		for(EnumFacing f:EnumFacing.VALUES){
 			mask.setBit(f.ordinal(), outletSides.get(f));
 		}
 		nbt.setByte("OUTLET", (byte)mask.get());
@@ -68,7 +69,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	}
 
 	@Override
-	public boolean configureSide(ForgeDirection f) {
+	public boolean configureSide(EnumFacing f) {
 		this.outletSides.put(f, !outletSides.get(f));
 		this.markDirty();
 		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
@@ -102,15 +103,15 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
     {
         if (itemStack != null && itemStack.stackSize > 0)
         {
-        	List<ForgeDirection> outputs=getValidOutputDirections();
+        	List<EnumFacing> outputs=getValidOutputDirections();
         	if(outputs.size()>0){
-        		ForgeDirection output=(ForgeDirection) outputs.toArray()[new Random().nextInt(outputs.size())];
+        		EnumFacing output=(EnumFacing) outputs.toArray()[new Random().nextInt(outputs.size())];
 	        	CAEntitySpecialItem item=new CAEntitySpecialItem(this.worldObj,this.xCoord+0.5+(output.offsetX*0.8),this.yCoord+0.5+(output.offsetY*0.8),this.zCoord+0.5+(output.offsetZ*0.8),itemStack);
 	        	for(long b:SeedBoxItemBehaviourRegistry.getItemBehaviour(itemStack)){
 	        		item.addBehaviour(b);
 	        	}
 	        	item.setVelocity(0d, 0d, 0d);
-	        	item.delayBeforeCanPickup=20;
+	        	item.setPickupDelay(20);
 	            this.worldObj.spawnEntityInWorld(item);
 	            item.updateBehaviours();
         	}
@@ -150,12 +151,12 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
-		return !isOutput(ForgeDirection.getOrientation(side))?new int[]{0}:new int[]{};
+		return !isOutput(EnumFacing.getOrientation(side))?new int[]{0}:new int[]{};
 	}
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack stack,int side) {
-		return !isOutput(ForgeDirection.getOrientation(side))&&getValidOutputDirections().size()>0;
+		return !isOutput(EnumFacing.getOrientation(side))&&getValidOutputDirections().size()>0;
 	}
 
 	@Override
@@ -163,18 +164,18 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 		return false;
 	}
 	
-	public boolean isOutput(ForgeDirection f){
+	public boolean isOutput(EnumFacing f){
 		return this.outletSides.get(f);
 	}
 	
-	public boolean canOutput(ForgeDirection f){
+	public boolean canOutput(EnumFacing f){
 		int x=xCoord+f.offsetX,y=yCoord+f.offsetY,z=zCoord+f.offsetZ;
 		return isOutput(f)&&!worldObj.getBlock(x,y,z).isBlockSolid(worldObj, x,y,z, f.getOpposite().ordinal());
 	}
 	
-	public List<ForgeDirection> getValidOutputDirections(){
-		ArrayList<ForgeDirection> ret=new ArrayList<ForgeDirection>();
-		for(ForgeDirection f:ForgeDirection.VALID_DIRECTIONS){
+	public List<EnumFacing> getValidOutputDirections(){
+		ArrayList<EnumFacing> ret=new ArrayList<EnumFacing>();
+		for(EnumFacing f:EnumFacing.VALUES){
 			if(canOutput(f))
 				ret.add(f);
 		}

@@ -34,6 +34,5 @@ public class ModThaumcraftAspects {
 		//
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.itemCompost), new AspectList().add(Aspect.EARTH,1));
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.itemFertilizer), new AspectList().add(Aspect.PLANT,1));
-		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.itemRedstonePulseEmitter), new AspectList().add(Aspect.ENERGY,4).add(Aspect.METAL,2).add(Aspect.MECHANISM,2).add(Aspect.AURA, 2));
 	}
 }

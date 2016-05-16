@@ -5,25 +5,27 @@ import convenientadditions.Reference;
 import convenientadditions.tileentity.TileEntityComposter;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class BlockComposter extends BlockContainer {
 
 	public BlockComposter() {
 		super(Material.wood);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeWood).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
-		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName+"Block");
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeWood).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if (world.getTileEntity(x, y, z) instanceof TileEntityComposter && !player.isSneaking())
+        if (world.getTileEntity(pos) instanceof TileEntityComposter && !player.isSneaking())
         {
-        	TileEntityComposter t=(TileEntityComposter)world.getTileEntity(x, y, z);
+        	TileEntityComposter t=(TileEntityComposter)world.getTileEntity(pos);
         	ItemStack c=player.inventory.getStackInSlot(player.inventory.currentItem);
         	if(c!=null){
         		if(t.getContentValue(c)>0)
@@ -39,12 +41,6 @@ public class BlockComposter extends BlockContainer {
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TileEntityComposter();
 	}
-
-    @Override
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
 
     @Override
     public int getRenderType()

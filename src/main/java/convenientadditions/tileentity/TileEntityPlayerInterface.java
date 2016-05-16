@@ -10,6 +10,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ITickable;
 
 public class TileEntityPlayerInterface extends TileEntity implements IInventory, ITickable {
@@ -25,12 +26,12 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 	
 	@Override
 	public void update(){
-		boolean t=hasTarget();
+		/*boolean t=hasTarget();
 		int m=worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
 		if(t&&m!=1)
 			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 3);
 		else if(!t&&m==1)
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);
+			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);*/
 	}
 
 	@Override
@@ -51,38 +52,20 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 			return null;
 	}
 
-	@Override
+	/*@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		InventoryPlayer p=getPlayerInventory();
 		if(p!=null)
 			return p.getStackInSlotOnClosing(slot);
 		else
 			return null;
-	}
+	}*/
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		InventoryPlayer p=getPlayerInventory();
 		if(p!=null)
 			p.setInventorySlotContents(slot, stack);
-	}
-
-	@Override
-	public String getInventoryName() {
-		InventoryPlayer p=getPlayerInventory();
-		if(p!=null)
-			return p.getInventoryName();
-		else
-			return "inventory."+ConvenientAdditionsMod.MODID+":"+Reference.playerInterfaceBlockName+".name";
-	}
-
-	@Override
-	public boolean hasCustomInventoryName() {
-		InventoryPlayer p=getPlayerInventory();
-		if(p!=null)
-			return p.hasCustomInventoryName();
-		else
-			return false;
 	}
 
 	@Override
@@ -105,20 +88,6 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 	}
 
 	@Override
-	public void openInventory() {
-		InventoryPlayer p=getPlayerInventory();
-		if(p!=null)
-			p.openInventory();
-	}
-
-	@Override
-	public void closeInventory() {
-		InventoryPlayer p=getPlayerInventory();
-		if(p!=null)
-			p.closeInventory();
-	}
-
-	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		InventoryPlayer p=getPlayerInventory();
 		if(p!=null)
@@ -128,7 +97,7 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 	}
 
 	public InventoryPlayer getPlayerInventory(){
-		List<EntityPlayer> l=this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord+1, zCoord, xCoord+1, yCoord+2, zCoord+1));
+		List<EntityPlayer> l=this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY()+1, pos.getZ(), pos.getX()+1, pos.getY()+2, pos.getZ()+1));
 		if(l.size()>0)
 			return l.get(0).inventory;
 		else
@@ -136,6 +105,64 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 	}
 	
 	public boolean hasTarget(){
-		return this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord+1, zCoord, xCoord+1, yCoord+2, zCoord+1)).size()>0;
+		return this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY()+1, pos.getZ(), pos.getX()+1, pos.getY()+2, pos.getZ()+1)).size()>0;
+	}
+
+	@Override
+	public String getName() {
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			return p.getName();
+		else
+			return "inventory."+ConvenientAdditionsMod.MODID+":"+Reference.playerInterfaceBlockName+".name";
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			return p.hasCustomName();
+		else
+			return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		return null;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {}
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -8,14 +8,12 @@ import convenientadditions.block.BlockComposter;
 import convenientadditions.block.BlockPlayerInterface;
 import convenientadditions.block.BlockPowderKeg;
 import convenientadditions.block.BlockProximitySensor;
-import convenientadditions.block.BlockRedstonePulse;
 import convenientadditions.block.BlockSeedBox;
 import convenientadditions.block.BlockTempLight;
 import convenientadditions.block.BlockTitaniumOre;
 import convenientadditions.block.charge.BlockChargeAccumulator;
 import convenientadditions.block.charge.BlockChargeTube;
 import convenientadditions.block.charge.BlockSunlightCollector;
-import convenientadditions.block.item.ItemBlockChargeTube;
 import convenientadditions.block.item.ItemBlockCompostSoil;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -30,7 +28,6 @@ public class ModBlocks
     public static final BlockPlayerInterface playerInterfaceBlock = new BlockPlayerInterface();
     public static final BlockProximitySensor proximitySensorBlock = new BlockProximitySensor();
     public static final BlockTempLight tempLightBlock = new BlockTempLight(.5F);
-    public static final BlockRedstonePulse redstonePulseBlock = new BlockRedstonePulse();
     public static final BlockSunlightCollector sunlightCollectorBlock = new BlockSunlightCollector();
     public static final BlockChargeAccumulator chargeAccumulatorBlock = new BlockChargeAccumulator();
     public static final BlockChargeTube chargeTubeBlock = new BlockChargeTube();
@@ -45,11 +42,9 @@ public class ModBlocks
         GameRegistry.registerBlock(playerInterfaceBlock,Reference.playerInterfaceBlockName);
         GameRegistry.registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
         GameRegistry.registerBlock(tempLightBlock,Reference.tempLightBlockName);
-        GameRegistry.registerBlock(redstonePulseBlock,Reference.redstonePulseBlockName);
         GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
         GameRegistry.registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
         GameRegistry.registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
         GameRegistry.registerBlock(compostSoilBlock,ItemBlockCompostSoil.class,Reference.compostSoilBlockName);
-        GameRegistry.registerBlock(chargeTubeBlock,ItemBlockChargeTube.class,Reference.chargeTubeBlockName);
     }
 }

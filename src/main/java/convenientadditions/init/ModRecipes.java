@@ -94,14 +94,6 @@ public class ModRecipes {
 			    'h', Blocks.hopper,
 			    'p', "plankWood",
 			    't', "ingotTitanium"));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemRedstonePulseEmitter),
-				"e",
-				"r",
-			    "t",
-			    't', "ingotTitanium",
-			    'r', Blocks.redstone_torch,
-			    'e', Items.ender_pearl));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
 				"tpt",

@@ -9,10 +9,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -22,14 +25,15 @@ public class BlockCompostSoil extends Block {
 
 	public BlockCompostSoil() {
 		super(Material.ground);
-		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 	
 	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
+	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable)
     {
-        Block plant = plantable.getPlant(world, x, y + 1, z);
-        EnumPlantType plantType = plantable.getPlantType(world, x, y + 1, z);
+		BlockPos plantPos = new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
+        IBlockState plant = plantable.getPlant(world, plantPos);
+        EnumPlantType plantType = plantable.getPlantType(world, plantPos);
 
         if (plantable instanceof BlockBush)
             return true;
@@ -43,10 +47,10 @@ public class BlockCompostSoil extends Block {
             case Plains: return true;
             case Water:  return false;
             case Beach:
-                boolean hasWater = (world.getBlock(x - 1, y, z    ).getMaterial() == Material.water ||
-                                    world.getBlock(x + 1, y, z    ).getMaterial() == Material.water ||
-                                    world.getBlock(x,     y, z - 1).getMaterial() == Material.water ||
-                                    world.getBlock(x,     y, z + 1).getMaterial() == Material.water);
+                boolean hasWater = (world.getBlockState(pos.east()).getBlock().getMaterial() == Material.water ||
+                world.getBlockState(pos.west()).getBlock().getMaterial() == Material.water ||
+                world.getBlockState(pos.north()).getBlock().getMaterial() == Material.water ||
+                world.getBlockState(pos.south()).getBlock().getMaterial() == Material.water);
                 return hasWater;
         }
 
@@ -54,7 +58,7 @@ public class BlockCompostSoil extends Block {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
     {
     	ItemStack current=player.inventory.getStackInSlot(player.inventory.currentItem);
     	if(current==null||!(current.getItem() instanceof ItemHoe))
@@ -73,9 +77,9 @@ public class BlockCompostSoil extends Block {
     {
         return true;
     }
-	
+
 	@Override
-	public void updateTick(World world,int x,int y,int z,Random r){
+	public void updateTick(World world,BlockPos pos,IBlockState state,Random r){
 		if(!world.isRemote){
 			Block b=world.getBlock(x,y+1,z);
 			int meta=world.getBlockMetadata(x, y, z);

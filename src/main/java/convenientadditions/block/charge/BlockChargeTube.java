@@ -19,20 +19,13 @@ public class BlockChargeTube extends BlockMachine {
 
 	public BlockChargeTube() {
 		super(Material.rock);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargeTubeBlockName).setHardness(1F).setResistance(1F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
-		.setBlockTextureName(ConvenientAdditionsMod.MODID+":"+Reference.chargeTubeBlockName+"Block");
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargeTubeBlockName).setHardness(1F).setResistance(1F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TileEntityChargeTube();
 	}
-
-    @Override
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
 
     @Override
     public int getRenderType()

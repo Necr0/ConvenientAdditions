@@ -3,6 +3,8 @@ package convenientadditions.api.util;
 import convenientadditions.Reference;
 import convenientadditions.api.item.charge.IChargeable;
 import convenientadditions.api.item.charge.ISunlightChargeable;
+import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.BlockWorkbench;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
@@ -104,8 +106,9 @@ public class EnchantmentUtil {
     {
         try
         {
-            net.minecraftforge.common.util.EnumHelper.setFailsafeFieldValue(enchantmentSetter, null,
-                com.google.common.collect.ObjectArrays.concat(Enchantment.enchantmentsList, enchantment));
+        	Enchantment.addToBookList(enchantment);
+            //net.minecraftforge.common.util.EnumHelper.setFailsafeFieldValue(enchantmentSetter, null,
+            //    com.google.common.collect.ObjectArrays.concat(Enchantment.enchantmentsList, enchantment));
         }
         catch (Exception e)
         {

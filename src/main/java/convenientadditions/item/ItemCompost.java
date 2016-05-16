@@ -8,6 +8,7 @@ import convenientadditions.Reference;
 import convenientadditions.api.item.IModelResourceLocationProvider;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -48,7 +49,7 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
 			}
 			itemStack.stackSize--;
 		}
-		world.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), Blocks.grass.stepSound.getStepResourcePath(), (Blocks.grass.stepSound.getVolume() + 1.0F) / 2.0F, Blocks.grass.stepSound.getPitch() * 0.8F);
+        world.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), Blocks.grass.stepSound.getStepSound(), (Blocks.grass.stepSound.getVolume() + 1.0F) / 2.0F, Blocks.grass.stepSound.getFrequency() * 0.8F);
 		return true;
     }
     

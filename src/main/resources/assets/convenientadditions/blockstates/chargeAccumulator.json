@@ -1,0 +1,53 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "end": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_end",
+            "side": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_side_1"
+        },
+        "model": "convenientadditions:blocks/cube"
+    },
+	"variants": {
+        "chargeLevel": {
+            0: {
+                "textures": {
+                    "side": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_side_0"
+                }
+            },
+            1: {
+                "textures": {
+                    "side": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_side_1"
+                }
+            },
+            2: {
+                "textures": {
+                    "side": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_side_2"
+                }
+            },
+            3: {
+                "textures": {
+                    "side": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_side_3"
+                }
+            }
+        },
+        "outletNorth":{
+            true:{textures": {"north": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_outlet"}}
+        },
+        "outletEast":{
+            true:{textures": {"east": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_outlet"}}
+        },
+        "outletSouth":{
+            true:{textures": {"south": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_outlet"}}
+        },
+        "outletWest":{
+            true:{textures": {"west": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_outlet"}}
+        },
+        "outletTop":{
+            true:{textures": {"top": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_outlet"}}
+        },
+        "outletBottom":{
+            true:{textures": {"bottom": "convenientadditions:blocks/chargeAccumulator/chargeAccumulator_outlet"}}
+        }
+    }
+}
+    

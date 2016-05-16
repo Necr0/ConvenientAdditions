@@ -11,7 +11,10 @@ import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModThaumcraftAspects;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemBlock;
@@ -47,7 +50,6 @@ public class ConvenientAdditionsMod
 		public Item getTabIconItem() {
 			return ItemBlock.getItemFromBlock(ModBlocks.playerInterfaceBlock);
 		}
-		
 	};
     
     @EventHandler

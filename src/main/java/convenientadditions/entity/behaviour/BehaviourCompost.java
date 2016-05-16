@@ -1,5 +1,7 @@
 package convenientadditions.entity.behaviour;
 
+import java.util.Random;
+
 import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
@@ -24,19 +26,21 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 	@Override
 	public void onItemEntityUpdate(EntityItem item) {
 		World w=item.worldObj;
-		int x=MathHelper.floor_double(item.posX),y=MathHelper.floor_double(item.posY)-1,z=MathHelper.floor_double(item.posZ);
+		BlockPos pos=new BlockPos(MathHelper.floor_double(item.posX),MathHelper.floor_double(item.posY)-1,MathHelper.floor_double(item.posZ));
+		Block b=item.worldObj.getBlockState(new BlockPos(pos)).getBlock();
 		if(item.onGround){
+			if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&METADATA!=0)))
+	    		return false;
 			Item i=item.getEntityItem().getItem();
-			Block b=item.worldObj.getBlockState(new BlockPos(x, y, z)).getBlock();
 			EnumFacing up=EnumFacing.UP;
 			if(i!=ModItems.itemCompost)
 				return;
 			if(b==Blocks.dirt||b==Blocks.grass)
-				w.setBlock(x, y, z, ModBlocks.compostSoilBlock, 0, 2);
+				w.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(0), 2);
 			else if(b==Blocks.farmland)
-				w.setBlock(x, y, z, ModBlocks.compostSoilTilledBlock, 0, 2);
+				w.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(0), 2);
 			else if((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&w.getBlockMetadata(x, y, z)!=0)
-				w.setBlockMetadataWithNotify(x, y, z, 0, 2+4);
+				w.setBlockState(pos, b.getStateFromMeta(0), 2+4);
 			else
 				return;
 			item.getEntityItem().stackSize--;

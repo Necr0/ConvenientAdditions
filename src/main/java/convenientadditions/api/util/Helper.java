@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 
@@ -20,7 +21,8 @@ public class Helper {
 			w.spawnEntityInWorld(e);
 	}
 	
-	public static boolean checkForFire(World world,int x,int y,int z){
+	public static boolean checkForFire(IBlockAccess world,BlockPos pos){
+		int x=pos.getX(),y=pos.getY(),z=pos.getZ();
     	return world.getBlockState(new BlockPos(x+1, y, z)).getBlock()==Blocks.fire||
     			world.getBlockState(new BlockPos(x, y+1, z)).getBlock()==Blocks.fire||
 				world.getBlockState(new BlockPos(x, y, z+1)).getBlock()==Blocks.fire||
