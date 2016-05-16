@@ -1,5 +1,30 @@
 {
-	"variants": {
-		"normal": { "model": "convenientadditions:seedBox" }
-	}
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "all": "convenientadditions:blocks/seedBox/seedBox"
+        },
+        "model": "convenientadditions:blocks/cube"
+    },
+    "variants": {
+        "outletNorth":{
+            true:{textures": {"north": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        },
+        "outletEast":{
+            true:{textures": {"east": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        },
+        "outletSouth":{
+            true:{textures": {"south": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        },
+        "outletWest":{
+            true:{textures": {"west": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        },
+        "outletTop":{
+            true:{textures": {"top": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        },
+        "outletBottom":{
+            true:{textures": {"bottom": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        }
+    }
 }
+    
