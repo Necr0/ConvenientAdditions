@@ -11,6 +11,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IChatComponent;
 
 public class TileEntityPowderKeg extends TileEntity implements IInventory {
 
@@ -40,13 +41,13 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbt);
+		return new S35PacketUpdateTileEntity(pos, 0, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		readFromNBT(pkt.func_148857_g());
+		readFromNBT(pkt.getNbtCompound());
 	}
 	
 	@Override
@@ -82,7 +83,7 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
         return itemStack;
     }
 
-    @Override
+    /*@Override
     public ItemStack getStackInSlotOnClosing(int slotIndex)
     {
         if (inventory[slotIndex] != null)
@@ -95,7 +96,7 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
         {
             return null;
         }
-    }
+    }*/
 
     @Override
     public void setInventorySlotContents(int slotIndex, ItemStack itemStack)
@@ -109,16 +110,16 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
 
 
         this.markDirty();
-        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        worldObj.markBlockForUpdate(pos);
     }
     
 	@Override
-	public String getInventoryName() {
+	public String getName() {
 		return "inventory."+ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName+".name";
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean hasCustomName() {
 		return false;
 	}
 
@@ -133,14 +134,56 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public void openInventory() {}
-
-	@Override
-	public void closeInventory() {}
-
-	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
 		return itemStack.getItem()==Items.gunpowder&&!itemStack.hasTagCompound()&&itemStack.getItemDamage()==0;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -2,12 +2,13 @@ package convenientadditions.block.charge;
 
 import java.util.ArrayList;
 
-import cofh.api.block.IDismantleable;
 import convenientadditions.api.block.BlockConfigurable;
+import convenientadditions.api.block.IDismantleable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public abstract class BlockMachineConfigurable extends BlockConfigurable implements IDismantleable {
@@ -17,17 +18,17 @@ public abstract class BlockMachineConfigurable extends BlockConfigurable impleme
 	}
 
 	@Override
-	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player,World world, int x, int y, int z, boolean returnDrops) {
+	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player,World world, BlockPos pos, boolean returnDrops) {
 		ItemStack stack=new ItemStack(this);
-		world.spawnEntityInWorld(new EntityItem(world, x+.5, y+.5, z+.5, stack));
+		world.spawnEntityInWorld(new EntityItem(world, pos.getX()+.5, pos.getY()+.5, pos.getY()+.5, stack));
 		ArrayList<ItemStack> arr=new ArrayList<ItemStack>();
 		arr.add(stack);
-		world.setBlockToAir(x, y, z);
+		world.setBlockToAir(pos);
 		return arr;
 	}
 
 	@Override
-	public boolean canDismantle(EntityPlayer player, World world, int x, int y,int z) {
+	public boolean canDismantle(EntityPlayer player, World world, BlockPos pos) {
 		return true;
 	}
 

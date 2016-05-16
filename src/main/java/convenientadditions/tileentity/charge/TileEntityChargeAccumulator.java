@@ -3,6 +3,7 @@ package convenientadditions.tileentity.charge;
 import convenientadditions.api.tileentity.charge.ISidedChargeAcceptor;
 import convenientadditions.api.tileentity.charge.ISidedChargeDistributor;
 import convenientadditions.api.tileentity.charge.TileEntityChargeDistributorConfigurable;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityChargeAccumulator extends TileEntityChargeDistributorConfigurable implements ISidedChargeDistributor, ISidedChargeAcceptor {
 
@@ -11,12 +12,12 @@ public class TileEntityChargeAccumulator extends TileEntityChargeDistributorConf
 	}
 
 	@Override
-	public int getChargeAcceptionRate(ForgeDirection f) {
+	public int getChargeAcceptionRate(EnumFacing f) {
 		return 256;
 	}
 
 	@Override
-	public boolean isAcceptingCharge(ForgeDirection f) {
+	public boolean isAcceptingCharge(EnumFacing f) {
 		return !isDistributingCharge(f);
 	}
 

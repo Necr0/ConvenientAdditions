@@ -30,7 +30,7 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 		Block b=item.worldObj.getBlockState(new BlockPos(pos)).getBlock();
 		if(item.onGround){
 			if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&METADATA!=0)))
-	    		return false;
+	    		return;
 			Item i=item.getEntityItem().getItem();
 			EnumFacing up=EnumFacing.UP;
 			if(i!=ModItems.itemCompost)
@@ -39,7 +39,7 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 				w.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(0), 2);
 			else if(b==Blocks.farmland)
 				w.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(0), 2);
-			else if((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&w.getBlockMetadata(x, y, z)!=0)
+			else if((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&w.getBlockMetadata()!=0)
 				w.setBlockState(pos, b.getStateFromMeta(0), 2+4);
 			else
 				return;

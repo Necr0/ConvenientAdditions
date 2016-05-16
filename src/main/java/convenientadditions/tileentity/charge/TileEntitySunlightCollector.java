@@ -1,6 +1,7 @@
 package convenientadditions.tileentity.charge;
 
 import convenientadditions.api.tileentity.charge.TileEntityChargeDistributor;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
@@ -19,7 +20,7 @@ public class TileEntitySunlightCollector extends TileEntityChargeDistributor imp
 		super.update();
 		if(this.worldObj.isRemote)
 			return;
-    	if(this.worldObj.isDaytime() && !this.worldObj.isRaining() && this.worldObj.canBlockSeeTheSky(this.xCoord,this.yCoord+1,this.zCoord)){
+    	if(this.worldObj.isDaytime() && !this.worldObj.isRaining() && this.worldObj.canBlockSeeSky(new BlockPos(pos.getX(), pos.getY(), pos.getZ()))){
     		this.fillCharge(32);
     	}
 	}

@@ -22,6 +22,8 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ITickable;
 
 public class TileEntityComposter extends TileEntity implements IInventory, ITickable {
@@ -67,16 +69,16 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 					progress=0;
 					content-=progressContent;
 					EntityItem item=null;
-					Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemCompost,1,this.spores?1:0));
+					Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemCompost,1,this.spores?1:0));
 					switch(rnd.nextInt(6)){
 						case 0:
-							Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemDirtChunk));
+							Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemDirtChunk));
 							break;
 						case 1:
-							Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemDirtChunk));
+							Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemDirtChunk));
 							break;
 						case 2:
-							Helper.spawnItemInPlace(worldObj, (double)xCoord+.5, (double)yCoord+1.2, (double)zCoord+.5, new ItemStack(ModItems.itemFertilizer));
+							Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemFertilizer));
 							break;
 						default:
 							break;
@@ -85,7 +87,7 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 						this.spores=false;
 				}
 				if(content>=capacity){
-					List<EntityPlayer> players=worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord-2, yCoord-2, zCoord-2, xCoord+3, yCoord+3, zCoord+3));
+					List<EntityPlayer> players=worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX()-2, pos.getY()-2, pos.getZ()-2, pos.getX()+3, pos.getY()+3, pos.getZ()+3));
 					for(EntityPlayer p:players){
 						switch(rnd.nextInt(120)){
 							case 0:
@@ -97,7 +99,7 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 					}
 				}
 				this.markDirty();
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				worldObj.markBlockForUpdate(pos);
 			}else{
 				this.progress=0;
 				if(this.content==0)
@@ -105,14 +107,14 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 				if(processing){
 					this.processing=false;
 					this.markDirty();
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+					worldObj.markBlockForUpdate(pos);
 				}
 			}
 		}else if(processing){
 			if(rnd.nextInt(10)==0)
-				worldObj.spawnParticle("mobSpell", xCoord+.5-((double)(rnd.nextInt(9)-4)/10D), yCoord+.2+(double)content/(double)capacity*.75, zCoord+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
+				worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX()+.5-((double)(rnd.nextInt(9)-4)/10D), pos.getY()+.2+(double)content/(double)capacity*.75, pos.getZ()+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
 			if(content>=capacity)
-				worldObj.spawnParticle("mobSpell", xCoord+.5-((double)(rnd.nextInt(9)-4)/10D), yCoord+.2+(double)content/(double)capacity*.75, zCoord+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
+				worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX()+.5-((double)(rnd.nextInt(9)-4)/10D), pos.getY()+.2+(double)content/(double)capacity*.75, pos.getZ()+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
 		}
 	}
 	
@@ -121,13 +123,13 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbt);
+		return new S35PacketUpdateTileEntity(pos, 0, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		readFromNBT(pkt.func_148857_g());
+		readFromNBT(pkt.getNbtCompound());
 	}
 	
 	@Override
@@ -147,31 +149,25 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int slotIndex)
-    {
-        return null;
-    }
-
-    @Override
     public void setInventorySlotContents(int slotIndex, ItemStack itemStack)
     {
     	this.content+=getContentValue(itemStack);
     	this.processing=(content>=progressContent);
-    	if(itemStack.getItem() instanceof ICompostable &&  ((ICompostable)itemStack.getItem()).hasShroomSpores(itemStack))
+    	if(itemStack.getItem() instanceof ICompostable && ((ICompostable)itemStack.getItem()).hasShroomSpores(itemStack))
     		this.spores=true;
     	else if(itemStack.getItem()==Items.mushroom_stew||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.red_mushroom)||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.brown_mushroom))
     		this.spores=true;
         this.markDirty();
-        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        worldObj.markBlockForUpdate(pos);
     }
     
 	@Override
-	public String getInventoryName() {
+	public String getName() {
 		return "inventory."+ConvenientAdditionsMod.MODID+":Composter.name";
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean hasCustomName() {
 		return false;
 	}
 
@@ -186,17 +182,59 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 	}
 
 	@Override
-	public void openInventory() {}
-
-	@Override
-	public void closeInventory() {}
-
-	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
 		return content<capacity&&getContentValue(itemStack)>0;
 	}
 	
 	public int getContentValue(ItemStack itemStack){
 		return CompostRegistry.getCompostingMass(itemStack);
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 }

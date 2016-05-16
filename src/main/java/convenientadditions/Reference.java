@@ -64,8 +64,11 @@ public class Reference {
     //
     public static final int enchantmentIdBase=133;
     public static final int enchantmentChargeEfficiencyId=0;
+    public static final String enchantmentChargeEfficiencyName="chargeEfficiency";
     public static final int enchantmentCapacityId=1;
+    public static final String enchantmentCapacityName="capacity";
     public static final int enchantmentDrainId=2;
+    public static final String enchantmentDrainName="drain";
     //
     //
     public static final int titaniumPerCluster=4;

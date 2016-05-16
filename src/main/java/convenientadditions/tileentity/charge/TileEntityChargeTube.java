@@ -6,15 +6,16 @@ import convenientadditions.api.tileentity.charge.TileEntityChargeDistributor;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 
-public class TileEntityChargeTube extends TileEntityChargeDistributor implements ISidedChargeAcceptor {
+public class TileEntityChargeTube extends TileEntityChargeDistributor implements ISidedChargeAcceptor,ITickable {
 
 	public TileEntityChargeTube() {
 		super(256, 128);
 	}
 	
 	@Override
-	public void updateEntity(){
+	public void update(){
 		for(EnumFacing f:EnumFacing.VALUES){
 			if(isDistributingCharge(f)&&getChargeDistrubutionRate(f)>0){
 				tryPush(f);

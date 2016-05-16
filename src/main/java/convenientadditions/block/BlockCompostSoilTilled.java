@@ -64,23 +64,24 @@ public class BlockCompostSoilTilled extends Block {
 	@Override
 	public void updateTick(World world,BlockPos pos,IBlockState state,Random r){
 		if(!world.isRemote){
-			Block b=world.getBlock(x,y+1,z);
-			int meta=world.getBlockMetadata(x, y, z);
+	    	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
+			Block b=world.getBlockState(posU).getBlock();
+			int meta=world.getBlockMetadata();
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
-				b.updateTick(world, x, y+1, z, r);
+				b.updateTick(world, posU, world.getBlockState(posU), r);
 				if((r.nextDouble()*3)<=((.2*meta)+3))
-					b.updateTick(world, x, y+1, z, r);
+					b.updateTick(world, posU, world.getBlockState(posU), r);
 			}
 			if(r.nextBoolean()){
 				if(meta<10)
-					world.setBlockMetadataWithNotify(x, y, z, meta+1, 2+4);
+					META++;
 				else{
-					world.setBlock(x, y, z, Blocks.farmland);
+					world.setBlockState(pos, Blocks.farmland.getDefaultState());
 					return;
 				}
 			}
 			if(b.getMaterial().isSolid())
-				world.setBlock(x, y, z, ModBlocks.compostSoilBlock, meta, 2);
+				world.setBlockState(pos, ModBlocks.compostSoilBlock META, 2);
 		}
 	}
 	
@@ -107,33 +108,32 @@ public class BlockCompostSoilTilled extends Block {
     {
         if (!world.isRemote && world.rand.nextFloat() < height - 0.5F)
         {
-            if (!(p_149746_5_ instanceof EntityPlayer) && !p_149746_1_.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+            if (!(entity instanceof EntityPlayer) && !world.getGameRules().getBoolean("mobGriefing"))
             {
                 return;
             }
 
-            p_149746_1_.setBlock(p_149746_2_, p_149746_3_, p_149746_4_, ModBlocks.compostSoilBlock, 0, 3);
+            world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(METADATA), 3);
         }
     }
 	
-	@Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
+    public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state)
     {
-        return AxisAlignedBB.fromBounds((double)(p_149668_2_ + 0), (double)(p_149668_3_ + 0), (double)(p_149668_4_ + 0), (double)(p_149668_2_ + 1), (double)(p_149668_3_ + 1), (double)(p_149668_4_ + 1));
+        return new AxisAlignedBB((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), (double)(pos.getX() + 1), (double)(pos.getY() + 1), (double)(pos.getZ() + 1));
     }
     
     public boolean isOpaqueCube()
     {
         return false;
     }
-    
-    public boolean renderAsNormalBlock()
+
+    public boolean isFullCube()
     {
         return false;
     }
 	
-    public int damageDropped(int p_149692_1_)
+    public int damageDropped(int meta)
     {
-        return p_149692_1_;
+        return meta;
     }
 }

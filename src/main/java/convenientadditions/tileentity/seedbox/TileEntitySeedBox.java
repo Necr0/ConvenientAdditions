@@ -19,7 +19,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
 
 public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IConfigurable {
 
@@ -59,20 +61,20 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 1, nbt);
+		return new S35PacketUpdateTileEntity(pos, 0, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		readFromNBT(pkt.func_148857_g());
+		readFromNBT(pkt.getNbtCompound());
 	}
 
 	@Override
 	public boolean configureSide(EnumFacing f) {
 		this.outletSides.put(f, !outletSides.get(f));
 		this.markDirty();
-		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		this.worldObj.markBlockForUpdate(pos);
 		return true;
 	}
 	
@@ -80,23 +82,6 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	public int getSizeInventory() {
 		return 1;
 	}
-
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return null;
-	}
-
-    @Override
-    public ItemStack decrStackSize(int slotIndex, int decrementAmount)
-    {
-        return null;
-    }
-
-    @Override
-    public ItemStack getStackInSlotOnClosing(int slotIndex)
-    {
-        return null;
-    }
 
     @Override
     public void setInventorySlotContents(int slotIndex, ItemStack itemStack)
@@ -106,7 +91,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
         	List<EnumFacing> outputs=getValidOutputDirections();
         	if(outputs.size()>0){
         		EnumFacing output=(EnumFacing) outputs.toArray()[new Random().nextInt(outputs.size())];
-	        	CAEntitySpecialItem item=new CAEntitySpecialItem(this.worldObj,this.xCoord+0.5+(output.offsetX*0.8),this.yCoord+0.5+(output.offsetY*0.8),this.zCoord+0.5+(output.offsetZ*0.8),itemStack);
+	        	CAEntitySpecialItem item=new CAEntitySpecialItem(this.worldObj,this.pos.getX()+0.5+(output.getFrontOffsetX()*0.8),this.pos.getY()+0.5+(output.getFrontOffsetY()*0.8),this.pos.getZ()+0.5+(output.getFrontOffsetZ()*0.8),itemStack);
 	        	for(long b:SeedBoxItemBehaviourRegistry.getItemBehaviour(itemStack)){
 	        		item.addBehaviour(b);
 	        	}
@@ -119,12 +104,12 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
     }
     
 	@Override
-	public String getInventoryName() {
+	public String getName() {
 		return "inventory."+ConvenientAdditionsMod.MODID+":"+Reference.seedBoxBlockName+".name";
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean hasCustomName() {
 		return false;
 	}
 
@@ -139,17 +124,11 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	}
 
 	@Override
-	public void openInventory() {}
-
-	@Override
-	public void closeInventory() {}
-
-	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
 		return !isOutput(EnumFacing.getOrientation(side))?new int[]{0}:new int[]{};
 	}
@@ -162,15 +141,15 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
 		return false;
-	}
+	}*/
 	
 	public boolean isOutput(EnumFacing f){
 		return this.outletSides.get(f);
 	}
 	
 	public boolean canOutput(EnumFacing f){
-		int x=xCoord+f.offsetX,y=yCoord+f.offsetY,z=zCoord+f.offsetZ;
-		return isOutput(f)&&!worldObj.getBlock(x,y,z).isBlockSolid(worldObj, x,y,z, f.getOpposite().ordinal());
+		BlockPos posF=new BlockPos(pos.getX()+f.getFrontOffsetX(),pos.getY()+f.getFrontOffsetY(),pos.getZ()+f.getFrontOffsetZ());
+		return isOutput(f)&&!worldObj.getBlockState(pos).getBlock().isBlockSolid(worldObj, pos, f.getOpposite());
 	}
 	
 	public List<EnumFacing> getValidOutputDirections(){
@@ -180,5 +159,69 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 				ret.add(f);
 		}
 		return ret;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {return null;}
+
+	@Override
+	public void openInventory(EntityPlayer player) {}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) {
+		return null;
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {return false;}
+
+	@Override
+	public ItemStack getStackInSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ItemStack decrStackSize(int index, int count) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

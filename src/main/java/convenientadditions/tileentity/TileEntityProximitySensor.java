@@ -7,13 +7,13 @@ import net.minecraft.util.ITickable;
 public class TileEntityProximitySensor extends TileEntity implements ITickable {
 	@Override
 	public void update(){
-		int s=getStenght();
+		/*int s=getStenght();
 		int m=worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
 		if(s!=m&&!worldObj.isRemote)
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, s, 3);
+			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, s, 3);*/
 	}
 	
-	public int getStenght(){
+/*	public int getStenght(){
 		boolean power=worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord);
 		EntityPlayer p;
 		if(power)
@@ -39,5 +39,5 @@ public class TileEntityProximitySensor extends TileEntity implements ITickable {
 				break;
 		}
 		return ret;
-	}
+	}*/
 }
