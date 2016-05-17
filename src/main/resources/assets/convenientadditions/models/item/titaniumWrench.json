@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "convenientadditions:items/wrenchTitanium"
+        "layer0": "convenientadditions:items/titaniumWrench"
     }
 }

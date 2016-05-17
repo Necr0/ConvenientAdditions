@@ -18,9 +18,12 @@ import convenientadditions.item.tools.ItemTitaniumSpade;
 import convenientadditions.item.tools.ItemTitaniumSword;
 import convenientadditions.item.tools.ItemTitaniumWrench;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -81,27 +84,27 @@ public class ModItems {
     public static void initModelMeshers()
     {
     	ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-		mesher.register(ingotTitanium,0,new ModelResourceLocation(ingotTitanium.getUnlocalizedName().substring(5)));
-		mesher.register(nuggetTitanium,0,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName().substring(5)));
-		mesher.register(itemDirtChunk,0,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName().substring(5)));
+		registerModelLocation(ingotTitanium,new ModelResourceLocation(ingotTitanium.getUnlocalizedName().substring(5),"inventory"));
+		registerModelLocation(nuggetTitanium,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName().substring(5),"inventory"));
+		registerModelLocation(itemDirtChunk,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName().substring(5),"inventory"));
     	//ttools
-		registerMesh(itemTitaniumPickaxe,itemTitaniumPickaxe.getModelResourceLocation());
-		registerMesh(itemTitaniumAxe,itemTitaniumAxe.getModelResourceLocation());
-		registerMesh(itemTitaniumSpade,itemTitaniumSpade.getModelResourceLocation());
-		registerMesh(itemTitaniumHoe,itemTitaniumHoe.getModelResourceLocation());
-		registerMesh(itemTitaniumSword,itemTitaniumSword.getModelResourceLocation());
-		registerMesh(itemTitaniumWrench,itemTitaniumWrench.getModelResourceLocation());
+		registerModelLocation(itemTitaniumPickaxe,itemTitaniumPickaxe.getModelResourceLocation());
+		registerModelLocation(itemTitaniumAxe,itemTitaniumAxe.getModelResourceLocation());
+		registerModelLocation(itemTitaniumSpade,itemTitaniumSpade.getModelResourceLocation());
+		registerModelLocation(itemTitaniumHoe,itemTitaniumHoe.getModelResourceLocation());
+		registerModelLocation(itemTitaniumSword,itemTitaniumSword.getModelResourceLocation());
+		registerModelLocation(itemTitaniumWrench,itemTitaniumWrench.getModelResourceLocation());
         //misc
-		registerMesh(itemFertilizer,itemFertilizer.getModelResourceLocation());
-		registerMesh(itemCompost,itemCompost.getModelResourceLocation());
-		registerMesh(itemSunstone,itemSunstone.getModelResourceLocation());
-		registerMesh(itemBlazingRock,itemBlazingRock.getModelResourceLocation());
+		registerModelLocation(itemFertilizer,itemFertilizer.getModelResourceLocation());
+		registerModelLocation(itemCompost,itemCompost.getModelResourceLocation());
+		registerModelLocation(itemSunstone,itemSunstone.getModelResourceLocation());
+		registerModelLocation(itemBlazingRock,itemBlazingRock.getModelResourceLocation());
         //baubles
-		registerMesh(itemSunlightRing,itemSunlightRing.getModelResourceLocation());
-		registerMesh(itemSaturationRing,itemSaturationRing.getModelResourceLocation());
-		registerMesh(itemBreathAmulet,itemBreathAmulet.getModelResourceLocation());
-		registerMesh(itemChargingRing,itemChargingRing.getModelResourceLocation());
-		registerMesh(itemFloatingBelt,itemFloatingBelt.getModelResourceLocation());
+		registerModelLocation(itemSunlightRing,itemSunlightRing.getModelResourceLocation());
+		registerModelLocation(itemSaturationRing,itemSaturationRing.getModelResourceLocation());
+		registerModelLocation(itemBreathAmulet,itemBreathAmulet.getModelResourceLocation());
+		registerModelLocation(itemChargingRing,itemChargingRing.getModelResourceLocation());
+		registerModelLocation(itemFloatingBelt,itemFloatingBelt.getModelResourceLocation());
         //goo
     }
     
@@ -112,9 +115,33 @@ public class ModItems {
     	GameRegistry.register(item);
     }
     
-    public static void registerMesh(Item item,ModelResourceLocation location)
+    public static void registerModelLocation(Item item,ModelResourceLocation location)
     {
     	ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
     	mesher.register(item,0,location);
+    }
+    
+    public static void registerIndependentModelLocation(Item item,ModelResourceLocation location)
+    {
+    	ModelLoader.setCustomModelResourceLocation(item, 0, location);
+    }
+    
+    public static void registerModelLocation(Item item,int damage,ModelResourceLocation location)
+    {
+    	ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+    	mesher.register(item,damage,location);
+    }
+    
+    public static class SimpleItemMeshDefinition implements ItemMeshDefinition{
+    	ModelResourceLocation location;
+    	
+    	public SimpleItemMeshDefinition(ModelResourceLocation location){
+    		this.location=location;
+    	}
+    	
+		@Override
+		public ModelResourceLocation getModelLocation(ItemStack stack) {
+			return location;
+		}
     }
 }

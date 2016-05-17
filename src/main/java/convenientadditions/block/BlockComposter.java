@@ -19,7 +19,7 @@ public class BlockComposter extends BlockContainer {
 
 	public BlockComposter() {
 		super(Material.wood);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
     @Override

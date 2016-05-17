@@ -8,7 +8,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public interface IModelResourceLocationProvider {
 	@SideOnly(Side.CLIENT)
 	public default ModelResourceLocation getModelResourceLocation(){
-		System.out.println(((Item)this).getUnlocalizedName().substring(5));
 		return new ModelResourceLocation(((Item)this).getUnlocalizedName().substring(5),"inventory");
 	}
 }
