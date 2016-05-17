@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityPlayerInterface extends TileEntity implements IInventory, ITickable {
 
@@ -126,11 +127,6 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
-		return null;
-	}
-
-	@Override
 	public ItemStack removeStackFromSlot(int index) {
 		// TODO Auto-generated method stub
 		return null;
@@ -163,5 +159,11 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 	public void clear() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

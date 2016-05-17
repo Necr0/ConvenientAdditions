@@ -1,6 +1,7 @@
 package convenientadditions.api.entity.behaviour;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -28,24 +29,26 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 		World w=item.worldObj;
 		int x=MathHelper.floor_double(item.posX),y=MathHelper.floor_double(item.posY)-1,z=MathHelper.floor_double(item.posZ);
 		BlockPos pos=new BlockPos(x, y, z);
-		if(item.onGround&&w.getBlockState(pos).getBlock().isAir(w, new BlockPos(x,y+1,z))){
+		BlockPos pos_e=new BlockPos(x,y+1,z);
+		IBlockState state=w.getBlockState(pos);
+		IBlockState state_e=w.getBlockState(pos_e);
+		if(item.onGround&&state_e.getBlock().isAir(state_e,w, pos_e)){
 			Item i=item.getEntityItem().getItem();
-			Block b=item.worldObj.getBlockState(pos).getBlock();
+			Block b=state.getBlock();
 			EnumFacing up=EnumFacing.UP;
-			BlockPos pos_e=new BlockPos(x,y+1,z);
-			if(i==Items.nether_wart&&b.canSustainPlant(w, pos, up, (IPlantable)Items.nether_wart))
-				w.setBlockState(pos_e, Blocks.nether_wart.getStateFromMeta(0), 2);
-			else if(i==Items.potato&&b.canSustainPlant(w, pos, up, (IPlantable)Items.potato))
-				w.setBlockState(pos_e, Blocks.potatoes.getStateFromMeta(0), 2);
-			else if(i==Items.carrot&&b.canSustainPlant(w, pos, up, (IPlantable)Items.carrot))
-				w.setBlockState(pos_e, Blocks.carrots.getStateFromMeta(0), 2);
-			else if(i==Items.wheat_seeds&&b.canSustainPlant(w, pos, up, (IPlantable)Items.wheat_seeds))
-				w.setBlockState(pos_e, Blocks.wheat.getStateFromMeta(0), 2);
-			else if(i==Items.melon_seeds&&b.canSustainPlant(w, pos, up, (IPlantable)Items.melon_seeds))
-				w.setBlockState(pos_e, Blocks.melon_stem.getStateFromMeta(0), 2);
-			else if(i==Items.pumpkin_seeds&&b.canSustainPlant(w, pos, up, (IPlantable)Items.pumpkin_seeds))
-				w.setBlockState(pos_e, Blocks.pumpkin_stem.getStateFromMeta(0), 2);
-			else if(i==ItemBlock.getItemFromBlock(Blocks.sapling)&&b.canSustainPlant(w, pos, up, (IPlantable)Blocks.sapling))
+			if(i==Items.nether_wart&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.nether_wart))
+				w.setBlockState(pos_e, Blocks.nether_wart.getDefaultState(), 2);
+			else if(i==Items.potato&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.potato))
+				w.setBlockState(pos_e, Blocks.potatoes.getDefaultState(), 2);
+			else if(i==Items.carrot&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.carrot))
+				w.setBlockState(pos_e, Blocks.carrots.getDefaultState(), 2);
+			else if(i==Items.wheat_seeds&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.wheat_seeds))
+				w.setBlockState(pos_e, Blocks.wheat.getDefaultState(), 2);
+			else if(i==Items.melon_seeds&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.melon_seeds))
+				w.setBlockState(pos_e, Blocks.melon_stem.getDefaultState(), 2);
+			else if(i==Items.pumpkin_seeds&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.pumpkin_seeds))
+				w.setBlockState(pos_e, Blocks.pumpkin_stem.getDefaultState(), 2);
+			else if(i==ItemBlock.getItemFromBlock(Blocks.sapling)&&b.canSustainPlant(state,w, pos, up, (IPlantable)Blocks.sapling))
 				w.setBlockState(pos_e, Blocks.sapling.getStateFromMeta(item.getEntityItem().getItemDamage()), 2);
 			else
 				return;

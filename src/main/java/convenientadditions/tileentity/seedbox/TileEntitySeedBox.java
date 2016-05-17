@@ -11,15 +11,18 @@ import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
 import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
 import convenientadditions.entity.specialitem.CAEntitySpecialItem;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
 
 public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IConfigurable {
 
@@ -59,11 +62,11 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(pos, 0, nbt);
+		return new SPacketUpdateTileEntity(this.pos, 0, nbt);
 	}
 	
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
 	{
 		readFromNBT(pkt.getNbtCompound());
 	}
@@ -72,7 +75,8 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	public boolean configureSide(EnumFacing f) {
 		this.outletSides.put(f, !outletSides.get(f));
 		this.markDirty();
-		this.worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
 		return true;
 	}
 	
@@ -193,12 +197,6 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
 		return null;
 	}
@@ -219,6 +217,12 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -2,8 +2,6 @@ package convenientadditions.block;
 
 import java.util.Random;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;

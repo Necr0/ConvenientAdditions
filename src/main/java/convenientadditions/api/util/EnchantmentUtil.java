@@ -5,6 +5,7 @@ import convenientadditions.api.item.charge.IChargeable;
 import convenientadditions.api.item.charge.ISunlightChargeable;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
@@ -24,8 +25,20 @@ public class EnchantmentUtil {
 	public static final double[] enchantmentScaleFactor=new double[]{1,1.4d,1.75d,2.05d,2.3d,2.55d,2.75d,2.9d,3.0d,3.5d};
 	
 	public static abstract class EnchantmentBase extends Enchantment{
-		public EnchantmentBase(int enchantmentId,String name,int enchantmentWeight,EnumEnchantmentType enchantmentType) {
-			super(enchantmentId,new ResourceLocation(name),enchantmentWeight,enchantmentType);
+		//Enchantment(Enchantment.Rarity rarityIn, EnumEnchantmentType typeIn, EntityEquipmentSlot[] slots)
+		public int enchantmentId;
+		public ResourceLocation nameLocation;
+		
+		public EnchantmentBase(int enchantmentId,String name,Enchantment.Rarity rarity,EnumEnchantmentType enchantmentType) {
+			super(rarity,enchantmentType,EntityEquipmentSlot.values());
+			this.enchantmentId=enchantmentId;
+			this.nameLocation=new ResourceLocation(name);
+		}
+		
+		public EnchantmentBase(int enchantmentId,String name,Enchantment.Rarity rarity,EntityEquipmentSlot[] slots,EnumEnchantmentType enchantmentType) {
+			super(rarity,enchantmentType,slots);
+			this.enchantmentId=enchantmentId;
+			this.nameLocation=new ResourceLocation(name);
 		}
 
 	    public boolean canApply(ItemStack stack)
@@ -52,7 +65,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentCapacity extends EnchantmentBase{
 		public EnchantmentCapacity() {
-			super(Reference.enchantmentIdBase+Reference.enchantmentCapacityId, Reference.enchantmentCapacityName, 10, chargable);
+			super(Reference.enchantmentIdBase+Reference.enchantmentCapacityId, Reference.enchantmentCapacityName, Enchantment.Rarity.COMMON, chargable);
 			this.setName("capacity");
 		}
 
@@ -69,7 +82,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentChargeEfficiency extends EnchantmentBase{
 		public EnchantmentChargeEfficiency() {
-			super(Reference.enchantmentIdBase+Reference.enchantmentChargeEfficiencyId, Reference.enchantmentChargeEfficiencyName, 10, chargable);
+			super(Reference.enchantmentIdBase+Reference.enchantmentChargeEfficiencyId, Reference.enchantmentChargeEfficiencyName, Enchantment.Rarity.COMMON, chargable);
 			this.setName("chargeEfficiency");
 		}
 
@@ -81,7 +94,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentDrain extends EnchantmentBase{
 		public EnchantmentDrain() {
-			super(Reference.enchantmentIdBase+Reference.enchantmentDrainId, Reference.enchantmentDrainName, 10, sunlightChargable);
+			super(Reference.enchantmentIdBase+Reference.enchantmentDrainId, Reference.enchantmentDrainName, Enchantment.Rarity.COMMON, sunlightChargable);
 			this.setName("drain");
 		}
 

@@ -7,7 +7,6 @@ import convenientadditions.Reference;
 import convenientadditions.api.util.Helper;
 import convenientadditions.tileentity.TileEntityPowderKeg;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -23,6 +22,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
@@ -95,9 +95,9 @@ public class BlockPowderKeg extends BlockContainer {
 	        	if(current==null){
 	        		if(world.isRemote)
 	        			if(keg.getStackInSlot(0)!=null)	
-	        				player.addChatMessage(new ChatComponentText(keg.getStackInSlot(0).stackSize+I18n.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
+	        				player.addChatMessage(new TextComponentString(keg.getStackInSlot(0).stackSize+I18n.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
 	        			else
-	        				player.addChatMessage(new ChatComponentText("0"+I18n.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
+	        				player.addChatMessage(new TextComponentString("0"+I18n.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
 	        	}else if(!keg.isItemValidForSlot(0, current)){
 	        		if(current.getItem()==Items.flint_and_steel){
 	        			current.damageItem(1, player);

@@ -2,11 +2,12 @@ package convenientadditions.api.item.charge;
 
 import java.util.List;
 
-import convenientadditions.Reference;
 import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 
 public class ItemSunlightChargeable extends ItemChargeable implements ISunlightChargeable {
 
@@ -19,7 +20,7 @@ public class ItemSunlightChargeable extends ItemChargeable implements ISunlightC
 	
 	@Override
 	public int getSunlightChargeRate(ItemStack item,int slot) {
-		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentDrainId+Reference.enchantmentIdBase, item);
+		int lvl=EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.drain, item);
 		double amp=(EnchantmentUtil.enchantmentScaleFactor[lvl]-1)+1;
 		return (int)(chargeRate*amp);
 	}
@@ -33,7 +34,7 @@ public class ItemSunlightChargeable extends ItemChargeable implements ISunlightC
 	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
 	{
 		super.addInformation(item, player, list, par4);
-		list.add(EnumChatFormatting.DARK_GRAY+StatCollector.translateToLocal("tooltip.convenientadditions:sunstoneDrained"));
+		list.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("tooltip.convenientadditions:sunstoneDrained"));
 	}
 	
 	@Override

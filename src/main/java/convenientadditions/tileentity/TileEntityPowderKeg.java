@@ -2,6 +2,7 @@ package convenientadditions.tileentity;
 
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
@@ -9,7 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityPowderKeg extends TileEntity implements IInventory {
 
@@ -39,11 +42,11 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(pos, 0, nbt);
+		return new SPacketUpdateTileEntity(this.pos, 0, nbt);
 	}
 	
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
 	{
 		readFromNBT(pkt.getNbtCompound());
 	}
@@ -108,7 +111,8 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
 
 
         this.markDirty();
-        worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
     }
     
 	@Override
@@ -134,12 +138,6 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
 		return itemStack.getItem()==Items.gunpowder&&!itemStack.hasTagCompound()&&itemStack.getItemDamage()==0;
-	}
-
-	@Override
-	public IChatComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -182,6 +180,11 @@ public class TileEntityPowderKeg extends TileEntity implements IInventory {
 	public void clear() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
+		return null;
 	}
 
 }

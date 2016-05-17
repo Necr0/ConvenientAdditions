@@ -1,12 +1,15 @@
 package convenientadditions.api.registry.compost;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDoublePlant;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class CompostRegistryEntryDoublePlant implements ICompostRegistryEntry{
 
 	@Override
 	public boolean doesMatch(ItemStack stack) {
-		return stack.getItem() instanceof ItemDoublePlant;
+		return stack.getItem() instanceof ItemBlock && Block.getBlockFromItem(stack.getItem()) instanceof BlockDoublePlant;
 	}
 
 	@Override

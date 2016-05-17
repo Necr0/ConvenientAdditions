@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -106,7 +107,7 @@ public class ItemFloatingBelt extends ItemSunlightChargeableBehaviour implements
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:floatingBelt"));
+		list.add(I18n.translateToLocal("tooltip.convenientadditions:floatingBelt"));
 		super.addInformation(stack,player,list,par4);
 	}
 	

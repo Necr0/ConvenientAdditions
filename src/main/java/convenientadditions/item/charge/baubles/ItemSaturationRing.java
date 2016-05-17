@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -73,7 +74,7 @@ public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implemen
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:saturationRing"));
+		list.add(I18n.translateToLocal("tooltip.convenientadditions:saturationRing"));
 		super.addInformation(stack,player,list,par4);
 	}
 	

@@ -6,14 +6,15 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IFuelItem;
 import convenientadditions.api.item.IModelResourceLocationProvider;
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocationProvider {
 	public boolean edible;
@@ -39,18 +40,20 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 		this.behaviours=new ArrayList<Long>();
 	}
 	
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand)
     {
         if(edible)
-        	return super.onItemRightClick(stack, world, player);
+        	return super.onItemRightClick(stack, world, player, hand);
         else if(stack.getItem()==boom){
         	if(!world.isRemote){
         		stack.stackSize--;
         		world.createExplosion(null, player.posX, player.posY+player.eyeHeight-.01d, player.posZ, 1.0f, false);
-        		player.swingItem();
+        		player.swingArm(hand);
         	}
+            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,stack);
         }
-        return stack;
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL,stack);
     }
 	
 	public static final ItemGoo royal=new ItemGoo(Reference.royalGooItemName,Reference.royalGooItemName);
@@ -65,7 +68,7 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 	public static final ItemGoo boom=new ItemGoo(Reference.boomGooItemName,Reference.boomGooItemName);
 	
 	public static void init(){
-		GameRegistry.registerItem(royal,Reference.royalGooItemName);
+		/*GameRegistry.registerItem(royal,Reference.royalGooItemName);
 		GameRegistry.registerItem(kitty,Reference.kittyGooItemName);
 		GameRegistry.registerItem(pink,Reference.pinkGooItemName);
 		GameRegistry.registerItem(stone,Reference.stoneGooItemName);
@@ -82,7 +85,7 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 		undead.setPotionEffect(17, 5, 1, .18f);
 		undead.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sensitivitySunlight"));
 		stone.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("heavy"));
-		boom.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("immunityExplosion"));
+		boom.behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("immunityExplosion"));*/
 	}
 	
 	@Override

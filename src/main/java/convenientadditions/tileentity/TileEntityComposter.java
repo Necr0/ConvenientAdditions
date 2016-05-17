@@ -8,6 +8,7 @@ import convenientadditions.api.item.ICompostable;
 import convenientadditions.api.registry.compost.CompostRegistry;
 import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModItems;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -18,11 +19,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityComposter extends TileEntity implements IInventory, ITickable {
 	
@@ -59,6 +63,7 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 	
 	@Override
 	public void update(){
+		IBlockState state=worldObj.getBlockState(pos);
 		Random rnd=new Random();
 		if(!worldObj.isRemote){
 			if(content>=progressContent){
@@ -89,7 +94,7 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 					for(EntityPlayer p:players){
 						switch(rnd.nextInt(120)){
 							case 0:
-								p.addPotionEffect(new PotionEffect(9, 200, 0));
+								p.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 200, 0));
 								break;
 							default:
 								break;
@@ -97,7 +102,7 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 					}
 				}
 				this.markDirty();
-				worldObj.markBlockForUpdate(pos);
+				this.worldObj.notifyBlockUpdate(pos, state, state, 3);
 			}else{
 				this.progress=0;
 				if(this.content==0)
@@ -105,7 +110,7 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 				if(processing){
 					this.processing=false;
 					this.markDirty();
-					worldObj.markBlockForUpdate(pos);
+					this.worldObj.notifyBlockUpdate(pos, state, state, 3);
 				}
 			}
 		}else if(processing){
@@ -121,11 +126,11 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(pos, 0, nbt);
+		return new SPacketUpdateTileEntity(this.pos, 0, nbt);
 	}
 	
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
 	{
 		readFromNBT(pkt.getNbtCompound());
 	}
@@ -156,7 +161,8 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
     	else if(itemStack.getItem()==Items.mushroom_stew||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.red_mushroom)||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.brown_mushroom))
     		this.spores=true;
         this.markDirty();
-        worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
     }
     
 	@Override
@@ -186,12 +192,6 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 	
 	public int getContentValue(ItemStack itemStack){
 		return CompostRegistry.getCompostingMass(itemStack);
-	}
-
-	@Override
-	public IChatComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -234,5 +234,11 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 	public void clear() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -18,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -45,7 +46,7 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 		if(player.worldObj.isRemote)
 			return;
 		if(getCharge(itemstack)>0){
-			int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentChargeEfficiencyId+Reference.enchantmentIdBase, itemstack);
+			int lvl=EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.chargeEfficiency, itemstack);
 			int maxRemaining=(int)(Reference.chargingRingBaseCharge*EnchantmentUtil.enchantmentScaleFactor[lvl]);
 			int chargeRemaining=Math.min(getCharge(itemstack), maxRemaining/2);
 			IInventory invPlayer=((EntityPlayer)player).inventory;
@@ -97,7 +98,7 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:chargingRing"));
+		list.add(I18n.translateToLocal("tooltip.convenientadditions:chargingRing"));
 		super.addInformation(stack,player,list,par4);
 	}
 	

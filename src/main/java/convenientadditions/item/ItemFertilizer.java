@@ -11,8 +11,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class ItemFertilizer extends Item implements IModelResourceLocationProvider {
@@ -22,7 +25,7 @@ public class ItemFertilizer extends Item implements IModelResourceLocationProvid
 	}
 	
 	@Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
+    public EnumActionResult onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
     	boolean ret=false;
 		IBlockState state=world.getBlockState(pos);
@@ -39,12 +42,14 @@ public class ItemFertilizer extends Item implements IModelResourceLocationProvid
     					grow.grow(world, world.rand, pos, state);
     		}
     	}
-    	return ret;
+    	if(ret)
+    		return EnumActionResult.SUCCESS;
+    	return EnumActionResult.FAIL;
     }
     
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:fertilizer"));
+		list.add(I18n.translateToLocal("tooltip.convenientadditions:fertilizer"));
 	}
 }

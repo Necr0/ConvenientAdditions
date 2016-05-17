@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 
@@ -56,7 +57,8 @@ public abstract class TileEntityChargeDistributorConfigurable extends TileEntity
 	public boolean configureSide(EnumFacing f) {
 		outletSides.put(f, !outletSides.get(f));
 		this.markDirty();
-		this.worldObj.markBlockForUpdate(this.pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
 		return true;
 	}
 	

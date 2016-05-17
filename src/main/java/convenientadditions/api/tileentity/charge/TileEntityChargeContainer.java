@@ -1,9 +1,11 @@
 package convenientadditions.api.tileentity.charge;
 
 import convenientadditions.api.util.MathHelper;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
@@ -34,11 +36,11 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.pos, 1, nbt);
+		return new SPacketUpdateTileEntity(this.pos, 0, nbt);
 	}
 	
 	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
 	{
 		readFromNBT(pkt.getNbtCompound());
 	}
@@ -64,7 +66,8 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=amount;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
 	}
 
 	@Override
@@ -74,7 +77,8 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
     	
 		return ret;
 	}
@@ -86,7 +90,8 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge+amount-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
     	
 		return ret;
 	}
@@ -112,7 +117,8 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=amount;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
 	}
 
 	@Override
@@ -122,7 +128,8 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
     	
 		return ret;
 	}
@@ -134,7 +141,8 @@ public abstract class TileEntityChargeContainer extends TileEntity implements IS
 			this.containedCharge=containedCharge+amount-ret;
 			this.markDirty();
 		}
-    	this.worldObj.markBlockForUpdate(pos);
+		IBlockState state=worldObj.getBlockState(pos);
+		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
     	
 		return ret;
 	}

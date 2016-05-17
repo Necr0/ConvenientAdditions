@@ -1,7 +1,5 @@
 package convenientadditions.block;
 
-import com.sun.javafx.sg.prism.NodeEffectInput.RenderType;
-
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.tileentity.TileEntityComposter;
