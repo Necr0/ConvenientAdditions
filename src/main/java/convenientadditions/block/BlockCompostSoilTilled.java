@@ -15,9 +15,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -29,11 +31,11 @@ public class BlockCompostSoilTilled extends Block {
 
 	public BlockCompostSoilTilled() {
 		super(Material.ground);
-		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilTilledBlockName).setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
+		this.setTickRandomly(true).setHardness(0.5F);
 	}
 	
 	@Override
-	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable)
+	public boolean canSustainPlant(IBlockState state,IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable)
     {
 		BlockPos plantPos = new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
         IBlockState plant = plantable.getPlant(world, plantPos);
@@ -51,11 +53,11 @@ public class BlockCompostSoilTilled extends Block {
             case Plains: return true;
             case Water:  return false;
             case Beach:
-                boolean hasWater = (world.getBlockState(pos.east()).getBlock().getMaterial() == Material.water ||
-                world.getBlockState(pos.west()).getBlock().getMaterial() == Material.water ||
-                world.getBlockState(pos.north()).getBlock().getMaterial() == Material.water ||
-                world.getBlockState(pos.south()).getBlock().getMaterial() == Material.water);
-                return hasWater;
+                boolean hasWater = (world.getBlockState(pos.east()).getMaterial() == Material.water ||
+                world.getBlockState(pos.west()).getMaterial() == Material.water ||
+                world.getBlockState(pos.north()).getMaterial() == Material.water ||
+                world.getBlockState(pos.south()).getMaterial() == Material.water);
+            	return hasWater;
         }
 
         return false;
@@ -79,7 +81,7 @@ public class BlockCompostSoilTilled extends Block {
 				else
 					world.setBlockState(pos, Blocks.farmland.getDefaultState());
 			}
-			if(b.getMaterial().isSolid())
+			if(b.getMaterial(state).isSolid())
 				world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(meta), 2);
 		}
 	}
@@ -97,9 +99,9 @@ public class BlockCompostSoilTilled extends Block {
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public Item getItem(World world, BlockPos pos)
+    public ItemStack getPickBlock(IBlockState state,RayTraceResult target, World world, BlockPos pos,EntityPlayer player)
     {
-        return ItemBlock.getItemFromBlock(ModBlocks.compostSoilBlock);
+        return new ItemStack(ModBlocks.compostSoilBlock);
     }
 	
 	@Override

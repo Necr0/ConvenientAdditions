@@ -14,8 +14,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -25,11 +27,11 @@ public class BlockCompostSoil extends Block {
 
 	public BlockCompostSoil() {
 		super(Material.ground);
-		this.setTickRandomly(true).setHardness(0.5F).setStepSound(soundTypeGravel).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setTickRandomly(true).setHardness(0.5F);
 	}
 	
 	@Override
-	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable)
+	public boolean canSustainPlant(IBlockState state,IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable)
     {
 		BlockPos plantPos = new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
         IBlockState plant = plantable.getPlant(world, plantPos);
@@ -47,29 +49,38 @@ public class BlockCompostSoil extends Block {
             case Plains: return true;
             case Water:  return false;
             case Beach:
-                boolean hasWater = (world.getBlockState(pos.east()).getBlock().getMaterial() == Material.water ||
-                world.getBlockState(pos.west()).getBlock().getMaterial() == Material.water ||
-                world.getBlockState(pos.north()).getBlock().getMaterial() == Material.water ||
-                world.getBlockState(pos.south()).getBlock().getMaterial() == Material.water);
-                return hasWater;
+                boolean hasWater = (world.getBlockState(pos.east()).getMaterial() == Material.water ||
+                world.getBlockState(pos.west()).getMaterial() == Material.water ||
+                world.getBlockState(pos.north()).getMaterial() == Material.water ||
+                world.getBlockState(pos.south()).getMaterial() == Material.water);
+            	return hasWater;
         }
 
         return false;
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ)
     {
     	ItemStack current=player.inventory.getStackInSlot(player.inventory.currentItem);
     	if(current==null||!(current.getItem() instanceof ItemHoe))
         	return false;
     	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
-    	if(world.getBlockState(posU).getBlock().isAir(world, posU)){
+    	IBlockState stateU=world.getBlockState(posU);
+    	if(state.getBlock().isAir(state,world, posU)){
     		if(!world.isRemote){
 				current.damageItem(1, player);
 	    		world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(this.getMetaFromState(state)), 3);
     		}
-            world.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), Blocks.grass.stepSound.getStepSound(), (Blocks.grass.stepSound.getVolume() + 1.0F) / 2.0F, Blocks.grass.stepSound.getFrequency() * 0.8F);
+            world.playSound(
+            		(double)((float)pos.getX() + 0.5F),
+            		(double)((float)pos.getY() + 0.5F),
+            		(double)((float)pos.getZ() + 0.5F),
+            		Blocks.grass.getStepSound().getStepSound(),
+            		SoundCategory.BLOCKS,
+            		(Blocks.grass.getStepSound().getVolume() + 1.0F) / 2.0F,
+            		Blocks.grass.getStepSound().getPitch() * 0.8F,
+            		false);
     	}
     	return true;
     }

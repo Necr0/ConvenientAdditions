@@ -7,8 +7,9 @@ import convenientadditions.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -19,7 +20,6 @@ public class BlockTempLight extends Block {
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.tempLightBlockName)
 		.setLightLevel(intensisty)
 		.setTickRandomly(true);
-		this.setBlockBounds(0, 0, 0, 0, 0, 0);
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class BlockTempLight extends Block {
 	}
 	
 	@Override
-	public boolean isAir(IBlockAccess world,BlockPos pos){
+	public boolean isAir(IBlockState state,IBlockAccess world,BlockPos pos){
 		return true;
 	}
 	
@@ -37,15 +37,24 @@ public class BlockTempLight extends Block {
         return null;
     }
     
-    public boolean isOpaqueCube()
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
+        return EnumBlockRenderType.INVISIBLE;
+    }
+    
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
     
-    public boolean canCollideCheck(int p_149678_1_, boolean p_149678_2_)
+    @Override
+    public boolean canCollideCheck(IBlockState state,boolean hitIfLiquid)
     {
         return false;
     }
     
-    public void dropBlockAsItemWithChance(World p_149690_1_, int p_149690_2_, int p_149690_3_, int p_149690_4_, int p_149690_5_, float p_149690_6_, int p_149690_7_) {}
+    @Override
+    public void dropBlockAsItemWithChance(World worldIn,BlockPos pos,IBlockState state,float chance,int fortune){}
 }

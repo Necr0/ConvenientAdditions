@@ -1,9 +1,9 @@
 package convenientadditions.tileentity.charge;
 
 import convenientadditions.api.tileentity.charge.TileEntityChargeDistributor;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 
 public class TileEntitySunlightCollector extends TileEntityChargeDistributor implements ITickable {
 	public TileEntitySunlightCollector() {

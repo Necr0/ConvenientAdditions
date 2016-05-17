@@ -11,7 +11,7 @@ public class BlockSunlightCollector extends BlockMachine {
 
 	public BlockSunlightCollector() {
 		super(Material.rock);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.sunlightCollectorBlockName).setHardness(2F).setResistance(3F);
 	}
 
 	@Override

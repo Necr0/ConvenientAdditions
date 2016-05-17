@@ -7,6 +7,7 @@ import convenientadditions.Reference;
 import convenientadditions.api.util.Helper;
 import convenientadditions.tileentity.TileEntityPowderKeg;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -18,10 +19,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -30,7 +32,7 @@ public class BlockPowderKeg extends BlockContainer {
 	
 	public BlockPowderKeg() {
 		super(Material.wood);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName).setHardness(2F).setResistance(3F).setStepSound(soundTypeWood).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
 	@Override
@@ -84,9 +86,8 @@ public class BlockPowderKeg extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-
 		ItemStack current=player.inventory.getStackInSlot(player.inventory.currentItem);
     	if (world.getTileEntity(pos) instanceof TileEntityPowderKeg){
         	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(pos);
@@ -94,9 +95,9 @@ public class BlockPowderKeg extends BlockContainer {
 	        	if(current==null){
 	        		if(world.isRemote)
 	        			if(keg.getStackInSlot(0)!=null)	
-	        				player.addChatMessage(new ChatComponentText(keg.getStackInSlot(0).stackSize+StatCollector.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
+	        				player.addChatMessage(new ChatComponentText(keg.getStackInSlot(0).stackSize+I18n.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
 	        			else
-	        				player.addChatMessage(new ChatComponentText("0"+StatCollector.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
+	        				player.addChatMessage(new ChatComponentText("0"+I18n.translateToLocal("message."+ConvenientAdditionsMod.MODID+":gunpowderStored")));
 	        	}else if(!keg.isItemValidForSlot(0, current)){
 	        		if(current.getItem()==Items.flint_and_steel){
 	        			current.damageItem(1, player);
@@ -168,4 +169,10 @@ public class BlockPowderKeg extends BlockContainer {
     }
     
     public boolean canDropFromExplosion(Explosion e){return false;}
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
+        return EnumBlockRenderType.MODEL;
+    }
 }

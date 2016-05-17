@@ -3,7 +3,6 @@ package convenientadditions.api.item.charge;
 import java.util.List;
 import java.util.Random;
 
-import convenientadditions.Reference;
 import convenientadditions.api.item.IBehaviourProvider;
 import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.api.util.EnchantmentUtil;
@@ -13,7 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public abstract class ItemChargeable extends Item implements IChargeable, IBehaviourProvider {
@@ -59,7 +58,7 @@ public abstract class ItemChargeable extends Item implements IChargeable, IBehav
 
 	@Override
 	public int getChargeCapacity(ItemStack item) {
-		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentCapacityId+Reference.enchantmentIdBase, item);
+		int lvl=EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.capacity, item);
 		return (int)(capacity*EnchantmentUtil.enchantmentScaleFactor[lvl]);
 	}
 
@@ -83,7 +82,7 @@ public abstract class ItemChargeable extends Item implements IChargeable, IBehav
 	}
 	
 	public int consumeCharge(ItemStack item, int amount){
-		int lvl=EnchantmentHelper.getEnchantmentLevel(Reference.enchantmentChargeEfficiencyId+Reference.enchantmentIdBase, item);
+		int lvl=EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.chargeEfficiency, item);
 		double propFactor=(EnchantmentUtil.enchantmentScaleFactor[lvl]-1)+1;
 		double prop=new Random().nextDouble()*propFactor;
 		if(prop<=1)
@@ -106,7 +105,7 @@ public abstract class ItemChargeable extends Item implements IChargeable, IBehav
 	@Override
 	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(StatCollector.translateToLocal("tooltip.convenientadditions:charge").replace("%c", ""+getCharge(item)).replace("%C", ""+getChargeCapacity(item)).replace("%p", ""+(int)((double)getCharge(item)/(double)getChargeCapacity(item)*100)));
+		list.add(I18n.translateToLocal("tooltip.convenientadditions:charge").replace("%c", ""+getCharge(item)).replace("%C", ""+getChargeCapacity(item)).replace("%p", ""+(int)((double)getCharge(item)/(double)getChargeCapacity(item)*100)));
 		super.addInformation(item, player, list, par4);
 	}
 	

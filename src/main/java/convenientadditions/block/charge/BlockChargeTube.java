@@ -7,11 +7,13 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.tileentity.charge.TileEntityChargeTube;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -19,7 +21,7 @@ public class BlockChargeTube extends BlockMachine {
 
 	public BlockChargeTube() {
 		super(Material.rock);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargeTubeBlockName).setHardness(1F).setResistance(1F).setStepSound(soundTypeStone).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargeTubeBlockName).setHardness(1F).setResistance(1F);
 	}
 
 	@Override
@@ -28,18 +30,18 @@ public class BlockChargeTube extends BlockMachine {
 	}
 
     @Override
-    public int getRenderType()
+    public EnumBlockRenderType getRenderType(IBlockState state)
     {
-        return -1;
+        return EnumBlockRenderType.MODEL;
     }
 
     @Override
-    public boolean isOpaqueCube()
+    public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
     
-    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity entity)
+    /*public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity entity)
     {
     	ArrayList<AxisAlignedBB> temp=new ArrayList<AxisAlignedBB>();
         temp.add(AxisAlignedBB.fromBounds(x+this.maxX/2-(1d/16d),y+this.maxY/2-(1d/16d),z+this.maxZ/2-(1d/16d),x+this.maxX/2+(1d/16d),y+this.maxY/2+(1d/16d),z+this.maxZ/2+(1d/16d)));
@@ -78,5 +80,5 @@ public class BlockChargeTube extends BlockMachine {
 	    	this.maxY=tube.isConnected(EnumFacing.UP)?1:(10d/16d);
 	    	this.maxZ=tube.isConnected(EnumFacing.SOUTH)?1:(10d/16d);
         }
-    }
+    }*/
 }

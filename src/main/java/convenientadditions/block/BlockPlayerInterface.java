@@ -5,17 +5,17 @@ import convenientadditions.Reference;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPlayerInterface extends BlockContainer {
 
 	public BlockPlayerInterface() {
 		super(Material.iron);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setStepSound(soundTypeMetal).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.playerInterfaceBlockName).setHardness(4F).setResistance(8F);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class BlockPlayerInterface extends BlockContainer {
     public boolean hasComparatorInputOverride(){return true;}
     
     @Override
-    public int getComparatorInputOverride(World world, BlockPos pos)
+    public int getComparatorInputOverride(IBlockState state,World world, BlockPos pos)
     {
     	TileEntity t=world.getTileEntity(pos);
         if(t!=null&&t instanceof TileEntityPlayerInterface)
@@ -34,4 +34,9 @@ public class BlockPlayerInterface extends BlockContainer {
         return 0;
     }
 
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
+        return EnumBlockRenderType.MODEL;
+    }
 }

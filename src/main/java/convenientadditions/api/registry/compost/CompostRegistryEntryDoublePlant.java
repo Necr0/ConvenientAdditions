@@ -1,6 +1,5 @@
 package convenientadditions.api.registry.compost;
 
-import net.minecraft.item.ItemDoublePlant;
 import net.minecraft.item.ItemStack;
 
 public class CompostRegistryEntryDoublePlant implements ICompostRegistryEntry{

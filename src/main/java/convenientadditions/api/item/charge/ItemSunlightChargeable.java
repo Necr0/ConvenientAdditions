@@ -7,8 +7,6 @@ import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
 
 public class ItemSunlightChargeable extends ItemChargeable implements ISunlightChargeable {
 
