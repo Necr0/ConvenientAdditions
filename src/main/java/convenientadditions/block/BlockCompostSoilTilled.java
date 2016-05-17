@@ -66,7 +66,8 @@ public class BlockCompostSoilTilled extends Block {
 		if(!world.isRemote){
 	    	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
 			Block b=world.getBlockState(posU).getBlock();
-			int meta=world.getBlockMetadata();
+			IBlockState newB=world.getBlockState(posU);
+			int meta=this.getMetaFromState(state);
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
 				b.updateTick(world, posU, world.getBlockState(posU), r);
 				if((r.nextDouble()*3)<=((.2*meta)+3))
@@ -74,14 +75,12 @@ public class BlockCompostSoilTilled extends Block {
 			}
 			if(r.nextBoolean()){
 				if(meta<10)
-					META++;
-				else{
+					world.setBlockState(pos,this.getStateFromMeta(meta+1));
+				else
 					world.setBlockState(pos, Blocks.farmland.getDefaultState());
-					return;
-				}
 			}
 			if(b.getMaterial().isSolid())
-				world.setBlockState(pos, ModBlocks.compostSoilBlock META, 2);
+				world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(meta), 2);
 		}
 	}
 	
@@ -113,7 +112,7 @@ public class BlockCompostSoilTilled extends Block {
                 return;
             }
 
-            world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(METADATA), 3);
+            world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(this.getMetaFromState(world.getBlockState(pos))), 3);
         }
     }
 	

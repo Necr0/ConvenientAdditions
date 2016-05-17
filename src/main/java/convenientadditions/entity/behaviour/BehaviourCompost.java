@@ -1,11 +1,10 @@
 package convenientadditions.entity.behaviour;
 
-import java.util.Random;
-
 import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -27,9 +26,10 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 	public void onItemEntityUpdate(EntityItem item) {
 		World w=item.worldObj;
 		BlockPos pos=new BlockPos(MathHelper.floor_double(item.posX),MathHelper.floor_double(item.posY)-1,MathHelper.floor_double(item.posZ));
-		Block b=item.worldObj.getBlockState(new BlockPos(pos)).getBlock();
+		IBlockState state=item.worldObj.getBlockState(new BlockPos(pos));
+		Block b=state.getBlock();
 		if(item.onGround){
-			if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&METADATA!=0)))
+			if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&ModBlocks.compostSoilTilledBlock.getMetaFromState(state)!=0)))
 	    		return;
 			Item i=item.getEntityItem().getItem();
 			EnumFacing up=EnumFacing.UP;
@@ -39,7 +39,7 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 				w.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(0), 2);
 			else if(b==Blocks.farmland)
 				w.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(0), 2);
-			else if((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&w.getBlockMetadata()!=0)
+			else if(b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)
 				w.setBlockState(pos, b.getStateFromMeta(0), 2+4);
 			else
 				return;

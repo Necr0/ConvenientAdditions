@@ -9,6 +9,7 @@ import convenientadditions.api.item.IModelResourceLocationProvider;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -31,21 +32,22 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
 	@Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-		Block b=world.getBlockState(pos).getBlock();
-		if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&world.getBlockState(pos)METADATA!=0)))
+		IBlockState state=world.getBlockState(pos);
+		Block b=state.getBlock();
+		if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&b.getMetaFromState(state)!=0)))
     		return false;
 		if(!world.isRemote){
 			if(b==Blocks.dirt)
-				world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(0), 3);
+				world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 3);
 			else if(b==Blocks.farmland)
-				world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(0), 3);
+				world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getDefaultState(), 3);
 			else if(b==Blocks.grass){
 				if(itemStack.getItemDamage()==1&&new Random().nextInt(64)==0)
-					world.setBlockState(pos, Blocks.mycelium.getStateFromMeta(0), 3);
+					world.setBlockState(pos, Blocks.mycelium.getDefaultState(), 3);
 				else
-					world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(0), 3);
+					world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 3);
 			}else if(b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock){
-				world.setBlockState(METADATA 0, 2+4);
+				world.setBlockState(pos,b.getDefaultState(), 2+4);
 			}
 			itemStack.stackSize--;
 		}

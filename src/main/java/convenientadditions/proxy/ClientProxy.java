@@ -1,5 +1,6 @@
 package convenientadditions.proxy;
 
+import convenientadditions.init.ModItems;
 import convenientadditions.render.RenderChargeTube;
 import convenientadditions.render.RenderComposter;
 import convenientadditions.tileentity.TileEntityComposter;
@@ -29,6 +30,7 @@ public class ClientProxy extends CommonProxy
     @Override
     public void InitRendering()
     {
+    	ModItems.initModelMeshers();
     }
 }
 

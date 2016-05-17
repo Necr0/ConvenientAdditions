@@ -67,7 +67,7 @@ public class BlockCompostSoil extends Block {
     	if(world.getBlockState(posU).getBlock().isAir(world, posU)){
     		if(!world.isRemote){
 				current.damageItem(1, player);
-	    		world.setBlockState(pos, ModBlocks.compostSoilTilledBlock METADATA, 3);
+	    		world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(this.getMetaFromState(state)), 3);
     		}
             world.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), Blocks.grass.stepSound.getStepSound(), (Blocks.grass.stepSound.getVolume() + 1.0F) / 2.0F, Blocks.grass.stepSound.getFrequency() * 0.8F);
     	}
@@ -85,14 +85,16 @@ public class BlockCompostSoil extends Block {
 		if(!world.isRemote){
 	    	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
 			Block b=world.getBlockState(posU).getBlock();
+			IBlockState newB=world.getBlockState(posU);
+			int meta=this.getMetaFromState(state);
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
 				b.updateTick(world, posU, world.getBlockState(posU), r);
-				if((r.nextDouble()*3)<=((.2*META)+3))
+				if((r.nextDouble()*3)<=((.2*meta)+3))
 					b.updateTick(world, posU, world.getBlockState(posU), r);
 			}
 			if(r.nextBoolean()){
-				if(META<10)
-					world.setBlockMetadataWithNotify(METADATA, META+1, 2+4);
+				if(meta<10)
+					world.setBlockState(pos,this.getStateFromMeta(meta+1));
 				else
 					world.setBlockState(pos, Blocks.dirt.getDefaultState());
 			}

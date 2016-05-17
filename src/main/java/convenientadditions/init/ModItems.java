@@ -17,8 +17,13 @@ import convenientadditions.item.tools.ItemTitaniumPickaxe;
 import convenientadditions.item.tools.ItemTitaniumSpade;
 import convenientadditions.item.tools.ItemTitaniumSword;
 import convenientadditions.item.tools.ItemTitaniumWrench;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemModelMesher;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
 public class ModItems {
@@ -37,11 +42,11 @@ public class ModItems {
     public static final ItemChargingRing itemChargingRing = new ItemChargingRing();
     public static final ItemFloatingBelt itemFloatingBelt = new ItemFloatingBelt();
     //ttools
-    public static final Item itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.axeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
-    public static final Item itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.pickaxeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
-    public static final Item itemTitaniumSpade=new ItemTitaniumSpade(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.spadeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
-    public static final Item itemTitaniumHoe=new ItemTitaniumHoe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.hoeTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
-    public static final Item itemTitaniumSword=new ItemTitaniumSword(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.swordTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+    public static final ItemTitaniumAxe itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumPickaxe itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumSpade itemTitaniumSpade=new ItemTitaniumSpade(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumHoe itemTitaniumHoe=new ItemTitaniumHoe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumSword itemTitaniumSword=new ItemTitaniumSword(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
     public static final ItemTitaniumWrench itemTitaniumWrench=new ItemTitaniumWrench();
     
     public static void init()
@@ -70,5 +75,35 @@ public class ModItems {
         GameRegistry.registerItem(itemFloatingBelt,Reference.floatingBeltItemName);
         //goo
         //ItemGoo.init();
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public static void initModelMeshers()
+    {
+    	ItemModelMesher mesher=Minecraft.getMinecraft().getRenderItem().getItemModelMesher();//.register(item, meta, new ModelResourceLocation("modid:itemname", "inventory"));
+		//mesher.register("modid:itemname",0,"modid:itemname".getModelResourceLocation())
+    	//dummy
+		mesher.register(ingotTitanium,0,new ModelResourceLocation(ingotTitanium.getUnlocalizedName()));
+		mesher.register(nuggetTitanium,0,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName()));
+		mesher.register(itemDirtChunk,0,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName()));
+    	//ttools
+		mesher.register(itemTitaniumPickaxe,0,itemTitaniumPickaxe.getModelResourceLocation());
+		mesher.register(itemTitaniumAxe,0,itemTitaniumAxe.getModelResourceLocation());
+		mesher.register(itemTitaniumSpade,0,itemTitaniumSpade.getModelResourceLocation());
+		mesher.register(itemTitaniumHoe,0,itemTitaniumHoe.getModelResourceLocation());
+		mesher.register(itemTitaniumSword,0,itemTitaniumSword.getModelResourceLocation());
+		mesher.register(itemTitaniumWrench,0,itemTitaniumWrench.getModelResourceLocation());
+        //misc
+		mesher.register(itemFertilizer,0,itemFertilizer.getModelResourceLocation());
+		mesher.register(itemCompost,0,itemCompost.getModelResourceLocation());
+		mesher.register(itemSunstone,0,itemSunstone.getModelResourceLocation());
+		mesher.register(itemBlazingRock,0,itemBlazingRock.getModelResourceLocation());
+        //baubles
+		mesher.register(itemSunlightRing,0,itemSunlightRing.getModelResourceLocation());
+		mesher.register(itemSaturationRing,0,itemSaturationRing.getModelResourceLocation());
+		mesher.register(itemBreathAmulet,0,itemBreathAmulet.getModelResourceLocation());
+		mesher.register(itemChargingRing,0,itemChargingRing.getModelResourceLocation());
+		mesher.register(itemFloatingBelt,0,itemFloatingBelt.getModelResourceLocation());
+        //goo
     }
 }
