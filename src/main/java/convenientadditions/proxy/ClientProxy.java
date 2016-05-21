@@ -8,10 +8,15 @@ import convenientadditions.tileentity.charge.TileEntityChargeTube;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy
 {
-    public static int renderPass;
+    //public static int renderPass;
+    
+	public Side getSide(){
+		return Side.CLIENT;
+	}
     
     @Override
     public void registerRenderers()
@@ -30,7 +35,12 @@ public class ClientProxy extends CommonProxy
     @Override
     public void InitRendering()
     {
-    	ModItems.initModelMeshers();
+    }
+    
+    @Override
+    public void InitModels()
+    {
+    	ModItems.initModelLoader();
     }
 }
 

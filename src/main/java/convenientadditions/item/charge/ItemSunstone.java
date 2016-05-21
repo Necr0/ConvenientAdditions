@@ -6,11 +6,14 @@ import java.util.Random;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.api.item.IModelVariantResourceLocationProvider;
 import convenientadditions.api.item.IPlayerInventoryTick;
+import convenientadditions.api.item.IResourceLocationProvider;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -26,7 +29,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick,IModelResourceLocationProvider {
+public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick,IResourceLocationProvider {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSunstone(){

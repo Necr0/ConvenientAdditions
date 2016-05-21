@@ -17,9 +17,7 @@ import convenientadditions.item.tools.ItemTitaniumPickaxe;
 import convenientadditions.item.tools.ItemTitaniumSpade;
 import convenientadditions.item.tools.ItemTitaniumSword;
 import convenientadditions.item.tools.ItemTitaniumWrench;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -78,12 +76,13 @@ public class ModItems {
         registerItem(itemFloatingBelt,Reference.floatingBeltItemName);
         //goo
         //ItemGoo.init();
+        
+        initModelLoader();
     }
     
     @SideOnly(Side.CLIENT)
-    public static void initModelMeshers()
+    public static void initModelLoader()
     {
-    	ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 		registerModelLocation(ingotTitanium,new ModelResourceLocation(ingotTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(nuggetTitanium,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(itemDirtChunk,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName().substring(5),"inventory"));
@@ -96,8 +95,9 @@ public class ModItems {
 		registerModelLocation(itemTitaniumWrench,itemTitaniumWrench.getModelResourceLocation());
         //misc
 		registerModelLocation(itemFertilizer,itemFertilizer.getModelResourceLocation());
-		registerModelLocation(itemCompost,itemCompost.getModelResourceLocation());
-		registerModelLocation(itemSunstone,itemSunstone.getModelResourceLocation());
+		registerModelLocation(itemSunstone,0,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_inactive"));
+		registerModelLocation(itemSunstone,1,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_active"));
+		registerIndependentModelLocation(itemCompost,itemCompost.getModelResourceLocation());
 		registerModelLocation(itemBlazingRock,itemBlazingRock.getModelResourceLocation());
         //baubles
 		registerModelLocation(itemSunlightRing,itemSunlightRing.getModelResourceLocation());
@@ -117,19 +117,22 @@ public class ModItems {
     
     public static void registerModelLocation(Item item,ModelResourceLocation location)
     {
-    	ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-    	mesher.register(item,0,location);
+    	ModelLoader.setCustomModelResourceLocation(item, 0, location);
+    }
+    
+    /*public static void registerVariants(Item item,ModelResourceLocation[] locations)
+    {
+    	ModelLoader.registerItemVariants(item, locations);
+    }*/
+    
+    public static void registerModelLocation(Item item,int damage,ModelResourceLocation location)
+    {
+    	ModelLoader.setCustomModelResourceLocation(item, damage, location);
     }
     
     public static void registerIndependentModelLocation(Item item,ModelResourceLocation location)
     {
-    	ModelLoader.setCustomModelResourceLocation(item, 0, location);
-    }
-    
-    public static void registerModelLocation(Item item,int damage,ModelResourceLocation location)
-    {
-    	ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-    	mesher.register(item,damage,location);
+    	ModelLoader.setCustomMeshDefinition(item, new SimpleItemMeshDefinition(location));;
     }
     
     public static class SimpleItemMeshDefinition implements ItemMeshDefinition{

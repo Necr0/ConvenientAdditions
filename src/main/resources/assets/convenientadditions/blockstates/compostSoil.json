@@ -1,5 +1,15 @@
 {
 	"variants": {
-		"normal": { "model": "convenientadditions:compostSoil" }
+        "degradation=0": { "model": "convenientadditions:compostSoil" },
+        "degradation=1": { "model": "convenientadditions:compostSoil" },
+        "degradation=2": { "model": "convenientadditions:compostSoil" },
+        "degradation=3": { "model": "convenientadditions:compostSoil" },
+        "degradation=4": { "model": "convenientadditions:compostSoil" },
+        "degradation=5": { "model": "convenientadditions:compostSoil" },
+        "degradation=6": { "model": "convenientadditions:compostSoil" },
+        "degradation=7": { "model": "convenientadditions:compostSoil" },
+        "degradation=8": { "model": "convenientadditions:compostSoil" },
+        "degradation=9": { "model": "convenientadditions:compostSoil" },
+        "degradation=10": { "model": "convenientadditions:compostSoil" }
 	}
 }

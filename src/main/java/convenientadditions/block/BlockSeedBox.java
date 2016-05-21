@@ -14,7 +14,7 @@ public class BlockSeedBox extends BlockConfigurable {
 
 	public BlockSeedBox() {
 		super(Material.wood);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.seedBoxBlockName).setHardness(2F).setResistance(3F);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
 	@Override

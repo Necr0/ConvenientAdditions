@@ -14,9 +14,14 @@ import convenientadditions.tileentity.seedbox.TileEntitySeedBox;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class CommonProxy
 {
+	public Side getSide(){
+		return Side.SERVER;
+	}
+	
     public void registerRenderers()
     {
     }
@@ -67,7 +72,6 @@ public class CommonProxy
     {
     }
 
-    public void InitRendering()
-    {
-    }
+    public void InitRendering(){}
+    public void InitModels(){}
 }

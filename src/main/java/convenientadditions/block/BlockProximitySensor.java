@@ -14,7 +14,7 @@ public class BlockProximitySensor extends BlockContainer {
 
 	public BlockProximitySensor() {
 		super(Material.iron);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.proximitySensorBlockName).setHardness(4F).setResistance(8F);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.proximitySensorBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 	
     /*public boolean hasComparatorInputOverride(){return true;}

@@ -15,7 +15,7 @@ public class BlockPlayerInterface extends BlockContainer {
 
 	public BlockPlayerInterface() {
 		super(Material.iron);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.playerInterfaceBlockName).setHardness(4F).setResistance(8F);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
 	}
 
 	@Override

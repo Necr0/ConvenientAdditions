@@ -15,7 +15,17 @@ import convenientadditions.block.charge.BlockChargeAccumulator;
 import convenientadditions.block.charge.BlockChargeTube;
 import convenientadditions.block.charge.BlockSunlightCollector;
 import convenientadditions.block.item.ItemBlockCompostSoil;
+import net.minecraft.block.Block;
+import net.minecraft.client.main.GameConfiguration.GameInformation;
+import net.minecraft.client.renderer.block.statemap.BlockStateMapper;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.world.storage.WorldInfo;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
 public class ModBlocks
@@ -35,16 +45,48 @@ public class ModBlocks
 
     public static void init()
     {
-        GameRegistry.registerBlock(oreTitaniumBlock,Reference.oreTitaniumBlockName);
-        GameRegistry.registerBlock(composterBlock,Reference.composterBlockName);
-        GameRegistry.registerBlock(compostSoilTilledBlock,Reference.compostSoilTilledBlockName);
-        GameRegistry.registerBlock(powderKegBlock,Reference.powderKegBlockName);
-        GameRegistry.registerBlock(playerInterfaceBlock,Reference.playerInterfaceBlockName);
-        GameRegistry.registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
-        GameRegistry.registerBlock(tempLightBlock,Reference.tempLightBlockName);
-        GameRegistry.registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
-        GameRegistry.registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
-        GameRegistry.registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
-        GameRegistry.registerBlock(compostSoilBlock,ItemBlockCompostSoil.class,Reference.compostSoilBlockName);
+        registerBlock(oreTitaniumBlock,Reference.oreTitaniumBlockName);
+        registerBlock(composterBlock,Reference.composterBlockName);
+        registerBlock(compostSoilTilledBlock,Reference.compostSoilTilledBlockName);
+        registerBlock(powderKegBlock,Reference.powderKegBlockName);
+        registerBlock(playerInterfaceBlock,Reference.playerInterfaceBlockName);
+        registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
+        registerBlock(tempLightBlock,Reference.tempLightBlockName);
+        registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
+        registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
+        registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
+        registerBlock(compostSoilBlock,new ItemBlockCompostSoil(compostSoilBlock),Reference.compostSoilBlockName);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void initModelLoader()
+    {
+        /*registerBlock(oreTitaniumBlock,Reference.oreTitaniumBlockName);
+        registerBlock(composterBlock,Reference.composterBlockName);
+        registerBlock(compostSoilTilledBlock,Reference.compostSoilTilledBlockName);
+        registerBlock(powderKegBlock,Reference.powderKegBlockName);
+        registerBlock(playerInterfaceBlock,Reference.playerInterfaceBlockName);
+        registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
+        registerBlock(tempLightBlock,Reference.tempLightBlockName);
+        registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
+        registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
+        registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
+        registerBlock(compostSoilBlock,new ItemBlockCompostSoil(compostSoilBlock),Reference.compostSoilBlockName);*/
+    }
+    
+    public static void registerBlock(Block block,String registryName)
+    {
+    	if(block.getRegistryName()==null)
+    		block.setRegistryName(registryName);
+    	GameRegistry.register(block);
+        GameRegistry.register(new ItemBlock(block).setRegistryName(registryName));
+    }
+    
+    public static void registerBlock(Block block,ItemBlock item,String registryName)
+    {
+    	if(block.getRegistryName()==null)
+    		block.setRegistryName(registryName);
+    	GameRegistry.register(block);
+        GameRegistry.register(item.setRegistryName(registryName));
     }
 }

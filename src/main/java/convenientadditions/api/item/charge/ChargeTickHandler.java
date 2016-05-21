@@ -6,7 +6,7 @@ import convenientadditions.api.util.Helper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -58,7 +58,7 @@ public class ChargeTickHandler {
 	
 	public static void init(){
 		if(!chargeTickHandlerRegistered){
-			FMLCommonHandler.instance().bus().register(new ChargeTickHandler());
+			MinecraftForge.EVENT_BUS.register(new ChargeTickHandler());
 			chargeTickHandlerRegistered=true;
 		}
 	}

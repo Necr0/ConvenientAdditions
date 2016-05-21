@@ -1,5 +1,7 @@
 package convenientadditions;
 
+import java.util.Random;
+
 import convenientadditions.api.ConAddAPI;
 import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.init.ModBlocks;
@@ -11,11 +13,13 @@ import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModThaumcraftAspects;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
+import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -55,6 +59,7 @@ public class ConvenientAdditionsMod
     	ConAddAPI.init();
     	ModBlocks.init();
     	ModItems.init();
+    	PROXY.InitModels();
     	ModOredict.registerOres();
     	ModRecipes.init();
     	ModNetworking.init();
@@ -72,7 +77,7 @@ public class ConvenientAdditionsMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	PROXY.InitRendering();
+    	//PROXY.InitRendering();
     	PROXY.registerEntities();
     }
     

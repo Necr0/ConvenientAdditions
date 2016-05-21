@@ -2,11 +2,17 @@ package convenientadditions.block;
 
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -22,10 +28,12 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
 public class BlockCompostSoil extends Block {
+    public static final PropertyInteger DEGRADATION = PropertyInteger.create("degradation", 0, 10);
 
 	public BlockCompostSoil() {
 		super(Material.ground);
-		this.setTickRandomly(true).setHardness(0.5F);
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setTickRandomly(true).setHardness(0.5F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
 	}
 	
 	@Override
@@ -65,7 +73,7 @@ public class BlockCompostSoil extends Block {
         	return false;
     	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
     	IBlockState stateU=world.getBlockState(posU);
-    	if(state.getBlock().isAir(state,world, posU)){
+    	if(stateU.getBlock().isAir(stateU,world, posU)){
     		if(!world.isRemote){
 				current.damageItem(1, player);
 	    		world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(this.getMetaFromState(state)), 3);
@@ -95,23 +103,49 @@ public class BlockCompostSoil extends Block {
 	    	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
 			Block b=world.getBlockState(posU).getBlock();
 			IBlockState newB=world.getBlockState(posU);
-			int meta=this.getMetaFromState(state);
+			int deg=((Integer)state.getValue(DEGRADATION)).intValue();
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
 				b.updateTick(world, posU, world.getBlockState(posU), r);
-				if((r.nextDouble()*3)<=((.2*meta)+3))
+				int i=deg;
+				if(r.nextInt(15)>i)
+					b.updateTick(world, posU, world.getBlockState(posU), r);
+				i++;
+				if(r.nextInt(15)>i)
+					b.updateTick(world, posU, world.getBlockState(posU), r);
+				i++;
+				if(r.nextInt(15)>i)
 					b.updateTick(world, posU, world.getBlockState(posU), r);
 			}
-			if(r.nextBoolean()){
-				if(meta<10)
-					world.setBlockState(pos,this.getStateFromMeta(meta+1));
+			if(r.nextInt(4)==0){
+				if(deg<10)
+					world.setBlockState(pos,state.withProperty(DEGRADATION, deg+1));
 				else
 					world.setBlockState(pos, Blocks.dirt.getDefaultState());
 			}
 		}
 	}
 	
-    public int damageDropped(int p_149692_1_)
+	@Override
+    public int damageDropped(IBlockState state)
     {
-        return p_149692_1_;
+        return this.getMetaFromState(state);
+    }
+    
+    //
+    // BLOCKSTATE STUFF
+    //
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(DEGRADATION, Integer.valueOf(meta));
+    }
+    
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((Integer)state.getValue(DEGRADATION)).intValue();
+    }
+    
+    protected BlockStateContainer createBlockState()
+    {
+        return new BlockStateContainer(this, new IProperty[]{DEGRADATION});
     }
 }

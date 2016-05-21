@@ -2,11 +2,16 @@ package convenientadditions.block;
 
 import java.util.Random;
 
+import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,11 +30,12 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCompostSoilTilled extends Block {
+public class BlockCompostSoilTilled extends BlockCompostSoil {
 
 	public BlockCompostSoilTilled() {
-		super(Material.ground);
-		this.setTickRandomly(true).setHardness(0.5F);
+		super();
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilTilledBlockName).setCreativeTab(null);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
 	}
 	
 	@Override
@@ -39,26 +45,9 @@ public class BlockCompostSoilTilled extends Block {
         IBlockState plant = plantable.getPlant(world, plantPos);
         EnumPlantType plantType = plantable.getPlantType(world, plantPos);
 
-        if (plantable instanceof BlockBush)
-            return true;
+        if(plantType == EnumPlantType.Crop) return true;
 
-        switch (plantType)
-        {
-            case Desert: return true;
-            case Nether: return false;
-            case Crop:   return true;
-            case Cave:   return true;
-            case Plains: return true;
-            case Water:  return false;
-            case Beach:
-                boolean hasWater = (world.getBlockState(pos.east()).getMaterial() == Material.water ||
-                world.getBlockState(pos.west()).getMaterial() == Material.water ||
-                world.getBlockState(pos.north()).getMaterial() == Material.water ||
-                world.getBlockState(pos.south()).getMaterial() == Material.water);
-            	return hasWater;
-        }
-
-        return false;
+        return super.canSustainPlant(state, world, pos, side, plantable);
     }
 	
 	@Override
@@ -67,27 +56,29 @@ public class BlockCompostSoilTilled extends Block {
 	    	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
 			Block b=world.getBlockState(posU).getBlock();
 			IBlockState newB=world.getBlockState(posU);
-			int meta=this.getMetaFromState(state);
+			int deg=((Integer)state.getValue(DEGRADATION)).intValue();
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
 				b.updateTick(world, posU, world.getBlockState(posU), r);
-				if((r.nextDouble()*3)<=((.2*meta)+3))
+				int i=deg;
+				if(r.nextInt(15)>i)
+					b.updateTick(world, posU, world.getBlockState(posU), r);
+				i++;
+				if(r.nextInt(15)>i)
+					b.updateTick(world, posU, world.getBlockState(posU), r);
+				i++;
+				if(r.nextInt(15)>i)
 					b.updateTick(world, posU, world.getBlockState(posU), r);
 			}
-			if(r.nextBoolean()){
-				if(meta<10)
-					world.setBlockState(pos,this.getStateFromMeta(meta+1));
+			if(r.nextInt(4)==0){
+				if(deg<10)
+					world.setBlockState(pos,state.withProperty(DEGRADATION, deg+1));
 				else
 					world.setBlockState(pos, Blocks.farmland.getDefaultState());
 			}
 			if(b.getMaterial(state).isSolid())
-				world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(meta), 2);
+				world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState().withProperty(DEGRADATION, deg), 2);
 		}
 	}
-	
-    public boolean isFertile(World world, int x, int y, int z)
-    {
-        return true;
-    }
 
 	@Override
     public Item getItemDropped(IBlockState state, Random r, int p_149650_3_)
@@ -121,18 +112,15 @@ public class BlockCompostSoilTilled extends Block {
         return new AxisAlignedBB((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), (double)(pos.getX() + 1), (double)(pos.getY() + 1), (double)(pos.getZ() + 1));
     }
     
-    public boolean isOpaqueCube()
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
-
-    public boolean isFullCube()
+    
+    @Override
+    public boolean isFullCube(IBlockState state)
     {
         return false;
-    }
-	
-    public int damageDropped(int meta)
-    {
-        return meta;
     }
 }

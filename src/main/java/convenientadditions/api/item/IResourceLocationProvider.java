@@ -5,9 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public interface IModelResourceLocationProvider extends IResourceLocationProvider {
+public interface IResourceLocationProvider {
 	@SideOnly(Side.CLIENT)
-	public default ModelResourceLocation getModelResourceLocation(){
-		return new ModelResourceLocation(getResourceLocation(),"inventory");
+	public default String getResourceLocation(){
+		return ((Item)this).getUnlocalizedName().substring(5);
 	}
 }
