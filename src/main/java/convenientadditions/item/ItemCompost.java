@@ -40,16 +40,16 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
     		return EnumActionResult.FAIL;
 		if(!world.isRemote){
 			if(b==Blocks.dirt)
-				world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 3);
+				world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState());
 			else if(b==Blocks.farmland)
-				world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getDefaultState(), 3);
+				world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getDefaultState());
 			else if(b==Blocks.grass){
 				if(itemStack.getItemDamage()==1&&new Random().nextInt(64)==0)
-					world.setBlockState(pos, Blocks.mycelium.getDefaultState(), 3);
+					world.setBlockState(pos, Blocks.mycelium.getDefaultState());
 				else
 					world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 3);
 			}else if(b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock){
-				world.setBlockState(pos,b.getDefaultState(), 2+4);
+				world.setBlockState(pos,b.getDefaultState(), 3+4);
 			}
 			itemStack.stackSize--;
 		}

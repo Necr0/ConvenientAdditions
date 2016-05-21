@@ -4,6 +4,7 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.block.BlockConfigurable;
 import convenientadditions.tileentity.seedbox.TileEntitySeedBox;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -15,6 +16,7 @@ public class BlockSeedBox extends BlockConfigurable {
 	public BlockSeedBox() {
 		super(Material.wood);
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setStepSound(SoundType.WOOD);
 	}
 
 	@Override

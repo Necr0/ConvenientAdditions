@@ -8,7 +8,9 @@ import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCauldron;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
@@ -33,6 +35,7 @@ public class BlockCompostSoil extends Block {
 	public BlockCompostSoil() {
 		super(Material.ground);
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostSoilBlockName).setTickRandomly(true).setHardness(0.5F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setStepSound(SoundType.GROUND);
         this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
 	}
 	

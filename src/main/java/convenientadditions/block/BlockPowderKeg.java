@@ -7,6 +7,7 @@ import convenientadditions.Reference;
 import convenientadditions.api.util.Helper;
 import convenientadditions.tileentity.TileEntityPowderKeg;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -33,6 +34,7 @@ public class BlockPowderKeg extends BlockContainer {
 	public BlockPowderKeg() {
 		super(Material.wood);
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setStepSound(SoundType.WOOD);
 	}
 
 	@Override

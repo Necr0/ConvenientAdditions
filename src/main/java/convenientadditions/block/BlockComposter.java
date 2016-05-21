@@ -4,6 +4,7 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.tileentity.TileEntityComposter;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,6 +21,7 @@ public class BlockComposter extends BlockContainer {
 	public BlockComposter() {
 		super(Material.wood);
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setStepSound(SoundType.WOOD);
 	}
 
     @Override
