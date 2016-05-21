@@ -2,14 +2,17 @@ package convenientadditions.api.item.charge;
 
 import java.util.List;
 
+import convenientadditions.api.item.IBehaviourProvider;
+import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.World;
 
-public class ItemSunlightChargeable extends ItemChargeable implements ISunlightChargeable {
+public class ItemSunlightChargeable extends ItemChargeable implements ISunlightChargeable, IBehaviourProvider {
 
 	protected int chargeRate;
 	
@@ -40,5 +43,15 @@ public class ItemSunlightChargeable extends ItemChargeable implements ISunlightC
 	@Override
 	public boolean canApplyDrain(ItemStack item){
 		return true;
+	}
+
+	@Override
+	public void getBehaviours(ItemStack stack,World world,List<Long> behaviours){
+		behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sunlightChargeable"));
+	}
+
+	@Override
+	public void getBehaviours(ItemStack stack,List<Long> behaviours){
+		behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sunlightChargeable"));
 	}
 }

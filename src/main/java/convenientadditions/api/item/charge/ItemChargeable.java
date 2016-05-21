@@ -3,8 +3,6 @@ package convenientadditions.api.item.charge;
 import java.util.List;
 import java.util.Random;
 
-import convenientadditions.api.item.IBehaviourProvider;
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
 import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.api.util.MathHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -13,9 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
 
-public abstract class ItemChargeable extends Item implements IChargeable, IBehaviourProvider {
+public abstract class ItemChargeable extends Item implements IChargeable {
 	
 	private int capacity;
 	private boolean showDurBar;
@@ -132,15 +129,5 @@ public abstract class ItemChargeable extends Item implements IChargeable, IBehav
 	@Override
 	public int getItemEnchantability(ItemStack item){
 		return 1;
-	}
-
-	@Override
-	public void getBehaviours(ItemStack stack,World world,List<Long> behaviours){
-		behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sunlightChargeable"));
-	}
-
-	@Override
-	public void getBehaviours(ItemStack stack,List<Long> behaviours){
-		behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sunlightChargeable"));
 	}
 }
