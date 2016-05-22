@@ -37,7 +37,7 @@ public class ItemFertilizer extends Item implements IModelResourceLocationProvid
     			if(!world.isRemote)
     				itemStack.stackSize--;
     		}
-    		for(int i=0;i<(2+world.rand.nextInt(1));i++){
+    		for(int i=0;i<(2+world.rand.nextInt(2));i++){
     			if(grow.canGrow(world, pos, state, world.isRemote) && !world.isRemote && grow.canUseBonemeal(world, world.rand, pos, state))
     					grow.grow(world, world.rand, pos, state);
     		}
