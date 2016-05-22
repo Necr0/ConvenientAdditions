@@ -53,7 +53,6 @@ public class Reference {
     //slimeEntities
     public static final String gooItemEntityName = "gooItem";
     public static final int gooItemEntityId = 0;
-    public static final String specialItemEntityName = "specialItem";
     public static final int specialItemEntityId = 1;
     public static final String goozillaEntityName = "goozilla";
     //

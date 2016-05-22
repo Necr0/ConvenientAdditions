@@ -1,17 +1,17 @@
-package convenientadditions.api.network;
+package conveniencecore.network;
 
 import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import convenientadditions.api.entity.EntitySpecialItem;
+import conveniencecore.entity.EntitySpecialItem;
 import convenientadditions.api.util.Helper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
-public abstract class PacketEntitySpecialItemBehaviours<P extends PacketEntitySpecialItemBehaviours> extends PacketBase<P> {
+public class PacketEntitySpecialItemBehaviours extends PacketBase<PacketEntitySpecialItemBehaviours> {
 	int id;
 	int count;
 	long[] behaviours;
@@ -64,7 +64,7 @@ public abstract class PacketEntitySpecialItemBehaviours<P extends PacketEntitySp
 	}
 
 	@Override
-	public P onMessage(PacketEntitySpecialItemBehaviours message, MessageContext ctx) {
+	public PacketEntitySpecialItemBehaviours onMessage(PacketEntitySpecialItemBehaviours message, MessageContext ctx) {
 		if(ctx.side==Side.CLIENT){
 			Entity ent=Helper.getClientWorld().getEntityByID(message.id);
 			if(ent!=null&&ent instanceof EntitySpecialItem){

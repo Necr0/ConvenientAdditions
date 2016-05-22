@@ -1,4 +1,4 @@
-package convenientadditions.api.entity.behaviour;
+package conveniencecore.behaviours;
 
 import java.util.Random;
 

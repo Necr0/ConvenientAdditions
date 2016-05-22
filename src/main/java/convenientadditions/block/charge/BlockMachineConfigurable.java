@@ -2,8 +2,8 @@ package convenientadditions.block.charge;
 
 import java.util.ArrayList;
 
-import convenientadditions.api.block.BlockConfigurable;
-import convenientadditions.api.block.IDismantleable;
+import conveniencecore.block.BlockConfigurable;
+import conveniencecore.block.IDismantleable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;

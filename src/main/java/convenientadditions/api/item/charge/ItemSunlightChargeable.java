@@ -2,8 +2,9 @@ package convenientadditions.api.item.charge;
 
 import java.util.List;
 
-import convenientadditions.api.item.IBehaviourProvider;
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
+import conveniencecore.behaviours.BehaviourRegistry;
+import conveniencecore.item.IBehaviourProvider;
+import convenientadditions.api.entity.behaviour.BehaviourSunlightChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,6 +53,6 @@ public class ItemSunlightChargeable extends ItemChargeable implements ISunlightC
 
 	@Override
 	public void getBehaviours(ItemStack stack,List<Long> behaviours){
-		behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("sunlightChargeable"));
+		behaviours.add(BehaviourSunlightChargeable.DISCRIMINATOR);
 	}
 }

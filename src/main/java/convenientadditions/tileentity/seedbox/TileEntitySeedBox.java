@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import conveniencecore.entity.EntitySpecialItem;
+import conveniencecore.tileentity.IConfigurable;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
-import convenientadditions.api.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
-import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -93,7 +93,7 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
         	List<EnumFacing> outputs=getValidOutputDirections();
         	if(outputs.size()>0){
         		EnumFacing output=(EnumFacing) outputs.toArray()[new Random().nextInt(outputs.size())];
-	        	CAEntitySpecialItem item=new CAEntitySpecialItem(this.worldObj,this.pos.getX()+0.5+(output.getFrontOffsetX()*0.8),this.pos.getY()+0.5+(output.getFrontOffsetY()*0.8),this.pos.getZ()+0.5+(output.getFrontOffsetZ()*0.8),itemStack);
+        		EntitySpecialItem item=new EntitySpecialItem(this.worldObj,this.pos.getX()+0.5+(output.getFrontOffsetX()*0.8),this.pos.getY()+0.5+(output.getFrontOffsetY()*0.8),this.pos.getZ()+0.5+(output.getFrontOffsetZ()*0.8),itemStack);
 	        	for(long b:SeedBoxItemBehaviourRegistry.getItemBehaviour(itemStack)){
 	        		item.addBehaviour(b);
 	        	}

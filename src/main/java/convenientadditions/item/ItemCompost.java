@@ -3,9 +3,9 @@ package convenientadditions.item;
 import java.util.List;
 import java.util.Random;
 
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IModelResourceLocationProvider;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

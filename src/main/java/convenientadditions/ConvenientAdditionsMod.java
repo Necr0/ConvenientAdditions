@@ -36,7 +36,7 @@ public class ConvenientAdditionsMod
 {
     public static final String MODID = "convenientadditions";
     public static final String VERSION = "1.0";
-    public static final String DEPENDENCIES = "required-after:Baubles;after:Thaumcraft";
+    public static final String DEPENDENCIES = "required-after:Baubles;required-after:conveniencecore;after:Thaumcraft";
     @Instance(ConvenientAdditionsMod.MODID)
     public static ConvenientAdditionsMod INSTANCE;
     

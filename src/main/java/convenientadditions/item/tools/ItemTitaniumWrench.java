@@ -1,9 +1,9 @@
 package convenientadditions.item.tools;
 
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.block.IDismantleable;
-import convenientadditions.api.item.IModelResourceLocationProvider;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

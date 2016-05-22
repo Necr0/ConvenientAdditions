@@ -1,9 +1,9 @@
-package convenientadditions.api.entity.behaviour;
+package conveniencecore.behaviours;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
 
-public class BehaviourFloaty implements IEntitySpecialItemBehaviour {
+public class BehaviourHeavy implements IEntitySpecialItemBehaviour {
 
 	@Override
 	public void onCreate(EntityItem item) {}
@@ -15,7 +15,7 @@ public class BehaviourFloaty implements IEntitySpecialItemBehaviour {
 
 	@Override
 	public void onItemEntityUpdate(EntityItem item) {
-		item.motionY+=.035f;
+		item.motionY-=.05f;
 	}
 
 }

@@ -1,4 +1,4 @@
-package convenientadditions.api.item;
+package conveniencecore.item;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;

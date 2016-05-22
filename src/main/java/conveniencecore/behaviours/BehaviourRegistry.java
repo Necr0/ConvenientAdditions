@@ -1,16 +1,6 @@
-package convenientadditions.api.registry.behaviour;
+package conveniencecore.behaviours;
 
 import java.util.HashMap;
-
-import convenientadditions.api.entity.behaviour.BehaviourAutoCrops;
-import convenientadditions.api.entity.behaviour.BehaviourFloaty;
-import convenientadditions.api.entity.behaviour.BehaviourHeavy;
-import convenientadditions.api.entity.behaviour.BehaviourImmunityExplosion;
-import convenientadditions.api.entity.behaviour.BehaviourImmunityFire;
-import convenientadditions.api.entity.behaviour.BehaviourSensitivitySunlight;
-import convenientadditions.api.entity.behaviour.BehaviourSensitivityWater;
-import convenientadditions.api.entity.behaviour.BehaviourSunlightChargeable;
-import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
 
 public class BehaviourRegistry {
 	public static final HashMap<Long, IEntitySpecialItemBehaviour> REGISTRY=new HashMap<Long, IEntitySpecialItemBehaviour>();
@@ -66,6 +56,5 @@ public class BehaviourRegistry {
 		API_DISCRIMINATORS.put("immunityFire",addBehaviour(new BehaviourImmunityFire()));
 		API_DISCRIMINATORS.put("sensitivitySunlight",addBehaviour(new BehaviourSensitivitySunlight()));
 		API_DISCRIMINATORS.put("sensitivityWater",addBehaviour(new BehaviourSensitivityWater()));
-		API_DISCRIMINATORS.put("sunlightChargeable",addBehaviour(new BehaviourSunlightChargeable()));
 	}
 }

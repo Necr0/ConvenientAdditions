@@ -2,7 +2,7 @@ package convenientadditions.block.charge;
 
 import java.util.ArrayList;
 
-import convenientadditions.api.block.IDismantleable;
+import conveniencecore.block.IDismantleable;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;

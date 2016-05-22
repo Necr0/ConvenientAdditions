@@ -1,4 +1,4 @@
-package convenientadditions.api.tileentity;
+package conveniencecore.tileentity;
 
 import net.minecraft.util.EnumFacing;
 

@@ -1,6 +1,6 @@
 package convenientadditions.init;
 
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
+import conveniencecore.behaviours.BehaviourRegistry;
 import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
 import convenientadditions.entity.behaviour.BehaviourCompost;
 import net.minecraft.item.ItemStack;

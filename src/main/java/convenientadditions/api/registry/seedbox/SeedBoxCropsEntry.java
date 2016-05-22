@@ -2,7 +2,7 @@ package convenientadditions.api.registry.seedbox;
 
 import java.util.List;
 
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
+import conveniencecore.behaviours.BehaviourRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

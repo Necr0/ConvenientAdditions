@@ -1,4 +1,4 @@
-package convenientadditions.api.entity.behaviour;
+package conveniencecore.behaviours;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

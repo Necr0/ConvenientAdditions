@@ -2,9 +2,9 @@ package convenientadditions.item;
 
 import java.util.List;
 
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IModelResourceLocationProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;

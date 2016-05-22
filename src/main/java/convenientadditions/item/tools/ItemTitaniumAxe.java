@@ -1,15 +1,9 @@
 package convenientadditions.item.tools;
 
-import java.util.Set;
-
-import com.google.common.collect.Sets;
-
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IModelResourceLocationProvider;
 import convenientadditions.api.item.ItemToolBase;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 
 public class ItemTitaniumAxe extends ItemToolBase implements IModelResourceLocationProvider {
     public ItemTitaniumAxe(ToolMaterial material) {

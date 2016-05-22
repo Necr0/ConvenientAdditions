@@ -3,17 +3,14 @@ package convenientadditions.item.charge;
 import java.util.List;
 import java.util.Random;
 
+import conveniencecore.item.IPlayerInventoryTick;
+import conveniencecore.item.IResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IModelResourceLocationProvider;
-import convenientadditions.api.item.IModelVariantResourceLocationProvider;
-import convenientadditions.api.item.IPlayerInventoryTick;
-import convenientadditions.api.item.IResourceLocationProvider;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -114,6 +111,6 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return !isActive(item)&&(slot>=0&&slot<=9||slot==255);
+		return !isActive(item)&&(slot>=0&&slot<=9||slot==255||slot==-255);
 	}
 }

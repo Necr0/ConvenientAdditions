@@ -2,7 +2,7 @@ package convenientadditions.api.tileentity.charge;
 
 import java.util.HashMap;
 
-import convenientadditions.api.tileentity.IConfigurable;
+import conveniencecore.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;

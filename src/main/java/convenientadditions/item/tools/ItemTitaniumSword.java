@@ -1,8 +1,8 @@
 package convenientadditions.item.tools;
 
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IModelResourceLocationProvider;
 import net.minecraft.item.ItemSword;
 
 public class ItemTitaniumSword extends ItemSword implements IModelResourceLocationProvider {

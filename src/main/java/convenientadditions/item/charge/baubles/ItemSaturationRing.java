@@ -5,9 +5,9 @@ import java.util.Random;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IModelResourceLocationProvider;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -88,6 +88,6 @@ public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implemen
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return slot>=-4&&slot<=8||slot==255;
+		return slot>=-4&&slot<=8||slot==255||slot==-255;
 	}
 }

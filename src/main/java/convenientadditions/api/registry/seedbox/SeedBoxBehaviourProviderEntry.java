@@ -2,7 +2,7 @@ package convenientadditions.api.registry.seedbox;
 
 import java.util.List;
 
-import convenientadditions.api.item.IBehaviourProvider;
+import conveniencecore.item.IBehaviourProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 

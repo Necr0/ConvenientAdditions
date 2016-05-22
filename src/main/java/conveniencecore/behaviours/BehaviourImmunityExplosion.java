@@ -1,16 +1,16 @@
-package convenientadditions.api.entity.behaviour;
+package conveniencecore.behaviours;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
 
-public class BehaviourImmunityFire implements IEntitySpecialItemBehaviour {
+public class BehaviourImmunityExplosion implements IEntitySpecialItemBehaviour {
 
 	@Override
 	public void onCreate(EntityItem item) {}
 
 	@Override
 	public boolean onAttackItemEntityFrom(EntityItem item, DamageSource source,float damage) {
-		if (source.isFireDamage())
+		if (source.isExplosion())
 	    {
 	        return false;
 	    }

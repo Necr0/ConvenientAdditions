@@ -2,10 +2,10 @@ package convenientadditions.item.charge;
 
 import java.util.List;
 
+import conveniencecore.item.IFuelItem;
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IFuelItem;
-import convenientadditions.api.item.IModelResourceLocationProvider;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -54,7 +54,7 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return slot>=0&&slot<=9||slot==255;
+		return slot>=0&&slot<=9||slot==255||slot==-255;
 	}
 	
 	@Override

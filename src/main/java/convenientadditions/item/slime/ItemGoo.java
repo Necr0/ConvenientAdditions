@@ -2,11 +2,11 @@ package convenientadditions.item.slime;
 
 import java.util.ArrayList;
 
+import conveniencecore.entity.EntitySpecialItem;
+import conveniencecore.item.IFuelItem;
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.item.IFuelItem;
-import convenientadditions.api.item.IModelResourceLocationProvider;
-import convenientadditions.entity.specialitem.CAEntitySpecialItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -97,7 +97,7 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 	@Override
 	public Entity createEntity(World world, Entity location, ItemStack itemstack)
     {
-		CAEntitySpecialItem newE=new CAEntitySpecialItem(world, location.posX, location.posY, location.posZ, itemstack);
+		EntitySpecialItem newE=new EntitySpecialItem(world, location.posX, location.posY, location.posZ, itemstack);
 		newE.setVelocity(location.motionX, location.motionY, location.motionZ);
 		newE.addBehaviour(((ItemGoo)itemstack.getItem()).behaviours);
 		//newE.delayBeforeCanPickup=20;

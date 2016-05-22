@@ -1,4 +1,4 @@
-package convenientadditions.api.network;
+package conveniencecore.network;
 
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

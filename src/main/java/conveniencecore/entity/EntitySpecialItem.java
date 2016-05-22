@@ -1,11 +1,12 @@
-package convenientadditions.api.entity;
+package conveniencecore.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import convenientadditions.api.entity.behaviour.IEntitySpecialItemBehaviour;
-import convenientadditions.api.network.PacketEntitySpecialItemBehaviours;
-import convenientadditions.api.registry.behaviour.BehaviourRegistry;
+import conveniencecore.behaviours.BehaviourRegistry;
+import conveniencecore.behaviours.IEntitySpecialItemBehaviour;
+import conveniencecore.network.ModNetworking;
+import conveniencecore.network.PacketEntitySpecialItemBehaviours;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
-public abstract class EntitySpecialItem extends EntityItem {
+public class EntitySpecialItem extends EntityItem {
 	public List<Long> behaviour=new ArrayList<Long>();
 	private boolean behaviourUpdateScheduled=false;
 
@@ -124,7 +125,11 @@ public abstract class EntitySpecialItem extends EntityItem {
 		}
     };
     
-    public abstract PacketEntitySpecialItemBehaviours getCleanBehaviourPacket();
-    
-    public abstract SimpleNetworkWrapper getSimpleNetworkWrapper();
+	public SimpleNetworkWrapper getSimpleNetworkWrapper() {
+		return ModNetworking.INSTANCE;
+	}
+	
+	public PacketEntitySpecialItemBehaviours getCleanBehaviourPacket() {
+		return new PacketEntitySpecialItemBehaviours();
+	}
 }

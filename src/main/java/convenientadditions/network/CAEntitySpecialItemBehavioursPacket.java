@@ -1,7 +1,0 @@
-package convenientadditions.network;
-
-import convenientadditions.api.network.PacketEntitySpecialItemBehaviours;
-
-public class CAEntitySpecialItemBehavioursPacket extends PacketEntitySpecialItemBehaviours<CAEntitySpecialItemBehavioursPacket> {
-
-}
