@@ -7,6 +7,7 @@ import baubles.api.IBauble;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.item.IModelResourceLocationProvider;
+import convenientadditions.api.item.charge.ChargeTickHandler;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,7 +19,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble,IModelResourceLocationProvider {
+public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble, IModelResourceLocationProvider {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemBreathAmulet(){
@@ -85,6 +86,6 @@ public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return slot>=-5&&slot<=9;
+		return slot>=-4&&slot<=8||slot==255;
 	}
 }

@@ -54,7 +54,7 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return slot>=0&&slot<=9||slot==-5;
+		return slot>=0&&slot<=9||slot==255;
 	}
 	
 	@Override

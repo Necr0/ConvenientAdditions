@@ -112,6 +112,6 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return slot>=-5&&slot<=9;
+		return slot>=-4&&slot<=8||slot==255;
 	}
 }

@@ -114,6 +114,6 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
 
 	@Override
 	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return !isActive(item)&&(slot>=0&&slot<=9||slot==-5);
+		return !isActive(item)&&(slot>=0&&slot<=9||slot==255);
 	}
 }
