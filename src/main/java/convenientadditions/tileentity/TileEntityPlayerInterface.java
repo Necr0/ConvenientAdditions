@@ -13,8 +13,20 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityPlayerInterface extends TileEntity implements IInventory {
+public class TileEntityPlayerInterface extends TileEntity implements IInventory, ITickable {
 
+	public boolean hasPlayer=false;
+	
+	@Override
+	public void update(){
+		if(this.worldObj.isRemote){
+			if(hasTarget()!=hasPlayer){
+				hasPlayer=hasTarget();
+				this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos),0);
+			}
+		}
+	}
+	
 	@Override
 	public int getSizeInventory() {
 		InventoryPlayer p=getPlayerInventory();
@@ -41,15 +53,6 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory 
 		else
 			return null;
 	}
-
-	/*@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		InventoryPlayer p=getPlayerInventory();
-		if(p!=null)
-			return p.getStackInSlotOnClosing(slot);
-		else
-			return null;
-	}*/
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
