@@ -1,0 +1,8 @@
+{
+	"parent": "block/cube_bottom_top",
+	"textures": {
+		"side": "convenientadditions:blocks/powderKeg/powderKeg_side",
+        "top": "convenientadditions:blocks/powderKeg/powderKeg_top",
+        "bottom": "convenientadditions:blocks/powderKeg/powderKeg_bottom"
+	}
+}

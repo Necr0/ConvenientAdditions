@@ -13,7 +13,7 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityPlayerInterface extends TileEntity implements IInventory, ITickable {
+public class TileEntityPlayerInterface extends TileEntity implements IInventory {
 
 	@Override
 	public int getSizeInventory() {
@@ -22,16 +22,6 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 			return p.getSizeInventory();
 		else
 			return 0;
-	}
-	
-	@Override
-	public void update(){
-		/*boolean t=hasTarget();
-		int m=worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-		if(t&&m!=1)
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 3);
-		else if(!t&&m==1)
-			worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);*/
 	}
 
 	@Override
@@ -128,42 +118,65 @@ public class TileEntityPlayerInterface extends TileEntity implements IInventory,
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			return p.removeStackFromSlot(index);
+		else
+			return null;
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {}
+	public void openInventory(EntityPlayer player) {
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			p.openInventory(player);
+	}
 
 	@Override
-	public void closeInventory(EntityPlayer player) {}
+	public void closeInventory(EntityPlayer player) {
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			p.closeInventory(player);
+	}
 
 	@Override
 	public int getField(int id) {
-		return 0;
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			return p.getField(id);
+		else
+			return 0;
 	}
 
 	@Override
 	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
-		
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			p.setField(id, value);
 	}
 
 	@Override
 	public int getFieldCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			return p.getFieldCount();
+		else
+			return 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			p.clear();
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
+		InventoryPlayer p=getPlayerInventory();
+		if(p!=null)
+			return p.getDisplayName();
+		else
+			return null;
 	}
 }

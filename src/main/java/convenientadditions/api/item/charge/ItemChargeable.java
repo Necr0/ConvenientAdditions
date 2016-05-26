@@ -3,8 +3,8 @@ package convenientadditions.api.item.charge;
 import java.util.List;
 import java.util.Random;
 
+import conveniencecore.util.MathHelper;
 import convenientadditions.api.util.EnchantmentUtil;
-import convenientadditions.api.util.MathHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

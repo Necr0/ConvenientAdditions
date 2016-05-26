@@ -57,8 +57,7 @@ public class Reference {
     public static final String goozillaEntityName = "goozilla";
     //
     public static final String tempLightBlockName = "tempLight";
-    public static final String redstonePulseBlockName = "redstonePulse";
-    public static final String textureNoneBlockName = "textureNone";
+    public static final String phantomPlatformBlockName = "phantomPlatform";
     //
     //
     public static final int enchantmentIdBase=133;

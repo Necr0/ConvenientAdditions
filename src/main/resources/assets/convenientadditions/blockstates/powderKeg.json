@@ -1,11 +1,5 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "textures": {
-            "top": "convenientadditions:blocks/powderKeg/powderKeg_top",
-            "bottom": "convenientadditions:blocks/powderKeg/powderKeg_bottom",
-            "side": "convenientadditions:blocks/powderKeg/powderKeg_side"
-        },
-        "model": "convenientadditions:blocks/cube"
-    }
+	"variants": {
+		"normal": { "model": "convenientadditions:powderKeg" }
+	}
 }

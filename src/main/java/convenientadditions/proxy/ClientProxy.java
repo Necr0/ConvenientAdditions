@@ -1,5 +1,6 @@
 package convenientadditions.proxy;
 
+import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.render.RenderChargeTube;
 import convenientadditions.render.RenderComposter;
@@ -23,7 +24,6 @@ public class ClientProxy extends CommonProxy
     {
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComposter.class, new RenderComposter());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChargeTube.class, new RenderChargeTube());
-        //MinecraftForgeClient.registerItemRenderer(ItemBlock.getItemFromBlock(ModBlocks.composterBlock), new RenderComposterItem());
     }
 
     @Override
@@ -41,6 +41,7 @@ public class ClientProxy extends CommonProxy
     public void InitModels()
     {
     	ModItems.initModelLoader();
+    	ModBlocks.initModelLoader();
     }
 }
 

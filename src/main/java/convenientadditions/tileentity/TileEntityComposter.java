@@ -3,10 +3,10 @@ package convenientadditions.tileentity;
 import java.util.List;
 import java.util.Random;
 
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.api.item.ICompostable;
 import convenientadditions.api.registry.compost.CompostRegistry;
-import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;

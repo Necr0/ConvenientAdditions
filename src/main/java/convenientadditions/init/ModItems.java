@@ -17,9 +17,11 @@ import convenientadditions.item.tools.ItemTitaniumPickaxe;
 import convenientadditions.item.tools.ItemTitaniumSpade;
 import convenientadditions.item.tools.ItemTitaniumSword;
 import convenientadditions.item.tools.ItemTitaniumWrench;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -146,5 +148,10 @@ public class ModItems {
 		public ModelResourceLocation getModelLocation(ItemStack stack) {
 			return location;
 		}
+    }
+    
+    public static void registerItemBlockModel(Block block,ModelResourceLocation location)
+    {
+    	ModItems.registerModelLocation(ItemBlock.getItemFromBlock(block),location);
     }
 }

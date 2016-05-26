@@ -1,6 +1,6 @@
 package convenientadditions.api.tileentity.charge;
 
-import convenientadditions.api.util.MathHelper;
+import conveniencecore.util.MathHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

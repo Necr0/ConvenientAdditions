@@ -2,6 +2,7 @@ package convenientadditions.block;
 
 import java.util.Random;
 
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
@@ -28,7 +29,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCompostSoilTilled extends BlockCompostSoil {
+public class BlockCompostSoilTilled extends BlockCompostSoil implements IModelResourceLocationProvider {
 
 	public BlockCompostSoilTilled() {
 		super();

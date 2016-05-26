@@ -1,0 +1,16 @@
+[
+{
+  "modid": "conveniencecore",
+  "name": "Convenience Core",
+  "description": "Core mod for Necro's mods. Free for use.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Necro"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

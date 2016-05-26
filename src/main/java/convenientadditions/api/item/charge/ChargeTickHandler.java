@@ -2,7 +2,7 @@ package convenientadditions.api.item.charge;
 
 import baubles.api.BaublesApi;
 import conveniencecore.item.IPlayerInventoryTick;
-import convenientadditions.api.util.Helper;
+import conveniencecore.util.Helper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;

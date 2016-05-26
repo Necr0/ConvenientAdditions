@@ -3,8 +3,8 @@ package convenientadditions.api.entity.behaviour;
 import conveniencecore.behaviours.BehaviourRegistry;
 import conveniencecore.behaviours.BehaviourSensitivityWater;
 import conveniencecore.behaviours.IEntitySpecialItemBehaviour;
+import conveniencecore.util.Helper;
 import convenientadditions.api.item.charge.ISunlightChargeable;
-import convenientadditions.api.util.Helper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -24,7 +24,6 @@ public class BehaviourSunlightChargeable implements IEntitySpecialItemBehaviour 
 
 	@Override
 	public void onItemEntityUpdate(EntityItem item) {
-		//System.out.println("hi");
 		ItemStack s=item.getEntityItem();
 		if(s!=null && s.getItem() instanceof ISunlightChargeable){
 			ISunlightChargeable sitem=(ISunlightChargeable)(s.getItem());

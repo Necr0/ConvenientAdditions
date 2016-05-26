@@ -2,9 +2,10 @@ package convenientadditions.block;
 
 import java.util.Random;
 
+import conveniencecore.item.IModelResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.api.util.Helper;
 import convenientadditions.tileentity.TileEntityPowderKeg;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -29,7 +30,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockPowderKeg extends BlockContainer {
+public class BlockPowderKeg extends BlockContainer implements IModelResourceLocationProvider {
 	
 	public BlockPowderKeg() {
 		super(Material.wood);

@@ -29,9 +29,8 @@ public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightCharge
 		newE.setVelocity(location.motionX, location.motionY, location.motionZ);
 		ArrayList<Long> cont=new ArrayList<Long>();
 		this.getBehaviours(itemstack,cont);
-		newE.addBehaviour(cont);
+		newE.addBehaviours(cont);
 		newE.setPickupDelay(20);
-		newE.scheduleBehaviourUpdate();
         return newE;
     }
 }

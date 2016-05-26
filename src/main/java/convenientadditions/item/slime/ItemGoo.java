@@ -99,9 +99,8 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
     {
 		EntitySpecialItem newE=new EntitySpecialItem(world, location.posX, location.posY, location.posZ, itemstack);
 		newE.setVelocity(location.motionX, location.motionY, location.motionZ);
-		newE.addBehaviour(((ItemGoo)itemstack.getItem()).behaviours);
-		//newE.delayBeforeCanPickup=20;
-		newE.scheduleBehaviourUpdate();
+		newE.addBehaviours(((ItemGoo)itemstack.getItem()).behaviours);
+		newE.setPickupDelay(20);
         return newE;
     }
 

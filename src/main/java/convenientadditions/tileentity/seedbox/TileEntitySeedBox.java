@@ -7,10 +7,10 @@ import java.util.Random;
 
 import conveniencecore.entity.EntitySpecialItem;
 import conveniencecore.tileentity.IConfigurable;
+import conveniencecore.util.MathHelper;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
-import convenientadditions.api.util.MathHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -100,7 +100,6 @@ public class TileEntitySeedBox extends TileEntity implements ISidedInventory, IC
 	        	item.setVelocity(0d, 0d, 0d);
 	        	item.setPickupDelay(20);
 	            this.worldObj.spawnEntityInWorld(item);
-	            item.updateBehaviours();
         	}
         }
     }

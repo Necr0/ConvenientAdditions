@@ -1,4 +1,4 @@
-package convenientadditions.api.util;
+package conveniencecore.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -41,5 +41,9 @@ public class Helper {
 	
 	public static World getClientWorld(){
 		return FMLClientHandler.instance().getClient().theWorld;
+	}
+	
+	public static World getServerOverworld(){
+		return FMLClientHandler.instance().getServer().getEntityWorld();
 	}
 }

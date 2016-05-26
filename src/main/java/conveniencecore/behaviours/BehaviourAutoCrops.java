@@ -37,19 +37,21 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 			Block b=state.getBlock();
 			EnumFacing up=EnumFacing.UP;
 			if(i==Items.nether_wart&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.nether_wart))
-				w.setBlockState(pos_e, Blocks.nether_wart.getDefaultState(), 2);
+				w.setBlockState(pos_e, Blocks.nether_wart.getDefaultState());
 			else if(i==Items.potato&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.potato))
-				w.setBlockState(pos_e, Blocks.potatoes.getDefaultState(), 2);
+				w.setBlockState(pos_e, Blocks.potatoes.getDefaultState());
 			else if(i==Items.carrot&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.carrot))
-				w.setBlockState(pos_e, Blocks.carrots.getDefaultState(), 2);
+				w.setBlockState(pos_e, Blocks.carrots.getDefaultState());
 			else if(i==Items.wheat_seeds&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.wheat_seeds))
-				w.setBlockState(pos_e, Blocks.wheat.getDefaultState(), 2);
+				w.setBlockState(pos_e, Blocks.wheat.getDefaultState());
 			else if(i==Items.melon_seeds&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.melon_seeds))
-				w.setBlockState(pos_e, Blocks.melon_stem.getDefaultState(), 2);
+				w.setBlockState(pos_e, Blocks.melon_stem.getDefaultState());
 			else if(i==Items.pumpkin_seeds&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.pumpkin_seeds))
-				w.setBlockState(pos_e, Blocks.pumpkin_stem.getDefaultState(), 2);
+				w.setBlockState(pos_e, Blocks.pumpkin_stem.getDefaultState());
+			else if(i==Items.beetroot_seeds&&b.canSustainPlant(state,w, pos, up, (IPlantable)Items.beetroot_seeds))
+				w.setBlockState(pos_e, Blocks.beetroots.getDefaultState());
 			else if(i==ItemBlock.getItemFromBlock(Blocks.sapling)&&b.canSustainPlant(state,w, pos, up, (IPlantable)Blocks.sapling))
-				w.setBlockState(pos_e, Blocks.sapling.getStateFromMeta(item.getEntityItem().getItemDamage()), 2);
+				w.setBlockState(pos_e, Blocks.sapling.getStateFromMeta(item.getEntityItem().getItemDamage()));
 			else
 				return;
 			item.getEntityItem().stackSize--;

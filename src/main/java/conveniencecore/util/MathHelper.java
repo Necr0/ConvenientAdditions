@@ -1,4 +1,4 @@
-package convenientadditions.api.util;
+package conveniencecore.util;
 
 import java.util.UUID;
 

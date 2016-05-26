@@ -2,7 +2,7 @@ package conveniencecore.behaviours;
 
 import java.util.Random;
 
-import convenientadditions.api.util.Helper;
+import conveniencecore.util.Helper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
 

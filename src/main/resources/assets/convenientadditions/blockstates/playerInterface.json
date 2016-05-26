@@ -6,15 +6,17 @@
             "bottom": "convenientadditions:blocks/playerInterface/playerInterface_bottom",
             "side": "convenientadditions:blocks/playerInterface/playerInterface_side"
         },
-        "model": "convenientadditions:blocks/cube"
+        "model": "cube_bottom_top",
+        "uvlock": true
     },
     "variants": {
         "active": {
-            true: {
+            "true": {
                 "textures": {
-                    "top": "convenientadditions:blocks/playerInterface/playerInterface_top_active",
+                    "top": "convenientadditions:blocks/playerInterface/playerInterface_top_active"
                 }
-            }
+            },
+            "false": {}
         }
     }
 }
