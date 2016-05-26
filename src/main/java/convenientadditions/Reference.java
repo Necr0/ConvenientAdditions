@@ -69,8 +69,8 @@ public class Reference {
     public static final String enchantmentDrainName="drain";
     //
     //
-    public static final int titaniumPerCluster=4;
-    public static final int titaniumOresClusterAmount=10;
+    public static final int titaniumPerCluster=5;
+    public static final int titaniumOresClusterAmount=13;
     //
     //
     public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";
