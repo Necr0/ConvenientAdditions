@@ -45,7 +45,7 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 			}else if(i instanceof ItemBlock&&((ItemBlock)i).getBlock() instanceof IPlantable){
 				IPlantable plantable=(IPlantable)((ItemBlock)i).getBlock() ;
 				if(b.canSustainPlant(state, w, pos, up, plantable)){
-					w.setBlockState(pos_e, plantable.getPlant(w, pos_e).getBlock().getStateFromMeta(item.getEntityItem().getItemDamage()));
+					w.setBlockState(pos_e, plantable.getPlant(w, pos_e).getBlock().getStateFromMeta(((ItemBlock)i).getMetadata(item.getEntityItem())));
 					item.getEntityItem().stackSize--;
 					if(item.getEntityItem().stackSize<1)
 						item.setDead();
