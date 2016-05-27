@@ -9,6 +9,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class EnchantmentUtil {
 	public static boolean registered=false;
@@ -29,15 +30,15 @@ public class EnchantmentUtil {
 		public int enchantmentId;
 		public ResourceLocation nameLocation;
 		
-		public EnchantmentBase(int enchantmentId,String name,Enchantment.Rarity rarity,EnumEnchantmentType enchantmentType) {
+		public EnchantmentBase(String name,Enchantment.Rarity rarity,EnumEnchantmentType enchantmentType) {
 			super(rarity,enchantmentType,EntityEquipmentSlot.values());
-			this.enchantmentId=enchantmentId;
+			this.setRegistryName(name);
 			this.nameLocation=new ResourceLocation(name);
 		}
 		
-		public EnchantmentBase(int enchantmentId,String name,Enchantment.Rarity rarity,EntityEquipmentSlot[] slots,EnumEnchantmentType enchantmentType) {
+		public EnchantmentBase(String name,Enchantment.Rarity rarity,EntityEquipmentSlot[] slots,EnumEnchantmentType enchantmentType) {
 			super(rarity,enchantmentType,slots);
-			this.enchantmentId=enchantmentId;
+			this.setRegistryName(name);
 			this.nameLocation=new ResourceLocation(name);
 		}
 
@@ -65,7 +66,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentCapacity extends EnchantmentBase{
 		public EnchantmentCapacity() {
-			super(Reference.enchantmentIdBase+Reference.enchantmentCapacityId, Reference.enchantmentCapacityName, Enchantment.Rarity.COMMON, chargable);
+			super(Reference.enchantmentCapacityName, Enchantment.Rarity.COMMON, chargable);
 			this.setName("capacity");
 		}
 
@@ -82,7 +83,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentChargeEfficiency extends EnchantmentBase{
 		public EnchantmentChargeEfficiency() {
-			super(Reference.enchantmentIdBase+Reference.enchantmentChargeEfficiencyId, Reference.enchantmentChargeEfficiencyName, Enchantment.Rarity.COMMON, chargable);
+			super(Reference.enchantmentChargeEfficiencyName, Enchantment.Rarity.COMMON, chargable);
 			this.setName("chargeEfficiency");
 		}
 
@@ -94,7 +95,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentDrain extends EnchantmentBase{
 		public EnchantmentDrain() {
-			super(Reference.enchantmentIdBase+Reference.enchantmentDrainId, Reference.enchantmentDrainName, Enchantment.Rarity.COMMON, sunlightChargable);
+			super(Reference.enchantmentDrainName, Enchantment.Rarity.COMMON, sunlightChargable);
 			this.setName("drain");
 		}
 
@@ -118,9 +119,7 @@ public class EnchantmentUtil {
     {
         try
         {
-        	//Enchantment.enchantmentRegistry.register(enchantment.getI, key, value);
-            //net.minecraftforge.common.util.EnumHelper.setFailsafeFieldValue(enchantmentSetter, null,
-            //    com.google.common.collect.ObjectArrays.concat(Enchantment.enchantmentsList, enchantment));
+        	GameRegistry.register(enchantment);
         }
         catch (Exception e)
         {

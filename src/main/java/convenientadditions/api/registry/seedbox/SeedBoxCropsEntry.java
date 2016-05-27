@@ -8,19 +8,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.IPlantable;
 
 public class SeedBoxCropsEntry implements ISeedBoxItemBehaviourRegistryEntry {
 
 	@Override
 	public boolean hasSpecialBehaviour(ItemStack stack) {
 		Item i=stack.getItem();
-		return i==Items.nether_wart||
-				i==Items.potato||
-				i==Items.carrot||
-				i==Items.wheat_seeds||
-				i==Items.melon_seeds||
-				i==Items.pumpkin_seeds||
-				i==ItemBlock.getItemFromBlock(Blocks.sapling);
+		return (i instanceof IPlantable||(i instanceof ItemBlock&&((ItemBlock)i).getBlock() instanceof IPlantable));
 	}
 
 	@Override

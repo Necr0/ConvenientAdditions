@@ -61,6 +61,7 @@ public class ModBlocks
         ModItems.registerItemBlockModel(oreTitaniumBlock,oreTitaniumBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(powderKegBlock,powderKegBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(playerInterfaceBlock,playerInterfaceBlock.getModelResourceLocation());
+        ModItems.registerItemBlockModel(seedBoxBlock,seedBoxBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilBlock), compostSoilBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilTilledBlock), compostSoilTilledBlock.getModelResourceLocation());
     }

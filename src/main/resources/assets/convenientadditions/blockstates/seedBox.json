@@ -2,28 +2,40 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "all": "convenientadditions:blocks/seedBox/seedBox"
+            "up": "convenientadditions:blocks/seedBox/seedBox",
+            "down": "convenientadditions:blocks/seedBox/seedBox",
+            "north": "convenientadditions:blocks/seedBox/seedBox",
+            "east": "convenientadditions:blocks/seedBox/seedBox",
+            "south": "convenientadditions:blocks/seedBox/seedBox",
+            "west": "convenientadditions:blocks/seedBox/seedBox"
         },
-        "model": "convenientadditions:blocks/cube"
+        "model": "cube",
+        "uvlock": true
     },
     "variants": {
-        "outletNorth":{
-            true:{textures": {"north": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        "outlet_top":{
+            "true":{"textures": {"up": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "false":{}
         },
-        "outletEast":{
-            true:{textures": {"east": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        "outlet_bottom":{
+            "true":{"textures": {"down": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "false":{}
         },
-        "outletSouth":{
-            true:{textures": {"south": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        "outlet_north":{
+            "true":{"textures": {"north": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "false":{}
         },
-        "outletWest":{
-            true:{textures": {"west": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        "outlet_east":{
+            "true":{"textures": {"east": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "false":{}
         },
-        "outletTop":{
-            true:{textures": {"top": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        "outlet_south":{
+            "true":{"textures": {"south": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "false":{}
         },
-        "outletBottom":{
-            true:{textures": {"bottom": "convenientadditions:blocks/seedBox/seedBox_outlet"}}
+        "outlet_west":{
+            "true":{"textures": {"west": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "false":{}
         }
     }
 }

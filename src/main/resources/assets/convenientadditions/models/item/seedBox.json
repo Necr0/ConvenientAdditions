@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "convenientadditions:blocks/seedBox/seedBox",
+        "bottom": "convenientadditions:blocks/seedBox/seedBox",
+        "top": "convenientadditions:blocks/seedBox/seedBox_outlet"
+    }
+}

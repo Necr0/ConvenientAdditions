@@ -20,28 +20,31 @@ public class ItemTitaniumWrench extends Item implements IModelResourceLocationPr
 	}
 	
 	@Override
-    public EnumActionResult onItemUseFirst(ItemStack is, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ,EnumHand hand)
+    public EnumActionResult onItemUseFirst(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ,EnumHand hand)
 	{
 		boolean ret=false;
 		Block b = world.getBlockState( pos ).getBlock();
 		if( b != null )
 		{
 			if(!player.isSneaking()){
-				if(!world.isRemote)
+				if(!world.isRemote){
 					b.rotateBlock(world, pos, side);
+					return EnumActionResult.SUCCESS;
+				}
 				player.swingArm(hand);
+				return EnumActionResult.PASS;
 			}else{
 				if(b instanceof IDismantleable){
 					IDismantleable d=(IDismantleable)b;
 					if(d.canDismantle(player, world, pos)&&!world.isRemote){
 						d.dismantleBlock(player, world, pos, false);
+						return EnumActionResult.SUCCESS;
 					}
 					player.swingArm(hand);
+					return EnumActionResult.PASS;
 				}
 			}
 		}
-		if(ret)
-			return EnumActionResult.SUCCESS;
 		return EnumActionResult.FAIL;
 	}
 }

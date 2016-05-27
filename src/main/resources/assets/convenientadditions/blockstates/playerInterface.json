@@ -16,11 +16,7 @@
                     "top": "convenientadditions:blocks/playerInterface/playerInterface_top_active"
                 }
             },
-            "false": {
-                "textures": {
-                    "top": "convenientadditions:blocks/playerInterface/playerInterface_top_inactive"
-                }
-            }
+            "false": {}
         }
     }
 }

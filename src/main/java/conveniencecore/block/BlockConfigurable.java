@@ -1,5 +1,7 @@
 package conveniencecore.block;
 
+import org.apache.logging.log4j.Level;
+
 import conveniencecore.tileentity.IConfigurable;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -7,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLLog;
 
 public abstract class BlockConfigurable extends BlockContainer {
     protected BlockConfigurable(Material p_i45386_1_) {
