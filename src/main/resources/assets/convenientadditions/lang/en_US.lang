@@ -11,6 +11,7 @@ tile.convenientadditions:sunlightCollector.name=Sunlight Collector
 tile.convenientadditions:chargeAccumulator.name=Charge Accumulator
 tile.convenientadditions:chargeTube.name=Charge Tube
 tile.convenientadditions:seedBox.name=Seed Box
+tile.convenientadditions:phantomPlatform.name=Phantom Platform
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter

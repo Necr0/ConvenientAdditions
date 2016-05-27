@@ -20,6 +20,8 @@ public class BlockTempLight extends Block {
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.tempLightBlockName)
 		.setLightLevel(intensisty)
 		.setTickRandomly(true);
+        this.disableStats();
+        this.translucent = true;
 	}
 
 	@Override

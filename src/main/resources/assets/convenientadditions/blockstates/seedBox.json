@@ -7,7 +7,7 @@
             "north": "convenientadditions:blocks/seedBox/seedBox",
             "east": "convenientadditions:blocks/seedBox/seedBox",
             "south": "convenientadditions:blocks/seedBox/seedBox",
-            "west": "convenientadditions:blocks/seedBox/seedBox"
+            "west": "convenientadditions:blocks/seedBox/seedBox",
             "particle": "convenientadditions:blocks/seedBox/seedBox"
         },
         "model": "cube",
