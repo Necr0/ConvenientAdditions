@@ -10,6 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.server.FMLServerHandler;
 
 public class Helper {
 	public static void spawnItemInPlace(World w,double x,double y,double z,ItemStack i){
@@ -44,6 +45,6 @@ public class Helper {
 	}
 	
 	public static World getServerOverworld(){
-		return FMLClientHandler.instance().getServer().getEntityWorld();
+		return FMLServerHandler.instance().getServer().getEntityWorld();
 	}
 }
