@@ -1,5 +1,6 @@
 package convenientadditions.block;
 
+import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.tileentity.TileEntityComposter;
@@ -16,7 +17,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockComposter extends BlockContainer {
+public class BlockComposter extends BlockContainer implements IModelResourceLocationProvider {
 
 	public BlockComposter() {
 		super(Material.wood);
@@ -49,7 +50,7 @@ public class BlockComposter extends BlockContainer {
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
-        return EnumBlockRenderType.INVISIBLE;
+        return EnumBlockRenderType.MODEL;
     }
 
     @Override

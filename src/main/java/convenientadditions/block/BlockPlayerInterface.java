@@ -48,7 +48,6 @@ public class BlockPlayerInterface extends BlockContainer implements IModelResour
     	TileEntity t = worldIn.getTileEntity(pos);
         if(t!=null && t instanceof TileEntityPlayerInterface)
         	return state.withProperty(ACTIVE, ((TileEntityPlayerInterface)t).hasTarget());
-        state.withProperty(ACTIVE, false);
         return state.withProperty(ACTIVE, false);
     }
     

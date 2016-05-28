@@ -1,9 +1,0 @@
-{
-    "parent": "block/block_tbs",
-    "textures": {
-        "particle": "blocks/playerInterface_side",
-        "down": "blocks/playerInterface_bottom",
-        "up": "blocks/playerInterface_top_inactive",
-        "side": "blocks/playerInterface_side",
-    }
-}

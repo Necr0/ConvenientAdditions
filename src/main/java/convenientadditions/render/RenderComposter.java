@@ -23,7 +23,7 @@ public class RenderComposter extends TileEntitySpecialRenderer
     {
         if (tileEntity instanceof TileEntityComposter)
         {
-            GL11.glPushMatrix();
+            /*GL11.glPushMatrix();
             GL11.glTranslatef((float) d0 + 0.5F, (float) d1 + 1.5F, (float) d2 + 0.5F);
             ResourceLocation test = new ResourceLocation(ConvenientAdditionsMod.MODID+":textures/models/Composter.png");
             FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
@@ -31,7 +31,7 @@ public class RenderComposter extends TileEntitySpecialRenderer
             GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
             this.modelComposter.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
             GL11.glPopMatrix();
-            GL11.glPopMatrix();
+            GL11.glPopMatrix();*/
             TileEntityComposter t=(TileEntityComposter) tileEntity;
             if(t.content>0){
 	            GL11.glPushMatrix();
@@ -40,7 +40,7 @@ public class RenderComposter extends TileEntitySpecialRenderer
 	            	d=1.02F;
 	            d*=.88F;
 	            GL11.glTranslatef((float) d0 + 0.5F, (float) d1 + 1.5F + d, (float) d2 + 0.5F);
-	            test = new ResourceLocation(ConvenientAdditionsMod.MODID+":textures/models/ComposterContent.png");
+	            ResourceLocation test = new ResourceLocation(ConvenientAdditionsMod.MODID+":textures/models/ComposterContent.png");
 	            FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
 	            GL11.glPushMatrix();
 	            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);

@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "convenientadditions:composter" }
+        "normal": { "model": "convenientadditions:composter" }
 	}
 }

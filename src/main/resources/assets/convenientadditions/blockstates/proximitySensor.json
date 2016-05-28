@@ -1,5 +1,30 @@
 {
-	"variants": {
-		"normal": { "model": "convenientadditions:proximitySensor" }
-	}
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "all": "convenientadditions:blocks/proximitySensor/proximitySensor_active"
+        },
+        "model": "cube_all",
+        "uvlock": true
+    },
+    "variants": {
+        "strength": {
+            0: {"textures": {"all": "convenientadditions:blocks/proximitySensor/proximitySensor_inactive"}},
+            1: {},
+            2: {},
+            3: {},
+            4: {},
+            5: {},
+            6: {},
+            7: {},
+            8: {},
+            9: {},
+            10: {},
+            11: {},
+            12: {},
+            13: {},
+            14: {},
+            15: {}
+        }
+    }
 }

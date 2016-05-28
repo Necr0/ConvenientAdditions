@@ -59,8 +59,10 @@ public class ModBlocks
     public static void initModelLoader()
     {
         ModItems.registerItemBlockModel(oreTitaniumBlock,oreTitaniumBlock.getModelResourceLocation());
+        ModItems.registerItemBlockModel(composterBlock,composterBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(powderKegBlock,powderKegBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(playerInterfaceBlock,playerInterfaceBlock.getModelResourceLocation());
+        ModItems.registerItemBlockModel(proximitySensorBlock,proximitySensorBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(seedBoxBlock,seedBoxBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(phantomPlatformBlock,phantomPlatformBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilBlock), compostSoilBlock.getModelResourceLocation());
