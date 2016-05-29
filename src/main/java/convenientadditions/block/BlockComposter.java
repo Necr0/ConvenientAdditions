@@ -3,7 +3,7 @@ package convenientadditions.block;
 import conveniencecore.item.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
-import convenientadditions.tileentity.TileEntityComposter;
+import convenientadditions.tileentity.composter.TileEntityComposter;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -31,11 +31,8 @@ public class BlockComposter extends BlockContainer implements IModelResourceLoca
         if (world.getTileEntity(pos) instanceof TileEntityComposter && !player.isSneaking())
         {
         	TileEntityComposter t=(TileEntityComposter)world.getTileEntity(pos);
-        	ItemStack c=player.inventory.getStackInSlot(player.inventory.currentItem);
-        	if(c!=null){
-        		if(t.getContentValue(c)>0)
-	        		if(t.isItemValidForSlot(0, c)&&!world.isRemote)
-	        			t.setInventorySlotContents(0, c.splitStack(1));
+        	if(held!=null){
+	        	player.setHeldItem(hand, t.insertStack(held));
         	}
         	return true;
         }
