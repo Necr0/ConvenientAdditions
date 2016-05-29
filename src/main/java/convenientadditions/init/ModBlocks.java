@@ -49,8 +49,9 @@ public class ModBlocks
         registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
         registerBlock(tempLightBlock,Reference.tempLightBlockName);
         registerBlock(phantomPlatformBlock,Reference.phantomPlatformBlockName);
-        registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
-        registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
+        //registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
+        //registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
+        //registerBlock(chargeTubeBlock,Reference.chargeTubeBlockName);
         registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
         registerBlock(compostSoilBlock,new ItemBlockCompostSoil(compostSoilBlock),Reference.compostSoilBlockName);
     }

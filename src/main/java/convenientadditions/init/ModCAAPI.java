@@ -13,6 +13,5 @@ public class ModCAAPI {
 		compostDiscriminator=BehaviourRegistry.addBehaviour(new BehaviourCompost());
 		//register seed box
 		SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemCompost), compostDiscriminator);
-		//SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(Items.feather), BehaviourRegistry.API_DISCRIMINATORS.get("floaty"));
 	}
 }

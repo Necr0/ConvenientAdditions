@@ -1,4 +1,4 @@
-package convenientadditions.tileentity;
+package convenientadditions.tileentity.composter;
 
 import java.util.List;
 import java.util.Random;
@@ -8,6 +8,7 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.api.item.ICompostable;
 import convenientadditions.api.registry.compost.CompostRegistry;
 import convenientadditions.init.ModItems;
+import convenientadditions.tileentity.seedbox.SeedBoxItemStackHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,12 +24,22 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileEntityComposter extends TileEntity implements IInventory, ITickable {
+public class TileEntityComposter extends TileEntity implements ITickable {
+	
+	ComposterItemStackHandler stackHandler;
+	
+	public TileEntityComposter() {
+		super();
+		this.stackHandler=new ComposterItemStackHandler(this);
+	}
 	
 	public boolean processing=false;
 	public int content=0;
@@ -38,6 +49,12 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 	public static int capacity=25000;
 	public static int progressPeriod=2100;
 	public static int progressContent=2500;
+
+	
+	public ItemStack insertStack(ItemStack stackIn){
+		ItemStack stack=stackHandler.insertItem(0, stackIn, false);
+		return stack;
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt){
@@ -57,6 +74,16 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 		nbt.setBoolean("progress", spores);
 	}
 	
+	public void readSyncNBT(NBTTagCompound nbt){
+		this.processing=nbt.getBoolean("processing");
+		this.content=nbt.getInteger("content");
+	}
+	
+	public void writeSyncNBT(NBTTagCompound nbt){
+		nbt.setBoolean("processing", processing);
+		nbt.setInteger("content", content);
+	}
+	
 	public int getContentCapacityPercentage(){
 		return content*100/capacity;
 	}
@@ -71,23 +98,23 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 				if(progress>=progressPeriod){
 					progress=0;
 					content-=progressContent;
-					EntityItem item=null;
 					Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemCompost,1,this.spores?1:0));
+					ItemStack additional=null;
 					switch(rnd.nextInt(6)){
 						case 0:
-							Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemDirtChunk));
-							break;
 						case 1:
-							Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemDirtChunk));
+							additional = new ItemStack(ModItems.itemDirtChunk);
 							break;
 						case 2:
-							Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemFertilizer));
+							additional = new ItemStack(ModItems.itemFertilizer);
 							break;
 						default:
 							break;
 					}
-					if(rnd.nextInt(28)==0)
-						this.spores=false;
+					if(additional != null)
+						Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, additional);
+					if(rnd.nextInt(22) == 0)
+						this.spores = false;
 				}
 				if(content>=capacity){
 					List<EntityPlayer> players=worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX()-2, pos.getY()-2, pos.getZ()-2, pos.getX()+3, pos.getY()+3, pos.getZ()+3));
@@ -121,124 +148,31 @@ public class TileEntityComposter extends TileEntity implements IInventory, ITick
 		}
 	}
 	
+	public int getContentValue(ItemStack itemStack){
+		return CompostRegistry.getCompostingMass(itemStack);
+	}
+	
 	@Override
 	public Packet getDescriptionPacket()
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
-		writeToNBT(nbt);
+		writeSyncNBT(nbt);
 		return new SPacketUpdateTileEntity(this.pos, 0, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
 	{
-		readFromNBT(pkt.getNbtCompound());
-	}
-	
-	@Override
-	public int getSizeInventory() {
-		return 1;
+		readSyncNBT(pkt.getNbtCompound());
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return null;
-	}
-
-    @Override
-    public ItemStack decrStackSize(int slotIndex, int decrementAmount)
-    {
-        return null;
-    }
-
-    @Override
-    public void setInventorySlotContents(int slotIndex, ItemStack itemStack)
-    {
-    	this.content+=getContentValue(itemStack);
-    	this.processing=(content>=progressContent);
-    	if(itemStack.getItem() instanceof ICompostable && ((ICompostable)itemStack.getItem()).hasShroomSpores(itemStack))
-    		this.spores=true;
-    	else if(itemStack.getItem()==Items.mushroom_stew||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.red_mushroom)||itemStack.getItem()==ItemBlock.getItemFromBlock(Blocks.brown_mushroom))
-    		this.spores=true;
-        this.markDirty();
-		IBlockState state=worldObj.getBlockState(pos);
-		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
-    }
-    
-	@Override
-	public String getName() {
-		return "inventory."+ConvenientAdditionsMod.MODID+":Composter.name";
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		return capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY?true:super.hasCapability(capability, facing);
 	}
 
 	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 1;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
-		return false;
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
-		return content<capacity&&getContentValue(itemStack)>0;
-	}
-	
-	public int getContentValue(ItemStack itemStack){
-		return CompostRegistry.getCompostingMass(itemStack);
-	}
-
-	@Override
-	public ItemStack removeStackFromSlot(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void openInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void closeInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getField(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getFieldCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		return capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY?(T)stackHandler:super.getCapability(capability, facing);
 	}
 }

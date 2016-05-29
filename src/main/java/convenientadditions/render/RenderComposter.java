@@ -5,7 +5,7 @@ import org.lwjgl.opengl.GL11;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.render.model.ModelComposter;
 import convenientadditions.render.model.ModelComposterContent;
-import convenientadditions.tileentity.TileEntityComposter;
+import convenientadditions.tileentity.composter.TileEntityComposter;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -23,15 +23,6 @@ public class RenderComposter extends TileEntitySpecialRenderer
     {
         if (tileEntity instanceof TileEntityComposter)
         {
-            /*GL11.glPushMatrix();
-            GL11.glTranslatef((float) d0 + 0.5F, (float) d1 + 1.5F, (float) d2 + 0.5F);
-            ResourceLocation test = new ResourceLocation(ConvenientAdditionsMod.MODID+":textures/models/Composter.png");
-            FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
-            GL11.glPushMatrix();
-            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-            this.modelComposter.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-            GL11.glPopMatrix();
-            GL11.glPopMatrix();*/
             TileEntityComposter t=(TileEntityComposter) tileEntity;
             if(t.content>0){
 	            GL11.glPushMatrix();

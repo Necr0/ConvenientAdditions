@@ -5,6 +5,7 @@ import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.charge.ItemBlazingRock;
+import convenientadditions.item.charge.ItemEnderSlate;
 import convenientadditions.item.charge.ItemSunstone;
 import convenientadditions.item.charge.baubles.ItemBreathAmulet;
 import convenientadditions.item.charge.baubles.ItemChargingRing;
@@ -34,6 +35,7 @@ public class ModItems {
     public static final ItemCompost itemCompost = new ItemCompost();
     public static final ItemSunstone itemSunstone = new ItemSunstone();
     public static final ItemBlazingRock itemBlazingRock = new ItemBlazingRock();
+    public static final ItemEnderSlate itemEnderSlate = new ItemEnderSlate();
     //dummy
     public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
     public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
@@ -70,6 +72,7 @@ public class ModItems {
         registerItem(itemCompost,Reference.compostItemName);
         registerItem(itemSunstone,Reference.sunstoneItemName);
         registerItem(itemBlazingRock,Reference.blazingRockItemName);
+        registerItem(itemEnderSlate,Reference.enderSlateName);
         //baubles
         registerItem(itemSunlightRing,Reference.sunlightRingItemName);
         registerItem(itemSaturationRing,Reference.saturationRingItemName);
@@ -101,6 +104,8 @@ public class ModItems {
 		registerModelLocation(itemSunstone,1,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_active"));
 		registerIndependentModelLocation(itemCompost,itemCompost.getModelResourceLocation());
 		registerModelLocation(itemBlazingRock,itemBlazingRock.getModelResourceLocation());
+		registerModelLocation(itemEnderSlate,0,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_inactive","inventory"));
+		registerModelLocation(itemEnderSlate,1,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_active","inventory"));
         //baubles
 		registerModelLocation(itemSunlightRing,itemSunlightRing.getModelResourceLocation());
 		registerModelLocation(itemSaturationRing,itemSaturationRing.getModelResourceLocation());

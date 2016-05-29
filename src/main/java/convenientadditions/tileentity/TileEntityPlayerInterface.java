@@ -2,17 +2,12 @@ package convenientadditions.tileentity;
 
 import java.util.List;
 
-import convenientadditions.ConvenientAdditionsMod;
-import convenientadditions.Reference;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -51,7 +46,7 @@ public class TileEntityPlayerInterface extends TileEntity implements ICapability
 	}
 	
 	public EntityPlayer getPlayer(){
-		List<EntityPlayer> l=this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY()+1, pos.getZ(), pos.getX()+1, pos.getY()+2, pos.getZ()+1));
+		List<EntityPlayer> l=this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(new BlockPos(pos.getX(),pos.getY()+1,pos.getZ())));
 		if(l.size()>0)
 			return l.get(0);
 		else

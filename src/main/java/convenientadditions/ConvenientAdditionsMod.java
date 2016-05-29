@@ -68,8 +68,6 @@ public class ConvenientAdditionsMod
     	thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
     }
     
-
-    
     @EventHandler
     public void init(FMLInitializationEvent event)
     {

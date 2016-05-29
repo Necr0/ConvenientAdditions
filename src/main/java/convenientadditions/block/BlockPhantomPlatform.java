@@ -9,7 +9,9 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,6 +33,7 @@ public class BlockPhantomPlatform extends Block implements IModelResourceLocatio
 		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.phantomPlatformBlockName);
         this.disableStats();
         this.translucent = true;
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DESPAWN,false));
 	}
 
     @SideOnly(Side.CLIENT)
@@ -56,7 +59,13 @@ public class BlockPhantomPlatform extends Block implements IModelResourceLocatio
 
 	@Override
 	public void updateTick(World world,BlockPos pos,IBlockState state,Random r){
-		world.setBlockToAir(pos);
+		if((state.getValue(DESPAWN)).booleanValue()){
+			boolean prevent=world.getEntitiesWithinAABB(EntityPlayer.class,new AxisAlignedBB(pos.getX()-1, pos.getY()-1, pos.getZ()-1, pos.getX()+2, pos.getY()+3, pos.getZ()+2)).size()>0;
+			if(prevent)
+				world.scheduleUpdate(pos, this, 1);
+			else
+				world.setBlockToAir(pos);
+		}
 	}
 	
 	@Override
@@ -84,4 +93,23 @@ public class BlockPhantomPlatform extends Block implements IModelResourceLocatio
     
     @Override
     public void dropBlockAsItemWithChance(World worldIn,BlockPos pos,IBlockState state,float chance,int fortune){}
+    
+    //
+    // BLOCKSTATE STUFF
+    //
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(DESPAWN, meta==1);
+    }
+    
+    public int getMetaFromState(IBlockState state)
+    {
+        return (state.getValue(DESPAWN)).booleanValue()?1:0;
+    }
+    
+    @Override
+    protected BlockStateContainer createBlockState()
+    {
+        return new BlockStateContainer(this, new IProperty[]{DESPAWN});
+    }
 }

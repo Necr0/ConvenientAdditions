@@ -1,12 +1,12 @@
 package convenientadditions.proxy;
 
 import convenientadditions.Reference;
-import convenientadditions.tileentity.TileEntityComposter;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityProximitySensor;
 import convenientadditions.tileentity.charge.TileEntityChargeAccumulator;
 import convenientadditions.tileentity.charge.TileEntityChargeTube;
 import convenientadditions.tileentity.charge.TileEntitySunlightCollector;
+import convenientadditions.tileentity.composter.TileEntityComposter;
 import convenientadditions.tileentity.powderkeg.TileEntityPowderKeg;
 import convenientadditions.tileentity.seedbox.TileEntitySeedBox;
 import net.minecraft.world.World;

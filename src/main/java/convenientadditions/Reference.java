@@ -26,10 +26,10 @@ public class Reference {
     public static final String compostItemName = "compost";
     public static final String fertilizerItemName = "fertilizer";
     public static final String dirtChunkItemName = "dirtChunk";
-    public static final String redstonePulseEmitterItemName = "redstonePulseEmitter";
     public static final String sunstoneItemName = "sunstone";
     public static final String titaniumWrenchItemName = "titaniumWrench";
     public static final String blazingRockItemName = "blazingRock";
+    public static final String enderSlateName = "enderSlate";
     //baubles
     public static final String sunlightRingItemName = "sunlightRing";
     public static final String saturationRingItemName = "saturationRing";

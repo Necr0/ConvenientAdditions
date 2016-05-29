@@ -3,6 +3,7 @@ package conveniencecore;
 import conveniencecore.behaviours.BehaviourRegistry;
 import conveniencecore.entity.EntitySpecialItem;
 import conveniencecore.item.FuelItemFuelHandler;
+import conveniencecore.item.PlayerInventoryTickHandler;
 import conveniencecore.network.ModNetworking;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -26,6 +27,7 @@ public class ConvenienceCore {
     {
     	ModNetworking.init();
     	FuelItemFuelHandler.init();
+    	PlayerInventoryTickHandler.init();
     	BehaviourRegistry.init();
     	EntityRegistry.registerModEntity(EntitySpecialItem.class, SPECIALITEMENTITYNAME, SPECIALITEMENTITYID, INSTANCE, 128, 5, true);
     }

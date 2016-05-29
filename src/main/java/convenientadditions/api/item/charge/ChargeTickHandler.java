@@ -1,7 +1,6 @@
 package convenientadditions.api.item.charge;
 
 import baubles.api.BaublesApi;
-import conveniencecore.item.IPlayerInventoryTick;
 import conveniencecore.util.Helper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -66,33 +65,6 @@ public class ChargeTickHandler {
 						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, OFFHAND_SLOTS[0]));
 					}
 				}
-			}
-		}
-    }
-	
-	@SubscribeEvent
-    public void onPlayerInventoryTick(TickEvent.PlayerTickEvent e)
-    {
-		EntityPlayer player = e.player;
-		InventoryPlayer playerInv=player.inventory;
-		//MAIN
-		for(int i=0;i<playerInv.mainInventory.length;i++){
-			ItemStack stack=playerInv.mainInventory[i];
-			if(stack!=null && stack.getItem() instanceof IPlayerInventoryTick){
-				((IPlayerInventoryTick)stack.getItem()).onPlayerInventoryTick(stack, i, player);;
-			}
-		}
-		//ARMOR
-		for(int i=0;i<playerInv.armorInventory.length;i++){
-			ItemStack stack=playerInv.armorInventory[i];
-			if(stack!=null && stack.getItem() instanceof IPlayerInventoryTick){
-				((IPlayerInventoryTick)stack.getItem()).onPlayerInventoryTick(stack, ARMOR_SLOTS[i], player);;
-			}
-		}
-		//OFFHAND
-		for(ItemStack stack:playerInv.offHandInventory){
-			if(stack!=null && stack.getItem() instanceof IPlayerInventoryTick){
-				((IPlayerInventoryTick)stack.getItem()).onPlayerInventoryTick(stack, OFFHAND_SLOTS[0], player);;
 			}
 		}
     }
