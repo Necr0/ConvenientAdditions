@@ -18,13 +18,20 @@ public class ChargeTickHandler {
 	public static final int[] ARMOR_SLOTS=new int[]{155,156,157,158};
 	public static final int[] BAUBLES_SLOTS=new int[]{-1,-2,-3,-4};
 	
+	private byte time=0;
+	
 	@SubscribeEvent
     public void onPlayerSunlightChargeTick(TickEvent.PlayerTickEvent e)
     {
+		time++;
+		if(time!=20 || e.side!=Side.SERVER)
+			return;
+		time=0;
+		
 		EntityPlayer player = e.player;
 		InventoryPlayer playerInv=player.inventory;
 
-		if(player.worldObj.isDaytime() && !player.worldObj.isRaining() && Helper.canEntitySeeSky(player) && e.side==Side.SERVER){
+		if(player.worldObj.isDaytime() && !player.worldObj.isRaining() && Helper.canEntitySeeSky(player)){
 			//BAUBLES SUNLIGHT
 			IInventory baublesInv=BaublesApi.getBaubles(player);
 			for(int i=0;i<baublesInv.getSizeInventory();i++){
@@ -32,7 +39,7 @@ public class ChargeTickHandler {
 				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());
 					if(sitem.isSunlightChargeable(stack, BAUBLES_SLOTS[i])){
-						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, BAUBLES_SLOTS[i]));
+						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, BAUBLES_SLOTS[i])*20);
 					}
 				}
 			}
@@ -43,7 +50,7 @@ public class ChargeTickHandler {
 				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());
 					if(sitem.isSunlightChargeable(stack, i)){
-						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, i));
+						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, i)*20);
 					}
 				}
 			}
@@ -53,7 +60,7 @@ public class ChargeTickHandler {
 				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());
 					if(sitem.isSunlightChargeable(stack, ARMOR_SLOTS[i])){
-						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, ARMOR_SLOTS[i]));
+						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, ARMOR_SLOTS[i])*20);
 					}
 				}
 			}
@@ -62,7 +69,7 @@ public class ChargeTickHandler {
 				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());
 					if(sitem.isSunlightChargeable(stack, OFFHAND_SLOTS[0])){
-						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, OFFHAND_SLOTS[0]));
+						sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, OFFHAND_SLOTS[0])*20);
 					}
 				}
 			}

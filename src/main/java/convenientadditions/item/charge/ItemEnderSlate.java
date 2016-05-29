@@ -73,7 +73,7 @@ public class ItemEnderSlate extends ItemChargeable implements IPlayerInventoryTi
 
 	@Override
 	public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player) {
-		if(player.worldObj.isRemote)
+		if(player.worldObj.isRemote&&!(slot>=0&&slot<=9||slot==255))
 			return;
 		WorldServer world = (WorldServer)player.worldObj;
 		if(isActive(item)){
