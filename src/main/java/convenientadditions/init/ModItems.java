@@ -45,7 +45,7 @@ public class ModItems {
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
     public static final ItemBreathAmulet itemBreathAmulet = new ItemBreathAmulet();
     public static final ItemChargingRing itemChargingRing = new ItemChargingRing();
-    public static final ItemFloatingBelt itemFloatingBelt = new ItemFloatingBelt();
+    //public static final ItemFloatingBelt itemFloatingBelt = new ItemFloatingBelt();
     //ttools
     public static final ItemTitaniumAxe itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
     public static final ItemTitaniumPickaxe itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
@@ -78,7 +78,7 @@ public class ModItems {
         registerItem(itemSaturationRing,Reference.saturationRingItemName);
         registerItem(itemBreathAmulet,Reference.breathAmuletItemName);
         registerItem(itemChargingRing,Reference.chargingRingItemName);
-        registerItem(itemFloatingBelt,Reference.floatingBeltItemName);
+        //registerItem(itemFloatingBelt,Reference.floatingBeltItemName);
         //goo
         //ItemGoo.init();
         
@@ -111,7 +111,7 @@ public class ModItems {
 		registerModelLocation(itemSaturationRing,itemSaturationRing.getModelResourceLocation());
 		registerModelLocation(itemBreathAmulet,itemBreathAmulet.getModelResourceLocation());
 		registerModelLocation(itemChargingRing,itemChargingRing.getModelResourceLocation());
-		registerModelLocation(itemFloatingBelt,itemFloatingBelt.getModelResourceLocation());
+		//registerModelLocation(itemFloatingBelt,itemFloatingBelt.getModelResourceLocation());
         //goo
     }
     
