@@ -24,11 +24,11 @@ public class ItemFloatingBelt extends ItemSunlightChargeableBehaviour implements
     
 	public ItemFloatingBelt(){
 		super(152000,true,true,16);
-		this.setHasSubtypes(true)
+		/*this.setHasSubtypes(true)
 			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.floatingBeltItemName)
 			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 			.setHasSubtypes(true)
-			.setMaxStackSize(1);
+			.setMaxStackSize(1);*/
 		FULLY_CHARGED=new ItemStack(this,1,0);
 		chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
 	}

@@ -29,14 +29,15 @@ public class Reference {
     public static final String sunstoneItemName = "sunstone";
     public static final String titaniumWrenchItemName = "titaniumWrench";
     public static final String blazingRockItemName = "blazingRock";
-    public static final String enderSlateName = "enderSlate";
+    public static final String enderSlateItemName = "enderSlate";
+    public static final String launchingArrowItemName = "launchingArrow";
     //baubles
     public static final String sunlightRingItemName = "sunlightRing";
     public static final String saturationRingItemName = "saturationRing";
     public static final String breathAmuletItemName = "breathAmulet";
     public static final String chargingRingItemName = "chargingRing";
     public static final int chargingRingBaseCharge = 7;
-    public static final String floatingBeltItemName = "floatingBelt";
+    //public static final String floatingBeltItemName = "floatingBelt";
     //goo
     public static final String royalGooItemName = "royalGoo";
     public static final String kittyGooItemName = "kittyGoo";
@@ -49,12 +50,11 @@ public class Reference {
     public static final String honeyGooItemName = "honeyGoo";
     public static final String boomGooItemName = "boomGoo";
     //packets
-    public static final int specialItemEntityBehavioursDisc = 0;
+    
     //slimeEntities
-    public static final String gooItemEntityName = "gooItem";
-    public static final int gooItemEntityId = 0;
-    public static final int specialItemEntityId = 1;
     public static final String goozillaEntityName = "goozilla";
+    public static final int lauchingArrowEntityId = 1;
+    public static final String launchingArrowEntityName = "launchingArrow";
     //
     public static final String tempLightBlockName = "tempLight";
     public static final String phantomPlatformBlockName = "phantomPlatform";

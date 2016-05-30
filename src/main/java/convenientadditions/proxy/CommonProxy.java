@@ -1,6 +1,8 @@
 package convenientadditions.proxy;
 
+import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
+import convenientadditions.entity.EntityLaunchingArrow;
 import convenientadditions.tileentity.TileEntityPlayerInterface;
 import convenientadditions.tileentity.TileEntityProximitySensor;
 import convenientadditions.tileentity.charge.TileEntityChargeAccumulator;
@@ -10,6 +12,7 @@ import convenientadditions.tileentity.composter.TileEntityComposter;
 import convenientadditions.tileentity.powderkeg.TileEntityPowderKeg;
 import convenientadditions.tileentity.seedbox.TileEntitySeedBox;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -29,6 +32,7 @@ public class CommonProxy
 
     public void registerEntities()
     {
+    	EntityRegistry.registerModEntity(EntityLaunchingArrow.class, Reference.launchingArrowEntityName, Reference.lauchingArrowEntityId, ConvenientAdditionsMod.INSTANCE, 128, 5, true);
     }
 
     public World getClientWorld()

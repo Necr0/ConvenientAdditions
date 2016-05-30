@@ -1,6 +1,6 @@
 {
 	"variants": {
-		"despawn=false": { "model": "convenientadditions:oreTitanium" }
+		"despawn=false": { "model": "convenientadditions:oreTitanium" },
         "despawn=true": { "model": "convenientadditions:oreTitanium" }
 	}
 }

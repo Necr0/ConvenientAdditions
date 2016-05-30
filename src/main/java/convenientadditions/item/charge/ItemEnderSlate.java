@@ -29,7 +29,7 @@ public class ItemEnderSlate extends ItemChargeable implements IPlayerInventoryTi
 
 	public ItemEnderSlate() {
 		super(96000, true, true);//8
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.enderSlateName)
+		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.enderSlateItemName)
 		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
 		.setHasSubtypes(true)
 		.setMaxStackSize(1);

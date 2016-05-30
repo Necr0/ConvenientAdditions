@@ -34,6 +34,9 @@ item.convenientadditions:dirtChunk.name=Dirt Chunk
 item.convenientadditions:sunstone.name=Sunstone
 item.convenientadditions:blazingRock.name=Blazing Rock
 item.convenientadditions:enderSlate.name=Ender Slate
+item.convenientadditions:launchingArrow_0.name=Creeper Arrow
+item.convenientadditions:launchingArrow_1.name=Blast Arrow
+item.convenientadditions:launchingArrow_2.name=Slime Arrow
 # Baubles
 item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
