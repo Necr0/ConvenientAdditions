@@ -2,7 +2,6 @@ package convenientadditions.item;
 
 import java.util.List;
 
-import conveniencecore.item.IModelResourceLocationProvider;
 import conveniencecore.item.IModelVariantResourceLocationProvider;
 import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
@@ -23,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResourceLocationProvider {
 	
     public ItemLaunchingArrow() {
-        this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.launchingArrowItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+        this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.launchingArrowItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setHasSubtypes(true);
     }
     
     @SideOnly(Side.CLIENT)

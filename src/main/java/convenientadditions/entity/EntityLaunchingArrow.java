@@ -68,9 +68,9 @@ public class EntityLaunchingArrow extends EntityArrow {
     {
     	super.readEntityFromNBT(tagCompund);
         if(tagCompund.hasKey("variant"))
-        	this.variant=EnumLaunchingArrowVariant.values()[tagCompund.getByte("variant")];
+        	setVariant(EnumLaunchingArrowVariant.values()[tagCompund.getByte("variant")]);
         else
-        	this.variant=EnumLaunchingArrowVariant.values()[0];
+        	setVariant(EnumLaunchingArrowVariant.values()[0]);
     }
     
     public static enum EnumLaunchingArrowVariant{
