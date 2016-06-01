@@ -4,12 +4,12 @@ import convenientadditions.ConvenientAdditionsMod;
 import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
+import convenientadditions.item.ItemLaunchingArrow;
 import convenientadditions.item.charge.ItemBlazingRock;
 import convenientadditions.item.charge.ItemEnderSlate;
 import convenientadditions.item.charge.ItemSunstone;
 import convenientadditions.item.charge.baubles.ItemBreathAmulet;
 import convenientadditions.item.charge.baubles.ItemChargingRing;
-import convenientadditions.item.charge.baubles.ItemFloatingBelt;
 import convenientadditions.item.charge.baubles.ItemSaturationRing;
 import convenientadditions.item.charge.baubles.ItemSunlightRing;
 import convenientadditions.item.tools.ItemTitaniumAxe;
@@ -36,6 +36,7 @@ public class ModItems {
     public static final ItemSunstone itemSunstone = new ItemSunstone();
     public static final ItemBlazingRock itemBlazingRock = new ItemBlazingRock();
     public static final ItemEnderSlate itemEnderSlate = new ItemEnderSlate();
+    public static final ItemLaunchingArrow itemLaunchingArrow = new ItemLaunchingArrow();
     //dummy
     public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
     public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
@@ -72,7 +73,8 @@ public class ModItems {
         registerItem(itemCompost,Reference.compostItemName);
         registerItem(itemSunstone,Reference.sunstoneItemName);
         registerItem(itemBlazingRock,Reference.blazingRockItemName);
-        registerItem(itemEnderSlate,Reference.enderSlateName);
+        registerItem(itemEnderSlate,Reference.enderSlateItemName);
+        registerItem(itemLaunchingArrow,Reference.launchingArrowItemName);
         //baubles
         registerItem(itemSunlightRing,Reference.sunlightRingItemName);
         registerItem(itemSaturationRing,Reference.saturationRingItemName);
@@ -106,6 +108,7 @@ public class ModItems {
 		registerModelLocation(itemBlazingRock,itemBlazingRock.getModelResourceLocation());
 		registerModelLocation(itemEnderSlate,0,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_inactive","inventory"));
 		registerModelLocation(itemEnderSlate,1,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_active","inventory"));
+		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
         //baubles
 		registerModelLocation(itemSunlightRing,itemSunlightRing.getModelResourceLocation());
 		registerModelLocation(itemSaturationRing,itemSaturationRing.getModelResourceLocation());
@@ -127,10 +130,12 @@ public class ModItems {
     	ModelLoader.setCustomModelResourceLocation(item, 0, location);
     }
     
-    /*public static void registerVariants(Item item,ModelResourceLocation[] locations)
+    public static void registerVariants(Item item,ModelResourceLocation[] locations)
     {
-    	ModelLoader.registerItemVariants(item, locations);
-    }*/
+    	for(int i=0;i<locations.length;i++){
+    		registerModelLocation(item, i, locations[i]);
+    	}
+    }
     
     public static void registerModelLocation(Item item,int damage,ModelResourceLocation location)
     {

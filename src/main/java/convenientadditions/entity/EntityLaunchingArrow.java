@@ -6,12 +6,15 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.Explosion;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
 
 public class EntityLaunchingArrow extends EntityArrow {
+    public static final DataParameter<Byte> VARIANT = EntityDataManager.<Byte>createKey(EntityLaunchingArrow.class, DataSerializers.BYTE);
 	
-	EnumLaunchingArrowVariant variant;
+	public EnumLaunchingArrowVariant variant=EnumLaunchingArrowVariant.slime;
 
 	public EntityLaunchingArrow(World worldIn) {
 		super(worldIn);
@@ -25,7 +28,7 @@ public class EntityLaunchingArrow extends EntityArrow {
 
 	public EntityLaunchingArrow(World worldIn, EntityLivingBase shooter, EnumLaunchingArrowVariant variant) {
 		super(worldIn, shooter);
-		this.variant=variant;
+		this.setVariant(variant);
         this.canBePickedUp = EntityArrow.PickupStatus.DISALLOWED;
 	}
 
@@ -37,14 +40,12 @@ public class EntityLaunchingArrow extends EntityArrow {
     public void onUpdate()
     {
         this.canBePickedUp = EntityArrow.PickupStatus.DISALLOWED;
-        
         super.onUpdate();
         
         if (this.inGround&&!worldObj.isRemote)
         {
             if(worldObj.getClosestPlayerToEntity(this, 1.5D)!=null){
-                //this.worldObj.createExplosion(this, posX, posY, posZ, 2, false);
-                ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(variant, this));
+                ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(getVariant(), this));
             	this.setDead();
             }
         }
@@ -53,9 +54,7 @@ public class EntityLaunchingArrow extends EntityArrow {
     protected void arrowHit(EntityLivingBase living)
     {
         super.arrowHit(living);
-
-        //this.worldObj.createExplosion(this, posX, posY, posZ, 2, false);
-        ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(variant, this));
+        ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(getVariant(), this));
     	this.setDead();
     }
     
@@ -96,5 +95,32 @@ public class EntityLaunchingArrow extends EntityArrow {
         public static ExtendedExplosion getExtendedExplosionFromVariant(EnumLaunchingArrowVariant variant,Entity entity){
         	return new ExtendedExplosion(entity.worldObj, entity, entity.posX, entity.posY, entity.posZ, variant.strength, false, true).setDamageMultiplier(variant.damageMultiplier).setDamaging(variant.doDamage).setGrieving(variant.destroyBlocks).setKnockbackMultiplier(variant.knockbackMultiplier);
         }
+    }
+    
+    @Override
+    protected void entityInit()
+    {
+        this.getDataManager().register(VARIANT, (byte)2);
+        super.entityInit();
+    }
+    
+    public EnumLaunchingArrowVariant getVariant()
+    {
+    	if(worldObj.isRemote){
+    		Byte b=(Byte)this.dataWatcher.get(VARIANT);
+    		if(b!=null&&b<EnumLaunchingArrowVariant.values().length)
+    			return EnumLaunchingArrowVariant.values()[b];
+    		else
+    			return EnumLaunchingArrowVariant.slime;
+    	}else{
+    		return this.variant;
+    	}
+    }
+    
+    public void setVariant(EnumLaunchingArrowVariant variant)
+    {
+    	this.variant=variant;
+        this.getDataManager().set(VARIANT,(byte)variant.ordinal());
+        this.getDataManager().setDirty(VARIANT);
     }
 }

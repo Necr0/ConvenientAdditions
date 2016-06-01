@@ -13,7 +13,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntitySpecialItem extends EntityItem {
-    private static final DataParameter<List<Long>> BEHAVIOURS = EntityDataManager.<List<Long>>createKey(EntitySpecialItem.class, CCDataSerializers.LISTLONG);
+    public static final DataParameter<List<Long>> BEHAVIOURS = EntityDataManager.<List<Long>>createKey(EntitySpecialItem.class, CCDataSerializers.LISTLONG);
 	public List<Long> behaviours=new ArrayList<Long>();
 
 	public EntitySpecialItem(World world) {
@@ -61,14 +61,6 @@ public class EntitySpecialItem extends EntityItem {
     	}
     }
     
-    public void onCreate()
-    {
-    	//System.out.println("exist");
-    	for(long b:behaviours){
-    		BehaviourRegistry.getBehaviour(b).onCreate(this);
-    	}
-    }
-    
     @Override
     public void onUpdate()
     {
@@ -93,15 +85,20 @@ public class EntitySpecialItem extends EntityItem {
 
     
     //DATA STUFF
+    @Override
     protected void entityInit()
     {
-        this.getDataManager().register(BEHAVIOURS, new ArrayList<Long>());
+        this.getDataManager().register(BEHAVIOURS, behaviours);
+    	for(long b:getBehaviours()){
+    		BehaviourRegistry.getBehaviour(b).onCreate(this);
+    	}
         super.entityInit();
     }
     
     public void setBehaviours(List<Long> behaviours)
     {
-        this.getDataManager().set(BEHAVIOURS, behaviours);
+    	this.behaviours=behaviours;
+        this.getDataManager().set(BEHAVIOURS, this.behaviours);
         this.getDataManager().setDirty(BEHAVIOURS);
     }
 	
