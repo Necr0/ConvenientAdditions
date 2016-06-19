@@ -47,7 +47,7 @@ public class BlockPowderKeg extends BlockContainer implements IModelResourceLoca
     
     private void dropItems(World world, BlockPos pos)
     {
-    	if (world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote){
+    	if (world.getTileEntity(pos)!=null && world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote){
         	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(pos);
         	if(keg.getAmount()<=0)
         		return;

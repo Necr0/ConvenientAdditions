@@ -22,7 +22,7 @@ public abstract class BlockMachineConfigurable extends BlockConfigurable impleme
 	@Override
 	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player,World world, BlockPos pos, boolean returnDrops) {
 		ItemStack stack=new ItemStack(this);
-		world.spawnEntityInWorld(new EntityItem(world, pos.getX()+.5, pos.getY()+.5, pos.getY()+.5, stack));
+		world.spawnEntityInWorld(new EntityItem(world, pos.getX()+.5, pos.getY()+.5, pos.getZ()+.5, stack));
 		ArrayList<ItemStack> arr=new ArrayList<ItemStack>();
 		arr.add(stack);
 		world.setBlockToAir(pos);

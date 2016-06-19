@@ -1,10 +1,13 @@
 package convenientadditions.block.setProvider;
 
+import java.util.ArrayList;
+
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModGuiHandler;
 import convenientadditions.Reference;
 import convenientadditions.block.BlockMachineConfigurable;
+import convenientadditions.block.powderkeg.TileEntityPowderKeg;
 import convenientadditions.block.setProvider.TileEntitySetProvider.EnumOutletMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -12,6 +15,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -93,5 +97,67 @@ public class BlockSetProvider extends BlockMachineConfigurable implements IModel
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
         return EnumBlockRenderType.MODEL;
+    }
+
+	@Override
+	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player,World world, BlockPos pos, boolean returnDrops) {
+		dropItems(world,pos);
+		return super.dismantleBlock(player, world, pos, returnDrops);
+	}
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state)
+    {
+        dropItems(world, pos);
+        super.breakBlock(world, pos, state);
+    }
+    
+    private void dropItems(World world, BlockPos pos)
+    {
+    	if (world.getTileEntity(pos)!=null && world.getTileEntity(pos) instanceof TileEntitySetProvider && !world.isRemote){
+    		TileEntitySetProvider p = (TileEntitySetProvider)world.getTileEntity(pos);
+        	for(ItemStack item:p.input.getStacks()){
+        		if(item!=null){
+		            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
+		            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
+		            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
+		            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
+		            float factor = 0.05F;
+		            entityItem.motionX = world.rand.nextGaussian() * factor;
+		            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
+		            entityItem.motionZ = world.rand.nextGaussian() * factor;
+		            world.spawnEntityInWorld(entityItem);
+        		}
+	        }
+        	p.input.setStacks(new ItemStack[p.input.getSlots()]);
+        	for(ItemStack item:p.filter.getStacks()){
+        		if(item!=null){
+		            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
+		            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
+		            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
+		            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
+		            float factor = 0.05F;
+		            entityItem.motionX = world.rand.nextGaussian() * factor;
+		            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
+		            entityItem.motionZ = world.rand.nextGaussian() * factor;
+		            world.spawnEntityInWorld(entityItem);
+        		}
+	        }
+        	p.filter.setStacks(new ItemStack[p.filter.getSlots()]);
+        	for(ItemStack item:p.output.getStacks()){
+        		if(item!=null){
+		            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
+		            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
+		            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
+		            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
+		            float factor = 0.05F;
+		            entityItem.motionX = world.rand.nextGaussian() * factor;
+		            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
+		            entityItem.motionZ = world.rand.nextGaussian() * factor;
+		            world.spawnEntityInWorld(entityItem);
+        		}
+	        }
+        	p.output.setStacks(new ItemStack[p.output.getSlots()]);
+        }
     }
 }
