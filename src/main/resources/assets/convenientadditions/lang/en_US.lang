@@ -84,6 +84,22 @@ tooltip.convenientadditions:breathAmulet=I breathe in deep, and I close my eyes.
 tooltip.convenientadditions:chargingRing=Run really fast! (not really)
 tooltip.convenientadditions:floatingBelt=Fly you fool!
 
+tooltip.convenientadditions:reset=Reset now.
+tooltip.convenientadditions:resetOn=Reset on %v.
+tooltip.convenientadditions:resetNot=Don't reset automatically.
+tooltip.convenientadditions:resetAuto=Reset automatically.
+
+convenientadditions:highrs=High Redstone Signal
+convenientadditions:lowrs=Low Redstone Signal
+convenientadditions:pulsers=Redstone Pulse
+convenientadditions:ignorers=Ignore Redstone
+
+convenientadditions:match=Match %v.
+convenientadditions:ignore=Ignore %v.
+
+convenientadditions:damageValue=Damage Value
+convenientadditions:NBT=NBT
+
 tooltip.convenientadditions:compostDegraded0=Perfect!
 tooltip.convenientadditions:compostDegraded1=Subtly degraded.
 tooltip.convenientadditions:compostDegraded2=Very slightly degraded.

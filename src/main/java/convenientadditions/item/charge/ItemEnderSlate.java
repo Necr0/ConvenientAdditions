@@ -2,9 +2,9 @@ package convenientadditions.item.charge;
 
 import java.util.List;
 
-import conveniencecore.item.IPlayerInventoryTick;
-import conveniencecore.item.IResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.invtick.IPlayerInventoryTick;
+import conveniencecore.item.resourceprovider.IResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.api.item.charge.ItemChargeable;
 import convenientadditions.block.BlockPhantomPlatform;
@@ -29,8 +29,8 @@ public class ItemEnderSlate extends ItemChargeable implements IPlayerInventoryTi
 
 	public ItemEnderSlate() {
 		super(96000, true, true);//8
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.enderSlateItemName)
-		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
+		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.enderSlateItemName)
+		.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 		.setHasSubtypes(true)
 		.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);

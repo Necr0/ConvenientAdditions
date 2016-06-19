@@ -15,6 +15,7 @@ public class Reference {
     public static final String chargeAccumulatorBlockName = "chargeAccumulator";
     public static final String chargeTubeBlockName = "chargeTube";
     public static final String seedBoxBlockName = "seedBox";
+    public static final String setProviderBlockName = "setProvider";
     //
     public static final String ingotTitaniumItemName = "ingotTitanium";
     public static final String nuggetTitaniumItemName = "nuggetTitanium";

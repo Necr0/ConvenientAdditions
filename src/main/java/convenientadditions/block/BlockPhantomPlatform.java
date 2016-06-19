@@ -3,9 +3,9 @@ package convenientadditions.block;
 import java.util.List;
 import java.util.Random;
 
-import conveniencecore.item.IModelResourceLocationProvider;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
-import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -30,7 +30,7 @@ public class BlockPhantomPlatform extends Block implements IModelResourceLocatio
 
 	public BlockPhantomPlatform() {
 		super(Material.fire);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.phantomPlatformBlockName);
+		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.phantomPlatformBlockName);
         this.disableStats();
         this.translucent = true;
         this.setDefaultState(this.blockState.getBaseState().withProperty(DESPAWN,false));

@@ -1,28 +1,29 @@
 package convenientadditions.init;
 
-import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
-import convenientadditions.block.BlockCompostSoil;
-import convenientadditions.block.BlockCompostSoilTilled;
-import convenientadditions.block.BlockComposter;
 import convenientadditions.block.BlockPhantomPlatform;
-import convenientadditions.block.BlockPlayerInterface;
-import convenientadditions.block.BlockPowderKeg;
-import convenientadditions.block.BlockProximitySensor;
-import convenientadditions.block.BlockSeedBox;
 import convenientadditions.block.BlockTempLight;
 import convenientadditions.block.BlockTitaniumOre;
-import convenientadditions.block.charge.BlockChargeAccumulator;
-import convenientadditions.block.charge.BlockChargeTube;
-import convenientadditions.block.charge.BlockSunlightCollector;
-import convenientadditions.block.item.ItemBlockCompostSoil;
+import convenientadditions.block.charge.chargeAccumulator.BlockChargeAccumulator;
+import convenientadditions.block.charge.chargeTube.BlockChargeTube;
+import convenientadditions.block.charge.sunlightCollector.BlockSunlightCollector;
+import convenientadditions.block.compostSoil.BlockCompostSoil;
+import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
+import convenientadditions.block.compostSoil.ItemBlockCompostSoil;
+import convenientadditions.block.composter.BlockComposter;
+import convenientadditions.block.playerInterface.BlockPlayerInterface;
+import convenientadditions.block.powderkeg.BlockPowderKeg;
+import convenientadditions.block.proximitySensor.BlockProximitySensor;
+import convenientadditions.block.seedbox.BlockSeedBox;
+import convenientadditions.block.setProvider.BlockSetProvider;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
+@GameRegistry.ObjectHolder(ConvenientAdditions.MODID)
 public class ModBlocks
 {
     public static final BlockTitaniumOre oreTitaniumBlock = new BlockTitaniumOre();
@@ -38,6 +39,7 @@ public class ModBlocks
     public static final BlockChargeAccumulator chargeAccumulatorBlock = new BlockChargeAccumulator();
     public static final BlockChargeTube chargeTubeBlock = new BlockChargeTube();
     public static final BlockSeedBox seedBoxBlock = new BlockSeedBox();
+    public static final BlockSetProvider setProviderBlock = new BlockSetProvider();
 
     public static void init()
     {
@@ -53,6 +55,7 @@ public class ModBlocks
         //registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
         //registerBlock(chargeTubeBlock,Reference.chargeTubeBlockName);
         registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
+        registerBlock(setProviderBlock,Reference.setProviderBlockName);
         registerBlock(compostSoilBlock,new ItemBlockCompostSoil(compostSoilBlock),Reference.compostSoilBlockName);
     }
 
@@ -65,6 +68,7 @@ public class ModBlocks
         ModItems.registerItemBlockModel(playerInterfaceBlock,playerInterfaceBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(proximitySensorBlock,proximitySensorBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(seedBoxBlock,seedBoxBlock.getModelResourceLocation());
+        ModItems.registerItemBlockModel(setProviderBlock,setProviderBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(phantomPlatformBlock,phantomPlatformBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilBlock), compostSoilBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilTilledBlock), compostSoilTilledBlock.getModelResourceLocation());

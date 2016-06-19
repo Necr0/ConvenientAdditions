@@ -2,8 +2,8 @@ package convenientadditions.item;
 
 import java.util.List;
 
-import conveniencecore.item.IModelVariantResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.resourceprovider.IModelVariantResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.entity.EntityLaunchingArrow;
 import convenientadditions.entity.EntityLaunchingArrow.EnumLaunchingArrowVariant;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResourceLocationProvider {
 	
     public ItemLaunchingArrow() {
-        this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.launchingArrowItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB).setHasSubtypes(true);
+        this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
     }
     
     @SideOnly(Side.CLIENT)
@@ -42,7 +42,7 @@ public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResour
 
     public String getItemStackDisplayName(ItemStack stack)
     {
-        return I18n.translateToLocal("item."+ConvenientAdditionsMod.MODID+":"+Reference.launchingArrowItemName+"_"+stack.getItemDamage()+".name");
+        return I18n.translateToLocal("item."+ConvenientAdditions.MODID+":"+Reference.launchingArrowItemName+"_"+stack.getItemDamage()+".name");
     }
 
 	@Override

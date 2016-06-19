@@ -4,8 +4,8 @@ import java.util.List;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,8 +24,8 @@ public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements
 	public ItemBreathAmulet(){
 		super(10000,true,true,5);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.breathAmuletItemName)
-			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
+			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.breathAmuletItemName)
+			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);

@@ -2,8 +2,8 @@ package convenientadditions.item;
 
 import java.util.List;
 
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class ItemFertilizer extends Item implements IModelResourceLocationProvider {
 	public ItemFertilizer(){
 		super();
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.fertilizerItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.fertilizerItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 	}
 	
 	@Override

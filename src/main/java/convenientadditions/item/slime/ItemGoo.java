@@ -2,10 +2,10 @@ package convenientadditions.item.slime;
 
 import java.util.ArrayList;
 
-import conveniencecore.entity.EntitySpecialItem;
-import conveniencecore.item.IFuelItem;
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.entity.behaviour.EntitySpecialItem;
+import conveniencecore.item.fuelitem.IFuelItem;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,9 +23,9 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 	public ItemGoo(String name,String texture){
 		super(0,0,false);
 		this.setHasSubtypes(false)
-		.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+name)
+		.setUnlocalizedName(ConvenientAdditions.MODID+":"+name)
 		//.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
-		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		.setCreativeTab(ConvenientAdditions.CREATIVETAB);
 		this.edible=false;
 		this.behaviours=new ArrayList<Long>();
 	}
@@ -33,9 +33,9 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 	public ItemGoo(String name,String texture,int foodLevel,float saturation){
 		super(foodLevel,saturation,false);
 		this.setHasSubtypes(false)
-		.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+name)
+		.setUnlocalizedName(ConvenientAdditions.MODID+":"+name)
 		//.setTextureName(ConvenientAdditionsMod.MODID+":"+"goo/"+texture)
-		.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		.setCreativeTab(ConvenientAdditions.CREATIVETAB);
 		this.edible=true;
 		this.behaviours=new ArrayList<Long>();
 	}

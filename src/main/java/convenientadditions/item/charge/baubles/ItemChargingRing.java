@@ -5,8 +5,8 @@ import java.util.List;
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.api.item.charge.IChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
@@ -28,8 +28,8 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 	public ItemChargingRing(){
 		super(120000,true,true,5);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.chargingRingItemName)
-			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
+			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.chargingRingItemName)
+			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);

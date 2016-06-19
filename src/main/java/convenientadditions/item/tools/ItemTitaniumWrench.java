@@ -1,8 +1,8 @@
 package convenientadditions.item.tools;
 
 import conveniencecore.block.IDismantleable;
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 public class ItemTitaniumWrench extends Item implements IModelResourceLocationProvider {
 	public ItemTitaniumWrench(){
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.titaniumWrenchItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.titaniumWrenchItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 	}
 	
 	@Override

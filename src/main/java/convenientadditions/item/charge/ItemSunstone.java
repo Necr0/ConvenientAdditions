@@ -2,9 +2,9 @@ package convenientadditions.item.charge;
 
 import java.util.List;
 
-import conveniencecore.item.IPlayerInventoryTick;
-import conveniencecore.item.IResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.invtick.IPlayerInventoryTick;
+import conveniencecore.item.resourceprovider.IResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -30,8 +30,8 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
 	public ItemSunstone(){
 		super(60000,true,true,20);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.sunstoneItemName)
-			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
+			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.sunstoneItemName)
+			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);

@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -46,5 +47,19 @@ public class Helper {
 	
 	public static World getServerOverworld(){
 		return FMLServerHandler.instance().getServer().getEntityWorld();
+	}
+	
+	public static String localize(String in,String... replace){
+		String tmp=I18n.translateToLocal(in);
+		String match = null;
+		for(String s:replace){
+			if(match==null){
+				match=s;
+			}else{
+				tmp=tmp.replace(match, s);
+				match=null;
+			}
+		}
+		return tmp;
 	}
 }

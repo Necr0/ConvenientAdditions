@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "convenientadditions:blocks/setProvider/setProvider_side",
+        "bottom": "convenientadditions:blocks/setProvider/setProvider_end",
+        "top": "convenientadditions:blocks/setProvider/setProvider_end"
+    }
+}

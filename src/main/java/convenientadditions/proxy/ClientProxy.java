@@ -1,13 +1,13 @@
 package convenientadditions.proxy;
 
+import convenientadditions.block.charge.chargeTube.TileEntityChargeTube;
+import convenientadditions.block.composter.TileEntityComposter;
 import convenientadditions.entity.EntityLaunchingArrow;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.render.RenderChargeTube;
 import convenientadditions.render.RenderComposter;
 import convenientadditions.render.RenderLaunchingArrow;
-import convenientadditions.tileentity.charge.TileEntityChargeTube;
-import convenientadditions.tileentity.composter.TileEntityComposter;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.world.World;

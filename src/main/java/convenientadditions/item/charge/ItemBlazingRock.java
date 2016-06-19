@@ -2,9 +2,9 @@ package convenientadditions.item.charge;
 
 import java.util.List;
 
-import conveniencecore.item.IFuelItem;
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.fuelitem.IFuelItem;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -17,8 +17,8 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
 
 	public ItemBlazingRock() {
 		super(48000, true, true, 12);
-		this.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.blazingRockItemName)
-			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
+		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.blazingRockItemName)
+			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);

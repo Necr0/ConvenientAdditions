@@ -1,6 +1,6 @@
 package convenientadditions.init;
 
-import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
@@ -29,7 +29,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@GameRegistry.ObjectHolder(ConvenientAdditionsMod.MODID)
+@GameRegistry.ObjectHolder(ConvenientAdditions.MODID)
 public class ModItems {
     public static final ItemFertilizer itemFertilizer = new ItemFertilizer();
     public static final ItemCompost itemCompost = new ItemCompost();
@@ -38,9 +38,9 @@ public class ModItems {
     public static final ItemEnderSlate itemEnderSlate = new ItemEnderSlate();
     public static final ItemLaunchingArrow itemLaunchingArrow = new ItemLaunchingArrow();
     //dummy
-    public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
-    public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
-    public static final Item itemDirtChunk=new Item().setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.dirtChunkItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+    public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemDirtChunk=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     //baubles
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
@@ -48,11 +48,11 @@ public class ModItems {
     public static final ItemChargingRing itemChargingRing = new ItemChargingRing();
     //public static final ItemFloatingBelt itemFloatingBelt = new ItemFloatingBelt();
     //ttools
-    public static final ItemTitaniumAxe itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumPickaxe itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumSpade itemTitaniumSpade=new ItemTitaniumSpade(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumHoe itemTitaniumHoe=new ItemTitaniumHoe(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumSword itemTitaniumSword=new ItemTitaniumSword(ConvenientAdditionsMod.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumAxe itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumPickaxe itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumSpade itemTitaniumSpade=new ItemTitaniumSpade(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumHoe itemTitaniumHoe=new ItemTitaniumHoe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
+    public static final ItemTitaniumSword itemTitaniumSword=new ItemTitaniumSword(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
     public static final ItemTitaniumWrench itemTitaniumWrench=new ItemTitaniumWrench();
     
     public static void init()

@@ -2,8 +2,8 @@ package convenientadditions.item.charge;
 
 import java.util.ArrayList;
 
-import conveniencecore.entity.EntitySpecialItem;
-import conveniencecore.item.IModelResourceLocationProvider;
+import conveniencecore.entity.behaviour.EntitySpecialItem;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.api.item.charge.ItemSunlightChargeable;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;

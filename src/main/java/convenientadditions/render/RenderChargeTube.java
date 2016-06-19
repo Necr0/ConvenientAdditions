@@ -2,10 +2,10 @@ package convenientadditions.render;
 
 import org.lwjgl.opengl.GL11;
 
-import convenientadditions.ConvenientAdditionsMod;
+import convenientadditions.ConvenientAdditions;
+import convenientadditions.block.charge.chargeTube.TileEntityChargeTube;
 import convenientadditions.render.model.ModelChargeTube;
 import convenientadditions.render.model.ModelChargeTubeConnector;
-import convenientadditions.tileentity.charge.TileEntityChargeTube;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -26,8 +26,8 @@ public class RenderChargeTube extends TileEntitySpecialRenderer
         {
             GL11.glPushMatrix();
             GL11.glTranslatef((float) d0 + 0.5F, (float) d1 + 1.5F, (float) d2 + 0.5F);
-            ResourceLocation test = new ResourceLocation(ConvenientAdditionsMod.MODID+":textures/models/ChargeTube.png");
-            ResourceLocation test_1 = new ResourceLocation(ConvenientAdditionsMod.MODID+":textures/models/TubeConnector.png");
+            ResourceLocation test = new ResourceLocation(ConvenientAdditions.MODID+":textures/models/ChargeTube.png");
+            ResourceLocation test_1 = new ResourceLocation(ConvenientAdditions.MODID+":textures/models/TubeConnector.png");
             FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
             GL11.glPushMatrix();
             GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);

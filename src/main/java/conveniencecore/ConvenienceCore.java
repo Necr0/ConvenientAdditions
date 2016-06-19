@@ -1,9 +1,9 @@
 package conveniencecore;
 
-import conveniencecore.behaviours.BehaviourRegistry;
-import conveniencecore.entity.EntitySpecialItem;
-import conveniencecore.item.FuelItemFuelHandler;
-import conveniencecore.item.PlayerInventoryTickHandler;
+import conveniencecore.entity.behaviour.BehaviourRegistry;
+import conveniencecore.entity.behaviour.EntitySpecialItem;
+import conveniencecore.item.fuelitem.FuelItemFuelHandler;
+import conveniencecore.item.invtick.PlayerInventoryTickHandler;
 import conveniencecore.network.ModNetworking;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

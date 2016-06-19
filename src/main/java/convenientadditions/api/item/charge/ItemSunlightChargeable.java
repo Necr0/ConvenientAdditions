@@ -2,7 +2,7 @@ package convenientadditions.api.item.charge;
 
 import java.util.List;
 
-import conveniencecore.behaviours.BehaviourRegistry;
+import conveniencecore.entity.behaviour.BehaviourRegistry;
 import conveniencecore.item.IBehaviourProvider;
 import convenientadditions.api.entity.behaviour.BehaviourSunlightChargeable;
 import convenientadditions.api.util.EnchantmentUtil;

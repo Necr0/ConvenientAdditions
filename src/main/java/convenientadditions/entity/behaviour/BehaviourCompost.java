@@ -1,6 +1,6 @@
 package convenientadditions.entity.behaviour;
 
-import conveniencecore.behaviours.IEntitySpecialItemBehaviour;
+import conveniencecore.entity.behaviour.IEntitySpecialItemBehaviour;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.Block;

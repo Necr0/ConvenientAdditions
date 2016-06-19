@@ -3,8 +3,8 @@ package convenientadditions.item;
 import java.util.List;
 import java.util.Random;
 
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemCompost extends Item implements IModelResourceLocationProvider {
 	public ItemCompost(){
 		super();
-		this.setHasSubtypes(true).setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.compostItemName).setCreativeTab(ConvenientAdditionsMod.CREATIVETAB);
+		this.setHasSubtypes(true).setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.compostItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 	}
 	
 	@Override
@@ -68,9 +68,9 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip."+ConvenientAdditionsMod.MODID+":"+Reference.compostItemName));
+		list.add(I18n.translateToLocal("tooltip."+ConvenientAdditions.MODID+":"+Reference.compostItemName));
 		if(stack.getItemDamage()==1)
-			list.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("tooltip."+ConvenientAdditionsMod.MODID+":"+Reference.compostItemName+"Spores"));
+			list.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("tooltip."+ConvenientAdditions.MODID+":"+Reference.compostItemName+"Spores"));
 	}
 	
 	@Override

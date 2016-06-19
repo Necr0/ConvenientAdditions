@@ -5,8 +5,8 @@ import java.util.Random;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import conveniencecore.item.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditionsMod;
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,8 +25,8 @@ public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implemen
 	public ItemSaturationRing(){
 		super(12000,true,true,2);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditionsMod.MODID+":"+Reference.saturationRingItemName)
-			.setCreativeTab(ConvenientAdditionsMod.CREATIVETAB)
+			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.saturationRingItemName)
+			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
 		FULLY_CHARGED=new ItemStack(this,1,0);
