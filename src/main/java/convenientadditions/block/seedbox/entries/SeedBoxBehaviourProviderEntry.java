@@ -1,8 +1,9 @@
-package convenientadditions.api.registry.seedbox;
+package convenientadditions.block.seedbox.entries;
 
 import java.util.List;
 
 import conveniencecore.item.IBehaviourProvider;
+import convenientadditions.api.registry.seedbox.ISeedBoxItemBehaviourRegistryEntry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 

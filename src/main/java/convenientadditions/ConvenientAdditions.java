@@ -4,11 +4,11 @@ import convenientadditions.api.ConAddAPI;
 import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModCAAPI;
+import convenientadditions.init.ModConfig;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModNetworking;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
-import convenientadditions.init.ModThaumcraftAspects;
 import convenientadditions.init.ModTileEntities;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
@@ -33,7 +33,7 @@ public class ConvenientAdditions
 {
     public static final String MODID = "convenientadditions";
     public static final String VERSION = "1.0";
-    public static final String DEPENDENCIES = "required-after:Baubles;required-after:conveniencecore;after:Thaumcraft";
+    public static final String DEPENDENCIES = "required-after:conveniencecore;required-after:Baubles";
     @Instance(ConvenientAdditions.MODID)
     public static ConvenientAdditions INSTANCE;
     
@@ -53,6 +53,7 @@ public class ConvenientAdditions
     @EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
+    	ModConfig.init();
     	ConAddAPI.init();
     	ModBlocks.init();
     	ModTileEntities.init();
@@ -79,7 +80,7 @@ public class ConvenientAdditions
     @EventHandler
     public void postinit(FMLPostInitializationEvent event)
     {
-    	GameRegistry.registerWorldGenerator( new OreTitaniumWorldGen(), 0 );
-    	ModThaumcraftAspects.init();
+    	if(ModConfig.titanium_oreGen)
+    		GameRegistry.registerWorldGenerator( new OreTitaniumWorldGen(), 0 );
     }
 }

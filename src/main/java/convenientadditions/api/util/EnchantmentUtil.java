@@ -1,6 +1,5 @@
 package convenientadditions.api.util;
 
-import convenientadditions.Reference;
 import convenientadditions.api.item.charge.IChargeable;
 import convenientadditions.api.item.charge.ISunlightChargeable;
 import net.minecraft.enchantment.Enchantment;
@@ -13,6 +12,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class EnchantmentUtil {
 	public static boolean registered=false;
+    public static final String enchantmentChargeEfficiencyName="chargeEfficiency";
+    public static final String enchantmentCapacityName="capacity";
+    public static final String enchantmentDrainName="drain";
 	
 	public static final EnumEnchantmentType sunlightChargable=EnumHelper.addEnchantmentType("sunlightChargable");
 	public static final EnumEnchantmentType chargable=EnumHelper.addEnchantmentType("chargable");
@@ -66,7 +68,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentCapacity extends EnchantmentBase{
 		public EnchantmentCapacity() {
-			super(Reference.enchantmentCapacityName, Enchantment.Rarity.COMMON, chargable);
+			super(enchantmentCapacityName, Enchantment.Rarity.COMMON, chargable);
 			this.setName("capacity");
 		}
 
@@ -83,7 +85,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentChargeEfficiency extends EnchantmentBase{
 		public EnchantmentChargeEfficiency() {
-			super(Reference.enchantmentChargeEfficiencyName, Enchantment.Rarity.COMMON, chargable);
+			super(enchantmentChargeEfficiencyName, Enchantment.Rarity.COMMON, chargable);
 			this.setName("chargeEfficiency");
 		}
 
@@ -95,7 +97,7 @@ public class EnchantmentUtil {
 	
 	public static class EnchantmentDrain extends EnchantmentBase{
 		public EnchantmentDrain() {
-			super(Reference.enchantmentDrainName, Enchantment.Rarity.COMMON, sunlightChargable);
+			super(enchantmentDrainName, Enchantment.Rarity.COMMON, sunlightChargable);
 			this.setName("drain");
 		}
 

@@ -38,9 +38,9 @@ public class Reference {
     public static final String breathAmuletItemName = "breathAmulet";
     public static final String chargingRingItemName = "chargingRing";
     public static final int chargingRingBaseCharge = 7;
-    //public static final String floatingBeltItemName = "floatingBelt";
+    
     //goo
-    public static final String royalGooItemName = "royalGoo";
+    /*public static final String royalGooItemName = "royalGoo";
     public static final String kittyGooItemName = "kittyGoo";
     public static final String pinkGooItemName = "pinkGoo";
     public static final String stoneGooItemName = "stoneGoo";
@@ -49,29 +49,15 @@ public class Reference {
     public static final String undeadGooItemName = "undeadGoo";
     public static final String shroomGooItemName = "shroomGoo";
     public static final String honeyGooItemName = "honeyGoo";
-    public static final String boomGooItemName = "boomGoo";
-    //packets
+    public static final String boomGooItemName = "boomGoo";*/
     
     //slimeEntities
-    public static final String goozillaEntityName = "goozilla";
+    //public static final String goozillaEntityName = "goozilla";
     public static final int lauchingArrowEntityId = 1;
     public static final String launchingArrowEntityName = "launchingArrow";
     //
     public static final String tempLightBlockName = "tempLight";
     public static final String phantomPlatformBlockName = "phantomPlatform";
-    //
-    //
-    public static final int enchantmentIdBase=133;
-    public static final int enchantmentChargeEfficiencyId=0;
-    public static final String enchantmentChargeEfficiencyName="chargeEfficiency";
-    public static final int enchantmentCapacityId=1;
-    public static final String enchantmentCapacityName="capacity";
-    public static final int enchantmentDrainId=2;
-    public static final String enchantmentDrainName="drain";
-    //
-    //
-    public static final int titaniumPerCluster=5;
-    public static final int titaniumOresClusterAmount=13;
     //
     //
     public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";

@@ -3,6 +3,8 @@ package convenientadditions.api.registry.seedbox;
 import java.util.ArrayList;
 import java.util.List;
 
+import convenientadditions.block.seedbox.entries.SeedBoxBehaviourProviderEntry;
+import convenientadditions.block.seedbox.entries.SeedBoxCropsEntry;
 import net.minecraft.item.ItemStack;
 
 public class SeedBoxItemBehaviourRegistry {
@@ -28,13 +30,5 @@ public class SeedBoxItemBehaviourRegistry {
 				e.getDiscriminators(stack,ret);
 		}
 		return ret;
-	}
-	
-	public static void init(){
-		if(!registered){
-			addEntry(new SeedBoxCropsEntry());
-			addEntry(new SeedBoxBehaviourProviderEntry());
-			registered=true;
-		}
 	}
 }

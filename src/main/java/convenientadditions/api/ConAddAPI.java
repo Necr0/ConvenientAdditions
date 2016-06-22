@@ -12,8 +12,6 @@ public class ConAddAPI {
 	public static void init(){
 		EnchantmentUtil.init();
 		ChargeTickHandler.init();
-		CompostRegistry.init();
-		SeedBoxItemBehaviourRegistry.init();
 		BehaviourSunlightChargeable.init();
 	}
 }

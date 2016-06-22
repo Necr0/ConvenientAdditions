@@ -6,10 +6,9 @@ tile.convenientadditions:compostSoilTilled.name=Tilled Compost Soil
 tile.convenientadditions:powderKeg.name=Powder Keg
 tile.convenientadditions:playerInterface.name=Player Interface
 tile.convenientadditions:proximitySensor.name=Proximity Sensor
-tile.convenientadditions:redstonePulseDispenser.name=Redstone Pulse Dispenser
-tile.convenientadditions:sunlightCollector.name=Sunlight Collector
-tile.convenientadditions:chargeAccumulator.name=Charge Accumulator
-tile.convenientadditions:chargeTube.name=Charge Tube
+#tile.convenientadditions:sunlightCollector.name=Sunlight Collector
+#tile.convenientadditions:chargeAccumulator.name=Charge Accumulator
+#tile.convenientadditions:chargeTube.name=Charge Tube
 tile.convenientadditions:seedBox.name=Seed Box
 tile.convenientadditions:setProvider.name=Set Provider
 tile.convenientadditions:phantomPlatform.name=Phantom Platform
@@ -19,6 +18,8 @@ tileentity.convenientadditions:composter.name=Composter
 tileentity.convenientadditions:playerInterface.name=Player Interface
 tileentity.convenientadditions:powderKeg.name=Powder Keg
 tileentity.convenientadditions:proximitySensor.name=Proximity Sensor
+tileentity.convenientadditions:seedBox.name=Seed Box
+tileentity.convenientadditions:setProvider.name=Set Provider
 
 # Items
 item.convenientadditions:ingotTitanium.name=Titanium Ingot
@@ -43,7 +44,6 @@ item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
 item.convenientadditions:breathAmulet.name=Amulet of Breath
 item.convenientadditions:chargingRing.name=Ring of Charging
-item.convenientadditions:floatingBelt.name=Belt of Floating
 # Goo
 item.convenientadditions:royalGoo.name=Royal Goo
 item.convenientadditions:kittyGoo.name=Kitty Goo

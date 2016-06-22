@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.block.composter.TileEntityComposter;
+import convenientadditions.init.ModConfig;
 import convenientadditions.render.model.ModelComposterContent;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -24,7 +25,7 @@ public class RenderComposter extends TileEntitySpecialRenderer
             TileEntityComposter t=(TileEntityComposter) tileEntity;
             if(t.content>0){
 	            GL11.glPushMatrix();
-	            float d=(float)t.content/(float)t.capacity;
+	            float d=(float)t.content/ModConfig.composter_capacity;
 	            if(d>1)
 	            	d=1.02F;
 	            d*=.88F;

@@ -1,5 +1,6 @@
-package convenientadditions.api.registry.compost;
+package convenientadditions.block.composter.entries;
 
+import convenientadditions.api.registry.compost.ICompostRegistryEntry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.item.ItemBlock;

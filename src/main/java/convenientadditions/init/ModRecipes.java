@@ -8,27 +8,13 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class ModRecipes {
+	private static String titaniumIngot;
+	
 	public static void init(){
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.composterBlock),
-				"s s",
-			    "s s",
-			    "ppp",
-			    's', "slabWood",
-			    'p', "plankWood"));
+		boolean titanium=ModConfig.titanium_enabled;
+		titaniumIngot=titanium?"ingotTitanium":"ingotIron";
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
-				"cc",
-			    "cc",
-			    'c', "chunkCompost"));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.dirt),
-				"dd",
-			    "dd",
-			    'd', new ItemStack(ModItems.itemDirtChunk)));
-		
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, "chunkCompost"));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), ModBlocks.compostSoilBlock));
-		
+		if(ModConfig.powderKeg)
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.powderKegBlock),
 				"psp",
 			    "pgp",
@@ -37,39 +23,120 @@ public class ModRecipes {
 			    's', "slabWood",
 			    'g', Items.gunpowder));
 
+		if(ModConfig.charge_sunstone)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunstone.FULLY_CHARGED.copy(),
 				"grg",
 			    "tdt",
 			    "grg",
-			    't', "ingotTitanium",
+			    't', titaniumIngot,
 			    'd', "gemDiamond",
 			    'r', "dustRedstone",
 			    'g', "dustGlowstone"));
 
+		if(ModConfig.seedBox_recipe)
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.seedBoxBlock,
+				"tpt",
+			    "php",
+			    "tpt",
+			    'h', Blocks.hopper,
+			    'p', "plankWood",
+			    't', titaniumIngot));
+
+		if(ModConfig.playerInterface)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
+				"tpt",
+			    "geg",
+			    "srs",
+			    't', titaniumIngot,
+			    'e', Items.ender_pearl,
+			    'p', Blocks.stone_pressure_plate,
+			    'g', "ingotGold",
+			    's', "dustGlowstone",
+			    'r', "blockRedstone"));
+
+		if(ModConfig.proximitySensor)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.proximitySensorBlock),
+				"sgs",
+			    "tet",
+			    "rgr",
+			    't', titaniumIngot,
+			    'e', Items.ender_eye,
+			    'g', "ingotGold",
+			    's', "dustGlowstone",
+			    'r', "blockRedstone"));
+		
+		if(titanium){
+			GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.nuggetTitanium,9), new ItemStack(ModItems.ingotTitanium)));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
+					"ttt",
+					"ttt",
+					"ttt",
+					't', new ItemStack(ModItems.nuggetTitanium)));
+			if(ModConfig.titanium_wrench)
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
+					"n n",
+					" t ",
+					"n n",
+					't', "ingotTitanium", 'n', "nuggetTitanium"));
+			if(ModConfig.titanium_tools)
+				initTitaniumTools();
+		}
+		
+		initCompost();
+		initBaubles();
+	}
+	
+	private static void initCompost(){
+		if(ModConfig.composter_recipe)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.composterBlock),
+				"s s",
+			    "s s",
+			    "ppp",
+			    's', "slabWood",
+			    'p', "plankWood"));
+			
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
+				"cc",
+			    "cc",
+			    'c', "chunkCompost"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.dirt),
+				"dd",
+			    "dd",
+			    'd', new ItemStack(ModItems.itemDirtChunk)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, "chunkCompost"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), ModBlocks.compostSoilBlock));
+	}
+	
+	private static void initBaubles(){
+		if(ModConfig.baubles_ring_of_sunlight)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunlightRing.FULLY_CHARGED.copy(),
 				"ysy",
 			    "t t",
 			    "yty",
-			    't', "ingotTitanium",
+			    't', titaniumIngot,
 			    's', ModItems.itemSunstone,
 			    'y', Items.string));
 
+		if(ModConfig.baubles_ring_of_saturation)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSaturationRing.FULLY_CHARGED.copy(),
 				"ygy",
 			    "t t",
 			    "yty",
-			    't', "ingotTitanium",
+			    't', titaniumIngot,
 			    'g', Items.golden_carrot,
 			    'y', Items.string));
 
+		if(ModConfig.baubles_amulet_of_breath)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBreathAmulet.FULLY_CHARGED.copy(),
 				"yty",
 			    "t t",
 			    "ypy",
-			    't', "ingotTitanium",
+			    't', titaniumIngot,
 			    'p', new ItemStack(Items.potionitem,1,8269),
 			    'y', Items.string));
 
+		if(ModConfig.baubles_ring_of_charging)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemChargingRing.FULLY_CHARGED.copy(),
 				"yry",
 			    "gsg",
@@ -78,45 +145,9 @@ public class ModRecipes {
 			    'g', "dustGlowstone",
 			    's', ModItems.itemSunlightRing,
 			    'y', Items.string));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.chargeTubeBlock,
-				"tr ",
-			    "rgr",
-			    " rt",
-			    'r', "dustRedstone",
-			    'g', "ingotGold",
-			    't', "ingotTitanium"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.seedBoxBlock,
-				"tpt",
-			    "php",
-			    "tpt",
-			    'h', Blocks.hopper,
-			    'p', "plankWood",
-			    't', "ingotTitanium"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
-				"tpt",
-			    "geg",
-			    "srs",
-			    't', "ingotTitanium",
-			    'e', Items.ender_pearl,
-			    'p', Blocks.stone_pressure_plate,
-			    'g', "ingotGold",
-			    's', "dustGlowstone",
-			    'r', "blockRedstone"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.proximitySensorBlock),
-				"sgs",
-			    "tet",
-			    "rgr",
-			    't', "ingotTitanium",
-			    'e', Items.ender_eye,
-			    'g', "ingotGold",
-			    's', "dustGlowstone",
-			    'r', "blockRedstone"));
-		
-		//TITANIUM TOOLS
+	}
+	
+	private static void initTitaniumTools(){
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumPickaxe),
 				"ttt",
 			    " s ",
@@ -151,13 +182,12 @@ public class ModRecipes {
 			    "s",
 			    't', ModItems.ingotTitanium,
 			    's', "stickWood"));
-		
-		GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.nuggetTitanium,9), new ItemStack(ModItems.ingotTitanium)));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
-				"ttt",
-				"ttt",
-				"ttt",
-				't', new ItemStack(ModItems.nuggetTitanium)));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSword),
+				"t",
+			    "t",
+			    "s",
+			    't', ModItems.ingotTitanium,
+			    's', "stickWood"));
 	}
 }

@@ -1,6 +1,7 @@
-package convenientadditions.api.registry.compost;
+package convenientadditions.block.composter.entries;
 
 import convenientadditions.api.item.ICompostable;
+import convenientadditions.api.registry.compost.ICompostRegistryEntry;
 import net.minecraft.item.ItemStack;
 
 public class CompostRegistryEntryCompostable implements ICompostRegistryEntry{

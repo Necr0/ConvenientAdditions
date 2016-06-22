@@ -5,6 +5,7 @@ import java.util.Random;
 
 import conveniencecore.util.Helper;
 import convenientadditions.api.registry.compost.CompostRegistry;
+import convenientadditions.init.ModConfig;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,10 +37,6 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 	public int content=0;
 	public int progress=0;
 	public boolean spores=true;
-	
-	public static int capacity=25000;
-	public static int progressPeriod=2100;
-	public static int progressContent=2500;
 
 	
 	public ItemStack insertStack(ItemStack stackIn){
@@ -76,7 +73,7 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 	}
 	
 	public int getContentCapacityPercentage(){
-		return content*100/capacity;
+		return content*100/ModConfig.composter_capacity;
 	}
 	
 	@Override
@@ -84,30 +81,21 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 		IBlockState state=worldObj.getBlockState(pos);
 		Random rnd=new Random();
 		if(!worldObj.isRemote){
-			if(content>=progressContent){
+			if(content>=ModConfig.composter_progressContent){
 				progress++;
-				if(progress>=progressPeriod){
+				if(progress>=ModConfig.composter_progressPeriod){
 					progress=0;
-					content-=progressContent;
-					Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemCompost,1,this.spores?1:0));
-					ItemStack additional=null;
-					switch(rnd.nextInt(6)){
-						case 0:
-						case 1:
-							additional = new ItemStack(ModItems.itemDirtChunk);
-							break;
-						case 2:
-							additional = new ItemStack(ModItems.itemFertilizer);
-							break;
-						default:
-							break;
-					}
-					if(additional != null)
-						Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, additional);
-					if(rnd.nextInt(22) == 0)
-						this.spores = false;
+					content-=ModConfig.composter_progressContent;
+					if(worldObj.rand.nextFloat()<ModConfig.composter_compostChance)
+						Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemCompost,1,this.spores?1:0));
+					if(worldObj.rand.nextFloat()<ModConfig.composter_extraCompostChance)
+						Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemCompost,1,this.spores?1:0));
+					if(worldObj.rand.nextFloat()<ModConfig.composter_dirtChunkChance)
+						Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemDirtChunk));
+					if(worldObj.rand.nextFloat()<ModConfig.composter_fertilizerChance)
+						Helper.spawnItemInPlace(worldObj, (double)pos.getX()+.5, (double)pos.getY()+1.2, (double)pos.getZ()+.5, new ItemStack(ModItems.itemFertilizer));
 				}
-				if(content>=capacity){
+				if(content>=ModConfig.composter_capacity && ModConfig.composter_overflowSmell){
 					List<EntityPlayer> players=worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX()-2, pos.getY()-2, pos.getZ()-2, pos.getX()+3, pos.getY()+3, pos.getZ()+3));
 					for(EntityPlayer p:players){
 						switch(rnd.nextInt(120)){
@@ -133,9 +121,9 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 			}
 		}else if(processing){
 			if(rnd.nextInt(10)==0)
-				worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX()+.5-((double)(rnd.nextInt(9)-4)/10D), pos.getY()+.2+(double)content/(double)capacity*.75, pos.getZ()+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
-			if(content>=capacity)
-				worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX()+.5-((double)(rnd.nextInt(9)-4)/10D), pos.getY()+.2+(double)content/(double)capacity*.75, pos.getZ()+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
+				worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX()+.5-((double)(rnd.nextInt(9)-4)/10D), pos.getY()+.2+(double)content/(double)ModConfig.composter_capacity*.75, pos.getZ()+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
+			if(content>=ModConfig.composter_capacity)
+				worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX()+.5-((double)(rnd.nextInt(9)-4)/10D), pos.getY()+.2+(double)content/(double)ModConfig.composter_capacity*.75, pos.getZ()+.5+((double)(rnd.nextInt(9)-4)/10D), 0, 0.6, 0);
 		}
 	}
 	

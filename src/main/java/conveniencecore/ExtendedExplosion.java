@@ -71,7 +71,7 @@ public class ExtendedExplosion extends Explosion {
     public ExtendedExplosion(World worldIn, Entity entityIn, double x, double y, double z, float size, boolean flaming, boolean smoking)
     {
     	super(worldIn, entityIn, x, y, z, size, flaming, smoking);
-        this.explosionRNG = new Random();
+        this.explosionRNG = worldIn.rand;
         this.affectedBlockPositions = Lists.<BlockPos>newArrayList();
         this.playerKnockbackMap = Maps.<EntityPlayer, Vec3d>newHashMap();
         this.worldObj = worldIn;

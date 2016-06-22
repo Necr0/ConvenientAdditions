@@ -2,8 +2,8 @@ package convenientadditions.worldgen;
 	
 import java.util.Random;
 
-import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -21,7 +21,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 	{
 		final IBlockState ores = ModBlocks.oreTitaniumBlock.getStateFromMeta(0);
 
-		this.ore = new WorldGenMinable( ores, Reference.titaniumPerCluster );
+		this.ore = new WorldGenMinable( ores, ModConfig.titanium_oresPerCluster );
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 			seaLevel = w.getChunksLowestHorizon( x, z );
 		}
 
-		final double oreDepthMultiplier = Reference.titaniumOresClusterAmount * seaLevel / 64;
+		final double oreDepthMultiplier = ModConfig.titanium_clusterFrequency * seaLevel / 64;
 		final int scale = (int) Math.round( r.nextGaussian() * Math.sqrt( oreDepthMultiplier ) + oreDepthMultiplier );
 
 		for( int x = 0; x < ( r.nextBoolean() ? scale * 2 : scale ) / 2; ++x )

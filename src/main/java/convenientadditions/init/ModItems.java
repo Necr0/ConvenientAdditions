@@ -46,7 +46,6 @@ public class ModItems {
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
     public static final ItemBreathAmulet itemBreathAmulet = new ItemBreathAmulet();
     public static final ItemChargingRing itemChargingRing = new ItemChargingRing();
-    //public static final ItemFloatingBelt itemFloatingBelt = new ItemFloatingBelt();
     //ttools
     public static final ItemTitaniumAxe itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
     public static final ItemTitaniumPickaxe itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
