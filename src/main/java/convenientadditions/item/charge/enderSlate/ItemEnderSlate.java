@@ -1,4 +1,4 @@
-package convenientadditions.item.charge;
+package convenientadditions.item.charge.enderSlate;
 
 import java.util.List;
 

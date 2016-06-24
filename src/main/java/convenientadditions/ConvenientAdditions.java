@@ -1,7 +1,6 @@
 package convenientadditions;
 
 import convenientadditions.api.ConAddAPI;
-import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModCAAPI;
 import convenientadditions.init.ModConfig;
@@ -10,6 +9,7 @@ import convenientadditions.init.ModNetworking;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModTileEntities;
+import convenientadditions.item.charge.enderSlate.EnderSlateInventoryTickHandler;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
 import net.minecraft.creativetab.CreativeTabs;
@@ -61,9 +61,9 @@ public class ConvenientAdditions
     	ModOredict.registerOres();
     	ModRecipes.init();
     	ModNetworking.init();
-    	EnchantmentUtil.init();
     	PROXY.InitModels();
     	PROXY.registerRenderers();
+    	EnderSlateInventoryTickHandler.init();
     	ModCAAPI.init();
     	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
 

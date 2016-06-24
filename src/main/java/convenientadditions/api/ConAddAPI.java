@@ -2,8 +2,6 @@ package convenientadditions.api;
 
 import convenientadditions.api.entity.behaviour.BehaviourSunlightChargeable;
 import convenientadditions.api.item.charge.ChargeTickHandler;
-import convenientadditions.api.registry.compost.CompostRegistry;
-import convenientadditions.api.registry.seedbox.SeedBoxItemBehaviourRegistry;
 import convenientadditions.api.util.EnchantmentUtil;
 
 public class ConAddAPI {

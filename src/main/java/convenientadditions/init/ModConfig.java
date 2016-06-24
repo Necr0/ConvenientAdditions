@@ -26,7 +26,6 @@ public class ModConfig {
 	//#########CHARGE ITEMS#############
 	public static boolean charge_sunstone;
 	public static boolean charge_blazingRock;
-	public static boolean charge_enderSlate;
 	
 	//#########BAUBLES#############
 	public static boolean baubles_ring_of_charging;
@@ -44,6 +43,13 @@ public class ModConfig {
 	public static boolean titanium_tools;
 	public static boolean titanium_wrench;
 	public static boolean titanium_recipes;
+
+	//#########ENDERSLATE#############
+	public static boolean enderSlate_recipe;
+	public static boolean enderSlate_crystalCharge;
+	public static int enderSlate_crystalChargeRate;
+	public static boolean enderSlate_enderEyeRechargeRecipe;
+	public static float enderSlate_enderEyeRechargePercentage;
 	
 	//#########GENERAL#############
 	public static boolean ironWrench;
@@ -58,7 +64,7 @@ public class ModConfig {
 		
 		String category=cfg.CATEGORY_GENERAL;
 		cfg.setCategoryRequiresMcRestart(category, true);
-		ironWrench=cfg.getBoolean("ironWrench", category, true, "");
+		ironWrench=cfg.getBoolean("ironWrench", category, false, "");
 		launchingArrows=cfg.getBoolean("launchingArrows", category, true, "");
 		playerInterface=cfg.getBoolean("playerInterface", category, true, "");
 		proximitySensor=cfg.getBoolean("proximitySensor", category, true, "");
@@ -81,7 +87,6 @@ public class ModConfig {
 		cfg.setCategoryRequiresMcRestart(category, true);
 		charge_sunstone=cfg.getBoolean("sunstone", category, true, "");
 		charge_blazingRock=cfg.getBoolean("blazingRock", category, true, "");
-		charge_enderSlate=cfg.getBoolean("enderSlate", category, true, "");
 		
 		category="baubles";
 		cfg.setCategoryRequiresMcRestart(category, true);
@@ -101,6 +106,14 @@ public class ModConfig {
 		titanium_tools=cfg.getBoolean("tools", category, true, "");
 		titanium_wrench=cfg.getBoolean("wrench", category, true, "");
 		titanium_recipes=cfg.getBoolean("recipes", category, true, "");
+		
+		category="enderSlate";
+		cfg.setCategoryRequiresMcRestart(category, true);
+		enderSlate_recipe=cfg.getBoolean("recipe", category, true, "");
+		enderSlate_crystalCharge=cfg.getBoolean("crystalCharge", category, true, "");
+		enderSlate_crystalChargeRate=cfg.getInt("crystalChargeRate", category, 120, 0, Integer.MAX_VALUE, "in charges/second; rate=log_2(crystalCount+1)");
+		enderSlate_enderEyeRechargeRecipe=cfg.getBoolean("enderEyeRechargeRecipe", category, true, "");
+		enderSlate_enderEyeRechargePercentage=cfg.getFloat("enderEyeRechargePercentage", category, 0.45F, 0, 1, "");
 		
 		category="seedbox";
 		cfg.setCategoryRequiresMcRestart(category, true);

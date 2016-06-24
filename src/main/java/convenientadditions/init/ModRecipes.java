@@ -1,5 +1,6 @@
 package convenientadditions.init;
 
+import convenientadditions.item.charge.enderSlate.RecipeEnderSlateRecharge;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -64,6 +65,9 @@ public class ModRecipes {
 			    'g', "ingotGold",
 			    's', "dustGlowstone",
 			    'r', "blockRedstone"));
+		
+		if(ModConfig.enderSlate_enderEyeRechargeRecipe)
+			GameRegistry.addRecipe(new RecipeEnderSlateRecharge());
 		
 		if(titanium){
 			GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
