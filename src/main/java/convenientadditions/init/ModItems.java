@@ -1,5 +1,6 @@
 package convenientadditions.init;
 
+import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
@@ -53,6 +54,7 @@ public class ModItems {
     public static final ItemTitaniumHoe itemTitaniumHoe=new ItemTitaniumHoe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
     public static final ItemTitaniumSword itemTitaniumSword=new ItemTitaniumSword(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
     public static final ItemTitaniumWrench itemTitaniumWrench=new ItemTitaniumWrench();
+    public static final Item itemIronWrench=new ItemTitaniumWrench().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.ironWrenchItemName);
     
     public static void init()
     {
@@ -67,6 +69,7 @@ public class ModItems {
         registerItem(itemTitaniumHoe,Reference.hoeTitaniumItemName);
         registerItem(itemTitaniumSword,Reference.swordTitaniumItemName);
         registerItem(itemTitaniumWrench,Reference.titaniumWrenchItemName);
+        registerItem(itemIronWrench,Reference.ironWrenchItemName);
         //misc
         registerItem(itemFertilizer,Reference.fertilizerItemName);
         registerItem(itemCompost,Reference.compostItemName);
@@ -99,6 +102,7 @@ public class ModItems {
 		registerModelLocation(itemTitaniumHoe,itemTitaniumHoe.getModelResourceLocation());
 		registerModelLocation(itemTitaniumSword,itemTitaniumSword.getModelResourceLocation());
 		registerModelLocation(itemTitaniumWrench,itemTitaniumWrench.getModelResourceLocation());
+		registerModelLocation(itemIronWrench,((IModelResourceLocationProvider)itemIronWrench).getModelResourceLocation());
         //misc
 		registerModelLocation(itemFertilizer,itemFertilizer.getModelResourceLocation());
 		registerModelLocation(itemSunstone,0,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_inactive"));

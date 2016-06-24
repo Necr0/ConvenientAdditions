@@ -10,11 +10,65 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class ModRecipes {
 	private static String titaniumIngot;
+	private static String titaniumNugget;
 	
 	public static void init(){
 		boolean titanium=ModConfig.titanium_enabled;
 		titaniumIngot=titanium?"ingotTitanium":"ingotIron";
+		titaniumNugget=titanium?"nuggetTitanium":"nuggetGold";
 		
+		if(ModConfig.ironWrench)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumWrench,1),
+				"i i",
+				" i ",
+				"i i",
+				'i', "ingotIron"));
+		
+		if(titanium){
+			GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.nuggetTitanium,9), new ItemStack(ModItems.ingotTitanium)));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
+					"ttt",
+					"ttt",
+					"ttt",
+					't', new ItemStack(ModItems.nuggetTitanium)));
+			if(ModConfig.titanium_wrench)
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumWrench,1),
+					"n n",
+					" t ",
+					"n n",
+					't', "ingotTitanium", 'n', "nuggetTitanium"));
+			if(ModConfig.titanium_tools)
+				initTitaniumTools();
+		}
+		
+		initCompost();
+		initChargeItems();
+		initBaubles();
+	}
+	
+	private static void initCompost(){
+		if(ModConfig.composter_recipe)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.composterBlock),
+				"s s",
+			    "s s",
+			    "ppp",
+			    's', "slabWood",
+			    'p', "plankWood"));
+			
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
+				"cc",
+			    "cc",
+			    'c', "chunkCompost"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.dirt),
+				"dd",
+			    "dd",
+			    'd', new ItemStack(ModItems.itemDirtChunk)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, "chunkCompost"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), ModBlocks.compostSoilBlock));
+	}
+	
+	private static void initBlocks(){
 		if(ModConfig.powderKeg)
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.powderKegBlock),
 				"psp",
@@ -23,16 +77,6 @@ public class ModRecipes {
 			    'p', "plankWood",
 			    's', "slabWood",
 			    'g', Items.gunpowder));
-
-		if(ModConfig.charge_sunstone)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunstone.FULLY_CHARGED.copy(),
-				"grg",
-			    "tdt",
-			    "grg",
-			    't', titaniumIngot,
-			    'd', "gemDiamond",
-			    'r', "dustRedstone",
-			    'g', "dustGlowstone"));
 
 		if(ModConfig.seedBox_recipe)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.seedBoxBlock,
@@ -65,51 +109,52 @@ public class ModRecipes {
 			    'g', "ingotGold",
 			    's', "dustGlowstone",
 			    'r', "blockRedstone"));
+
+		if(ModConfig.setProvider)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.setProviderBlock),
+				"tht",
+			    "bcb",
+			    "tht",
+			    't', titaniumIngot,
+			    'h', Blocks.hopper,
+			    'c', Items.comparator,
+			    'b', Blocks.iron_bars));
+	}
+
+	private static void initChargeItems(){
+		if(ModConfig.charge_sunstone)
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunstone.FULLY_CHARGED.copy(),
+				"grg",
+			    "tdt",
+			    "grg",
+			    't', titaniumIngot,
+			    'd', "gemDiamond",
+			    'r', "dustRedstone",
+			    'g', "dustGlowstone"));
+		
+		if(ModConfig.charge_blazingRock)
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBlazingRock.FULLY_CHARGED.copy(),
+				"tlt",
+			    "bdb",
+			    "tgt",
+			    't', titaniumNugget,
+			    'b', Items.blaze_powder,
+			    'd', "gemDiamond",
+			    'l', Items.lava_bucket,
+			    'g', "dustGlowstone"));
+		
+		if(ModConfig.enderSlate_recipe)
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemEnderSlate.FULLY_CHARGED.copy(),
+				"rer",
+			    "bsb",
+			    "rer",
+			    'e', Items.ender_pearl,
+			    'b', Items.dragon_breath,
+			    'r', "dustRedstone",
+			    's', "stone"));
 		
 		if(ModConfig.enderSlate_enderEyeRechargeRecipe)
 			GameRegistry.addRecipe(new RecipeEnderSlateRecharge());
-		
-		if(titanium){
-			GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.nuggetTitanium,9), new ItemStack(ModItems.ingotTitanium)));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
-					"ttt",
-					"ttt",
-					"ttt",
-					't', new ItemStack(ModItems.nuggetTitanium)));
-			if(ModConfig.titanium_wrench)
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
-					"n n",
-					" t ",
-					"n n",
-					't', "ingotTitanium", 'n', "nuggetTitanium"));
-			if(ModConfig.titanium_tools)
-				initTitaniumTools();
-		}
-		
-		initCompost();
-		initBaubles();
-	}
-	
-	private static void initCompost(){
-		if(ModConfig.composter_recipe)
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.composterBlock),
-				"s s",
-			    "s s",
-			    "ppp",
-			    's', "slabWood",
-			    'p', "plankWood"));
-			
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.compostSoilBlock),
-				"cc",
-			    "cc",
-			    'c', "chunkCompost"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.dirt),
-				"dd",
-			    "dd",
-			    'd', new ItemStack(ModItems.itemDirtChunk)));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, "chunkCompost"));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), ModBlocks.compostSoilBlock));
 	}
 	
 	private static void initBaubles(){

@@ -29,6 +29,7 @@ public class Reference {
     public static final String dirtChunkItemName = "dirtChunk";
     public static final String sunstoneItemName = "sunstone";
     public static final String titaniumWrenchItemName = "titaniumWrench";
+    public static final String ironWrenchItemName = "ironWrench";
     public static final String blazingRockItemName = "blazingRock";
     public static final String enderSlateItemName = "enderSlate";
     public static final String launchingArrowItemName = "launchingArrow";
