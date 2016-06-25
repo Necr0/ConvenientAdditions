@@ -21,6 +21,9 @@ public class ModConfig {
 	
 	//#########SEED BOX#############
 	public static boolean seedBox_recipe;
+	public static boolean seedBox_autoCrops;
+	public static boolean seedBox_autoCompost;
+	public static boolean seedBox_behaviourProviderEntry;
 	
 	//#########CHARGE ITEMS#############
 	public static boolean charge_sunstone;
@@ -119,6 +122,9 @@ public class ModConfig {
 		category="seedbox";
 		cfg.setCategoryRequiresMcRestart(category, true);
 		seedBox_recipe=cfg.getBoolean("recipe", category, true, "");
+		seedBox_autoCrops=cfg.getBoolean("autoCrops", category, true, "");
+		seedBox_autoCompost=cfg.getBoolean("autoCompost", category, true, "");
+		seedBox_behaviourProviderEntry=cfg.getBoolean("behaviourProviderEntry", category, true, "DON'T CHANGE THIS IF YOU DON'T KNOW WHAT IT IS!");
 		
 		if(cfg.hasChanged())
 			cfg.save();

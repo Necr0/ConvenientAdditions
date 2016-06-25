@@ -23,9 +23,12 @@ public class ModCAAPI {
 	}
 
 	private static void initSeedBox(){
-		SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxCropsEntry());
-		SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxBehaviourProviderEntry());
-		SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemCompost), compostDiscriminator);
+		if(ModConfig.seedBox_autoCrops)
+			SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxCropsEntry());
+		if(ModConfig.seedBox_autoCompost)
+			SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemCompost), compostDiscriminator);
+		if(ModConfig.seedBox_behaviourProviderEntry)
+			SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxBehaviourProviderEntry());
 	}
 	
 	private static void initCompost(){

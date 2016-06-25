@@ -1,4 +1,4 @@
-package convenientadditions;
+package convenientadditions.init;
 
 import convenientadditions.block.setProvider.ContainerSetProvider;
 import convenientadditions.block.setProvider.GuiSetProvider;

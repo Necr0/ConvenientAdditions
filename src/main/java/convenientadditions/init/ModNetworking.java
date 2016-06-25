@@ -1,7 +1,6 @@
 package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.ModGuiHandler;
 import convenientadditions.block.setProvider.MessageSetProvider;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
