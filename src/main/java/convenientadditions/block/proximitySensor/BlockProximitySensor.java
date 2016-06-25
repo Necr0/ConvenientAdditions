@@ -19,7 +19,7 @@ public class BlockProximitySensor extends BlockContainer implements IModelResour
     public static final PropertyInteger STRENGTH = PropertyInteger.create("strength",0,15);
 
 	public BlockProximitySensor() {
-		super(Material.iron);
+		super(Material.IRON);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.proximitySensorBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
         this.setDefaultState(this.blockState.getBaseState().withProperty(STRENGTH, Integer.valueOf(0)));
 	}

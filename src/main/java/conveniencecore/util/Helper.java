@@ -25,12 +25,12 @@ public class Helper {
 	
 	public static boolean checkForFire(IBlockAccess world,BlockPos pos){
 		int x=pos.getX(),y=pos.getY(),z=pos.getZ();
-    	return world.getBlockState(new BlockPos(x+1, y, z)).getBlock()==Blocks.fire||
-    			world.getBlockState(new BlockPos(x, y+1, z)).getBlock()==Blocks.fire||
-				world.getBlockState(new BlockPos(x, y, z+1)).getBlock()==Blocks.fire||
-				world.getBlockState(new BlockPos(x-1, y, z)).getBlock()==Blocks.fire||
-				world.getBlockState(new BlockPos(x, y-1, z)).getBlock()==Blocks.fire||
-				world.getBlockState(new BlockPos(x, y, z-1)).getBlock()==Blocks.fire;
+    	return world.getBlockState(new BlockPos(x+1, y, z)).getBlock()==Blocks.FIRE||
+    			world.getBlockState(new BlockPos(x, y+1, z)).getBlock()==Blocks.FIRE||
+				world.getBlockState(new BlockPos(x, y, z+1)).getBlock()==Blocks.FIRE||
+				world.getBlockState(new BlockPos(x-1, y, z)).getBlock()==Blocks.FIRE||
+				world.getBlockState(new BlockPos(x, y-1, z)).getBlock()==Blocks.FIRE||
+				world.getBlockState(new BlockPos(x, y, z-1)).getBlock()==Blocks.FIRE;
     }
 	
 	public static boolean canEntitySeeSky(Entity e){

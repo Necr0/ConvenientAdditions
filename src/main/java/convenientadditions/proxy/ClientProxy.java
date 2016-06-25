@@ -1,13 +1,11 @@
 package convenientadditions.proxy;
 
-import convenientadditions.block.charge.chargeTube.TileEntityChargeTube;
 import convenientadditions.block.composter.TileEntityComposter;
-import convenientadditions.entity.EntityLaunchingArrow;
+import convenientadditions.block.composter.render.RenderComposter;
+import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
+import convenientadditions.entity.launchingArrow.RenderLaunchingArrow;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
-import convenientadditions.render.RenderChargeTube;
-import convenientadditions.render.RenderComposter;
-import convenientadditions.render.RenderLaunchingArrow;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.world.World;
@@ -29,7 +27,6 @@ public class ClientProxy extends CommonProxy
     public void registerRenderers()
     {
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComposter.class, new RenderComposter());
-    	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChargeTube.class, new RenderChargeTube());
     	RenderingRegistry.registerEntityRenderingHandler(EntityLaunchingArrow.class, new IRenderFactory() {
 			@Override
 			public Render createRenderFor(RenderManager manager) {

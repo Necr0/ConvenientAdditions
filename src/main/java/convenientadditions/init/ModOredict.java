@@ -11,11 +11,13 @@ public class ModOredict {
 		OreDictionary.registerOre("nuggetTitanium", ModItems.nuggetTitanium);
 
 		OreDictionary.registerOre("soil", ModBlocks.compostSoilBlock);
-		OreDictionary.registerOre("soil", Blocks.dirt);
+		OreDictionary.registerOre("soil", Blocks.DIRT);
 		OreDictionary.registerOre("soilCompost", ModBlocks.compostSoilBlock);
-		OreDictionary.registerOre("soilDirt", Blocks.dirt);
+		OreDictionary.registerOre("soilDirt", Blocks.DIRT);
 
 		OreDictionary.registerOre("chunkCompost", new ItemStack(ModItems.itemCompost,1,0));
 		OreDictionary.registerOre("chunkCompost", new ItemStack(ModItems.itemCompost,1,1));
+		
+		OreDictionary.registerOre("chunkDirt", new ItemStack(ModItems.itemDirtChunk,1,0));
 	}
 }

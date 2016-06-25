@@ -5,9 +5,6 @@ import convenientadditions.Reference;
 import convenientadditions.block.BlockPhantomPlatform;
 import convenientadditions.block.BlockTempLight;
 import convenientadditions.block.BlockTitaniumOre;
-import convenientadditions.block.charge.chargeAccumulator.BlockChargeAccumulator;
-import convenientadditions.block.charge.chargeTube.BlockChargeTube;
-import convenientadditions.block.charge.sunlightCollector.BlockSunlightCollector;
 import convenientadditions.block.compostSoil.BlockCompostSoil;
 import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.compostSoil.ItemBlockCompostSoil;
@@ -35,9 +32,6 @@ public class ModBlocks
     public static final BlockProximitySensor proximitySensorBlock = new BlockProximitySensor();
     public static final BlockTempLight tempLightBlock = new BlockTempLight(.5F);
     public static final BlockPhantomPlatform phantomPlatformBlock = new BlockPhantomPlatform();
-    public static final BlockSunlightCollector sunlightCollectorBlock = new BlockSunlightCollector();
-    public static final BlockChargeAccumulator chargeAccumulatorBlock = new BlockChargeAccumulator();
-    public static final BlockChargeTube chargeTubeBlock = new BlockChargeTube();
     public static final BlockSeedBox seedBoxBlock = new BlockSeedBox();
     public static final BlockSetProvider setProviderBlock = new BlockSetProvider();
 

@@ -19,7 +19,7 @@ public class BlockPlayerInterface extends BlockContainer implements IModelResour
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
 	public BlockPlayerInterface() {
-		super(Material.iron);
+		super(Material.IRON);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE,false));
 	}

@@ -54,12 +54,13 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 	}
 	
 	@Override
-	public void writeToNBT(NBTTagCompound nbt){
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		nbt.setBoolean("processing", processing);
 		nbt.setInteger("content", content);
 		nbt.setInteger("progress", progress);
 		nbt.setBoolean("progress", spores);
+		return nbt;
 	}
 	
 	public void readSyncNBT(NBTTagCompound nbt){
@@ -132,7 +133,7 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 	}
 	
 	@Override
-	public Packet getDescriptionPacket()
+	public SPacketUpdateTileEntity getUpdatePacket()
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeSyncNBT(nbt);

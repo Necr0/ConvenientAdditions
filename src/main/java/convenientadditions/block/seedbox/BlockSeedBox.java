@@ -26,9 +26,9 @@ public class BlockSeedBox extends BlockConfigurable implements IModelResourceLoc
     public static final PropertyBool OUTLET_WEST = PropertyBool.create("outlet_west");
 
 	public BlockSeedBox() {
-		super(Material.wood);
+		super(Material.WOOD);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-		this.setStepSound(SoundType.WOOD);
+		this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP,false).withProperty(OUTLET_BOTTOM,true).withProperty(OUTLET_NORTH,false).withProperty(OUTLET_EAST,false).withProperty(OUTLET_SOUTH,false).withProperty(OUTLET_WEST,false));
 	}
 

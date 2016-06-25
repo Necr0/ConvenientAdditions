@@ -3,13 +3,12 @@ package convenientadditions.block.setProvider;
 import java.util.ArrayList;
 
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.util.RSHelper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModGuiHandler;
 import convenientadditions.Reference;
 import convenientadditions.block.BlockMachineConfigurable;
-import convenientadditions.block.powderkeg.TileEntityPowderKeg;
 import convenientadditions.block.setProvider.TileEntitySetProvider.EnumOutletMode;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -23,8 +22,10 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 
 public class BlockSetProvider extends BlockMachineConfigurable implements IModelResourceLocationProvider {
 
@@ -36,7 +37,7 @@ public class BlockSetProvider extends BlockMachineConfigurable implements IModel
 	public static final PropertyEnum<EnumOutletMode> OUTLET_WEST = PropertyEnum.<EnumOutletMode>create("outlet_west", EnumOutletMode.class);
 	
 	public BlockSetProvider() {
-		super(Material.rock);
+		super(Material.ROCK);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.setProviderBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP,EnumOutletMode.disabled).withProperty(OUTLET_BOTTOM,EnumOutletMode.disabled).withProperty(OUTLET_NORTH,EnumOutletMode.disabled).withProperty(OUTLET_EAST,EnumOutletMode.disabled).withProperty(OUTLET_SOUTH,EnumOutletMode.disabled).withProperty(OUTLET_WEST,EnumOutletMode.disabled));
 	}
@@ -55,14 +56,16 @@ public class BlockSetProvider extends BlockMachineConfigurable implements IModel
     }
     
     @Override
-    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock)
+    public void onNeighborChange(IBlockAccess worldIn, BlockPos pos, BlockPos neighborBlock)
     {
-    	if(worldIn.isRemote)
+    	if(ConvenientAdditions.PROXY.isRemote())
     		return;
     	TileEntity t=worldIn.getTileEntity(pos);
 		if(t!=null && t instanceof TileEntitySetProvider){
 			TileEntitySetProvider te=(TileEntitySetProvider)t;
-			te.updateRS( worldIn.isBlockIndirectlyGettingPowered(pos) > 0 );
+			te.updateRS( RSHelper.getIndirectlyPowered(worldIn, pos) );
+			ChunkCache c;
+			World world;
 		}
     }
     

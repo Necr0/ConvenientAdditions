@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class BlockTempLight extends Block {
 	
 	public BlockTempLight(float intensisty) {
-		super(Material.fire);
+		super(Material.FIRE);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.tempLightBlockName)
 		.setLightLevel(intensisty)
 		.setTickRandomly(true);

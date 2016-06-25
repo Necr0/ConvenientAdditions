@@ -120,6 +120,7 @@ public class ModConfig {
 		cfg.setCategoryRequiresMcRestart(category, true);
 		seedBox_recipe=cfg.getBoolean("recipe", category, true, "");
 		
-		cfg.save();
+		if(cfg.hasChanged())
+			cfg.save();
 	}
 }

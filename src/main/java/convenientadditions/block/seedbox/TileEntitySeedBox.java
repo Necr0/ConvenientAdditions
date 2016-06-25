@@ -42,19 +42,20 @@ public class TileEntitySeedBox extends TileEntity implements IConfigurable {
 			}
 		}
 	}
-	
+
 	@Override
-	public void writeToNBT(NBTTagCompound nbt){
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		MathHelper.Bitmask mask=new MathHelper.Bitmask(0);
 		for(EnumFacing f:EnumFacing.VALUES){
 			mask.setBit(f.ordinal(), outletSides.get(f));
 		}
 		nbt.setByte("OUTLET", (byte)mask.get());
+		return nbt;
 	}
 	
 	@Override
-	public Packet getDescriptionPacket()
+	public SPacketUpdateTileEntity getUpdatePacket()
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);

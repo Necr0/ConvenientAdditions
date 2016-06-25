@@ -22,7 +22,7 @@ public class TileEntityProximitySensor extends TileEntity implements ITickable {
 	public int getComp(){
 		boolean power=worldObj.isBlockIndirectlyGettingPowered(pos)>0;
 		double range=power?7.5D:15D;
-		EntityPlayer p=worldObj.func_184137_a((double)pos.getX()+.5, (double)pos.getY()+.5, (double)pos.getZ()+.5, range, false);
+		EntityPlayer p=worldObj.getClosestPlayer((double)pos.getX()+.5, (double)pos.getY()+.5, (double)pos.getZ()+.5, range, false);
 		if(p!=null){
 			return getStr(p.getDistanceSq((double)pos.getX()+.5, (double)pos.getY()+.5, (double)pos.getZ()+.5),power?.5D:1D);
 		}

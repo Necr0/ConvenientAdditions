@@ -70,7 +70,7 @@ public class RecipeEnderSlateRecharge implements IRecipe {
         for(ItemStack i:list){
         	if(i.getItem()==ModItems.itemEnderSlate&&!ModItems.itemEnderSlate.isActive(i)&&ModItems.itemEnderSlate.getCharge(i)<ModItems.itemEnderSlate.getChargeCapacity(i))
         		slate=true;
-        	else if(i.getItem()==Items.ender_eye)
+        	else if(i.getItem()==Items.ENDER_EYE)
         		eye=true;
         }
         

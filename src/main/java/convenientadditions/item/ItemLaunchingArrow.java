@@ -5,8 +5,8 @@ import java.util.List;
 import conveniencecore.item.resourceprovider.IModelVariantResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
-import convenientadditions.entity.EntityLaunchingArrow;
-import convenientadditions.entity.EntityLaunchingArrow.EnumLaunchingArrowVariant;
+import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
+import convenientadditions.entity.launchingArrow.EntityLaunchingArrow.EnumLaunchingArrowVariant;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,7 +34,7 @@ public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResour
     }
 
     @Override
-    public EntityArrow makeTippedArrow(World worldIn, ItemStack stack, EntityLivingBase shooter)
+    public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter)
     {
     	EnumLaunchingArrowVariant var=stack.getItemDamage()<EnumLaunchingArrowVariant.values().length?EnumLaunchingArrowVariant.values()[stack.getItemDamage()]:EnumLaunchingArrowVariant.slime;
         return new EntityLaunchingArrow(worldIn, shooter, var);

@@ -17,6 +17,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -32,9 +33,9 @@ public class BlockCompostSoil extends Block implements IModelResourceLocationPro
     public static final PropertyInteger DEGRADATION = PropertyInteger.create("degradation", 0, 10);
 
 	public BlockCompostSoil() {
-		super(Material.ground);
+		super(Material.GROUND);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.compostSoilBlockName).setTickRandomly(true).setHardness(0.5F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-		this.setStepSound(SoundType.GROUND);
+		this.setSoundType(SoundType.GROUND);
         this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
 	}
 	
@@ -57,10 +58,10 @@ public class BlockCompostSoil extends Block implements IModelResourceLocationPro
             case Plains: return true;
             case Water:  return false;
             case Beach:
-                boolean hasWater = (world.getBlockState(pos.east()).getMaterial() == Material.water ||
-                world.getBlockState(pos.west()).getMaterial() == Material.water ||
-                world.getBlockState(pos.north()).getMaterial() == Material.water ||
-                world.getBlockState(pos.south()).getMaterial() == Material.water);
+                boolean hasWater = (world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
+                world.getBlockState(pos.west()).getMaterial() == Material.WATER ||
+                world.getBlockState(pos.north()).getMaterial() == Material.WATER ||
+                world.getBlockState(pos.south()).getMaterial() == Material.WATER);
             	return hasWater;
         }
 
@@ -80,15 +81,7 @@ public class BlockCompostSoil extends Block implements IModelResourceLocationPro
 				current.damageItem(1, player);
 	    		world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(this.getMetaFromState(state)), 3);
     		}
-            world.playSound(
-            		(double)((float)pos.getX() + 0.5F),
-            		(double)((float)pos.getY() + 0.5F),
-            		(double)((float)pos.getZ() + 0.5F),
-            		Blocks.grass.getStepSound().getStepSound(),
-            		SoundCategory.BLOCKS,
-            		(Blocks.grass.getStepSound().getVolume() + 1.0F) / 2.0F,
-            		Blocks.grass.getStepSound().getPitch() * 0.8F,
-            		false);
+            world.playSound(null, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
     	}
     	return true;
     }
@@ -122,7 +115,7 @@ public class BlockCompostSoil extends Block implements IModelResourceLocationPro
 				if(deg<10)
 					world.setBlockState(pos,state.withProperty(DEGRADATION, deg+1));
 				else
-					world.setBlockState(pos, Blocks.dirt.getDefaultState());
+					world.setBlockState(pos, Blocks.DIRT.getDefaultState());
 			}
 		}
 	}
@@ -136,16 +129,19 @@ public class BlockCompostSoil extends Block implements IModelResourceLocationPro
     //
     // BLOCKSTATE STUFF
     //
+	@Override
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(DEGRADATION, Integer.valueOf(meta));
     }
-    
+
+	@Override
     public int getMetaFromState(IBlockState state)
     {
         return ((Integer)state.getValue(DEGRADATION)).intValue();
     }
-    
+
+	@Override
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, new IProperty[]{DEGRADATION});

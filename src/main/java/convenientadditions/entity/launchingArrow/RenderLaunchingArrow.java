@@ -1,8 +1,7 @@
-package convenientadditions.render;
+package convenientadditions.entity.launchingArrow;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
-import convenientadditions.entity.EntityLaunchingArrow;
 import net.minecraft.client.renderer.entity.RenderArrow;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

@@ -36,16 +36,16 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
     {
 		IBlockState state=world.getBlockState(pos);
 		Block b=state.getBlock();
-		if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&b.getMetaFromState(state)!=0)))
+		if(!(b==Blocks.DIRT||b==Blocks.FARMLAND||b==Blocks.GRASS||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&b.getMetaFromState(state)!=0)))
     		return EnumActionResult.FAIL;
 		if(!world.isRemote){
-			if(b==Blocks.dirt)
+			if(b==Blocks.DIRT)
 				world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState());
-			else if(b==Blocks.farmland)
+			else if(b==Blocks.FARMLAND)
 				world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getDefaultState());
-			else if(b==Blocks.grass){
+			else if(b==Blocks.GRASS){
 				if(itemStack.getItemDamage()==1&&new Random().nextInt(64)==0)
-					world.setBlockState(pos, Blocks.mycelium.getDefaultState());
+					world.setBlockState(pos, Blocks.MYCELIUM.getDefaultState());
 				else
 					world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 3);
 			}else if(b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock){
@@ -53,15 +53,12 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
 			}
 			itemStack.stackSize--;
 		}
-        world.playSound(
-        		(double)((float)pos.getX() + 0.5F),
-        		(double)((float)pos.getY() + 0.5F),
-        		(double)((float)pos.getZ() + 0.5F),
-        		Blocks.grass.getStepSound().getStepSound(),
+        world.playSound(null,
+        		pos,
+        		Blocks.GRASS.getSoundType().getHitSound(),
         		SoundCategory.BLOCKS,
-        		(Blocks.grass.getStepSound().getVolume() + 1.0F) / 2.0F,
-        		Blocks.grass.getStepSound().getPitch() * 0.8F,
-        		false);
+        		Blocks.GRASS.getSoundType().getVolume(),
+        		Blocks.GRASS.getSoundType().getPitch());
 		return EnumActionResult.SUCCESS;
     }
     

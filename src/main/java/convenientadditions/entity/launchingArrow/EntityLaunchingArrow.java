@@ -1,4 +1,4 @@
-package convenientadditions.entity;
+package convenientadditions.entity.launchingArrow;
 
 import conveniencecore.ExtendedExplosion;
 import net.minecraft.entity.Entity;
@@ -18,18 +18,18 @@ public class EntityLaunchingArrow extends EntityArrow {
 
 	public EntityLaunchingArrow(World worldIn) {
 		super(worldIn);
-        this.canBePickedUp = EntityArrow.PickupStatus.DISALLOWED;
+        this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
 	}
 
 	public EntityLaunchingArrow(World worldIn, double x, double y, double z) {
 		super(worldIn, x, y, z);
-        this.canBePickedUp = EntityArrow.PickupStatus.DISALLOWED;
+        this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
 	}
 
 	public EntityLaunchingArrow(World worldIn, EntityLivingBase shooter, EnumLaunchingArrowVariant variant) {
 		super(worldIn, shooter);
 		this.setVariant(variant);
-        this.canBePickedUp = EntityArrow.PickupStatus.DISALLOWED;
+        this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class EntityLaunchingArrow extends EntityArrow {
 
     public void onUpdate()
     {
-        this.canBePickedUp = EntityArrow.PickupStatus.DISALLOWED;
+        this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
         super.onUpdate();
         
         if (this.inGround&&!worldObj.isRemote)
@@ -107,7 +107,7 @@ public class EntityLaunchingArrow extends EntityArrow {
     public EnumLaunchingArrowVariant getVariant()
     {
     	if(worldObj.isRemote){
-    		Byte b=(Byte)this.dataWatcher.get(VARIANT);
+    		Byte b=(Byte)this.getDataManager().get(VARIANT);
     		if(b!=null&&b<EnumLaunchingArrowVariant.values().length)
     			return EnumLaunchingArrowVariant.values()[b];
     		else

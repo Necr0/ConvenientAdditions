@@ -1,4 +1,4 @@
-package convenientadditions.render.model;
+package convenientadditions.block.composter.render;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

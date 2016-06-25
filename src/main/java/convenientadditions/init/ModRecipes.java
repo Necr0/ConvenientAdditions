@@ -60,12 +60,12 @@ public class ModRecipes {
 				"cc",
 			    "cc",
 			    'c', "chunkCompost"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.dirt),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.DIRT),
 				"dd",
 			    "dd",
-			    'd', new ItemStack(ModItems.itemDirtChunk)));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.dirt, "chunkCompost"));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.dirt), ModBlocks.compostSoilBlock));
+			    'd', "chunkDirt"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.compostSoilBlock), Blocks.DIRT, "chunkCompost"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.DIRT), ModBlocks.compostSoilBlock));
 	}
 	
 	private static void initBlocks(){
@@ -76,14 +76,14 @@ public class ModRecipes {
 			    "psp",
 			    'p', "plankWood",
 			    's', "slabWood",
-			    'g', Items.gunpowder));
+			    'g', Items.GUNPOWDER));
 
 		if(ModConfig.seedBox_recipe)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.seedBoxBlock,
 				"tpt",
 			    "php",
 			    "tpt",
-			    'h', Blocks.hopper,
+			    'h', Blocks.HOPPER,
 			    'p', "plankWood",
 			    't', titaniumIngot));
 
@@ -93,8 +93,8 @@ public class ModRecipes {
 			    "geg",
 			    "srs",
 			    't', titaniumIngot,
-			    'e', Items.ender_pearl,
-			    'p', Blocks.stone_pressure_plate,
+			    'e', Items.ENDER_PEARL,
+			    'p', Blocks.STONE_PRESSURE_PLATE,
 			    'g', "ingotGold",
 			    's', "dustGlowstone",
 			    'r', "blockRedstone"));
@@ -105,7 +105,7 @@ public class ModRecipes {
 			    "tet",
 			    "rgr",
 			    't', titaniumIngot,
-			    'e', Items.ender_eye,
+			    'e', Items.ENDER_EYE,
 			    'g', "ingotGold",
 			    's', "dustGlowstone",
 			    'r', "blockRedstone"));
@@ -116,9 +116,9 @@ public class ModRecipes {
 			    "bcb",
 			    "tht",
 			    't', titaniumIngot,
-			    'h', Blocks.hopper,
-			    'c', Items.comparator,
-			    'b', Blocks.iron_bars));
+			    'h', Blocks.HOPPER,
+			    'c', Items.COMPARATOR,
+			    'b', Blocks.IRON_BARS));
 	}
 
 	private static void initChargeItems(){
@@ -138,9 +138,9 @@ public class ModRecipes {
 			    "bdb",
 			    "tgt",
 			    't', titaniumNugget,
-			    'b', Items.blaze_powder,
+			    'b', Items.BLAZE_POWDER,
 			    'd', "gemDiamond",
-			    'l', Items.lava_bucket,
+			    'l', Items.LAVA_BUCKET,
 			    'g', "dustGlowstone"));
 		
 		if(ModConfig.enderSlate_recipe)
@@ -148,8 +148,8 @@ public class ModRecipes {
 				"rer",
 			    "bsb",
 			    "rer",
-			    'e', Items.ender_pearl,
-			    'b', Items.dragon_breath,
+			    'e', Items.ENDER_PEARL,
+			    'b', Items.DRAGON_BREATH,
 			    'r', "dustRedstone",
 			    's', "stone"));
 		
@@ -165,7 +165,7 @@ public class ModRecipes {
 			    "yty",
 			    't', titaniumIngot,
 			    's', ModItems.itemSunstone,
-			    'y', Items.string));
+			    'y', Items.STRING));
 
 		if(ModConfig.baubles_ring_of_saturation)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSaturationRing.FULLY_CHARGED.copy(),
@@ -173,8 +173,8 @@ public class ModRecipes {
 			    "t t",
 			    "yty",
 			    't', titaniumIngot,
-			    'g', Items.golden_carrot,
-			    'y', Items.string));
+			    'g', Items.GOLDEN_CARROT,
+			    'y', Items.STRING));
 
 		if(ModConfig.baubles_amulet_of_breath)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBreathAmulet.FULLY_CHARGED.copy(),
@@ -182,8 +182,8 @@ public class ModRecipes {
 			    "t t",
 			    "ypy",
 			    't', titaniumIngot,
-			    'p', new ItemStack(Items.potionitem,1,8269),
-			    'y', Items.string));
+			    'p', new ItemStack(Items.POTIONITEM,1,8269),
+			    'y', Items.STRING));
 
 		if(ModConfig.baubles_ring_of_charging)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemChargingRing.FULLY_CHARGED.copy(),
@@ -193,7 +193,7 @@ public class ModRecipes {
 			    'r', "blockRedstone",
 			    'g', "dustGlowstone",
 			    's', ModItems.itemSunlightRing,
-			    'y', Items.string));
+			    'y', Items.STRING));
 	}
 	
 	private static void initTitaniumTools(){

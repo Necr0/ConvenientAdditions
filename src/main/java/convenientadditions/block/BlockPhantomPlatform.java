@@ -29,7 +29,7 @@ public class BlockPhantomPlatform extends Block implements IModelResourceLocatio
     public static final PropertyBool DESPAWN = PropertyBool.create("despawn");
 
 	public BlockPhantomPlatform() {
-		super(Material.fire);
+		super(Material.FIRE);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.phantomPlatformBlockName);
         this.disableStats();
         this.translucent = true;

@@ -29,18 +29,18 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 		IBlockState state=item.worldObj.getBlockState(new BlockPos(pos));
 		Block b=state.getBlock();
 		if(item.onGround){
-			if(!(b==Blocks.dirt||b==Blocks.farmland||b==Blocks.grass||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&ModBlocks.compostSoilTilledBlock.getMetaFromState(state)!=0)))
+			if(!(b==Blocks.DIRT||b==Blocks.FARMLAND||b==Blocks.GRASS||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&ModBlocks.compostSoilTilledBlock.getMetaFromState(state)!=0)))
 	    		return;
 			Item i=item.getEntityItem().getItem();
 			EnumFacing up=EnumFacing.UP;
 			if(i!=ModItems.itemCompost)
 				return;
-			if(b==Blocks.dirt||b==Blocks.grass)
-				w.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(0), 2);
-			else if(b==Blocks.farmland)
-				w.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getStateFromMeta(0), 2);
+			if(b==Blocks.DIRT||b==Blocks.GRASS)
+				w.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 2);
+			else if(b==Blocks.FARMLAND)
+				w.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getDefaultState(), 2);
 			else if(b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)
-				w.setBlockState(pos, b.getStateFromMeta(0), 2+4);
+				w.setBlockState(pos, b.getDefaultState(), 2+4);
 			else
 				return;
 			item.getEntityItem().stackSize--;

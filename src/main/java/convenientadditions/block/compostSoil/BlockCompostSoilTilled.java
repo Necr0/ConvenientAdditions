@@ -7,6 +7,7 @@ import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -70,9 +71,9 @@ public class BlockCompostSoilTilled extends BlockCompostSoil implements IModelRe
 				if(deg<10)
 					world.setBlockState(pos,state.withProperty(DEGRADATION, deg+1));
 				else
-					world.setBlockState(pos, Blocks.farmland.getDefaultState());
+					world.setBlockState(pos, Blocks.FARMLAND.getDefaultState());
 			}
-			if(b.getMaterial(state).isSolid())
+			if(newB.getMaterial().isSolid())
 				world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState().withProperty(DEGRADATION, deg), 2);
 		}
 	}

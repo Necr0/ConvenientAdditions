@@ -30,7 +30,7 @@ public class EntitySpecialItem extends EntityItem {
 
     public List<Long> getBehaviours()
     {
-        return this.worldObj.isRemote ? (List<Long>)this.dataWatcher.get(BEHAVIOURS) : this.behaviours;
+        return this.worldObj.isRemote ? (List<Long>)this.getDataManager().get(BEHAVIOURS) : this.behaviours;
     }
     
     @Override

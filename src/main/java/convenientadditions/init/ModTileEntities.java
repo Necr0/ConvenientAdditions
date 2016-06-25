@@ -1,9 +1,6 @@
 package convenientadditions.init;
 
 import convenientadditions.Reference;
-import convenientadditions.block.charge.chargeAccumulator.TileEntityChargeAccumulator;
-import convenientadditions.block.charge.chargeTube.TileEntityChargeTube;
-import convenientadditions.block.charge.sunlightCollector.TileEntitySunlightCollector;
 import convenientadditions.block.composter.TileEntityComposter;
 import convenientadditions.block.playerInterface.TileEntityPlayerInterface;
 import convenientadditions.block.powderkeg.TileEntityPowderKeg;
@@ -18,9 +15,6 @@ public class ModTileEntities {
 	    GameRegistry.registerTileEntity(TileEntityPowderKeg.class, Reference.powderKegBlockName);
 	    GameRegistry.registerTileEntity(TileEntityPlayerInterface.class, Reference.playerInterfaceBlockName);
 	    GameRegistry.registerTileEntity(TileEntityProximitySensor.class, Reference.proximitySensorBlockName);
-	    GameRegistry.registerTileEntity(TileEntitySunlightCollector.class, Reference.sunlightCollectorBlockName);
-	    GameRegistry.registerTileEntity(TileEntityChargeAccumulator.class, Reference.chargeAccumulatorBlockName);
-	    GameRegistry.registerTileEntity(TileEntityChargeTube.class, Reference.chargeTubeBlockName);
 	    GameRegistry.registerTileEntity(TileEntitySeedBox.class, Reference.seedBoxBlockName);
 	    GameRegistry.registerTileEntity(TileEntitySetProvider.class, Reference.setProviderBlockName);
 	}

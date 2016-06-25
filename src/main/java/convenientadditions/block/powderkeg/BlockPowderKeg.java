@@ -28,9 +28,9 @@ import net.minecraft.world.World;
 public class BlockPowderKeg extends BlockContainer implements IModelResourceLocationProvider {
 	
 	public BlockPowderKeg() {
-		super(Material.wood);
+		super(Material.WOOD);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-		this.setStepSound(SoundType.WOOD);
+		this.setSoundType(SoundType.WOOD);
 	}
 
 	@Override
@@ -73,13 +73,13 @@ public class BlockPowderKeg extends BlockContainer implements IModelResourceLoca
     		if (!player.isSneaking()&&!world.isRemote){
 	        	if(current==null){
     				player.addChatMessage(new TextComponentString(keg.getAmount()+I18n.translateToLocal("message."+ConvenientAdditions.MODID+":gunpowderStored")));
-	        	}else if(current.getItem()==Items.flint_and_steel){
+	        	}else if(current.getItem()==Items.FLINT_AND_STEEL){
         			if(explode(world,pos)){
         				current.damageItem(1, player);
         				return true;
 	        		}
 	    			return false;
-	        	}else if (current.getItem()==Items.gunpowder){
+	        	}else if (current.getItem()==Items.GUNPOWDER){
 		        	player.setHeldItem(hand, keg.insertStack(held));
 		        }
         	}else if(keg.getAmount()!=0&&current==null){
@@ -98,7 +98,7 @@ public class BlockPowderKeg extends BlockContainer implements IModelResourceLoca
     }
     
     @Override
-    public void onEntityCollidedWithBlock(World w, BlockPos pos, Entity e)
+    public void onEntityCollidedWithBlock(World w, BlockPos pos, IBlockState s, Entity e)
     {
         if (e instanceof EntityArrow && !w.isRemote)
         {

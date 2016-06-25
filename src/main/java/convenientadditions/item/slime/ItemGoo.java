@@ -43,7 +43,7 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand)
     {
-        if(edible)
+        /*if(edible)
         	return super.onItemRightClick(stack, world, player, hand);
         else if(stack.getItem()==boom){
         	if(!world.isRemote){
@@ -52,11 +52,11 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
         		player.swingArm(hand);
         	}
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,stack);
-        }
+        }*/
         return new ActionResult<ItemStack>(EnumActionResult.FAIL,stack);
     }
 	
-	public static final ItemGoo royal=new ItemGoo(Reference.royalGooItemName,Reference.royalGooItemName);
+	/*public static final ItemGoo royal=new ItemGoo(Reference.royalGooItemName,Reference.royalGooItemName);
 	public static final ItemGoo kitty=new ItemGoo(Reference.kittyGooItemName,Reference.kittyGooItemName);
 	public static final ItemGoo pink=new ItemGoo(Reference.pinkGooItemName,Reference.pinkGooItemName,2,1.2f);
 	public static final ItemGoo stone=new ItemGoo(Reference.stoneGooItemName,Reference.stoneGooItemName);
@@ -65,7 +65,7 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 	public static final ItemGoo undead=new ItemGoo(Reference.undeadGooItemName,Reference.undeadGooItemName,2,.4f);
 	public static final ItemGoo shroom=new ItemGoo(Reference.shroomGooItemName,Reference.shroomGooItemName,2,2f);
 	public static final ItemGoo honey=new ItemGoo(Reference.honeyGooItemName,Reference.honeyGooItemName,3,4f);
-	public static final ItemGoo boom=new ItemGoo(Reference.boomGooItemName,Reference.boomGooItemName);
+	public static final ItemGoo boom=new ItemGoo(Reference.boomGooItemName,Reference.boomGooItemName);*/
 	
 	public static void init(){
 		/*GameRegistry.registerItem(royal,Reference.royalGooItemName);
@@ -106,14 +106,14 @@ public class ItemGoo extends ItemFood implements IFuelItem,IModelResourceLocatio
 
 	@Override
 	public boolean isFuelItem(ItemStack item) {
-		return (item.getItem()==blazing);
+		return false; //(item.getItem()==blazing);
 	}
 
 	@Override
 	public int getFuelTime(ItemStack item) {
-        if(item.getItem()==blazing){
+        /*if(item.getItem()==blazing){
         	return 400;
-        }
+        }*/
 		return 0;
 	}
 }

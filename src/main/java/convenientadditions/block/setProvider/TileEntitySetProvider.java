@@ -74,7 +74,7 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 	}
 	
 	@Override
-	public Packet getDescriptionPacket()
+	public SPacketUpdateTileEntity getUpdatePacket()
 	{
 		NBTTagCompound nbt=new NBTTagCompound();
 		writeToNBT(nbt);
@@ -116,9 +116,9 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 		if(nbt.hasKey("POWERED"))
 			powered=nbt.getBoolean("POWERED");
 	}
-	
+
 	@Override
-	public void writeToNBT(NBTTagCompound nbt){
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt){
 		super.writeToNBT(nbt);
 		for(EnumFacing f:EnumFacing.VALUES){
 			nbt.setByte("OUTLET_"+f.ordinal(), (byte)outletSides.get(f).ordinal());
@@ -131,6 +131,7 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 		nbt.setBoolean("IGNORENBT", ignoreNBT);
 		nbt.setByte("RSMODE",resetMode);
 		nbt.setBoolean("POWERED",powered);
+		return nbt;
 	}
 
 	@Override

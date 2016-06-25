@@ -148,7 +148,7 @@ public class ExtendedExplosion extends Explosion {
 	                            BlockPos blockpos = new BlockPos(d4, d6, d8);
 	                            IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
 	
-	                            if (iblockstate.getMaterial() != Material.air)
+	                            if (iblockstate.getMaterial() != Material.AIR)
 	                            {
 	                                float f2 = this.exploder != null ? this.exploder.getExplosionResistance(this, this.worldObj, blockpos, iblockstate) : iblockstate.getBlock().getExplosionResistance(worldObj, blockpos, (Entity)null, this);
 	                                f -= (f2 + 0.3F) * 0.3F;
@@ -210,7 +210,7 @@ public class ExtendedExplosion extends Explosion {
 
                         if (entity instanceof EntityLivingBase)
                         {
-                            d11 = EnchantmentProtection.func_92092_a((EntityLivingBase)entity, d10);
+                            d11 = EnchantmentProtection.getBlastDamageReduction((EntityLivingBase)entity, d10);
                         }
 
                         entity.motionX += d5 * d11;
@@ -237,7 +237,7 @@ public class ExtendedExplosion extends Explosion {
      */
     public void doExplosionB(boolean spawnParticles)
     {
-        this.worldObj.playSound((EntityPlayer)null, this.explosionX, this.explosionY, this.explosionZ, SoundEvents.entity_generic_explode, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
+        this.worldObj.playSound((EntityPlayer)null, this.explosionX, this.explosionY, this.explosionZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 
         if (this.explosionSize >= 2.0F && this.isSmoking)
         {
@@ -276,7 +276,7 @@ public class ExtendedExplosion extends Explosion {
                     this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, d3, d4, d5, new int[0]);
                 }
 
-                if (iblockstate.getMaterial() != Material.air)
+                if (iblockstate.getMaterial() != Material.AIR)
                 {
                     if (block.canDropFromExplosion(this))
                     {
@@ -292,9 +292,9 @@ public class ExtendedExplosion extends Explosion {
         {
             for (BlockPos blockpos1 : this.affectedBlockPositions)
             {
-                if (this.worldObj.getBlockState(blockpos1).getMaterial() == Material.air && this.worldObj.getBlockState(blockpos1.down()).isFullBlock() && this.explosionRNG.nextInt(3) == 0)
+                if (this.worldObj.getBlockState(blockpos1).getMaterial() == Material.AIR && this.worldObj.getBlockState(blockpos1.down()).isFullBlock() && this.explosionRNG.nextInt(3) == 0)
                 {
-                    this.worldObj.setBlockState(blockpos1, Blocks.fire.getDefaultState());
+                    this.worldObj.setBlockState(blockpos1, Blocks.FIRE.getDefaultState());
                 }
             }
         }

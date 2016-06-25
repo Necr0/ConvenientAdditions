@@ -19,9 +19,9 @@ import net.minecraft.world.World;
 public class BlockComposter extends BlockContainer implements IModelResourceLocationProvider {
 
 	public BlockComposter() {
-		super(Material.wood);
+		super(Material.WOOD);
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-		this.setStepSound(SoundType.WOOD);
+		this.setSoundType(SoundType.WOOD);
 	}
 
     @Override

@@ -1,11 +1,10 @@
-package convenientadditions.render;
+package convenientadditions.block.composter.render;
 
 import org.lwjgl.opengl.GL11;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.block.composter.TileEntityComposter;
 import convenientadditions.init.ModConfig;
-import convenientadditions.render.model.ModelComposterContent;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
