@@ -1,8 +1,5 @@
 package convenientadditions.block.setProvider;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import conveniencecore.gui.widget.ImageButton;
 import conveniencecore.gui.widget.ImageCycleButton;
 import conveniencecore.gui.widget.ImageResourceLocation;
@@ -16,7 +13,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
-import scala.actors.threadpool.Arrays;
 
 public class GuiSetProvider extends GuiContainer {
 	
@@ -45,6 +41,11 @@ public class GuiSetProvider extends GuiContainer {
 				Helper.localize(ConvenientAdditions.MODID+":ignore","%v",Helper.localize(ConvenientAdditions.MODID+":NBT"))
 		};
 		
+		String[] filterButtonList=new String[]{
+				Helper.localize(ConvenientAdditions.MODID+":filter","%v",Helper.localize(ConvenientAdditions.MODID+":input")),
+				Helper.localize(ConvenientAdditions.MODID+":filterNot","%v",Helper.localize(ConvenientAdditions.MODID+":input"))
+		};
+		
 		String[] rsButtonList=new String[]{
 				Helper.localize("tooltip."+ConvenientAdditions.MODID+":resetOn","%v",Helper.localize(ConvenientAdditions.MODID+":highrs")),
 				Helper.localize("tooltip."+ConvenientAdditions.MODID+":resetOn","%v",Helper.localize(ConvenientAdditions.MODID+":lowrs")),
@@ -52,19 +53,23 @@ public class GuiSetProvider extends GuiContainer {
 				Helper.localize("tooltip."+ConvenientAdditions.MODID+":resetNot"),
 				Helper.localize("tooltip."+ConvenientAdditions.MODID+":resetAuto")
 		};
-		
+		int buttonIndex=0;
 		this.buttonList.add(
-				new ImageButton(0,ModImageResourceLocations.RESET,I18n.format("tooltip."+ConvenientAdditions.MODID+":reset"),guiLeft+170, guiTop+7));
+				new ImageCycleButton(buttonIndex, new ImageResourceLocation[]{ModImageResourceLocations.NOFILTER,ModImageResourceLocations.FILTER}, filterButtonList, guiLeft+170, guiTop+7+(buttonIndex++)*18)
+				.setCycleIndex(te.filteredInput?1:0)
+			);
 		this.buttonList.add(
-			new ImageCycleButton(1, new ImageResourceLocation[]{ModImageResourceLocations.DV,ModImageResourceLocations.NODV},dvButtonList,guiLeft+170, guiTop+25)
+				new ImageButton(buttonIndex,ModImageResourceLocations.RESET,I18n.format("tooltip."+ConvenientAdditions.MODID+":reset"),guiLeft+170, guiTop+7+(buttonIndex++)*18));
+		this.buttonList.add(
+			new ImageCycleButton(buttonIndex, new ImageResourceLocation[]{ModImageResourceLocations.DV,ModImageResourceLocations.NODV},dvButtonList,guiLeft+170, guiTop+7+(buttonIndex++)*18)
 			.setCycleIndex(te.ignoreDV?1:0)
 		);
 		this.buttonList.add(
-			new ImageCycleButton(2, new ImageResourceLocation[]{ModImageResourceLocations.NBT,ModImageResourceLocations.NONBT},nbtButtonList,guiLeft+170,guiTop+43)
+			new ImageCycleButton(buttonIndex, new ImageResourceLocation[]{ModImageResourceLocations.NBT,ModImageResourceLocations.NONBT},nbtButtonList,guiLeft+170, guiTop+7+(buttonIndex++)*18)
 			.setCycleIndex(te.ignoreNBT?1:0)
 		);
 		this.buttonList.add(
-			new ImageCycleButton(3, new ImageResourceLocation[]{ModImageResourceLocations.HIGHRS,ModImageResourceLocations.LOWRS,ModImageResourceLocations.PULSERS,ModImageResourceLocations.NORS,ModImageResourceLocations.AUTO}, rsButtonList, guiLeft+170, guiTop+25+18+18)
+			new ImageCycleButton(buttonIndex, new ImageResourceLocation[]{ModImageResourceLocations.HIGHRS,ModImageResourceLocations.LOWRS,ModImageResourceLocations.PULSERS,ModImageResourceLocations.NORS,ModImageResourceLocations.AUTO}, rsButtonList, guiLeft+170, guiTop+7+(buttonIndex++)*18)
 			.setCycleIndex(te.resetMode)
 		);
 	}
@@ -92,9 +97,9 @@ public class GuiSetProvider extends GuiContainer {
 	@Override
 	protected void actionPerformed( GuiButton btn )
 	{
-		if(btn.id==0)
+		if(btn.id==1)
 			ModNetworking.INSTANCE.sendToServer(new MessageSetProvider(te.getPos(),(byte)0,(byte)0));
-		else if(btn.id>=1&&btn.id<=3){
+		else if(btn.id==0||btn.id>=2&&btn.id<=4){
 			ModNetworking.INSTANCE.sendToServer(new MessageSetProvider(te.getPos(),(byte)btn.id,(byte)((ImageCycleButton)btn).getNextIndex()));
 			((ImageCycleButton)btn).setCycleIndex(((ImageCycleButton)btn).getNextIndex());
 		}

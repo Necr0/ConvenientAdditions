@@ -98,9 +98,14 @@ convenientadditions:ignorers=Ignore Redstone
 
 convenientadditions:match=Match %v.
 convenientadditions:ignore=Ignore %v.
+convenientadditions:filter=Filter %v.
+convenientadditions:filterNot=Don't Filter %v.
+convenientadditions:restrict=Restrict %v.
+convenientadditions:restrictNot=Don't Restrict %v.
 
 convenientadditions:damageValue=Damage Value
 convenientadditions:NBT=NBT
+convenientadditions:input=Input
 
 tooltip.convenientadditions:compostDegraded0=Perfect!
 tooltip.convenientadditions:compostDegraded1=Subtly degraded.

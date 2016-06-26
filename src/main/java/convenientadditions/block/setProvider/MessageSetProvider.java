@@ -15,7 +15,7 @@ public class MessageSetProvider extends PacketBase<MessageSetProvider> {
 
 	public MessageSetProvider() {}
 
-	//types: 0=reset, 1=dv, 2=nbt, 3=mode 
+	//types: 0=inputfilter 1=reset, 2=dv, 3=nbt, 4=rsmode 
 	public MessageSetProvider(BlockPos pos,byte type,byte value) {
 		this.pos=pos;
 		this.type=type;
@@ -47,15 +47,18 @@ public class MessageSetProvider extends PacketBase<MessageSetProvider> {
 				TileEntitySetProvider te=((TileEntitySetProvider)t);
 				switch(message.type){
 					case 0:
-						te.reset();
+						te.setFilterInput(message.value==0?false:true);
 						break;
 					case 1:
-						te.setIgnoreDV(message.value==0?false:true);
+						te.reset();
 						break;
 					case 2:
-						te.setIgnoreNBT(message.value==0?false:true);
+						te.setIgnoreDV(message.value==0?false:true);
 						break;
 					case 3:
+						te.setIgnoreNBT(message.value==0?false:true);
+						break;
+					case 4:
 						te.setResetMode(message.value);
 						break;
 					default:

@@ -10,7 +10,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -29,8 +28,9 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 	public byte resetMode;
 	public boolean powered;
 	public boolean pulseOpen;
+	public boolean filteredInput;
 
-	public ItemStackHandlerAutoSave input;
+	public ItemStackHandlerSPFiltered input;
 	public ItemStackHandlerAutoSaveOutputOnly output;
 	public ItemStackHandlerAutoSave filter;
 	
@@ -39,7 +39,7 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 		for(EnumFacing f:EnumFacing.VALUES){
 			outletSides.put(f, EnumOutletMode.disabled);
 		}
-		this.input=new ItemStackHandlerAutoSave(this,18);
+		this.input=new ItemStackHandlerSPFiltered(this,18);
 		this.output=new ItemStackHandlerAutoSaveOutputOnly(this,18);
 		this.filter=new ItemStackHandlerAutoSave(this,9);
 	}
@@ -109,6 +109,8 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 			ignoreDV=nbt.getBoolean("IGNOREDV");
 		if(nbt.hasKey("IGNORENBT"))
 			ignoreNBT=nbt.getBoolean("IGNORENBT");
+		if(nbt.hasKey("FILTERINPUT"))
+			filteredInput=nbt.getBoolean("FILTERINPUT");
 		if(nbt.hasKey("RSMODE"))
 			resetMode=nbt.getByte("RSMODE");
 		if(nbt.hasKey("RSMODE"))
@@ -129,6 +131,7 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 		nbt.setBoolean("READY", ready);
 		nbt.setBoolean("IGNOREDV", ignoreDV);
 		nbt.setBoolean("IGNORENBT", ignoreNBT);
+		nbt.setBoolean("FILTERINPUT", filteredInput);
 		nbt.setByte("RSMODE",resetMode);
 		nbt.setBoolean("POWERED",powered);
 		return nbt;
@@ -186,6 +189,12 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 
 	public void setIgnoreNBT(boolean ignoreNBT) {
 		this.ignoreNBT = ignoreNBT;
+		markDirty();
+		this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos),0);
+	}
+	
+	public void setFilterInput(boolean filterInput) {
+		this.filteredInput=filterInput;
 		markDirty();
 		this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos),0);
 	}

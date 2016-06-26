@@ -58,11 +58,11 @@ public class FillSetFilter {
 		for(ItemStack stack_in:input){
 			if(stack_in!=null){
 				for(ItemStack stack_f:filter){
-					if(stack_f!=null&&match(stack_in,stack_f,this.ignoreDamage,this.ignoreNBT)){
+					if(stack_f!=null&&ItemHelper.match(stack_in,stack_f,this.ignoreDamage,this.ignoreNBT)){
 						while(stack_in.stackSize>0&&stack_f.stackSize>0){
 							boolean flag=false;
 							for(ItemStack stack_o:out){
-								if(stack_o!=null&&match(stack_in, stack_o,false,false)&&stack_o.stackSize<stack_o.getItem().getItemStackLimit(stack_o)){
+								if(stack_o!=null&&ItemHelper.match(stack_in, stack_o,false,false)&&stack_o.stackSize<stack_o.getItem().getItemStackLimit(stack_o)){
 									stack_o.stackSize++;
 									stack_in.stackSize--;
 									stack_f.stackSize--;
@@ -82,19 +82,6 @@ public class FillSetFilter {
 			}
 		}
 		this.output=out.toArray(new ItemStack[input.length]);
-	}
-	
-	public boolean match(ItemStack s1,ItemStack s2,boolean ignoreDamage,boolean ignoreNBT){
-		if(!ignoreDamage&&!ignoreNBT){
-			return s1.isItemEqual(s2)&&ItemStack.areItemStackTagsEqual(s1, s2);
-		}else if(ignoreDamage&&!ignoreNBT){
-			return s1.getItem()==s2.getItem()&&ItemStack.areItemStackTagsEqual(s1, s2);
-		}else if(!ignoreDamage&&ignoreNBT){
-			return s1.isItemEqual(s2);
-		}else if(ignoreDamage&&ignoreNBT){
-			return s1.getItem()==s2.getItem();
-		}
-		return false;
 	}
 	
 	public boolean filtersEmpty(){

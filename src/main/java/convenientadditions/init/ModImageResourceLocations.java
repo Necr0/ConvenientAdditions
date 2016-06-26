@@ -2,13 +2,18 @@ package convenientadditions.init;
 
 import conveniencecore.gui.widget.ImageResourceLocation;
 import convenientadditions.ConvenientAdditions;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ModImageResourceLocations {
 	public static final ImageResourceLocation RESET=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 16, 0, 16, 16);
 	public static final ImageResourceLocation DV=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 0, 32, 16, 16);
 	public static final ImageResourceLocation NODV=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 16, 32, 16, 16);
 	public static final ImageResourceLocation NBT=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 0, 16, 16, 16);
 	public static final ImageResourceLocation NONBT=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 16, 16, 16, 16);
+	public static final ImageResourceLocation FILTER=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 0, 96, 16, 16);
+	public static final ImageResourceLocation NOFILTER=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 16, 96, 16, 16);
 	public static final ImageResourceLocation HIGHRS=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 0, 48, 16, 16);
 	public static final ImageResourceLocation NORS=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 16, 48, 16, 16);
 	public static final ImageResourceLocation LOWRS=new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/common_atlas.png", 32, 48, 16, 16);
