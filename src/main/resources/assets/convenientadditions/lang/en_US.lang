@@ -6,9 +6,6 @@ tile.convenientadditions:compostSoilTilled.name=Tilled Compost Soil
 tile.convenientadditions:powderKeg.name=Powder Keg
 tile.convenientadditions:playerInterface.name=Player Interface
 tile.convenientadditions:proximitySensor.name=Proximity Sensor
-#tile.convenientadditions:sunlightCollector.name=Sunlight Collector
-#tile.convenientadditions:chargeAccumulator.name=Charge Accumulator
-#tile.convenientadditions:chargeTube.name=Charge Tube
 tile.convenientadditions:seedBox.name=Seed Box
 tile.convenientadditions:setProvider.name=Set Provider
 tile.convenientadditions:phantomPlatform.name=Phantom Platform
@@ -84,7 +81,6 @@ tooltip.convenientadditions:redstonePulseEmitter=(right click to emit pulse)
 tooltip.convenientadditions:saturationRing=Shall your stomach never growl!
 tooltip.convenientadditions:breathAmulet=Breathtaking! Wait .. what?
 tooltip.convenientadditions:chargingRing=Run really fast! (not really)
-tooltip.convenientadditions:floatingBelt=Fly you fool!
 
 tooltip.convenientadditions:reset=Reset now.
 tooltip.convenientadditions:resetOn=Reset on %v.
