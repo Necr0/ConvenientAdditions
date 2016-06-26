@@ -42,8 +42,8 @@ public class GuiSetProvider extends GuiContainer {
 		};
 		
 		String[] filterButtonList=new String[]{
-				Helper.localize(ConvenientAdditions.MODID+":filter","%v",Helper.localize(ConvenientAdditions.MODID+":input")),
-				Helper.localize(ConvenientAdditions.MODID+":filterNot","%v",Helper.localize(ConvenientAdditions.MODID+":input"))
+				Helper.localize(ConvenientAdditions.MODID+":filterNot","%v",Helper.localize(ConvenientAdditions.MODID+":input")),
+				Helper.localize(ConvenientAdditions.MODID+":filter","%v",Helper.localize(ConvenientAdditions.MODID+":input"))
 		};
 		
 		String[] rsButtonList=new String[]{
@@ -98,7 +98,7 @@ public class GuiSetProvider extends GuiContainer {
 	protected void actionPerformed( GuiButton btn )
 	{
 		if(btn.id==1)
-			ModNetworking.INSTANCE.sendToServer(new MessageSetProvider(te.getPos(),(byte)0,(byte)0));
+			ModNetworking.INSTANCE.sendToServer(new MessageSetProvider(te.getPos(),(byte)btn.id,(byte)0));
 		else if(btn.id==0||btn.id>=2&&btn.id<=4){
 			ModNetworking.INSTANCE.sendToServer(new MessageSetProvider(te.getPos(),(byte)btn.id,(byte)((ImageCycleButton)btn).getNextIndex()));
 			((ImageCycleButton)btn).setCycleIndex(((ImageCycleButton)btn).getNextIndex());
