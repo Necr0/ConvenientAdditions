@@ -8,6 +8,7 @@ import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -45,10 +46,10 @@ public class BlockPhantomPlatform extends Block implements IModelResourceLocatio
     }
 
 	@Override
-    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB p_185477_4_, List<AxisAlignedBB> p_185477_5_, Entity ent)
+    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity ent)
     {
 		if(ent instanceof EntityPlayer && ent.posY>=(pos.getY()+1) && !((EntityPlayer)ent).isSneaking())
-        	addCollisionBoxToList(pos, p_185477_4_, p_185477_5_, state.getSelectedBoundingBox(worldIn, pos));
+        	addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
     }
     
     @Override
