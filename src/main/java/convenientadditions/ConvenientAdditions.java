@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = ConvenientAdditions.MODID, version = ConvenientAdditions.VERSION,dependencies = ConvenientAdditions.DEPENDENCIES)
+@Mod(modid = ConvenientAdditions.MODID, version = ConvenientAdditions.VERSION, dependencies = ConvenientAdditions.DEPENDENCIES)
 public class ConvenientAdditions
 {
     public static final String MODID = "convenientadditions";

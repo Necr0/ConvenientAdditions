@@ -6,7 +6,6 @@ import conveniencecore.entity.behaviour.EntitySpecialItem;
 import conveniencecore.item.fuelitem.IFuelItem;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;

@@ -8,7 +8,6 @@ import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;

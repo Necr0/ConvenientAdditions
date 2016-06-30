@@ -2,7 +2,6 @@ package convenientadditions.api.entity.behaviour;
 
 import conveniencecore.entity.behaviour.BehaviourRegistry;
 import conveniencecore.entity.behaviour.IEntitySpecialItemBehaviour;
-import conveniencecore.entity.behaviour.behaviours.BehaviourSensitivityWater;
 import conveniencecore.util.Helper;
 import convenientadditions.api.item.charge.ISunlightChargeable;
 import net.minecraft.entity.item.EntityItem;

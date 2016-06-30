@@ -14,21 +14,22 @@ buildscript {
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
+//apply plugin: 'com.matthewprenger.cursegradle'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 ext.configFile = file('build.properties')
-
 ext.config = parseConfig(configFile)
+ext.privateFile = file('private/private.properties')
+ext.private = parseConfig(privateFile)
 
 version = "${config.version}-${config.build_number}"
 group= "necro.convenientadditions" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "convenientadditions"
 
 minecraft {
-    //version = "${config.mc_version}-${config.forge_version}-{config.mc_version_e}"
-    version = "1.10-12.18.0.1992-1.10.0"
+    version = "${config.mc_version}-${config.forge_version}-${config.mc_version_e}"
     runDir = "run"
 
     mappings = config.mc_mappings
@@ -44,6 +45,7 @@ minecraft {
 }
 
 dependencies {
+    compile files("../ConvenienceCore/build/libs/conveniencecore-${config.cc_version}-${config.cc_build_number}.jar")
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
@@ -83,8 +85,8 @@ processResources {
     }
 }
 
-def parseConfig(File config) {
-    config.withReader {
+def parseConfig(File cfg) {
+    cfg.withReader {
         def prop = new Properties()
         prop.load(it)
         return (new ConfigSlurper().parse(prop))

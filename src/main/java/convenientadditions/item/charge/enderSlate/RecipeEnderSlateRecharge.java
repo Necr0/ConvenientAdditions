@@ -3,16 +3,12 @@ package convenientadditions.item.charge.enderSlate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
 import convenientadditions.init.ModConfig;
 import convenientadditions.init.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.world.World;
 
 public class RecipeEnderSlateRecharge implements IRecipe {

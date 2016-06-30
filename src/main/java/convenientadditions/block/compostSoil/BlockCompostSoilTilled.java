@@ -7,7 +7,6 @@ import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;

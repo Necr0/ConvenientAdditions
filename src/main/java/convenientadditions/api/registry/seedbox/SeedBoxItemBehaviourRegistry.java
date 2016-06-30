@@ -3,8 +3,6 @@ package convenientadditions.api.registry.seedbox;
 import java.util.ArrayList;
 import java.util.List;
 
-import convenientadditions.block.seedbox.entries.SeedBoxBehaviourProviderEntry;
-import convenientadditions.block.seedbox.entries.SeedBoxCropsEntry;
 import net.minecraft.item.ItemStack;
 
 public class SeedBoxItemBehaviourRegistry {

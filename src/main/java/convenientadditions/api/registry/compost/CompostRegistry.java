@@ -3,8 +3,6 @@ package convenientadditions.api.registry.compost;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class CompostRegistry {
