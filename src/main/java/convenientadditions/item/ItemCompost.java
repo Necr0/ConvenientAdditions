@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
@@ -20,7 +21,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -63,16 +63,16 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
     }
     
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip."+ConvenientAdditions.MODID+":"+Reference.compostItemName));
+		list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.compostItemName));
 		if(stack.getItemDamage()==1)
-			list.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("tooltip."+ConvenientAdditions.MODID+":"+Reference.compostItemName+"Spores"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.compostItemName+"Spores"));
 	}
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List l)
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
     {
         l.add(new ItemStack(i, 1, 0));
         l.add(new ItemStack(i, 1, 1));

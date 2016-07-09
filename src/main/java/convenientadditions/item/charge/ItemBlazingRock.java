@@ -59,7 +59,7 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List l)
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
     {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());

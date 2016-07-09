@@ -43,7 +43,6 @@ public class BlockCompostSoil extends Block implements IModelResourceLocationPro
 	public boolean canSustainPlant(IBlockState state,IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable)
     {
 		BlockPos plantPos = new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
-        IBlockState plant = plantable.getPlant(world, plantPos);
         EnumPlantType plantType = plantable.getPlantType(world, plantPos);
 
         if (plantable instanceof BlockBush)
@@ -97,7 +96,6 @@ public class BlockCompostSoil extends Block implements IModelResourceLocationPro
 		if(!world.isRemote){
 	    	BlockPos posU=new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
 			Block b=world.getBlockState(posU).getBlock();
-			IBlockState newB=world.getBlockState(posU);
 			int deg=((Integer)state.getValue(DEGRADATION)).intValue();
 			if(b!=null&&(b instanceof IPlantable||b instanceof IGrowable)){
 				b.updateTick(world, posU, world.getBlockState(posU), r);

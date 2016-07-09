@@ -4,13 +4,13 @@ import java.util.List;
 
 import conveniencecore.entity.behaviour.BehaviourRegistry;
 import conveniencecore.item.IBehaviourProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.api.entity.behaviour.BehaviourSunlightChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class ItemSunlightChargeable extends ItemChargeable implements ISunlightChargeable, IBehaviourProvider {
@@ -35,10 +35,10 @@ public class ItemSunlightChargeable extends ItemChargeable implements ISunlightC
 	}
 	
 	@Override
-	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack item, EntityPlayer player, List<String> list, boolean par4)
 	{
 		super.addInformation(item, player, list, par4);
-		list.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("tooltip.convenientadditions:sunstoneDrained"));
+		list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip.convenientadditions:sunstoneDrained"));
 	}
 	
 	@Override

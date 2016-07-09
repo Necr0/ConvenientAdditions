@@ -6,6 +6,7 @@ import java.util.Random;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
@@ -19,7 +20,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -58,7 +58,7 @@ public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements
     					IBlockState state=world.getBlockState(pos);
     					Block b=state.getBlock();
     					if(b.isAir(state,world,pos)&&b!=ModBlocks.tempLightBlock){
-    						world.setBlockState(pos, ModBlocks.tempLightBlock.getStateFromMeta(0), 3);
+    						world.setBlockState(pos, ModBlocks.tempLightBlock.getDefaultState(), 3);
     						world.scheduleBlockUpdate(pos, ModBlocks.tempLightBlock, 20+random.nextInt(20), 0);
     					}
             		}
@@ -84,15 +84,15 @@ public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements
 	}
     
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip.convenientadditions:sunstone"));
+		list.add(Helper.localize("tooltip.convenientadditions:sunstone"));
 		super.addInformation(stack,player,list,par4);
 	}
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List l)
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
     {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());

@@ -1,5 +1,12 @@
 package convenientadditions.init;
 
+import convenientadditions.item.charge.ItemBlazingRock;
+import convenientadditions.item.charge.ItemSunstone;
+import convenientadditions.item.charge.baubles.ItemBreathAmulet;
+import convenientadditions.item.charge.baubles.ItemChargingRing;
+import convenientadditions.item.charge.baubles.ItemSaturationRing;
+import convenientadditions.item.charge.baubles.ItemSunlightRing;
+import convenientadditions.item.charge.enderSlate.ItemEnderSlate;
 import convenientadditions.item.charge.enderSlate.RecipeEnderSlateRecharge;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -45,6 +52,7 @@ public class ModRecipes {
 		initCompost();
 		initChargeItems();
 		initBaubles();
+		initBlocks();
 	}
 	
 	private static void initCompost(){
@@ -123,7 +131,7 @@ public class ModRecipes {
 
 	private static void initChargeItems(){
 		if(ModConfig.charge_sunstone)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunstone.FULLY_CHARGED.copy(),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemSunstone.FULLY_CHARGED.copy(),
 				"grg",
 			    "tdt",
 			    "grg",
@@ -133,7 +141,7 @@ public class ModRecipes {
 			    'g', "dustGlowstone"));
 		
 		if(ModConfig.charge_blazingRock)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBlazingRock.FULLY_CHARGED.copy(),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemBlazingRock.FULLY_CHARGED.copy(),
 				"tlt",
 			    "bdb",
 			    "tgt",
@@ -144,7 +152,7 @@ public class ModRecipes {
 			    'g', "dustGlowstone"));
 		
 		if(ModConfig.enderSlate_recipe)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemEnderSlate.FULLY_CHARGED.copy(),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemEnderSlate.FULLY_CHARGED.copy(),
 				"rer",
 			    "bsb",
 			    "rer",
@@ -159,7 +167,7 @@ public class ModRecipes {
 	
 	private static void initBaubles(){
 		if(ModConfig.baubles_ring_of_sunlight)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunlightRing.FULLY_CHARGED.copy(),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemSunlightRing.FULLY_CHARGED.copy(),
 				"ysy",
 			    "t t",
 			    "yty",
@@ -168,7 +176,7 @@ public class ModRecipes {
 			    'y', Items.STRING));
 
 		if(ModConfig.baubles_ring_of_saturation)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSaturationRing.FULLY_CHARGED.copy(),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemSaturationRing.FULLY_CHARGED.copy(),
 				"ygy",
 			    "t t",
 			    "yty",
@@ -177,7 +185,7 @@ public class ModRecipes {
 			    'y', Items.STRING));
 
 		if(ModConfig.baubles_amulet_of_breath)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBreathAmulet.FULLY_CHARGED.copy(),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemBreathAmulet.FULLY_CHARGED.copy(),
 				"yty",
 			    "t t",
 			    "ypy",
@@ -186,7 +194,7 @@ public class ModRecipes {
 			    'y', Items.STRING));
 
 		if(ModConfig.baubles_ring_of_charging)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemChargingRing.FULLY_CHARGED.copy(),
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemChargingRing.FULLY_CHARGED.copy(),
 				"yry",
 			    "gsg",
 			    "ygy",

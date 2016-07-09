@@ -65,7 +65,7 @@ public class ModConfig {
 		Configuration cfg=new Configuration(new File("config/ConvAdd.cfg"));
 		cfg.load();
 		
-		String category=cfg.CATEGORY_GENERAL;
+		String category=Configuration.CATEGORY_GENERAL;
 		cfg.setCategoryRequiresMcRestart(category, true);
 		ironWrench=cfg.getBoolean("ironWrench", category, false, "");
 		launchingArrows=cfg.getBoolean("launchingArrows", category, true, "");

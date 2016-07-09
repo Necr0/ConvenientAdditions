@@ -2,23 +2,24 @@ package convenientadditions.block.setProvider;
 
 import java.util.HashMap;
 
+import conveniencecore.ProviderSystem.matcherANY;
 import conveniencecore.block.tileentity.IConfigurable;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
 import conveniencecore.util.FillSetFilter;
-import net.minecraft.block.state.IBlockState;
+import convenientadditions.api.provider.itemnetwork.IItemProvider;
+import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
+import convenientadditions.block.TileEntityCABase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
-public class TileEntitySetProvider extends TileEntity implements IConfigurable, ITickable {
+public class TileEntitySetProvider extends TileEntityCABase implements IConfigurable, ITickable, IItemProvider {
 
 	public HashMap<EnumFacing, EnumOutletMode> outletSides=new HashMap<EnumFacing, EnumOutletMode>();
 	
@@ -53,6 +54,8 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 		if(worldObj.isRemote)
 			return;
 		
+		ItemNetworkProvider.addEntry(new matcherANY(),this);
+		
 		if(resetMode==0&&worldObj.isBlockIndirectlyGettingPowered(getPos())>0){
 			reset();
 		}else if(resetMode==1&&worldObj.isBlockIndirectlyGettingPowered(getPos())==0){
@@ -71,22 +74,6 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 			output.setStacks(FILLter.getOutput());
 			ready=false;
 		}
-	}
-	
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket()
-	{
-		NBTTagCompound nbt=new NBTTagCompound();
-		writeToNBT(nbt);
-		return new SPacketUpdateTileEntity(this.pos, 0, nbt);
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
-	{
-		readFromNBT(pkt.getNbtCompound());
-		IBlockState state=worldObj.getBlockState(pos);
-		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
 	}
 	
 	@Override
@@ -111,8 +98,6 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 			ignoreNBT=nbt.getBoolean("IGNORENBT");
 		if(nbt.hasKey("FILTERINPUT"))
 			filteredInput=nbt.getBoolean("FILTERINPUT");
-		if(nbt.hasKey("RSMODE"))
-			resetMode=nbt.getByte("RSMODE");
 		if(nbt.hasKey("RSMODE"))
 			resetMode=nbt.getByte("RSMODE");
 		if(nbt.hasKey("POWERED"))
@@ -223,10 +208,16 @@ public class TileEntitySetProvider extends TileEntity implements IConfigurable, 
 		return (capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY&&outletSides.get(facing)!=EnumOutletMode.disabled)?true:super.hasCapability(capability, facing);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		return (capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY&&outletSides.get(facing)!=EnumOutletMode.disabled)?
 					(outletSides.get(facing)==EnumOutletMode.input?(T)input:(T)output)
 					:super.getCapability(capability, facing);
+	}
+
+	@Override
+	public IItemHandler getItemHandler() {
+		return output;
 	}
 }

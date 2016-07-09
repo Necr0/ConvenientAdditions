@@ -3,6 +3,7 @@ package convenientadditions.item;
 import java.util.List;
 
 import conveniencecore.item.resourceprovider.IModelVariantResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
@@ -14,7 +15,6 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -42,7 +42,7 @@ public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResour
 
     public String getItemStackDisplayName(ItemStack stack)
     {
-        return I18n.translateToLocal("item."+ConvenientAdditions.MODID+":"+Reference.launchingArrowItemName+"_"+stack.getItemDamage()+".name");
+        return Helper.localize("item."+ConvenientAdditions.MODID+":"+Reference.launchingArrowItemName+"_"+stack.getItemDamage()+".name");
     }
 
 	@Override

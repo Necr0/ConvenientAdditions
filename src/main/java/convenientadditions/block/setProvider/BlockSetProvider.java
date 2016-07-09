@@ -3,12 +3,12 @@ package convenientadditions.block.setProvider;
 import java.util.ArrayList;
 
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
-import conveniencecore.util.RSHelper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.block.BlockMachineConfigurable;
 import convenientadditions.block.setProvider.TileEntitySetProvider.EnumOutletMode;
 import convenientadditions.init.ModGuiHandler;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -22,7 +22,6 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -40,7 +39,7 @@ public class BlockSetProvider extends BlockMachineConfigurable implements IModel
 		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.setProviderBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP,EnumOutletMode.disabled).withProperty(OUTLET_BOTTOM,EnumOutletMode.disabled).withProperty(OUTLET_NORTH,EnumOutletMode.disabled).withProperty(OUTLET_EAST,EnumOutletMode.disabled).withProperty(OUTLET_SOUTH,EnumOutletMode.disabled).withProperty(OUTLET_WEST,EnumOutletMode.disabled));
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntitySetProvider();
@@ -55,16 +54,14 @@ public class BlockSetProvider extends BlockMachineConfigurable implements IModel
     }
     
     @Override
-    public void onNeighborChange(IBlockAccess worldIn, BlockPos pos, BlockPos neighborBlock)
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
     {
-    	if(ConvenientAdditions.PROXY.isRemote())
-    		return;
     	TileEntity t=worldIn.getTileEntity(pos);
-		if(t!=null && t instanceof TileEntitySetProvider){
+    	if(t==null||worldIn.isRemote)
+    		return;
+		if(t instanceof TileEntitySetProvider){
 			TileEntitySetProvider te=(TileEntitySetProvider)t;
-			te.updateRS( RSHelper.getIndirectlyPowered(worldIn, pos) );
-			ChunkCache c;
-			World world;
+			te.updateRS( te.getWorld().isBlockIndirectlyGettingPowered(pos)>0 );
 		}
     }
     

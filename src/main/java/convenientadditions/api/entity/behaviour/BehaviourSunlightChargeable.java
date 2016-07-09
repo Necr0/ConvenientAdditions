@@ -37,6 +37,7 @@ public class BehaviourSunlightChargeable implements IEntitySpecialItemBehaviour 
 	public static void init(){
 		if(!registered){
 			DISCRIMINATOR=BehaviourRegistry.addBehaviour(new BehaviourSunlightChargeable());
+			registered=true;
 		}
 	}
 }

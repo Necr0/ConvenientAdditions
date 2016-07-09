@@ -4,6 +4,7 @@ import java.util.List;
 
 import conveniencecore.item.invtick.IPlayerInventoryTick;
 import conveniencecore.item.resourceprovider.IResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
@@ -18,7 +19,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -51,19 +51,19 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
     }
     
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip.convenientadditions:sunstone"));
+		list.add(Helper.localize("tooltip.convenientadditions:sunstone"));
 		super.addInformation(stack,player,list,par4);
 		if(isActive(stack))
-			list.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("tooltip.convenientadditions:sunstoneActive"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip.convenientadditions:sunstoneActive"));
 		else
-			list.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("tooltip.convenientadditions:sunstoneInactive"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip.convenientadditions:sunstoneInactive"));
 	}
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List l)
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
     {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());

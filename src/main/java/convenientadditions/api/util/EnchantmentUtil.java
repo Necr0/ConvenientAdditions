@@ -19,8 +19,6 @@ public class EnchantmentUtil {
 	public static final EnumEnchantmentType sunlightChargable=EnumHelper.addEnchantmentType("sunlightChargable");
 	public static final EnumEnchantmentType chargable=EnumHelper.addEnchantmentType("chargable");
 	
-	private static final java.lang.reflect.Field enchantmentSetter = Enchantment.class.getDeclaredFields()[0];
-	
 	public static final EnchantmentCapacity capacity=new EnchantmentCapacity();
 	public static final EnchantmentChargeEfficiency chargeEfficiency=new EnchantmentChargeEfficiency();
 	public static final EnchantmentDrain drain=new EnchantmentDrain();

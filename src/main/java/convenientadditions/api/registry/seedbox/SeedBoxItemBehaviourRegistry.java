@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 
 public class SeedBoxItemBehaviourRegistry {
 	public static final List<ISeedBoxItemBehaviourRegistryEntry> REGISTRY=new ArrayList<ISeedBoxItemBehaviourRegistryEntry>();
-	private static boolean registered=false;
 	
 	public static void addEntry(ISeedBoxItemBehaviourRegistryEntry entry){
 		REGISTRY.add(entry);

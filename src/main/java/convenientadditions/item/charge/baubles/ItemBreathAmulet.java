@@ -5,6 +5,7 @@ import java.util.List;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
@@ -13,8 +14,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -42,7 +41,6 @@ public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements
 		if(player.worldObj.isRemote)
 			return;
 		if(getCharge(itemstack)>=2){
-			WorldServer world=(WorldServer)player.worldObj;
 			EntityPlayer p=(EntityPlayer)player;
 			int air=p.getAir();
 			if(air<20){
@@ -69,15 +67,15 @@ public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements
 	}
     
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip.convenientadditions:breathAmulet"));
+		list.add(Helper.localize("tooltip.convenientadditions:breathAmulet"));
 		super.addInformation(stack,player,list,par4);
 	}
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List l)
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
     {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());

@@ -39,7 +39,6 @@ public class BlockCompostSoilTilled extends BlockCompostSoil implements IModelRe
 	public boolean canSustainPlant(IBlockState state,IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable)
     {
 		BlockPos plantPos = new BlockPos(pos.getX(),pos.getY()+1,pos.getZ());
-        IBlockState plant = plantable.getPlant(world, plantPos);
         EnumPlantType plantType = plantable.getPlantType(world, plantPos);
 
         if(plantType == EnumPlantType.Crop) return true;

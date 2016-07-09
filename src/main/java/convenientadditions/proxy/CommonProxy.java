@@ -13,10 +13,6 @@ public class CommonProxy
 		return Side.SERVER;
 	}
 	
-	public boolean isRemote(){
-		return getSide()!=Side.SERVER;
-	}
-	
     public void registerRenderers()
     {
     }

@@ -18,7 +18,6 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -65,9 +64,9 @@ public class ConvenientAdditions
     	PROXY.registerRenderers();
     	EnderSlateInventoryTickHandler.init();
     	ModCAAPI.init();
-    	this.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
+    	ConvenientAdditions.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
 
-    	thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
+    	//thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
     }
     
     @EventHandler

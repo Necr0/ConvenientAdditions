@@ -6,6 +6,7 @@ import java.util.Random;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
@@ -14,8 +15,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -43,7 +42,6 @@ public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implemen
 		if(player.worldObj.isRemote)
 			return;
 		if(getCharge(itemstack)>=2){
-			WorldServer world=(WorldServer)player.worldObj;
 			EntityPlayer p=(EntityPlayer)player;
 			Random random = new Random();
 			if(random.nextInt(60)==0){
@@ -72,15 +70,15 @@ public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implemen
 	}
     
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip.convenientadditions:saturationRing"));
+		list.add(Helper.localize("tooltip.convenientadditions:saturationRing"));
 		super.addInformation(stack,player,list,par4);
 	}
 	
 	@Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List l)
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
     {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());

@@ -19,7 +19,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 
 	public OreTitaniumWorldGen()
 	{
-		final IBlockState ores = ModBlocks.oreTitaniumBlock.getStateFromMeta(0);
+		final IBlockState ores = ModBlocks.oreTitaniumBlock.getDefaultState();
 
 		this.ore = new WorldGenMinable( ores, ModConfig.titanium_oresPerCluster );
 	}
@@ -33,7 +33,7 @@ public class OreTitaniumWorldGen implements IWorldGenerator {
 		{
 			final int x = ( chunkX << 4 ) + 8;
 			final int z = ( chunkZ << 4 ) + 8;
-			seaLevel = w.getChunksLowestHorizon( x, z );
+			seaLevel = w.getChunkFromChunkCoords(x, z).getLowestHeight();
 		}
 
 		final double oreDepthMultiplier = ModConfig.titanium_clusterFrequency * seaLevel / 64;

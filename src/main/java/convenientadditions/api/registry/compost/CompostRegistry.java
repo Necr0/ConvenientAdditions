@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 
 public class CompostRegistry {
 	public static final List<ICompostRegistryEntry> REGISTRY=new ArrayList<ICompostRegistryEntry>();
-	private static boolean registered=false;
 	
 	public static void addEntry(ICompostRegistryEntry entry){
 		REGISTRY.add(entry);

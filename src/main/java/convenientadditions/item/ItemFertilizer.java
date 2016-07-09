@@ -3,6 +3,7 @@ package convenientadditions.item;
 import java.util.List;
 
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import net.minecraft.block.Block;
@@ -15,7 +16,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class ItemFertilizer extends Item implements IModelResourceLocationProvider {
@@ -48,8 +48,8 @@ public class ItemFertilizer extends Item implements IModelResourceLocationProvid
     }
     
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip.convenientadditions:fertilizer"));
+		list.add(Helper.localize("tooltip.convenientadditions:fertilizer"));
 	}
 }

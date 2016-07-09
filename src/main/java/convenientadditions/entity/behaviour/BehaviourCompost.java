@@ -9,7 +9,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -32,7 +31,6 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 			if(!(b==Blocks.DIRT||b==Blocks.FARMLAND||b==Blocks.GRASS||((b==ModBlocks.compostSoilBlock||b==ModBlocks.compostSoilTilledBlock)&&ModBlocks.compostSoilTilledBlock.getMetaFromState(state)!=0)))
 	    		return;
 			Item i=item.getEntityItem().getItem();
-			EnumFacing up=EnumFacing.UP;
 			if(i!=ModItems.itemCompost)
 				return;
 			if(b==Blocks.DIRT||b==Blocks.GRASS)

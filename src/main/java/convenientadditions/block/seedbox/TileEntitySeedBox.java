@@ -6,17 +6,15 @@ import java.util.List;
 
 import conveniencecore.block.tileentity.IConfigurable;
 import conveniencecore.util.MathHelper;
+import convenientadditions.block.TileEntityCABase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileEntitySeedBox extends TileEntity implements IConfigurable {
+public class TileEntitySeedBox extends TileEntityCABase implements IConfigurable {
 
 	public HashMap<EnumFacing, Boolean> outletSides=new HashMap<EnumFacing, Boolean>();
 	
@@ -52,22 +50,6 @@ public class TileEntitySeedBox extends TileEntity implements IConfigurable {
 		nbt.setByte("OUTLET", (byte)mask.get());
 		return nbt;
 	}
-	
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket()
-	{
-		NBTTagCompound nbt=new NBTTagCompound();
-		writeToNBT(nbt);
-		return new SPacketUpdateTileEntity(this.pos, 0, nbt);
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
-	{
-		readFromNBT(pkt.getNbtCompound());
-		IBlockState state=worldObj.getBlockState(pos);
-		this.worldObj.notifyBlockUpdate(pos, state, state, 3);
-	}
 
 	@Override
 	public boolean configureSide(EnumFacing f) {
@@ -102,6 +84,7 @@ public class TileEntitySeedBox extends TileEntity implements IConfigurable {
 		return capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY&&!isOutput(facing)?true:super.hasCapability(capability, facing);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		return capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY&&!isOutput(facing)?(T)stackHandler:super.getCapability(capability, facing);

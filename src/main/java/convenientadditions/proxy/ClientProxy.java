@@ -27,9 +27,9 @@ public class ClientProxy extends CommonProxy
     public void registerRenderers()
     {
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComposter.class, new RenderComposter());
-    	RenderingRegistry.registerEntityRenderingHandler(EntityLaunchingArrow.class, new IRenderFactory() {
+    	RenderingRegistry.registerEntityRenderingHandler(EntityLaunchingArrow.class, new IRenderFactory<EntityLaunchingArrow>() {
 			@Override
-			public Render createRenderFor(RenderManager manager) {
+			public Render<EntityLaunchingArrow> createRenderFor(RenderManager manager) {
 				return new RenderLaunchingArrow(manager);
 			}
 		});

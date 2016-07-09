@@ -20,7 +20,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -72,7 +71,7 @@ public class BlockPowderKeg extends BlockContainer implements IModelResourceLoca
         	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(pos);
     		if (!player.isSneaking()&&!world.isRemote){
 	        	if(current==null){
-    				player.addChatMessage(new TextComponentString(keg.getAmount()+I18n.translateToLocal("message."+ConvenientAdditions.MODID+":gunpowderStored")));
+    				player.addChatMessage(new TextComponentString(keg.getAmount()+Helper.localize("message."+ConvenientAdditions.MODID+":gunpowderStored")));
 	        	}else if(current.getItem()==Items.FLINT_AND_STEEL){
         			if(explode(world,pos)){
         				current.damageItem(1, player);

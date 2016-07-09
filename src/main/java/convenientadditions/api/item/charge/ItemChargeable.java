@@ -3,6 +3,7 @@ package convenientadditions.api.item.charge;
 import java.util.List;
 import java.util.Random;
 
+import conveniencecore.util.Helper;
 import conveniencecore.util.MathHelper;
 import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -10,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.translation.I18n;
 
 public abstract class ItemChargeable extends Item implements IChargeable {
 	
@@ -100,9 +100,9 @@ public abstract class ItemChargeable extends Item implements IChargeable {
     }
 	
 	@Override
-	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack item, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(I18n.translateToLocal("tooltip.convenientadditions:charge").replace("%c", ""+getCharge(item)).replace("%C", ""+getChargeCapacity(item)).replace("%p", ""+(int)((double)getCharge(item)/(double)getChargeCapacity(item)*100)));
+		list.add(Helper.localize("tooltip.convenientadditions:charge", "%c", ""+getCharge(item),"%C", ""+getChargeCapacity(item),"%p", ""+(int)((double)getCharge(item)/(double)getChargeCapacity(item)*100)));
 		super.addInformation(item, player, list, par4);
 	}
 	

@@ -22,7 +22,6 @@ public class ItemTitaniumWrench extends Item implements IModelResourceLocationPr
 	@Override
     public EnumActionResult onItemUseFirst(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ,EnumHand hand)
 	{
-		boolean ret=false;
 		Block b = world.getBlockState( pos ).getBlock();
 		if( b != null )
 		{

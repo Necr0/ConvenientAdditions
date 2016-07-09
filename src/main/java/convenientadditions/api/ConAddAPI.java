@@ -2,6 +2,7 @@ package convenientadditions.api;
 
 import convenientadditions.api.entity.behaviour.BehaviourSunlightChargeable;
 import convenientadditions.api.item.charge.ChargeTickHandler;
+import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.api.util.EnchantmentUtil;
 
 public class ConAddAPI {
@@ -11,5 +12,6 @@ public class ConAddAPI {
 		EnchantmentUtil.init();
 		ChargeTickHandler.init();
 		BehaviourSunlightChargeable.init();
+		ItemNetworkProvider.init();
 	}
 }
