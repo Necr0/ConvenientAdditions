@@ -9,6 +9,8 @@ tile.convenientadditions:proximitySensor.name=Proximity Sensor
 tile.convenientadditions:seedBox.name=Seed Box
 tile.convenientadditions:setProvider.name=Set Provider
 tile.convenientadditions:phantomPlatform.name=Phantom Platform
+tile.convenientadditions:inventoryProxy.name=Inventory Proxy
+tile.convenientadditions:inventoryProxySided.name=Sided Inventory Proxy
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter
@@ -17,6 +19,7 @@ tileentity.convenientadditions:powderKeg.name=Powder Keg
 tileentity.convenientadditions:proximitySensor.name=Proximity Sensor
 tileentity.convenientadditions:seedBox.name=Seed Box
 tileentity.convenientadditions:setProvider.name=Set Provider
+tileentity.convenientadditions:inventoryProxy.name=Inventory Proxy
 
 # Items
 item.convenientadditions:ingotTitanium.name=Titanium Ingot
@@ -37,6 +40,9 @@ item.convenientadditions:enderSlate.name=Ender Slate
 item.convenientadditions:launchingArrow_0.name=Creeper Arrow
 item.convenientadditions:launchingArrow_1.name=Blast Arrow
 item.convenientadditions:launchingArrow_2.name=Slime Arrow
+# Channel Modules
+item.convenientadditions:modulePlayer.name=Player Channel Module
+item.convenientadditions:moduleColor.name=Color Channel Module
 # Baubles
 item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
@@ -78,15 +84,32 @@ tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
 tooltip.convenientadditions:sunstoneInactive=(right click to activate)
 tooltip.convenientadditions:sunstoneDrained=(stay in sunlight to charge)
 tooltip.convenientadditions:redstonePulseEmitter=(right click to emit pulse)
-tooltip.convenientadditions:saturationRing=Shall your stomach never growl!
+tooltip.convenientadditions:saturationRing=Stay well fed!
 tooltip.convenientadditions:breathAmulet=Breathtaking! Wait .. what?
 tooltip.convenientadditions:chargingRing=Run really fast! (not really)
+
+tooltip.convenientadditions:modulePlayerPrefix=Player: %p
+tooltip.convenientadditions:modulePlayerNotSet=(right click to set player)
+tooltip.convenientadditions:moduleColorsPrefix=Colors: %c0, %c1, %c2
 
 tooltip.convenientadditions:reset=Reset now.
 tooltip.convenientadditions:resetOn=Reset on %v.
 tooltip.convenientadditions:resetNot=Don't reset automatically.
 tooltip.convenientadditions:resetAuto=Reset automatically.
 
+tooltip.convenientadditions:compostDegraded0=Perfect!
+tooltip.convenientadditions:compostDegraded1=Subtly degraded.
+tooltip.convenientadditions:compostDegraded2=Very slightly degraded.
+tooltip.convenientadditions:compostDegraded3=Slightly degraded.
+tooltip.convenientadditions:compostDegraded4=A little bit degraded.
+tooltip.convenientadditions:compostDegraded5=Partially degraded.
+tooltip.convenientadditions:compostDegraded6=Somewhat degraded.
+tooltip.convenientadditions:compostDegraded7=Quite degraded.
+tooltip.convenientadditions:compostDegraded8=Notably degraded.
+tooltip.convenientadditions:compostDegraded9=Very degraded.
+tooltip.convenientadditions:compostDegraded10=Miserably degraded.
+
+# GENERAL
 convenientadditions:highrs=High Redstone Signal
 convenientadditions:lowrs=Low Redstone Signal
 convenientadditions:pulsers=Redstone Pulse
@@ -103,18 +126,22 @@ convenientadditions:damageValue=Damage Value
 convenientadditions:NBT=NBT
 convenientadditions:input=Input
 
-tooltip.convenientadditions:compostDegraded0=Perfect!
-tooltip.convenientadditions:compostDegraded1=Subtly degraded.
-tooltip.convenientadditions:compostDegraded2=Very slightly degraded.
-tooltip.convenientadditions:compostDegraded3=Slightly degraded.
-tooltip.convenientadditions:compostDegraded4=A little bit degraded.
-tooltip.convenientadditions:compostDegraded5=Partially degraded.
-tooltip.convenientadditions:compostDegraded6=Somewhat degraded.
-tooltip.convenientadditions:compostDegraded7=Quite degraded.
-tooltip.convenientadditions:compostDegraded8=Notably degraded.
-tooltip.convenientadditions:compostDegraded9=Very degraded.
-tooltip.convenientadditions:compostDegraded10=Miserably degraded.
-
+color.convenientadditions:black=Black
+color.convenientadditions:red=Red
+color.convenientadditions:green=Green
+color.convenientadditions:brown=Brown
+color.convenientadditions:blue=Blue
+color.convenientadditions:purple=Purple
+color.convenientadditions:cyan=Cyan
+color.convenientadditions:silver=Light Gray
+color.convenientadditions:gray=Gray
+color.convenientadditions:pink=Pink
+color.convenientadditions:lime=Lime
+color.convenientadditions:yellow=Yellow
+color.convenientadditions:lightBlue=Light Blue
+color.convenientadditions:magenta=Magenta
+color.convenientadditions:orange=Orange
+color.convenientadditions:white=Carpet
 
 # Entity
 

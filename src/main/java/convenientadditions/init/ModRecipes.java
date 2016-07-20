@@ -25,7 +25,7 @@ public class ModRecipes {
 		titaniumNugget=titanium?"nuggetTitanium":"nuggetGold";
 		
 		if(ModConfig.ironWrench)
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumWrench,1),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemIronWrench,1),
 				"i i",
 				" i ",
 				"i i",
