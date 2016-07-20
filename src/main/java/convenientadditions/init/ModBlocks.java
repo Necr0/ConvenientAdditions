@@ -9,6 +9,9 @@ import convenientadditions.block.compostSoil.BlockCompostSoil;
 import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.compostSoil.ItemBlockCompostSoil;
 import convenientadditions.block.composter.BlockComposter;
+import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
+import convenientadditions.block.inventoryProxy.BlockInventoryProxySided;
+import convenientadditions.block.networkInventory.BlockNetworkInventory;
 import convenientadditions.block.playerInterface.BlockPlayerInterface;
 import convenientadditions.block.powderkeg.BlockPowderKeg;
 import convenientadditions.block.proximitySensor.BlockProximitySensor;
@@ -34,6 +37,9 @@ public class ModBlocks
     public static final BlockPhantomPlatform phantomPlatformBlock = new BlockPhantomPlatform();
     public static final BlockSeedBox seedBoxBlock = new BlockSeedBox();
     public static final BlockSetProvider setProviderBlock = new BlockSetProvider();
+    public static final BlockNetworkInventory networkInventoryBlock = new BlockNetworkInventory();
+    public static final BlockInventoryProxy inventoryProxyBlock = new BlockInventoryProxy();
+    public static final BlockInventoryProxySided inventoryProxySidedBlock = new BlockInventoryProxySided();
 
     public static void init()
     {
@@ -45,11 +51,11 @@ public class ModBlocks
         registerBlock(proximitySensorBlock,Reference.proximitySensorBlockName);
         registerBlock(tempLightBlock,Reference.tempLightBlockName);
         registerBlock(phantomPlatformBlock,Reference.phantomPlatformBlockName);
-        //registerBlock(sunlightCollectorBlock,Reference.sunlightCollectorBlockName);
-        //registerBlock(chargeAccumulatorBlock,Reference.chargeAccumulatorBlockName);
-        //registerBlock(chargeTubeBlock,Reference.chargeTubeBlockName);
         registerBlock(seedBoxBlock,Reference.seedBoxBlockName);
         registerBlock(setProviderBlock,Reference.setProviderBlockName);
+        registerBlock(networkInventoryBlock,Reference.networkInventoryBlockName);
+        registerBlock(inventoryProxyBlock,Reference.inventoryProxyBlockName);
+        registerBlock(inventoryProxySidedBlock,Reference.inventoryProxySidedBlockName);
         registerBlock(compostSoilBlock,new ItemBlockCompostSoil(compostSoilBlock),Reference.compostSoilBlockName);
     }
 
@@ -63,6 +69,8 @@ public class ModBlocks
         ModItems.registerItemBlockModel(proximitySensorBlock,proximitySensorBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(seedBoxBlock,seedBoxBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(setProviderBlock,setProviderBlock.getModelResourceLocation());
+        ModItems.registerItemBlockModel(inventoryProxyBlock,inventoryProxyBlock.getModelResourceLocation());
+        ModItems.registerItemBlockModel(inventoryProxySidedBlock,inventoryProxySidedBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(phantomPlatformBlock,phantomPlatformBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilBlock), compostSoilBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilTilledBlock), compostSoilTilledBlock.getModelResourceLocation());

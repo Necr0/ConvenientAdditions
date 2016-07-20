@@ -2,7 +2,7 @@ package convenientadditions.block.setProvider;
 
 import java.util.HashMap;
 
-import conveniencecore.ProviderSystem.matcherANY;
+import conveniencecore.IMatcher;
 import conveniencecore.block.tileentity.IConfigurable;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
@@ -54,7 +54,7 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
 		if(worldObj.isRemote)
 			return;
 		
-		ItemNetworkProvider.addEntry(new matcherANY(),this);
+		ItemNetworkProvider.addEntry(getWorld(),getPos());
 		
 		if(resetMode==0&&worldObj.isBlockIndirectlyGettingPowered(getPos())>0){
 			reset();
@@ -219,5 +219,10 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
 	@Override
 	public IItemHandler getItemHandler() {
 		return output;
+	}
+
+	@Override
+	public IMatcher[] getAccess() {
+		return new IMatcher[]{new IMatcher.matcherANY()};
 	}
 }

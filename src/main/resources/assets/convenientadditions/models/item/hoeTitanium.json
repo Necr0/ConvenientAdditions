@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "convenientadditions:items/titanium_hoe"
+        "layer0": "convenientadditions:items/titanium/titanium_hoe"
     }
 }

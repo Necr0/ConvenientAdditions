@@ -16,6 +16,9 @@ public class Reference {
     public static final String chargeTubeBlockName = "chargeTube";
     public static final String seedBoxBlockName = "seedBox";
     public static final String setProviderBlockName = "setProvider";
+    public static final String networkInventoryBlockName = "networkInventory";
+    public static final String inventoryProxyBlockName = "inventoryProxy";
+    public static final String inventoryProxySidedBlockName = "inventoryProxySided";
     //
     public static final String ingotTitaniumItemName = "ingotTitanium";
     public static final String nuggetTitaniumItemName = "nuggetTitanium";
@@ -33,6 +36,9 @@ public class Reference {
     public static final String blazingRockItemName = "blazingRock";
     public static final String enderSlateItemName = "enderSlate";
     public static final String launchingArrowItemName = "launchingArrow";
+    //channel modules
+    public static final String modulePlayerItemName = "modulePlayer";
+    public static final String moduleColorItemName = "moduleColor";
     //baubles
     public static final String sunlightRingItemName = "sunlightRing";
     public static final String saturationRingItemName = "saturationRing";

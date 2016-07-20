@@ -1,5 +1,6 @@
 package convenientadditions.block.setProvider;
 
+import conveniencecore.gui.CCGuiContainerBase;
 import conveniencecore.gui.widget.ImageButton;
 import conveniencecore.gui.widget.ImageCycleButton;
 import conveniencecore.gui.widget.ImageResourceLocation;
@@ -8,13 +9,11 @@ import convenientadditions.ConvenientAdditions;
 import convenientadditions.init.ModImageResourceLocations;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.config.GuiUtils;
 
-public class GuiSetProvider extends GuiContainer {
+public class GuiSetProvider extends CCGuiContainerBase {
 	
 	public TileEntitySetProvider te;
 	
@@ -81,16 +80,6 @@ public class GuiSetProvider extends GuiContainer {
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
-        
-        
-        for(GuiButton btn:buttonList){
-        	if(btn instanceof ImageButton){
-    			ImageButton ibtn=(ImageButton)btn;
-        		if(ibtn.visible&&ibtn.hasTooltip()&&ibtn.isMouseOver()){
-                    GuiUtils.drawHoveringText(java.util.Arrays.asList(new String[]{ibtn.getTooltip()}), mouseX, mouseY, width, height, -1, fontRendererObj);
-        		}
-        	}
-        }
 	}
 
 
@@ -104,20 +93,4 @@ public class GuiSetProvider extends GuiContainer {
 			((ImageCycleButton)btn).setCycleIndex(((ImageCycleButton)btn).getNextIndex());
 		}
 	}
-	
-	@Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks)
-    {
-		super.drawScreen(mouseX, mouseY, partialTicks);
-        
-        for(GuiButton btn:buttonList){
-        	if(btn instanceof ImageButton){
-    			ImageButton ibtn=(ImageButton)btn;
-        		if(ibtn.visible&&ibtn.hasTooltip()&&ibtn.isMouseOver()){
-                    GuiUtils.drawHoveringText(java.util.Arrays.asList(new String[]{ibtn.getTooltip()}), mouseX, mouseY, width, height, -1, fontRendererObj);
-        		}
-        	}
-        }
-		
-    }
 }

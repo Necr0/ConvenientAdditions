@@ -1,5 +1,13 @@
 {
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_all",
+		"textures": {
+			"all": "convenientadditions:blocks/titanium_ore"
+		}
+    },
 	"variants": {
-		"normal": { "model": "convenientadditions:oreTitanium" }
+		"normal": [{}],
+        "inventory": [{}]
 	}
 }

@@ -6,6 +6,8 @@ import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemLaunchingArrow;
+import convenientadditions.item.channelModule.ItemPlayerChannelModule;
+import convenientadditions.item.channelModule.color.ItemColorChannelModule;
 import convenientadditions.item.charge.ItemBlazingRock;
 import convenientadditions.item.charge.ItemSunstone;
 import convenientadditions.item.charge.baubles.ItemBreathAmulet;
@@ -38,6 +40,9 @@ public class ModItems {
     public static final ItemBlazingRock itemBlazingRock = new ItemBlazingRock();
     public static final ItemEnderSlate itemEnderSlate = new ItemEnderSlate();
     public static final ItemLaunchingArrow itemLaunchingArrow = new ItemLaunchingArrow();
+    //channel modules
+    public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
+    public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
     //dummy
     public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
@@ -77,14 +82,14 @@ public class ModItems {
         registerItem(itemBlazingRock,Reference.blazingRockItemName);
         registerItem(itemEnderSlate,Reference.enderSlateItemName);
         registerItem(itemLaunchingArrow,Reference.launchingArrowItemName);
+        //channel modules
+        registerItem(itemModulePlayer,Reference.modulePlayerItemName);
+        registerItem(itemModuleColor,Reference.moduleColorItemName);
         //baubles
         registerItem(itemSunlightRing,Reference.sunlightRingItemName);
         registerItem(itemSaturationRing,Reference.saturationRingItemName);
         registerItem(itemBreathAmulet,Reference.breathAmuletItemName);
         registerItem(itemChargingRing,Reference.chargingRingItemName);
-        //registerItem(itemFloatingBelt,Reference.floatingBeltItemName);
-        //goo
-        //ItemGoo.init();
         
         initModelLoader();
     }
@@ -112,6 +117,9 @@ public class ModItems {
 		registerModelLocation(itemEnderSlate,0,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_inactive","inventory"));
 		registerModelLocation(itemEnderSlate,1,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_active","inventory"));
 		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
+        //channel modules
+        registerModelLocation(itemModulePlayer,itemModulePlayer.getModelResourceLocation());
+        registerModelLocation(itemModuleColor,itemModuleColor.getModelResourceLocation());
         //baubles
 		registerModelLocation(itemSunlightRing,itemSunlightRing.getModelResourceLocation());
 		registerModelLocation(itemSaturationRing,itemSaturationRing.getModelResourceLocation());

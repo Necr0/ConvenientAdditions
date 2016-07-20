@@ -25,6 +25,7 @@
             13: {},
             14: {},
             15: {}
-        }
+        },
+        "inventory": [{"textures": {"all": "convenientadditions:blocks/proximitySensor/proximitySensor_inactive"}}]
     }
 }

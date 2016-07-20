@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "convenientadditions:items/enderSlate_inactive"
+		"layer0": "convenientadditions:items/charge/enderSlate_inactive"
 	}
 }

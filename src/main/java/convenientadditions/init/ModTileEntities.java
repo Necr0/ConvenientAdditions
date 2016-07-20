@@ -2,6 +2,8 @@ package convenientadditions.init;
 
 import convenientadditions.Reference;
 import convenientadditions.block.composter.TileEntityComposter;
+import convenientadditions.block.inventoryProxy.TileEntityInventoryProxy;
+import convenientadditions.block.networkInventory.TileEntityNetworkInventory;
 import convenientadditions.block.playerInterface.TileEntityPlayerInterface;
 import convenientadditions.block.powderkeg.TileEntityPowderKeg;
 import convenientadditions.block.proximitySensor.TileEntityProximitySensor;
@@ -17,5 +19,7 @@ public class ModTileEntities {
 	    GameRegistry.registerTileEntity(TileEntityProximitySensor.class, Reference.proximitySensorBlockName);
 	    GameRegistry.registerTileEntity(TileEntitySeedBox.class, Reference.seedBoxBlockName);
 	    GameRegistry.registerTileEntity(TileEntitySetProvider.class, Reference.setProviderBlockName);
+	    GameRegistry.registerTileEntity(TileEntityNetworkInventory.class, Reference.networkInventoryBlockName);
+	    GameRegistry.registerTileEntity(TileEntityInventoryProxy.class, Reference.inventoryProxyBlockName);
 	}
 }

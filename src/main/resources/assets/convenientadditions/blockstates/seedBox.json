@@ -37,7 +37,8 @@
         "outlet_west":{
             "true":{"textures": {"west": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
             "false":{}
-        }
+        },
+        "inventory": [{"textures": {"up": "convenientadditions:blocks/seedBox/seedBox_outlet"}}]
     }
 }
     

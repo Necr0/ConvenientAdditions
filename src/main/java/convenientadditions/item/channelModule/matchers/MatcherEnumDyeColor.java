@@ -1,10 +1,9 @@
-package convenientadditions.api.provider.itemnetwork;
+package convenientadditions.item.channelModule.matchers;
 
-import conveniencecore.ProviderSystem;
-import conveniencecore.ProviderSystem.IMatcher;
+import conveniencecore.IMatcher;
 import net.minecraft.item.EnumDyeColor;
 
-public class MatcherEnumDyeColor implements ProviderSystem.IMatcher {
+public class MatcherEnumDyeColor implements IMatcher {
 	
 	public EnumDyeColor color0;
 	public EnumDyeColor color1;

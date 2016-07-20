@@ -35,8 +35,7 @@ public class TileEntityPowderKeg extends TileEntity {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		return capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY?(T)stackHandler:super.getCapability(capability, facing);
-	}	
-
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt){

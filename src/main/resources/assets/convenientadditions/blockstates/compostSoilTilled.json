@@ -1,15 +1,27 @@
 {
+    "forge_marker": 1,
+    "defaults": {
+        "model": "farmland",
+	    "textures": {
+	        "particle": "convenientadditions:blocks/compostSoil",
+	        "dirt": "convenientadditions:blocks/compostSoil",
+	        "top": "convenientadditions:blocks/compostSoilTilled"
+	    }
+    },
 	"variants": {
-        "degradation=0": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=1": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=2": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=3": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=4": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=5": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=6": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=7": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=8": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=9": { "model": "convenientadditions:compostSoilTilled" },
-        "degradation=10": { "model": "convenientadditions:compostSoilTilled" }
+		"degradation":{
+	        0: {  },
+	        1: {  },
+	        2: {  },
+	        3: {  },
+	        4: {  },
+	        5: {  },
+	        6: {  },
+	        7: {  },
+	        8: {  },
+	        9: {  },
+	        10: {  }
+        },
+        "inventory": [{  }]
 	}
 }

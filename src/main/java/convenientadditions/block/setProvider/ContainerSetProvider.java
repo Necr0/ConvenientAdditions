@@ -1,13 +1,14 @@
 package convenientadditions.block.setProvider;
 
+import conveniencecore.gui.CCContainerBase;
+import conveniencecore.gui.container.SlotFake;
 import conveniencecore.gui.container.SlotOutputOnly;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerSetProvider extends Container {
+public class ContainerSetProvider extends CCContainerBase {
 	
 	public boolean isDragging;
 	
@@ -23,7 +24,7 @@ public class ContainerSetProvider extends Container {
 		}
 		//filter
 		for(int j=0;j<9;j++){
-			addSlotToContainer(new SlotItemHandler(ent.filter, j, j*18+8, 50));
+			addSlotToContainer(new SlotFake(ent.filter, j, j*18+8, 50));
 		}
 		//output
 		for(int i=0;i<2;i++){

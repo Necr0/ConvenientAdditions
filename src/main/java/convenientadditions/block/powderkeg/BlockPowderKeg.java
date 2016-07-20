@@ -4,6 +4,7 @@ import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -21,7 +22,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockPowderKeg extends BlockContainer implements IModelResourceLocationProvider {
@@ -87,13 +87,14 @@ public class BlockPowderKeg extends BlockContainer implements IModelResourceLoca
     	}
         return true;
     }
+
     
     @Override
-    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbour)
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
     {
-    	if(world instanceof World)
-	        if(Helper.checkForFire(world, pos)||((World)world).isBlockIndirectlyGettingPowered(pos)>0)
-	        	this.explode((World)world,pos);
+    	if(!worldIn.isRemote)
+	        if(Helper.checkForFire(worldIn, pos)||worldIn.isBlockIndirectlyGettingPowered(pos)>0)
+	        	this.explode(worldIn,pos);
     }
     
     @Override

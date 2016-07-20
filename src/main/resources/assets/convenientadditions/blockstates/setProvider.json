@@ -43,7 +43,8 @@
             "output":{"textures": {"west": "convenientadditions:blocks/setProvider/setProvider_output"}},
             "input":{"textures": {"west": "convenientadditions:blocks/setProvider/setProvider_input"}},
             "disabled":{}
-        }
+        },
+        "inventory": [{}]
     }
 }
     
