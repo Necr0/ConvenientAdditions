@@ -24,7 +24,7 @@ public class ChargeTickHandler {
     public void onPlayerSunlightChargeTick(TickEvent.PlayerTickEvent e)
     {
 		time++;
-		if(time!=20 || e.side!=Side.SERVER)
+		if(time<20 || e.side!=Side.SERVER)
 			return;
 		time=0;
 		

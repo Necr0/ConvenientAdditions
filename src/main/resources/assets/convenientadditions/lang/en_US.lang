@@ -13,6 +13,7 @@ tile.convenientadditions:itemTransmitter.name=Item Transmitter
 tile.convenientadditions:itemReceiver.name=Item Receiver
 tile.convenientadditions:inventoryProxy.name=Inventory Proxy
 tile.convenientadditions:inventoryProxySided.name=Sided Inventory Proxy
+tile.convenientadditions:inventoryProxyFiltered.name=Filtered Inventory Proxy
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter
@@ -24,6 +25,7 @@ tileentity.convenientadditions:setProvider.name=Set Provider
 tileentity.convenientadditions:itemTransmitter.name=Item Transmitter
 tileentity.convenientadditions:itemReceiver.name=Item Receiver
 tileentity.convenientadditions:inventoryProxy.name=Inventory Proxy
+tileentity.convenientadditions:inventoryProxyFiltered.name=Filtered Inventory Proxy
 
 # Items
 item.convenientadditions:ingotTitanium.name=Titanium Ingot

@@ -3,6 +3,7 @@ package convenientadditions.init;
 import convenientadditions.Reference;
 import convenientadditions.block.composter.TileEntityComposter;
 import convenientadditions.block.inventoryProxy.TileEntityInventoryProxy;
+import convenientadditions.block.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
 import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
 import convenientadditions.block.itemTransmitter.TileEntityItemTransmitter;
 import convenientadditions.block.playerInterface.TileEntityPlayerInterface;
@@ -23,5 +24,6 @@ public class ModTileEntities {
 	    GameRegistry.registerTileEntity(TileEntityItemTransmitter.class, Reference.itemTransmitterBlockName);
 	    GameRegistry.registerTileEntity(TileEntityItemReceiver.class, Reference.itemReceiverBlockName);
 	    GameRegistry.registerTileEntity(TileEntityInventoryProxy.class, Reference.inventoryProxyBlockName);
+	    GameRegistry.registerTileEntity(TileEntityInventoryProxyFiltered.class, Reference.inventoryProxyFilteredBlockName);
 	}
 }

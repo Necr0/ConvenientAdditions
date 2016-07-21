@@ -6,6 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileEntityInventoryProxy extends TileEntityCABase  {
 	public boolean sided=false;
@@ -19,7 +20,7 @@ public class TileEntityInventoryProxy extends TileEntityCABase  {
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		TileEntity te=getWorld().getTileEntity(getTarget());
-		if(te!=null)
+		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return te.hasCapability(capability, (sided?facing:getFacing().getOpposite()));
 		else
 			return super.hasCapability(capability, facing);
@@ -28,7 +29,7 @@ public class TileEntityInventoryProxy extends TileEntityCABase  {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		TileEntity te=getWorld().getTileEntity(getTarget());
-		if(te!=null)
+		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return te.getCapability(capability, (sided?facing:getFacing().getOpposite()));
 		else
 			return super.getCapability(capability, facing);

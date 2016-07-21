@@ -1,5 +1,8 @@
 package convenientadditions.init;
 
+import convenientadditions.block.inventoryProxy.filtered.ContainerInventoryProxyFiltered;
+import convenientadditions.block.inventoryProxy.filtered.GuiInventoryProxyFiltered;
+import convenientadditions.block.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
 import convenientadditions.block.itemReceiver.ContainerItemReceiver;
 import convenientadditions.block.itemReceiver.GuiItemReceiver;
 import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
@@ -21,6 +24,7 @@ public class ModGuiHandler implements IGuiHandler {
 	public static final int GUI_COLOR_MODULE_ID = 1;
 	public static final int GUI_ITEM_TRANSMITTER_ID = 2;
 	public static final int GUI_ITEM_RECEIVER_ID = 3;
+	public static final int GUI_FILTERED_PROXY_ID = 4;
 
 
 	@Override
@@ -32,6 +36,8 @@ public class ModGuiHandler implements IGuiHandler {
 			return new ContainerItemTransmitter((TileEntityItemTransmitter)world.getTileEntity(new BlockPos(x, y, z)),player);
 		case GUI_ITEM_RECEIVER_ID:
 			return new ContainerItemReceiver((TileEntityItemReceiver)world.getTileEntity(new BlockPos(x, y, z)),player);
+		case GUI_FILTERED_PROXY_ID:
+			return new ContainerInventoryProxyFiltered((TileEntityInventoryProxyFiltered)world.getTileEntity(new BlockPos(x, y, z)),player);
 		default:
 			return null;
 		}
@@ -48,6 +54,8 @@ public class ModGuiHandler implements IGuiHandler {
 				return new GuiItemTransmitter(new ContainerItemTransmitter((TileEntityItemTransmitter)world.getTileEntity(new BlockPos(x, y, z)),player));
 			case GUI_ITEM_RECEIVER_ID:
 				return new GuiItemReceiver(new ContainerItemReceiver((TileEntityItemReceiver)world.getTileEntity(new BlockPos(x, y, z)),player));
+			case GUI_FILTERED_PROXY_ID:
+				return new GuiInventoryProxyFiltered(new ContainerInventoryProxyFiltered((TileEntityInventoryProxyFiltered)world.getTileEntity(new BlockPos(x, y, z)),player));
 			default:
 				return null;
 		}

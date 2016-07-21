@@ -1,0 +1,32 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "piston",
+	    "textures": {
+	        "bottom": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_back",
+	        "side": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_side",
+	        "platform": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_output"
+	    },
+        "uvlock": false
+    },
+    "variants": {
+        "facing": {
+	        "down": { "x": 90 },
+	        "up": { "x": 270 },
+	        "north": { },
+	        "south": { "y": 180 },
+	        "west": { "y": 270 },
+	        "east": { "y": 90 }
+        },
+	    "inventory": [
+	    	{
+	    		"model": "cube_bottom_top",
+			    "textures": {
+			        "bottom": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_back",
+			        "side": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_side",
+			        "top": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_output"
+			    }
+	    	}
+	    ]
+    }
+}

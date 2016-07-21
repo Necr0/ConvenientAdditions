@@ -20,6 +20,7 @@ public class Reference {
     public static final String itemReceiverBlockName = "itemReceiver";
     public static final String inventoryProxyBlockName = "inventoryProxy";
     public static final String inventoryProxySidedBlockName = "inventoryProxySided";
+    public static final String inventoryProxyFilteredBlockName = "inventoryProxyFiltered";
     //
     public static final String ingotTitaniumItemName = "ingotTitanium";
     public static final String nuggetTitaniumItemName = "nuggetTitanium";
