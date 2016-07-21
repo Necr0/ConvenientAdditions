@@ -2,12 +2,12 @@ package convenientadditions.item.channelModule.color;
 
 import java.util.List;
 
-import conveniencecore.IMatcher;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.api.item.ItemChannelModule;
+import convenientadditions.api.provider.itemnetwork.IMatcher;
 import convenientadditions.init.ModGuiHandler;
 import convenientadditions.item.channelModule.matchers.MatcherEnumDyeColor;
 import net.minecraft.creativetab.CreativeTabs;

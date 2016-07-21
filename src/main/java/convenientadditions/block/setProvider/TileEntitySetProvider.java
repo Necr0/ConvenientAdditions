@@ -2,13 +2,10 @@ package convenientadditions.block.setProvider;
 
 import java.util.HashMap;
 
-import conveniencecore.IMatcher;
 import conveniencecore.block.tileentity.IConfigurable;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
 import conveniencecore.util.FillSetFilter;
-import convenientadditions.api.provider.itemnetwork.IItemProvider;
-import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.block.TileEntityCABase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,9 +14,8 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
-public class TileEntitySetProvider extends TileEntityCABase implements IConfigurable, ITickable, IItemProvider {
+public class TileEntitySetProvider extends TileEntityCABase implements IConfigurable, ITickable {
 
 	public HashMap<EnumFacing, EnumOutletMode> outletSides=new HashMap<EnumFacing, EnumOutletMode>();
 	
@@ -53,8 +49,6 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
 	public void update() {
 		if(worldObj.isRemote)
 			return;
-		
-		ItemNetworkProvider.addEntry(getWorld(),getPos());
 		
 		if(resetMode==0&&worldObj.isBlockIndirectlyGettingPowered(getPos())>0){
 			reset();
@@ -214,15 +208,5 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
 		return (capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY&&outletSides.get(facing)!=EnumOutletMode.disabled)?
 					(outletSides.get(facing)==EnumOutletMode.input?(T)input:(T)output)
 					:super.getCapability(capability, facing);
-	}
-
-	@Override
-	public IItemHandler getItemHandler() {
-		return output;
-	}
-
-	@Override
-	public IMatcher[] getAccess() {
-		return new IMatcher[]{new IMatcher.matcherANY()};
 	}
 }

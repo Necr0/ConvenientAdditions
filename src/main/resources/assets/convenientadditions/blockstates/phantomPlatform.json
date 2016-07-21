@@ -1,6 +1,15 @@
 {
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_all",
+		"textures": {
+			"all": "convenientadditions:blocks/textureNone"
+		}
+    },
 	"variants": {
-		"despawn=false": { "model": "convenientadditions:oreTitanium" },
-        "despawn=true": { "model": "convenientadditions:oreTitanium" }
+		"despawn": {
+			"false":{},
+			"true":{}
+		}
 	}
 }

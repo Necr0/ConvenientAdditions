@@ -2,12 +2,12 @@ package convenientadditions.item.channelModule;
 
 import java.util.List;
 
-import conveniencecore.IMatcher;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.api.item.ItemChannelModule;
+import convenientadditions.api.provider.itemnetwork.IMatcher;
 import convenientadditions.item.channelModule.matchers.MatcherPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

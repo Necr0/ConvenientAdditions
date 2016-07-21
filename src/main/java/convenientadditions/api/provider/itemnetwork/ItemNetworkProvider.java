@@ -3,7 +3,6 @@ package convenientadditions.api.provider.itemnetwork;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import conveniencecore.IMatcher;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;

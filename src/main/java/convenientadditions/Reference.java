@@ -16,7 +16,8 @@ public class Reference {
     public static final String chargeTubeBlockName = "chargeTube";
     public static final String seedBoxBlockName = "seedBox";
     public static final String setProviderBlockName = "setProvider";
-    public static final String networkInventoryBlockName = "networkInventory";
+    public static final String itemTransmitterBlockName = "itemTransmitter";
+    public static final String itemReceiverBlockName = "itemReceiver";
     public static final String inventoryProxyBlockName = "inventoryProxy";
     public static final String inventoryProxySidedBlockName = "inventoryProxySided";
     //

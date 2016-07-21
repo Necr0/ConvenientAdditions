@@ -9,6 +9,8 @@ tile.convenientadditions:proximitySensor.name=Proximity Sensor
 tile.convenientadditions:seedBox.name=Seed Box
 tile.convenientadditions:setProvider.name=Set Provider
 tile.convenientadditions:phantomPlatform.name=Phantom Platform
+tile.convenientadditions:itemTransmitter.name=Item Transmitter
+tile.convenientadditions:itemReceiver.name=Item Receiver
 tile.convenientadditions:inventoryProxy.name=Inventory Proxy
 tile.convenientadditions:inventoryProxySided.name=Sided Inventory Proxy
 
@@ -19,6 +21,8 @@ tileentity.convenientadditions:powderKeg.name=Powder Keg
 tileentity.convenientadditions:proximitySensor.name=Proximity Sensor
 tileentity.convenientadditions:seedBox.name=Seed Box
 tileentity.convenientadditions:setProvider.name=Set Provider
+tileentity.convenientadditions:itemTransmitter.name=Item Transmitter
+tileentity.convenientadditions:itemReceiver.name=Item Receiver
 tileentity.convenientadditions:inventoryProxy.name=Inventory Proxy
 
 # Items
@@ -141,7 +145,7 @@ color.convenientadditions:yellow=Yellow
 color.convenientadditions:lightBlue=Light Blue
 color.convenientadditions:magenta=Magenta
 color.convenientadditions:orange=Orange
-color.convenientadditions:white=Carpet
+color.convenientadditions:white=White
 
 # Entity
 
