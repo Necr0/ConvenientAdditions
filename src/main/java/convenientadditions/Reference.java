@@ -38,7 +38,10 @@ public class Reference {
     public static final String blazingRockItemName = "blazingRock";
     public static final String enderSlateItemName = "enderSlate";
     public static final String launchingArrowItemName = "launchingArrow";
+    //
+    public static final String transmutationTomeItemName = "transmutationTome";
     //channel modules
+    public static final String obsidianSlateItemName = "obsidianSlate";
     public static final String modulePlayerItemName = "modulePlayer";
     public static final String moduleColorItemName = "moduleColor";
     //baubles
@@ -67,6 +70,9 @@ public class Reference {
     //
     public static final String tempLightBlockName = "tempLight";
     public static final String phantomPlatformBlockName = "phantomPlatform";
+    //
+    //
+    public static final String jeiTransmutationTomeCategory = "transmutationTome";
     //
     //
     public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";

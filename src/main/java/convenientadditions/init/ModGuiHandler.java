@@ -13,6 +13,8 @@ import convenientadditions.block.setProvider.ContainerSetProvider;
 import convenientadditions.block.setProvider.GuiSetProvider;
 import convenientadditions.block.setProvider.TileEntitySetProvider;
 import convenientadditions.item.channelModule.color.GuiColorChannelModule;
+import convenientadditions.item.transmutationTome.ContainerTransmutationTome;
+import convenientadditions.item.transmutationTome.GuiTransmutationTome;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -25,6 +27,7 @@ public class ModGuiHandler implements IGuiHandler {
 	public static final int GUI_ITEM_TRANSMITTER_ID = 2;
 	public static final int GUI_ITEM_RECEIVER_ID = 3;
 	public static final int GUI_FILTERED_PROXY_ID = 4;
+	public static final int GUI_TRANSMUTATION_TOME_ID = 5;
 
 
 	@Override
@@ -38,6 +41,8 @@ public class ModGuiHandler implements IGuiHandler {
 			return new ContainerItemReceiver((TileEntityItemReceiver)world.getTileEntity(new BlockPos(x, y, z)),player);
 		case GUI_FILTERED_PROXY_ID:
 			return new ContainerInventoryProxyFiltered((TileEntityInventoryProxyFiltered)world.getTileEntity(new BlockPos(x, y, z)),player);
+		case GUI_TRANSMUTATION_TOME_ID:
+			return new ContainerTransmutationTome(player);
 		default:
 			return null;
 		}
@@ -56,6 +61,8 @@ public class ModGuiHandler implements IGuiHandler {
 				return new GuiItemReceiver(new ContainerItemReceiver((TileEntityItemReceiver)world.getTileEntity(new BlockPos(x, y, z)),player));
 			case GUI_FILTERED_PROXY_ID:
 				return new GuiInventoryProxyFiltered(new ContainerInventoryProxyFiltered((TileEntityInventoryProxyFiltered)world.getTileEntity(new BlockPos(x, y, z)),player));
+			case GUI_TRANSMUTATION_TOME_ID:
+				return new GuiTransmutationTome(new ContainerTransmutationTome(player));
 			default:
 				return null;
 		}

@@ -1,6 +1,6 @@
 package convenientadditions.block.itemTransmitter;
 
-import conveniencecore.gui.CCContainerBase;
+import conveniencecore.gui.container.CCContainerBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;

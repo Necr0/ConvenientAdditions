@@ -31,6 +31,9 @@ public class ModRecipes {
 				"i i",
 				'i', "ingotIron"));
 		
+		if(ModConfig.transmutationTome_recipe)
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemTransmutationTome,1), Items.BOOK, Items.BLAZE_ROD, Items.ENDER_EYE, Items.WHEAT_SEEDS));
+		
 		if(titanium){
 			GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.nuggetTitanium,9), new ItemStack(ModItems.ingotTitanium)));
@@ -52,6 +55,8 @@ public class ModRecipes {
 		initCompost();
 		initChargeItems();
 		initBaubles();
+		initInventoryProxies();
+		initChannelModules();
 		initBlocks();
 	}
 	
@@ -190,7 +195,7 @@ public class ModRecipes {
 			    "t t",
 			    "ypy",
 			    't', titaniumIngot,
-			    'p', new ItemStack(Items.POTIONITEM,1,8269),
+			    'p', Items.GLASS_BOTTLE,
 			    'y', Items.STRING));
 
 		if(ModConfig.baubles_ring_of_charging)
@@ -246,5 +251,54 @@ public class ModRecipes {
 			    "s",
 			    't', ModItems.ingotTitanium,
 			    's', "stickWood"));
+	}
+	
+	private static void initInventoryProxies(){
+		if(ModConfig.inventoryProxies_regular)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.inventoryProxyBlock,4),
+				"shs",
+			    "pcp",
+			    "shs",
+			    's', "stickWood",
+			    'p', "plankWood",
+			    'h', Blocks.HOPPER,
+			    'c', Blocks.CHEST));
+		
+		if(ModConfig.inventoryProxies_sided)
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.inventoryProxySidedBlock),ModBlocks.inventoryProxyBlock));
+		if(ModConfig.inventoryProxies_regular)
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.inventoryProxyBlock),ModBlocks.inventoryProxySidedBlock));
+		if(ModConfig.inventoryProxies_filtered)
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.inventoryProxyFilteredBlock),ModBlocks.inventoryProxyBlock,Items.COMPARATOR));
+		
+		if(ModConfig.inventoryProxies_transmitter)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.itemTransmitterBlock,1),
+				"tot",
+			    "epe",
+			    "tht",
+			    't', titaniumIngot,
+			    'e', Items.ENDER_EYE,
+			    'h', Blocks.HOPPER,
+			    'p', ModBlocks.inventoryProxyBlock,
+			    'o', ModItems.itemObsidianSlate));
+		
+		if(ModConfig.inventoryProxies_receiver)
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.itemReceiverBlock,1),
+				"gog",
+			    "epe",
+			    "ghg",
+			    'g', "ingotGold",
+			    'e', Items.ENDER_EYE,
+			    'h', Blocks.HOPPER,
+			    'p', ModBlocks.inventoryProxyBlock,
+			    'o', ModItems.itemObsidianSlate));
+	}
+	
+	private static void initChannelModules(){
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianSlate,4),Blocks.OBSIDIAN,Blocks.STONE));
+		if(ModConfig.channelModules_player)
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModulePlayer),ModItems.itemObsidianSlate,Items.ENDER_EYE,new ItemStack(Items.SKULL,1,1)));
+		if(ModConfig.channelModules_color)
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModuleColor),ModItems.itemObsidianSlate,Items.ENDER_EYE,"dye","dye","dye"));
 	}
 }

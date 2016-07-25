@@ -1,6 +1,6 @@
 package convenientadditions.block.inventoryProxy.filtered;
 
-import conveniencecore.gui.CCContainerBase;
+import conveniencecore.gui.container.CCContainerBase;
 import conveniencecore.gui.container.SlotFake;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;

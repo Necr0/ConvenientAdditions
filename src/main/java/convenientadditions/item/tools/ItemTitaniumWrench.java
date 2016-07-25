@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 public class ItemTitaniumWrench extends Item implements IModelResourceLocationProvider {
 	public ItemTitaniumWrench(){
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.titaniumWrenchItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.titaniumWrenchItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1);
 	}
 	
 	@Override

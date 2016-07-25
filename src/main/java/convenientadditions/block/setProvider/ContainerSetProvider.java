@@ -1,6 +1,6 @@
 package convenientadditions.block.setProvider;
 
-import conveniencecore.gui.CCContainerBase;
+import conveniencecore.gui.container.CCContainerBase;
 import conveniencecore.gui.container.SlotFake;
 import conveniencecore.gui.container.SlotOutputOnly;
 import net.minecraft.entity.player.EntityPlayer;

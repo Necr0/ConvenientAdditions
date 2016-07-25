@@ -8,8 +8,8 @@ import convenientadditions.init.ModItems;
 import convenientadditions.init.ModNetworking;
 import convenientadditions.init.ModOredict;
 import convenientadditions.init.ModRecipes;
+import convenientadditions.init.ModSounds;
 import convenientadditions.init.ModTileEntities;
-import convenientadditions.item.charge.enderSlate.EnderSlateInventoryTickHandler;
 import convenientadditions.proxy.CommonProxy;
 import convenientadditions.worldgen.OreTitaniumWorldGen;
 import net.minecraft.creativetab.CreativeTabs;
@@ -32,7 +32,7 @@ public class ConvenientAdditions
 {
     public static final String MODID = "convenientadditions";
     public static final String VERSION = "1.0";
-    public static final String DEPENDENCIES = "required-after:conveniencecore;required-after:Baubles";
+    public static final String DEPENDENCIES = "required-after:Forge;required-after:conveniencecore;required-after:Baubles;after:JEI;";
     @Instance(ConvenientAdditions.MODID)
     public static ConvenientAdditions INSTANCE;
     
@@ -60,13 +60,12 @@ public class ConvenientAdditions
     	ModOredict.registerOres();
     	ModRecipes.init();
     	ModNetworking.init();
+    	ModSounds.init();
     	PROXY.InitModels();
     	PROXY.registerRenderers();
-    	EnderSlateInventoryTickHandler.init();
+    	PROXY.registerEventHandlers();
     	ModCAAPI.init();
     	ConvenientAdditions.TOOLMATERIAL_TITANIUM.setRepairItem(new ItemStack(ModItems.ingotTitanium));
-
-    	//thaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
     }
     
     @EventHandler

@@ -3,6 +3,8 @@ package convenientadditions.proxy;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
+import convenientadditions.item.charge.ChargeTickHandler;
+import convenientadditions.item.charge.enderSlate.EnderSlateInventoryTickHandler;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,6 +15,12 @@ public class CommonProxy
 		return Side.SERVER;
 	}
 	
+    public void registerEventHandlers()
+    {
+    	EnderSlateInventoryTickHandler.init();
+		ChargeTickHandler.init();
+    }
+    
     public void registerRenderers()
     {
     }

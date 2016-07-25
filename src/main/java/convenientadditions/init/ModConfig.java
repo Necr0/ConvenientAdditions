@@ -14,6 +14,7 @@ public class ModConfig {
 	public static float composter_extraCompostChance;
 	public static float composter_dirtChunkChance;
 	public static float composter_fertilizerChance;
+	public static float composter_sporesMyceliumChance;
 	//stats
 	public static int composter_capacity;
 	public static int composter_progressPeriod;
@@ -24,6 +25,17 @@ public class ModConfig {
 	public static boolean seedBox_autoCrops;
 	public static boolean seedBox_autoCompost;
 	public static boolean seedBox_behaviourProviderEntry;
+	
+	//#########INVENTORY PROXIES#############
+	public static boolean inventoryProxies_regular;
+	public static boolean inventoryProxies_sided;
+	public static boolean inventoryProxies_filtered;
+	public static boolean inventoryProxies_transmitter;
+	public static boolean inventoryProxies_receiver;
+	
+	//#########CHANNEL MODULES#############
+	public static boolean channelModules_player;
+	public static boolean channelModules_color;
 	
 	//#########CHARGE ITEMS#############
 	public static boolean charge_sunstone;
@@ -52,6 +64,19 @@ public class ModConfig {
 	public static int enderSlate_crystalChargeRate;
 	public static boolean enderSlate_enderEyeRechargeRecipe;
 	public static float enderSlate_enderEyeRechargePercentage;
+
+	//#########TRANSMUTATION TOME#############
+	public static boolean transmutationTome_recipe;
+	public static boolean transmutationTome_oreDoubling;
+	public static boolean transmutationTome_oreUpgrade;
+	public static boolean transmutationTome_oreDowngrade;
+	public static boolean transmutationTome_oreOther;
+	public static boolean transmutationTome_logVariations;
+	public static boolean transmutationTome_stoneVariations;
+	public static boolean transmutationTome_cropMutation;
+	public static boolean transmutationTome_dirtMutation;
+	public static boolean transmutationTome_purification;
+	public static boolean transmutationTome_misc;
 	
 	//#########GENERAL#############
 	public static boolean ironWrench;
@@ -82,6 +107,7 @@ public class ModConfig {
 		composter_extraCompostChance=cfg.getFloat("extraCompostChance", category, .25F, 0F, 1F, "");
 		composter_dirtChunkChance=cfg.getFloat("dirtChunkChance", category, .4F, 0F, 1F, "");
 		composter_fertilizerChance=cfg.getFloat("fertilizerChance", category, .1666F, 0F, 1F, "");
+		composter_sporesMyceliumChance=cfg.getFloat("fertilizerChance", category, .015625F, 0F, 1F, "");
 		composter_foodMultiplier=cfg.getInt("foodMultiplier", category, 400, 0, Integer.MAX_VALUE, "");
 		composter_capacity=cfg.getInt("capacity", category, 25000, 1, Integer.MAX_VALUE, "");
 		composter_progressPeriod=cfg.getInt("progressPeriod", category, 2100, 1, Integer.MAX_VALUE, "The amount of time needed for 1 operation.");
@@ -125,6 +151,33 @@ public class ModConfig {
 		seedBox_autoCrops=cfg.getBoolean("autoCrops", category, true, "");
 		seedBox_autoCompost=cfg.getBoolean("autoCompost", category, true, "");
 		seedBox_behaviourProviderEntry=cfg.getBoolean("behaviourProviderEntry", category, true, "DON'T CHANGE THIS IF YOU DON'T KNOW WHAT IT IS!");
+		
+		category="inventoryProxies";
+		cfg.setCategoryRequiresMcRestart(category, true);
+		inventoryProxies_regular=cfg.getBoolean("regular", category, true, "needed to craft the others");
+		inventoryProxies_sided=cfg.getBoolean("sided", category, true, "");
+		inventoryProxies_filtered=cfg.getBoolean("filtered", category, true, "");
+		inventoryProxies_transmitter=cfg.getBoolean("transmitter", category, true, "");
+		inventoryProxies_receiver=cfg.getBoolean("receiver", category, true, "");
+		
+		category="channelModules";
+		cfg.setCategoryRequiresMcRestart(category, true);
+		channelModules_player=cfg.getBoolean("player", category, true, "");
+		channelModules_color=cfg.getBoolean("color", category, true, "");
+		
+		category="transmutationTome";
+		cfg.setCategoryRequiresMcRestart(category, true);
+		transmutationTome_recipe=cfg.getBoolean("recipe", category, true, "");
+		transmutationTome_oreDoubling=cfg.getBoolean("oreDoubling", category, true, "");
+		transmutationTome_oreUpgrade=cfg.getBoolean("oreUpgrade", category, true, "");
+		transmutationTome_oreDowngrade=cfg.getBoolean("oreDowngrade", category, true, "");
+		transmutationTome_oreOther=cfg.getBoolean("oreOther", category, true, "");
+		transmutationTome_logVariations=cfg.getBoolean("logVariations", category, true, "");
+		transmutationTome_stoneVariations=cfg.getBoolean("stoneVariations", category, true, "");
+		transmutationTome_cropMutation=cfg.getBoolean("cropMutation", category, true, "");
+		transmutationTome_dirtMutation=cfg.getBoolean("dirtMutation", category, true, "");
+		transmutationTome_purification=cfg.getBoolean("purification", category, true, "");
+		transmutationTome_misc=cfg.getBoolean("misc", category, true, "");
 		
 		if(cfg.hasChanged())
 			cfg.save();

@@ -1,7 +1,8 @@
-package convenientadditions.api.item.charge;
+package convenientadditions.item.charge;
 
 import baubles.api.BaublesApi;
 import conveniencecore.util.Helper;
+import convenientadditions.api.item.charge.ISunlightChargeable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;

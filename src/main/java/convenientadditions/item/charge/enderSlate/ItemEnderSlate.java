@@ -4,6 +4,7 @@ import java.util.List;
 
 import conveniencecore.item.invtick.IPlayerInventoryTick;
 import conveniencecore.item.resourceprovider.IResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.api.item.charge.ItemChargeable;
@@ -19,6 +20,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -93,5 +95,17 @@ public class ItemEnderSlate extends ItemChargeable implements IPlayerInventoryTi
         		}
     		}
 		}
+	}
+    
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
+	{
+		list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":enderSlate"));
+		super.addInformation(stack, player, list, par4);
+		list.add(TextFormatting.DARK_GRAY+ItemChargeable.localize("tooltip."+ConvenientAdditions.MODID+":enderSlateDrained"));
+		if(isActive(stack))
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ConvenientAdditions.MODID+":enderSlateActive"));
+		else
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ConvenientAdditions.MODID+":enderSlateInactive"));
 	}
 }

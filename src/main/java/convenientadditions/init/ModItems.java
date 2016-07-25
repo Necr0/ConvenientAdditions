@@ -21,6 +21,7 @@ import convenientadditions.item.tools.ItemTitaniumPickaxe;
 import convenientadditions.item.tools.ItemTitaniumSpade;
 import convenientadditions.item.tools.ItemTitaniumSword;
 import convenientadditions.item.tools.ItemTitaniumWrench;
+import convenientadditions.item.transmutationTome.ItemTransmutationTome;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -40,6 +41,7 @@ public class ModItems {
     public static final ItemBlazingRock itemBlazingRock = new ItemBlazingRock();
     public static final ItemEnderSlate itemEnderSlate = new ItemEnderSlate();
     public static final ItemLaunchingArrow itemLaunchingArrow = new ItemLaunchingArrow();
+    public static final ItemTransmutationTome itemTransmutationTome = new ItemTransmutationTome();
     //channel modules
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
@@ -47,6 +49,7 @@ public class ModItems {
     public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     public static final Item itemDirtChunk=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemObsidianSlate=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.obsidianSlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     //baubles
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
@@ -67,6 +70,7 @@ public class ModItems {
         registerItem(ingotTitanium,Reference.ingotTitaniumItemName);
         registerItem(nuggetTitanium,Reference.nuggetTitaniumItemName);
         registerItem(itemDirtChunk,Reference.dirtChunkItemName);
+        registerItem(itemObsidianSlate,Reference.obsidianSlateItemName);
     	//ttools
         registerItem(itemTitaniumPickaxe,Reference.pickaxeTitaniumItemName);
         registerItem(itemTitaniumAxe,Reference.axeTitaniumItemName);
@@ -82,6 +86,7 @@ public class ModItems {
         registerItem(itemBlazingRock,Reference.blazingRockItemName);
         registerItem(itemEnderSlate,Reference.enderSlateItemName);
         registerItem(itemLaunchingArrow,Reference.launchingArrowItemName);
+        registerItem(itemTransmutationTome,Reference.transmutationTomeItemName);
         //channel modules
         registerItem(itemModulePlayer,Reference.modulePlayerItemName);
         registerItem(itemModuleColor,Reference.moduleColorItemName);
@@ -100,6 +105,7 @@ public class ModItems {
 		registerModelLocation(ingotTitanium,new ModelResourceLocation(ingotTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(nuggetTitanium,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(itemDirtChunk,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName().substring(5),"inventory"));
+		registerModelLocation(itemObsidianSlate,new ModelResourceLocation(itemObsidianSlate.getUnlocalizedName().substring(5),"inventory"));
     	//ttools
 		registerModelLocation(itemTitaniumPickaxe,itemTitaniumPickaxe.getModelResourceLocation());
 		registerModelLocation(itemTitaniumAxe,itemTitaniumAxe.getModelResourceLocation());
@@ -117,6 +123,7 @@ public class ModItems {
 		registerModelLocation(itemEnderSlate,0,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_inactive","inventory"));
 		registerModelLocation(itemEnderSlate,1,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_active","inventory"));
 		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
+        registerModelLocation(itemTransmutationTome,itemTransmutationTome.getModelResourceLocation());
         //channel modules
         registerModelLocation(itemModulePlayer,itemModulePlayer.getModelResourceLocation());
         registerModelLocation(itemModuleColor,itemModuleColor.getModelResourceLocation());

@@ -1,13 +1,13 @@
 package convenientadditions.item;
 
 import java.util.List;
-import java.util.Random;
 
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -44,7 +44,7 @@ public class ItemCompost extends Item implements IModelResourceLocationProvider 
 			else if(b==Blocks.FARMLAND)
 				world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getDefaultState());
 			else if(b==Blocks.GRASS){
-				if(itemStack.getItemDamage()==1&&new Random().nextInt(64)==0)
+				if(itemStack.getItemDamage()==1&&world.rand.nextFloat()<ModConfig.composter_sporesMyceliumChance)
 					world.setBlockState(pos, Blocks.MYCELIUM.getDefaultState());
 				else
 					world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 3);

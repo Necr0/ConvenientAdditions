@@ -1,6 +1,5 @@
-package convenientadditions.api.entity.behaviour;
+package convenientadditions.entity.behaviour;
 
-import conveniencecore.entity.behaviour.BehaviourRegistry;
 import conveniencecore.entity.behaviour.IEntitySpecialItemBehaviour;
 import conveniencecore.util.Helper;
 import convenientadditions.api.item.charge.ISunlightChargeable;
@@ -11,7 +10,6 @@ import net.minecraft.util.DamageSource;
 public class BehaviourSunlightChargeable implements IEntitySpecialItemBehaviour {
 
 	public static long DISCRIMINATOR;
-	private static boolean registered=false;
 	
 	@Override
 	public void onCreate(EntityItem item) {}
@@ -31,13 +29,6 @@ public class BehaviourSunlightChargeable implements IEntitySpecialItemBehaviour 
 					sitem.chargeItem(s, sitem.getSunlightChargeRate(s, -255));
 				}
 			}
-		}
-	}
-
-	public static void init(){
-		if(!registered){
-			DISCRIMINATOR=BehaviourRegistry.addBehaviour(new BehaviourSunlightChargeable());
-			registered=true;
 		}
 	}
 }

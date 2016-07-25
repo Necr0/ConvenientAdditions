@@ -3,9 +3,8 @@ package convenientadditions.api.item.charge;
 import java.util.List;
 import java.util.Random;
 
-import conveniencecore.util.Helper;
-import conveniencecore.util.MathHelper;
 import convenientadditions.api.util.EnchantmentUtil;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -66,14 +65,14 @@ public abstract class ItemChargeable extends Item implements IChargeable {
 
 	@Override
 	public int chargeItem(ItemStack item, int amount) {
-		int ret=MathHelper.overflow(getCharge(item), amount, getChargeCapacity(item));
+		int ret=ItemChargeable.overflow(getCharge(item), amount, getChargeCapacity(item));
 		setItemCharge(item, getCharge(item)+amount-ret);
 		return ret;
 	}
 	
 	@Override
 	public int dischargeItem(ItemStack item, int amount) {
-		int ret=MathHelper.drain(getCharge(item), amount);
+		int ret=ItemChargeable.drain(getCharge(item), amount);
 		setItemCharge(item, getCharge(item)-ret);
 		return ret;
 	}
@@ -102,7 +101,7 @@ public abstract class ItemChargeable extends Item implements IChargeable {
 	@Override
 	public void addInformation(ItemStack item, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(Helper.localize("tooltip.convenientadditions:charge", "%c", ""+getCharge(item),"%C", ""+getChargeCapacity(item),"%p", ""+(int)((double)getCharge(item)/(double)getChargeCapacity(item)*100)));
+		list.add(ItemChargeable.localize("tooltip.convenientadditions:charge", "%c", ""+getCharge(item),"%C", ""+getChargeCapacity(item),"%p", ""+(int)((double)getCharge(item)/(double)getChargeCapacity(item)*100)));
 		super.addInformation(item, player, list, par4);
 	}
 	
@@ -129,5 +128,29 @@ public abstract class ItemChargeable extends Item implements IChargeable {
 	@Override
 	public int getItemEnchantability(ItemStack item){
 		return 1;
+	}
+	
+	public static String localize(String in,String... replace){
+		String tmp=I18n.format(in, new Object[0]);
+		if(tmp.startsWith("Format error: "))
+			tmp=tmp.replaceFirst("Format error: ", "");
+		String match = null;
+		for(String s:replace){
+			if(match==null){
+				match=s;
+			}else{
+				tmp=tmp.replace(match, s);
+				match=null;
+			}
+		}
+		return tmp;
+	}
+	
+	public static int drain(int base,int decrement){
+		return (((base-decrement)<0)?(decrement+(base-decrement)):decrement);
+	}
+	
+	public static int overflow(int base,int increment,int capacity){
+		return ((base+increment)>capacity)?(base+increment-capacity ):(((base+increment)<0)?(base+increment):0);
 	}
 }

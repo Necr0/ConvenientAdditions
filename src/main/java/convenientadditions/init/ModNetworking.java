@@ -4,6 +4,7 @@ import convenientadditions.ConvenientAdditions;
 import convenientadditions.block.inventoryProxy.filtered.MessageInventoryProxyFiltered;
 import convenientadditions.block.setProvider.MessageSetProvider;
 import convenientadditions.item.channelModule.color.MessageColorChannelModule;
+import convenientadditions.item.transmutationTome.MessageTransmutationTome;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,5 +18,6 @@ public class ModNetworking {
     	INSTANCE.registerMessage(MessageSetProvider.class, MessageSetProvider.class, i++, Side.SERVER);
     	INSTANCE.registerMessage(MessageColorChannelModule.class, MessageColorChannelModule.class, i++, Side.SERVER);
     	INSTANCE.registerMessage(MessageInventoryProxyFiltered.class, MessageInventoryProxyFiltered.class, i++, Side.SERVER);
+    	INSTANCE.registerMessage(MessageTransmutationTome.class, MessageTransmutationTome.class, i++, Side.CLIENT);
 	}
 }
