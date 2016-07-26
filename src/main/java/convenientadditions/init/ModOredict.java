@@ -35,7 +35,7 @@ public class ModOredict {
         GameRegistry.addRecipe(new ShapelessOreRecipe(Items.FERMENTED_SPIDER_EYE, Blocks.BROWN_MUSHROOM, Items.SPIDER_EYE, "sugar"));
         GameRegistry.addRecipe(new ShapedOreRecipe(Items.CAKE,
 				"mmm",
-			    "sem",
+			    "ses",
 			    "www",
 			    'm', Items.MILK_BUCKET,
 			    'e', "egg",
