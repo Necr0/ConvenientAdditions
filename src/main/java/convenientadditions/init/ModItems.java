@@ -6,6 +6,7 @@ import convenientadditions.Reference;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemLaunchingArrow;
+import convenientadditions.item.ItemSapBottle;
 import convenientadditions.item.channelModule.ItemPlayerChannelModule;
 import convenientadditions.item.channelModule.color.ItemColorChannelModule;
 import convenientadditions.item.charge.ItemBlazingRock;
@@ -42,6 +43,7 @@ public class ModItems {
     public static final ItemEnderSlate itemEnderSlate = new ItemEnderSlate();
     public static final ItemLaunchingArrow itemLaunchingArrow = new ItemLaunchingArrow();
     public static final ItemTransmutationTome itemTransmutationTome = new ItemTransmutationTome();
+    public static final ItemSapBottle itemSapBottle = new ItemSapBottle();
     //channel modules
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
@@ -87,6 +89,7 @@ public class ModItems {
         registerItem(itemEnderSlate,Reference.enderSlateItemName);
         registerItem(itemLaunchingArrow,Reference.launchingArrowItemName);
         registerItem(itemTransmutationTome,Reference.transmutationTomeItemName);
+        registerItem(itemSapBottle,Reference.sapBottleItemName);
         //channel modules
         registerItem(itemModulePlayer,Reference.modulePlayerItemName);
         registerItem(itemModuleColor,Reference.moduleColorItemName);
@@ -124,6 +127,7 @@ public class ModItems {
 		registerModelLocation(itemEnderSlate,1,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_active","inventory"));
 		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
         registerModelLocation(itemTransmutationTome,itemTransmutationTome.getModelResourceLocation());
+        registerVariants(itemSapBottle,itemSapBottle.getModelResourceLocations());
         //channel modules
         registerModelLocation(itemModulePlayer,itemModulePlayer.getModelResourceLocation());
         registerModelLocation(itemModuleColor,itemModuleColor.getModelResourceLocation());

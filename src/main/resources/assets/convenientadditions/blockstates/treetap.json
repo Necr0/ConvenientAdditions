@@ -1,0 +1,21 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "convenientadditions:treetap"
+    },
+	"variants": {
+		"facing":{
+	        "north": {},
+	        "east": {"y":90},
+	        "south": {"y":180},
+	        "west": {"y":270}
+        },
+		"bottle_state":{
+	        "empty": {"model": "convenientadditions:treetap_empty"},
+	        "bottle": {  },
+	        "bottle_half": {"model": "convenientadditions:treetap_half"},
+	        "bottle_full": {"model": "convenientadditions:treetap_full"}
+        },
+        "inventory": [{"model": "convenientadditions:treetap_item"}]
+	}
+}

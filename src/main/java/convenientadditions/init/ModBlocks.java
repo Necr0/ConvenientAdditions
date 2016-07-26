@@ -5,6 +5,7 @@ import convenientadditions.Reference;
 import convenientadditions.block.BlockPhantomPlatform;
 import convenientadditions.block.BlockTempLight;
 import convenientadditions.block.BlockTitaniumOre;
+import convenientadditions.block.BlockTreeTap;
 import convenientadditions.block.compostSoil.BlockCompostSoil;
 import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.compostSoil.ItemBlockCompostSoil;
@@ -44,6 +45,7 @@ public class ModBlocks
     public static final BlockInventoryProxy inventoryProxyBlock = new BlockInventoryProxy();
     public static final BlockInventoryProxySided inventoryProxySidedBlock = new BlockInventoryProxySided();
     public static final BlockInventoryProxyFiltered inventoryProxyFilteredBlock = new BlockInventoryProxyFiltered();
+    public static final BlockTreeTap treetapBlock = new BlockTreeTap();
 
     public static void init()
     {
@@ -62,6 +64,7 @@ public class ModBlocks
         registerBlock(inventoryProxyBlock,Reference.inventoryProxyBlockName);
         registerBlock(inventoryProxySidedBlock,Reference.inventoryProxySidedBlockName);
         registerBlock(inventoryProxyFilteredBlock,Reference.inventoryProxyFilteredBlockName);
+        registerBlock(treetapBlock,Reference.treetapBlockName);
         registerBlock(compostSoilBlock,new ItemBlockCompostSoil(compostSoilBlock),Reference.compostSoilBlockName);
     }
 
@@ -80,6 +83,7 @@ public class ModBlocks
         ModItems.registerItemBlockModel(inventoryProxyBlock,inventoryProxyBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(inventoryProxySidedBlock,inventoryProxySidedBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(inventoryProxyFilteredBlock,inventoryProxyFilteredBlock.getModelResourceLocation());
+        ModItems.registerItemBlockModel(treetapBlock,treetapBlock.getModelResourceLocation());
         ModItems.registerItemBlockModel(phantomPlatformBlock,phantomPlatformBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilBlock), compostSoilBlock.getModelResourceLocation());
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilTilledBlock), compostSoilTilledBlock.getModelResourceLocation());

@@ -30,6 +30,7 @@ public class ComposterItemStackHandler implements IItemHandler, IItemHandlerModi
 	@Override
 	public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 		int simulate_content=composter.getContentValue(stack);
+		stack=stack.copy();
 		while(stack.stackSize!=0){
 			if(!(composter.content<ModConfig.composter_capacity&&composter.getContentValue(stack)>0)||(simulate&&simulate_content<ModConfig.composter_capacity))
 				return stack;

@@ -14,6 +14,7 @@ tile.convenientadditions:itemReceiver.name=Item Receiver
 tile.convenientadditions:inventoryProxy.name=Inventory Proxy
 tile.convenientadditions:inventoryProxySided.name=Sided Inventory Proxy
 tile.convenientadditions:inventoryProxyFiltered.name=Filtered Inventory Proxy
+tile.convenientadditions:treetap.name=Tree Tap
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter
@@ -47,6 +48,7 @@ item.convenientadditions:launchingArrow_0.name=Creeper Arrow
 item.convenientadditions:launchingArrow_1.name=Blast Arrow
 item.convenientadditions:launchingArrow_2.name=Slime Arrow
 item.convenientadditions:transmutationTome.name=Tome of Transmutation
+item.convenientadditions:sapBottle.name=Sap Bottle
 # Channel Modules
 item.convenientadditions:modulePlayer.name=Player Channel Module
 item.convenientadditions:moduleColor.name=Color Channel Module

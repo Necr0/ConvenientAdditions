@@ -57,6 +57,8 @@ public class ModRecipes {
 		initBaubles();
 		initInventoryProxies();
 		initChannelModules();
+		if(ModConfig.treetap)
+			initTreeTap();
 		initBlocks();
 	}
 	
@@ -300,5 +302,10 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModulePlayer),ModItems.itemObsidianSlate,Items.ENDER_EYE,new ItemStack(Items.SKULL,1,1)));
 		if(ModConfig.channelModules_color)
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModuleColor),ModItems.itemObsidianSlate,Items.ENDER_EYE,"dye","dye","dye"));
+	}
+
+	private static void initTreeTap(){
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemSapBottle),Items.GLASS_BOTTLE,new ItemStack(Items.DYE,1,2)));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetapBlock),"ingotIron","slimeball","stickWood"));
 	}
 }

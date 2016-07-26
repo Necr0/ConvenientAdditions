@@ -40,6 +40,9 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 	
 	public ItemStack insertStack(ItemStack stackIn){
 		ItemStack stack=stackHandler.insertItem(0, stackIn, false);
+		if(stackIn.stackSize==1&&(stack==null||stack.stackSize==0))
+			if(stackIn.getItem().hasContainerItem(stackIn))
+				return stackIn.getItem().getContainerItem(stackIn);
 		return stack;
 	}
 	

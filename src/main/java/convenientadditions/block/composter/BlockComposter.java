@@ -14,6 +14,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockComposter extends BlockContainer implements IModelResourceLocationProvider {
@@ -53,5 +54,10 @@ public class BlockComposter extends BlockContainer implements IModelResourceLoca
     public boolean isOpaqueCube(IBlockState state)
     {
         return false;
+    }
+    
+    @Override
+    public boolean isSideSolid(IBlockState base_state,IBlockAccess world,BlockPos pos,EnumFacing side){
+    	return side!=EnumFacing.UP;
     }
 }

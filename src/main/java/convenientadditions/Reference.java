@@ -21,6 +21,7 @@ public class Reference {
     public static final String inventoryProxyBlockName = "inventoryProxy";
     public static final String inventoryProxySidedBlockName = "inventoryProxySided";
     public static final String inventoryProxyFilteredBlockName = "inventoryProxyFiltered";
+    public static final String treetapBlockName = "treetap";
     //
     public static final String ingotTitaniumItemName = "ingotTitanium";
     public static final String nuggetTitaniumItemName = "nuggetTitanium";
@@ -38,6 +39,7 @@ public class Reference {
     public static final String blazingRockItemName = "blazingRock";
     public static final String enderSlateItemName = "enderSlate";
     public static final String launchingArrowItemName = "launchingArrow";
+    public static final String sapBottleItemName = "sapBottle";
     //
     public static final String transmutationTomeItemName = "transmutationTome";
     //channel modules

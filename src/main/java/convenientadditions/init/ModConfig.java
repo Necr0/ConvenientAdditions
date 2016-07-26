@@ -85,6 +85,7 @@ public class ModConfig {
 	public static boolean proximitySensor;
 	public static boolean powderKeg;
 	public static boolean setProvider;
+	public static boolean treetap;
 	
 	public static void init(){
 		Configuration cfg=new Configuration(new File("config/ConvAdd.cfg"));
@@ -96,8 +97,9 @@ public class ModConfig {
 		launchingArrows=cfg.getBoolean("launchingArrows", category, true, "");
 		playerInterface=cfg.getBoolean("playerInterface", category, true, "");
 		proximitySensor=cfg.getBoolean("proximitySensor", category, true, "");
-		setProvider=cfg.getBoolean("setProvider", category, true, "");
 		powderKeg=cfg.getBoolean("powderKeg", category, true, "");
+		setProvider=cfg.getBoolean("setProvider", category, true, "");
+		treetap=cfg.getBoolean("treetap", category, true, "");
 		
 		category="composter";
 		cfg.setCategoryRequiresMcRestart(category, true);

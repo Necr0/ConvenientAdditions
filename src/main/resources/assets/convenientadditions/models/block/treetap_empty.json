@@ -1,0 +1,85 @@
+{
+    "__createdwith": "opl's Model Creator",
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "convenientadditions:blocks/treetap/tap_base_side",
+        "bottle_side_face": "convenientadditions:blocks/treetap/bottle_side_face",
+        "bottle_side_strip_vertical": "convenientadditions:blocks/treetap/bottle_side_strip_vertical",
+        "bottle_side_strip_horizontal": "convenientadditions:blocks/treetap/bottle_side_strip_horizontal",
+        "bottle_bottom_top": "convenientadditions:blocks/treetap/bottle_bottom_top",
+        "bottle_plug_side": "convenientadditions:blocks/treetap/bottle_plug_side",
+        "bottle_plug_bottom": "convenientadditions:blocks/treetap/bottle_plug_bottom",
+        "bottle_plug_end": "convenientadditions:blocks/treetap/bottle_plug_end",
+        "bottle_plug_end_open": "convenientadditions:blocks/treetap/bottle_plug_end_open",
+        "bottle_bottom_top_strip": "convenientadditions:blocks/treetap/bottle_bottom_top_strip",
+        "tap_plug_side": "convenientadditions:blocks/treetap/tap_plug_side",
+        "tap_plug_end": "convenientadditions:blocks/treetap/tap_plug_end",
+        "tap_base_side": "convenientadditions:blocks/treetap/tap_base_side",
+        "tap_base_end": "convenientadditions:blocks/treetap/tap_base_end",
+        "sap": "convenientadditions:blocks/treetap/sap"
+    },
+    "elements": [
+        {
+            "from": [6,10,0],
+            "to": [10,14,3],
+            "faces": {
+                "up": {
+                    "uv": [0,0,3,4],
+                    "texture": "#tap_base_side",
+                    "rotation": 90
+                },
+                "down": {
+                    "uv": [0,0,3,4],
+                    "texture": "#tap_base_side",
+                    "rotation": 90
+                },
+                "west": {
+                    "uv": [0,0,3,4],
+                    "texture": "#tap_base_side"
+                },
+                "east": {
+                    "uv": [0,0,3,4],
+                    "texture": "#tap_base_side"
+                },
+                "north": {
+                    "uv": [0,0,4,4],
+                    "texture": "#tap_base_end"
+                },
+                "south": {
+                    "uv": [0,0,4,4],
+                    "texture": "#tap_base_end"
+                }
+            }
+        },
+        {
+            "from": [7,11,3],
+            "to": [9,13,5],
+            "faces": {
+                "up": {
+                    "uv": [0,0,2,2],
+                    "texture": "#tap_plug_side"
+                },
+                "down": {
+                    "uv": [0,0,2,2],
+                    "texture": "#tap_plug_side"
+                },
+                "west": {
+                    "uv": [0,0,2,2],
+                    "texture": "#tap_plug_side"
+                },
+                "east": {
+                    "uv": [0,0,2,2],
+                    "texture": "#tap_plug_side"
+                },
+                "north": {
+                    "uv": [0,0,2,2],
+                    "texture": "#tap_plug_end"
+                },
+                "south": {
+                    "uv": [0,0,2,2],
+                    "texture": "#tap_plug_end"
+                }
+            }
+        }
+    ]
+}
