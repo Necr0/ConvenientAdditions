@@ -1,5 +1,6 @@
 package convenientadditions.block;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
@@ -30,7 +31,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.actors.threadpool.Arrays;
 
 public class BlockTreeTap extends Block implements IModelResourceLocationProvider {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
