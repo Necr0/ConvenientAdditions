@@ -86,6 +86,7 @@ public class ModConfig {
 	public static boolean powderKeg;
 	public static boolean setProvider;
 	public static boolean treetap;
+	public static boolean sugarOreDictInit;
 	public static boolean antidote;
 	public static boolean bandage;
 	
@@ -102,6 +103,7 @@ public class ModConfig {
 		powderKeg=cfg.getBoolean("powderKeg", category, true, "");
 		setProvider=cfg.getBoolean("setProvider", category, true, "");
 		treetap=cfg.getBoolean("treetap", category, true, "");
+		sugarOreDictInit=cfg.getBoolean("sugarOreDictInit", category, true, "DON'T CHANGE THIS IF YOU DON'T KNOW WHAT IT IS!");
 		antidote=cfg.getBoolean("antidote", category, true, "requires sap from treetap");
 		bandage=cfg.getBoolean("antidote", category, true, "requires sap from treetap");
 		

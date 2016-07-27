@@ -24,22 +24,24 @@ public class ModOredict {
 		
 		OreDictionary.registerOre("chunkDirt", new ItemStack(ModItems.itemDirtChunk,1,0));
 
-		OreDictionary.registerOre("sugar", new ItemStack(Items.SUGAR));
 		OreDictionary.registerOre("sugar", new ItemStack(ModItems.itemSapBottle,1,1));
 		OreDictionary.registerOre("sugar", new ItemStack(ModItems.itemSapBottle,1,2));
 		
 		OreDictionary.registerOre("sap", new ItemStack(ModItems.itemSapBottle,1,1));
 		OreDictionary.registerOre("sap", new ItemStack(ModItems.itemSapBottle,1,2));
-		
-        GameRegistry.addRecipe(new ShapelessOreRecipe(Items.PUMPKIN_PIE, Blocks.PUMPKIN, "egg", "sugar"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(Items.FERMENTED_SPIDER_EYE, Blocks.BROWN_MUSHROOM, Items.SPIDER_EYE, "sugar"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(Items.CAKE,
-				"mmm",
-			    "ses",
-			    "www",
-			    'm', Items.MILK_BUCKET,
-			    'e', "egg",
-			    's', "sugar",
-			    'w', "cropWheat"));
+
+		if(ModConfig.sugarOreDictInit){
+			OreDictionary.registerOre("sugar", new ItemStack(Items.SUGAR));
+	        GameRegistry.addRecipe(new ShapelessOreRecipe(Items.PUMPKIN_PIE, Blocks.PUMPKIN, "egg", "sugar"));
+	        GameRegistry.addRecipe(new ShapelessOreRecipe(Items.FERMENTED_SPIDER_EYE, Blocks.BROWN_MUSHROOM, Items.SPIDER_EYE, "sugar"));
+	        GameRegistry.addRecipe(new ShapedOreRecipe(Items.CAKE,
+					"mmm",
+				    "ses",
+				    "www",
+				    'm', Items.MILK_BUCKET,
+				    'e', "egg",
+				    's', "sugar",
+				    'w', "cropWheat"));
+	    }
 	}
 }
