@@ -308,6 +308,6 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemSapBottle),Items.GLASS_BOTTLE,new ItemStack(Items.DYE,1,2)));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetapBlock),"ingotIron","slimeball","stickWood"));
 		if(ModConfig.antidote)
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetapBlock),new ItemStack(Items.POTIONITEM,1,0),"sap",Blocks.RED_MUSHROOM,Items.BEETROOT));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemAntidote),new ItemStack(Items.POTIONITEM,1,0),"sap",Blocks.RED_MUSHROOM,Items.BEETROOT));
 	}
 }
