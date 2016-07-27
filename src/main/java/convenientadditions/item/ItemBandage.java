@@ -68,6 +68,7 @@ public class ItemBandage extends Item implements IModelResourceLocationProvider 
     @Override
     public int getMaxItemUseDuration(ItemStack stack)
     {
+        return 100;
     }
 	
 	@Override
