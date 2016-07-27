@@ -57,8 +57,7 @@ public class ModRecipes {
 		initBaubles();
 		initInventoryProxies();
 		initChannelModules();
-		if(ModConfig.treetap)
-			initTreeTap();
+		initTreeTap();
 		initBlocks();
 	}
 	
@@ -197,7 +196,7 @@ public class ModRecipes {
 			    "t t",
 			    "ypy",
 			    't', titaniumIngot,
-			    'p', Items.GLASS_BOTTLE,
+			    'p', new ItemStack(Items.POTIONITEM,1,0),
 			    'y', Items.STRING));
 
 		if(ModConfig.baubles_ring_of_charging)
@@ -305,7 +304,10 @@ public class ModRecipes {
 	}
 
 	private static void initTreeTap(){
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemSapBottle),Items.GLASS_BOTTLE,new ItemStack(Items.DYE,1,2)));
+		if(ModConfig.treetap)
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemSapBottle),Items.GLASS_BOTTLE,new ItemStack(Items.DYE,1,2)));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetapBlock),"ingotIron","slimeball","stickWood"));
+		if(ModConfig.antidote)
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetapBlock),new ItemStack(Items.POTIONITEM,1,0),"sap",Blocks.RED_MUSHROOM,Items.BEETROOT));
 	}
 }

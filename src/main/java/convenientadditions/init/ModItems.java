@@ -3,6 +3,7 @@ package convenientadditions.init;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
+import convenientadditions.item.ItemAntidote;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemLaunchingArrow;
@@ -44,6 +45,7 @@ public class ModItems {
     public static final ItemLaunchingArrow itemLaunchingArrow = new ItemLaunchingArrow();
     public static final ItemTransmutationTome itemTransmutationTome = new ItemTransmutationTome();
     public static final ItemSapBottle itemSapBottle = new ItemSapBottle();
+    public static final ItemAntidote itemAntidote = new ItemAntidote();
     //channel modules
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
@@ -90,6 +92,7 @@ public class ModItems {
         registerItem(itemLaunchingArrow,Reference.launchingArrowItemName);
         registerItem(itemTransmutationTome,Reference.transmutationTomeItemName);
         registerItem(itemSapBottle,Reference.sapBottleItemName);
+        registerItem(itemAntidote,Reference.antidoteItemName);
         //channel modules
         registerItem(itemModulePlayer,Reference.modulePlayerItemName);
         registerItem(itemModuleColor,Reference.moduleColorItemName);
@@ -128,6 +131,7 @@ public class ModItems {
 		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
         registerModelLocation(itemTransmutationTome,itemTransmutationTome.getModelResourceLocation());
         registerVariants(itemSapBottle,itemSapBottle.getModelResourceLocations());
+        registerModelLocation(itemAntidote,itemAntidote.getModelResourceLocation());
         //channel modules
         registerModelLocation(itemModulePlayer,itemModulePlayer.getModelResourceLocation());
         registerModelLocation(itemModuleColor,itemModuleColor.getModelResourceLocation());
