@@ -1,7 +1,5 @@
 package convenientadditions.item;
 
-import com.sun.istack.internal.Nullable;
-
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
@@ -40,7 +38,6 @@ public class ItemAntidote extends Item implements IModelResourceLocationProvider
      * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
      * the Item before the action is complete.
      */
-    @Nullable
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
@@ -75,6 +72,7 @@ public class ItemAntidote extends Item implements IModelResourceLocationProvider
         return stack;
     }
     
+    @Override
     public int getMaxItemUseDuration(ItemStack stack)
     {
         return 32;

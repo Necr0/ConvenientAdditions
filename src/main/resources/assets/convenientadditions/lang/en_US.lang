@@ -49,7 +49,9 @@ item.convenientadditions:launchingArrow_1.name=Blast Arrow
 item.convenientadditions:launchingArrow_2.name=Slime Arrow
 item.convenientadditions:transmutationTome.name=Tome of Transmutation
 item.convenientadditions:sapBottle.name=Sap Bottle
+item.convenientadditions:antidote.name=Antidote
 # Channel Modules
+item.convenientadditions:obsidianSlate.name=Obsidian Slate
 item.convenientadditions:modulePlayer.name=Player Channel Module
 item.convenientadditions:moduleColor.name=Color Channel Module
 # Baubles
