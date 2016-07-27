@@ -281,7 +281,7 @@ public class ModRecipes {
 			    'e', Items.ENDER_EYE,
 			    'h', Blocks.HOPPER,
 			    'p', ModBlocks.inventoryProxyBlock,
-			    'o', ModItems.itemObsidianSlate));
+			    'o', ModItems.itemObsidianPlate));
 		
 		if(ModConfig.inventoryProxies_receiver)
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.itemReceiverBlock,1),
@@ -292,15 +292,15 @@ public class ModRecipes {
 			    'e', Items.ENDER_EYE,
 			    'h', Blocks.HOPPER,
 			    'p', ModBlocks.inventoryProxyBlock,
-			    'o', ModItems.itemObsidianSlate));
+			    'o', ModItems.itemObsidianPlate));
 	}
 	
 	private static void initChannelModules(){
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianSlate,4),Blocks.OBSIDIAN,Blocks.STONE));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianPlate,6),Blocks.OBSIDIAN,Blocks.OBSIDIAN,Blocks.STONE));
 		if(ModConfig.channelModules_player)
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModulePlayer),ModItems.itemObsidianSlate,Items.ENDER_EYE,new ItemStack(Items.SKULL,1,1)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModulePlayer),ModItems.itemObsidianPlate,Items.ENDER_EYE,new ItemStack(Items.SKULL,1,1)));
 		if(ModConfig.channelModules_color)
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModuleColor),ModItems.itemObsidianSlate,Items.ENDER_EYE,"dye","dye","dye"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModuleColor),ModItems.itemObsidianPlate,Items.ENDER_EYE,"dye","dye","dye"));
 	}
 
 	private static void initTreeTap(){

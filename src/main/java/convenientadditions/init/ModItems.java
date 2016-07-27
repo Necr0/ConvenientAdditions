@@ -55,7 +55,7 @@ public class ModItems {
     public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     public static final Item itemDirtChunk=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemObsidianSlate=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.obsidianSlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemObsidianPlate=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.obsidianPlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     //baubles
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
@@ -76,7 +76,7 @@ public class ModItems {
         registerItem(ingotTitanium,Reference.ingotTitaniumItemName);
         registerItem(nuggetTitanium,Reference.nuggetTitaniumItemName);
         registerItem(itemDirtChunk,Reference.dirtChunkItemName);
-        registerItem(itemObsidianSlate,Reference.obsidianSlateItemName);
+        registerItem(itemObsidianPlate,Reference.obsidianPlateItemName);
     	//ttools
         registerItem(itemTitaniumPickaxe,Reference.pickaxeTitaniumItemName);
         registerItem(itemTitaniumAxe,Reference.axeTitaniumItemName);
@@ -114,7 +114,7 @@ public class ModItems {
 		registerModelLocation(ingotTitanium,new ModelResourceLocation(ingotTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(nuggetTitanium,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(itemDirtChunk,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName().substring(5),"inventory"));
-		registerModelLocation(itemObsidianSlate,new ModelResourceLocation(itemObsidianSlate.getUnlocalizedName().substring(5),"inventory"));
+		registerModelLocation(itemObsidianPlate,new ModelResourceLocation(itemObsidianPlate.getUnlocalizedName().substring(5),"inventory"));
     	//ttools
 		registerModelLocation(itemTitaniumPickaxe,itemTitaniumPickaxe.getModelResourceLocation());
 		registerModelLocation(itemTitaniumAxe,itemTitaniumAxe.getModelResourceLocation());

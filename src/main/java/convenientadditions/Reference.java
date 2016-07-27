@@ -45,7 +45,7 @@ public class Reference {
     //
     public static final String transmutationTomeItemName = "transmutationTome";
     //channel modules
-    public static final String obsidianSlateItemName = "obsidianSlate";
+    public static final String obsidianPlateItemName = "obsidianPlate";
     public static final String modulePlayerItemName = "modulePlayer";
     public static final String moduleColorItemName = "moduleColor";
     //baubles
