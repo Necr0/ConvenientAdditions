@@ -87,6 +87,7 @@ public class ModConfig {
 	public static boolean setProvider;
 	public static boolean treetap;
 	public static boolean antidote;
+	public static boolean bandage;
 	
 	public static void init(){
 		Configuration cfg=new Configuration(new File("config/ConvAdd.cfg"));
@@ -102,6 +103,7 @@ public class ModConfig {
 		setProvider=cfg.getBoolean("setProvider", category, true, "");
 		treetap=cfg.getBoolean("treetap", category, true, "");
 		antidote=cfg.getBoolean("antidote", category, true, "requires sap from treetap");
+		bandage=cfg.getBoolean("antidote", category, true, "requires sap from treetap");
 		
 		category="composter";
 		cfg.setCategoryRequiresMcRestart(category, true);

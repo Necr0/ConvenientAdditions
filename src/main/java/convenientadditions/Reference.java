@@ -41,6 +41,7 @@ public class Reference {
     public static final String launchingArrowItemName = "launchingArrow";
     public static final String sapBottleItemName = "sapBottle";
     public static final String antidoteItemName = "antidote";
+    public static final String bandageItemName = "bandage";
     //
     public static final String transmutationTomeItemName = "transmutationTome";
     //channel modules

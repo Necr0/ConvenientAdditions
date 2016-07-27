@@ -4,6 +4,7 @@ import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.item.ItemAntidote;
+import convenientadditions.item.ItemBandage;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemLaunchingArrow;
@@ -46,6 +47,7 @@ public class ModItems {
     public static final ItemTransmutationTome itemTransmutationTome = new ItemTransmutationTome();
     public static final ItemSapBottle itemSapBottle = new ItemSapBottle();
     public static final ItemAntidote itemAntidote = new ItemAntidote();
+    public static final ItemBandage itemBandage = new ItemBandage();
     //channel modules
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
@@ -93,6 +95,7 @@ public class ModItems {
         registerItem(itemTransmutationTome,Reference.transmutationTomeItemName);
         registerItem(itemSapBottle,Reference.sapBottleItemName);
         registerItem(itemAntidote,Reference.antidoteItemName);
+        registerItem(itemBandage,Reference.bandageItemName);
         //channel modules
         registerItem(itemModulePlayer,Reference.modulePlayerItemName);
         registerItem(itemModuleColor,Reference.moduleColorItemName);
@@ -132,6 +135,7 @@ public class ModItems {
         registerModelLocation(itemTransmutationTome,itemTransmutationTome.getModelResourceLocation());
         registerVariants(itemSapBottle,itemSapBottle.getModelResourceLocations());
         registerModelLocation(itemAntidote,itemAntidote.getModelResourceLocation());
+        registerModelLocation(itemBandage,itemBandage.getModelResourceLocation());
         //channel modules
         registerModelLocation(itemModulePlayer,itemModulePlayer.getModelResourceLocation());
         registerModelLocation(itemModuleColor,itemModuleColor.getModelResourceLocation());

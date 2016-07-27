@@ -92,7 +92,7 @@ public class BlockTreeTap extends Block implements IModelResourceLocationProvide
     @Override
     public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
-        if (!worldIn.isRemote&&rand.nextInt(8)==0)
+        if (!worldIn.isRemote&&rand.nextInt(12)==0)
         {
             IBlockState log=worldIn.getBlockState(pos.add(state.getValue(FACING).getDirectionVec()));
             if(log.getBlock()==Blocks.LOG||log.getBlock()==Blocks.LOG2){

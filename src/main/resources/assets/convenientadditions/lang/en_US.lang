@@ -50,6 +50,7 @@ item.convenientadditions:launchingArrow_2.name=Slime Arrow
 item.convenientadditions:transmutationTome.name=Tome of Transmutation
 item.convenientadditions:sapBottle.name=Sap Bottle
 item.convenientadditions:antidote.name=Antidote
+item.convenientadditions:bandage.name=Bandage
 # Channel Modules
 item.convenientadditions:obsidianSlate.name=Obsidian Slate
 item.convenientadditions:modulePlayer.name=Player Channel Module

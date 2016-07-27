@@ -90,7 +90,7 @@ public class ModRecipes {
 			    "psp",
 			    'p', "plankWood",
 			    's', "slabWood",
-			    'g', Items.GUNPOWDER));
+			    'g', "gunpowder"));
 
 		if(ModConfig.seedBox_recipe)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.seedBoxBlock,
@@ -179,7 +179,7 @@ public class ModRecipes {
 			    "yty",
 			    't', titaniumIngot,
 			    's', ModItems.itemSunstone,
-			    'y', Items.STRING));
+			    'y', "string"));
 
 		if(ModConfig.baubles_ring_of_saturation)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ItemSaturationRing.FULLY_CHARGED.copy(),
@@ -188,7 +188,7 @@ public class ModRecipes {
 			    "yty",
 			    't', titaniumIngot,
 			    'g', Items.GOLDEN_CARROT,
-			    'y', Items.STRING));
+			    'y', "string"));
 
 		if(ModConfig.baubles_amulet_of_breath)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ItemBreathAmulet.FULLY_CHARGED.copy(),
@@ -197,7 +197,7 @@ public class ModRecipes {
 			    "ypy",
 			    't', titaniumIngot,
 			    'p', new ItemStack(Items.POTIONITEM,1,0),
-			    'y', Items.STRING));
+			    'y', "string"));
 
 		if(ModConfig.baubles_ring_of_charging)
 		GameRegistry.addRecipe(new ShapedOreRecipe(ItemChargingRing.FULLY_CHARGED.copy(),
@@ -207,7 +207,7 @@ public class ModRecipes {
 			    'r', "blockRedstone",
 			    'g', "dustGlowstone",
 			    's', ModItems.itemSunlightRing,
-			    'y', Items.STRING));
+			    'y', "string"));
 	}
 	
 	private static void initTitaniumTools(){
@@ -309,5 +309,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetapBlock),"ingotIron","slimeball","stickWood"));
 		if(ModConfig.antidote)
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemAntidote),new ItemStack(Items.POTIONITEM,1,0),"sap",Blocks.RED_MUSHROOM,Items.BEETROOT));
+		if(ModConfig.bandage)
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemBandage),"string","string","string","string","string","string","sap"));
 	}
 }
