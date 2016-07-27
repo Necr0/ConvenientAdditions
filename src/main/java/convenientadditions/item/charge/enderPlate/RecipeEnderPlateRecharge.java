@@ -1,4 +1,4 @@
-package convenientadditions.item.charge.enderSlate;
+package convenientadditions.item.charge.enderPlate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class RecipeEnderSlateRecharge implements IRecipe {
+public class RecipeEnderPlateRecharge implements IRecipe {
 
     public ItemStack getRecipeOutput()
     {
@@ -64,7 +64,7 @@ public class RecipeEnderSlateRecharge implements IRecipe {
         boolean eye=false;
         
         for(ItemStack i:list){
-        	if(i.getItem()==ModItems.itemEnderSlate&&!ModItems.itemEnderSlate.isActive(i)&&ModItems.itemEnderSlate.getCharge(i)<ModItems.itemEnderSlate.getChargeCapacity(i))
+        	if(i.getItem()==ModItems.itemEnderPlate&&!ModItems.itemEnderPlate.isActive(i)&&ModItems.itemEnderPlate.getCharge(i)<ModItems.itemEnderPlate.getChargeCapacity(i))
         		slate=true;
         	else if(i.getItem()==Items.ENDER_EYE)
         		eye=true;
@@ -81,10 +81,10 @@ public class RecipeEnderSlateRecharge implements IRecipe {
         List<ItemStack> list = getStacks(inv);
         
         for(ItemStack i:list){
-        	if(i.getItem()==ModItems.itemEnderSlate&&!ModItems.itemEnderSlate.isActive(i)&&ModItems.itemEnderSlate.getCharge(i)<ModItems.itemEnderSlate.getChargeCapacity(i)){
+        	if(i.getItem()==ModItems.itemEnderPlate&&!ModItems.itemEnderPlate.isActive(i)&&ModItems.itemEnderPlate.getCharge(i)<ModItems.itemEnderPlate.getChargeCapacity(i)){
         		ItemStack o=i.copy();
-        		ModItems.itemEnderSlate.chargeItem(o,
-        				(int)(ModItems.itemEnderSlate.getChargeCapacity(o)*ModConfig.enderSlate_enderEyeRechargePercentage));
+        		ModItems.itemEnderPlate.chargeItem(o,
+        				(int)(ModItems.itemEnderPlate.getChargeCapacity(o)*ModConfig.enderPlate_enderEyeRechargePercentage));
         		return o;
         	}
         }

@@ -6,8 +6,8 @@ import convenientadditions.item.charge.baubles.ItemBreathAmulet;
 import convenientadditions.item.charge.baubles.ItemChargingRing;
 import convenientadditions.item.charge.baubles.ItemSaturationRing;
 import convenientadditions.item.charge.baubles.ItemSunlightRing;
-import convenientadditions.item.charge.enderSlate.ItemEnderSlate;
-import convenientadditions.item.charge.enderSlate.RecipeEnderSlateRecharge;
+import convenientadditions.item.charge.enderPlate.ItemEnderPlate;
+import convenientadditions.item.charge.enderPlate.RecipeEnderPlateRecharge;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -157,18 +157,18 @@ public class ModRecipes {
 			    'l', Items.LAVA_BUCKET,
 			    'g', "dustGlowstone"));
 		
-		if(ModConfig.enderSlate_recipe)
-		GameRegistry.addRecipe(new ShapedOreRecipe(ItemEnderSlate.FULLY_CHARGED.copy(),
+		if(ModConfig.enderPlate_recipe)
+		GameRegistry.addRecipe(new ShapedOreRecipe(ItemEnderPlate.FULLY_CHARGED.copy(),
 				"rer",
 			    "bsb",
 			    "rer",
 			    'e', Items.ENDER_PEARL,
 			    'b', Items.DRAGON_BREATH,
 			    'r', "dustRedstone",
-			    's', "stone"));
+			    's', ModItems.itemObsidianPlate));
 		
-		if(ModConfig.enderSlate_enderEyeRechargeRecipe)
-			GameRegistry.addRecipe(new RecipeEnderSlateRecharge());
+		if(ModConfig.enderPlate_enderEyeRechargeRecipe)
+			GameRegistry.addRecipe(new RecipeEnderPlateRecharge());
 	}
 	
 	private static void initBaubles(){

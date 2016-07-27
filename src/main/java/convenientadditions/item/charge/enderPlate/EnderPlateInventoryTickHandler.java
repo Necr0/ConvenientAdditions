@@ -1,4 +1,4 @@
-package convenientadditions.item.charge.enderSlate;
+package convenientadditions.item.charge.enderPlate;
 
 import convenientadditions.init.ModConfig;
 import convenientadditions.init.ModItems;
@@ -12,11 +12,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class EnderSlateInventoryTickHandler {
+public class EnderPlateInventoryTickHandler {
 	private byte time=0;
 	
 	@SubscribeEvent
-    public void onPlayerSunlightChargeTick(TickEvent.PlayerTickEvent e)
+    public void onPlayerChargeTick(TickEvent.PlayerTickEvent e)
     {
 		time++;
 		if(time<20 || e.side!=Side.SERVER)
@@ -33,27 +33,27 @@ public class EnderSlateInventoryTickHandler {
 		if(crystals==0)
 			return;
 		
-		int charge=(int)(ModConfig.enderSlate_crystalChargeRate*Math.log(crystals+1)/Math.log(2));
+		int charge=(int)(ModConfig.enderPlate_crystalChargeRate*Math.log(crystals+1)/Math.log(2));
 		
 		for(ItemStack i:playerInv.mainInventory){
-			if(i!=null&&i.getItem()==ModItems.itemEnderSlate){
-				if(!ModItems.itemEnderSlate.isActive(i)){
-						ModItems.itemEnderSlate.chargeItem(i, charge);
+			if(i!=null&&i.getItem()==ModItems.itemEnderPlate){
+				if(!ModItems.itemEnderPlate.isActive(i)){
+						ModItems.itemEnderPlate.chargeItem(i, charge);
 				}
 			}
 		}
 		
 		for(ItemStack i:playerInv.offHandInventory){
-			if(i!=null&&i.getItem()==ModItems.itemEnderSlate){
-				if(!ModItems.itemEnderSlate.isActive(i)){
-						ModItems.itemEnderSlate.chargeItem(i, charge);
+			if(i!=null&&i.getItem()==ModItems.itemEnderPlate){
+				if(!ModItems.itemEnderPlate.isActive(i)){
+						ModItems.itemEnderPlate.chargeItem(i, charge);
 				}
 			}
 		}
     }
 
 	public static void init(){
-		if(ModConfig.enderSlate_crystalCharge)
-			MinecraftForge.EVENT_BUS.register(new EnderSlateInventoryTickHandler());
+		if(ModConfig.enderPlate_crystalCharge)
+			MinecraftForge.EVENT_BUS.register(new EnderPlateInventoryTickHandler());
 	}
 }

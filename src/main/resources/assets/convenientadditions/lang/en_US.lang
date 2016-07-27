@@ -43,7 +43,7 @@ item.convenientadditions:fertilizer.name=Fertilizer
 item.convenientadditions:dirtChunk.name=Dirt Chunk
 item.convenientadditions:sunstone.name=Sunstone
 item.convenientadditions:blazingRock.name=Blazing Rock
-item.convenientadditions:enderSlate.name=Ender Slate
+item.convenientadditions:enderPlate.name=Ender Plate
 item.convenientadditions:launchingArrow_0.name=Creeper Arrow
 item.convenientadditions:launchingArrow_1.name=Blast Arrow
 item.convenientadditions:launchingArrow_2.name=Slime Arrow
@@ -52,7 +52,7 @@ item.convenientadditions:sapBottle.name=Sap Bottle
 item.convenientadditions:antidote.name=Antidote
 item.convenientadditions:bandage.name=Bandage
 # Channel Modules
-item.convenientadditions:obsidianSlate.name=Obsidian Plate
+item.convenientadditions:obsidianPlate.name=Obsidian Plate
 item.convenientadditions:modulePlayer.name=Player Channel Module
 item.convenientadditions:moduleColor.name=Color Channel Module
 # Baubles

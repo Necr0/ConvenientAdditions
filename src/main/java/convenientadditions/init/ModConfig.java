@@ -59,11 +59,11 @@ public class ModConfig {
 	public static boolean titanium_recipes;
 
 	//#########ENDERSLATE#############
-	public static boolean enderSlate_recipe;
-	public static boolean enderSlate_crystalCharge;
-	public static int enderSlate_crystalChargeRate;
-	public static boolean enderSlate_enderEyeRechargeRecipe;
-	public static float enderSlate_enderEyeRechargePercentage;
+	public static boolean enderPlate_recipe;
+	public static boolean enderPlate_crystalCharge;
+	public static int enderPlate_crystalChargeRate;
+	public static boolean enderPlate_enderEyeRechargeRecipe;
+	public static float enderPlate_enderEyeRechargePercentage;
 
 	//#########TRANSMUTATION TOME#############
 	public static boolean transmutationTome_recipe;
@@ -143,13 +143,13 @@ public class ModConfig {
 		titanium_wrench=cfg.getBoolean("wrench", category, true, "");
 		titanium_recipes=cfg.getBoolean("recipes", category, true, "");
 		
-		category="enderSlate";
+		category="enderPlate";
 		cfg.setCategoryRequiresMcRestart(category, true);
-		enderSlate_recipe=cfg.getBoolean("recipe", category, true, "");
-		enderSlate_crystalCharge=cfg.getBoolean("crystalCharge", category, true, "");
-		enderSlate_crystalChargeRate=cfg.getInt("crystalChargeRate", category, 120, 0, Integer.MAX_VALUE, "in charges/second; rate=log_2(crystalCount+1)");
-		enderSlate_enderEyeRechargeRecipe=cfg.getBoolean("enderEyeRechargeRecipe", category, true, "");
-		enderSlate_enderEyeRechargePercentage=cfg.getFloat("enderEyeRechargePercentage", category, 0.45F, 0, 1, "");
+		enderPlate_recipe=cfg.getBoolean("recipe", category, true, "");
+		enderPlate_crystalCharge=cfg.getBoolean("crystalCharge", category, true, "");
+		enderPlate_crystalChargeRate=cfg.getInt("crystalChargeRate", category, 120, 0, Integer.MAX_VALUE, "in charges/second; rate=log_2(crystalCount+1)");
+		enderPlate_enderEyeRechargeRecipe=cfg.getBoolean("enderEyeRechargeRecipe", category, true, "");
+		enderPlate_enderEyeRechargePercentage=cfg.getFloat("enderEyeRechargePercentage", category, 0.45F, 0, 1, "");
 		
 		category="seedbox";
 		cfg.setCategoryRequiresMcRestart(category, true);

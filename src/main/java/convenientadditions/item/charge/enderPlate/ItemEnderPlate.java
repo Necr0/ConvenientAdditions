@@ -1,4 +1,4 @@
-package convenientadditions.item.charge.enderSlate;
+package convenientadditions.item.charge.enderPlate;
 
 import java.util.List;
 
@@ -26,12 +26,12 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemEnderSlate extends ItemChargeable implements IPlayerInventoryTick, IResourceLocationProvider{
+public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTick, IResourceLocationProvider{
 	public static ItemStack FULLY_CHARGED;
 
-	public ItemEnderSlate() {
+	public ItemEnderPlate() {
 		super(96000, true, true);//8
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.enderSlateItemName)
+		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.enderPlateItemName)
 		.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 		.setHasSubtypes(true)
 		.setMaxStackSize(1);

@@ -17,7 +17,7 @@ import convenientadditions.item.charge.baubles.ItemBreathAmulet;
 import convenientadditions.item.charge.baubles.ItemChargingRing;
 import convenientadditions.item.charge.baubles.ItemSaturationRing;
 import convenientadditions.item.charge.baubles.ItemSunlightRing;
-import convenientadditions.item.charge.enderSlate.ItemEnderSlate;
+import convenientadditions.item.charge.enderPlate.ItemEnderPlate;
 import convenientadditions.item.tools.ItemTitaniumAxe;
 import convenientadditions.item.tools.ItemTitaniumHoe;
 import convenientadditions.item.tools.ItemTitaniumPickaxe;
@@ -42,7 +42,7 @@ public class ModItems {
     public static final ItemCompost itemCompost = new ItemCompost();
     public static final ItemSunstone itemSunstone = new ItemSunstone();
     public static final ItemBlazingRock itemBlazingRock = new ItemBlazingRock();
-    public static final ItemEnderSlate itemEnderSlate = new ItemEnderSlate();
+    public static final ItemEnderPlate itemEnderPlate = new ItemEnderPlate();
     public static final ItemLaunchingArrow itemLaunchingArrow = new ItemLaunchingArrow();
     public static final ItemTransmutationTome itemTransmutationTome = new ItemTransmutationTome();
     public static final ItemSapBottle itemSapBottle = new ItemSapBottle();
@@ -90,7 +90,7 @@ public class ModItems {
         registerItem(itemCompost,Reference.compostItemName);
         registerItem(itemSunstone,Reference.sunstoneItemName);
         registerItem(itemBlazingRock,Reference.blazingRockItemName);
-        registerItem(itemEnderSlate,Reference.enderSlateItemName);
+        registerItem(itemEnderPlate,Reference.enderPlateItemName);
         registerItem(itemLaunchingArrow,Reference.launchingArrowItemName);
         registerItem(itemTransmutationTome,Reference.transmutationTomeItemName);
         registerItem(itemSapBottle,Reference.sapBottleItemName);
@@ -129,8 +129,8 @@ public class ModItems {
 		registerModelLocation(itemSunstone,1,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_active"));
 		registerIndependentModelLocation(itemCompost,itemCompost.getModelResourceLocation());
 		registerModelLocation(itemBlazingRock,itemBlazingRock.getModelResourceLocation());
-		registerModelLocation(itemEnderSlate,0,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_inactive","inventory"));
-		registerModelLocation(itemEnderSlate,1,new ModelResourceLocation(itemEnderSlate.getResourceLocation()+"_active","inventory"));
+		registerModelLocation(itemEnderPlate,0,new ModelResourceLocation(itemEnderPlate.getResourceLocation()+"_inactive","inventory"));
+		registerModelLocation(itemEnderPlate,1,new ModelResourceLocation(itemEnderPlate.getResourceLocation()+"_active","inventory"));
 		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
         registerModelLocation(itemTransmutationTome,itemTransmutationTome.getModelResourceLocation());
         registerVariants(itemSapBottle,itemSapBottle.getModelResourceLocations());

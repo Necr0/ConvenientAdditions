@@ -4,7 +4,7 @@ import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.item.charge.ChargeTickHandler;
-import convenientadditions.item.charge.enderSlate.EnderSlateInventoryTickHandler;
+import convenientadditions.item.charge.enderPlate.EnderPlateInventoryTickHandler;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,7 +17,7 @@ public class CommonProxy
 	
     public void registerEventHandlers()
     {
-    	EnderSlateInventoryTickHandler.init();
+    	EnderPlateInventoryTickHandler.init();
 		ChargeTickHandler.init();
     }
     
