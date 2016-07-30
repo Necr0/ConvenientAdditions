@@ -51,6 +51,7 @@ item.convenientadditions:transmutationTome.name=Tome of Transmutation
 item.convenientadditions:sapBottle.name=Sap Bottle
 item.convenientadditions:antidote.name=Antidote
 item.convenientadditions:bandage.name=Bandage
+item.convenientadditions:adventurersPickaxe.name=Adventurer's Pickaxe
 # Channel Modules
 item.convenientadditions:obsidianPlate.name=Obsidian Plate
 item.convenientadditions:modulePlayer.name=Player Channel Module
@@ -104,6 +105,15 @@ tooltip.convenientadditions:enderSlateActive=(right click to deactivate)
 tooltip.convenientadditions:enderSlateInactive=(right click to activate)
 tooltip.convenientadditions:enderSlateDrained=(stay near end crystal to charge)
 
+tooltip.convenientadditions:adventurersPickaxeLVL=Level : %l
+tooltip.convenientadditions:adventurersPickaxeXP=XP : %x/%X
+tooltip.convenientadditions:adventurersPickaxeMiningLevel=Mining Level : %l
+tooltip.convenientadditions:adventurersPickaxeMiningSpeed=Mining Speed : %s
+tooltip.convenientadditions:adventurersPickaxeSoftSpeed=Soft Mining Bonus : %s
+tooltip.convenientadditions:adventurersPickaxeDiggingSpeed=Digging Speed : %s
+tooltip.convenientadditions:adventurersPickaxeMiningVeins=Vein Size : %v
+tooltip.convenientadditions:adventurersPickaxeDurability=Durability : %c/%D
+
 tooltip.convenientadditions:modulePlayerPrefix=Player: %p
 tooltip.convenientadditions:modulePlayerNotSet=(right click to set player)
 tooltip.convenientadditions:moduleColorsPrefix=Colors: %c0, %c1, %c2
@@ -125,6 +135,8 @@ tooltip.convenientadditions:compostDegraded8=Notably degraded.
 tooltip.convenientadditions:compostDegraded9=Very degraded.
 tooltip.convenientadditions:compostDegraded10=Miserably degraded.
 
+tooltip.convenientadditions:shiftInfo=<Hold shift for more information>
+
 # GENERAL
 convenientadditions:highrs=High Redstone Signal
 convenientadditions:lowrs=Low Redstone Signal
@@ -141,6 +153,12 @@ convenientadditions:restrictNot=Don't Restrict %v.
 convenientadditions:damageValue=Damage Value
 convenientadditions:NBT=NBT
 convenientadditions:input=Input
+
+convenientadditions:miningLevel0=Wood
+convenientadditions:miningLevel1=Stone
+convenientadditions:miningLevel2=Iron
+convenientadditions:miningLevel3=Diamond
+convenientadditions:miningLevel4=Cobalt
 
 color.convenientadditions:black=Black
 color.convenientadditions:red=Red

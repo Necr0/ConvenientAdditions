@@ -3,6 +3,7 @@ package convenientadditions.init;
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
+import convenientadditions.item.ItemAdventurersPickaxe;
 import convenientadditions.item.ItemAntidote;
 import convenientadditions.item.ItemBandage;
 import convenientadditions.item.ItemCompost;
@@ -38,6 +39,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @GameRegistry.ObjectHolder(ConvenientAdditions.MODID)
 public class ModItems {
+	public static final ItemAdventurersPickaxe itemAdventurersPickaxe = new ItemAdventurersPickaxe();
+	//
     public static final ItemFertilizer itemFertilizer = new ItemFertilizer();
     public static final ItemCompost itemCompost = new ItemCompost();
     public static final ItemSunstone itemSunstone = new ItemSunstone();
@@ -105,47 +108,49 @@ public class ModItems {
         registerItem(itemBreathAmulet,Reference.breathAmuletItemName);
         registerItem(itemChargingRing,Reference.chargingRingItemName);
         
+        registerItem(itemAdventurersPickaxe,Reference.adventurersPickaxeItemName);
+        
         initModelLoader();
     }
     
     @SideOnly(Side.CLIENT)
     public static void initModelLoader()
     {
+		registerModelLocation(itemAdventurersPickaxe,itemAdventurersPickaxe.getModelResourceLocation());
+		//
 		registerModelLocation(ingotTitanium,new ModelResourceLocation(ingotTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(nuggetTitanium,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(itemDirtChunk,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName().substring(5),"inventory"));
 		registerModelLocation(itemObsidianPlate,new ModelResourceLocation(itemObsidianPlate.getUnlocalizedName().substring(5),"inventory"));
     	//ttools
-		registerModelLocation(itemTitaniumPickaxe,itemTitaniumPickaxe.getModelResourceLocation());
-		registerModelLocation(itemTitaniumAxe,itemTitaniumAxe.getModelResourceLocation());
-		registerModelLocation(itemTitaniumSpade,itemTitaniumSpade.getModelResourceLocation());
-		registerModelLocation(itemTitaniumHoe,itemTitaniumHoe.getModelResourceLocation());
-		registerModelLocation(itemTitaniumSword,itemTitaniumSword.getModelResourceLocation());
-		registerModelLocation(itemTitaniumWrench,itemTitaniumWrench.getModelResourceLocation());
-		registerModelLocation(itemIronWrench,((IModelResourceLocationProvider)itemIronWrench).getModelResourceLocation());
+		registerModelLocation(itemTitaniumPickaxe);
+		registerModelLocation(itemTitaniumAxe);
+		registerModelLocation(itemTitaniumSpade);
+		registerModelLocation(itemTitaniumHoe);
+		registerModelLocation(itemTitaniumSword);
+		registerModelLocation(itemTitaniumWrench);
+		registerModelLocation((IModelResourceLocationProvider)itemIronWrench);
         //misc
-		registerModelLocation(itemFertilizer,itemFertilizer.getModelResourceLocation());
+		registerModelLocation(itemFertilizer);
 		registerModelLocation(itemSunstone,0,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_inactive"));
 		registerModelLocation(itemSunstone,1,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_active"));
 		registerIndependentModelLocation(itemCompost,itemCompost.getModelResourceLocation());
-		registerModelLocation(itemBlazingRock,itemBlazingRock.getModelResourceLocation());
+		registerModelLocation(itemBlazingRock);
 		registerModelLocation(itemEnderPlate,0,new ModelResourceLocation(itemEnderPlate.getResourceLocation()+"_inactive","inventory"));
 		registerModelLocation(itemEnderPlate,1,new ModelResourceLocation(itemEnderPlate.getResourceLocation()+"_active","inventory"));
 		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
-        registerModelLocation(itemTransmutationTome,itemTransmutationTome.getModelResourceLocation());
+        registerModelLocation(itemTransmutationTome);
         registerVariants(itemSapBottle,itemSapBottle.getModelResourceLocations());
-        registerModelLocation(itemAntidote,itemAntidote.getModelResourceLocation());
-        registerModelLocation(itemBandage,itemBandage.getModelResourceLocation());
+        registerModelLocation(itemAntidote);
+        registerModelLocation(itemBandage);
         //channel modules
-        registerModelLocation(itemModulePlayer,itemModulePlayer.getModelResourceLocation());
-        registerModelLocation(itemModuleColor,itemModuleColor.getModelResourceLocation());
+        registerModelLocation(itemModulePlayer);
+        registerModelLocation(itemModuleColor);
         //baubles
-		registerModelLocation(itemSunlightRing,itemSunlightRing.getModelResourceLocation());
-		registerModelLocation(itemSaturationRing,itemSaturationRing.getModelResourceLocation());
-		registerModelLocation(itemBreathAmulet,itemBreathAmulet.getModelResourceLocation());
-		registerModelLocation(itemChargingRing,itemChargingRing.getModelResourceLocation());
-		//registerModelLocation(itemFloatingBelt,itemFloatingBelt.getModelResourceLocation());
-        //goo
+		registerModelLocation(itemSunlightRing);
+		registerModelLocation(itemSaturationRing);
+		registerModelLocation(itemBreathAmulet);
+		registerModelLocation(itemChargingRing);
     }
     
     public static void registerItem(Item item,String registryName)
@@ -158,6 +163,11 @@ public class ModItems {
     public static void registerModelLocation(Item item,ModelResourceLocation location)
     {
     	ModelLoader.setCustomModelResourceLocation(item, 0, location);
+    }
+    
+    public static void registerModelLocation(IModelResourceLocationProvider location)
+    {
+    	ModelLoader.setCustomModelResourceLocation((Item)location, 0, location.getModelResourceLocation());
     }
     
     public static void registerVariants(Item item,ModelResourceLocation[] locations)

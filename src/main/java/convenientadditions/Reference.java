@@ -42,6 +42,7 @@ public class Reference {
     public static final String sapBottleItemName = "sapBottle";
     public static final String antidoteItemName = "antidote";
     public static final String bandageItemName = "bandage";
+    public static final String adventurersPickaxeItemName = "adventurersPickaxe";
     //
     public static final String transmutationTomeItemName = "transmutationTome";
     //channel modules
@@ -54,18 +55,6 @@ public class Reference {
     public static final String breathAmuletItemName = "breathAmulet";
     public static final String chargingRingItemName = "chargingRing";
     public static final int chargingRingBaseCharge = 7;
-    
-    //goo
-    /*public static final String royalGooItemName = "royalGoo";
-    public static final String kittyGooItemName = "kittyGoo";
-    public static final String pinkGooItemName = "pinkGoo";
-    public static final String stoneGooItemName = "stoneGoo";
-    public static final String blazingGooItemName = "blazingGoo";
-    public static final String enderGooItemName = "enderGoo";
-    public static final String undeadGooItemName = "undeadGoo";
-    public static final String shroomGooItemName = "shroomGoo";
-    public static final String honeyGooItemName = "honeyGoo";
-    public static final String boomGooItemName = "boomGoo";*/
     
     //slimeEntities
     //public static final String goozillaEntityName = "goozilla";

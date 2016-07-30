@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.Reference;
 import convenientadditions.init.ModItems;
@@ -19,7 +20,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -95,7 +95,7 @@ public class BlockTreeTap extends Block implements IModelResourceLocationProvide
         if (!worldIn.isRemote&&rand.nextInt(12)==0)
         {
             IBlockState log=worldIn.getBlockState(pos.add(state.getValue(FACING).getDirectionVec()));
-            if(log.getBlock()==Blocks.LOG||log.getBlock()==Blocks.LOG2){
+            if(Helper.doesOreDictMatch(log, "logWood", false)){
             	if(state.getValue(BOTTLE_STATE)==EnumBottleState.bottle)
             		worldIn.setBlockState(pos, state.withProperty(BOTTLE_STATE, EnumBottleState.bottle_half));
             	else if(state.getValue(BOTTLE_STATE)==EnumBottleState.bottle_half)
