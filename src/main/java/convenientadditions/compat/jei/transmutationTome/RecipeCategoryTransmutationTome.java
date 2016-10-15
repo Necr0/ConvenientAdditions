@@ -1,8 +1,7 @@
 package convenientadditions.compat.jei.transmutationTome;
 
 import conveniencecore.util.Helper;
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.compat.jei.ConvAddJEIPlugin;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -10,17 +9,17 @@ import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 
 public class RecipeCategoryTransmutationTome extends BlankRecipeCategory<RecipeWrapperTransmutationTome> {
-    private static final ResourceLocation jeiTomeGuiTextures = new ResourceLocation(ConvenientAdditions.MODID+":textures/gui/jei/transmutationTome.png");
+    private static final ResourceLocation jeiTomeGuiTextures = new ResourceLocation(ModConstants.Mod.MODID+":textures/gui/jei/transmutationTome.png");
     private static final IDrawable background=ConvAddJEIPlugin.jeiHelper.getGuiHelper().createDrawable(jeiTomeGuiTextures, 0, 0, 115, 56);
     
 	@Override
 	public String getUid() {
-		return ConvenientAdditions.MODID+":"+Reference.jeiTransmutationTomeCategory;
+		return ModConstants.Mod.MODID+":"+ModConstants.Compat.JEI.transmutationTomeCategory;
 	}
 
 	@Override
 	public String getTitle() {
-	    return Helper.localize("jei."+ConvenientAdditions.MODID+":"+Reference.jeiTransmutationTomeCategory+".name");
+	    return Helper.localize("jei."+ModConstants.Mod.MODID+":"+ModConstants.Compat.JEI.transmutationTomeCategory+".name");
 	}
 
 	@Override

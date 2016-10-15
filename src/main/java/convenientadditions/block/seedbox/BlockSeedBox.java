@@ -1,9 +1,8 @@
 package convenientadditions.block.seedbox;
 
-import conveniencecore.block.BlockConfigurable;
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.api.block.BlockConfigurable;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -17,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSeedBox extends BlockConfigurable implements IModelResourceLocationProvider {
+public class BlockSeedBox extends BlockConfigurable {
     public static final PropertyBool OUTLET_TOP = PropertyBool.create("outlet_top");
     public static final PropertyBool OUTLET_BOTTOM = PropertyBool.create("outlet_bottom");
     public static final PropertyBool OUTLET_NORTH = PropertyBool.create("outlet_north");
@@ -27,7 +26,7 @@ public class BlockSeedBox extends BlockConfigurable implements IModelResourceLoc
 
 	public BlockSeedBox() {
 		super(Material.WOOD);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 		this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP,false).withProperty(OUTLET_BOTTOM,true).withProperty(OUTLET_NORTH,false).withProperty(OUTLET_EAST,false).withProperty(OUTLET_SOUTH,false).withProperty(OUTLET_WEST,false));
 	}

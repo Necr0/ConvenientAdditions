@@ -1,15 +1,15 @@
 package convenientadditions.init;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
-import convenientadditions.item.ItemAdventurersPickaxe;
+import convenientadditions.ModConstants;
 import convenientadditions.item.ItemAntidote;
 import convenientadditions.item.ItemBandage;
 import convenientadditions.item.ItemCompost;
 import convenientadditions.item.ItemFertilizer;
 import convenientadditions.item.ItemLaunchingArrow;
 import convenientadditions.item.ItemSapBottle;
+import convenientadditions.item.adventurersPickaxe.CustomModelMeshAdventurersPickaxe;
+import convenientadditions.item.adventurersPickaxe.ItemAdventurersPickaxe;
 import convenientadditions.item.channelModule.ItemPlayerChannelModule;
 import convenientadditions.item.channelModule.color.ItemColorChannelModule;
 import convenientadditions.item.charge.ItemBlazingRock;
@@ -19,12 +19,7 @@ import convenientadditions.item.charge.baubles.ItemChargingRing;
 import convenientadditions.item.charge.baubles.ItemSaturationRing;
 import convenientadditions.item.charge.baubles.ItemSunlightRing;
 import convenientadditions.item.charge.enderPlate.ItemEnderPlate;
-import convenientadditions.item.tools.ItemTitaniumAxe;
-import convenientadditions.item.tools.ItemTitaniumHoe;
-import convenientadditions.item.tools.ItemTitaniumPickaxe;
-import convenientadditions.item.tools.ItemTitaniumSpade;
-import convenientadditions.item.tools.ItemTitaniumSword;
-import convenientadditions.item.tools.ItemTitaniumWrench;
+import convenientadditions.item.tools.ItemIronWrench;
 import convenientadditions.item.transmutationTome.ItemTransmutationTome;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -37,7 +32,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@GameRegistry.ObjectHolder(ConvenientAdditions.MODID)
+@GameRegistry.ObjectHolder(ModConstants.Mod.MODID)
 public class ModItems {
 	public static final ItemAdventurersPickaxe itemAdventurersPickaxe = new ItemAdventurersPickaxe();
 	//
@@ -55,60 +50,44 @@ public class ModItems {
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
     //dummy
-    public static final Item ingotTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.ingotTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item nuggetTitanium=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.nuggetTitaniumItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemDirtChunk=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemObsidianPlate=new Item().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.obsidianPlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemDirtChunk=new Item().setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemObsidianPlate=new Item().setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.obsidianPlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     //baubles
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
     public static final ItemBreathAmulet itemBreathAmulet = new ItemBreathAmulet();
     public static final ItemChargingRing itemChargingRing = new ItemChargingRing();
     //ttools
-    public static final ItemTitaniumAxe itemTitaniumAxe=new ItemTitaniumAxe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumPickaxe itemTitaniumPickaxe=new ItemTitaniumPickaxe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumSpade itemTitaniumSpade=new ItemTitaniumSpade(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumHoe itemTitaniumHoe=new ItemTitaniumHoe(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumSword itemTitaniumSword=new ItemTitaniumSword(ConvenientAdditions.TOOLMATERIAL_TITANIUM);
-    public static final ItemTitaniumWrench itemTitaniumWrench=new ItemTitaniumWrench();
-    public static final Item itemIronWrench=new ItemTitaniumWrench().setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.ironWrenchItemName);
+    public static final ItemIronWrench itemIronWrench=new ItemIronWrench();
     
     public static void init()
     {
     	//dummy
-        registerItem(ingotTitanium,Reference.ingotTitaniumItemName);
-        registerItem(nuggetTitanium,Reference.nuggetTitaniumItemName);
-        registerItem(itemDirtChunk,Reference.dirtChunkItemName);
-        registerItem(itemObsidianPlate,Reference.obsidianPlateItemName);
-    	//ttools
-        registerItem(itemTitaniumPickaxe,Reference.pickaxeTitaniumItemName);
-        registerItem(itemTitaniumAxe,Reference.axeTitaniumItemName);
-        registerItem(itemTitaniumSpade,Reference.spadeTitaniumItemName);
-        registerItem(itemTitaniumHoe,Reference.hoeTitaniumItemName);
-        registerItem(itemTitaniumSword,Reference.swordTitaniumItemName);
-        registerItem(itemTitaniumWrench,Reference.titaniumWrenchItemName);
-        registerItem(itemIronWrench,Reference.ironWrenchItemName);
+        registerItem(itemDirtChunk,ModConstants.ItemNames.dirtChunkItemName);
+        registerItem(itemObsidianPlate,ModConstants.ItemNames.obsidianPlateItemName);
+    	//tools
+        registerItem(itemIronWrench,ModConstants.ItemNames.ironWrenchItemName);
         //misc
-        registerItem(itemFertilizer,Reference.fertilizerItemName);
-        registerItem(itemCompost,Reference.compostItemName);
-        registerItem(itemSunstone,Reference.sunstoneItemName);
-        registerItem(itemBlazingRock,Reference.blazingRockItemName);
-        registerItem(itemEnderPlate,Reference.enderPlateItemName);
-        registerItem(itemLaunchingArrow,Reference.launchingArrowItemName);
-        registerItem(itemTransmutationTome,Reference.transmutationTomeItemName);
-        registerItem(itemSapBottle,Reference.sapBottleItemName);
-        registerItem(itemAntidote,Reference.antidoteItemName);
-        registerItem(itemBandage,Reference.bandageItemName);
+        registerItem(itemFertilizer,ModConstants.ItemNames.fertilizerItemName);
+        registerItem(itemCompost,ModConstants.ItemNames.compostItemName);
+        registerItem(itemSunstone,ModConstants.ItemNames.sunstoneItemName);
+        registerItem(itemBlazingRock,ModConstants.ItemNames.blazingRockItemName);
+        registerItem(itemEnderPlate,ModConstants.ItemNames.enderPlateItemName);
+        registerItem(itemLaunchingArrow,ModConstants.ItemNames.launchingArrowItemName);
+        registerItem(itemTransmutationTome,ModConstants.ItemNames.transmutationTomeItemName);
+        registerItem(itemSapBottle,ModConstants.ItemNames.sapBottleItemName);
+        registerItem(itemAntidote,ModConstants.ItemNames.antidoteItemName);
+        registerItem(itemBandage,ModConstants.ItemNames.bandageItemName);
         //channel modules
-        registerItem(itemModulePlayer,Reference.modulePlayerItemName);
-        registerItem(itemModuleColor,Reference.moduleColorItemName);
+        registerItem(itemModulePlayer,ModConstants.ItemNames.modulePlayerItemName);
+        registerItem(itemModuleColor,ModConstants.ItemNames.moduleColorItemName);
         //baubles
-        registerItem(itemSunlightRing,Reference.sunlightRingItemName);
-        registerItem(itemSaturationRing,Reference.saturationRingItemName);
-        registerItem(itemBreathAmulet,Reference.breathAmuletItemName);
-        registerItem(itemChargingRing,Reference.chargingRingItemName);
+        registerItem(itemSunlightRing,ModConstants.ItemNames.sunlightRingItemName);
+        registerItem(itemSaturationRing,ModConstants.ItemNames.saturationRingItemName);
+        registerItem(itemBreathAmulet,ModConstants.ItemNames.breathAmuletItemName);
+        registerItem(itemChargingRing,ModConstants.ItemNames.chargingRingItemName);
         
-        registerItem(itemAdventurersPickaxe,Reference.adventurersPickaxeItemName);
+        registerItem(itemAdventurersPickaxe,ModConstants.ItemNames.adventurersPickaxeItemName);
         
         initModelLoader();
     }
@@ -116,28 +95,21 @@ public class ModItems {
     @SideOnly(Side.CLIENT)
     public static void initModelLoader()
     {
-		registerModelLocation(itemAdventurersPickaxe,itemAdventurersPickaxe.getModelResourceLocation());
+    	CustomModelMeshAdventurersPickaxe.initVariants();
+    	ModelLoader.setCustomMeshDefinition(itemAdventurersPickaxe, new CustomModelMeshAdventurersPickaxe());
 		//
-		registerModelLocation(ingotTitanium,new ModelResourceLocation(ingotTitanium.getUnlocalizedName().substring(5),"inventory"));
-		registerModelLocation(nuggetTitanium,new ModelResourceLocation(nuggetTitanium.getUnlocalizedName().substring(5),"inventory"));
-		registerModelLocation(itemDirtChunk,new ModelResourceLocation(itemDirtChunk.getUnlocalizedName().substring(5),"inventory"));
-		registerModelLocation(itemObsidianPlate,new ModelResourceLocation(itemObsidianPlate.getUnlocalizedName().substring(5),"inventory"));
-    	//ttools
-		registerModelLocation(itemTitaniumPickaxe);
-		registerModelLocation(itemTitaniumAxe);
-		registerModelLocation(itemTitaniumSpade);
-		registerModelLocation(itemTitaniumHoe);
-		registerModelLocation(itemTitaniumSword);
-		registerModelLocation(itemTitaniumWrench);
-		registerModelLocation((IModelResourceLocationProvider)itemIronWrench);
+		registerModelLocation(itemDirtChunk);
+		registerModelLocation(itemObsidianPlate);
+    	//tools
+		registerModelLocation(itemIronWrench);
         //misc
 		registerModelLocation(itemFertilizer);
-		registerModelLocation(itemSunstone,0,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_inactive"));
-		registerModelLocation(itemSunstone,1,new ModelResourceLocation(itemSunstone.getResourceLocation()+"_active"));
-		registerIndependentModelLocation(itemCompost,itemCompost.getModelResourceLocation());
+		registerModelLocation(itemSunstone,0,new ModelResourceLocation(itemSunstone.getRegistryName()+"_inactive"));
+		registerModelLocation(itemSunstone,1,new ModelResourceLocation(itemSunstone.getRegistryName()+"_active"));
+		registerIndependentModelLocation(itemCompost,new ModelResourceLocation(itemCompost.getRegistryName(),"inventory"));
 		registerModelLocation(itemBlazingRock);
-		registerModelLocation(itemEnderPlate,0,new ModelResourceLocation(itemEnderPlate.getResourceLocation()+"_inactive","inventory"));
-		registerModelLocation(itemEnderPlate,1,new ModelResourceLocation(itemEnderPlate.getResourceLocation()+"_active","inventory"));
+		registerModelLocation(itemEnderPlate,0,new ModelResourceLocation(itemEnderPlate.getRegistryName()+"_inactive","inventory"));
+		registerModelLocation(itemEnderPlate,1,new ModelResourceLocation(itemEnderPlate.getRegistryName()+"_active","inventory"));
 		registerVariants(itemLaunchingArrow,itemLaunchingArrow.getModelResourceLocations());
         registerModelLocation(itemTransmutationTome);
         registerVariants(itemSapBottle,itemSapBottle.getModelResourceLocations());
@@ -165,9 +137,9 @@ public class ModItems {
     	ModelLoader.setCustomModelResourceLocation(item, 0, location);
     }
     
-    public static void registerModelLocation(IModelResourceLocationProvider location)
+    public static void registerModelLocation(Item item)
     {
-    	ModelLoader.setCustomModelResourceLocation((Item)location, 0, location.getModelResourceLocation());
+    	ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(),"inventory"));
     }
     
     public static void registerVariants(Item item,ModelResourceLocation[] locations)
@@ -200,8 +172,8 @@ public class ModItems {
 		}
     }
     
-    public static void registerItemBlockModel(Block block,ModelResourceLocation location)
+    public static void registerItemBlockModel(Block block)
     {
-    	ModItems.registerModelLocation(ItemBlock.getItemFromBlock(block),location);
+    	ModItems.registerModelLocation(ItemBlock.getItemFromBlock(block));
     }
 }

@@ -1,8 +1,7 @@
 package convenientadditions.block.composter;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -17,11 +16,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockComposter extends BlockContainer implements IModelResourceLocationProvider {
+public class BlockComposter extends BlockContainer {
 	
 	public BlockComposter() {
 		super(Material.WOOD);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.composterBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.composterBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 		this.setSoundType(SoundType.WOOD);
 	}
 

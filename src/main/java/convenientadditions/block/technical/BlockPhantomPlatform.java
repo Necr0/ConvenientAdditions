@@ -1,12 +1,10 @@
-package convenientadditions.block;
+package convenientadditions.block.technical;
 
 import java.util.List;
 import java.util.Random;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -25,15 +23,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPhantomPlatform extends Block implements IModelResourceLocationProvider {
+public class BlockPhantomPlatform extends Block {
     public static final PropertyBool DESPAWN = PropertyBool.create("despawn");
 
 	public BlockPhantomPlatform() {
 		super(Material.FIRE);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.phantomPlatformBlockName);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.phantomPlatformBlockName);
         this.disableStats();
         this.translucent = true;
-        this.setDefaultState(this.blockState.getBaseState().withProperty(DESPAWN,false));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DESPAWN,true));
 	}
 
     @SideOnly(Side.CLIENT)
@@ -99,12 +97,12 @@ public class BlockPhantomPlatform extends Block implements IModelResourceLocatio
     //
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(DESPAWN, meta==1);
+        return this.getDefaultState().withProperty(DESPAWN, meta==0);
     }
     
     public int getMetaFromState(IBlockState state)
     {
-        return (state.getValue(DESPAWN)).booleanValue()?1:0;
+        return (state.getValue(DESPAWN)).booleanValue()?0:1;
     }
     
     @Override

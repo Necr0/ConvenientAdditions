@@ -5,7 +5,7 @@ import java.util.List;
 import conveniencecore.item.resourceprovider.IModelVariantResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow.EnumLaunchingArrowVariant;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResourceLocationProvider {
 	
     public ItemLaunchingArrow() {
-        this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
+        this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
     }
     
     @SideOnly(Side.CLIENT)
@@ -42,11 +42,11 @@ public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResour
 
     public String getItemStackDisplayName(ItemStack stack)
     {
-        return Helper.localize("item."+ConvenientAdditions.MODID+":"+Reference.launchingArrowItemName+"_"+stack.getItemDamage()+".name");
+        return Helper.localize("item."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.launchingArrowItemName+"_"+stack.getItemDamage()+".name");
     }
 
 	@Override
 	public ModelResourceLocation[] getModelResourceLocations() {
-		return new ModelResourceLocation[]{new ModelResourceLocation(this.getResourceLocation()+"Creeper", "inventory"),new ModelResourceLocation(this.getResourceLocation()+"Blast", "inventory"),new ModelResourceLocation(this.getResourceLocation()+"Slime", "inventory")};
+		return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName()+"Creeper", "inventory"),new ModelResourceLocation(this.getRegistryName()+"Blast", "inventory"),new ModelResourceLocation(this.getRegistryName()+"Slime", "inventory")};
 	}
 }

@@ -2,11 +2,10 @@ package convenientadditions.item.charge;
 
 import java.util.List;
 
-import conveniencecore.item.invtick.IPlayerInventoryTick;
-import conveniencecore.item.resourceprovider.IResourceLocationProvider;
+import conveniencecore.api.item.IPlayerInventoryTick;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -24,13 +23,13 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick,IResourceLocationProvider {
+public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSunstone(){
 		super(60000,true,true,20);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.sunstoneItemName)
+			.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName)
 			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
@@ -53,12 +52,12 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(Helper.localize("tooltip.convenientadditions:sunstone"));
+		list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName));
 		super.addInformation(stack,player,list,par4);
 		if(isActive(stack))
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip.convenientadditions:sunstoneActive"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName+"Active"));
 		else
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip.convenientadditions:sunstoneInactive"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName+"Inactive"));
 	}
 	
 	@Override

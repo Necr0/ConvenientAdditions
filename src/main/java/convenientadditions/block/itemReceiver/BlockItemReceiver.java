@@ -2,11 +2,10 @@ package convenientadditions.block.itemReceiver;
 
 import java.util.ArrayList;
 
-import conveniencecore.block.IDismantleable;
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.api.block.IDismantleable;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
-import convenientadditions.init.ModGuiHandler;
+import convenientadditions.ModConstants;
+import convenientadditions.ModGuiHandler;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,10 +19,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockItemReceiver extends BlockContainer implements IModelResourceLocationProvider, IDismantleable {
+public class BlockItemReceiver extends BlockContainer implements IDismantleable {
 	public BlockItemReceiver() {
 		super(Material.IRON);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.itemReceiverBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.itemReceiverBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 	}
 	
 	@Override

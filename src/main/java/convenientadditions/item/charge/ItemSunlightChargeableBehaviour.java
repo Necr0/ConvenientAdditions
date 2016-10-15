@@ -3,17 +3,16 @@ package convenientadditions.item.charge;
 import java.util.ArrayList;
 import java.util.List;
 
+import conveniencecore.api.item.IBehaviourProvider;
 import conveniencecore.entity.behaviour.BehaviourRegistry;
 import conveniencecore.entity.behaviour.EntitySpecialItem;
-import conveniencecore.item.IBehaviourProvider;
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.api.item.charge.ItemSunlightChargeable;
 import convenientadditions.entity.behaviour.BehaviourSunlightChargeable;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightChargeable implements IModelResourceLocationProvider, IBehaviourProvider {
+public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightChargeable implements IBehaviourProvider {
 	public ItemSunlightChargeableBehaviour(int capacity,
 			boolean showDurabilityBar, boolean showTooltips,
 			int sunlightChargeRate) {

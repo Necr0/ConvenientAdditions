@@ -1,6 +1,6 @@
 package convenientadditions.init;
 
-import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
@@ -15,7 +15,7 @@ public class ModSounds {
 	}
 	
 	public static SoundEvent register(int id,String loc){
-		ResourceLocation l=new ResourceLocation(ConvenientAdditions.MODID+":"+loc);
+		ResourceLocation l=new ResourceLocation(ModConstants.Mod.MODID+":"+loc);
 		SoundEvent e=new SoundEvent(l);
 		SoundEvent.REGISTRY.register(id, l, e);
 		return e;

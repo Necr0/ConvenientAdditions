@@ -1,7 +1,7 @@
 package convenientadditions.block.itemTransmitter;
 
 import conveniencecore.gui.CCGuiContainerBase;
-import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
@@ -9,7 +9,7 @@ public class GuiItemTransmitter extends CCGuiContainerBase {
 	
 	public TileEntityItemTransmitter te;
 	
-    private static final ResourceLocation itemTransmitterGuiTextures = new ResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/itemTransmitter.png");
+    private static final ResourceLocation itemTransmitterGuiTextures = new ResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/itemTransmitter.png");
     
 	public GuiItemTransmitter(ContainerItemTransmitter container) {
 		super(container);

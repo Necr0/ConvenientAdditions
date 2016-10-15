@@ -49,15 +49,6 @@ public class ModConfig {
 	public static boolean baubles_ring_of_sunlight;
 	public static boolean baubles_nether_charm;
 
-	//#########TITANIUM#############
-	public static boolean titanium_enabled;
-	public static boolean titanium_oreGen;
-	public static int titanium_oresPerCluster;
-	public static int titanium_clusterFrequency;
-	public static boolean titanium_tools;
-	public static boolean titanium_wrench;
-	public static boolean titanium_recipes;
-
 	//#########ENDERSLATE#############
 	public static boolean enderPlate_recipe;
 	public static boolean enderPlate_crystalCharge;
@@ -134,16 +125,6 @@ public class ModConfig {
 		baubles_ring_of_saturation=cfg.getBoolean("ring_of_saturation", category, true, "");
 		baubles_ring_of_sunlight=cfg.getBoolean("ring_of_sunlight", category, true, "");
 		baubles_nether_charm=cfg.getBoolean("nether_charm", category, true, "");
-		
-		category="titanium";
-		cfg.setCategoryRequiresMcRestart(category, true);
-		titanium_enabled=cfg.getBoolean("enabled", category, true, "Enables Titanium");
-		titanium_oreGen=cfg.getBoolean("oreGen", category, true, "");
-		titanium_oresPerCluster=cfg.getInt("oresPerCluster", category, 5, 1, Integer.MAX_VALUE, "");
-		titanium_clusterFrequency=cfg.getInt("clusterFrequency", category, 13, 1, Integer.MAX_VALUE, "");
-		titanium_tools=cfg.getBoolean("tools", category, true, "");
-		titanium_wrench=cfg.getBoolean("wrench", category, true, "");
-		titanium_recipes=cfg.getBoolean("recipes", category, true, "");
 		
 		category="enderPlate";
 		cfg.setCategoryRequiresMcRestart(category, true);

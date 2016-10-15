@@ -1,6 +1,8 @@
 package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
+import convenientadditions.ModGuiHandler;
 import convenientadditions.block.inventoryProxy.filtered.MessageInventoryProxyFiltered;
 import convenientadditions.block.setProvider.MessageSetProvider;
 import convenientadditions.item.channelModule.color.MessageColorChannelModule;
@@ -10,7 +12,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ModNetworking {
-	public static SimpleNetworkWrapper INSTANCE=NetworkRegistry.INSTANCE.newSimpleChannel(ConvenientAdditions.MODID);
+	public static SimpleNetworkWrapper INSTANCE=NetworkRegistry.INSTANCE.newSimpleChannel(ModConstants.Mod.MODID);
 	
 	public static void init(){
     	NetworkRegistry.INSTANCE.registerGuiHandler(ConvenientAdditions.INSTANCE, new ModGuiHandler());

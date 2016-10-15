@@ -5,11 +5,10 @@ import java.util.List;
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.api.item.IChargeable;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
-import convenientadditions.api.item.charge.IChargeable;
+import convenientadditions.ModConstants;
 import convenientadditions.api.util.EnchantmentUtil;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,13 +21,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements IBauble,IModelResourceLocationProvider {
+public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements IBauble {
 	public static ItemStack FULLY_CHARGED;
+    public static final int chargingRingBaseCharge = 7;
     
 	public ItemChargingRing(){
 		super(120000,true,true,5);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.chargingRingItemName)
+			.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.chargingRingItemName)
 			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);
@@ -47,7 +47,7 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 			return;
 		if(getCharge(itemstack)>0){
 			int lvl=EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.chargeEfficiency, itemstack);
-			int maxRemaining=(int)(Reference.chargingRingBaseCharge*EnchantmentUtil.enchantmentScaleFactor[lvl]);
+			int maxRemaining=(int)(chargingRingBaseCharge*EnchantmentUtil.enchantmentScaleFactor[lvl]);
 			int chargeRemaining=Math.min(getCharge(itemstack), maxRemaining/2);
 			IInventory invPlayer=((EntityPlayer)player).inventory;
 			IInventory invBaubles=BaublesApi.getBaubles((EntityPlayer)player);

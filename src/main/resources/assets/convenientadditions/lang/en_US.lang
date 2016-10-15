@@ -112,6 +112,7 @@ tooltip.convenientadditions:adventurersPickaxeMiningSpeed=Mining Speed : %s
 tooltip.convenientadditions:adventurersPickaxeSoftSpeed=Soft Mining Bonus : %s
 tooltip.convenientadditions:adventurersPickaxeDiggingSpeed=Digging Speed : %s
 tooltip.convenientadditions:adventurersPickaxeMiningVeins=Vein Size : %v
+tooltip.convenientadditions:adventurersPickaxeRepairMaterial=Repair Material : %m
 tooltip.convenientadditions:adventurersPickaxeDurability=Durability : %c/%D
 
 tooltip.convenientadditions:modulePlayerPrefix=Player: %p
@@ -160,6 +161,22 @@ convenientadditions:miningLevel2=Iron
 convenientadditions:miningLevel3=Diamond
 convenientadditions:miningLevel4=Cobalt
 
+convenientadditions:materialWood=Wood
+convenientadditions:materialStone=Stone
+convenientadditions:materialIron=Iron
+convenientadditions:materialGold=Gold
+convenientadditions:materialDiamond=Diamond
+convenientadditions:materialObsidian=Obsidian
+convenientadditions:materialCobalt=Cobalt
+
+convenientadditions:repairMaterialWood=Wooden Planks
+convenientadditions:repairMaterialStone=Cobblestone
+convenientadditions:repairMaterialIron=Iron Ingot
+convenientadditions:repairMaterialGold=Gold Ingot
+convenientadditions:repairMaterialDiamond=Diamond
+convenientadditions:repairMaterialObsidian=Obsidian
+convenientadditions:repairMaterialCobalt=Cobalt Ingot
+
 color.convenientadditions:black=Black
 color.convenientadditions:red=Red
 color.convenientadditions:green=Green
@@ -184,3 +201,9 @@ jei.convenientadditions:transmutationTome.name=Tome of Transmutation
 
 # Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.
+
+message.convenientadditions:adventurersPickaxeLevelUpMiningLevel=Mining Level increased to %m!
+message.convenientadditions:adventurersPickaxeLevelUpLuck=Luck increased to %m!
+message.convenientadditions:adventurersPickaxeLevelUpSilktouch=Silktouch mode unlocked!
+message.convenientadditions:adventurersPickaxeLevelUpMagnetic=Ore Magnet unlocked!
+message.convenientadditions:adventurersPickaxeLevelUpSoulbound=Soulbound unlocked!

@@ -1,8 +1,7 @@
 package convenientadditions.item;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,10 +17,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class ItemBandage extends Item implements IModelResourceLocationProvider {
+public class ItemBandage extends Item {
 	public ItemBandage(){
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.bandageItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(4);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.bandageItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(4);
 	}
 
 	@Override

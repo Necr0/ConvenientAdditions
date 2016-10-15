@@ -1,9 +1,9 @@
 package convenientadditions.block.inventoryProxy.filtered;
 
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
+import convenientadditions.ModGuiHandler;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
-import convenientadditions.init.ModGuiHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ public class BlockInventoryProxyFiltered extends BlockInventoryProxy {
 	
 	public BlockInventoryProxyFiltered() {
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.inventoryProxyFilteredBlockName);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.inventoryProxyFilteredBlockName);
 	}
 	
 	@Override

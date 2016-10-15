@@ -1,8 +1,7 @@
 package convenientadditions.block.inventoryProxy;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockPistonBase;
@@ -20,12 +19,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockInventoryProxy extends BlockContainer implements IModelResourceLocationProvider {
+public class BlockInventoryProxy extends BlockContainer {
 	public static final PropertyDirection FACING = BlockDirectional.FACING;
 	
 	public BlockInventoryProxy() {
 		super(Material.WOOD);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.inventoryProxyBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.inventoryProxyBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 		this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
 	}

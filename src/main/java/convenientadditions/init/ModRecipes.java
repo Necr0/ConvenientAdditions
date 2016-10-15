@@ -1,5 +1,6 @@
 package convenientadditions.init;
 
+import convenientadditions.item.adventurersPickaxe.RecipeAdventurersPickaxeRepair;
 import convenientadditions.item.charge.ItemBlazingRock;
 import convenientadditions.item.charge.ItemSunstone;
 import convenientadditions.item.charge.baubles.ItemBreathAmulet;
@@ -12,18 +13,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.RecipeSorter;
+import net.minecraftforge.oredict.RecipeSorter.Category;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class ModRecipes {
-	private static String titaniumIngot;
-	private static String titaniumNugget;
 	
 	public static void init(){
-		boolean titanium=ModConfig.titanium_enabled;
-		titaniumIngot=titanium?"ingotTitanium":"ingotIron";
-		titaniumNugget=titanium?"nuggetTitanium":"nuggetGold";
-		
 		if(ModConfig.ironWrench)
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemIronWrench,1),
 				"i i",
@@ -34,24 +31,6 @@ public class ModRecipes {
 		if(ModConfig.transmutationTome_recipe)
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemTransmutationTome,1), Items.BOOK, Items.BLAZE_ROD, Items.ENDER_EYE, Items.WHEAT_SEEDS));
 		
-		if(titanium){
-			GameRegistry.addSmelting(ModBlocks.oreTitaniumBlock, new ItemStack(ModItems.ingotTitanium), 1.0F);
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.nuggetTitanium,9), new ItemStack(ModItems.ingotTitanium)));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotTitanium,1),
-					"ttt",
-					"ttt",
-					"ttt",
-					't', new ItemStack(ModItems.nuggetTitanium)));
-			if(ModConfig.titanium_wrench)
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumWrench,1),
-					"n n",
-					" t ",
-					"n n",
-					't', "ingotTitanium", 'n', "nuggetTitanium"));
-			if(ModConfig.titanium_tools)
-				initTitaniumTools();
-		}
-		
 		initCompost();
 		initChargeItems();
 		initBaubles();
@@ -59,6 +38,7 @@ public class ModRecipes {
 		initChannelModules();
 		initTreeTap();
 		initBlocks();
+		initAdvPickaxe();
 	}
 	
 	private static void initCompost(){
@@ -99,14 +79,14 @@ public class ModRecipes {
 			    "tpt",
 			    'h', Blocks.HOPPER,
 			    'p', "plankWood",
-			    't', titaniumIngot));
+			    't', "ingotIron"));
 
 		if(ModConfig.playerInterface)
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
 				"tpt",
 			    "geg",
 			    "srs",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    'e', Items.ENDER_PEARL,
 			    'p', Blocks.STONE_PRESSURE_PLATE,
 			    'g', "ingotGold",
@@ -118,7 +98,7 @@ public class ModRecipes {
 				"sgs",
 			    "tet",
 			    "rgr",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    'e', Items.ENDER_EYE,
 			    'g', "ingotGold",
 			    's', "dustGlowstone",
@@ -129,7 +109,7 @@ public class ModRecipes {
 				"tht",
 			    "bcb",
 			    "tht",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    'h', Blocks.HOPPER,
 			    'c', Items.COMPARATOR,
 			    'b', Blocks.IRON_BARS));
@@ -141,7 +121,7 @@ public class ModRecipes {
 				"grg",
 			    "tdt",
 			    "grg",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    'd', "gemDiamond",
 			    'r', "dustRedstone",
 			    'g', "dustGlowstone"));
@@ -151,7 +131,7 @@ public class ModRecipes {
 				"tlt",
 			    "bdb",
 			    "tgt",
-			    't', titaniumNugget,
+			    't', "nuggetGold",
 			    'b', Items.BLAZE_POWDER,
 			    'd', "gemDiamond",
 			    'l', Items.LAVA_BUCKET,
@@ -167,8 +147,10 @@ public class ModRecipes {
 			    'r', "dustRedstone",
 			    's', ModItems.itemObsidianPlate));
 		
-		if(ModConfig.enderPlate_enderEyeRechargeRecipe)
+		if(ModConfig.enderPlate_enderEyeRechargeRecipe){
+			RecipeSorter.register("RecipeEnderPlateRecharge", RecipeEnderPlateRecharge.class, Category.SHAPELESS, "");
 			GameRegistry.addRecipe(new RecipeEnderPlateRecharge());
+		}
 	}
 	
 	private static void initBaubles(){
@@ -177,7 +159,7 @@ public class ModRecipes {
 				"ysy",
 			    "t t",
 			    "yty",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    's', ModItems.itemSunstone,
 			    'y', "string"));
 
@@ -186,7 +168,7 @@ public class ModRecipes {
 				"ygy",
 			    "t t",
 			    "yty",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    'g', Items.GOLDEN_CARROT,
 			    'y', "string"));
 
@@ -195,7 +177,7 @@ public class ModRecipes {
 				"yty",
 			    "t t",
 			    "ypy",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    'p', new ItemStack(Items.POTIONITEM,1,0),
 			    'y', "string"));
 
@@ -208,50 +190,6 @@ public class ModRecipes {
 			    'g', "dustGlowstone",
 			    's', ModItems.itemSunlightRing,
 			    'y', "string"));
-	}
-	
-	private static void initTitaniumTools(){
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumPickaxe),
-				"ttt",
-			    " s ",
-			    " s ",
-			    't', ModItems.ingotTitanium,
-			    's', "stickWood"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumAxe),
-				"tt",
-			    "ts",
-			    " s",
-			    't', ModItems.ingotTitanium,
-			    's', "stickWood"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSpade),
-				"t",
-			    "s",
-			    "s",
-			    't', ModItems.ingotTitanium,
-			    's', "stickWood"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumHoe),
-				"tt",
-			    " s",
-			    " s",
-			    't', ModItems.ingotTitanium,
-			    's', "stickWood"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSword),
-				"t",
-			    "t",
-			    "s",
-			    't', ModItems.ingotTitanium,
-			    's', "stickWood"));
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTitaniumSword),
-				"t",
-			    "t",
-			    "s",
-			    't', ModItems.ingotTitanium,
-			    's', "stickWood"));
 	}
 	
 	private static void initInventoryProxies(){
@@ -277,7 +215,7 @@ public class ModRecipes {
 				"tot",
 			    "epe",
 			    "tht",
-			    't', titaniumIngot,
+			    't', "ingotIron",
 			    'e', Items.ENDER_EYE,
 			    'h', Blocks.HOPPER,
 			    'p', ModBlocks.inventoryProxyBlock,
@@ -311,5 +249,14 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemAntidote),new ItemStack(Items.POTIONITEM,1,0),"sap",Blocks.RED_MUSHROOM,Items.BEETROOT));
 		if(ModConfig.bandage)
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemBandage),"string","string","string","string","string","string","sap"));
+	}
+
+	private static void initAdvPickaxe(){
+		RecipeSorter.register("RecipeAdventurersPickaxeRepair", RecipeAdventurersPickaxeRepair.class, Category.SHAPELESS, "");
+		GameRegistry.addRecipe(new RecipeAdventurersPickaxeRepair());
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemAdventurersPickaxe.subitems.get(0),Items.WOODEN_PICKAXE,Items.WHEAT_SEEDS));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemAdventurersPickaxe.subitems.get(1),Items.STONE_PICKAXE,Items.WHEAT_SEEDS));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemAdventurersPickaxe.subitems.get(2),Items.IRON_PICKAXE,Items.WHEAT_SEEDS));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemAdventurersPickaxe.subitems.get(3),Items.DIAMOND_PICKAXE,Items.WHEAT_SEEDS));
 	}
 }

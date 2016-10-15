@@ -1,6 +1,6 @@
 package convenientadditions.entity.behaviour;
 
-import conveniencecore.entity.behaviour.IEntitySpecialItemBehaviour;
+import conveniencecore.api.entity.IEntitySpecialItemBehaviour;
 import conveniencecore.util.Helper;
 import convenientadditions.api.item.charge.ISunlightChargeable;
 import net.minecraft.entity.item.EntityItem;

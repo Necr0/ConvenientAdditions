@@ -4,7 +4,7 @@ import conveniencecore.gui.CCGuiContainerBase;
 import conveniencecore.gui.widget.ImageCycleButton;
 import conveniencecore.gui.widget.ImageResourceLocation;
 import conveniencecore.util.Helper;
-import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
 import convenientadditions.init.ModImageResourceLocations;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.client.gui.GuiButton;
@@ -15,7 +15,7 @@ public class GuiInventoryProxyFiltered extends CCGuiContainerBase {
 	
 	public TileEntityInventoryProxyFiltered te;
 	
-    private static final ResourceLocation filteredProxyGuiTextures = new ResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/filteredProxy.png");
+    private static final ResourceLocation filteredProxyGuiTextures = new ResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/filteredProxy.png");
     
 	public GuiInventoryProxyFiltered(ContainerInventoryProxyFiltered container) {
 		super(container);
@@ -29,13 +29,13 @@ public class GuiInventoryProxyFiltered extends CCGuiContainerBase {
 		super.initGui();
 		
 		String[] dvButtonList=new String[]{
-				Helper.localize(ConvenientAdditions.MODID+":match","%v",Helper.localize(ConvenientAdditions.MODID+":damageValue")),
-				Helper.localize(ConvenientAdditions.MODID+":ignore","%v",Helper.localize(ConvenientAdditions.MODID+":damageValue"))
+				Helper.localize(ModConstants.Mod.MODID+":match","%v",Helper.localize(ModConstants.Mod.MODID+":damageValue")),
+				Helper.localize(ModConstants.Mod.MODID+":ignore","%v",Helper.localize(ModConstants.Mod.MODID+":damageValue"))
 		};
 
 		String[] nbtButtonList=new String[]{
-				Helper.localize(ConvenientAdditions.MODID+":match","%v",Helper.localize(ConvenientAdditions.MODID+":NBT")),
-				Helper.localize(ConvenientAdditions.MODID+":ignore","%v",Helper.localize(ConvenientAdditions.MODID+":NBT"))
+				Helper.localize(ModConstants.Mod.MODID+":match","%v",Helper.localize(ModConstants.Mod.MODID+":NBT")),
+				Helper.localize(ModConstants.Mod.MODID+":ignore","%v",Helper.localize(ModConstants.Mod.MODID+":NBT"))
 		};
 
 		int buttonIndex=0;

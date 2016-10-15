@@ -1,8 +1,7 @@
 package convenientadditions.block.playerInterface;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -15,12 +14,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockPlayerInterface extends BlockContainer implements IModelResourceLocationProvider {
+public class BlockPlayerInterface extends BlockContainer {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
 	public BlockPlayerInterface() {
 		super(Material.IRON);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE,false));
 	}
 

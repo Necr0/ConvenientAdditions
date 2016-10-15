@@ -4,10 +4,9 @@ import java.util.List;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,13 +16,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble, IModelResourceLocationProvider {
+public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemBreathAmulet(){
 		super(10000,true,true,5);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.breathAmuletItemName)
+			.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.breathAmuletItemName)
 			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);

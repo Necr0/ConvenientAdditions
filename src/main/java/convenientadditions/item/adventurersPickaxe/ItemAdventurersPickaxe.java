@@ -1,35 +1,39 @@
-package convenientadditions.item;
+package convenientadditions.item.adventurersPickaxe;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.lwjgl.input.Keyboard;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.api.item.IPlayerInventoryTick;
+import conveniencecore.api.item.ISoulbound;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
+import convenientadditions.init.ModItems;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemAdventurersPickaxe extends Item implements IModelResourceLocationProvider {
+public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerInventoryTick {
+	public List<ItemStack> subitems;
 	
 	public ItemAdventurersPickaxe(){
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1);
-		MinecraftForge.EVENT_BUS.register(this);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1).setHasSubtypes(true);
+		MinecraftForge.EVENT_BUS.register(new EventHandlerVeinMiner());
+		MinecraftForge.EVENT_BUS.register(new EventHandlerLuck());
+		initSubItems();
 	}
 
 	@Override
@@ -49,111 +53,20 @@ public class ItemAdventurersPickaxe extends Item implements IModelResourceLocati
 	
     public int getHarvestLevel(ItemStack stack, String toolClass)
     {
+    	if(isBroken(stack))
+    		return -1;
     	if(toolClass.equals("pickaxe"))
     		return (int)getToolProperty(stack,"mining_level");
     	else
     		return super.getHarvestLevel(stack, toolClass);
     }
-	
+
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack stack){return false;}
+    
     public boolean isItemTool(ItemStack stack)
     {
         return true;
-    }
-    
-    public int getXPRequiredForLvlUp(int current){
-    	return (int)(13*Math.pow(1.13,current));
-    }
-    
-    public void gainXP(ItemStack s,int amount){
-    	setToolProperty(s, "xp", (int)getToolProperty(s, "xp")+amount);
-    	int lvl=(int)getToolProperty(s, "lvl");
-    	int xp=(int)getToolProperty(s, "xp");
-    	if(xp>=getXPRequiredForLvlUp(lvl)){
-    		lvlUp(s);
-    	}
-    }
-    
-    public void lvlUp(ItemStack s){
-    	setToolProperty(s, "lvl", (int)getToolProperty(s, "lvl")+1);
-    	setToolProperty(s, "xp", 0);
-    	int lvl=(int)getToolProperty(s, "lvl");
-    	setToolProperty(s, "durability", (int)getToolProperty(s, "durability")+lvl*5);
-    	applyRandomUpgrade(s);
-    	if(lvl==5){
-        	setToolProperty(s, "mining_level", 1);
-        }else if(lvl==10){
-    		setToolProperty(s, "magnetic", true);
-        }else if(lvl==15){
-        	setToolProperty(s, "mining_level", 2);
-    	}else if(lvl==20){
-    		setToolProperty(s, "mining_luck", 1);
-    	}else if(lvl==25){
-    		setToolProperty(s, "mining_level", 3);
-    	}else if(lvl==30){
-    		setToolProperty(s, "soulbound", true);
-    	}else if(lvl==35){
-    		setToolProperty(s, "mining_luck", 2);
-    	}else if(lvl==40){
-    		setToolProperty(s, "mining_silktouch", true);
-    	}else if(lvl==45){
-    		setToolProperty(s, "mining_luck", 3);
-		}
-    }
-    
-    public void applyRandomUpgrade(ItemStack s){
-    	//fix
-    	List<Tuple<String,Integer>> u=new ArrayList<Tuple<String,Integer>>();
-    	int sum=0;
-    	for(String p:getUpgradableStats(s)){
-    		System.out.println(p);
-    		if(p.equals("mining_speed")){
-    			u.add(new Tuple<String, Integer>(p, (int)getToolProperty(s, "blocks_mined")+20));
-    			sum+=(int)getToolProperty(s, "stone_mined")+20;
-    		}else if(p.equals("digging_speed")){
-    			u.add(new Tuple<String, Integer>(p, (int)getToolProperty(s, "blocks_digged")+20));
-    			sum+=(int)getToolProperty(s, "blocks_digged")+20;
-    		}else if(p.equals("mining_veins")){
-    			u.add(new Tuple<String, Integer>(p, (int)getToolProperty(s, "ore_mined")+13));
-    			sum+=(int)getToolProperty(s, "ore_mined")+13;
-    		}else if(p.equals("mining_soft_speed")){
-    			u.add(new Tuple<String, Integer>(p, (int)getToolProperty(s, "stone_mined")+20));
-    			sum+=(int)getToolProperty(s, "stone_mined")+20;
-    		}
-    	}
-    	int num=new Random().nextInt(sum)+1;
-    	int track=0;
-    	for (Tuple<String,Integer> y : u) {
-    	    track += y.getSecond();
-    	    if (num <= track) {
-    	    	applyUpgrade(s,y.getFirst());
-    	        return;
-    	    }
-    	}
-    }
-
-    public void applyUpgrade(ItemStack s,String type){
-		if(type.equals("mining_speed")){
-	    	setToolProperty(s, type, (float)getToolProperty(s, type)+0.25f);
-		}else if(type.equals("digging_speed")){
-	    	setToolProperty(s, type, (float)getToolProperty(s, type)+0.5f);
-		}else if(type.equals("mining_veins")){
-	    	setToolProperty(s, type, (int)getToolProperty(s, type)+12);
-		}else if(type.equals("mining_soft_speed")){
-	    	setToolProperty(s, type, (float)getToolProperty(s, type)+0.5f);
-		}
-    }
-    
-    public List<String> getUpgradableStats(ItemStack s){
-    	ArrayList<String> ret=new ArrayList<String>();
-    	if((float)getToolProperty(s, "mining_speed")<15f)
-    		ret.add("mining_speed");
-    	if((float)getToolProperty(s, "digging_speed")<7.5f)
-    		ret.add("digging_speed");
-    	if((int)getToolProperty(s, "mining_veins")<48)
-    		ret.add("mining_veins");
-    	if((float)getToolProperty(s, "mining_soft_speed")<5.0f)
-    		ret.add("mining_soft_speed");
-    	return ret;
     }
     
     public void setToolProperty(ItemStack s,String p,Object o){
@@ -294,17 +207,18 @@ public class ItemAdventurersPickaxe extends Item implements IModelResourceLocati
 	{
 		boolean shift=Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)||Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
 		int lvl=(int)getToolProperty(stack, "lvl");
-		list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"MiningLevel","%l",Helper.localize(ConvenientAdditions.MODID+":miningLevel"+(int)getToolProperty(stack, "mining_level"))));
-		list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"LVL","%l",""+lvl));
-		list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"XP","%x",""+(int)getToolProperty(stack, "xp"),"%X",""+getXPRequiredForLvlUp(lvl)));
+		list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"MiningLevel","%l",Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[(int)getToolProperty(stack, "mining_level")])));
+		list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"LVL","%l",""+lvl));
+		list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"XP","%x",""+(int)getToolProperty(stack, "xp"),"%X",""+LevelUp.getXPRequiredForLvlUp(lvl)));
 		if(!shift){
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ConvenientAdditions.MODID+":shiftInfo"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":shiftInfo"));
 		}else{
-			list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"MiningSpeed","%s",""+(float)getToolProperty(stack, "mining_speed")));
-			list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"DiggingSpeed","%s",""+(float)getToolProperty(stack, "digging_speed")));
-			list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"MiningVeins","%v",""+(int)getToolProperty(stack, "mining_veins")));
-			list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"SoftSpeed","%s",""+(float)getToolProperty(stack, "mining_soft_speed")));
-			list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":"+Reference.adventurersPickaxeItemName+"Durability","%c",""+((int)getToolProperty(stack, "durability")-stack.getItemDamage()),"%D",""+(int)getToolProperty(stack, "durability")));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"MiningSpeed","%s",""+(float)getToolProperty(stack, "mining_speed")));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"DiggingSpeed","%s",""+(float)getToolProperty(stack, "digging_speed")));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"MiningVeins","%v",""+(int)getToolProperty(stack, "mining_veins")));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"SoftSpeed","%s",""+(float)getToolProperty(stack, "mining_soft_speed")));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"RepairMaterial","%m",Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningRepairMaterialNames[(int)getToolProperty(stack, "mining_level")])));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.adventurersPickaxeItemName+"Durability","%c",""+((int)getToolProperty(stack, "durability")-stack.getItemDamage()),"%D",""+(int)getToolProperty(stack, "durability")));
 		}
 	}
     
@@ -325,7 +239,7 @@ public class ItemAdventurersPickaxe extends Item implements IModelResourceLocati
 
     public void initSpecifications(NBTTagCompound c){
     	if(!c.hasKey("DURABILITY")){
-    		c.setInteger("DURABILITY", 130);
+    		c.setInteger("DURABILITY", 30);
     	}
     	if(!c.hasKey("MINING_LEVEL")){
     		c.setInteger("MINING_LEVEL", 0);
@@ -365,19 +279,23 @@ public class ItemAdventurersPickaxe extends Item implements IModelResourceLocati
     	if(worldIn.isRemote)
     		return false;
     	if(!isBroken(stack)){
+    		if(state.getBlock().getHarvestTool(state)==null)
+    			return false;
+    		else if(state.getBlock().getHarvestTool(state).equals("pickaxe"))
+	    		setToolProperty(stack, "blocks_mined", (int)getToolProperty(stack, "blocks_mined")+1);
+    		EntityPlayer e=(entityLiving!=null && entityLiving instanceof EntityPlayer)?((EntityPlayer)entityLiving):null;
 	    	stack.setItemDamage(stack.getItemDamage()+1);
-	    	setToolProperty(stack, "blocks_mined", (int)getToolProperty(stack, "blocks_mined")+1);
 	    	if(Helper.doesOreDictMatch(state, "stone", false)){
 	        	setToolProperty(stack, "stone_mined", (int)getToolProperty(stack, "stone_mined")+1);
-	    		gainXP(stack, 1);
+	        	LevelUp.gainXP(e, stack, 1);
 	    	}else if(Helper.doesOreDictMatch(state, "ore", true)){
 	        	setToolProperty(stack, "ore_mined", (int)getToolProperty(stack, "ore_mined")+1);
-	    		gainXP(stack,(state.getBlock().getHarvestLevel(state)+1)*5);
+	        	LevelUp.gainXP(e, stack,ModConstants.Items.AdvPick.miningLevelOreExperience[state.getBlock().getHarvestLevel(state)]);
 	    	}else if(state.getBlock().getHarvestTool(state).equals("shovel")){
 	        	setToolProperty(stack, "blocks_digged", (int)getToolProperty(stack, "blocks_digged")+1);
-	    		gainXP(stack, 1);
-	    	}else{
-	    		gainXP(stack, 1);
+	        	LevelUp.gainXP(e, stack, 1);
+	    	}else if(state.getBlock().getHarvestTool(state).equals("pickaxe")){
+	    		LevelUp.gainXP(e, stack, 1);
 	    	}
     	}
         return false;
@@ -393,16 +311,55 @@ public class ItemAdventurersPickaxe extends Item implements IModelResourceLocati
     {
         return ((double)item.getItemDamage()/(int)getToolProperty(item,"durability"));
     }
+	
+	public String getRepairMaterial(ItemStack s){
+		int lvl=(int)getToolProperty(s, "mining_level");
+		String[] ores=new String[]{"planksWood","cobblestone","ingotIron","gemDiamond"};
+		return ores[lvl];
+	}
 
-	@SubscribeEvent
-	public void onBlockBreak(HarvestDropsEvent e)
+	@Override
+	public boolean isSoulbound(ItemStack i, EntityPlayer p) {
+		return (boolean)ModItems.itemAdventurersPickaxe.getToolProperty(i, "soulbound");
+	}
+
+	@Override
+	public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player) {
+		if(player.getHeldItemMainhand()==item){
+			OreMagnet.attractOres(player);
+		}
+	}
+	
+	private void initSubItems(){
+		subitems=new ArrayList<ItemStack>();
+		ItemStack s=new ItemStack(this);
+		subitems.add(s);
+		s=s.copy();
+		setToolProperty(s, "lvl", 5);
+		setToolProperty(s, "mining_level", 1);
+		setToolProperty(s, "durability", (int)getToolProperty(s, "durability")+30);
+		setToolProperty(s, "mining_speed", ToolMaterial.STONE.getEfficiencyOnProperMaterial());
+		subitems.add(s);
+		s=s.copy();
+		setToolProperty(s, "lvl", 15);
+		setToolProperty(s, "mining_level", 2);
+		setToolProperty(s, "magnetic", true);
+		setToolProperty(s, "durability", (int)getToolProperty(s, "durability")+240);
+		setToolProperty(s, "mining_speed", ToolMaterial.IRON.getEfficiencyOnProperMaterial());
+		subitems.add(s);
+		s=new ItemStack(this);
+		setToolProperty(s, "lvl", 25);
+		setToolProperty(s, "mining_level", 3);
+		setToolProperty(s, "mining_luck", 1);
+		setToolProperty(s, "durability", (int)getToolProperty(s, "durability")+650);
+		setToolProperty(s, "mining_speed", ToolMaterial.DIAMOND.getEfficiencyOnProperMaterial());
+		subitems.add(s);
+	}
+	
+	@Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
     {
-    	if(e.getHarvester()!=null&&e.getHarvester().getHeldItemMainhand()!=null&&e.getHarvester().getHeldItemMainhand().getItem()==this){
-			if(Helper.doesOreDictMatch(e.getState(), "ore", true)&&(int)getToolProperty(e.getHarvester().getHeldItemMainhand(), "mining_veins")>0){
-	    		List<BlockPos> l=Helper.floodFill(e.getWorld(), e.getPos(), e.getState(), 2, (int)getToolProperty(e.getHarvester().getHeldItemMainhand(), "mining_veins"), true, true);
-	    		e.getWorld().setBlockState(e.getPos(), e.getWorld().getBlockState(l.get(l.size()-1)));
-	    		e.getWorld().setBlockToAir(l.get(l.size()-1));
-    		}
-    	}
+        l.addAll(subitems);
     }
 }

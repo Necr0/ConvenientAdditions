@@ -1,8 +1,7 @@
 package convenientadditions.block.proximitySensor;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -15,12 +14,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockProximitySensor extends BlockContainer implements IModelResourceLocationProvider {
+public class BlockProximitySensor extends BlockContainer {
     public static final PropertyInteger STRENGTH = PropertyInteger.create("strength",0,15);
 
 	public BlockProximitySensor() {
 		super(Material.IRON);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.proximitySensorBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.proximitySensorBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
         this.setDefaultState(this.blockState.getBaseState().withProperty(STRENGTH, Integer.valueOf(0)));
 	}
 	

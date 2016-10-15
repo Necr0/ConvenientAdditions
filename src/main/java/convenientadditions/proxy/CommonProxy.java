@@ -1,7 +1,7 @@
 package convenientadditions.proxy;
 
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.item.charge.ChargeTickHandler;
 import convenientadditions.item.charge.enderPlate.EnderPlateInventoryTickHandler;
@@ -27,7 +27,7 @@ public class CommonProxy
 
     public void registerEntities()
     {
-    	EntityRegistry.registerModEntity(EntityLaunchingArrow.class, Reference.launchingArrowEntityName, Reference.lauchingArrowEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
+    	EntityRegistry.registerModEntity(EntityLaunchingArrow.class, ModConstants.Entities.launchingArrowEntityName, ModConstants.Entities.lauchingArrowEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
     }
 
     public World getClientWorld()

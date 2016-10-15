@@ -2,7 +2,7 @@ package convenientadditions.block.setProvider;
 
 import java.util.HashMap;
 
-import conveniencecore.block.tileentity.IConfigurable;
+import conveniencecore.api.block.IConfigurable;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
 import conveniencecore.util.FillSetFilter;

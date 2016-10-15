@@ -2,9 +2,7 @@ package convenientadditions.block.compostSoil;
 
 import java.util.Random;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -27,11 +25,11 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCompostSoilTilled extends BlockCompostSoil implements IModelResourceLocationProvider {
+public class BlockCompostSoilTilled extends BlockCompostSoil {
 
 	public BlockCompostSoilTilled() {
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.compostSoilTilledBlockName).setCreativeTab(null);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoilTilledBlockName).setCreativeTab(null);
         this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
 	}
 	

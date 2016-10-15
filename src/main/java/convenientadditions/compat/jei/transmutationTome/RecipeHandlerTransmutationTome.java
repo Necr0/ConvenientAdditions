@@ -1,7 +1,6 @@
 package convenientadditions.compat.jei.transmutationTome;
 
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
 
@@ -14,12 +13,12 @@ public class RecipeHandlerTransmutationTome implements IRecipeHandler<RecipeWrap
 
 	@Override
 	public String getRecipeCategoryUid() {
-		return ConvenientAdditions.MODID+":"+Reference.jeiTransmutationTomeCategory;
+		return ModConstants.Mod.MODID+":"+ModConstants.Compat.JEI.transmutationTomeCategory;
 	}
 
 	@Override
 	public String getRecipeCategoryUid(RecipeWrapperTransmutationTome recipe) {
-		return ConvenientAdditions.MODID+":"+Reference.jeiTransmutationTomeCategory;
+		return ModConstants.Mod.MODID+":"+ModConstants.Compat.JEI.transmutationTomeCategory;
 	}
 
 	@Override

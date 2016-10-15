@@ -2,10 +2,10 @@ package convenientadditions.block.itemTransmitter;
 
 import java.util.ArrayList;
 
+import conveniencecore.api.IMatcher;
 import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.ItemChannelModule;
 import convenientadditions.api.provider.itemnetwork.IItemProvider;
-import convenientadditions.api.provider.itemnetwork.IMatcher;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.block.TileEntityCABase;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxy;

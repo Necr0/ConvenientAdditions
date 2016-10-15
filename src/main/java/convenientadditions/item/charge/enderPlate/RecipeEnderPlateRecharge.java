@@ -57,7 +57,7 @@ public class RecipeEnderPlateRecharge implements IRecipe {
     {
         List<ItemStack> list = getStacks(inv);
         
-        if(!(1<list.size()&&list.size()<3))
+        if(list.size()!=2)
         	return false;
         
         boolean slate=false;

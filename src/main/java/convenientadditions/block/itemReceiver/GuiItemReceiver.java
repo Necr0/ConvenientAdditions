@@ -1,7 +1,7 @@
 package convenientadditions.block.itemReceiver;
 
 import conveniencecore.gui.CCGuiContainerBase;
-import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
@@ -9,7 +9,7 @@ public class GuiItemReceiver extends CCGuiContainerBase {
 	
 	public TileEntityItemReceiver te;
 	
-    private static final ResourceLocation itemReceiverGuiTextures = new ResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/itemReceiver.png");
+    private static final ResourceLocation itemReceiverGuiTextures = new ResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/itemReceiver.png");
     
 	public GuiItemReceiver(ContainerItemReceiver container) {
 		super(container);

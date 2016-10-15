@@ -2,11 +2,11 @@ package convenientadditions.block.itemTransmitter;
 
 import java.util.ArrayList;
 
-import conveniencecore.block.IDismantleable;
+import conveniencecore.api.block.IDismantleable;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
+import convenientadditions.ModGuiHandler;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
-import convenientadditions.init.ModGuiHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class BlockItemTransmitter extends BlockInventoryProxy implements IDismantleable {
 	public BlockItemTransmitter() {
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.itemTransmitterBlockName);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.itemTransmitterBlockName);
 	}
 	
 	@Override

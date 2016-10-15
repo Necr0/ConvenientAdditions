@@ -2,22 +2,21 @@ package convenientadditions.item.charge;
 
 import java.util.List;
 
-import conveniencecore.item.fuelitem.IFuelItem;
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.api.item.IFuelItem;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements IFuelItem,IModelResourceLocationProvider {
+public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements IFuelItem {
 	public static ItemStack FULLY_CHARGED;
 
 	public ItemBlazingRock() {
 		super(48000, true, true, 12);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.blazingRockItemName)
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.blazingRockItemName)
 			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);

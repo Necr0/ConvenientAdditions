@@ -1,7 +1,7 @@
 package convenientadditions.api.item;
 
+import conveniencecore.api.IMatcher;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.api.provider.itemnetwork.IMatcher;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 

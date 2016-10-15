@@ -1,6 +1,6 @@
 package convenientadditions.item.channelModule.matchers;
 
-import convenientadditions.api.provider.itemnetwork.IMatcher;
+import conveniencecore.api.IMatcher;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class MatcherPlayer implements IMatcher {

@@ -5,10 +5,9 @@ import java.util.Random;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
@@ -24,13 +23,13 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements IBauble,IModelResourceLocationProvider {
+public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements IBauble {
 	public static ItemStack FULLY_CHARGED;
     
 	public ItemSunlightRing(){
 		super(60000,true,true,21);
 		this.setHasSubtypes(true)
-			.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.sunlightRingItemName)
+			.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunlightRingItemName)
 			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 			.setHasSubtypes(true)
 			.setMaxStackSize(1);

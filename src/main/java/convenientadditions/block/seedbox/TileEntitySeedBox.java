@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import conveniencecore.block.tileentity.IConfigurable;
+import conveniencecore.api.block.IConfigurable;
 import conveniencecore.util.MathHelper;
 import convenientadditions.block.TileEntityCABase;
 import net.minecraft.block.state.IBlockState;

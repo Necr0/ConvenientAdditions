@@ -2,9 +2,8 @@ package convenientadditions.block.compostSoil;
 
 import java.util.Random;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -29,12 +28,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public class BlockCompostSoil extends Block implements IModelResourceLocationProvider {
+public class BlockCompostSoil extends Block {
     public static final PropertyInteger DEGRADATION = PropertyInteger.create("degradation", 0, 10);
 
 	public BlockCompostSoil() {
 		super(Material.GROUND);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.compostSoilBlockName).setTickRandomly(true).setHardness(0.5F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoilBlockName).setTickRandomly(true).setHardness(0.5F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 		this.setSoundType(SoundType.GROUND);
         this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
 	}

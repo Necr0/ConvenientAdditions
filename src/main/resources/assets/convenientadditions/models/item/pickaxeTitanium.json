@@ -1,6 +1,0 @@
-{
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "convenientadditions:items/titanium/titanium_pickaxe"
-    }
-}

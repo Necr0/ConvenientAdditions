@@ -2,13 +2,12 @@ package convenientadditions.item.charge.enderPlate;
 
 import java.util.List;
 
-import conveniencecore.item.invtick.IPlayerInventoryTick;
-import conveniencecore.item.resourceprovider.IResourceLocationProvider;
+import conveniencecore.api.item.IPlayerInventoryTick;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.api.item.charge.ItemChargeable;
-import convenientadditions.block.BlockPhantomPlatform;
+import convenientadditions.block.technical.BlockPhantomPlatform;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -26,12 +25,12 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTick, IResourceLocationProvider{
+public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTick{
 	public static ItemStack FULLY_CHARGED;
 
 	public ItemEnderPlate() {
 		super(96000, true, true);//8
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.enderPlateItemName)
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.enderPlateItemName)
 		.setCreativeTab(ConvenientAdditions.CREATIVETAB)
 		.setHasSubtypes(true)
 		.setMaxStackSize(1);
@@ -100,12 +99,12 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
-		list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":enderSlate"));
+		list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":enderSlate"));
 		super.addInformation(stack, player, list, par4);
-		list.add(TextFormatting.DARK_GRAY+ItemChargeable.localize("tooltip."+ConvenientAdditions.MODID+":enderSlateDrained"));
+		list.add(TextFormatting.DARK_GRAY+ItemChargeable.localize("tooltip."+ModConstants.Mod.MODID+":enderSlateDrained"));
 		if(isActive(stack))
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ConvenientAdditions.MODID+":enderSlateActive"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":enderSlateActive"));
 		else
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ConvenientAdditions.MODID+":enderSlateInactive"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":enderSlateInactive"));
 	}
 }

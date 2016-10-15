@@ -1,6 +1,6 @@
 package convenientadditions.api.util;
 
-import convenientadditions.api.item.charge.IChargeable;
+import conveniencecore.api.item.IChargeable;
 import convenientadditions.api.item.charge.ISunlightChargeable;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;

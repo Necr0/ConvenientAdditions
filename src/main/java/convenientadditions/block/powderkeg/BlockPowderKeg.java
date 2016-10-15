@@ -1,9 +1,8 @@
 package convenientadditions.block.powderkeg;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -24,11 +23,11 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-public class BlockPowderKeg extends BlockContainer implements IModelResourceLocationProvider {
+public class BlockPowderKeg extends BlockContainer {
 	
 	public BlockPowderKeg() {
 		super(Material.WOOD);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 		this.setSoundType(SoundType.WOOD);
 	}
 
@@ -71,7 +70,7 @@ public class BlockPowderKeg extends BlockContainer implements IModelResourceLoca
         	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(pos);
     		if (!player.isSneaking()&&!world.isRemote){
 	        	if(current==null){
-    				player.addChatMessage(new TextComponentString(keg.getAmount()+Helper.localize("message."+ConvenientAdditions.MODID+":gunpowderStored")));
+    				player.addChatMessage(new TextComponentString(keg.getAmount()+Helper.localize("message."+ModConstants.Mod.MODID+":gunpowderStored")));
 	        	}else if(current.getItem()==Items.FLINT_AND_STEEL){
         			if(explode(world,pos)){
         				current.damageItem(1, player);

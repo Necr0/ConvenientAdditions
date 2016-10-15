@@ -1,9 +1,8 @@
 package convenientadditions.item.transmutationTome;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
-import convenientadditions.init.ModGuiHandler;
+import convenientadditions.ModConstants;
+import convenientadditions.ModGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,11 +11,11 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemTransmutationTome extends Item implements IModelResourceLocationProvider {
+public class ItemTransmutationTome extends Item {
 	
 	public ItemTransmutationTome() {
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.transmutationTomeItemName).setMaxStackSize(1).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.transmutationTomeItemName).setMaxStackSize(1).setCreativeTab(ConvenientAdditions.CREATIVETAB);
 	}
 
 

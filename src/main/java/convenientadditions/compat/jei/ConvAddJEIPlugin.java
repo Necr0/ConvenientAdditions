@@ -2,8 +2,7 @@ package convenientadditions.compat.jei;
 
 import javax.annotation.Nonnull;
 
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.api.registry.transmutationTome.TransmutationTomeRecipeHandler;
 import convenientadditions.compat.jei.transmutationTome.RecipeCategoryTransmutationTome;
 import convenientadditions.compat.jei.transmutationTome.RecipeGeneratorTransmutationTome;
@@ -28,7 +27,7 @@ public class ConvAddJEIPlugin extends BlankModPlugin {
 		registry.addRecipeHandlers(new RecipeHandlerTransmutationTome());
 		registry.addRecipes(RecipeGeneratorTransmutationTome.getRecipes(TransmutationTomeRecipeHandler.INSTANCE));
 		
-		registry.addRecipeCategoryCraftingItem(new ItemStack(ModItems.itemTransmutationTome), ConvenientAdditions.MODID+":"+Reference.jeiTransmutationTomeCategory);
+		registry.addRecipeCategoryCraftingItem(new ItemStack(ModItems.itemTransmutationTome), ModConstants.Mod.MODID+":"+ModConstants.Compat.JEI.transmutationTomeCategory);
 		
 		jeiHelper.getItemBlacklist().addItemToBlacklist(new ItemStack(ModBlocks.tempLightBlock));
 	}

@@ -6,12 +6,12 @@ import java.util.Iterator;
 import conveniencecore.gui.CCGuiContainerBase;
 import conveniencecore.gui.widget.ImageResourceLocation;
 import conveniencecore.util.Helper;
-import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
 import convenientadditions.init.ModSounds;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 
 public class GuiTransmutationTome extends CCGuiContainerBase {
 	
@@ -21,14 +21,14 @@ public class GuiTransmutationTome extends CCGuiContainerBase {
 	public ContainerTransmutationTome tcontainer;
 	public ArrayList<Particle> particles;
 	
-    private static final ResourceLocation tomeGuiTextures = new ResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/transmutationTome.png");
+    private static final ResourceLocation tomeGuiTextures = new ResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/transmutationTome.png");
     private static final ImageResourceLocation[] particleIRLs = new ImageResourceLocation[]{
-    		new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/transmutationTome.png", 190, 70, 2, 2),
-    		new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/transmutationTome.png", 192, 70, 2, 2),
-    		new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/transmutationTome.png", 190, 72, 1, 1),
-    		new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/transmutationTome.png", 191, 72, 1, 1),
-    		new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/transmutationTome.png", 192, 72, 1, 1),
-    		new ImageResourceLocation(ConvenientAdditions.MODID+":textures/gui/container/transmutationTome.png", 193, 72, 1, 1)
+    		new ImageResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/transmutationTome.png", 190, 70, 2, 2),
+    		new ImageResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/transmutationTome.png", 192, 70, 2, 2),
+    		new ImageResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/transmutationTome.png", 190, 72, 1, 1),
+    		new ImageResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/transmutationTome.png", 191, 72, 1, 1),
+    		new ImageResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/transmutationTome.png", 192, 72, 1, 1),
+    		new ImageResourceLocation(ModConstants.Mod.MODID+":textures/gui/container/transmutationTome.png", 193, 72, 1, 1)
     };
     
 	public GuiTransmutationTome(ContainerTransmutationTome container) {
@@ -107,6 +107,6 @@ public class GuiTransmutationTome extends CCGuiContainerBase {
 	
 	public void onOperationFinished(){
 		particles.clear();
-		Helper.getClientPlayer().playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.player.levelup")), .75F, 1F);
+		Helper.getClientPlayer().playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, .75F, 1F);
 	}
 }

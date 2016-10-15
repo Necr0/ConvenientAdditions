@@ -1,7 +1,7 @@
 package convenientadditions.item.transmutationTome;
 
+import conveniencecore.api.container.IContainerTickable;
 import conveniencecore.gui.container.CCContainerBase;
-import conveniencecore.gui.container.IContainerTickable;
 import conveniencecore.item.itemhandler.ItemStackHandlerOutputOnly;
 import convenientadditions.api.registry.transmutationTome.TransmutationTomeRecipeHandler;
 import convenientadditions.init.ModItems;

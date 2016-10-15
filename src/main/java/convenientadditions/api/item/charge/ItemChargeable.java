@@ -3,6 +3,7 @@ package convenientadditions.api.item.charge;
 import java.util.List;
 import java.util.Random;
 
+import conveniencecore.api.item.IChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.enchantment.EnchantmentHelper;

@@ -1,5 +1,6 @@
 package convenientadditions.api.item.charge;
 
+import conveniencecore.api.item.IChargeable;
 import net.minecraft.item.ItemStack;
 
 public interface ISunlightChargeable extends IChargeable {

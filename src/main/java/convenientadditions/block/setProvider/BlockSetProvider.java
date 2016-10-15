@@ -2,12 +2,11 @@ package convenientadditions.block.setProvider;
 
 import java.util.ArrayList;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
+import convenientadditions.ModGuiHandler;
 import convenientadditions.block.BlockMachineConfigurable;
 import convenientadditions.block.setProvider.TileEntitySetProvider.EnumOutletMode;
-import convenientadditions.init.ModGuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -25,7 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSetProvider extends BlockMachineConfigurable implements IModelResourceLocationProvider {
+public class BlockSetProvider extends BlockMachineConfigurable {
 
 	public static final PropertyEnum<EnumOutletMode> OUTLET_TOP = PropertyEnum.<EnumOutletMode>create("outlet_top", EnumOutletMode.class);
 	public static final PropertyEnum<EnumOutletMode> OUTLET_BOTTOM = PropertyEnum.<EnumOutletMode>create("outlet_bottom", EnumOutletMode.class);
@@ -36,7 +35,7 @@ public class BlockSetProvider extends BlockMachineConfigurable implements IModel
 	
 	public BlockSetProvider() {
 		super(Material.IRON);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.setProviderBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.setProviderBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP,EnumOutletMode.disabled).withProperty(OUTLET_BOTTOM,EnumOutletMode.disabled).withProperty(OUTLET_NORTH,EnumOutletMode.disabled).withProperty(OUTLET_EAST,EnumOutletMode.disabled).withProperty(OUTLET_SOUTH,EnumOutletMode.disabled).withProperty(OUTLET_WEST,EnumOutletMode.disabled));
 	}
 	

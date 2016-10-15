@@ -2,13 +2,12 @@ package convenientadditions.item.channelModule.color;
 
 import java.util.List;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.api.IMatcher;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
+import convenientadditions.ModGuiHandler;
 import convenientadditions.api.item.ItemChannelModule;
-import convenientadditions.api.provider.itemnetwork.IMatcher;
-import convenientadditions.init.ModGuiHandler;
 import convenientadditions.item.channelModule.matchers.MatcherEnumDyeColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,13 +22,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemColorChannelModule extends ItemChannelModule implements IModelResourceLocationProvider {
+public class ItemColorChannelModule extends ItemChannelModule {
 	
 	public static ItemStack DEFAULT_STACK;
 	
 	public ItemColorChannelModule() {
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.moduleColorItemName);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.moduleColorItemName);
 		ItemStack tmp_stack=new ItemStack(this);
 		NBTTagCompound tmp_nbt=new NBTTagCompound();
 		tmp_nbt.setInteger("MATCHER_DYE_0", 15);
@@ -53,10 +52,10 @@ public class ItemColorChannelModule extends ItemChannelModule implements IModelR
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
 		if(hasMatcher(stack)){
-			list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":moduleColorsPrefix",
-					"%c0",Helper.localize("color."+ConvenientAdditions.MODID+":"+getDyeColors(stack)[0].getUnlocalizedName()),
-					"%c1",Helper.localize("color."+ConvenientAdditions.MODID+":"+getDyeColors(stack)[1].getUnlocalizedName()),
-					"%c2",Helper.localize("color."+ConvenientAdditions.MODID+":"+getDyeColors(stack)[2].getUnlocalizedName())));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":moduleColorsPrefix",
+					"%c0",Helper.localize("color."+ModConstants.Mod.MODID+":"+getDyeColors(stack)[0].getUnlocalizedName()),
+					"%c1",Helper.localize("color."+ModConstants.Mod.MODID+":"+getDyeColors(stack)[1].getUnlocalizedName()),
+					"%c2",Helper.localize("color."+ModConstants.Mod.MODID+":"+getDyeColors(stack)[2].getUnlocalizedName())));
 		}
 		super.addInformation(stack,player,list,par4);
 	}

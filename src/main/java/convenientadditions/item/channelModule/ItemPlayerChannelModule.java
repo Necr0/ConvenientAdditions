@@ -2,12 +2,10 @@ package convenientadditions.item.channelModule;
 
 import java.util.List;
 
-import conveniencecore.item.resourceprovider.IModelResourceLocationProvider;
+import conveniencecore.api.IMatcher;
 import conveniencecore.util.Helper;
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import convenientadditions.api.item.ItemChannelModule;
-import convenientadditions.api.provider.itemnetwork.IMatcher;
 import convenientadditions.item.channelModule.matchers.MatcherPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,10 +17,10 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class ItemPlayerChannelModule extends ItemChannelModule implements IModelResourceLocationProvider {
+public class ItemPlayerChannelModule extends ItemChannelModule {
 	public ItemPlayerChannelModule() {
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.modulePlayerItemName);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.modulePlayerItemName);
 	}
 
 	@Override
@@ -42,7 +40,7 @@ public class ItemPlayerChannelModule extends ItemChannelModule implements IModel
 			if(!item.hasTagCompound())
 				item.setTagCompound(new NBTTagCompound());
 			if(!item.getTagCompound().hasKey("MATCHER_PLAYER_ID")){
-				item.getTagCompound().setString("MATCHER_PLAYER_ID",player.getName());
+				item.getTagCompound().setString("MATCHER_PLAYER_ID",player.getUniqueID().toString());
 				player.addChatMessage(new TextComponentString("Successfully set player!"));
 				new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 			}
@@ -54,9 +52,9 @@ public class ItemPlayerChannelModule extends ItemChannelModule implements IModel
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
 	{
 		if(hasMatcher(stack))
-			list.add(Helper.localize("tooltip."+ConvenientAdditions.MODID+":modulePlayerPrefix","%p",stack.getTagCompound().getString("MATCHER_PLAYER_ID")));
+			list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":modulePlayerPrefix","%p",stack.getTagCompound().getString("MATCHER_PLAYER_ID")));
 		else
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ConvenientAdditions.MODID+":modulePlayerNotSet"));
+			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":modulePlayerNotSet"));
 		super.addInformation(stack,player,list,par4);
 	}
 	

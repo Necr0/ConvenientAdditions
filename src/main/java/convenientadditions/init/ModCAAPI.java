@@ -77,8 +77,6 @@ public class ModCAAPI {
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.COAL_ORE,4), new ItemStack(Items.FLINT,1), new ItemStack(Items.COAL,6), time_short, 3);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.IRON_ORE,4), new ItemStack(Items.FLINT,1), new ItemStack(Items.IRON_INGOT,6), time_medium, 4);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.GOLD_ORE,4), new ItemStack(Items.FLINT,1), new ItemStack(Items.GOLD_INGOT,6), time_long, 6);
-			if(ModConfig.titanium_enabled)
-				TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(ModBlocks.oreTitaniumBlock,4), new ItemStack(Items.FLINT,1), new ItemStack(ModItems.ingotTitanium,6), time_long, 6);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.DIAMOND_ORE,4), new ItemStack(Items.FLINT,1), new ItemStack(Items.DIAMOND,6), time_long, 10);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.EMERALD_ORE,4), new ItemStack(Items.FLINT,1), new ItemStack(Items.EMERALD,6), time_long, 12);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.REDSTONE_ORE,4), new ItemStack(Items.FLINT,1), new ItemStack(Items.REDSTONE,6), time_short, 2);
@@ -88,8 +86,6 @@ public class ModCAAPI {
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.COAL_ORE,8), new ItemStack(Items.BLAZE_POWDER,1), new ItemStack(Blocks.IRON_ORE,1), time_short, 3);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.IRON_ORE,8), new ItemStack(Items.BLAZE_POWDER,1), new ItemStack(Blocks.GOLD_ORE,1), time_medium, 3);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.GOLD_ORE,8), new ItemStack(Items.BLAZE_POWDER,1), new ItemStack(Blocks.DIAMOND_ORE,1), time_long, 10);
-			if(ModConfig.titanium_enabled)
-				TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(ModBlocks.oreTitaniumBlock,8), new ItemStack(Items.BLAZE_POWDER,1), new ItemStack(Blocks.DIAMOND_ORE,1), time_long, 8);
 			TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.DIAMOND_ORE,2), new ItemStack(Items.DRAGON_BREATH,1), new ItemStack(Blocks.EMERALD_ORE,1), time_long, 10);
 		}
 		if(ModConfig.transmutationTome_oreDowngrade){

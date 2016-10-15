@@ -1,9 +1,8 @@
-package convenientadditions.block;
+package convenientadditions.block.technical;
 
 import java.util.Random;
 
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +16,7 @@ public class BlockTempLight extends Block {
 	
 	public BlockTempLight(float intensisty) {
 		super(Material.FIRE);
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.tempLightBlockName)
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.tempLightBlockName)
 		.setLightLevel(intensisty)
 		.setTickRandomly(true);
         this.disableStats();

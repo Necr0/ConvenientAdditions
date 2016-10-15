@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.io.IOException;
 
 import conveniencecore.util.Helper;
-import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -21,7 +21,7 @@ public class GuiColorChannelModule extends GuiScreen {
     protected int ySize = 83;
     boolean mainhand=true;
 	
-    private static final ResourceLocation colorChannelModuleGuiTextures = new ResourceLocation(ConvenientAdditions.MODID+":textures/gui/colorModule.png");
+    private static final ResourceLocation colorChannelModuleGuiTextures = new ResourceLocation(ModConstants.Mod.MODID+":textures/gui/colorModule.png");
 	
 	public GuiColorChannelModule(boolean mainhand){
 		this.mainhand=mainhand;

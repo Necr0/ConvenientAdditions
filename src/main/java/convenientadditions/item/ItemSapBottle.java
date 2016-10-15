@@ -4,7 +4,7 @@ import java.util.List;
 
 import conveniencecore.item.resourceprovider.IModelVariantResourceLocationProvider;
 import convenientadditions.ConvenientAdditions;
-import convenientadditions.Reference;
+import convenientadditions.ModConstants;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemSapBottle extends Item implements IModelVariantResourceLocationProvider {
 	public ItemSapBottle(){
 		super();
-		this.setUnlocalizedName(ConvenientAdditions.MODID+":"+Reference.sapBottleItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1);
+		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sapBottleItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1);
 		this.setHasSubtypes(true);
 	}
 	
@@ -28,7 +28,7 @@ public class ItemSapBottle extends Item implements IModelVariantResourceLocation
 
 	@Override
 	public ModelResourceLocation[] getModelResourceLocations() {
-		return new ModelResourceLocation[]{new ModelResourceLocation(this.getResourceLocation()+"Empty", "inventory"),new ModelResourceLocation(this.getResourceLocation()+"Half", "inventory"),new ModelResourceLocation(this.getResourceLocation()+"Full", "inventory")};
+		return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName()+"Empty", "inventory"),new ModelResourceLocation(this.getRegistryName()+"Half", "inventory"),new ModelResourceLocation(this.getRegistryName()+"Full", "inventory")};
 	}
 
 	@Override
