@@ -3,8 +3,9 @@ package convenientadditions.item.charge.baubles;
 import java.util.List;
 
 import baubles.api.BaubleType;
-import baubles.api.BaublesApi;
 import baubles.api.IBauble;
+import baubles.api.cap.BaublesCapabilities;
+import baubles.api.cap.IBaublesItemHandler;
 import conveniencecore.api.item.IChargeable;
 import conveniencecore.util.Helper;
 import convenientadditions.ConvenientAdditions;
@@ -50,8 +51,8 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 			int maxRemaining=(int)(chargingRingBaseCharge*EnchantmentUtil.enchantmentScaleFactor[lvl]);
 			int chargeRemaining=Math.min(getCharge(itemstack), maxRemaining/2);
 			IInventory invPlayer=((EntityPlayer)player).inventory;
-			IInventory invBaubles=BaublesApi.getBaubles((EntityPlayer)player);
-			for(int i=-4;i<invPlayer.getSizeInventory();i++){
+			IBaublesItemHandler invBaubles=player.getCapability(BaublesCapabilities.CAPABILITY_BAUBLES, null);
+			for(int i=-7;i<invPlayer.getSizeInventory();i++){
 				if(chargeRemaining==0)
 					return;
 				if(i<0){

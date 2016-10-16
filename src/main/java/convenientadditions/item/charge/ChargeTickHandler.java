@@ -1,11 +1,11 @@
 package convenientadditions.item.charge;
 
-import baubles.api.BaublesApi;
+import baubles.api.cap.BaublesCapabilities;
+import baubles.api.cap.IBaublesItemHandler;
 import conveniencecore.util.Helper;
 import convenientadditions.api.item.charge.ISunlightChargeable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -17,7 +17,7 @@ public class ChargeTickHandler {
 	public static final int[] OFFHAND_SLOTS=new int[]{255};
 	public static final int[] HOTBAR_SLOTS=new int[]{0,1,2,3,4,5,6,7,8};
 	public static final int[] ARMOR_SLOTS=new int[]{155,156,157,158};
-	public static final int[] BAUBLES_SLOTS=new int[]{-1,-2,-3,-4};
+	public static final int[] BAUBLES_SLOTS=new int[]{-1,-2,-3,-4,-5,-6,-7};
 	
 	private byte time=0;
 	
@@ -34,8 +34,8 @@ public class ChargeTickHandler {
 
 		if(player.worldObj.isDaytime() && !player.worldObj.isRaining() && Helper.canEntitySeeSky(player)){
 			//BAUBLES SUNLIGHT
-			IInventory baublesInv=BaublesApi.getBaubles(player);
-			for(int i=0;i<baublesInv.getSizeInventory();i++){
+			IBaublesItemHandler baublesInv=player.getCapability(BaublesCapabilities.CAPABILITY_BAUBLES, null);
+			for(int i=0;i<baublesInv.getSlots();i++){
 				ItemStack stack=baublesInv.getStackInSlot(i);
 				if(stack!=null && stack.getItem() instanceof ISunlightChargeable){
 					ISunlightChargeable sitem=(ISunlightChargeable)(stack.getItem());

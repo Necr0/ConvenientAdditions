@@ -4,7 +4,7 @@ public class ModConstants {
 	public static class Mod{
 	    public static final String modName = "Convenient Additions";
 	    public static final String MODID = "convenientadditions";
-	    public static final String VERSION = "1.0";
+	    public static final String VERSION = "1.0.3";
 	    public static final String DEPENDENCIES = "required-after:Forge;required-after:Baubles;after:JEI;";
 	    public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";
 	    public static final String clientProxyClassPath = "convenientadditions.proxy.ClientProxy";
@@ -72,6 +72,8 @@ public class ModConstants {
 	public static class Entities{
 	    public static final int lauchingArrowEntityId = 1;
 	    public static final String launchingArrowEntityName = "launchingArrow";
+	    public static final int specialItemEntityId = 2;
+	    public static final String specialItemEntityName = "specialItem";
 	}
 	
 	public static class Compat{

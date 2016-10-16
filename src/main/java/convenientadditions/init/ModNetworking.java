@@ -1,5 +1,6 @@
 package convenientadditions.init;
 
+import conveniencecore.network.PacketExtendedExplosion;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.ModGuiHandler;
@@ -21,5 +22,6 @@ public class ModNetworking {
     	INSTANCE.registerMessage(MessageColorChannelModule.class, MessageColorChannelModule.class, i++, Side.SERVER);
     	INSTANCE.registerMessage(MessageInventoryProxyFiltered.class, MessageInventoryProxyFiltered.class, i++, Side.SERVER);
     	INSTANCE.registerMessage(MessageTransmutationTome.class, MessageTransmutationTome.class, i++, Side.CLIENT);
+    	INSTANCE.registerMessage(PacketExtendedExplosion.class, PacketExtendedExplosion.class, i++, Side.CLIENT);
 	}
 }

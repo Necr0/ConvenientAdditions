@@ -1,5 +1,6 @@
 package convenientadditions.proxy;
 
+import conveniencecore.entity.behaviour.EntitySpecialItem;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
@@ -28,6 +29,7 @@ public class CommonProxy
     public void registerEntities()
     {
     	EntityRegistry.registerModEntity(EntityLaunchingArrow.class, ModConstants.Entities.launchingArrowEntityName, ModConstants.Entities.lauchingArrowEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
+    	EntityRegistry.registerModEntity(EntitySpecialItem.class, ModConstants.Entities.specialItemEntityName, ModConstants.Entities.specialItemEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
     }
 
     public World getClientWorld()
