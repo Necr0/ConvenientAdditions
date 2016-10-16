@@ -35,7 +35,6 @@ repositories {
 dependencies {
     deobfCompile "mezz.jei:jei_${config.mc_version}:${config.jei_version}:api"
     runtime "mezz.jei:jei_${config.mc_version}:${config.jei_version}"
-    compile files("../ConvenienceCore/build/libs/conveniencecore-${config.cc_version}-${config.cc_build_number}.jar")
 }
 
 minecraft {

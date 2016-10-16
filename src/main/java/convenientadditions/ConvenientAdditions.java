@@ -1,5 +1,6 @@
 package convenientadditions;
 
+import conveniencecore.ConvenienceCore;
 import convenientadditions.api.ConAddAPI;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModCAAPI;
@@ -11,7 +12,6 @@ import convenientadditions.init.ModRecipes;
 import convenientadditions.init.ModSounds;
 import convenientadditions.init.ModTileEntities;
 import convenientadditions.proxy.CommonProxy;
-import convenientadditions.worldgen.WorldGenPortal;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -47,6 +47,7 @@ public class ConvenientAdditions
     @EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
+    	new ConvenienceCore().preinit(event);
     	ModConfig.init();
     	ConAddAPI.init();
     	ModBlocks.init();
@@ -60,7 +61,7 @@ public class ConvenientAdditions
     	PROXY.registerRenderers();
     	PROXY.registerEventHandlers();
     	ModCAAPI.init();
-    	WorldGenPortal.init();
+    	//WorldGenPortal.init();
     }
     
     @EventHandler
