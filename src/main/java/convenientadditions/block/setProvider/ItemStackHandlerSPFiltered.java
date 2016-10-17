@@ -1,7 +1,7 @@
 package convenientadditions.block.setProvider;
 
-import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
 import conveniencecore.util.ItemHelper;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import net.minecraft.item.ItemStack;
 
 public class ItemStackHandlerSPFiltered extends ItemStackHandlerAutoSave {

@@ -3,8 +3,8 @@ package convenientadditions.block.itemReceiver;
 import java.util.ArrayList;
 
 import conveniencecore.api.IMatcher;
-import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import conveniencecore.item.itemhandler.CombinedItemStackHandler;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.ItemChannelModule;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.block.TileEntityCABase;

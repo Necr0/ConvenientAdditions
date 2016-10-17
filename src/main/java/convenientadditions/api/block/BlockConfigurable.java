@@ -1,4 +1,4 @@
-package conveniencecore.api.block;
+package convenientadditions.api.block;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

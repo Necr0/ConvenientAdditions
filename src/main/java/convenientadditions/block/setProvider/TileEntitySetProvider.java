@@ -2,10 +2,10 @@ package convenientadditions.block.setProvider;
 
 import java.util.HashMap;
 
-import conveniencecore.api.block.IConfigurable;
-import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
-import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
 import conveniencecore.util.FillSetFilter;
+import convenientadditions.api.block.IConfigurable;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
 import convenientadditions.block.TileEntityCABase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

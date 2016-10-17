@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import conveniencecore.api.block.IConfigurable;
 import conveniencecore.util.MathHelper;
+import convenientadditions.api.block.IConfigurable;
 import convenientadditions.block.TileEntityCABase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;

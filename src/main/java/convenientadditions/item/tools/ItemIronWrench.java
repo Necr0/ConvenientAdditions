@@ -1,8 +1,8 @@
 package convenientadditions.item.tools;
 
-import conveniencecore.api.block.IDismantleable;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.block.IDismantleable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

@@ -2,10 +2,10 @@ package convenientadditions.block.itemReceiver;
 
 import java.util.ArrayList;
 
-import conveniencecore.api.block.IDismantleable;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.ModGuiHandler;
+import convenientadditions.api.block.IDismantleable;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

@@ -1,5 +1,6 @@
 package convenientadditions.block.inventoryProxy;
 
+import convenientadditions.api.block.tileentity.IItemProxy;
 import convenientadditions.block.TileEntityCABase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -7,8 +8,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
-public class TileEntityInventoryProxy extends TileEntityCABase  {
+public class TileEntityInventoryProxy extends TileEntityCABase implements IItemProxy  {
+	public static int chainLimit=16;
+	
 	public boolean sided=false;
 	
 	public TileEntityInventoryProxy() {}
@@ -20,17 +24,26 @@ public class TileEntityInventoryProxy extends TileEntityCABase  {
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		TileEntity te=getWorld().getTileEntity(getTarget());
-		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return te.hasCapability(capability, (sided?facing:getFacing().getOpposite()));
+		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+			if(!(te instanceof IItemProxy))
+				return te.hasCapability(capability, (sided?facing:getFacing().getOpposite()));
+			else
+				return ((IItemProxy)te).tryFetchItemHandler(sided?facing:getFacing().getOpposite(),1)!=null; 
+		}
 		else
 			return super.hasCapability(capability, facing);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		TileEntity te=getWorld().getTileEntity(getTarget());
-		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return te.getCapability(capability, (sided?facing:getFacing().getOpposite()));
+		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+			if(!(te instanceof IItemProxy))
+				return te.getCapability(capability, (sided?facing:getFacing().getOpposite()));
+			else
+				return (T)((IItemProxy)te).tryFetchItemHandler(sided?facing:getFacing().getOpposite(),1); 
+		}
 		else
 			return super.getCapability(capability, facing);
 	}
@@ -55,5 +68,16 @@ public class TileEntityInventoryProxy extends TileEntityCABase  {
 		super.writeToNBT(nbt);
 		nbt.setBoolean("SIDED_PROXY",sided);
 		return nbt;
+	}
+
+	@Override
+	public IItemHandler tryFetchItemHandler(EnumFacing f, int proxyIndex) {
+		TileEntity te=getWorld().getTileEntity(getTarget());
+		if(te!=null&&!(te instanceof IItemProxy))
+			return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, (sided?f:getFacing().getOpposite()));
+		else if(te!=null&&te instanceof IItemProxy&&proxyIndex<TileEntityInventoryProxy.chainLimit)
+			return ((IItemProxy)te).tryFetchItemHandler(sided?f:getFacing().getOpposite(),proxyIndex+1);
+		else
+			return super.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);
 	}
 }

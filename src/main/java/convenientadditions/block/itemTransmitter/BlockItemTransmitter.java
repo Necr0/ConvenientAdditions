@@ -2,10 +2,10 @@ package convenientadditions.block.itemTransmitter;
 
 import java.util.ArrayList;
 
-import conveniencecore.api.block.IDismantleable;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.ModGuiHandler;
+import convenientadditions.api.block.IDismantleable;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;

@@ -3,12 +3,14 @@ package convenientadditions.block.itemTransmitter;
 import java.util.ArrayList;
 
 import conveniencecore.api.IMatcher;
-import conveniencecore.block.tileentity.ItemStackHandlerAutoSaveRestricted;
+import convenientadditions.api.block.tileentity.IItemProxy;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.ItemChannelModule;
 import convenientadditions.api.provider.itemnetwork.IItemProvider;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.block.TileEntityCABase;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
+import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -43,7 +45,7 @@ public class TileEntityItemTransmitter extends TileEntityCABase implements ITick
 	@Override
 	public boolean hasItemHandler() {
 		TileEntity te=getWorld().getTileEntity(getTarget());
-		return te!=null&&te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getFacing().getOpposite());
+		return te!=null&&!(te instanceof TileEntityItemReceiver)&&!(te instanceof IItemProxy)&&te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getFacing().getOpposite());
 	}
 
 	@Override

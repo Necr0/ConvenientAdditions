@@ -1,4 +1,4 @@
-package conveniencecore.api.block;
+package convenientadditions.api.block;
 
 import java.util.ArrayList;
 

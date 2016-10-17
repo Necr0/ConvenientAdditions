@@ -2,7 +2,8 @@ package convenientadditions.block.inventoryProxy.filtered;
 
 import java.util.ArrayList;
 
-import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.block.tileentity.IItemProxy;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import convenientadditions.block.inventoryProxy.TileEntityInventoryProxy;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,8 +29,12 @@ public class TileEntityInventoryProxyFiltered extends TileEntityInventoryProxy {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		TileEntity te=getWorld().getTileEntity(getTarget());
-		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return (T)new ItemHandlerFilteredProxy(this,(IItemHandler)te.getCapability(capability, getFacing().getOpposite()));
+		if(te!=null&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+			if(!(te instanceof IItemProxy))
+				return (T)new ItemHandlerFilteredProxy(this,(IItemHandler)te.getCapability(capability, getFacing().getOpposite()));
+			else
+				return (T)new ItemHandlerFilteredProxy(this,((IItemProxy)te).tryFetchItemHandler(sided?facing:getFacing().getOpposite(),1)); 
+		}
 		else
 			return super.getCapability(capability, facing);
 	}

@@ -1,8 +1,8 @@
 package convenientadditions.block.seedbox;
 
-import conveniencecore.api.block.BlockConfigurable;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.block.BlockConfigurable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;

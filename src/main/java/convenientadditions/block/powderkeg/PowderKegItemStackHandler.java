@@ -1,6 +1,6 @@
 package convenientadditions.block.powderkeg;
 
-import conveniencecore.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
