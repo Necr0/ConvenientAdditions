@@ -22,6 +22,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumFacing.Axis;
+import net.minecraft.util.EnumFacing.AxisDirection;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -105,9 +107,37 @@ public class BlockTreeTap extends Block {
 
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos)
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World worldIn, BlockPos pos)
     {
-        return NULL_AABB;
+    	EnumFacing f=(EnumFacing)state.getValue(FACING);
+    	boolean b=(EnumBottleState)state.getValue(BOTTLE_STATE)!=EnumBottleState.empty;
+    	new AxisAlignedBB(5/16d, 4/16d, .0, 11/16d, 14/16d, 10/16d);
+    	double side=b?5/16d:6/16d;
+    	double front=b?10/16d:5/16d;
+    	return new AxisAlignedBB(
+    			f.getAxis()==Axis.X?(f.getAxisDirection()==AxisDirection.NEGATIVE?0d:1-front):side,
+    			b?4/16d:10/16d,
+    			f.getAxis()==Axis.Z?(f.getAxisDirection()==AxisDirection.NEGATIVE?0d:1-front):side,
+    			f.getAxis()==Axis.X?(f.getAxisDirection()==AxisDirection.POSITIVE?1d:front):1-side,
+    			14/16d,
+    			f.getAxis()==Axis.Z?(f.getAxisDirection()==AxisDirection.POSITIVE?1d:front):1-side);
+    }
+    
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+    	EnumFacing f=(EnumFacing)state.getValue(FACING);
+    	boolean b=(EnumBottleState)state.getValue(BOTTLE_STATE)!=EnumBottleState.empty;
+    	new AxisAlignedBB(5/16d, 4/16d, .0, 11/16d, 14/16d, 10/16d);
+    	double side=b?5/16d:6/16d;
+    	double front=b?10/16d:5/16d;
+    	return new AxisAlignedBB(
+    			f.getAxis()==Axis.X?(f.getAxisDirection()==AxisDirection.NEGATIVE?0d:1-front):side,
+    			b?4/16d:10/16d,
+    			f.getAxis()==Axis.Z?(f.getAxisDirection()==AxisDirection.NEGATIVE?0d:1-front):side,
+    			f.getAxis()==Axis.X?(f.getAxisDirection()==AxisDirection.POSITIVE?1d:front):1-side,
+    			14/16d,
+    			f.getAxis()==Axis.Z?(f.getAxisDirection()==AxisDirection.POSITIVE?1d:front):1-side);
     }
 
     //RENDERING
