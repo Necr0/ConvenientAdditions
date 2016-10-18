@@ -27,6 +27,9 @@ public class ModConstants {
 	    public static final String blazingRockItemName = "blazingRock";
 	    public static final String enderPlateItemName = "enderPlate";
 	    public static final String launchingArrowItemName = "launchingArrow";
+	    public static final String creeperKitItemName = "creeperKit";
+	    public static final String blastKitItemName = "blastKit";
+	    public static final String slimeKitItemName = "slimeKit";
 	    public static final String sapBottleItemName = "sapBottle";
 	    public static final String antidoteItemName = "antidote";
 	    public static final String bandageItemName = "bandage";

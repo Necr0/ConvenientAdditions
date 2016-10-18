@@ -32,6 +32,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemTransmutationTome,1), Items.BOOK, Items.BLAZE_ROD, Items.ENDER_EYE, Items.WHEAT_SEEDS));
 		
 		initCompost();
+		initArrows();
 		initChargeItems();
 		initBaubles();
 		initInventoryProxies();
@@ -258,5 +259,40 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemAdventurersPickaxe.subitems.get(1),Items.STONE_PICKAXE,Items.WHEAT_SEEDS));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemAdventurersPickaxe.subitems.get(2),Items.IRON_PICKAXE,Items.WHEAT_SEEDS));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemAdventurersPickaxe.subitems.get(3),Items.DIAMOND_PICKAXE,Items.WHEAT_SEEDS));
+	}
+	
+	private static void initArrows(){
+		if(ModConfig.specialArrows_creeper){
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemCreeperKit,1),
+					"tgt",
+				    "gcg",
+				    "tgt",
+				    'c', new ItemStack(Items.SKULL,1,4),
+				    'g', "gunpowder",
+				    't', Blocks.TNT));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemLaunchingArrow,8,0),ModItems.itemCreeperKit,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW));
+		}
+
+		if(ModConfig.specialArrows_blast){
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemBlastKit,1),
+					"tft",
+				    "fgf",
+				    "tft",
+				    'f', Items.FLINT,
+				    'g', "gunpowder",
+				    't', Blocks.TNT));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemLaunchingArrow,8,1),ModItems.itemBlastKit,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW));
+		}
+		
+		if(ModConfig.specialArrows_slime){
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemSlimeKit,1),
+					"gsg",
+				    "sts",
+				    "gsg",
+				    's', "slimeball",
+				    'g', "gunpowder",
+				    't', Blocks.TNT));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemLaunchingArrow,8,2),ModItems.itemSlimeKit,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW,Items.ARROW));
+		}
 	}
 }

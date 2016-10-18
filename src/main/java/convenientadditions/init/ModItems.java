@@ -52,6 +52,9 @@ public class ModItems {
     //dummy
     public static final Item itemDirtChunk=new Item().setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     public static final Item itemObsidianPlate=new Item().setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.obsidianPlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemCreeperKit=new Item().setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.creeperKitItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemBlastKit=new Item().setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.blastKitItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemSlimeKit=new Item().setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.slimeKitItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     //baubles
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
@@ -65,6 +68,9 @@ public class ModItems {
     	//dummy
         registerItem(itemDirtChunk,ModConstants.ItemNames.dirtChunkItemName);
         registerItem(itemObsidianPlate,ModConstants.ItemNames.obsidianPlateItemName);
+        registerItem(itemCreeperKit,ModConstants.ItemNames.creeperKitItemName);
+        registerItem(itemBlastKit,ModConstants.ItemNames.blastKitItemName);
+        registerItem(itemSlimeKit,ModConstants.ItemNames.slimeKitItemName);
     	//tools
         registerItem(itemIronWrench,ModConstants.ItemNames.ironWrenchItemName);
         //misc
@@ -100,6 +106,9 @@ public class ModItems {
 		//
 		registerModelLocation(itemDirtChunk);
 		registerModelLocation(itemObsidianPlate);
+		registerModelLocation(itemCreeperKit);
+		registerModelLocation(itemBlastKit);
+		registerModelLocation(itemSlimeKit);
     	//tools
 		registerModelLocation(itemIronWrench);
         //misc

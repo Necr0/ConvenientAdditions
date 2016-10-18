@@ -70,6 +70,11 @@ public class ModConfig {
 	public static boolean transmutationTome_purification;
 	public static boolean transmutationTome_misc;
 	
+	//#########SPECIAL ARROWS#############
+	public static boolean specialArrows_creeper;
+	public static boolean specialArrows_slime;
+	public static boolean specialArrows_blast;
+	
 	//#########GENERAL#############
 	public static boolean ironWrench;
 	public static boolean launchingArrows;
@@ -169,6 +174,12 @@ public class ModConfig {
 		transmutationTome_dirtMutation=cfg.getBoolean("dirtMutation", category, true, "");
 		transmutationTome_purification=cfg.getBoolean("purification", category, true, "");
 		transmutationTome_misc=cfg.getBoolean("misc", category, true, "");
+
+		category="specialArrows";
+		cfg.setCategoryRequiresMcRestart(category, true);
+		specialArrows_creeper=cfg.getBoolean("creeper", category, true, "");
+		specialArrows_blast=cfg.getBoolean("blast", category, true, "");
+		specialArrows_slime=cfg.getBoolean("slime", category, true, "");
 		
 		if(cfg.hasChanged())
 			cfg.save();
