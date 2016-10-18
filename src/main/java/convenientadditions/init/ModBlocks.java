@@ -64,7 +64,7 @@ public class ModBlocks
         registerBlock(inventoryProxySidedBlock,ModConstants.BlockNames.inventoryProxySidedBlockName);
         registerBlock(inventoryProxyFilteredBlock,ModConstants.BlockNames.inventoryProxyFilteredBlockName);
         registerBlock(treetapBlock,ModConstants.BlockNames.treetapBlockName);
-        registerBlock(gatewayBlock,ModConstants.BlockNames.gatewayBlockName);
+        //registerBlock(gatewayBlock,ModConstants.BlockNames.gatewayBlockName);
         registerBlock(compostSoilBlock,new ItemBlockCompostSoil(compostSoilBlock),ModConstants.BlockNames.compostSoilBlockName);
     }
 

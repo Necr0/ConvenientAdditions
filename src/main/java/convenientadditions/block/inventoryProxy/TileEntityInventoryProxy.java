@@ -2,6 +2,7 @@ package convenientadditions.block.inventoryProxy;
 
 import convenientadditions.api.block.tileentity.IItemProxy;
 import convenientadditions.block.TileEntityCABase;
+import convenientadditions.init.ModConfig;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -75,7 +76,7 @@ public class TileEntityInventoryProxy extends TileEntityCABase implements IItemP
 		TileEntity te=getWorld().getTileEntity(getTarget());
 		if(te!=null&&!(te instanceof IItemProxy))
 			return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, (sided?f:getFacing().getOpposite()));
-		else if(te!=null&&te instanceof IItemProxy&&proxyIndex<TileEntityInventoryProxy.chainLimit)
+		else if(te!=null&&te instanceof IItemProxy&&proxyIndex<ModConfig.inventoryProxies_chainLimit)
 			return ((IItemProxy)te).tryFetchItemHandler(sided?f:getFacing().getOpposite(),proxyIndex+1);
 		else
 			return super.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);

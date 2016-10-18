@@ -30,6 +30,7 @@ public class ModConfig {
 	public static boolean inventoryProxies_regular;
 	public static boolean inventoryProxies_sided;
 	public static boolean inventoryProxies_filtered;
+	public static int inventoryProxies_chainLimit;
 	public static boolean inventoryProxies_transmitter;
 	public static boolean inventoryProxies_receiver;
 	
@@ -146,6 +147,7 @@ public class ModConfig {
 		inventoryProxies_regular=cfg.getBoolean("regular", category, true, "needed to craft the others");
 		inventoryProxies_sided=cfg.getBoolean("sided", category, true, "");
 		inventoryProxies_filtered=cfg.getBoolean("filtered", category, true, "");
+		inventoryProxies_chainLimit=cfg.getInt("chainLimit", category, 32, 0, 256, "");
 		inventoryProxies_transmitter=cfg.getBoolean("transmitter", category, true, "");
 		inventoryProxies_receiver=cfg.getBoolean("receiver", category, true, "");
 		
