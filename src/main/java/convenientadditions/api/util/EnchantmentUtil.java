@@ -42,22 +42,33 @@ public class EnchantmentUtil {
 			this.nameLocation=new ResourceLocation(name);
 		}
 
+		@Override
 	    public boolean canApply(ItemStack stack)
 	    {
 	        return ((this.type==chargable)&&(stack.getItem() instanceof IChargeable))||
 	        		((this.type==sunlightChargable)&&(stack.getItem() instanceof ISunlightChargeable));
 	    }
-	    
+
+	    @Override
+		public boolean canApplyAtEnchantingTable(ItemStack stack)
+		{
+			return ((this.type==chargable)&&(stack.getItem() instanceof IChargeable))||
+					((this.type==sunlightChargable)&&(stack.getItem() instanceof ISunlightChargeable));
+		}
+
+		@Override
 	    public int getMinEnchantability(int p_77321_1_)
 	    {
 	        return 1 + 10 * (p_77321_1_ - 1);
 	    }
-	    
+
+		@Override
 	    public int getMaxEnchantability(int p_77317_1_)
 	    {
 	        return super.getMinEnchantability(p_77317_1_) + 50;
 	    }
-	    
+
+		@Override
 	    public int getMaxLevel()
 	    {
 	        return 3;
@@ -123,7 +134,7 @@ public class EnchantmentUtil {
         }
         catch (Exception e)
         {
-            throw new RuntimeException(e); //Rethrow see what happens
+            throw new RuntimeException(e);
         }
     }
 }
