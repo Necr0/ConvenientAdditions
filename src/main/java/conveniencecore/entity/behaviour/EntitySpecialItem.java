@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class EntitySpecialItem extends EntityItem {
     public static final DataParameter<List<Long>> BEHAVIOURS = EntityDataManager.<List<Long>>createKey(EntitySpecialItem.class, CCDataSerializers.LISTLONG);
-	public List<Long> behaviours=new ArrayList<Long>();
+	public List<Long> behaviours=new ArrayList<>();
 
 	public EntitySpecialItem(World world) {
 		super(world);
@@ -30,7 +30,7 @@ public class EntitySpecialItem extends EntityItem {
 
     public List<Long> getBehaviours()
     {
-        return this.worldObj.isRemote ? (List<Long>)this.getDataManager().get(BEHAVIOURS) : this.behaviours;
+        return this.worldObj.isRemote ? this.getDataManager().get(BEHAVIOURS) : this.behaviours;
     }
     
     @Override
@@ -51,7 +51,7 @@ public class EntitySpecialItem extends EntityItem {
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
     	super.readEntityFromNBT(par1NBTTagCompound);
-    	this.behaviours=new ArrayList<Long>();
+    	this.behaviours=new ArrayList<>();
     	if(par1NBTTagCompound.hasKey("BEHAVIOURS")){
 	    	NBTTagCompound bnbt=par1NBTTagCompound.getCompoundTag("BEHAVIOURS");
 	    	for(int i=0;i<bnbt.getInteger("COUNT");i++){
@@ -88,6 +88,7 @@ public class EntitySpecialItem extends EntityItem {
     @Override
     protected void entityInit()
     {
+		behaviours=(behaviours!=null?behaviours:new ArrayList<>());
         this.getDataManager().register(BEHAVIOURS, behaviours);
     	for(long b:getBehaviours()){
     		BehaviourRegistry.getBehaviour(b).onCreate(this);
@@ -125,9 +126,7 @@ public class EntitySpecialItem extends EntityItem {
 	}
 	
 	public void addBehavioursSilent(List<Long> behaviours){
-		for(Long b:behaviours){
-			this.behaviours.add(b);
-		}
+		this.behaviours.addAll(behaviours);
 	}
 	
 	public void syncBehaviours(){
