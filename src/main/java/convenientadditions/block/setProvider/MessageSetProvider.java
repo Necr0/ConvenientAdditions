@@ -1,6 +1,6 @@
 package convenientadditions.block.setProvider;
 
-import conveniencecore.network.PacketBase;
+import convenientadditions.api.network.PacketBase;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -9,64 +9,65 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class MessageSetProvider extends PacketBase<MessageSetProvider> {
-	BlockPos pos;
-	byte type;
-	byte value;
+    BlockPos pos;
+    byte type;
+    byte value;
 
-	public MessageSetProvider() {}
+    public MessageSetProvider() {
+    }
 
-	//types: 0=inputfilter 1=reset, 2=dv, 3=nbt, 4=rsmode 
-	public MessageSetProvider(BlockPos pos,byte type,byte value) {
-		this.pos=pos;
-		this.type=type;
-		this.value=value;
-	}
-	
-	@Override
-	public void fromBytes(ByteBuf buf) {
-		this.pos=new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
-		this.type=buf.readByte();
-		this.value=buf.readByte();
-	}
+    //types: 0=inputfilter 1=reset, 2=dv, 3=nbt, 4=rsmode
+    public MessageSetProvider(BlockPos pos, byte type, byte value) {
+        this.pos = pos;
+        this.type = type;
+        this.value = value;
+    }
 
-	@Override
-	public void toBytes(ByteBuf buf) {
-		buf.writeInt(pos.getX());
-		buf.writeInt(pos.getY());
-		buf.writeInt(pos.getZ());
-		buf.writeByte(type);
-		buf.writeByte(value);
-	}
+    @Override
+    public void fromBytes(ByteBuf buf) {
+        this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
+        this.type = buf.readByte();
+        this.value = buf.readByte();
+    }
 
-	@Override
-	public MessageSetProvider onMessage(MessageSetProvider message, MessageContext ctx) {
-		if(ctx.side==Side.SERVER){
-			World w=ctx.getServerHandler().playerEntity.worldObj;
-			TileEntity t=w.getTileEntity(message.pos);
-			if(t!=null&&t instanceof TileEntitySetProvider){
-				TileEntitySetProvider te=((TileEntitySetProvider)t);
-				switch(message.type){
-					case 0:
-						te.setFilterInput(message.value==0?false:true);
-						break;
-					case 1:
-						te.reset();
-						break;
-					case 2:
-						te.setIgnoreDV(message.value==0?false:true);
-						break;
-					case 3:
-						te.setIgnoreNBT(message.value==0?false:true);
-						break;
-					case 4:
-						te.setResetMode(message.value);
-						break;
-					default:
-						break;
-				}
-			}
-		}
-		return null;
-	}
+    @Override
+    public void toBytes(ByteBuf buf) {
+        buf.writeInt(pos.getX());
+        buf.writeInt(pos.getY());
+        buf.writeInt(pos.getZ());
+        buf.writeByte(type);
+        buf.writeByte(value);
+    }
+
+    @Override
+    public MessageSetProvider onMessage(MessageSetProvider message, MessageContext ctx) {
+        if (ctx.side == Side.SERVER) {
+            World w = ctx.getServerHandler().playerEntity.worldObj;
+            TileEntity t = w.getTileEntity(message.pos);
+            if (t != null && t instanceof TileEntitySetProvider) {
+                TileEntitySetProvider te = ((TileEntitySetProvider) t);
+                switch (message.type) {
+                    case 0:
+                        te.setFilterInput(message.value == 0 ? false : true);
+                        break;
+                    case 1:
+                        te.reset();
+                        break;
+                    case 2:
+                        te.setIgnoreDV(message.value == 0 ? false : true);
+                        break;
+                    case 3:
+                        te.setIgnoreNBT(message.value == 0 ? false : true);
+                        break;
+                    case 4:
+                        te.setResetMode(message.value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        return null;
+    }
 
 }

@@ -24,48 +24,44 @@ public class BlockSeedBox extends BlockConfigurable {
     public static final PropertyBool OUTLET_SOUTH = PropertyBool.create("outlet_south");
     public static final PropertyBool OUTLET_WEST = PropertyBool.create("outlet_west");
 
-	public BlockSeedBox() {
-		super(Material.WOOD);
-		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-		this.setSoundType(SoundType.WOOD);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP,false).withProperty(OUTLET_BOTTOM,true).withProperty(OUTLET_NORTH,false).withProperty(OUTLET_EAST,false).withProperty(OUTLET_SOUTH,false).withProperty(OUTLET_WEST,false));
-	}
+    public BlockSeedBox() {
+        super(Material.WOOD);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        this.setSoundType(SoundType.WOOD);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP, false).withProperty(OUTLET_BOTTOM, true).withProperty(OUTLET_NORTH, false).withProperty(OUTLET_EAST, false).withProperty(OUTLET_SOUTH, false).withProperty(OUTLET_WEST, false));
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new TileEntitySeedBox();
-	}
-    
     @Override
-    public IBlockState getActualState(IBlockState state,IBlockAccess worldIn,BlockPos pos){
-    	TileEntity t = worldIn.getTileEntity(pos);
-    	IBlockState ret=state;
-        if(t!=null && t instanceof TileEntitySeedBox){
-        	TileEntitySeedBox s=(TileEntitySeedBox)t;
-        	ret=ret.withProperty(OUTLET_TOP, s.isOutput(EnumFacing.UP));
-        	ret=ret.withProperty(OUTLET_BOTTOM, s.isOutput(EnumFacing.DOWN));
-        	ret=ret.withProperty(OUTLET_NORTH, s.isOutput(EnumFacing.NORTH));
-        	ret=ret.withProperty(OUTLET_EAST, s.isOutput(EnumFacing.EAST));
-        	ret=ret.withProperty(OUTLET_SOUTH, s.isOutput(EnumFacing.SOUTH));
-        	ret=ret.withProperty(OUTLET_WEST, s.isOutput(EnumFacing.WEST));
+    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+        return new TileEntitySeedBox();
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        TileEntity t = worldIn.getTileEntity(pos);
+        IBlockState ret = state;
+        if (t != null && t instanceof TileEntitySeedBox) {
+            TileEntitySeedBox s = (TileEntitySeedBox) t;
+            ret = ret.withProperty(OUTLET_TOP, s.isOutput(EnumFacing.UP));
+            ret = ret.withProperty(OUTLET_BOTTOM, s.isOutput(EnumFacing.DOWN));
+            ret = ret.withProperty(OUTLET_NORTH, s.isOutput(EnumFacing.NORTH));
+            ret = ret.withProperty(OUTLET_EAST, s.isOutput(EnumFacing.EAST));
+            ret = ret.withProperty(OUTLET_SOUTH, s.isOutput(EnumFacing.SOUTH));
+            ret = ret.withProperty(OUTLET_WEST, s.isOutput(EnumFacing.WEST));
         }
         return ret;
     }
-    
-    public int getMetaFromState(IBlockState state)
-    {
-        return 0;
-    }
-    
+
     @Override
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[]{OUTLET_TOP,OUTLET_BOTTOM,OUTLET_NORTH,OUTLET_EAST,OUTLET_SOUTH,OUTLET_WEST});
+    public int getMetaFromState(IBlockState state){ return 0; }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[]{OUTLET_TOP, OUTLET_BOTTOM, OUTLET_NORTH, OUTLET_EAST, OUTLET_SOUTH, OUTLET_WEST});
     }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
+    public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 }

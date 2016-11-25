@@ -1,11 +1,9 @@
 package convenientadditions.block.setProvider;
 
-import java.util.ArrayList;
-
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.ModGuiHandler;
-import convenientadditions.block.BlockMachineConfigurable;
+import convenientadditions.api.block.BlockMachineConfigurable;
 import convenientadditions.block.setProvider.TileEntitySetProvider.EnumOutletMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -24,138 +22,133 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+
 public class BlockSetProvider extends BlockMachineConfigurable {
 
-	public static final PropertyEnum<EnumOutletMode> OUTLET_TOP = PropertyEnum.<EnumOutletMode>create("outlet_top", EnumOutletMode.class);
-	public static final PropertyEnum<EnumOutletMode> OUTLET_BOTTOM = PropertyEnum.<EnumOutletMode>create("outlet_bottom", EnumOutletMode.class);
-	public static final PropertyEnum<EnumOutletMode> OUTLET_NORTH = PropertyEnum.<EnumOutletMode>create("outlet_north", EnumOutletMode.class);
-	public static final PropertyEnum<EnumOutletMode> OUTLET_EAST = PropertyEnum.<EnumOutletMode>create("outlet_east", EnumOutletMode.class);
-	public static final PropertyEnum<EnumOutletMode> OUTLET_SOUTH = PropertyEnum.<EnumOutletMode>create("outlet_south", EnumOutletMode.class);
-	public static final PropertyEnum<EnumOutletMode> OUTLET_WEST = PropertyEnum.<EnumOutletMode>create("outlet_west", EnumOutletMode.class);
-	
-	public BlockSetProvider() {
-		super(Material.IRON);
-		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.setProviderBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP,EnumOutletMode.disabled).withProperty(OUTLET_BOTTOM,EnumOutletMode.disabled).withProperty(OUTLET_NORTH,EnumOutletMode.disabled).withProperty(OUTLET_EAST,EnumOutletMode.disabled).withProperty(OUTLET_SOUTH,EnumOutletMode.disabled).withProperty(OUTLET_WEST,EnumOutletMode.disabled));
-	}
-	
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntitySetProvider();
-	}
+    public static final PropertyEnum<EnumOutletMode> OUTLET_TOP = PropertyEnum.<EnumOutletMode>create("outlet_top", EnumOutletMode.class);
+    public static final PropertyEnum<EnumOutletMode> OUTLET_BOTTOM = PropertyEnum.<EnumOutletMode>create("outlet_bottom", EnumOutletMode.class);
+    public static final PropertyEnum<EnumOutletMode> OUTLET_NORTH = PropertyEnum.<EnumOutletMode>create("outlet_north", EnumOutletMode.class);
+    public static final PropertyEnum<EnumOutletMode> OUTLET_EAST = PropertyEnum.<EnumOutletMode>create("outlet_east", EnumOutletMode.class);
+    public static final PropertyEnum<EnumOutletMode> OUTLET_SOUTH = PropertyEnum.<EnumOutletMode>create("outlet_south", EnumOutletMode.class);
+    public static final PropertyEnum<EnumOutletMode> OUTLET_WEST = PropertyEnum.<EnumOutletMode>create("outlet_west", EnumOutletMode.class);
+
+    public BlockSetProvider() {
+        super(Material.IRON);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.setProviderBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP, EnumOutletMode.disabled).withProperty(OUTLET_BOTTOM, EnumOutletMode.disabled).withProperty(OUTLET_NORTH, EnumOutletMode.disabled).withProperty(OUTLET_EAST, EnumOutletMode.disabled).withProperty(OUTLET_SOUTH, EnumOutletMode.disabled).withProperty(OUTLET_WEST, EnumOutletMode.disabled));
+    }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-    	if(!world.isRemote)
-    		player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_SET_PROVIDER_ID, world, pos.getX(), pos.getY(), pos.getZ());
-    	return true;
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileEntitySetProvider();
     }
-    
+
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
-    {
-    	TileEntity t=worldIn.getTileEntity(pos);
-    	if(t==null||worldIn.isRemote)
-    		return;
-		if(t instanceof TileEntitySetProvider){
-			TileEntitySetProvider te=(TileEntitySetProvider)t;
-			te.updateRS( te.getWorld().isBlockIndirectlyGettingPowered(pos)>0 );
-		}
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (!world.isRemote)
+            player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_SET_PROVIDER_ID, world, pos.getX(), pos.getY(), pos.getZ());
+        return true;
     }
-    
+
     @Override
-    public IBlockState getActualState(IBlockState state,IBlockAccess worldIn,BlockPos pos){
-    	TileEntity t = worldIn.getTileEntity(pos);
-    	IBlockState ret=state;
-        if(t!=null && t instanceof TileEntitySetProvider){
-        	TileEntitySetProvider s=(TileEntitySetProvider)t;
-        	ret=ret.withProperty(OUTLET_TOP, s.outletSides.get(EnumFacing.UP));
-        	ret=ret.withProperty(OUTLET_BOTTOM, s.outletSides.get(EnumFacing.DOWN));
-        	ret=ret.withProperty(OUTLET_NORTH, s.outletSides.get(EnumFacing.NORTH));
-        	ret=ret.withProperty(OUTLET_EAST, s.outletSides.get(EnumFacing.EAST));
-        	ret=ret.withProperty(OUTLET_SOUTH, s.outletSides.get(EnumFacing.SOUTH));
-        	ret=ret.withProperty(OUTLET_WEST, s.outletSides.get(EnumFacing.WEST));
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+        TileEntity t = worldIn.getTileEntity(pos);
+        if (t == null || worldIn.isRemote)
+            return;
+        if (t instanceof TileEntitySetProvider) {
+            TileEntitySetProvider te = (TileEntitySetProvider) t;
+            te.updateRS(te.getWorld().isBlockIndirectlyGettingPowered(pos) > 0);
+        }
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        TileEntity t = worldIn.getTileEntity(pos);
+        IBlockState ret = state;
+        if (t != null && t instanceof TileEntitySetProvider) {
+            TileEntitySetProvider s = (TileEntitySetProvider) t;
+            ret = ret.withProperty(OUTLET_TOP, s.outletSides.get(EnumFacing.UP));
+            ret = ret.withProperty(OUTLET_BOTTOM, s.outletSides.get(EnumFacing.DOWN));
+            ret = ret.withProperty(OUTLET_NORTH, s.outletSides.get(EnumFacing.NORTH));
+            ret = ret.withProperty(OUTLET_EAST, s.outletSides.get(EnumFacing.EAST));
+            ret = ret.withProperty(OUTLET_SOUTH, s.outletSides.get(EnumFacing.SOUTH));
+            ret = ret.withProperty(OUTLET_WEST, s.outletSides.get(EnumFacing.WEST));
         }
         return ret;
     }
-    
-    public int getMetaFromState(IBlockState state)
-    {
+
+    public int getMetaFromState(IBlockState state) {
         return 0;
-    }
-    
-    @Override
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[]{OUTLET_TOP,OUTLET_BOTTOM,OUTLET_NORTH,OUTLET_EAST,OUTLET_SOUTH,OUTLET_WEST});
     }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[]{OUTLET_TOP, OUTLET_BOTTOM, OUTLET_NORTH, OUTLET_EAST, OUTLET_SOUTH, OUTLET_WEST});
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 
-	@Override
-	public ArrayList<ItemStack> dismantleBlock(EntityPlayer player,World world, BlockPos pos, boolean returnDrops) {
-		dropItems(world,pos);
-		return super.dismantleBlock(player, world, pos, returnDrops);
-	}
+    @Override
+    public ArrayList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
+        dropItems(world, pos);
+        return super.dismantleBlock(player, world, pos, returnDrops);
+    }
 
     @Override
-    public void breakBlock(World world, BlockPos pos, IBlockState state)
-    {
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
         dropItems(world, pos);
         super.breakBlock(world, pos, state);
     }
-    
-    private void dropItems(World world, BlockPos pos)
-    {
-    	if (world.getTileEntity(pos)!=null && world.getTileEntity(pos) instanceof TileEntitySetProvider && !world.isRemote){
-    		TileEntitySetProvider p = (TileEntitySetProvider)world.getTileEntity(pos);
-        	for(ItemStack item:p.input.getStacks()){
-        		if(item!=null){
-		            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
-		            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
-		            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
-		            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
-		            float factor = 0.05F;
-		            entityItem.motionX = world.rand.nextGaussian() * factor;
-		            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
-		            entityItem.motionZ = world.rand.nextGaussian() * factor;
-		            world.spawnEntityInWorld(entityItem);
-        		}
-	        }
-        	p.input.setStacks(new ItemStack[p.input.getSlots()]);
-        	for(ItemStack item:p.filter.getStacks()){
-        		if(item!=null){
-		            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
-		            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
-		            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
-		            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
-		            float factor = 0.05F;
-		            entityItem.motionX = world.rand.nextGaussian() * factor;
-		            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
-		            entityItem.motionZ = world.rand.nextGaussian() * factor;
-		            world.spawnEntityInWorld(entityItem);
-        		}
-	        }
-        	p.filter.setStacks(new ItemStack[p.filter.getSlots()]);
-        	for(ItemStack item:p.output.getStacks()){
-        		if(item!=null){
-		            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
-		            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
-		            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
-		            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
-		            float factor = 0.05F;
-		            entityItem.motionX = world.rand.nextGaussian() * factor;
-		            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
-		            entityItem.motionZ = world.rand.nextGaussian() * factor;
-		            world.spawnEntityInWorld(entityItem);
-        		}
-	        }
-        	p.output.setStacks(new ItemStack[p.output.getSlots()]);
+
+    private void dropItems(World world, BlockPos pos) {
+        if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntitySetProvider && !world.isRemote) {
+            TileEntitySetProvider p = (TileEntitySetProvider) world.getTileEntity(pos);
+            for (ItemStack item : p.input.getStacks()) {
+                if (item != null) {
+                    float rx = world.rand.nextFloat() * 0.8F + 0.1F;
+                    float ry = world.rand.nextFloat() * 0.8F + 0.1F;
+                    float rz = world.rand.nextFloat() * 0.8F + 0.1F;
+                    EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
+                    float factor = 0.05F;
+                    entityItem.motionX = world.rand.nextGaussian() * factor;
+                    entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
+                    entityItem.motionZ = world.rand.nextGaussian() * factor;
+                    world.spawnEntityInWorld(entityItem);
+                }
+            }
+            p.input.setStacks(new ItemStack[p.input.getSlots()]);
+            for (ItemStack item : p.filter.getStacks()) {
+                if (item != null) {
+                    float rx = world.rand.nextFloat() * 0.8F + 0.1F;
+                    float ry = world.rand.nextFloat() * 0.8F + 0.1F;
+                    float rz = world.rand.nextFloat() * 0.8F + 0.1F;
+                    EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
+                    float factor = 0.05F;
+                    entityItem.motionX = world.rand.nextGaussian() * factor;
+                    entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
+                    entityItem.motionZ = world.rand.nextGaussian() * factor;
+                    world.spawnEntityInWorld(entityItem);
+                }
+            }
+            p.filter.setStacks(new ItemStack[p.filter.getSlots()]);
+            for (ItemStack item : p.output.getStacks()) {
+                if (item != null) {
+                    float rx = world.rand.nextFloat() * 0.8F + 0.1F;
+                    float ry = world.rand.nextFloat() * 0.8F + 0.1F;
+                    float rz = world.rand.nextFloat() * 0.8F + 0.1F;
+                    EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
+                    float factor = 0.05F;
+                    entityItem.motionX = world.rand.nextGaussian() * factor;
+                    entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
+                    entityItem.motionZ = world.rand.nextGaussian() * factor;
+                    world.spawnEntityInWorld(entityItem);
+                }
+            }
+            p.output.setStacks(new ItemStack[p.output.getSlots()]);
         }
     }
 }

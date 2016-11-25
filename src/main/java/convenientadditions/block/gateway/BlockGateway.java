@@ -16,26 +16,24 @@ import net.minecraft.world.World;
 
 public class BlockGateway extends BlockContainer {
 
-	public BlockGateway() {
-		super(Material.IRON);
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityGateway();
-	}
+    public BlockGateway() {
+        super(Material.IRON);
+    }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileEntityGateway();
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-    	if(world.isRemote)
-    		player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_GATEWAY_ID, world, pos.getX(), pos.getY(), pos.getZ());
-    	return true;
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (world.isRemote)
+            player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_GATEWAY_ID, world, pos.getX(), pos.getY(), pos.getZ());
+        return true;
     }
 }

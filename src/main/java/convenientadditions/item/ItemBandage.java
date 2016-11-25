@@ -18,14 +18,13 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class ItemBandage extends Item {
-	public ItemBandage(){
-		super();
-		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.bandageItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(4);
-	}
+    public ItemBandage() {
+        super();
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.bandageItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(4);
+    }
 
-	@Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         playerIn.setActiveHand(hand);
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
     }
@@ -35,44 +34,38 @@ public class ItemBandage extends Item {
      * the Item before the action is complete.
      */
     @Override
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
-    {
-        EntityPlayer entityplayer = entityLiving instanceof EntityPlayer ? (EntityPlayer)entityLiving : null;
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+        EntityPlayer entityplayer = entityLiving instanceof EntityPlayer ? (EntityPlayer) entityLiving : null;
 
-        if (entityplayer == null || !entityplayer.capabilities.isCreativeMode)
-        {
+        if (entityplayer == null || !entityplayer.capabilities.isCreativeMode) {
             --stack.stackSize;
         }
 
-        if (!worldIn.isRemote)
-        {
-            entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(10), 5*20, 2));
+        if (!worldIn.isRemote) {
+            entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(10), 5 * 20, 2));
         }
 
         return stack;
     }
-    
+
     @Override
-    public void onUsingTick(ItemStack stack, EntityLivingBase player, int count)
-    {
-    	if(count%5==0){
-    		if(player.worldObj.isRemote){
-    			Minecraft.getMinecraft().getItemRenderer().resetEquippedProgress(player.getActiveHand());
-    		}else{
-				player.worldObj.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_CLOTH_HIT, SoundCategory.PLAYERS, .1F, .6F);
-			}
-    	}
+    public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
+        if (count % 5 == 0) {
+            if (player.worldObj.isRemote) {
+                Minecraft.getMinecraft().getItemRenderer().resetEquippedProgress(player.getActiveHand());
+            } else {
+                player.worldObj.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_CLOTH_HIT, SoundCategory.PLAYERS, .1F, .6F);
+            }
+        }
     }
-    
+
     @Override
-    public int getMaxItemUseDuration(ItemStack stack)
-    {
+    public int getMaxItemUseDuration(ItemStack stack) {
         return 100;
     }
-	
-	@Override
-    public EnumAction getItemUseAction(ItemStack stack)
-    {
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.NONE;
     }
 }

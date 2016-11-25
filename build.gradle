@@ -23,17 +23,19 @@ ext.config = parseConfig(configFile)
 ext.privateFile = file('private/private.properties')
 ext.private = parseConfig(privateFile)
 
-version = "${config.version}-${config.build_number}"
+version = "${config.version}-build${config.build_number}"
 group= "necro.convenientadditions" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "convenientadditions"
 
 repositories {
-    maven { url "http://dvs1.progwml6.com/files/maven" }
+    maven { url = "http://dvs1.progwml6.com/files/maven" }
+    //maven { url = "http://mobiusstrip.eu/maven" }
 }
 
 dependencies {
     deobfCompile "mezz.jei:jei_${config.mc_version}:${config.jei_version}:api"
-    runtime "mezz.jei:jei_${config.mc_version}:${config.jei_version}"
+    runtime "mezz.jei:jei_${config.jei_mcversion}:${config.jei_version}"
+    //deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}"
 }
 
 minecraft {

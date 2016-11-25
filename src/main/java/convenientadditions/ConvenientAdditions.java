@@ -1,16 +1,6 @@
 package convenientadditions;
 
-import conveniencecore.ConvenienceCore;
-import convenientadditions.api.ConAddAPI;
-import convenientadditions.init.ModBlocks;
-import convenientadditions.init.ModCAAPI;
-import convenientadditions.init.ModConfig;
-import convenientadditions.init.ModItems;
-import convenientadditions.init.ModNetworking;
-import convenientadditions.init.ModOredict;
-import convenientadditions.init.ModRecipes;
-import convenientadditions.init.ModSounds;
-import convenientadditions.init.ModTileEntities;
+import convenientadditions.init.*;
 import convenientadditions.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -22,57 +12,41 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = ModConstants.Mod.MODID, version = ModConstants.Mod.VERSION, dependencies = ModConstants.Mod.DEPENDENCIES)
-public class ConvenientAdditions
-{
+public class ConvenientAdditions {
+    public static final ToolMaterial TOOLMATERIAL_TITANIUM = EnumHelper.addToolMaterial("TITANIUM", 3, 906, 7F, 2.3F, 20);
     @Instance(ModConstants.Mod.MODID)
     public static ConvenientAdditions INSTANCE;
-    
-    public static final ToolMaterial TOOLMATERIAL_TITANIUM=EnumHelper.addToolMaterial("TITANIUM", 3, 906, 7F, 2.3F, 20);
-    
-	public static boolean thaumcraftLoaded = false;
-    
-    @SidedProxy(modId=ModConstants.Mod.MODID,serverSide=ModConstants.Mod.commonProxyClassPath,clientSide=ModConstants.Mod.clientProxyClassPath)
+    @SidedProxy(modId = ModConstants.Mod.MODID, serverSide = ModConstants.Mod.commonProxyClassPath, clientSide = ModConstants.Mod.clientProxyClassPath)
     public static CommonProxy PROXY;
-    public static CreativeTabs CREATIVETAB=new CreativeTabs(ModConstants.Mod.MODID) {
-		@Override
-		public Item getTabIconItem() {
-			return ItemBlock.getItemFromBlock(ModBlocks.playerInterfaceBlock);
-		}
-	};
-    
+    public static CreativeTabs CREATIVETAB = new CreativeTabs(ModConstants.Mod.MODID) {
+        @Override
+        public Item getTabIconItem() {
+            return ItemBlock.getItemFromBlock(ModBlocks.playerInterfaceBlock);
+        }
+    };
+
     @EventHandler
-    public void preinit(FMLPreInitializationEvent event)
-    {
-    	new ConvenienceCore().preinit(event);
-    	ModConfig.init();
-    	ConAddAPI.init();
-    	ModBlocks.init();
-    	ModTileEntities.init();
-    	ModItems.init();
-    	ModOredict.registerOres();
-    	ModRecipes.init();
-    	ModNetworking.init();
-    	ModSounds.init();
-    	PROXY.InitModels();
-    	PROXY.registerRenderers();
-    	PROXY.registerEventHandlers();
-    	ModCAAPI.init();
-    	//WorldGenPortal.init();
+    public void preinit(FMLPreInitializationEvent event) {
+        ModConfig.init();
+        ModBlocks.init();
+        ModTileEntities.init();
+        ModItems.init();
+        ModOredict.registerOres();
+        ModRecipes.init();
+        ModNetworking.init();
+        ModSounds.init();
+        PROXY.InitModels();
+        PROXY.registerRenderers();
+        PROXY.registerEventHandlers();
+        ModCAAPI.init();
     }
-    
+
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-    	//PROXY.InitRendering();
-    	PROXY.registerEntities();
-    }
-    
-    @EventHandler
-    public void postinit(FMLPostInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
+        PROXY.registerEntities();
+        PROXY.initWaila();
     }
 }

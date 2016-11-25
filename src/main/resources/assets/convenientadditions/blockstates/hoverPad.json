@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_bottom_top",
+		"textures": {
+			"side": "convenientadditions:blocks/hoverPad/hoverPad_side",
+	        "top": "convenientadditions:blocks/hoverPad/hoverPad_top_0",
+	        "bottom": "convenientadditions:blocks/hoverPad/hoverPad_bottom"
+		},
+		"uvlock" : "true"
+    },
+	"variants": {
+		"active": {
+			"true": {"textures": {"top": "convenientadditions:blocks/hoverPad/hoverPad_top" }},
+			"false": {  }
+		},
+        "inventory": [{}]
+	}
+}

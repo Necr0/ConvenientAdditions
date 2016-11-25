@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_bottom_top",
+		"textures": {
+			"side": "convenientadditions:blocks/blastPad/blastPad_side",
+	        "top": "convenientadditions:blocks/blastPad/blastPad_top_ready",
+	        "bottom": "convenientadditions:blocks/blastPad/blastPad_bottom"
+		},
+		"uvlock" : "true"
+    },
+	"variants": {
+		"ready": {
+			"true": {},
+			"false": {"textures": {"top": "convenientadditions:blocks/blastPad/blastPad_top_used"}}
+		},
+        "inventory": [{}]
+	}
+}

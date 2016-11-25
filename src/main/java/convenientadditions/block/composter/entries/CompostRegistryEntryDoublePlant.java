@@ -6,15 +6,15 @@ import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class CompostRegistryEntryDoublePlant implements ICompostRegistryEntry{
+public class CompostRegistryEntryDoublePlant implements ICompostRegistryEntry {
 
-	@Override
-	public boolean doesMatch(ItemStack stack) {
-		return stack.getItem() instanceof ItemBlock && Block.getBlockFromItem(stack.getItem()) instanceof BlockDoublePlant;
-	}
+    @Override
+    public boolean doesMatch(ItemStack stack) {
+        return stack.getItem() instanceof ItemBlock && Block.getBlockFromItem(stack.getItem()) instanceof BlockDoublePlant;
+    }
 
-	@Override
-	public int getCompostingMass(ItemStack stack) {
-		return 350;
-	}
+    @Override
+    public int getCompostingMass(ItemStack stack) {
+        return 350;
+    }
 }

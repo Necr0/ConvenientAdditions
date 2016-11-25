@@ -17,51 +17,49 @@ import net.minecraft.world.World;
 public class BlockPlayerInterface extends BlockContainer {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
-	public BlockPlayerInterface() {
-		super(Material.IRON);
-		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE,false));
-	}
+    public BlockPlayerInterface() {
+        super(Material.IRON);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new TileEntityPlayerInterface();
-	}
-	
-	@Override
-    public boolean hasComparatorInputOverride(IBlockState state){return true;}
-    
     @Override
-    public int getComparatorInputOverride(IBlockState state,World world, BlockPos pos)
-    {
-    	TileEntity t=world.getTileEntity(pos);
-        if(t!=null&&t instanceof TileEntityPlayerInterface)
-        	return ((TileEntityPlayerInterface)t).hasTarget()?15:0;
+    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+        return new TileEntityPlayerInterface();
+    }
+
+    @Override
+    public boolean hasComparatorInputOverride(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorInputOverride(IBlockState state, World world, BlockPos pos) {
+        TileEntity t = world.getTileEntity(pos);
+        if (t != null && t instanceof TileEntityPlayerInterface)
+            return ((TileEntityPlayerInterface) t).hasTarget() ? 15 : 0;
         return 0;
     }
-    
+
     @Override
-    public IBlockState getActualState(IBlockState state,IBlockAccess worldIn,BlockPos pos){
-    	TileEntity t = worldIn.getTileEntity(pos);
-        if(t!=null && t instanceof TileEntityPlayerInterface)
-        	return state.withProperty(ACTIVE, ((TileEntityPlayerInterface)t).hasTarget());
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        TileEntity t = worldIn.getTileEntity(pos);
+        if (t != null && t instanceof TileEntityPlayerInterface)
+            return state.withProperty(ACTIVE, ((TileEntityPlayerInterface) t).hasTarget());
         return state.withProperty(ACTIVE, false);
     }
-    
-    public int getMetaFromState(IBlockState state)
-    {
+
+    public int getMetaFromState(IBlockState state) {
         return 0;
     }
-    
+
     @Override
-    protected BlockStateContainer createBlockState()
-    {
+    protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, new IProperty[]{ACTIVE});
     }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
+    public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 }

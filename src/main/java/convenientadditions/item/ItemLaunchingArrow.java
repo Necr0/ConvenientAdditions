@@ -1,11 +1,9 @@
 package convenientadditions.item;
 
-import java.util.List;
-
-import conveniencecore.item.resourceprovider.IModelVariantResourceLocationProvider;
-import conveniencecore.util.Helper;
+import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.item.IModelVariantResourceLocationProvider;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow.EnumLaunchingArrowVariant;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -19,34 +17,33 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
+
 public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResourceLocationProvider {
-	
+
     public ItemLaunchingArrow() {
-        this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
     }
-    
+
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
-    {
-        for(EnumLaunchingArrowVariant e:EnumLaunchingArrowVariant.values()){
-        	subItems.add(new ItemStack(this,1,e.ordinal()));
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
+        for (EnumLaunchingArrowVariant e : EnumLaunchingArrowVariant.values()) {
+            subItems.add(new ItemStack(this, 1, e.ordinal()));
         }
     }
 
     @Override
-    public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter)
-    {
-    	EnumLaunchingArrowVariant var=stack.getItemDamage()<EnumLaunchingArrowVariant.values().length?EnumLaunchingArrowVariant.values()[stack.getItemDamage()]:EnumLaunchingArrowVariant.slime;
+    public EntityArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter) {
+        EnumLaunchingArrowVariant var = stack.getItemDamage() < EnumLaunchingArrowVariant.values().length ? EnumLaunchingArrowVariant.values()[stack.getItemDamage()] : EnumLaunchingArrowVariant.slime;
         return new EntityLaunchingArrow(worldIn, shooter, var);
     }
 
-    public String getItemStackDisplayName(ItemStack stack)
-    {
-        return Helper.localize("item."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.launchingArrowItemName+"_"+stack.getItemDamage()+".name");
+    public String getItemStackDisplayName(ItemStack stack) {
+        return Helper.localize("item." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName + "_" + stack.getItemDamage() + ".name");
     }
 
-	@Override
-	public ModelResourceLocation[] getModelResourceLocations() {
-		return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName()+"Creeper", "inventory"),new ModelResourceLocation(this.getRegistryName()+"Blast", "inventory"),new ModelResourceLocation(this.getRegistryName()+"Slime", "inventory")};
-	}
+    @Override
+    public ModelResourceLocation[] getModelResourceLocations() {
+        return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName() + "Creeper", "inventory"), new ModelResourceLocation(this.getRegistryName() + "Blast", "inventory"), new ModelResourceLocation(this.getRegistryName() + "Slime", "inventory")};
+    }
 }

@@ -1,6 +1,6 @@
 package convenientadditions.block.powderkeg;
 
-import conveniencecore.util.Helper;
+import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import net.minecraft.block.Block;
@@ -24,32 +24,30 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 public class BlockPowderKeg extends BlockContainer {
-	
-	public BlockPowderKeg() {
-		super(Material.WOOD);
-		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.BlockNames.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-		this.setSoundType(SoundType.WOOD);
-	}
 
-	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new TileEntityPowderKeg();
-	}
+    public BlockPowderKeg() {
+        super(Material.WOOD);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        this.setSoundType(SoundType.WOOD);
+    }
 
     @Override
-    public void breakBlock(World world, BlockPos pos, IBlockState state)
-    {
+    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+        return new TileEntityPowderKeg();
+    }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
         dropItems(world, pos);
         super.breakBlock(world, pos, state);
     }
-    
-    private void dropItems(World world, BlockPos pos)
-    {
-    	if (world.getTileEntity(pos)!=null && world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote){
-        	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(pos);
-        	if(keg.getAmount()<=0)
-        		return;
-        	ItemStack item=keg.removeStack(64);
+
+    private void dropItems(World world, BlockPos pos) {
+        if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote) {
+            TileEntityPowderKeg keg = (TileEntityPowderKeg) world.getTileEntity(pos);
+            if (keg.getAmount() <= 0)
+                return;
+            ItemStack item = keg.removeStack(64);
             float rx = world.rand.nextFloat() * 0.8F + 0.1F;
             float ry = world.rand.nextFloat() * 0.8F + 0.1F;
             float rz = world.rand.nextFloat() * 0.8F + 0.1F;
@@ -63,74 +61,73 @@ public class BlockPowderKeg extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-		ItemStack current=player.inventory.getStackInSlot(player.inventory.currentItem);
-    	if (world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote){
-        	TileEntityPowderKeg keg = (TileEntityPowderKeg)world.getTileEntity(pos);
-    		if (!player.isSneaking()&&!world.isRemote){
-	        	if(current==null){
-    				player.addChatMessage(new TextComponentString(keg.getAmount()+Helper.localize("message."+ModConstants.Mod.MODID+":gunpowderStored")));
-	        	}else if(current.getItem()==Items.FLINT_AND_STEEL){
-        			if(explode(world,pos)){
-        				current.damageItem(1, player);
-        				return true;
-	        		}
-	    			return false;
-	        	}else if (current.getItem()==Items.GUNPOWDER){
-		        	player.setHeldItem(hand, keg.insertStack(held));
-		        }
-        	}else if(keg.getAmount()!=0&&current==null){
-	        	Helper.spawnItemInPlace(world, pos.getX()+.5, pos.getY()+1.2, pos.getZ()+.5, keg.removeStack(64));
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+        ItemStack current = player.inventory.getStackInSlot(player.inventory.currentItem);
+        if (world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote) {
+            TileEntityPowderKeg keg = (TileEntityPowderKeg) world.getTileEntity(pos);
+            if (!player.isSneaking() && !world.isRemote) {
+                if (current == null) {
+                    player.addChatMessage(new TextComponentString(keg.getAmount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored")));
+                } else if (current.getItem() == Items.FLINT_AND_STEEL) {
+                    if (explode(world, pos)) {
+                        current.damageItem(1, player);
+                        return true;
+                    }
+                    return false;
+                } else if (current.getItem() == Items.GUNPOWDER) {
+                    player.setHeldItem(hand, keg.insertStack(held));
+                }
+            } else if (keg.getAmount() != 0 && current == null) {
+                Helper.spawnItemInPlace(world, pos.getX() + .5, pos.getY() + 1.2, pos.getZ() + .5, keg.removeStack(64));
             }
-    	}
+        }
         return true;
     }
 
-    
+
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
-    {
-    	if(!worldIn.isRemote)
-	        if(Helper.checkForFire(worldIn, pos)||worldIn.isBlockIndirectlyGettingPowered(pos)>0)
-	        	this.explode(worldIn,pos);
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+        if (!worldIn.isRemote)
+            if (Helper.checkForFire(worldIn, pos) || worldIn.isBlockIndirectlyGettingPowered(pos) > 0)
+                this.explode(worldIn, pos);
     }
-    
+
     @Override
-    public void onEntityCollidedWithBlock(World w, BlockPos pos, IBlockState s, Entity e)
-    {
-        if (e instanceof EntityArrow && !w.isRemote)
-        {
-            EntityArrow entityarrow = (EntityArrow)e;
+    public void onEntityCollidedWithBlock(World w, BlockPos pos, IBlockState s, Entity e) {
+        if (e instanceof EntityArrow && !w.isRemote) {
+            EntityArrow entityarrow = (EntityArrow) e;
 
             if (entityarrow.isBurning())
-	            this.explode(w, pos);
+                this.explode(w, pos);
         }
     }
-    
-    @Override
-    public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion p_5){explode(world,pos);}
-    
-    public boolean explode(World w,BlockPos pos){
-    	if(w.getTileEntity(pos)!=null&&w.getTileEntity(pos) instanceof TileEntityPowderKeg){
-    		TileEntityPowderKeg k=(TileEntityPowderKeg)w.getTileEntity(pos);
-    		if(k.getAmount()>0&&!w.isRemote){
-	    		float strenght=(float)k.getAmount()/1.5F;
-	    		k.removeStack(64);
-	    		w.setBlockToAir(pos);
-	    		w.createExplosion(null, (double)pos.getX()+.5, (double)pos.getY()+.5, (double)pos.getZ()+.5, strenght, true);
-	    		return true;
-	    	}
-    	}
-    	return false;
-    }
-    
-    @Override
-    public boolean canDropFromExplosion(Explosion e){return false;}
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
+    public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion p_5) {
+        explode(world, pos);
+    }
+
+    public boolean explode(World w, BlockPos pos) {
+        if (w.getTileEntity(pos) != null && w.getTileEntity(pos) instanceof TileEntityPowderKeg) {
+            TileEntityPowderKeg k = (TileEntityPowderKeg) w.getTileEntity(pos);
+            if (k.getAmount() > 0 && !w.isRemote) {
+                float strenght = (float) k.getAmount() / 1.5F;
+                k.removeStack(64);
+                w.setBlockToAir(pos);
+                w.createExplosion(null, (double) pos.getX() + .5, (double) pos.getY() + .5, (double) pos.getZ() + .5, strenght, true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canDropFromExplosion(Explosion e) {
+        return false;
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 }

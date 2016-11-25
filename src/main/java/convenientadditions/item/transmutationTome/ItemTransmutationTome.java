@@ -12,19 +12,18 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class ItemTransmutationTome extends Item {
-	
-	public ItemTransmutationTome() {
-		super();
-		this.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.transmutationTomeItemName).setMaxStackSize(1).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-	}
+
+    public ItemTransmutationTome() {
+        super();
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.transmutationTomeItemName).setMaxStackSize(1).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    }
 
 
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand)
-	{
-		if(!world.isRemote){
-    		player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_TRANSMUTATION_TOME_ID, world, 0, 0, 0);
-		}
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,item);
-	}
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
+        if (!world.isRemote) {
+            player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_TRANSMUTATION_TOME_ID, world, 0, 0, 0);
+        }
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+    }
 }

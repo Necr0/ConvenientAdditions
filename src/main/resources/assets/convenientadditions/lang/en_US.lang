@@ -15,6 +15,10 @@ tile.convenientadditions:inventoryProxy.name=Inventory Proxy
 tile.convenientadditions:inventoryProxySided.name=Sided Inventory Proxy
 tile.convenientadditions:inventoryProxyFiltered.name=Filtered Inventory Proxy
 tile.convenientadditions:treetap.name=Tree Tap
+tile.convenientadditions:hoverPad.name=Hover Pad
+tile.convenientadditions:blastPad.name=Blast Pad
+tile.convenientadditions:platform.name=Platform
+tile.convenientadditions:treeBox.name=Leaf Collector
 
 # TEs
 tileentity.convenientadditions:composter.name=Composter
@@ -199,6 +203,9 @@ color.convenientadditions:white=White
 
 # Compat
 jei.convenientadditions:transmutationTome.name=Tome of Transmutation
+
+waila.convenientadditions:powerLevel=Power Level: %l
+waila.convenientadditions:compostingMass=%m/%M composting mass stored. (%p%)
 
 # Entity
 

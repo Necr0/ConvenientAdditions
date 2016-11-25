@@ -1,11 +1,9 @@
 package convenientadditions.item.charge;
 
-import java.util.List;
-
-import conveniencecore.api.item.IPlayerInventoryTick;
-import conveniencecore.util.Helper;
+import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -23,90 +21,88 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
+
 public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick {
-	public static ItemStack FULLY_CHARGED;
-    
-	public ItemSunstone(){
-		super(60000,true,true,20);
-		this.setHasSubtypes(true)
-			.setUnlocalizedName(ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName)
-			.setCreativeTab(ConvenientAdditions.CREATIVETAB)
-			.setHasSubtypes(true)
-			.setMaxStackSize(1);
-		FULLY_CHARGED=new ItemStack(this,1,0);
-		chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
-	}
-	
-	@Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand)
-    {
-		int dmg=itemStack.getItemDamage();
-    	if(!world.isRemote)
-    		if(dmg==0&&getCharge(itemStack)!=0){
-    			itemStack.setItemDamage(1);
-    		}else
-    			itemStack.setItemDamage(0);
-    	return new ActionResult<ItemStack>(EnumActionResult.SUCCESS,itemStack);
+    public static ItemStack FULLY_CHARGED;
+
+    public ItemSunstone() {
+        super(60000, true, true, 20);
+        this.setHasSubtypes(true)
+                .setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName)
+                .setCreativeTab(ConvenientAdditions.CREATIVETAB)
+                .setHasSubtypes(true)
+                .setMaxStackSize(1);
+        FULLY_CHARGED = new ItemStack(this, 1, 0);
+        chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
-    
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4)
-	{
-		list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName));
-		super.addInformation(stack,player,list,par4);
-		if(isActive(stack))
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName+"Active"));
-		else
-			list.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.sunstoneItemName+"Inactive"));
-	}
-	
-	@Override
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
+        int dmg = itemStack.getItemDamage();
+        if (!world.isRemote)
+            if (dmg == 0 && getCharge(itemStack) != 0) {
+                itemStack.setItemDamage(1);
+            } else
+                itemStack.setItemDamage(0);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStack);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
+        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName));
+        super.addInformation(stack, player, list, par4);
+        if (isActive(stack))
+            list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Active"));
+        else
+            list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Inactive"));
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l)
-    {
+    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
     }
-	
-	@Override
+
+    @Override
     @SideOnly(Side.CLIENT)
-    public int consumeCharge(ItemStack item,int amount)
-    {
-        int ret=super.consumeCharge(item, amount);
-        if(this.getCharge(item)==0)
-        	item.setItemDamage(0);
+    public int consumeCharge(ItemStack item, int amount) {
+        int ret = super.consumeCharge(item, amount);
+        if (this.getCharge(item) == 0)
+            item.setItemDamage(0);
         return ret;
     }
-	
-	public boolean isActive(ItemStack stack){
-		return (getCharge(stack))>0&&stack.getItemDamage()==1;
-	}
 
-	@Override
-	public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player) {
-		if(player.worldObj.isRemote)
-			return;
-		WorldServer world = (WorldServer)player.worldObj;
-		if(isActive(item)){
-    		consumeCharge(item, 1);
-    		for(int x=0;x<9;x++){
-    			for(int y=0;y<9;y++){
-    				for(int z=0;z<9;z++){
-    					BlockPos pos=new BlockPos(x-4+(int)player.posX,y-4+(int)player.posY,z-4+(int)player.posZ);
-    					IBlockState state=world.getBlockState(pos);
-    					Block b=state.getBlock();
-    					if(b.isAir(state,world,pos)&&b!=ModBlocks.tempLightBlock&&b!=ModBlocks.phantomPlatformBlock){
-    						world.setBlockState(pos, ModBlocks.tempLightBlock.getDefaultState(), 3);
-    						world.scheduleBlockUpdate(pos, ModBlocks.tempLightBlock, 20+world.rand.nextInt(20), 0);
-    					}
-            		}
-        		}
-    		}
-		}
-	}
+    public boolean isActive(ItemStack stack) {
+        return (getCharge(stack)) > 0 && stack.getItemDamage() == 1;
+    }
 
-	@Override
-	public boolean isSunlightChargeable(ItemStack item,int slot) {
-		return !isActive(item)&&(slot>=0&&slot<=9||slot==255||slot==-255);
-	}
+    @Override
+    public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player) {
+        if (player.worldObj.isRemote)
+            return;
+        WorldServer world = (WorldServer) player.worldObj;
+        if (isActive(item)) {
+            consumeCharge(item, 1);
+            for (int x = 0; x < 9; x++) {
+                for (int y = 0; y < 9; y++) {
+                    for (int z = 0; z < 9; z++) {
+                        BlockPos pos = new BlockPos(x - 4 + (int) player.posX, y - 4 + (int) player.posY, z - 4 + (int) player.posZ);
+                        IBlockState state = world.getBlockState(pos);
+                        Block b = state.getBlock();
+                        if (b.isAir(state, world, pos) && b != ModBlocks.tempLightBlock && b != ModBlocks.phantomPlatformBlock) {
+                            world.setBlockState(pos, ModBlocks.tempLightBlock.getDefaultState(), 3);
+                            world.scheduleBlockUpdate(pos, ModBlocks.tempLightBlock, 20 + world.rand.nextInt(20), 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean isSunlightChargeable(ItemStack item, int slot) {
+        return !isActive(item) && (slot >= 0 && slot <= 9 || slot == 255 || slot == -255);
+    }
 }
