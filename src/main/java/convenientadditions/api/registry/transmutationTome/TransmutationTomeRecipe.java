@@ -1,10 +1,8 @@
 package convenientadditions.api.registry.transmutationTome;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.Tuple;
-
-import java.util.Collections;
-import java.util.List;
 
 public class TransmutationTomeRecipe implements ITransmutationTomeRecipe, ITransmutationTomeJEIRecipe {
     ItemStack base, transmutator, result;
@@ -26,35 +24,35 @@ public class TransmutationTomeRecipe implements ITransmutationTomeRecipe, ITrans
     @Override
     public Tuple<ItemStack, ItemStack> getLeftovers(ItemStack base, ItemStack transmutator) {
         ItemStack outputBase = null;
-        if (base != null) {
+        if (!base.isEmpty()) {
             outputBase = base.copy();
-            if (outputBase.stackSize - this.base.stackSize < 1) {
+            if (outputBase.getCount() - this.base.getCount() < 1) {
                 if (outputBase.getItem().hasContainerItem(outputBase))
                     outputBase = outputBase.getItem().getContainerItem(outputBase);
                 else
                     outputBase = null;
             } else
-                outputBase.stackSize -= this.base.stackSize;
+                outputBase.shrink(this.base.getCount());
         }
         ItemStack outputTransmutator = null;
         if (transmutator != null) {
             outputTransmutator = transmutator.copy();
-            if (outputTransmutator.stackSize - 1 < 1) {
+            if (outputTransmutator.getCount() - 1 < 1) {
                 if (outputTransmutator.getItem().hasContainerItem(outputTransmutator))
                     outputTransmutator = outputTransmutator.getItem().getContainerItem(outputTransmutator);
                 else
                     outputTransmutator = null;
             } else
-                outputTransmutator.stackSize -= 1;
+                outputTransmutator.shrink(1);
         }
-        return new Tuple<ItemStack, ItemStack>(outputBase, outputTransmutator);
+        return new Tuple<>(outputBase, outputTransmutator);
     }
 
     @Override
     public boolean doesMatch(ItemStack base, ItemStack transmutator) {
-        if (base == null || transmutator == null)
+        if (base.isEmpty() || transmutator.isEmpty())
             return false;
-        return base.isItemEqual(this.base) && base.stackSize >= this.base.stackSize && transmutator.isItemEqual(this.transmutator) && level >= this.level;
+        return base.isItemEqual(this.base) && base.getCount() >= this.base.getCount() && transmutator.isItemEqual(this.transmutator) && level >= this.level;
     }
 
     @Override
@@ -68,18 +66,18 @@ public class TransmutationTomeRecipe implements ITransmutationTomeRecipe, ITrans
     }
 
     @Override
-    public List<ItemStack> getBase() {
-        return Collections.singletonList(this.base);
+    public NonNullList<ItemStack> getBase() {
+        return NonNullList.withSize(1,this.base);
     }
 
     @Override
-    public List<ItemStack> getTransmutator() {
-        return Collections.singletonList(this.transmutator);
+    public NonNullList<ItemStack> getTransmutator() {
+        return NonNullList.withSize(1,this.transmutator);
     }
 
     @Override
-    public List<ItemStack> getResult() {
-        return Collections.singletonList(this.result);
+    public NonNullList<ItemStack> getResult() {
+        return NonNullList.withSize(1,this.result);
     }
 
     @Override

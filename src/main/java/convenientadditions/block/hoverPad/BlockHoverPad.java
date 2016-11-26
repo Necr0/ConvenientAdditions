@@ -5,7 +5,6 @@ import convenientadditions.ModConstants;
 import convenientadditions.api.block.BlockMachine;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -35,7 +34,7 @@ public class BlockHoverPad extends BlockMachine {
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos from) {
         world.markBlockRangeForRenderUpdate(pos,pos);
     }
 
@@ -49,6 +48,6 @@ public class BlockHoverPad extends BlockMachine {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{ACTIVE});
+        return new BlockStateContainer(this, ACTIVE);
     }
 }

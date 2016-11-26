@@ -3,6 +3,7 @@ package convenientadditions.block.setProvider;
 import convenientadditions.api.util.ItemHelper;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 
 public class ItemStackHandlerSPFiltered extends ItemStackHandlerAutoSave {
 
@@ -19,7 +20,7 @@ public class ItemStackHandlerSPFiltered extends ItemStackHandlerAutoSave {
         return stack;
     }
 
-    public boolean containsValidStack(ItemStack[] filter, ItemStack test, boolean ignoreDamage, boolean ignoreNBT) {
+    public boolean containsValidStack(NonNullList<ItemStack> filter, ItemStack test, boolean ignoreDamage, boolean ignoreNBT) {
         for (ItemStack f : filter) {
             if (ItemHelper.match(f, test, ignoreDamage, ignoreNBT))
                 return true;

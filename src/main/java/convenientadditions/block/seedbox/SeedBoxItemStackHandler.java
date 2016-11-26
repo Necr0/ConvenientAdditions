@@ -24,16 +24,16 @@ public class SeedBoxItemStackHandler implements IItemHandler, IItemHandlerModifi
 
     @Override
     public ItemStack getStackInSlot(int slot) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
     public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-        if (stack != null && stack.stackSize > 0) {
+        if (!stack.isEmpty()) {
             List<EnumFacing> outputs = box.getValidOutputDirections();
             if (outputs.size() > 0) {
                 if (simulate)
-                    return null;
+                    return ItemStack.EMPTY;
                 EnumFacing output = (EnumFacing) outputs.toArray()[box.getWorld().rand.nextInt(outputs.size())];
                 BlockPos pos = box.getPos();
                 EntitySpecialItem item = new EntitySpecialItem(box.getWorld(), pos.getX() + 0.5 + (output.getFrontOffsetX() * 0.8), pos.getY() + 0.5 + (output.getFrontOffsetY() * 0.8), pos.getZ() + 0.5 + (output.getFrontOffsetZ() * 0.8), stack);
@@ -43,7 +43,7 @@ public class SeedBoxItemStackHandler implements IItemHandler, IItemHandlerModifi
                 item.syncBehaviours();
                 item.setVelocity(0d, 0d, 0d);
                 item.setPickupDelay(20);
-                box.getWorld().spawnEntityInWorld(item);
+                box.getWorld().spawnEntity(item);
             }
         }
         return stack;
@@ -51,7 +51,7 @@ public class SeedBoxItemStackHandler implements IItemHandler, IItemHandlerModifi
 
     @Override
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override

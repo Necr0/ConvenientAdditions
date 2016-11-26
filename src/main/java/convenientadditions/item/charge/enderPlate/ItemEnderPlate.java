@@ -1,5 +1,6 @@
 package convenientadditions.item.charge.enderPlate;
 
+import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -39,14 +41,15 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack itemStack=player.getHeldItem(hand);
         int dmg = itemStack.getItemDamage();
         if (!world.isRemote)
             if (dmg == 0 && getCharge(itemStack) != 0) {
                 itemStack.setItemDamage(1);
             } else
                 itemStack.setItemDamage(0);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStack);
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
     }
 
     @Override
@@ -60,7 +63,7 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
+    public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
     }
@@ -70,10 +73,10 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
     }
 
     @Override
-    public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player) {
-        if (player.worldObj.isRemote || !(slot >= 0 && slot <= 9 || slot == 255))
+    public void onPlayerInventoryTick(ItemStack item, SlotNotation slot, EntityPlayer player) {
+        if (player.getEntityWorld().isRemote || slot.isCommonActive())
             return;
-        WorldServer world = (WorldServer) player.worldObj;
+        WorldServer world = (WorldServer) player.getEntityWorld();
         if (isActive(item)) {
             consumeCharge(item, 6);
             for (int x = 0; x < 3; x++) {

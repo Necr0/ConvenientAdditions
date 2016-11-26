@@ -137,11 +137,6 @@ public abstract class ItemChargeable extends Item implements IChargeable {
     }
 
     @Override
-    public boolean isItemTool(ItemStack item) {
-        return true;
-    }
-
-    @Override
     public int getItemEnchantability() {
         return 0;
     }

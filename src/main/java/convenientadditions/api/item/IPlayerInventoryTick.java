@@ -1,8 +1,9 @@
 package convenientadditions.api.item;
 
+import convenientadditions.api.inventory.SlotNotation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public interface IPlayerInventoryTick {
-    public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player);
+    void onPlayerInventoryTick(ItemStack item, SlotNotation slot, EntityPlayer player);
 }

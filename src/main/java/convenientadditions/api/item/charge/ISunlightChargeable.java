@@ -1,11 +1,12 @@
 package convenientadditions.api.item.charge;
 
+import convenientadditions.api.inventory.SlotNotation;
 import net.minecraft.item.ItemStack;
 
 public interface ISunlightChargeable extends IChargeable {
-    public int getSunlightChargeRate(ItemStack item, int slot);
+    int getSunlightChargeRate(ItemStack item, SlotNotation slot);
 
-    public boolean isSunlightChargeable(ItemStack item, int slot);
+    boolean isSunlightChargeable(ItemStack item, SlotNotation slot);
 
-    public boolean canApplyDrain(ItemStack item);
+    boolean canApplyDrain(ItemStack item);
 }

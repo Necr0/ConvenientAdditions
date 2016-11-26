@@ -3,7 +3,7 @@ package convenientadditions.api.item;
 import net.minecraft.item.ItemStack;
 
 public interface IFuelItem {
-    public boolean isFuelItem(ItemStack item);
+    boolean isFuelItem(ItemStack item);
 
-    public int getFuelTime(ItemStack item);
+    int getFuelTime(ItemStack item);
 }

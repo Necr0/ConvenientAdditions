@@ -12,10 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
 
 public class BlockItemTransmitter extends BlockInventoryProxy implements IDismantleable {
     public BlockItemTransmitter() {
@@ -29,7 +28,7 @@ public class BlockItemTransmitter extends BlockInventoryProxy implements IDisman
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote)
             player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_ITEM_TRANSMITTER_ID, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
@@ -54,10 +53,10 @@ public class BlockItemTransmitter extends BlockInventoryProxy implements IDisman
                     entityItem.motionX = world.rand.nextGaussian() * factor;
                     entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
                     entityItem.motionZ = world.rand.nextGaussian() * factor;
-                    world.spawnEntityInWorld(entityItem);
+                    world.spawnEntity(entityItem);
                 }
             }
-            p.channels.setStacks(new ItemStack[p.channels.getSlots()]);
+            p.channels.setStacks(NonNullList.withSize(p.channels.getSlots(),ItemStack.EMPTY));
         }
     }
 
@@ -67,11 +66,11 @@ public class BlockItemTransmitter extends BlockInventoryProxy implements IDisman
     }
 
     @Override
-    public ArrayList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
+    public NonNullList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
         dropItems(world, pos);
         ItemStack stack = new ItemStack(this);
-        world.spawnEntityInWorld(new EntityItem(world, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, stack));
-        ArrayList<ItemStack> arr = new ArrayList<ItemStack>();
+        world.spawnEntity(new EntityItem(world, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, stack));
+        NonNullList<ItemStack> arr = NonNullList.create();
         arr.add(stack);
         world.setBlockToAir(pos);
         return arr;

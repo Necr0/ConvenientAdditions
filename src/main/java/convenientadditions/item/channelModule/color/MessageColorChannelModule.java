@@ -41,7 +41,7 @@ public class MessageColorChannelModule extends PacketBase<MessageColorChannelMod
     public MessageColorChannelModule onMessage(MessageColorChannelModule message, MessageContext ctx) {
         if (ctx.side == Side.SERVER) {
             ItemStack stack = ctx.getServerHandler().playerEntity.getHeldItem(message.mainhand ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND);
-            if (stack != null && stack.getItem() == ModItems.itemModuleColor && stack.hasTagCompound() && (message.panel >= 0 && message.panel <= 2)) {
+            if (!stack.isEmpty() && stack.getItem() == ModItems.itemModuleColor && stack.hasTagCompound() && (message.panel >= 0 && message.panel <= 2)) {
                 stack.getTagCompound().setInteger("MATCHER_DYE_" + message.panel, (message.value >= 0 && message.value <= 15) ? message.value : 0);
             }
         }

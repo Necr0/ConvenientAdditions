@@ -56,7 +56,7 @@ public class ContainerTransmutationTome extends CCContainerBase implements ICont
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
         ItemStack previous = null;
-        Slot slot = (Slot) this.inventorySlots.get(fromSlot);
+        Slot slot = this.inventorySlots.get(fromSlot);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack current = slot.getStack();
@@ -64,44 +64,44 @@ public class ContainerTransmutationTome extends CCContainerBase implements ICont
 
             if (fromSlot < 3) {
                 if (!this.mergeItemStack(current, 3, 39, true))
-                    return null;
+                    return ItemStack.EMPTY;
             } else {
                 if (!this.mergeItemStack(current, 0, 2, false))
-                    return null;
+                    return ItemStack.EMPTY;
             }
 
-            if (current.stackSize == 0)
-                slot.putStack((ItemStack) null);
+            if (current.isEmpty())
+                slot.putStack(ItemStack.EMPTY);
             else
                 slot.onSlotChanged();
 
-            if (current.stackSize == previous.stackSize)
+            if (current.getCount() == previous.getCount())
                 return null;
-            slot.onPickupFromSlot(playerIn, current);
+            slot.onTake(playerIn, current);
         }
         return previous;
     }
 
     @Override
     public void onContainerClosed(EntityPlayer playerIn) {
-        if (player.worldObj.isRemote)
+        if (player.getEntityWorld().isRemote)
             return;
         InventoryPlayer inventoryplayer = playerIn.inventory;
         if (inventoryplayer.getItemStack() != null) {
             playerIn.dropItem(inventoryplayer.getItemStack(), false);
-            inventoryplayer.setItemStack((ItemStack) null);
+            inventoryplayer.setItemStack(ItemStack.EMPTY);
         }
         if (handler.getStackInSlot(0) != null) {
             playerIn.dropItem(handler.getStackInSlot(0), false);
-            handler.setStackInSlot(0, null);
+            handler.setStackInSlot(0, ItemStack.EMPTY);
         }
         if (handler.getStackInSlot(1) != null) {
             playerIn.dropItem(handler.getStackInSlot(1), false);
-            handler.setStackInSlot(1, null);
+            handler.setStackInSlot(1, ItemStack.EMPTY);
         }
         if (out.getStackInSlot(0) != null) {
             playerIn.dropItem(out.getStackInSlot(0), false);
-            out.setStackInSlot(0, null);
+            out.setStackInSlot(0, ItemStack.EMPTY);
         }
     }
 
@@ -142,7 +142,7 @@ public class ContainerTransmutationTome extends CCContainerBase implements ICont
                 player.removeExperienceLevel(getLevelRequired());
                 //result
                 if (getSlot(2).getHasStack())
-                    getSlot(2).getStack().stackSize += getResult().stackSize;
+                    getSlot(2).getStack().grow(getResult().getCount());
                 else
                     getSlot(2).putStack(getResult());
                 getSlot(2).onSlotChanged();

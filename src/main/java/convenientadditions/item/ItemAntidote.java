@@ -26,9 +26,9 @@ public class ItemAntidote extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         playerIn.setActiveHand(hand);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
     }
 
     /**
@@ -40,7 +40,7 @@ public class ItemAntidote extends Item {
         EntityPlayer entityplayer = entityLiving instanceof EntityPlayer ? (EntityPlayer) entityLiving : null;
 
         if (entityplayer == null || !entityplayer.capabilities.isCreativeMode) {
-            --stack.stackSize;
+            stack.shrink(1);
         }
 
         if (!worldIn.isRemote) {
@@ -51,7 +51,7 @@ public class ItemAntidote extends Item {
         }
 
         if (entityplayer == null || !entityplayer.capabilities.isCreativeMode) {
-            if (stack.stackSize <= 0) {
+            if (stack.getCount() <= 0) {
                 return new ItemStack(Items.GLASS_BOTTLE);
             }
 

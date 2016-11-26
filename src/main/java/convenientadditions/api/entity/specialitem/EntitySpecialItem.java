@@ -29,7 +29,7 @@ public class EntitySpecialItem extends EntityItem {
     }
 
     public List<Long> getBehaviours() {
-        return this.worldObj.isRemote ? this.getDataManager().get(BEHAVIOURS) : this.behaviours;
+        return getEntityWorld().isRemote ? this.getDataManager().get(BEHAVIOURS) : this.behaviours;
     }
 
     public void setBehaviours(List<Long> behaviours) {

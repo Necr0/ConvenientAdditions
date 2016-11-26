@@ -37,7 +37,7 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 
     public ItemStack insertStack(ItemStack stackIn) {
         ItemStack stack = stackHandler.insertItem(0, stackIn, false);
-        if (stackIn.stackSize == 1 && (stack == null || stack.stackSize == 0))
+        if (stackIn.getCount() == 1 && stack.isEmpty())
             if (stackIn.getItem().hasContainerItem(stackIn))
                 return stackIn.getItem().getContainerItem(stackIn);
         return stack;
@@ -78,25 +78,25 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 
     @Override
     public void update() {
-        IBlockState state = worldObj.getBlockState(pos);
+        IBlockState state = getWorld().getBlockState(pos);
         Random rnd = new Random();
-        if (!worldObj.isRemote) {
+        if (!getWorld().isRemote) {
             if (content >= ModConfig.composter_progressContent) {
                 progress++;
                 if (progress >= ModConfig.composter_progressPeriod) {
                     progress = 0;
                     content -= ModConfig.composter_progressContent;
-                    if (worldObj.rand.nextFloat() < ModConfig.composter_compostChance)
-                        Helper.spawnItemInPlace(worldObj, (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemCompost, 1, this.spores ? 1 : 0));
-                    if (worldObj.rand.nextFloat() < ModConfig.composter_extraCompostChance)
-                        Helper.spawnItemInPlace(worldObj, (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemCompost, 1, this.spores ? 1 : 0));
-                    if (worldObj.rand.nextFloat() < ModConfig.composter_dirtChunkChance)
-                        Helper.spawnItemInPlace(worldObj, (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemDirtChunk));
-                    if (worldObj.rand.nextFloat() < ModConfig.composter_fertilizerChance)
-                        Helper.spawnItemInPlace(worldObj, (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemFertilizer));
+                    if (getWorld().rand.nextFloat() < ModConfig.composter_compostChance)
+                        Helper.spawnItemInPlace(getWorld(), (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemCompost, 1, this.spores ? 1 : 0));
+                    if (getWorld().rand.nextFloat() < ModConfig.composter_extraCompostChance)
+                        Helper.spawnItemInPlace(getWorld(), (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemCompost, 1, this.spores ? 1 : 0));
+                    if (getWorld().rand.nextFloat() < ModConfig.composter_dirtChunkChance)
+                        Helper.spawnItemInPlace(getWorld(), (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemDirtChunk));
+                    if (getWorld().rand.nextFloat() < ModConfig.composter_fertilizerChance)
+                        Helper.spawnItemInPlace(getWorld(), (double) pos.getX() + .5, (double) pos.getY() + 1.2, (double) pos.getZ() + .5, new ItemStack(ModItems.itemFertilizer));
                 }
                 if (content >= ModConfig.composter_capacity && ModConfig.composter_overflowSmell) {
-                    List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX() - 2, pos.getY() - 2, pos.getZ() - 2, pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3));
+                    List<EntityPlayer> players = getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX() - 2, pos.getY() - 2, pos.getZ() - 2, pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3));
                     for (EntityPlayer p : players) {
                         switch (rnd.nextInt(120)) {
                             case 0:
@@ -108,7 +108,7 @@ public class TileEntityComposter extends TileEntity implements ITickable {
                     }
                 }
                 this.markDirty();
-                this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+                this.getWorld().notifyBlockUpdate(pos, state, state, 3);
             } else {
                 this.progress = 0;
                 if (this.content == 0)
@@ -116,14 +116,14 @@ public class TileEntityComposter extends TileEntity implements ITickable {
                 if (processing) {
                     this.processing = false;
                     this.markDirty();
-                    this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+                    this.getWorld().notifyBlockUpdate(pos, state, state, 3);
                 }
             }
         } else if (processing) {
             if (rnd.nextInt(10) == 0)
-                worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX() + .5 - ((double) (rnd.nextInt(9) - 4) / 10D), pos.getY() + .2 + (double) content / (double) ModConfig.composter_capacity * .75, pos.getZ() + .5 + ((double) (rnd.nextInt(9) - 4) / 10D), 0, 0.6, 0);
+                getWorld().spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX() + .5 - ((double) (rnd.nextInt(9) - 4) / 10D), pos.getY() + .2 + (double) content / (double) ModConfig.composter_capacity * .75, pos.getZ() + .5 + ((double) (rnd.nextInt(9) - 4) / 10D), 0, 0.6, 0);
             if (content >= ModConfig.composter_capacity)
-                worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX() + .5 - ((double) (rnd.nextInt(9) - 4) / 10D), pos.getY() + .2 + (double) content / (double) ModConfig.composter_capacity * .75, pos.getZ() + .5 + ((double) (rnd.nextInt(9) - 4) / 10D), 0, 0.6, 0);
+                getWorld().spawnParticle(EnumParticleTypes.SPELL_MOB, pos.getX() + .5 - ((double) (rnd.nextInt(9) - 4) / 10D), pos.getY() + .2 + (double) content / (double) ModConfig.composter_capacity * .75, pos.getZ() + .5 + ((double) (rnd.nextInt(9) - 4) / 10D), 0, 0.6, 0);
         }
     }
 

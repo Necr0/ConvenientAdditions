@@ -16,7 +16,7 @@ public class RenderComposter extends TileEntitySpecialRenderer<TileEntityCompost
 
     @Override
     public void renderTileEntityAt(TileEntityComposter tileEntity, double d0, double d1, double d2, float f, int dest) {
-        TileEntityComposter t = (TileEntityComposter) tileEntity;
+        TileEntityComposter t = tileEntity;
         if (t.content > 0) {
             GL11.glPushMatrix();
             float d = (float) t.content / ModConfig.composter_capacity;

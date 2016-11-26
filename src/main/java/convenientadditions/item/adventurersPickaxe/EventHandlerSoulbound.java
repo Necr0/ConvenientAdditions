@@ -22,13 +22,13 @@ public class EventHandlerSoulbound {
     	while(i.hasNext()){
     		EntityItem ent=i.next();
     		ItemStack stack=ent.getEntityItem();
-    		if(stack!=null&&stack.getItem() instanceof ISoulbound&&((ISoulbound)stack.getItem()).isSoulbound(stack, e.getEntityPlayer())){
+    		if(!stack.isEmpty()&&stack.getItem() instanceof ISoulbound&&((ISoulbound)stack.getItem()).isSoulbound(stack, e.getEntityPlayer())){
     			IItemHandler h=e.getEntityPlayer().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
     			ItemStack out=tryInsert(stack, h);
     			if(out==null)
     				i.remove();
     			else
-    				stack.stackSize=out.stackSize;
+    				stack.setCount(out.getCount());
     		}
     	}
     }
@@ -47,7 +47,7 @@ public class EventHandlerSoulbound {
     			if(out==null){
     				h.extractItem(slot, 64, false);
     			}else{
-    				stack.stackSize=out.stackSize;
+					stack.setCount(out.getCount());
     			}
     		}
 		}
@@ -57,7 +57,7 @@ public class EventHandlerSoulbound {
 		ItemStack tmp=s.copy();
 		for(int slot=0;slot<h.getSlots();slot++){
 			tmp=h.insertItem(slot, tmp, false);
-			if(tmp==null||tmp.stackSize==0)
+			if(tmp==null||tmp.getCount()==0)
 				return null;
 		}
 		return tmp;

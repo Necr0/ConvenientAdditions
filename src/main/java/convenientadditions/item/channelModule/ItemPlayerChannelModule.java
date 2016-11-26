@@ -34,14 +34,15 @@ public class ItemPlayerChannelModule extends ItemChannelModule {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack item=player.getHeldItem(hand);
         if (!world.isRemote) {
             if (!item.hasTagCompound())
                 item.setTagCompound(new NBTTagCompound());
             if (!item.getTagCompound().hasKey("MATCHER_PLAYER_ID")) {
                 item.getTagCompound().setString("MATCHER_PLAYER_ID", player.getUniqueID().toString());
                 item.getTagCompound().setString("MATCHER_PLAYER_NAME", player.getDisplayNameString());
-                player.addChatMessage(new TextComponentString("Successfully set player!"));
+                player.sendMessage(new TextComponentString("Successfully set player!"));
                 new ActionResult<>(EnumActionResult.SUCCESS, item);
             }
         }

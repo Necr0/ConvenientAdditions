@@ -61,12 +61,12 @@ public class TileEntityInventoryProxyFiltered extends TileEntityInventoryProxy {
     public void setIgnoreDV(boolean ignoreDV) {
         this.ignoreDV = ignoreDV;
         markDirty();
-        this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos), 0);
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 
     public void setIgnoreNBT(boolean ignoreNBT) {
         this.ignoreNBT = ignoreNBT;
         markDirty();
-        this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos), 0);
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 }

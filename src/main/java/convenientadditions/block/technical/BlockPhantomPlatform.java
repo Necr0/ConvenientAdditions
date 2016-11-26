@@ -1,10 +1,9 @@
 package convenientadditions.block.technical;
 
-import convenientadditions.api.util.Helper;
 import convenientadditions.ModConstants;
+import convenientadditions.api.util.Helper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -36,7 +35,7 @@ public class BlockPhantomPlatform extends Block {
 
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-        if (Helper.getClientPlayer().getHeldItemOffhand() != null)
+        if (!Helper.getClientPlayer().getHeldItemOffhand().isEmpty())
             if (Helper.getClientPlayer().getHeldItemOffhand().getItem() == ItemBlock.getItemFromBlock(state.getBlock()))
                 world.spawnParticle(EnumParticleTypes.END_ROD, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
     }
@@ -54,7 +53,7 @@ public class BlockPhantomPlatform extends Block {
 
     @Override
     public void updateTick(World world, BlockPos pos, IBlockState state, Random r) {
-        if ((state.getValue(DESPAWN)).booleanValue()) {
+        if (state.getValue(DESPAWN)) {
             boolean prevent = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX() - 1, pos.getY() - 1, pos.getZ() - 1, pos.getX() + 2, pos.getY() + 3, pos.getZ() + 2)).size() > 0;
             if (prevent)
                 world.scheduleUpdate(pos, this, 1);
@@ -95,11 +94,11 @@ public class BlockPhantomPlatform extends Block {
     }
 
     public int getMetaFromState(IBlockState state) {
-        return (state.getValue(DESPAWN)).booleanValue() ? 0 : 1;
+        return state.getValue(DESPAWN) ? 0 : 1;
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{DESPAWN});
+        return new BlockStateContainer(this,DESPAWN);
     }
 }

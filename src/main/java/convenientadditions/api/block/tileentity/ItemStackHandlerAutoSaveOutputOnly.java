@@ -2,6 +2,7 @@ package convenientadditions.api.block.tileentity;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -24,12 +25,10 @@ public class ItemStackHandlerAutoSaveOutputOnly extends ItemStackHandler impleme
         te.markDirty();
     }
 
-    public ItemStack[] getStacks() {
-        return this.stacks;
-    }
+    public NonNullList<ItemStack> getStacks(){return this.stacks;}
 
-    public void setStacks(ItemStack[] stacks) {
-        this.stacks = stacks;
+    public void setStacks(NonNullList<ItemStack> stacks){
+        this.stacks=stacks;
         for (int i = 0; i < getSlots(); i++)
             onContentsChanged(i);
     }

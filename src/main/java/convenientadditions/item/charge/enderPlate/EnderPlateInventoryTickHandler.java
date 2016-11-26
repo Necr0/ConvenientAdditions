@@ -1,10 +1,12 @@
 package convenientadditions.item.charge.enderPlate;
 
+import convenientadditions.api.inventory.EnumInventory;
+import convenientadditions.api.inventory.InventoryIterator;
+import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.init.ModConfig;
 import convenientadditions.init.ModItems;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -22,9 +24,8 @@ public class EnderPlateInventoryTickHandler {
         time = 0;
 
         EntityPlayer player = e.player;
-        InventoryPlayer playerInv = player.inventory;
 
-        int crystals = player.worldObj.getEntitiesWithinAABB(EntityEnderCrystal.class,
+        int crystals = player.getEntityWorld().getEntitiesWithinAABB(EntityEnderCrystal.class,
                 new AxisAlignedBB(player.posX - 4.5, player.posY - 4.5, player.posZ - 4.5,
                         player.posX + 4.5, player.posY + 4.5, player.posZ + 4.5)).size();
 
@@ -33,18 +34,12 @@ public class EnderPlateInventoryTickHandler {
 
         int charge = (int) (ModConfig.enderPlate_crystalChargeRate * Math.log(crystals + 1) / Math.log(2));
 
-        for (ItemStack i : playerInv.mainInventory) {
-            if (i != null && i.getItem() == ModItems.itemEnderPlate) {
-                if (!ModItems.itemEnderPlate.isActive(i)) {
-                    ModItems.itemEnderPlate.chargeItem(i, charge);
-                }
-            }
-        }
-
-        for (ItemStack i : playerInv.offHandInventory) {
-            if (i != null && i.getItem() == ModItems.itemEnderPlate) {
-                if (!ModItems.itemEnderPlate.isActive(i)) {
-                    ModItems.itemEnderPlate.chargeItem(i, charge);
+        Iterable<SlotNotation> iter= InventoryIterator.getIterable(player, EnumInventory.MAIN);
+        for (SlotNotation slot : iter) {
+            ItemStack stack=slot.getItem();
+            if (stack.getItem() == ModItems.itemEnderPlate) {
+                if (!ModItems.itemEnderPlate.isActive(stack)) {
+                    ModItems.itemEnderPlate.chargeItem(stack, charge);
                 }
             }
         }

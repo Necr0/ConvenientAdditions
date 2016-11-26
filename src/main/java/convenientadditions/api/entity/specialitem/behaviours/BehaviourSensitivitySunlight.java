@@ -20,7 +20,7 @@ public class BehaviourSensitivitySunlight implements IEntitySpecialItemBehaviour
 
     @Override
     public void onItemEntityUpdate(EntityItem item) {
-        if (item.worldObj.isDaytime() && !item.worldObj.isRaining() && Helper.canEntitySeeSky(item) && new Random().nextInt(15) == 0)
+        if (item.getEntityWorld().isDaytime() && !item.getEntityWorld().isRaining() && Helper.canEntitySeeSky(item) && new Random().nextInt(15) == 0)
             item.setFire(5);
     }
 

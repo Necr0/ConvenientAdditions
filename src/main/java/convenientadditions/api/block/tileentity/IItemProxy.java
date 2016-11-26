@@ -4,5 +4,5 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.items.IItemHandler;
 
 public interface IItemProxy {
-    public IItemHandler tryFetchItemHandler(EnumFacing f, int proxyIndex);
+    IItemHandler tryFetchItemHandler(EnumFacing f, int proxyIndex);
 }

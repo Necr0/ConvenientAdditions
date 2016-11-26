@@ -21,7 +21,7 @@ public class SeedBoxItemBehaviourRegistry {
     }
 
     public static List<Long> getItemBehaviour(ItemStack stack) {
-        ArrayList<Long> ret = new ArrayList<Long>();
+        ArrayList<Long> ret = new ArrayList<>();
         for (ISeedBoxItemBehaviourRegistryEntry e : REGISTRY) {
             if (e.hasSpecialBehaviour(stack))
                 e.getDiscriminators(stack, ret);

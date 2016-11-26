@@ -2,9 +2,9 @@ package convenientadditions.item.charge.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
@@ -15,6 +15,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -44,10 +45,10 @@ public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements
 
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-        if (player.worldObj.isRemote)
+        if (player.getEntityWorld().isRemote)
             return;
         if (ModItems.itemSunlightRing.getCharge(itemstack) > 0) {
-            WorldServer world = (WorldServer) player.worldObj;
+            WorldServer world = (WorldServer) player.getEntityWorld();
             Random random = new Random();
             consumeCharge(itemstack, 1);
             for (int x = 0; x < 9; x++) {
@@ -92,13 +93,8 @@ public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
+    public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
-    }
-
-    @Override
-    public boolean isSunlightChargeable(ItemStack item, int slot) {
-        return slot >= -4 && slot <= 8 || slot == 255 || slot == -255;
     }
 }

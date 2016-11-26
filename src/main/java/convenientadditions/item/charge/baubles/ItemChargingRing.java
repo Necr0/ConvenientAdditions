@@ -2,21 +2,22 @@ package convenientadditions.item.charge.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import baubles.api.cap.BaublesCapabilities;
-import baubles.api.cap.IBaublesItemHandler;
-import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.inventory.EnumInventory;
+import convenientadditions.api.inventory.InventoryIterator;
+import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.item.charge.IChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
+import convenientadditions.api.util.Helper;
 import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -44,37 +45,22 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-        if (player.worldObj.isRemote)
+        if (player.getEntityWorld().isRemote || getCharge(itemstack) <= 0 || !(player instanceof EntityPlayer))
             return;
-        if (getCharge(itemstack) > 0) {
-            int lvl = EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.chargeEfficiency, itemstack);
-            int maxRemaining = (int) (chargingRingBaseCharge * EnchantmentUtil.enchantmentScaleFactor[lvl]);
-            int chargeRemaining = Math.min(getCharge(itemstack), maxRemaining / 2);
-            IInventory invPlayer = ((EntityPlayer) player).inventory;
-            IBaublesItemHandler invBaubles = player.getCapability(BaublesCapabilities.CAPABILITY_BAUBLES, null);
-            for (int i = -7; i < invPlayer.getSizeInventory(); i++) {
-                if (chargeRemaining == 0)
-                    return;
-                if (i < 0) {
-                    ItemStack target = invBaubles.getStackInSlot(-i - 1);
-                    if (target != null && target.getItem() instanceof IChargeable && target.getItem() != this) {
-                        IChargeable tar = (IChargeable) target.getItem();
-                        if (tar.isChargeable(target)) {
-                            int overflow = tar.chargeItem(target, chargeRemaining);
-                            dischargeItem(itemstack, (chargeRemaining - overflow) * 2);
-                            chargeRemaining = overflow;
-                        }
-                    }
-                } else {
-                    ItemStack target = invPlayer.getStackInSlot(i);
-                    if (target != null && target.getItem() instanceof IChargeable) {
-                        IChargeable tar = (IChargeable) target.getItem();
-                        if (tar.isChargeable(target)) {
-                            int overflow = tar.chargeItem(target, chargeRemaining);
-                            dischargeItem(itemstack, (chargeRemaining - overflow) * 2);
-                            chargeRemaining = overflow;
-                        }
-                    }
+        int lvl = EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.chargeEfficiency, itemstack);
+        int maxRemaining = (int) (chargingRingBaseCharge * EnchantmentUtil.enchantmentScaleFactor[lvl]);
+        int chargeRemaining = Math.min(getCharge(itemstack), maxRemaining / 2);
+        Iterable<SlotNotation> iter= InventoryIterator.getIterable((EntityPlayer) player, EnumInventory.BAUBLES, EnumInventory.MAIN);
+        for (SlotNotation slot : iter) {
+            if (chargeRemaining == 0)
+                return;
+            ItemStack target = slot.getItem();
+            if (!target.isEmpty() && target.getItem() instanceof IChargeable && target.getItem() != this) {
+                IChargeable tar = (IChargeable) target.getItem();
+                if (tar.isChargeable(target)) {
+                    int overflow = tar.chargeItem(target, chargeRemaining);
+                    dischargeItem(itemstack, (chargeRemaining - overflow) * 2);
+                    chargeRemaining = overflow;
                 }
             }
         }
@@ -106,13 +92,8 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
+    public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
-    }
-
-    @Override
-    public boolean isSunlightChargeable(ItemStack item, int slot) {
-        return slot >= -4 && slot <= 8 || slot == 255 || slot == -255;
     }
 }

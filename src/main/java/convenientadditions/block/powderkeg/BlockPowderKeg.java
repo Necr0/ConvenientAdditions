@@ -56,18 +56,18 @@ public class BlockPowderKeg extends BlockContainer {
             entityItem.motionX = world.rand.nextGaussian() * factor;
             entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
             entityItem.motionZ = world.rand.nextGaussian() * factor;
-            world.spawnEntityInWorld(entityItem);
+            world.spawnEntity(entityItem);
         }
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         ItemStack current = player.inventory.getStackInSlot(player.inventory.currentItem);
         if (world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote) {
             TileEntityPowderKeg keg = (TileEntityPowderKeg) world.getTileEntity(pos);
             if (!player.isSneaking() && !world.isRemote) {
-                if (current == null) {
-                    player.addChatMessage(new TextComponentString(keg.getAmount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored")));
+                if (current!=ItemStack.EMPTY) {
+                    player.sendMessage(new TextComponentString(keg.getAmount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored")));
                 } else if (current.getItem() == Items.FLINT_AND_STEEL) {
                     if (explode(world, pos)) {
                         current.damageItem(1, player);
@@ -75,9 +75,9 @@ public class BlockPowderKeg extends BlockContainer {
                     }
                     return false;
                 } else if (current.getItem() == Items.GUNPOWDER) {
-                    player.setHeldItem(hand, keg.insertStack(held));
+                    player.setHeldItem(hand, keg.insertStack(player.getHeldItem(hand)));
                 }
-            } else if (keg.getAmount() != 0 && current == null) {
+            } else if (keg.getAmount() != 0 && current.isEmpty()) {
                 Helper.spawnItemInPlace(world, pos.getX() + .5, pos.getY() + 1.2, pos.getZ() + .5, keg.removeStack(64));
             }
         }
@@ -86,7 +86,7 @@ public class BlockPowderKeg extends BlockContainer {
 
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos from) {
         if (!worldIn.isRemote)
             if (Helper.checkForFire(worldIn, pos) || worldIn.isBlockIndirectlyGettingPowered(pos) > 0)
                 this.explode(worldIn, pos);

@@ -6,6 +6,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -18,13 +19,13 @@ public class RecipeEnderPlateRecharge implements IRecipe {
     }
 
     public List<ItemStack> getStacks(InventoryCrafting inv) {
-        List<ItemStack> list = new ArrayList<ItemStack>();
+        List<ItemStack> list = new ArrayList<>();
 
         for (int i = 0; i < inv.getHeight(); ++i) {
             for (int j = 0; j < inv.getWidth(); ++j) {
                 ItemStack itemstack = inv.getStackInRowAndColumn(j, i);
 
-                if (itemstack != null) {
+                if (!itemstack.isEmpty()) {
                     list.add(itemstack);
                 }
             }
@@ -32,12 +33,12 @@ public class RecipeEnderPlateRecharge implements IRecipe {
         return list;
     }
 
-    public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-        ItemStack[] aitemstack = new ItemStack[inv.getSizeInventory()];
+    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+        NonNullList<ItemStack> aitemstack = NonNullList.withSize(inv.getSizeInventory(),ItemStack.EMPTY);
 
-        for (int i = 0; i < aitemstack.length; ++i) {
+        for (int i = 0; i < inv.getSizeInventory(); ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            aitemstack[i] = net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack);
+            aitemstack.set(i,net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack));
         }
 
         return aitemstack;

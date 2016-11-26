@@ -25,10 +25,12 @@ public class BlockComposter extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (world.getTileEntity(pos) instanceof TileEntityComposter && !player.isSneaking()) {
             TileEntityComposter t = (TileEntityComposter) world.getTileEntity(pos);
-            if (held != null) {
+            ItemStack held=player.getHeldItem(hand);
+            if (!held.isEmpty()) {
+                //TODO: CHANGE TO TAKE ONLY 1 ITEM
                 player.setHeldItem(hand, t.insertStack(held));
             }
             return true;

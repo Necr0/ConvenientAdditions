@@ -1,15 +1,14 @@
 package convenientadditions.api.registry.transmutationTome;
 
 import net.minecraft.item.ItemStack;
-
-import java.util.List;
+import net.minecraft.util.NonNullList;
 
 public interface ITransmutationTomeJEIRecipe {
-    public List<ItemStack> getBase();
+    NonNullList<ItemStack> getBase();
 
-    public List<ItemStack> getTransmutator();
+    NonNullList<ItemStack> getTransmutator();
 
-    public List<ItemStack> getResult();
+    NonNullList<ItemStack> getResult();
 
-    public int getLevel();
+    int getLevel();
 }

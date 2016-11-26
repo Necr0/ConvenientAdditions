@@ -21,20 +21,9 @@ public class CompostRegistryEntry implements ICompostRegistryEntry {
 
     public boolean doesMatch(ItemStack stack) {
         return (stack.getItem() == this.stack.getItem()) &&
-                (ignoreDamage
-                        ? true
-                        : stack.getItemDamage() == stack.getItemDamage()
-                ) &&
-                (ignoreNBT
-                        ? true
-                        : ((stack.hasTagCompound() != this.stack.hasTagCompound())
-                        ? false
-                        : (!stack.hasTagCompound()
-                        ? true
-                        : stack.getTagCompound().equals(this.stack.getTagCompound())
-                )
-                )
-                );
+                (ignoreDamage || stack.getItemDamage() == stack.getItemDamage()) &&
+                (ignoreNBT || (stack.hasTagCompound() == this.stack.hasTagCompound() &&
+                (!stack.hasTagCompound() || stack.getTagCompound().equals(this.stack.getTagCompound()))));
     }
 
     public int getCompostingMass(ItemStack stack) {

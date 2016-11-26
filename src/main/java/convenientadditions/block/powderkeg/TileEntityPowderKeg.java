@@ -19,7 +19,7 @@ public class TileEntityPowderKeg extends TileEntityCABase {
 
     public int getAmount() {
         ItemStack stack = stackHandler.getStackInSlot(0);
-        return stack != null ? stack.stackSize : 0;
+        return stack != null ? stack.getCount() : 0;
     }
 
     public ItemStack removeStack(int amount) {
@@ -34,7 +34,7 @@ public class TileEntityPowderKeg extends TileEntityCABase {
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? true : super.hasCapability(capability, facing);
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")

@@ -46,9 +46,9 @@ public class BlockTreeBox extends Block {
                 for (ItemStack i:l) {
                     if(i.getItem() == Items.APPLE){
                         if(r.nextInt(50)==0){
-                            i.setItem(Items.GOLDEN_APPLE);
+                            i=new ItemStack(Items.GOLDEN_APPLE,1);
                         }else if(r.nextBoolean()){
-                            i.stackSize++;
+                            i.shrink(1);
                         }
                     }
                     Helper.spawnItemInPlace(world,pos.getX()+.5,pos.getY()+1.5,pos.getZ()+.5,i);

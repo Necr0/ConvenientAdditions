@@ -33,7 +33,7 @@ public class GuiTransmutationTome extends CCGuiContainerBase {
         super(container);
         this.player = container.player;
         this.tcontainer = container;
-        this.particles = new ArrayList<Particle>();
+        this.particles = new ArrayList<>();
         this.time = System.currentTimeMillis();
         this.xSize = 175;
         this.ySize = 178;
@@ -65,14 +65,14 @@ public class GuiTransmutationTome extends CCGuiContainerBase {
 
             //particles
             if (tcontainer.isWorking()) {
-                if (this.mc.theWorld.rand.nextInt(4) == 0) {
+                if (this.mc.world.rand.nextInt(4) == 0) {
                     this.particles.add(
                             new Particle(
-                                    154 + this.mc.theWorld.rand.nextInt(8),
+                                    154 + this.mc.world.rand.nextInt(8),
                                     9 + (68 - xp_bar),
-                                    109 + this.mc.theWorld.rand.nextInt(12),
-                                    38 + this.mc.theWorld.rand.nextInt(12),
-                                    particleIRLs[this.mc.theWorld.rand.nextInt(particleIRLs.length)],
+                                    109 + this.mc.world.rand.nextInt(12),
+                                    38 + this.mc.world.rand.nextInt(12),
+                                    particleIRLs[this.mc.world.rand.nextInt(particleIRLs.length)],
                                     1000
                             )
                     );

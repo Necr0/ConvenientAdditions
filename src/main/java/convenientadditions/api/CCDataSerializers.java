@@ -21,7 +21,7 @@ public class CCDataSerializers {
 
 		@Override
 		public List<Long> read(PacketBuffer buf) throws IOException {
-			List<Long> list=new ArrayList<Long>();
+			List<Long> list=new ArrayList<>();
 			int count=buf.readInt();
 			for(int i=0;i<count;i++){
 				list.add(buf.readLong());
@@ -31,7 +31,7 @@ public class CCDataSerializers {
 
 		@Override
 		public DataParameter<List<Long>> createKey(int id) {
-            return new DataParameter<List<Long>>(id, this);
+            return new DataParameter<>(id, this);
 		}
 	};
 	

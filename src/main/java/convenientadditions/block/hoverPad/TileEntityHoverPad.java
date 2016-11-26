@@ -16,10 +16,10 @@ public class TileEntityHoverPad extends TileEntityCABase implements ITickable {
 
     @Override
     public void update() {
-        double mult = worldObj.isBlockIndirectlyGettingPowered(pos) / 15d;
+        double mult = getWorld().isBlockIndirectlyGettingPowered(pos) / 15d;
         if (mult == 0d)
             return;
-        List<EntityLivingBase> l = this.getWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + checkForObstuctions(), pos.getZ() + 1));
+        List<EntityLivingBase> l = getWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + checkForObstuctions(), pos.getZ() + 1));
         for (EntityLivingBase e : l) {
             double acc = .2d * mult;
             if (e instanceof EntityPlayer && e.isSneaking())

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RecipeGeneratorTransmutationTome {
     public static List<RecipeWrapperTransmutationTome> getRecipes(TransmutationTomeRecipeHandler handler) {
-        ArrayList<RecipeWrapperTransmutationTome> l = new ArrayList<RecipeWrapperTransmutationTome>();
+        ArrayList<RecipeWrapperTransmutationTome> l = new ArrayList<>();
 
         for (ITransmutationTomeRecipe r : handler.recipes) {
             if (r instanceof ITransmutationTomeJEIRecipe) {

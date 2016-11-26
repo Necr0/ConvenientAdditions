@@ -23,7 +23,7 @@ public class TileEntitySeedBox extends TileEntityCABase implements IConfigurable
     public TileEntitySeedBox() {
         super();
         for (EnumFacing f : EnumFacing.VALUES) {
-            outletSides.put(f, (f != EnumFacing.DOWN ? false : true));
+            outletSides.put(f, (f == EnumFacing.DOWN));
         }
         this.stackHandler = new SeedBoxItemStackHandler(this);
     }
@@ -55,8 +55,8 @@ public class TileEntitySeedBox extends TileEntityCABase implements IConfigurable
     public boolean configureSide(EnumFacing f) {
         this.outletSides.put(f, !outletSides.get(f));
         this.markDirty();
-        IBlockState state = worldObj.getBlockState(pos);
-        this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+        IBlockState state = getWorld().getBlockState(pos);
+        getWorld().notifyBlockUpdate(pos, state, state, 3);
         return true;
     }
 
@@ -67,11 +67,11 @@ public class TileEntitySeedBox extends TileEntityCABase implements IConfigurable
     public boolean canOutput(EnumFacing f) {
         BlockPos posF = new BlockPos(pos.getX() + f.getFrontOffsetX(), pos.getY() + f.getFrontOffsetY(), pos.getZ() + f.getFrontOffsetZ());
         return isOutput(f) &&
-                !worldObj.getBlockState(posF).isSideSolid(worldObj, posF, f.getOpposite());
+                !getWorld().getBlockState(posF).isSideSolid(getWorld(), posF, f.getOpposite());
     }
 
     public List<EnumFacing> getValidOutputDirections() {
-        ArrayList<EnumFacing> ret = new ArrayList<EnumFacing>();
+        ArrayList<EnumFacing> ret = new ArrayList<>();
         for (EnumFacing f : EnumFacing.VALUES) {
             if (canOutput(f))
                 ret.add(f);
@@ -81,7 +81,7 @@ public class TileEntitySeedBox extends TileEntityCABase implements IConfigurable
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && !isOutput(facing) ? true : super.hasCapability(capability, facing);
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && !isOutput(facing) || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")

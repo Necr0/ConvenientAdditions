@@ -16,6 +16,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -75,16 +76,16 @@ public class ItemColorChannelModule extends ItemChannelModule {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
+    public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.add(ItemColorChannelModule.DEFAULT_STACK.copy());
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack item, World world, EntityPlayer player, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if (world.isRemote) {
             player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_COLOR_MODULE_ID, world, hand.ordinal(), 0, 0);
         }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+        return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 
 }

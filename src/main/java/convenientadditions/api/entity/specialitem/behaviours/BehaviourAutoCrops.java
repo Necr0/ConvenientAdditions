@@ -27,8 +27,8 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
     @SuppressWarnings("deprecation")
     @Override
     public void onItemEntityUpdate(EntityItem item) {
-        World w = item.worldObj;
-        int x = MathHelper.floor_double(item.posX), y = MathHelper.floor_double(item.posY) - 1, z = MathHelper.floor_double(item.posZ);
+        World w = item.getEntityWorld();
+        int x = MathHelper.floor(item.posX), y = MathHelper.floor(item.posY) - 1, z = MathHelper.floor(item.posZ);
         BlockPos pos = new BlockPos(x, y, z);
         BlockPos pos_e = new BlockPos(x, y + 1, z);
         IBlockState state = w.getBlockState(pos);
@@ -41,16 +41,16 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
                 IPlantable plantable = (IPlantable) i;
                 if (b.canSustainPlant(state, w, pos, up, plantable)) {
                     w.setBlockState(pos_e, plantable.getPlant(w, pos_e));
-                    item.getEntityItem().stackSize--;
-                    if (item.getEntityItem().stackSize < 1)
+                    item.getEntityItem().shrink(1);
+                    if (item.getEntityItem().isEmpty())
                         item.setDead();
                 }
             } else if (i instanceof ItemBlock && ((ItemBlock) i).getBlock() instanceof IPlantable) {
                 IPlantable plantable = (IPlantable) ((ItemBlock) i).getBlock();
                 if (b.canSustainPlant(state, w, pos, up, plantable)) {
                     w.setBlockState(pos_e, plantable.getPlant(w, pos_e).getBlock().getStateFromMeta(((ItemBlock) i).getMetadata(item.getEntityItem())));
-                    item.getEntityItem().stackSize--;
-                    if (item.getEntityItem().stackSize < 1)
+                    item.getEntityItem().shrink(1);
+                    if (item.getEntityItem().isEmpty())
                         item.setDead();
                 }
             } else

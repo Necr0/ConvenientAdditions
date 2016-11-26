@@ -4,7 +4,6 @@ import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +19,7 @@ public class BlockProximitySensor extends BlockContainer {
     public BlockProximitySensor() {
         super(Material.IRON);
         this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.proximitySensorBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(STRENGTH, Integer.valueOf(0)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(STRENGTH, 0));
     }
 
     @Override
@@ -60,6 +59,6 @@ public class BlockProximitySensor extends BlockContainer {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{STRENGTH});
+        return new BlockStateContainer(this, STRENGTH);
     }
 }

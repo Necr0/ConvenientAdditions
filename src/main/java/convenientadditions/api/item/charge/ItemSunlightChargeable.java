@@ -1,5 +1,6 @@
 package convenientadditions.api.item.charge;
 
+import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,15 +19,15 @@ public abstract class ItemSunlightChargeable extends ItemChargeable implements I
     }
 
     @Override
-    public int getSunlightChargeRate(ItemStack item, int slot) {
+    public int getSunlightChargeRate(ItemStack item, SlotNotation slot) {
         int lvl = EnchantmentHelper.getEnchantmentLevel(EnchantmentUtil.drain, item);
         double amp = (EnchantmentUtil.enchantmentScaleFactor[lvl] - 1) + 1;
         return (int) (chargeRate * amp);
     }
 
     @Override
-    public boolean isSunlightChargeable(ItemStack item, int slot) {
-        return true;
+    public boolean isSunlightChargeable(ItemStack item, SlotNotation slot) {
+        return slot.isCommonChargable();
     }
 
     @Override

@@ -14,8 +14,8 @@ public class EnchantmentUtil {
     public static final String enchantmentChargeEfficiencyName = "chargeEfficiency";
     public static final String enchantmentCapacityName = "capacity";
     public static final String enchantmentDrainName = "drain";
-    public static final EnumEnchantmentType sunlightChargable = EnumHelper.addEnchantmentType("sunlightChargable");
-    public static final EnumEnchantmentType chargable = EnumHelper.addEnchantmentType("chargable");
+    public static final EnumEnchantmentType sunlightChargable = EnumHelper.addEnchantmentType("sunlightChargable", input -> input instanceof ISunlightChargeable);
+    public static final EnumEnchantmentType chargable = EnumHelper.addEnchantmentType("sunlightChargable", input -> input instanceof IChargeable);
     public static final EnchantmentCapacity capacity = new EnchantmentCapacity();
     public static final EnchantmentChargeEfficiency chargeEfficiency = new EnchantmentChargeEfficiency();
     public static final EnchantmentDrain drain = new EnchantmentDrain();

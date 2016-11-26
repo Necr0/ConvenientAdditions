@@ -1,14 +1,13 @@
 package convenientadditions.block;
 
-import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -30,12 +29,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class BlockTreeTap extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public static final PropertyEnum<EnumBottleState> BOTTLE_STATE = PropertyEnum.<EnumBottleState>create("bottle_state", EnumBottleState.class);
+    public static final PropertyEnum<EnumBottleState> BOTTLE_STATE = PropertyEnum.create("bottle_state", EnumBottleState.class);
 
     public BlockTreeTap() {
         super(Material.WOOD);
@@ -44,19 +42,9 @@ public class BlockTreeTap extends Block {
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BOTTLE_STATE, EnumBottleState.empty));
     }
 
-    @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        if (Arrays.asList(EnumFacing.HORIZONTALS).contains(facing)) {
-            return this.getDefaultState().withProperty(FACING, facing.getOpposite());
-        } else {
-            for (EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL) {
-                if (worldIn.isSideSolid(pos.offset(enumfacing.getOpposite()), enumfacing, true)) {
-                    return this.getDefaultState().withProperty(FACING, enumfacing.getOpposite());
-                }
-            }
-
-            return this.getDefaultState();
-        }
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    {
+        worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer).getOpposite()), 2);
     }
 
     @Override
@@ -65,20 +53,21 @@ public class BlockTreeTap extends Block {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (world.isRemote)
             return true;
         EnumBottleState s = state.getValue(BOTTLE_STATE);
+        ItemStack held=player.getHeldItem(hand);
         if (s == EnumBottleState.empty) {
             if (held.getItem() == ModItems.itemSapBottle) {
                 world.setBlockState(pos, state.withProperty(BOTTLE_STATE, EnumBottleState.values()[held.getItemDamage() + 1]));
-                player.setHeldItem(hand, null);
+                player.setHeldItem(hand, ItemStack.EMPTY);
             }
         } else {
             world.setBlockState(pos, state.withProperty(BOTTLE_STATE, EnumBottleState.empty));
             EntityItem e = new EntityItem(world, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, new ItemStack(ModItems.itemSapBottle, 1, s.ordinal() - 1));
             e.setVelocity((player.posX - pos.getX() + .5) / 8, (player.posY - pos.getY() + .5) / 8, (player.posZ - pos.getZ() + .5) / 8);
-            world.spawnEntityInWorld(e);
+            world.spawnEntity(e);
         }
         return true;
     }
@@ -98,9 +87,9 @@ public class BlockTreeTap extends Block {
 
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
-        EnumFacing f = (EnumFacing) state.getValue(FACING);
-        boolean b = (EnumBottleState) state.getValue(BOTTLE_STATE) != EnumBottleState.empty;
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        EnumFacing f = state.getValue(FACING);
+        boolean b = state.getValue(BOTTLE_STATE) != EnumBottleState.empty;
         new AxisAlignedBB(5 / 16d, 4 / 16d, .0, 11 / 16d, 14 / 16d, 10 / 16d);
         double side = b ? 5 / 16d : 6 / 16d;
         double front = b ? 10 / 16d : 5 / 16d;
@@ -115,8 +104,8 @@ public class BlockTreeTap extends Block {
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        EnumFacing f = (EnumFacing) state.getValue(FACING);
-        boolean b = (EnumBottleState) state.getValue(BOTTLE_STATE) != EnumBottleState.empty;
+        EnumFacing f = state.getValue(FACING);
+        boolean b = state.getValue(BOTTLE_STATE) != EnumBottleState.empty;
         new AxisAlignedBB(5 / 16d, 4 / 16d, .0, 11 / 16d, 14 / 16d, 10 / 16d);
         double side = b ? 5 / 16d : 6 / 16d;
         double front = b ? 10 / 16d : 5 / 16d;
@@ -154,16 +143,16 @@ public class BlockTreeTap extends Block {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return ((EnumFacing) state.getValue(FACING)).getHorizontalIndex() +
-                (((EnumBottleState) state.getValue(BOTTLE_STATE)).ordinal() << 2);
+        return (state.getValue(FACING)).getHorizontalIndex() +
+                ((state.getValue(BOTTLE_STATE)).ordinal() << 2);
     }
 
     @Override
     public BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{FACING, BOTTLE_STATE});
+        return new BlockStateContainer(this, FACING, BOTTLE_STATE);
     }
 
-    public static enum EnumBottleState implements IStringSerializable {
+    public enum EnumBottleState implements IStringSerializable {
         empty,
         bottle,
         bottle_half,

@@ -42,7 +42,7 @@ public class MessageInventoryProxyFiltered extends PacketBase<MessageInventoryPr
     @Override
     public MessageInventoryProxyFiltered onMessage(MessageInventoryProxyFiltered message, MessageContext ctx) {
         if (ctx.side == Side.SERVER) {
-            World w = ctx.getServerHandler().playerEntity.worldObj;
+            World w = ctx.getServerHandler().playerEntity.getEntityWorld();
             TileEntity t = w.getTileEntity(message.pos);
             if (t != null && t instanceof TileEntityInventoryProxyFiltered) {
                 TileEntityInventoryProxyFiltered te = ((TileEntityInventoryProxyFiltered) t);

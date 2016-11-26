@@ -23,7 +23,7 @@ public abstract class TileEntityCABase extends TileEntity {
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         readFromNBT(pkt.getNbtCompound());
-        IBlockState state = worldObj.getBlockState(pos);
-        this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+        IBlockState state = getWorld().getBlockState(pos);
+        getWorld().notifyBlockUpdate(pos, state, state, 3);
     }
 }

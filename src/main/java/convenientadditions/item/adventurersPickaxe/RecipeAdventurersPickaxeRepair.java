@@ -4,6 +4,7 @@ import convenientadditions.init.ModItems;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -13,17 +14,17 @@ import java.util.List;
 public class RecipeAdventurersPickaxeRepair implements IRecipe {
 
     public ItemStack getRecipeOutput() {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     public List<ItemStack> getStacks(InventoryCrafting inv) {
-        List<ItemStack> list = new ArrayList<ItemStack>();
+        List<ItemStack> list = new ArrayList<>();
 
         for (int i = 0; i < inv.getHeight(); ++i) {
             for (int j = 0; j < inv.getWidth(); ++j) {
                 ItemStack itemstack = inv.getStackInRowAndColumn(j, i);
 
-                if (itemstack != null) {
+                if (!itemstack.isEmpty()) {
                     list.add(itemstack);
                 }
             }
@@ -31,12 +32,12 @@ public class RecipeAdventurersPickaxeRepair implements IRecipe {
         return list;
     }
 
-    public ItemStack[] getRemainingItems(InventoryCrafting inv) {
-        ItemStack[] aitemstack = new ItemStack[inv.getSizeInventory()];
+    public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
+        NonNullList<ItemStack> aitemstack = NonNullList.create();
 
-        for (int i = 0; i < aitemstack.length; ++i) {
+        for (int i = 0; i < inv.getSizeInventory(); ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            aitemstack[i] = net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack);
+            aitemstack.set(i,net.minecraftforge.common.ForgeHooks.getContainerItem(itemstack));
         }
 
         return aitemstack;
@@ -87,7 +88,7 @@ public class RecipeAdventurersPickaxeRepair implements IRecipe {
             }
         }
         if (pick == null) {
-            return null;
+            return ItemStack.EMPTY;
         } else {
             int dur = (int) ModItems.itemAdventurersPickaxe.getToolProperty(pick, "durability");
             int newDmg = pick.getItemDamage() - (dur / 2);

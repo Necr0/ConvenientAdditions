@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class TransmutationTomeRecipeHandler {
     public static final TransmutationTomeRecipeHandler INSTANCE = new TransmutationTomeRecipeHandler();
 
-    public ArrayList<ITransmutationTomeRecipe> recipes = new ArrayList<ITransmutationTomeRecipe>();
+    public ArrayList<ITransmutationTomeRecipe> recipes = new ArrayList<>();
 
     public void addRecipe(ITransmutationTomeRecipe recipe) {
         recipes.add(recipe);

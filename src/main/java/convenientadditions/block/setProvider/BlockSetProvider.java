@@ -7,7 +7,6 @@ import convenientadditions.api.block.BlockMachineConfigurable;
 import convenientadditions.block.setProvider.TileEntitySetProvider.EnumOutletMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -18,11 +17,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
 
 public class BlockSetProvider extends BlockMachineConfigurable {
 
@@ -45,14 +43,14 @@ public class BlockSetProvider extends BlockMachineConfigurable {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote)
             player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_SET_PROVIDER_ID, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos from) {
         TileEntity t = worldIn.getTileEntity(pos);
         if (t == null || worldIn.isRemote)
             return;
@@ -84,7 +82,7 @@ public class BlockSetProvider extends BlockMachineConfigurable {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{OUTLET_TOP, OUTLET_BOTTOM, OUTLET_NORTH, OUTLET_EAST, OUTLET_SOUTH, OUTLET_WEST});
+        return new BlockStateContainer(this, OUTLET_TOP, OUTLET_BOTTOM, OUTLET_NORTH, OUTLET_EAST, OUTLET_SOUTH, OUTLET_WEST);
     }
 
     @Override
@@ -93,7 +91,7 @@ public class BlockSetProvider extends BlockMachineConfigurable {
     }
 
     @Override
-    public ArrayList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
+    public NonNullList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
         dropItems(world, pos);
         return super.dismantleBlock(player, world, pos, returnDrops);
     }
@@ -117,10 +115,10 @@ public class BlockSetProvider extends BlockMachineConfigurable {
                     entityItem.motionX = world.rand.nextGaussian() * factor;
                     entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
                     entityItem.motionZ = world.rand.nextGaussian() * factor;
-                    world.spawnEntityInWorld(entityItem);
+                    world.spawnEntity(entityItem);
                 }
             }
-            p.input.setStacks(new ItemStack[p.input.getSlots()]);
+            p.input.setStacks(NonNullList.withSize(p.input.getSlots(),ItemStack.EMPTY));
             for (ItemStack item : p.filter.getStacks()) {
                 if (item != null) {
                     float rx = world.rand.nextFloat() * 0.8F + 0.1F;
@@ -131,10 +129,10 @@ public class BlockSetProvider extends BlockMachineConfigurable {
                     entityItem.motionX = world.rand.nextGaussian() * factor;
                     entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
                     entityItem.motionZ = world.rand.nextGaussian() * factor;
-                    world.spawnEntityInWorld(entityItem);
+                    world.spawnEntity(entityItem);
                 }
             }
-            p.filter.setStacks(new ItemStack[p.filter.getSlots()]);
+            p.filter.setStacks(NonNullList.withSize(p.input.getSlots(),ItemStack.EMPTY));
             for (ItemStack item : p.output.getStacks()) {
                 if (item != null) {
                     float rx = world.rand.nextFloat() * 0.8F + 0.1F;
@@ -145,10 +143,10 @@ public class BlockSetProvider extends BlockMachineConfigurable {
                     entityItem.motionX = world.rand.nextGaussian() * factor;
                     entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
                     entityItem.motionZ = world.rand.nextGaussian() * factor;
-                    world.spawnEntityInWorld(entityItem);
+                    world.spawnEntity(entityItem);
                 }
             }
-            p.output.setStacks(new ItemStack[p.output.getSlots()]);
+            p.output.setStacks(NonNullList.withSize(p.input.getSlots(),ItemStack.EMPTY));
         }
     }
 }

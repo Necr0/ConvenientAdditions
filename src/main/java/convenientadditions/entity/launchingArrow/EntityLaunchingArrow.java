@@ -41,8 +41,8 @@ public class EntityLaunchingArrow extends EntityArrow {
         this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
         super.onUpdate();
 
-        if (this.inGround && !worldObj.isRemote) {
-            if (worldObj.getClosestPlayerToEntity(this, 1.5D) != null) {
+        if (this.inGround && !getEntityWorld().isRemote) {
+            if (getEntityWorld().getClosestPlayerToEntity(this, 1.5D) != null) {
                 ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(getVariant(), this));
                 this.setDead();
             }
@@ -75,8 +75,8 @@ public class EntityLaunchingArrow extends EntityArrow {
     }
 
     public EnumLaunchingArrowVariant getVariant() {
-        if (worldObj.isRemote) {
-            Byte b = (Byte) this.getDataManager().get(VARIANT);
+        if (getEntityWorld().isRemote) {
+            Byte b = this.getDataManager().get(VARIANT);
             if (b != null && b < EnumLaunchingArrowVariant.values().length)
                 return EnumLaunchingArrowVariant.values()[b];
             else
@@ -112,7 +112,7 @@ public class EntityLaunchingArrow extends EntityArrow {
         }
 
         public static ExtendedExplosion getExtendedExplosionFromVariant(EnumLaunchingArrowVariant variant, Entity entity) {
-            return new ExtendedExplosion(entity.worldObj, entity, entity.posX, entity.posY, entity.posZ, variant.strength, false, true).setDamageMultiplier(variant.damageMultiplier).setDamaging(variant.doDamage).setGrieving(variant.destroyBlocks).setKnockbackMultiplier(variant.knockbackMultiplier);
+            return new ExtendedExplosion(entity.getEntityWorld(), entity, entity.posX, entity.posY, entity.posZ, variant.strength, false, true).setDamageMultiplier(variant.damageMultiplier).setDamaging(variant.doDamage).setGrieving(variant.destroyBlocks).setKnockbackMultiplier(variant.knockbackMultiplier);
         }
     }
 }

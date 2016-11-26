@@ -43,14 +43,14 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
 
     @Override
     public void update() {
-        if (worldObj.isRemote)
+        if (getWorld().isRemote)
             return;
 
-        if (resetMode == 0 && worldObj.isBlockIndirectlyGettingPowered(getPos()) > 0) {
+        if (resetMode == 0 && getWorld().isBlockIndirectlyGettingPowered(getPos()) > 0) {
             reset();
-        } else if (resetMode == 1 && worldObj.isBlockIndirectlyGettingPowered(getPos()) == 0) {
+        } else if (resetMode == 1 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
             reset();
-        } else if (resetMode == 4 && worldObj.isBlockIndirectlyGettingPowered(getPos()) == 0) {
+        } else if (resetMode == 4 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
             if (slotConfigReady(false))
                 reset();
         }
@@ -116,7 +116,7 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
     public boolean configureSide(EnumFacing f) {
         outletSides.put(f, EnumOutletMode.fromByte((byte) (outletSides.get(f).ordinal() + 1)));
         markDirty();
-        this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos), 0);
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
         return true;
     }
 
@@ -144,25 +144,25 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
     public void setIgnoreDV(boolean ignoreDV) {
         this.ignoreDV = ignoreDV;
         markDirty();
-        this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos), 0);
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 
     public void setIgnoreNBT(boolean ignoreNBT) {
         this.ignoreNBT = ignoreNBT;
         markDirty();
-        this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos), 0);
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 
     public void setFilterInput(boolean filterInput) {
         this.filteredInput = filterInput;
         markDirty();
-        this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos), 0);
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 
     public void setResetMode(byte resetMode) {
         this.resetMode = resetMode;
         markDirty();
-        this.worldObj.notifyBlockUpdate(pos, worldObj.getBlockState(pos), worldObj.getBlockState(pos), 0);
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 
     public void updateRS(boolean power) {
@@ -180,7 +180,7 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != EnumOutletMode.disabled) ? true : super.hasCapability(capability, facing);
+        return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != EnumOutletMode.disabled) || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")

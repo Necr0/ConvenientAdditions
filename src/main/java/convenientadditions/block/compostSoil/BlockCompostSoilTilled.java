@@ -30,7 +30,7 @@ public class BlockCompostSoilTilled extends BlockCompostSoil {
     public BlockCompostSoilTilled() {
         super();
         this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.compostSoilTilledBlockName).setCreativeTab(null);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, 0));
     }
 
     @Override
@@ -49,8 +49,8 @@ public class BlockCompostSoilTilled extends BlockCompostSoil {
             BlockPos posU = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
             Block b = world.getBlockState(posU).getBlock();
             IBlockState newB = world.getBlockState(posU);
-            int deg = ((Integer) state.getValue(DEGRADATION)).intValue();
-            if (b != null && (b instanceof IPlantable || b instanceof IGrowable)) {
+            int deg = state.getValue(DEGRADATION);
+            if (b instanceof IPlantable || b instanceof IGrowable) {
                 b.updateTick(world, posU, world.getBlockState(posU), r);
                 int i = deg;
                 if (r.nextInt(15) > i)
@@ -85,7 +85,7 @@ public class BlockCompostSoilTilled extends BlockCompostSoil {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         return false;
     }
 

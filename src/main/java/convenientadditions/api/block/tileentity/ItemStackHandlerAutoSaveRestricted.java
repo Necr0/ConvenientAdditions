@@ -19,7 +19,7 @@ public class ItemStackHandlerAutoSaveRestricted extends ItemStackHandlerAutoSave
 
     @Override
     public void setStackInSlot(int slot, ItemStack stack) {
-        if (stack == null) {
+        if (stack == ItemStack.EMPTY) {
             super.setStackInSlot(slot, stack);
             return;
         }

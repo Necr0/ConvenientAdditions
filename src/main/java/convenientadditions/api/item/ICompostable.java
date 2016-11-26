@@ -7,16 +7,16 @@ public interface ICompostable {
      * return the amount of composting mass
      * produced by one item
      */
-    public int getCompostingMass(ItemStack itemStack);
+    int getCompostingMass(ItemStack itemStack);
 
     /* Returns rather the item can be used in the
      * composter or not so you can create items that are
      * only compostable with a specific damage or nbt value
      */
-    public boolean isCompostable(ItemStack itemStack);
+    boolean isCompostable(ItemStack itemStack);
 
     /* Returns rather the item can be used in the
      * composter to generate spores at random
      */
-    public boolean hasShroomSpores(ItemStack itemStack);
+    boolean hasShroomSpores(ItemStack itemStack);
 }

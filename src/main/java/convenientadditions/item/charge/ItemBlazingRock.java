@@ -6,10 +6,9 @@ import convenientadditions.api.item.IFuelItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements IFuelItem {
     public static ItemStack FULLY_CHARGED;
@@ -30,7 +29,7 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
             return null;
         ItemStack ret = itemStack.copy();
         consumeCharge(ret, getFuelTime(itemStack) * 4);
-        ret.stackSize = 1;
+        ret.setCount(1);
         return ret;
     }
 
@@ -50,13 +49,8 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
     }
 
     @Override
-    public boolean isSunlightChargeable(ItemStack item, int slot) {
-        return slot >= 0 && slot <= 9 || slot == 255 || slot == -255;
-    }
-
-    @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
+    public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
     }

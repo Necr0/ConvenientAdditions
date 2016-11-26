@@ -22,13 +22,13 @@ public class ItemFertilizer extends Item {
     }
 
     @Override
-    public EnumActionResult onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ){
-        ItemStack copy=itemStack.copy();
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ){
+        ItemStack copy=player.getHeldItem(hand).copy();
         for(int i=0;i<2+world.rand.nextInt(3);i++){
             ItemDye.applyBonemeal(copy,world,pos,player);
         }
-        if(copy.stackSize<itemStack.stackSize){
-            itemStack.stackSize--;
+        if(copy.getCount()<player.getHeldItem(hand).getCount()){
+            player.getHeldItem(hand).shrink(1);
             return EnumActionResult.SUCCESS;
         }
         return EnumActionResult.FAIL;

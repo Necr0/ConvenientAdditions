@@ -40,107 +40,117 @@ public class LevelUp {
 
         applyRandomUpgrade(s);
 
-        if (lvl == 5) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 1);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
-                                        "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[1])
-                                )
-                        )
-                );
-            }
-        } else if (lvl == 10) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "magnetic", true);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMagnetic")
-                        )
-                );
-            }
-        } else if (lvl == 15) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 2);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
-                                        "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[2])
-                                )
-                        )
-                );
-            }
-        } else if (lvl == 20) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 1);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                        "%m", "1"
-                                )
-                        )
-                );
-            }
-        } else if (lvl == 25) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 3);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
-                                        "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[3])
-                                )
-                        )
-                );
-            }
-        } else if (lvl == 30) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "soulbound", true);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpSoulbound")
-                        )
-                );
-            }
-        } else if (lvl == 35) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 2);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                        "%m", "2"
-                                )
-                        )
-                );
-            }
-        } else if (lvl == 45) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 3);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                        "%m", "3"
-                                )
-                        )
-                );
-            }
-        } else if (lvl == 55) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 4);
-            if (p != null) {
-                p.addChatMessage(
-                        new TextComponentString(
-                                Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                        "%m", "4"
-                                )
-                        )
-                );
-            }
+        switch (lvl) {
+            case 5:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 1);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
+                                            "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[1])
+                                    )
+                            )
+                    );
+                }
+                break;
+            case 10:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "magnetic", true);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMagnetic")
+                            )
+                    );
+                }
+                break;
+            case 15:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 2);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
+                                            "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[2])
+                                    )
+                            )
+                    );
+                }
+                break;
+            case 20:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 1);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
+                                            "%m", "1"
+                                    )
+                            )
+                    );
+                }
+                break;
+            case 25:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 3);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
+                                            "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[3])
+                                    )
+                            )
+                    );
+                }
+                break;
+            case 30:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "soulbound", true);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpSoulbound")
+                            )
+                    );
+                }
+                break;
+            case 35:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 2);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
+                                            "%m", "2"
+                                    )
+                            )
+                    );
+                }
+                break;
+            case 45:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 3);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
+                                            "%m", "3"
+                                    )
+                            )
+                    );
+                }
+                break;
+            case 55:
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 4);
+                if (p != null) {
+                    p.sendMessage(
+                            new TextComponentString(
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
+                                            "%m", "4"
+                                    )
+                            )
+                    );
+                }
+                break;
         }
 
         NBTTagCompound nbt = s.getTagCompound();
         NBTTagCompound props = (NBTTagCompound) nbt.getTag("TOOL_PROPERTIES");
         props.setTag("STATISTICS", new NBTTagCompound());
-        p.worldObj.playSound(null, p.posX, p.posY, p.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
+        p.getEntityWorld().playSound(null, p.posX, p.posY, p.posZ, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
     }
 
     public static void applyRandomUpgrade(ItemStack s) {
@@ -148,18 +158,23 @@ public class LevelUp {
         List<Tuple<String, Integer>> u = new ArrayList<Tuple<String, Integer>>();
         int sum = 0;
         for (String p : getUpgradableStats(s)) {
-            if (p.equals("mining_speed")) {
-                u.add(new Tuple<String, Integer>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_mined") + 20));
-                sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "stone_mined") + 20;
-            } else if (p.equals("digging_speed")) {
-                u.add(new Tuple<String, Integer>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_digged") + 20));
-                sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_digged") + 20;
-            } else if (p.equals("mining_veins")) {
-                u.add(new Tuple<String, Integer>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "ore_mined") + 13));
-                sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "ore_mined") + 13;
-            } else if (p.equals("mining_soft_speed")) {
-                u.add(new Tuple<String, Integer>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "stone_mined") + 20));
-                sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "stone_mined") + 20;
+            switch (p) {
+                case "mining_speed":
+                    u.add(new Tuple<>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_mined") + 20));
+                    sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "stone_mined") + 20;
+                    break;
+                case "digging_speed":
+                    u.add(new Tuple<>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_digged") + 20));
+                    sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_digged") + 20;
+                    break;
+                case "mining_veins":
+                    u.add(new Tuple<>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "ore_mined") + 13));
+                    sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "ore_mined") + 13;
+                    break;
+                case "mining_soft_speed":
+                    u.add(new Tuple<>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "stone_mined") + 20));
+                    sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "stone_mined") + 20;
+                    break;
             }
         }
         int num = new Random().nextInt(sum) + 1;
@@ -174,19 +189,24 @@ public class LevelUp {
     }
 
     public static void applyUpgrade(ItemStack s, String type) {
-        if (type.equals("mining_speed")) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (float) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 0.6f);
-        } else if (type.equals("digging_speed")) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (float) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 0.5f);
-        } else if (type.equals("mining_veins")) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 12);
-        } else if (type.equals("mining_soft_speed")) {
-            ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (float) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 0.75f);
+        switch (type) {
+            case "mining_speed":
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (float) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 0.6f);
+                break;
+            case "digging_speed":
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (float) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 0.5f);
+                break;
+            case "mining_veins":
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 12);
+                break;
+            case "mining_soft_speed":
+                ModItems.itemAdventurersPickaxe.setToolProperty(s, type, (float) ModItems.itemAdventurersPickaxe.getToolProperty(s, type) + 0.75f);
+                break;
         }
     }
 
     public static List<String> getUpgradableStats(ItemStack s) {
-        ArrayList<String> ret = new ArrayList<String>();
+        ArrayList<String> ret = new ArrayList<>();
         if ((float) ModItems.itemAdventurersPickaxe.getToolProperty(s, "mining_speed") < 33f)
             ret.add("mining_speed");
         if ((float) ModItems.itemAdventurersPickaxe.getToolProperty(s, "digging_speed") < 7.5f)

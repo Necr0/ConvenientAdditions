@@ -29,7 +29,7 @@ public class Helper {
 		e.motionY = 0;
 		e.motionZ = 0;
 		if(!w.isRemote)
-			w.spawnEntityInWorld(e);
+			w.spawnEntity(e);
 	}
 	
 	public static boolean checkForFire(IBlockAccess world,BlockPos pos){
@@ -43,7 +43,7 @@ public class Helper {
 	public static class FloodFill{
 		
 		public static List<BlockPos> getAdjacentBlockPosList(BlockPos pos,int mode){
-			List<BlockPos> ret=new ArrayList<BlockPos>();
+			List<BlockPos> ret=new ArrayList<>();
 			
 			for(EnumFacing f:EnumFacing.VALUES){
 				ret.add(pos.add(f.getDirectionVec()));
@@ -70,7 +70,7 @@ public class Helper {
 		}
 		
 		public static List<BlockPos> floodFill(World w,BlockPos pos,IBlockState state,int mode,int limit,boolean ignoreMeta,boolean ignoreFirst){
-			List<BlockPos> ret=new ArrayList<BlockPos>();
+			List<BlockPos> ret=new ArrayList<>();
 			if(ignoreFirst){
 				for(BlockPos p:getAdjacentBlockPosList(pos, mode)){
 					floodFillRecursive(w, p, state, mode, limit, ignoreMeta, ret);
@@ -108,7 +108,7 @@ public class Helper {
 			else if(state2.getBlock()==Blocks.REDSTONE_ORE&&state1.getBlock()==Blocks.LIT_REDSTONE_ORE)
 				return true;
 		}
-		return ( (ignoreMeta?true:state1.getBlock().getMetaFromState(state1)==state2.getBlock().getMetaFromState(state2)) && state1.getBlock()==state2.getBlock() );
+		return ( (ignoreMeta || state1.getBlock().getMetaFromState(state1)==state2.getBlock().getMetaFromState(state2)) && state1.getBlock()==state2.getBlock() );
 	}
 	
 	public static boolean areBlockPosEqual(BlockPos pos1,BlockPos pos2){
@@ -116,15 +116,15 @@ public class Helper {
 	}
 	
 	public static boolean canEntitySeeSky(Entity e){
-		return e.worldObj.canBlockSeeSky(new BlockPos(MathHelper.floor_double(e.posX), MathHelper.floor_double(e.posY), MathHelper.floor_double(e.posZ)));
+		return e.getEntityWorld().canBlockSeeSky(new BlockPos(MathHelper.floor(e.posX), MathHelper.floor(e.posY), MathHelper.floor(e.posZ)));
 	}
 	
 	public static EntityPlayer getClientPlayer(){
-		return FMLClientHandler.instance().getClient().thePlayer;
+		return FMLClientHandler.instance().getClient().player;
 	}
 	
 	public static World getClientWorld(){
-		return FMLClientHandler.instance().getClient().theWorld;
+		return FMLClientHandler.instance().getClient().world;
 	}
 	
 	public static String localize(String in,String... replace){
@@ -146,7 +146,7 @@ public class Helper {
 	public static boolean doesOreDictMatch(IBlockState b,String entry,boolean startsWith){
 		if(b.getBlock()==Blocks.LIT_REDSTONE_ORE)
 			b=Blocks.REDSTONE_ORE.getDefaultState();
-		List<ItemStack> l=new ArrayList<ItemStack>();
+		List<ItemStack> l=new ArrayList<>();
 		if(startsWith){
 			for(String n:OreDictionary.getOreNames()){
 				if(n.startsWith(entry))
@@ -168,7 +168,7 @@ public class Helper {
 	}
 
 	public static boolean canDecay(World worldIn,BlockPos pos,IBlockState state){
-		if (state.getValue(BlockLeaves.CHECK_DECAY).booleanValue() && state.getValue(BlockLeaves.DECAYABLE).booleanValue())
+		if (state.getValue(BlockLeaves.CHECK_DECAY) && state.getValue(BlockLeaves.DECAYABLE))
 		{
 			int k = pos.getX();
 			int l = pos.getY();

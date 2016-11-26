@@ -4,9 +4,9 @@ import convenientadditions.api.IMatcher;
 import net.minecraftforge.items.IItemHandler;
 
 public interface IItemProvider {
-    public IItemHandler getItemHandler();
+    IItemHandler getItemHandler();
 
-    public boolean hasItemHandler();
+    boolean hasItemHandler();
 
-    public IMatcher[] getAccess();
+    IMatcher[] getAccess();
 }

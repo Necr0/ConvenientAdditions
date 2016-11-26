@@ -42,7 +42,7 @@ public class MessageSetProvider extends PacketBase<MessageSetProvider> {
     @Override
     public MessageSetProvider onMessage(MessageSetProvider message, MessageContext ctx) {
         if (ctx.side == Side.SERVER) {
-            World w = ctx.getServerHandler().playerEntity.worldObj;
+            World w = ctx.getServerHandler().playerEntity.getEntityWorld();
             TileEntity t = w.getTileEntity(message.pos);
             if (t != null && t instanceof TileEntitySetProvider) {
                 TileEntitySetProvider te = ((TileEntitySetProvider) t);

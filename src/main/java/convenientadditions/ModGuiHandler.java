@@ -1,7 +1,5 @@
 package convenientadditions;
 
-import convenientadditions.block.gateway.GuiGateway;
-import convenientadditions.block.gateway.TileEntityGateway;
 import convenientadditions.block.inventoryProxy.filtered.ContainerInventoryProxyFiltered;
 import convenientadditions.block.inventoryProxy.filtered.GuiInventoryProxyFiltered;
 import convenientadditions.block.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
@@ -30,7 +28,6 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int GUI_ITEM_RECEIVER_ID = 3;
     public static final int GUI_FILTERED_PROXY_ID = 4;
     public static final int GUI_TRANSMUTATION_TOME_ID = 5;
-    public static final int GUI_GATEWAY_ID = 6;
 
 
     @Override
@@ -66,8 +63,6 @@ public class ModGuiHandler implements IGuiHandler {
                 return new GuiInventoryProxyFiltered(new ContainerInventoryProxyFiltered((TileEntityInventoryProxyFiltered) world.getTileEntity(new BlockPos(x, y, z)), player));
             case GUI_TRANSMUTATION_TOME_ID:
                 return new GuiTransmutationTome(new ContainerTransmutationTome(player));
-            case GUI_GATEWAY_ID:
-                return new GuiGateway((TileEntityGateway) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }

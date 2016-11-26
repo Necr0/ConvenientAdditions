@@ -3,6 +3,7 @@ package convenientadditions.api.block.tileentity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -31,12 +32,12 @@ public class ItemStackHandlerAutoSave extends ItemStackHandler implements IItemH
         }
     }
 
-    public ItemStack[] getStacks() {
+    public NonNullList<ItemStack> getStacks(){
         return this.stacks;
     }
 
-    public void setStacks(ItemStack[] stacks) {
-        this.stacks = stacks;
+    public void setStacks(NonNullList<ItemStack> stacks){
+        this.stacks=stacks;
         for (int i = 0; i < getSlots(); i++)
             onContentsChanged(i);
     }

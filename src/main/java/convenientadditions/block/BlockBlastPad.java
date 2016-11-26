@@ -6,7 +6,6 @@ import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -31,9 +30,9 @@ public class BlockBlastPad extends Block {
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos from) {
         float str= EntityLaunchingArrow.EnumLaunchingArrowVariant.slime.strength*(float)Math.log(worldIn.isBlockIndirectlyGettingPowered(pos)+1)*.25f;
-        if(state.getValue(READY).booleanValue() && worldIn.isBlockIndirectlyGettingPowered(pos)>0){
+        if(state.getValue(READY) && worldIn.isBlockIndirectlyGettingPowered(pos)>0){
             List<EntityLivingBase> l = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.up()));
             for (EntityLivingBase e : l) {
                 e.addVelocity(0,str,0);
@@ -55,10 +54,10 @@ public class BlockBlastPad extends Block {
     }
 
     @Override
-    public int getMetaFromState(IBlockState state){return state.getValue(READY).booleanValue()?0:1; }
+    public int getMetaFromState(IBlockState state){return state.getValue(READY)?0:1; }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{READY});
+        return new BlockStateContainer(this, READY);
     }
 }

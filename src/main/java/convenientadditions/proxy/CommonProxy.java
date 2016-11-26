@@ -13,6 +13,7 @@ import convenientadditions.item.adventurersPickaxe.EventHandlerVeinMiner;
 import convenientadditions.item.charge.ChargeTickHandler;
 import convenientadditions.item.charge.enderPlate.EnderPlateInventoryTickHandler;
 import convenientadditions.item.transmutationTome.ContainerTickHandler;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -42,8 +43,8 @@ public class CommonProxy {
     }
 
     public void registerEntities() {
-        EntityRegistry.registerModEntity(EntityLaunchingArrow.class, ModConstants.Entities.launchingArrowEntityName, ModConstants.Entities.lauchingArrowEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
-        EntityRegistry.registerModEntity(EntitySpecialItem.class, ModConstants.Entities.specialItemEntityName, ModConstants.Entities.specialItemEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(ModConstants.Mod.MODID,ModConstants.Entities.launchingArrowEntityName), EntityLaunchingArrow.class, ModConstants.Entities.launchingArrowEntityName, ModConstants.Entities.lauchingArrowEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(ModConstants.Mod.MODID,ModConstants.Entities.specialItemEntityName), EntitySpecialItem.class, ModConstants.Entities.specialItemEntityName, ModConstants.Entities.specialItemEntityId, ConvenientAdditions.INSTANCE, 128, 5, true);
     }
 
     public World getClientWorld() {

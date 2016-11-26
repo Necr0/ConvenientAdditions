@@ -2,6 +2,7 @@ package convenientadditions.item.adventurersPickaxe;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.api.item.ISoulbound;
 import convenientadditions.api.util.Helper;
@@ -13,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -20,8 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerInventoryTick {
     public List<ItemStack> subitems;
@@ -38,7 +39,7 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
             return 1.0f;
         if (state.getBlock().getHarvestTool(state).equals("pickaxe")) {
             float f = (float) getToolProperty(stack, "mining_speed");
-            return f + (state.getBlock().getHarvestLevel(state) < getHarvestLevel(stack, "pickaxe") ? (float) getToolProperty(stack, "mining_soft_speed") : 0f);
+            return f + (state.getBlock().getHarvestLevel(state) < getHarvestLevel(stack, "pickaxe", null, state) ? (float) getToolProperty(stack, "mining_soft_speed") : 0f);
         }
         if (state.getBlock().getHarvestTool(state).equals("shovel")) {
             return (float) getToolProperty(stack, "digging_speed");
@@ -46,13 +47,14 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
         return 1.0f;
     }
 
-    public int getHarvestLevel(ItemStack stack, String toolClass) {
+    @Override
+    public int getHarvestLevel(ItemStack stack, String toolClass, EntityPlayer player, IBlockState state) {
         if (isBroken(stack))
             return -1;
         if (toolClass.equals("pickaxe"))
             return (int) getToolProperty(stack, "mining_level");
         else
-            return super.getHarvestLevel(stack, toolClass);
+            return super.getHarvestLevel(stack, toolClass, player, state);
     }
 
     @SideOnly(Side.CLIENT)
@@ -60,8 +62,12 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
         return false;
     }
 
-    public boolean isItemTool(ItemStack stack) {
-        return true;
+    @Override
+    public java.util.Set<String> getToolClasses(ItemStack stack)
+    {
+        HashSet<String> s=new HashSet<>();
+        s.add("pickaxe");
+        return s;
     }
 
     public void setToolProperty(ItemStack s, String p, Object o) {
@@ -320,14 +326,14 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
     }
 
     @Override
-    public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player) {
+    public void onPlayerInventoryTick(ItemStack item, SlotNotation slot, EntityPlayer player) {
         if (player.getHeldItemMainhand() == item) {
             OreMagnet.attractOres(player);
         }
     }
 
     private void initSubItems() {
-        subitems = new ArrayList<ItemStack>();
+        subitems = new ArrayList<>();
         ItemStack s = new ItemStack(this);
         subitems.add(s);
         s = s.copy();
@@ -354,7 +360,7 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
+    public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.addAll(subitems);
     }
 }

@@ -24,9 +24,9 @@ public class ItemBandage extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
         playerIn.setActiveHand(hand);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
     }
 
     /**
@@ -38,7 +38,7 @@ public class ItemBandage extends Item {
         EntityPlayer entityplayer = entityLiving instanceof EntityPlayer ? (EntityPlayer) entityLiving : null;
 
         if (entityplayer == null || !entityplayer.capabilities.isCreativeMode) {
-            --stack.stackSize;
+            stack.shrink(1);
         }
 
         if (!worldIn.isRemote) {
@@ -51,10 +51,10 @@ public class ItemBandage extends Item {
     @Override
     public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
         if (count % 5 == 0) {
-            if (player.worldObj.isRemote) {
+            if (player.getEntityWorld().isRemote) {
                 Minecraft.getMinecraft().getItemRenderer().resetEquippedProgress(player.getActiveHand());
             } else {
-                player.worldObj.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_CLOTH_HIT, SoundCategory.PLAYERS, .1F, .6F);
+                player.getEntityWorld().playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_CLOTH_HIT, SoundCategory.PLAYERS, .1F, .6F);
             }
         }
     }

@@ -12,18 +12,18 @@ public class TileEntityProximitySensor extends TileEntity implements ITickable {
     public void update() {
         int str = getComp();
         if (str != strength) {
-            IBlockState state = worldObj.getBlockState(pos);
-            worldObj.updateComparatorOutputLevel(pos,this.getBlockType());
-            worldObj.notifyBlockUpdate(pos, state, state, (strength == 0 || str == 0) ? 3 : (3 + 4));
-            worldObj.notifyNeighborsOfStateChange(pos,this.getBlockType());
+            IBlockState state = getWorld().getBlockState(pos);
+            getWorld().updateComparatorOutputLevel(pos,this.getBlockType());
+            getWorld().notifyBlockUpdate(pos, state, state, (strength == 0 || str == 0) ? 3 : (3 + 4));
+            getWorld().notifyNeighborsOfStateChange(pos,this.getBlockType(),true);
         }
         strength = str;
     }
 
     public int getComp() {
-        boolean power = worldObj.isBlockIndirectlyGettingPowered(pos) > 0;
+        boolean power = getWorld().isBlockIndirectlyGettingPowered(pos) > 0;
         double range = power ? 7.5D : 15D;
-        EntityPlayer p = worldObj.getClosestPlayer((double) pos.getX() + .5, (double) pos.getY() + .5, (double) pos.getZ() + .5, range, false);
+        EntityPlayer p = getWorld().getClosestPlayer((double) pos.getX() + .5, (double) pos.getY() + .5, (double) pos.getZ() + .5, range, false);
         if (p != null) {
             return getStr(p.getDistanceSq((double) pos.getX() + .5, (double) pos.getY() + .5, (double) pos.getZ() + .5), power ? .5D : 1D);
         }

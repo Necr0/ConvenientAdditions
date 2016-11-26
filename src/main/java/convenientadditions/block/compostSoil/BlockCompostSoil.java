@@ -8,7 +8,6 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -71,7 +70,7 @@ public class BlockCompostSoil extends Block {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack held, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         ItemStack current = player.inventory.getStackInSlot(player.inventory.currentItem);
         if (current == null || !(current.getItem() instanceof ItemHoe))
             return false;
@@ -97,7 +96,7 @@ public class BlockCompostSoil extends Block {
         if (!world.isRemote) {
             BlockPos posU = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
             Block b = world.getBlockState(posU).getBlock();
-            int deg = ((Integer) state.getValue(DEGRADATION)).intValue();
+            int deg = state.getValue(DEGRADATION).intValue();
             if (b != null && (b instanceof IPlantable || b instanceof IGrowable)) {
                 b.updateTick(world, posU, world.getBlockState(posU), r);
                 int i = deg;
@@ -129,16 +128,16 @@ public class BlockCompostSoil extends Block {
     //
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(DEGRADATION, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(DEGRADATION, meta);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return ((Integer) state.getValue(DEGRADATION)).intValue();
+        return state.getValue(DEGRADATION);
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{DEGRADATION});
+        return new BlockStateContainer(this, DEGRADATION);
     }
 }

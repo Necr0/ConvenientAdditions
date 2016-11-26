@@ -18,7 +18,7 @@ public class TileEntityPlayerInterface extends TileEntity implements ICapability
 
     @Override
     public void update() {
-        if (this.worldObj.isRemote) {
+        if (getWorld().isRemote) {
             if (hasTarget() != hasPlayer) {
                 hasPlayer = hasTarget();
                 this.getWorld().markBlockRangeForRenderUpdate(pos,pos);
@@ -46,7 +46,7 @@ public class TileEntityPlayerInterface extends TileEntity implements ICapability
     }
 
     public EntityPlayer getPlayer() {
-        List<EntityPlayer> l = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())));
+        List<EntityPlayer> l = getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())));
         if (l.size() > 0)
             return l.get(0);
         else
@@ -54,6 +54,6 @@ public class TileEntityPlayerInterface extends TileEntity implements ICapability
     }
 
     public boolean hasTarget() {
-        return this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1)).size() > 0;
+        return getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1)).size() > 0;
     }
 }

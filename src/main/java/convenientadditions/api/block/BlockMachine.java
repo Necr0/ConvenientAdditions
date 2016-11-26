@@ -5,10 +5,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
 
 public abstract class BlockMachine extends BlockContainer implements IDismantleable {
 
@@ -17,10 +16,10 @@ public abstract class BlockMachine extends BlockContainer implements IDismantlea
     }
 
     @Override
-    public ArrayList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
+    public NonNullList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
         ItemStack stack = new ItemStack(this);
-        world.spawnEntityInWorld(new EntityItem(world, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, stack));
-        ArrayList<ItemStack> arr = new ArrayList<>();
+        world.spawnEntity(new EntityItem(world, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, stack));
+        NonNullList<ItemStack> arr = NonNullList.create();
         arr.add(stack);
         world.setBlockToAir(pos);
         return arr;

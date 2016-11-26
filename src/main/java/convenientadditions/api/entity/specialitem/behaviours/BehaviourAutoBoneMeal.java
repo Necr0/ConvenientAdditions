@@ -19,10 +19,10 @@ public class BehaviourAutoBoneMeal implements IEntitySpecialItemBehaviour {
 
     @Override
     public void onItemEntityUpdate(EntityItem item) {
-        World w = item.worldObj;
-        BlockPos pos = new BlockPos(MathHelper.floor_double(item.posX), MathHelper.floor_double(item.posY), MathHelper.floor_double(item.posZ));
+        World w = item.getEntityWorld();
+        BlockPos pos = new BlockPos(MathHelper.floor(item.posX), MathHelper.floor(item.posY), MathHelper.floor(item.posZ));
         ItemDye.applyBonemeal(item.getEntityItem(),w,pos);
-        if(item.getEntityItem().stackSize>0 && item.onGround){
+        if(item.getEntityItem().getCount()>0 && item.onGround){
             pos=pos.down();
             ItemDye.applyBonemeal(item.getEntityItem(),w,pos);
         }

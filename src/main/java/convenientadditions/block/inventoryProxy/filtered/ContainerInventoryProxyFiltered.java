@@ -36,15 +36,15 @@ public class ContainerInventoryProxyFiltered extends CCContainerBase {
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
         ItemStack previous = null;
-        Slot slot = (Slot) this.inventorySlots.get(fromSlot);
+        Slot slot = this.inventorySlots.get(fromSlot);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack current = slot.getStack();
             previous = current.copy();
 
-            if (current.stackSize == previous.stackSize)
+            if (current.getCount() == previous.getCount())
                 return null;
-            slot.onPickupFromSlot(playerIn, current);
+            slot.onTake(playerIn, current);
         }
         return previous;
     }

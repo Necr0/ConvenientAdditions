@@ -6,5 +6,5 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public interface IModelVariantResourceLocationProvider {
     @SideOnly(Side.CLIENT)
-    public ModelResourceLocation[] getModelResourceLocations();
+    ModelResourceLocation[] getModelResourceLocations();
 }

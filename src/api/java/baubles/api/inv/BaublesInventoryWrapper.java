@@ -37,6 +37,11 @@ public class BaublesInventoryWrapper implements IInventory {
 	}
 
 	@Override
+	public boolean isEmpty() {
+		return false;
+	}
+
+	@Override
 	public ItemStack getStackInSlot(int index) {
 		return handler.getStackInSlot(index);
 	}
@@ -67,7 +72,7 @@ public class BaublesInventoryWrapper implements IInventory {
 	public void markDirty() {	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player) {
 		return true;
 	}
 

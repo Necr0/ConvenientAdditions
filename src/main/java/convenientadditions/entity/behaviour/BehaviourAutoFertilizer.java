@@ -20,10 +20,10 @@ public class BehaviourAutoFertilizer implements IEntitySpecialItemBehaviour {
 
     @Override
     public void onItemEntityUpdate(EntityItem item) {
-        World w = item.worldObj;
-        BlockPos pos = new BlockPos(MathHelper.floor_double(item.posX), MathHelper.floor_double(item.posY), MathHelper.floor_double(item.posZ));
+        World w = item.getEntityWorld();
+        BlockPos pos = new BlockPos(MathHelper.floor(item.posX), MathHelper.floor(item.posY), MathHelper.floor(item.posZ));
         tryApply(item.getEntityItem(),w,pos);
-        if(item.getEntityItem().stackSize>0 && item.onGround){
+        if(!item.getEntityItem().isEmpty() && item.onGround){
             pos=pos.down();
             tryApply(item.getEntityItem(),w,pos);
         }
@@ -34,8 +34,8 @@ public class BehaviourAutoFertilizer implements IEntitySpecialItemBehaviour {
         for(int i=0;i<2+w.rand.nextInt(3);i++){
             ItemDye.applyBonemeal(copy,w,p);
         }
-        if(copy.stackSize<s.stackSize){
-            s.stackSize--;
+        if(copy.getCount()<s.getCount()){
+            s.shrink(1);
         }
     }
 }

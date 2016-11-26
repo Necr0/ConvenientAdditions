@@ -1,9 +1,10 @@
 package convenientadditions.item.charge;
 
-import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.item.IPlayerInventoryTick;
+import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -14,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -38,14 +40,15 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack itemStack=player.getHeldItem(hand);
         int dmg = itemStack.getItemDamage();
         if (!world.isRemote)
             if (dmg == 0 && getCharge(itemStack) != 0) {
                 itemStack.setItemDamage(1);
             } else
                 itemStack.setItemDamage(0);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStack);
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
     }
 
     @Override
@@ -60,7 +63,7 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item i, CreativeTabs c, List<ItemStack> l) {
+    public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
     }
@@ -79,10 +82,10 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
     }
 
     @Override
-    public void onPlayerInventoryTick(ItemStack item, int slot, EntityPlayer player) {
-        if (player.worldObj.isRemote)
+    public void onPlayerInventoryTick(ItemStack item, SlotNotation slot, EntityPlayer player) {
+        if (player.getEntityWorld().isRemote)
             return;
-        WorldServer world = (WorldServer) player.worldObj;
+        WorldServer world = (WorldServer) player.getEntityWorld();
         if (isActive(item)) {
             consumeCharge(item, 1);
             for (int x = 0; x < 9; x++) {
@@ -99,10 +102,5 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
                 }
             }
         }
-    }
-
-    @Override
-    public boolean isSunlightChargeable(ItemStack item, int slot) {
-        return !isActive(item) && (slot >= 0 && slot <= 9 || slot == 255 || slot == -255);
     }
 }

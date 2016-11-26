@@ -26,9 +26,9 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
 
     @Override
     public void onItemEntityUpdate(EntityItem item) {
-        World w = item.worldObj;
-        BlockPos pos = new BlockPos(MathHelper.floor_double(item.posX), MathHelper.floor_double(item.posY) - 1, MathHelper.floor_double(item.posZ));
-        IBlockState state = item.worldObj.getBlockState(new BlockPos(pos));
+        World w = item.getEntityWorld();
+        BlockPos pos = new BlockPos(MathHelper.floor(item.posX), MathHelper.floor(item.posY) - 1, MathHelper.floor(item.posZ));
+        IBlockState state = w.getBlockState(new BlockPos(pos));
         Block b = state.getBlock();
         if (item.onGround) {
             if (!(b == Blocks.DIRT || b == Blocks.FARMLAND || b == Blocks.GRASS || ((b == ModBlocks.compostSoilBlock || b == ModBlocks.compostSoilTilledBlock) && ModBlocks.compostSoilTilledBlock.getMetaFromState(state) != 0)))
@@ -44,8 +44,8 @@ public class BehaviourCompost implements IEntitySpecialItemBehaviour {
                 w.setBlockState(pos, b.getDefaultState(), 2 + 4);
             else
                 return;
-            item.getEntityItem().stackSize--;
-            if (item.getEntityItem().stackSize < 1)
+            item.getEntityItem().shrink(1);
+            if (item.getEntityItem().isEmpty())
                 item.setDead();
         }
     }

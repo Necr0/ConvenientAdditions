@@ -4,5 +4,5 @@ import net.minecraft.util.EnumFacing;
 
 
 public interface IConfigurable {
-    public boolean configureSide(EnumFacing f);
+    boolean configureSide(EnumFacing f);
 }
