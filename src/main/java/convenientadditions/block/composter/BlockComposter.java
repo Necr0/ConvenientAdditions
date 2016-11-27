@@ -30,8 +30,10 @@ public class BlockComposter extends BlockContainer {
             TileEntityComposter t = (TileEntityComposter) world.getTileEntity(pos);
             ItemStack held=player.getHeldItem(hand);
             if (!held.isEmpty()) {
-                //TODO: CHANGE TO TAKE ONLY 1 ITEM
-                player.setHeldItem(hand, t.insertStack(held));
+                ItemStack insert=held.splitStack(1);
+                player.setHeldItem(hand, t.insertStack(insert));
+                if(!insert.isEmpty())
+                    held.grow(insert.getCount());
             }
             return true;
         }

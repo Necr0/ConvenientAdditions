@@ -36,7 +36,7 @@ public class ItemHandlerFilteredProxy implements IItemHandler {
         if (ItemHelper.match(te.filter.getStacks(), target.getStackInSlot(slot), te.ignoreDV, te.ignoreNBT))
             return target.extractItem(slot, amount, simulate);
         else
-            return null;
+            return ItemStack.EMPTY;
     }
 
 }

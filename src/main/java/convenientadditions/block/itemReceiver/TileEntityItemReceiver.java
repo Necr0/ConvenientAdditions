@@ -38,7 +38,7 @@ public class TileEntityItemReceiver extends TileEntityCABase {
     }
 
     public IItemHandler getItemHandler() {
-        ArrayList<IItemHandler> tmp = new ArrayList<IItemHandler>();
+        ArrayList<IItemHandler> tmp = new ArrayList<>();
         for (IMatcher m : getMatchers()) {
             for (Tuple<World, BlockPos> t : ItemNetworkProvider.getEntries(m)) {
                 if (ItemNetworkProvider.getProvider(t.getFirst(), t.getSecond()).hasItemHandler())
@@ -64,9 +64,9 @@ public class TileEntityItemReceiver extends TileEntityCABase {
     }
 
     public IMatcher[] getMatchers() {
-        ArrayList<IMatcher> a = new ArrayList<IMatcher>();
+        ArrayList<IMatcher> a = new ArrayList<>();
         for (ItemStack s : channels.getStacks()) {
-            if (s != null && ((ItemChannelModule) s.getItem()).hasMatcher(s))
+            if (!s.isEmpty() && ((ItemChannelModule) s.getItem()).hasMatcher(s))
                 a.add(((ItemChannelModule) s.getItem()).getMatcher(s));
         }
         return a.toArray(new IMatcher[a.size()]);

@@ -1,6 +1,7 @@
 package convenientadditions.api.inventory;
 
 import baubles.api.BaublesApi;
+import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
@@ -37,7 +38,8 @@ public class SlotNotation{
                 }
                 break;
             case BAUBLES:
-                return BaublesApi.getBaublesHandler(player).getStackInSlot(slot);
+                IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
+                return b==null?ItemStack.EMPTY:b.getStackInSlot(slot);
             case ENDER:
                 return player.getInventoryEnderChest().getStackInSlot(slot);
             default:
@@ -67,7 +69,9 @@ public class SlotNotation{
                 }
                 break;
             case BAUBLES:
-                BaublesApi.getBaublesHandler(player).setStackInSlot(slot,stack);
+                IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
+                if(b!=null)
+                    b.setStackInSlot(slot,stack);
                 break;
             case ENDER:
                 player.getInventoryEnderChest().setInventorySlotContents(slot,stack);

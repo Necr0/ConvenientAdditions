@@ -50,9 +50,9 @@ public class TileEntityItemTransmitter extends TileEntityCABase implements ITick
 
     @Override
     public IMatcher[] getAccess() {
-        ArrayList<IMatcher> a = new ArrayList<IMatcher>();
+        ArrayList<IMatcher> a = new ArrayList<>();
         for (ItemStack s : channels.getStacks()) {
-            if (s != null && ((ItemChannelModule) s.getItem()).hasMatcher(s))
+            if (!s.isEmpty() && ((ItemChannelModule) s.getItem()).hasMatcher(s))
                 a.add(((ItemChannelModule) s.getItem()).getMatcher(s));
         }
         return a.toArray(new IMatcher[a.size()]);

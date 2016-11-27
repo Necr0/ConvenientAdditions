@@ -15,7 +15,7 @@ import java.util.List;
 public class RecipeEnderPlateRecharge implements IRecipe {
 
     public ItemStack getRecipeOutput() {
-        return null;
+        return ItemEnderPlate.FULLY_CHARGED.copy();
     }
 
     public List<ItemStack> getStacks(InventoryCrafting inv) {

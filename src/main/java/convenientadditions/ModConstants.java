@@ -5,24 +5,16 @@ public class ModConstants {
         public static final String modName = "Convenient Additions";
         public static final String MODID = "convenientadditions";
         public static final String VERSION = "1.0.3";
-        public static final String DEPENDENCIES = "required-after:Baubles;after:JEI;";
+        public static final String DEPENDENCIES = "after:Baubles;after:JEI;";
         public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";
         public static final String clientProxyClassPath = "convenientadditions.proxy.ClientProxy";
     }
 
     public static class ItemNames {
-        public static final String ingotTitaniumItemName = "ingotTitanium";
-        public static final String nuggetTitaniumItemName = "nuggetTitanium";
-        public static final String pickaxeTitaniumItemName = "pickaxeTitanium";
-        public static final String axeTitaniumItemName = "axeTitanium";
-        public static final String spadeTitaniumItemName = "spadeTitanium";
-        public static final String hoeTitaniumItemName = "hoeTitanium";
-        public static final String swordTitaniumItemName = "swordTitanium";
         public static final String compostItemName = "compost";
         public static final String fertilizerItemName = "fertilizer";
         public static final String dirtChunkItemName = "dirtChunk";
         public static final String sunstoneItemName = "sunstone";
-        public static final String titaniumWrenchItemName = "titaniumWrench";
         public static final String ironWrenchItemName = "ironWrench";
         public static final String blazingRockItemName = "blazingRock";
         public static final String enderPlateItemName = "enderPlate";
@@ -48,7 +40,6 @@ public class ModConstants {
     }
 
     public static class BlockNames {
-        public static final String oreTitaniumBlockName = "oreTitanium";
         public static final String composterBlockName = "composter";
         public static final String compostSoilBlockName = "compostSoil";
         public static final String compostSoilTilledBlockName = "compostSoilTilled";
