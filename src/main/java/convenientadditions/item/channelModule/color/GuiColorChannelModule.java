@@ -17,7 +17,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiColorChannelModule extends GuiScreen {
-    private static final ResourceLocation colorChannelModuleGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/colorModule.png");
+    private static final ResourceLocation colorChannelModuleGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/colormodule.png");
     protected int xSize = 128;
     protected int ySize = 83;
     boolean mainhand = true;

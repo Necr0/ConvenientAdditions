@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiItemTransmitter extends CCGuiContainerBase {
 
-    private static final ResourceLocation itemTransmitterGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemTransmitter.png");
+    private static final ResourceLocation itemTransmitterGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemtransmitter.png");
     public TileEntityItemTransmitter te;
 
     public GuiItemTransmitter(ContainerItemTransmitter container) {

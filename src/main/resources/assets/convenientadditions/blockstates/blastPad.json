@@ -3,16 +3,16 @@
     "defaults": {
         "model": "cube_bottom_top",
 		"textures": {
-			"side": "convenientadditions:blocks/blastPad/blastPad_side",
-	        "top": "convenientadditions:blocks/blastPad/blastPad_top_ready",
-	        "bottom": "convenientadditions:blocks/blastPad/blastPad_bottom"
+			"side": "convenientadditions:blocks/blastpad/blastpad_side",
+	        "top": "convenientadditions:blocks/blastpad/blastpad_top_ready",
+	        "bottom": "convenientadditions:blocks/blastpad/blastpad_bottom"
 		},
 		"uvlock" : "true"
     },
 	"variants": {
 		"ready": {
 			"true": {},
-			"false": {"textures": {"top": "convenientadditions:blocks/blastPad/blastPad_top_used"}}
+			"false": {"textures": {"top": "convenientadditions:blocks/blastpad/blastpad_top_used"}}
 		},
         "inventory": [{}]
 	}

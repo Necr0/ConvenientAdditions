@@ -1,19 +1,19 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "convenientadditions:adventurersPickaxe_base"
+        "model": "convenientadditions:adventurerspickaxe_base"
     },
     "variants": {
         "head": {
-	        "0": { "textures": {"layer1" : "convenientadditions:items/adventurersPickaxe/parts/head_wood"} },
-	        "1": { "textures": {"layer1" : "convenientadditions:items/adventurersPickaxe/parts/head_stone"} },
-	        "2": { "textures": {"layer1" : "convenientadditions:items/adventurersPickaxe/parts/head_iron"} },
-	        "3": { "textures": {"layer1" : "convenientadditions:items/adventurersPickaxe/parts/head_diamond"} }
+	        "0": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_wood"} },
+	        "1": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_stone"} },
+	        "2": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_iron"} },
+	        "3": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_diamond"} }
         },
         "handle": {
-	        "0": { "textures": {"layer0" : "convenientadditions:items/adventurersPickaxe/parts/handle_wood"} },
-	        "1": { "textures": {"layer0" : "convenientadditions:items/adventurersPickaxe/parts/handle_iron"} },
-	        "2": { "textures": {"layer0" : "convenientadditions:items/adventurersPickaxe/parts/handle_obsidian"} }
+	        "0": { "textures": {"layer0" : "convenientadditions:items/adventurerspickaxe/parts/handle_wood"} },
+	        "1": { "textures": {"layer0" : "convenientadditions:items/adventurerspickaxe/parts/handle_iron"} },
+	        "2": { "textures": {"layer0" : "convenientadditions:items/adventurerspickaxe/parts/handle_obsidian"} }
         },
 	    "inventory": [{}]
     }

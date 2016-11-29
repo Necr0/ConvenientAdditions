@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "convenientadditions:items/charge/blazingRock"
+        "layer0": "convenientadditions:items/charge/blazingrock"
     }
 }

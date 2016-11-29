@@ -106,7 +106,7 @@ public class BlockSetProvider extends BlockMachineConfigurable {
         if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntitySetProvider && !world.isRemote) {
             TileEntitySetProvider p = (TileEntitySetProvider) world.getTileEntity(pos);
             for (ItemStack item : p.input.getStacks()) {
-                if (item != null) {
+                if (!item.isEmpty()) {
                     float rx = world.rand.nextFloat() * 0.8F + 0.1F;
                     float ry = world.rand.nextFloat() * 0.8F + 0.1F;
                     float rz = world.rand.nextFloat() * 0.8F + 0.1F;
@@ -119,22 +119,8 @@ public class BlockSetProvider extends BlockMachineConfigurable {
                 }
             }
             p.input.setStacks(NonNullList.withSize(p.input.getSlots(),ItemStack.EMPTY));
-            for (ItemStack item : p.filter.getStacks()) {
-                if (item != null) {
-                    float rx = world.rand.nextFloat() * 0.8F + 0.1F;
-                    float ry = world.rand.nextFloat() * 0.8F + 0.1F;
-                    float rz = world.rand.nextFloat() * 0.8F + 0.1F;
-                    EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
-                    float factor = 0.05F;
-                    entityItem.motionX = world.rand.nextGaussian() * factor;
-                    entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
-                    entityItem.motionZ = world.rand.nextGaussian() * factor;
-                    world.spawnEntity(entityItem);
-                }
-            }
-            p.filter.setStacks(NonNullList.withSize(p.input.getSlots(),ItemStack.EMPTY));
             for (ItemStack item : p.output.getStacks()) {
-                if (item != null) {
+                if (!item.isEmpty()) {
                     float rx = world.rand.nextFloat() * 0.8F + 0.1F;
                     float ry = world.rand.nextFloat() * 0.8F + 0.1F;
                     float rz = world.rand.nextFloat() * 0.8F + 0.1F;

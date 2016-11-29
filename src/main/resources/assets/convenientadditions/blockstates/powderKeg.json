@@ -3,9 +3,9 @@
     "defaults": {
         "model": "cube_bottom_top",
 		"textures": {
-			"side": "convenientadditions:blocks/powderKeg/powderKeg_side",
-	        "top": "convenientadditions:blocks/powderKeg/powderKeg_top",
-	        "bottom": "convenientadditions:blocks/powderKeg/powderKeg_bottom"
+			"side": "convenientadditions:blocks/powderkeg/powderkeg_side",
+	        "top": "convenientadditions:blocks/powderkeg/powderkeg_top",
+	        "bottom": "convenientadditions:blocks/powderkeg/powderkeg_bottom"
 		}
     },
 	"variants": {

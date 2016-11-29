@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiInventoryProxyFiltered extends CCGuiContainerBase {
 
-    private static final ResourceLocation filteredProxyGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/filteredProxy.png");
+    private static final ResourceLocation filteredProxyGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/filteredproxy.png");
     public TileEntityInventoryProxyFiltered te;
 
     public GuiInventoryProxyFiltered(ContainerInventoryProxyFiltered container) {

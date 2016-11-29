@@ -17,7 +17,7 @@ public class CustomModelMeshAdventurersPickaxe implements ItemMeshDefinition {
         ArrayList<ModelResourceLocation> locs = new ArrayList<>();
         for (int head = 0; head < 4; head++) {
             for (int handle = 0; handle < 3; handle++) {
-                locs.add(new ModelResourceLocation(ModItems.itemAdventurersPickaxe.getRegistryName(), "handle=" + handle + ",head=" + head));
+                locs.add(new ModelResourceLocation(ModItems.itemAdventurersPickaxe.getRegistryName().toString().toLowerCase(), "handle=" + handle + ",head=" + head));
             }
         }
         ModelLoader.registerItemVariants(ModItems.itemAdventurersPickaxe, locs.toArray(new ModelResourceLocation[locs.size()]));

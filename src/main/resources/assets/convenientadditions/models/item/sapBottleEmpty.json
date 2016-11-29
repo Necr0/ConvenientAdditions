@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-		"layer0": "convenientadditions:items/treetap/sapBottle"
+		"layer0": "convenientadditions:items/treetap/sapbottle"
 	}
 }

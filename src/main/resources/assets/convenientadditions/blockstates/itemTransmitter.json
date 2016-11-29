@@ -3,9 +3,9 @@
     "defaults": {
         "model": "piston",
 	    "textures": {
-	        "bottom": "convenientadditions:blocks/itemTransmitter/itemTransmitter_back",
-	        "side": "convenientadditions:blocks/itemTransmitter/itemTransmitter_side",
-	        "platform": "convenientadditions:blocks/itemTransmitter/itemTransmitter_output"
+	        "bottom": "convenientadditions:blocks/itemtransmitter/itemtransmitter_back",
+	        "side": "convenientadditions:blocks/itemtransmitter/itemtransmitter_side",
+	        "platform": "convenientadditions:blocks/itemtransmitter/itemtransmitter_output"
 	    },
         "uvlock": false
     },
@@ -22,9 +22,9 @@
 	    	{
 	    		"model": "cube_bottom_top",
 			    "textures": {
-			        "bottom": "convenientadditions:blocks/itemTransmitter/itemTransmitter_back",
-			        "side": "convenientadditions:blocks/itemTransmitter/itemTransmitter_side",
-			        "top": "convenientadditions:blocks/itemTransmitter/itemTransmitter_output"
+			        "bottom": "convenientadditions:blocks/itemtransmitter/itemtransmitter_back",
+			        "side": "convenientadditions:blocks/itemtransmitter/itemtransmitter_side",
+			        "top": "convenientadditions:blocks/itemtransmitter/itemtransmitter_output"
 			    }
 	    	}
 	    ]

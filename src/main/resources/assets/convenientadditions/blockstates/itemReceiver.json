@@ -3,9 +3,9 @@
     "defaults": {
         "model": "cube_bottom_top",
 	    "textures": {
-	        "bottom": "convenientadditions:blocks/itemReceiver/itemReceiver_end",
-	        "top": "convenientadditions:blocks/itemReceiver/itemReceiver_end",
-	        "side": "convenientadditions:blocks/itemReceiver/itemReceiver_side"
+	        "bottom": "convenientadditions:blocks/itemreceiver/itemreceiver_end",
+	        "top": "convenientadditions:blocks/itemreceiver/itemreceiver_end",
+	        "side": "convenientadditions:blocks/itemreceiver/itemreceiver_side"
 	    }
     },
     "variants": {

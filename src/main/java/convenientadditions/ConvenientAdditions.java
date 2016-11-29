@@ -18,11 +18,9 @@ public class ConvenientAdditions {
     @SidedProxy(modId = ModConstants.Mod.MODID, serverSide = ModConstants.Mod.commonProxyClassPath, clientSide = ModConstants.Mod.clientProxyClassPath)
     public static CommonProxy PROXY;
     public static CreativeTabs CREATIVETAB = new CreativeTabs(ModConstants.Mod.MODID) {
-        ItemStack s=new ItemStack(ModBlocks.playerInterfaceBlock);
-
         @Override
         public ItemStack getTabIconItem() {
-            return s;
+            return new ItemStack(ModBlocks.playerInterfaceBlock);
         }
     };
 

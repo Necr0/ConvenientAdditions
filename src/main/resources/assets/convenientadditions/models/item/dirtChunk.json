@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "convenientadditions:items/compost/dirtChunk"
+        "layer0": "convenientadditions:items/compost/dirtchunk"
     }
 }

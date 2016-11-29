@@ -27,7 +27,7 @@ public class ItemSapBottle extends Item implements IModelVariantResourceLocation
 
     @Override
     public ModelResourceLocation[] getModelResourceLocations() {
-        return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName() + "Empty", "inventory"), new ModelResourceLocation(this.getRegistryName() + "Half", "inventory"), new ModelResourceLocation(this.getRegistryName() + "Full", "inventory")};
+        return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName().toString().toLowerCase() + "empty", "inventory"), new ModelResourceLocation(this.getRegistryName().toString().toLowerCase() + "half", "inventory"), new ModelResourceLocation(this.getRegistryName().toString().toLowerCase() + "full", "inventory")};
     }
 
     @Override

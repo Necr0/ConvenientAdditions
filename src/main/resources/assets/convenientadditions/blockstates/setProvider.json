@@ -2,46 +2,46 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "up": "convenientadditions:blocks/setProvider/setProvider_end",
-            "down": "convenientadditions:blocks/setProvider/setProvider_end",
-            "north": "convenientadditions:blocks/setProvider/setProvider_side",
-            "east": "convenientadditions:blocks/setProvider/setProvider_side",
-            "south": "convenientadditions:blocks/setProvider/setProvider_side",
-            "west": "convenientadditions:blocks/setProvider/setProvider_side",
-            "particle": "convenientadditions:blocks/setProvider/setProvider_end"
+            "up": "convenientadditions:blocks/setprovider/setprovider_end",
+            "down": "convenientadditions:blocks/setprovider/setprovider_end",
+            "north": "convenientadditions:blocks/setprovider/setprovider_side",
+            "east": "convenientadditions:blocks/setprovider/setprovider_side",
+            "south": "convenientadditions:blocks/setprovider/setprovider_side",
+            "west": "convenientadditions:blocks/setprovider/setprovider_side",
+            "particle": "convenientadditions:blocks/setprovider/setprovider_end"
         },
         "model": "cube",
         "uvlock": true
     },
     "variants": {
         "outlet_top":{
-            "output":{"textures": {"up": "convenientadditions:blocks/setProvider/setProvider_output"}},
-            "input":{"textures": {"up": "convenientadditions:blocks/setProvider/setProvider_input"}},
+            "output":{"textures": {"up": "convenientadditions:blocks/setprovider/setprovider_output"}},
+            "input":{"textures": {"up": "convenientadditions:blocks/setprovider/setprovider_input"}},
             "disabled":{}
         },
         "outlet_bottom":{
-            "output":{"textures": {"down": "convenientadditions:blocks/setProvider/setProvider_output"}},
-            "input":{"textures": {"down": "convenientadditions:blocks/setProvider/setProvider_input"}},
+            "output":{"textures": {"down": "convenientadditions:blocks/setprovider/setprovider_output"}},
+            "input":{"textures": {"down": "convenientadditions:blocks/setprovider/setprovider_input"}},
             "disabled":{}
         },
         "outlet_north":{
-            "output":{"textures": {"north": "convenientadditions:blocks/setProvider/setProvider_output"}},
-            "input":{"textures": {"north": "convenientadditions:blocks/setProvider/setProvider_input"}},
+            "output":{"textures": {"north": "convenientadditions:blocks/setprovider/setprovider_output"}},
+            "input":{"textures": {"north": "convenientadditions:blocks/setprovider/setprovider_input"}},
             "disabled":{}
         },
         "outlet_east":{
-            "output":{"textures": {"east": "convenientadditions:blocks/setProvider/setProvider_output"}},
-            "input":{"textures": {"east": "convenientadditions:blocks/setProvider/setProvider_input"}},
+            "output":{"textures": {"east": "convenientadditions:blocks/setprovider/setprovider_output"}},
+            "input":{"textures": {"east": "convenientadditions:blocks/setprovider/setprovider_input"}},
             "disabled":{}
         },
         "outlet_south":{
-            "output":{"textures": {"south": "convenientadditions:blocks/setProvider/setProvider_output"}},
-            "input":{"textures": {"south": "convenientadditions:blocks/setProvider/setProvider_input"}},
+            "output":{"textures": {"south": "convenientadditions:blocks/setprovider/setprovider_output"}},
+            "input":{"textures": {"south": "convenientadditions:blocks/setprovider/setprovider_input"}},
             "disabled":{}
         },
         "outlet_west":{
-            "output":{"textures": {"west": "convenientadditions:blocks/setProvider/setProvider_output"}},
-            "input":{"textures": {"west": "convenientadditions:blocks/setProvider/setProvider_input"}},
+            "output":{"textures": {"west": "convenientadditions:blocks/setprovider/setprovider_output"}},
+            "input":{"textures": {"west": "convenientadditions:blocks/setprovider/setprovider_input"}},
             "disabled":{}
         },
         "inventory": [{}]

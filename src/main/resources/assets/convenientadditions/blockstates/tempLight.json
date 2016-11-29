@@ -3,7 +3,7 @@
     "defaults": {
         "model": "cube_all",
 		"textures": {
-			"all": "convenientadditions:blocks/textureNone"
+			"all": "convenientadditions:blocks/texturenone"
 		}
     },
 	"variants": {

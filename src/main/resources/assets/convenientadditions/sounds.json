@@ -1,4 +1,4 @@
 {
-	"bookTurn": { "category": "player", "sounds": ["convenientadditions:bookTurn"] },
-	"bookSlam": { "category": "player", "sounds": ["convenientadditions:bookSlam"] }
+	"bookTurn": { "category": "player", "sounds": ["convenientadditions:bookturn"] },
+	"bookSlam": { "category": "player", "sounds": ["convenientadditions:bookslam"] }
 }

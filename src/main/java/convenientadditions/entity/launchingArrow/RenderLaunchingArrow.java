@@ -4,7 +4,10 @@ import convenientadditions.ModConstants;
 import net.minecraft.client.renderer.entity.RenderArrow;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class RenderLaunchingArrow extends RenderArrow<EntityLaunchingArrow> {
     public static final ResourceLocation RES_ARROW_0 = new ResourceLocation(ModConstants.Mod.MODID + ":textures/entity/" + ModConstants.Entities.launchingArrowEntityName + "/" + ModConstants.Entities.launchingArrowEntityName + "_0.png");
     public static final ResourceLocation RES_ARROW_1 = new ResourceLocation(ModConstants.Mod.MODID + ":textures/entity/" + ModConstants.Entities.launchingArrowEntityName + "/" + ModConstants.Entities.launchingArrowEntityName + "_1.png");

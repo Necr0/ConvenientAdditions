@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "convenientadditions:items/charge/enderPlate_active"
+		"layer0": "convenientadditions:items/charge/enderplate_active"
 	}
 }

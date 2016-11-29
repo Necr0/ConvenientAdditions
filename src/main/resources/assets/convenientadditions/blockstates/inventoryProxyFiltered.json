@@ -3,9 +3,9 @@
     "defaults": {
         "model": "piston",
 	    "textures": {
-	        "bottom": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_back",
-	        "side": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_side",
-	        "platform": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_output"
+	        "bottom": "convenientadditions:blocks/inventoryproxy/inventoryproxyfiltered_back",
+	        "side": "convenientadditions:blocks/inventoryproxy/inventoryproxyfiltered_side",
+	        "platform": "convenientadditions:blocks/inventoryproxy/inventoryproxyfiltered_output"
 	    },
         "uvlock": false
     },
@@ -22,9 +22,9 @@
 	    	{
 	    		"model": "cube_bottom_top",
 			    "textures": {
-			        "bottom": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_back",
-			        "side": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_side",
-			        "top": "convenientadditions:blocks/inventoryProxy/inventoryProxyFiltered_output"
+			        "bottom": "convenientadditions:blocks/inventoryproxy/inventoryproxyfiltered_back",
+			        "side": "convenientadditions:blocks/inventoryproxy/inventoryproxyfiltered_side",
+			        "top": "convenientadditions:blocks/inventoryproxy/inventoryproxyfiltered_output"
 			    }
 	    	}
 	    ]

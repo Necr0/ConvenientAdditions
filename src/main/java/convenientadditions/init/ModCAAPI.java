@@ -67,8 +67,10 @@ public class ModCAAPI {
         CompostRegistry.addCompostingItem(new ItemStack(Blocks.BROWN_MUSHROOM), 400);
         CompostRegistry.addCompostingItem(new ItemStack(Blocks.WATERLILY), 400);
         CompostRegistry.addCompostingItem(new ItemStack(Items.NETHER_WART), 1100);
+        CompostRegistry.addCompostingItem(new ItemStack(Blocks.NETHER_WART_BLOCK), 9900);
         CompostRegistry.addCompostingItem(new ItemStack(Items.DYE), 227);
         CompostRegistry.addCompostingItem(new ItemStack(Items.BONE), 230);
+        CompostRegistry.addCompostingItem(new ItemStack(Blocks.BONE_BLOCK), 2043);
         CompostRegistry.addCompostingItem(new ItemStack(Blocks.TALLGRASS), 230);
         CompostRegistry.addEntry(new CompostRegistryEntryDoublePlant());
         CompostRegistry.addEntry(new CompostRegistryEntryFood());

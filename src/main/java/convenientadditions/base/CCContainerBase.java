@@ -18,39 +18,44 @@ public abstract class CCContainerBase extends Container {
 	        Slot s=getSlot(index);
 	        
 	        if(s instanceof SlotFake){
+
 	        	if(mode==ClickType.THROW){
 	        		if(button==0)
 	        			slotAdd(s,-1);
 	        		else
 	        			slotAdd(s,-64);
+
 	        	}else if(mode==ClickType.SWAP){
-	        		return null;
+	        		return ItemStack.EMPTY;
+
 	        	}else if((mode==ClickType.PICKUP||mode==ClickType.PICKUP_ALL)&&(button==0||button==1)){
 		    		ItemStack stack=s.getStack();
-		    		if(stack!=null&&held!=null&&s.isItemValid(held)){
+		    		if(!stack.isEmpty()&&s.isItemValid(held)){
 		    			if(button==0){
 		    				adder=held.getCount();
 		    			}else if(button==1){
 		    				adder=1;
 		    			}
 		    			slotAdd(s, adder);
-		    		}else if(held!=null){
+		    		}else if(!held.isEmpty()){
 		    			s.putStack(held.copy());
-		    		}else if(stack!=null&&held==null){
+		    		}else if(!stack.isEmpty()&&held.isEmpty()){
 		    			adder=button==0?1:-1;
 		    	        slotAdd(s,adder);
 		    		}
+
 	    		}else if((mode==ClickType.QUICK_MOVE)&&(button==0||button==1)){
 	    			adder=button==0?8:-8;
 	    	        slotAdd(s,adder);
+
 	    		}
 	        	this.detectAndSendChanges();
-	    		return null;
+	    		return ItemStack.EMPTY;
 	        }else if (mode == ClickType.PICKUP_ALL && index >= 0){
 	            Slot slot2 = this.inventorySlots.get(index);
 	            ItemStack itemstack4 = inventoryplayer.getItemStack();
 
-	            if (itemstack4 != null && (slot2 == null || !slot2.getHasStack() || !slot2.canTakeStack(player)))
+	            if (!itemstack4.isEmpty() && (slot2 == null || !slot2.getHasStack() || !slot2.canTakeStack(player)))
 	            {
 	                int i1 = button == 0 ? 0 : this.inventorySlots.size() - 1;
 	                int j1 = button == 0 ? 1 : -1;
@@ -69,7 +74,7 @@ public abstract class CCContainerBase extends Container {
 
 	                            if (itemstack2.getCount() <= 0)
 	                            {
-	                                slot8.putStack(null);
+	                                slot8.putStack(ItemStack.EMPTY);
 	                            }
 
 	                            slot8.onTake(player, itemstack2);
@@ -78,7 +83,7 @@ public abstract class CCContainerBase extends Container {
 	                }
 	            }
 	        	this.detectAndSendChanges();
-	    		return null;
+	    		return ItemStack.EMPTY;
 	        }
         }
     	return super.slotClick(index, button, mode, player);
@@ -86,7 +91,7 @@ public abstract class CCContainerBase extends Container {
     
     public void slotAdd(Slot s, int amount){
         ItemStack stack=s.getStack();
-        if(stack==null)
+        if(stack.isEmpty())
         	return;
         stack.grow(amount);
         if(stack.getCount()>s.getSlotStackLimit())
@@ -94,7 +99,7 @@ public abstract class CCContainerBase extends Container {
         if(stack.getCount()>stack.getMaxStackSize())
 			stack.setCount(stack.getMaxStackSize());
         if(stack.getCount()<1)
-        	s.putStack(null);
+        	s.putStack(ItemStack.EMPTY);
         else
         	s.putStack(stack.copy());
     }

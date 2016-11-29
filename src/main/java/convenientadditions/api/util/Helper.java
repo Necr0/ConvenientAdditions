@@ -15,6 +15,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
@@ -118,15 +120,18 @@ public class Helper {
 	public static boolean canEntitySeeSky(Entity e){
 		return e.getEntityWorld().canBlockSeeSky(new BlockPos(MathHelper.floor(e.posX), MathHelper.floor(e.posY), MathHelper.floor(e.posZ)));
 	}
-	
+
+	@SideOnly(Side.CLIENT)
 	public static EntityPlayer getClientPlayer(){
 		return FMLClientHandler.instance().getClient().player;
 	}
-	
+
+	@SideOnly(Side.CLIENT)
 	public static World getClientWorld(){
 		return FMLClientHandler.instance().getClient().world;
 	}
-	
+
+	@SideOnly(Side.CLIENT)
 	public static String localize(String in,String... replace){
 		String tmp=I18n.format(in, new Object[0]);
 		if(tmp.startsWith("Format error: "))

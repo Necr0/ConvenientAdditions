@@ -2,43 +2,43 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "up": "convenientadditions:blocks/seedBox/seedBox",
-            "down": "convenientadditions:blocks/seedBox/seedBox",
-            "north": "convenientadditions:blocks/seedBox/seedBox",
-            "east": "convenientadditions:blocks/seedBox/seedBox",
-            "south": "convenientadditions:blocks/seedBox/seedBox",
-            "west": "convenientadditions:blocks/seedBox/seedBox",
-            "particle": "convenientadditions:blocks/seedBox/seedBox"
+            "up": "convenientadditions:blocks/seedbox/seedbox",
+            "down": "convenientadditions:blocks/seedbox/seedbox",
+            "north": "convenientadditions:blocks/seedbox/seedbox",
+            "east": "convenientadditions:blocks/seedbox/seedbox",
+            "south": "convenientadditions:blocks/seedbox/seedbox",
+            "west": "convenientadditions:blocks/seedbox/seedbox",
+            "particle": "convenientadditions:blocks/seedbox/seedbox"
         },
         "model": "cube",
         "uvlock": true
     },
     "variants": {
         "outlet_top":{
-            "true":{"textures": {"up": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "true":{"textures": {"up": "convenientadditions:blocks/seedbox/seedbox_outlet"}},
             "false":{}
         },
         "outlet_bottom":{
-            "true":{"textures": {"down": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "true":{"textures": {"down": "convenientadditions:blocks/seedbox/seedbox_outlet"}},
             "false":{}
         },
         "outlet_north":{
-            "true":{"textures": {"north": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "true":{"textures": {"north": "convenientadditions:blocks/seedbox/seedbox_outlet"}},
             "false":{}
         },
         "outlet_east":{
-            "true":{"textures": {"east": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "true":{"textures": {"east": "convenientadditions:blocks/seedbox/seedbox_outlet"}},
             "false":{}
         },
         "outlet_south":{
-            "true":{"textures": {"south": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "true":{"textures": {"south": "convenientadditions:blocks/seedbox/seedbox_outlet"}},
             "false":{}
         },
         "outlet_west":{
-            "true":{"textures": {"west": "convenientadditions:blocks/seedBox/seedBox_outlet"}},
+            "true":{"textures": {"west": "convenientadditions:blocks/seedbox/seedbox_outlet"}},
             "false":{}
         },
-        "inventory": [{"textures": {"up": "convenientadditions:blocks/seedBox/seedBox_outlet"}}]
+        "inventory": [{"textures": {"up": "convenientadditions:blocks/seedbox/seedbox_outlet"}}]
     }
 }
     

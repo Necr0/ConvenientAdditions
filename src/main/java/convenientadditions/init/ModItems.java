@@ -88,8 +88,6 @@ public class ModItems {
         registerItem(itemChargingRing, ModConstants.ItemNames.chargingRingItemName);
 
         registerItem(itemAdventurersPickaxe, ModConstants.ItemNames.adventurersPickaxeItemName);
-
-        initModelLoader();
     }
 
     @SideOnly(Side.CLIENT)
@@ -106,12 +104,12 @@ public class ModItems {
         registerModelLocation(itemIronWrench);
         //misc
         registerModelLocation(itemFertilizer);
-        registerModelLocation(itemSunstone, 0, new ModelResourceLocation(itemSunstone.getRegistryName() + "_inactive"));
-        registerModelLocation(itemSunstone, 1, new ModelResourceLocation(itemSunstone.getRegistryName() + "_active"));
-        registerIndependentModelLocation(itemCompost, new ModelResourceLocation(itemCompost.getRegistryName(), "inventory"));
+        registerModelLocation(itemSunstone, 0, new ModelResourceLocation(itemSunstone.getRegistryName().toString().toLowerCase() + "_inactive"));
+        registerModelLocation(itemSunstone, 1, new ModelResourceLocation(itemSunstone.getRegistryName().toString().toLowerCase() + "_active"));
+        registerIndependentModelLocation(itemCompost, new ModelResourceLocation(itemCompost.getRegistryName().toString().toLowerCase(), "inventory"));
         registerModelLocation(itemBlazingRock);
-        registerModelLocation(itemEnderPlate, 0, new ModelResourceLocation(itemEnderPlate.getRegistryName() + "_inactive", "inventory"));
-        registerModelLocation(itemEnderPlate, 1, new ModelResourceLocation(itemEnderPlate.getRegistryName() + "_active", "inventory"));
+        registerModelLocation(itemEnderPlate, 0, new ModelResourceLocation(itemEnderPlate.getRegistryName().toString().toLowerCase() + "_inactive", "inventory"));
+        registerModelLocation(itemEnderPlate, 1, new ModelResourceLocation(itemEnderPlate.getRegistryName().toString().toLowerCase() + "_active", "inventory"));
         registerVariants(itemLaunchingArrow, itemLaunchingArrow.getModelResourceLocations());
         registerModelLocation(itemTransmutationTome);
         registerVariants(itemSapBottle, itemSapBottle.getModelResourceLocations());
@@ -133,33 +131,39 @@ public class ModItems {
         GameRegistry.register(item);
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerModelLocation(Item item, ModelResourceLocation location) {
         ModelLoader.setCustomModelResourceLocation(item, 0, location);
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerModelLocation(Item item) {
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString().toLowerCase(), "inventory"));
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerVariants(Item item, ModelResourceLocation[] locations) {
         for (int i = 0; i < locations.length; i++) {
             registerModelLocation(item, i, locations[i]);
         }
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerModelLocation(Item item, int damage, ModelResourceLocation location) {
         ModelLoader.setCustomModelResourceLocation(item, damage, location);
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerIndependentModelLocation(Item item, ModelResourceLocation location) {
         ModelLoader.setCustomMeshDefinition(item, new SimpleItemMeshDefinition(location));
-        ;
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerItemBlockModel(Block block) {
         ModItems.registerModelLocation(ItemBlock.getItemFromBlock(block));
     }
 
+    @SideOnly(Side.CLIENT)
     public static class SimpleItemMeshDefinition implements ItemMeshDefinition {
         ModelResourceLocation location;
 

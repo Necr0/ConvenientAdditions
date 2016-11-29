@@ -3,9 +3,9 @@
     "defaults": {
         "model": "farmland",
 	    "textures": {
-	        "particle": "convenientadditions:blocks/compostSoil",
-	        "dirt": "convenientadditions:blocks/compostSoil",
-	        "top": "convenientadditions:blocks/compostSoilTilled"
+	        "particle": "convenientadditions:blocks/compostsoil",
+	        "dirt": "convenientadditions:blocks/compostsoil",
+	        "top": "convenientadditions:blocks/compostsoiltilled"
 	    }
     },
 	"variants": {

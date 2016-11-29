@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiSetProvider extends CCGuiContainerBase {
 
-    private static final ResourceLocation setProviderGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/setProvider.png");
+    private static final ResourceLocation setProviderGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/setprovider.png");
     public TileEntitySetProvider te;
 
     public GuiSetProvider(ContainerSetProvider container) {

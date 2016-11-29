@@ -1,6 +1,5 @@
 package convenientadditions.item;
 
-import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.item.IModelVariantResourceLocationProvider;
@@ -39,11 +38,11 @@ public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResour
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        return Helper.localize("item." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName + "_" + stack.getItemDamage() + ".name");
+        return net.minecraft.util.text.translation.I18n.translateToLocal("item." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName + "_" + stack.getItemDamage() + ".name");
     }
 
     @Override
     public ModelResourceLocation[] getModelResourceLocations() {
-        return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName() + "Creeper", "inventory"), new ModelResourceLocation(this.getRegistryName() + "Blast", "inventory"), new ModelResourceLocation(this.getRegistryName() + "Slime", "inventory")};
+        return new ModelResourceLocation[]{new ModelResourceLocation(this.getRegistryName().toString().toLowerCase()  + "creeper", "inventory"), new ModelResourceLocation(this.getRegistryName().toString().toLowerCase() + "blast", "inventory"), new ModelResourceLocation(this.getRegistryName().toString().toLowerCase() + "slime", "inventory")};
     }
 }

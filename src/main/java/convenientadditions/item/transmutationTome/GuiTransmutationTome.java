@@ -15,14 +15,14 @@ import java.util.Iterator;
 
 public class GuiTransmutationTome extends CCGuiContainerBase {
 
-    private static final ResourceLocation tomeGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationTome.png");
+    private static final ResourceLocation tomeGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationtome.png");
     private static final ImageResourceLocation[] particleIRLs = new ImageResourceLocation[]{
-            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationTome.png", 190, 70, 2, 2),
-            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationTome.png", 192, 70, 2, 2),
-            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationTome.png", 190, 72, 1, 1),
-            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationTome.png", 191, 72, 1, 1),
-            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationTome.png", 192, 72, 1, 1),
-            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationTome.png", 193, 72, 1, 1)
+            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationtome.png", 190, 70, 2, 2),
+            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationtome.png", 192, 70, 2, 2),
+            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationtome.png", 190, 72, 1, 1),
+            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationtome.png", 191, 72, 1, 1),
+            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationtome.png", 192, 72, 1, 1),
+            new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/transmutationtome.png", 193, 72, 1, 1)
     };
     public long time;
     public EntityPlayer player;
