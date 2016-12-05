@@ -62,4 +62,9 @@ public class ComposterItemStackHandler implements IItemHandler, IItemHandlerModi
         insertItem(slot, stack, false);
     }
 
+    @Override
+    public int getSlotLimit(int slot) {
+        return 64;
+    }
+
 }

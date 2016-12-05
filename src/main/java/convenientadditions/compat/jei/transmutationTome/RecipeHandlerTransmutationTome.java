@@ -12,11 +12,6 @@ public class RecipeHandlerTransmutationTome implements IRecipeHandler<RecipeWrap
     }
 
     @Override
-    public String getRecipeCategoryUid() {
-        return ModConstants.Mod.MODID + ":" + ModConstants.Compat.JEI.transmutationTomeCategory;
-    }
-
-    @Override
     public String getRecipeCategoryUid(RecipeWrapperTransmutationTome recipe) {
         return ModConstants.Mod.MODID + ":" + ModConstants.Compat.JEI.transmutationTomeCategory;
     }
@@ -28,7 +23,7 @@ public class RecipeHandlerTransmutationTome implements IRecipeHandler<RecipeWrap
 
     @Override
     public boolean isRecipeValid(RecipeWrapperTransmutationTome recipe) {
-        return recipe.getInputs().size() > 1 && recipe.getOutputs().size() > 0;
+        return recipe.recipe.getBase().size()> 1 && recipe.recipe.getTransmutator().size()> 1 && recipe.recipe.getResult().size() > 0;
     }
 
 }

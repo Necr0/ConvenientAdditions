@@ -1,9 +1,9 @@
 package convenientadditions.api.item.stackhandler;
 
-import java.util.ArrayList;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
+
+import java.util.ArrayList;
 
 public class CombinedItemStackHandler implements IItemHandler {
 	public ArrayList<IItemHandler> handlers;
@@ -62,5 +62,9 @@ public class CombinedItemStackHandler implements IItemHandler {
 		}
 		return null;
 	}
-	
+
+	@Override
+	public int getSlotLimit(int slot) {
+		return 64;
+	}
 }

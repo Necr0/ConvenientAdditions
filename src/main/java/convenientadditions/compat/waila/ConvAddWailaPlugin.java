@@ -9,7 +9,10 @@ import convenientadditions.block.proximitySensor.BlockProximitySensor;
 import convenientadditions.compat.waila.provider.*;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ConvAddWailaPlugin {
 
     public static void init(){

@@ -12,6 +12,7 @@ import convenientadditions.block.powderkeg.TileEntityPowderKeg;
 import convenientadditions.block.proximitySensor.TileEntityProximitySensor;
 import convenientadditions.block.seedbox.TileEntitySeedBox;
 import convenientadditions.block.setProvider.TileEntitySetProvider;
+import convenientadditions.block.storageMatrix.TileEntityStorageMatrix;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModTileEntities {
@@ -27,5 +28,6 @@ public class ModTileEntities {
         GameRegistry.registerTileEntity(TileEntityInventoryProxy.class, ModConstants.BlockNames.inventoryProxyBlockName);
         GameRegistry.registerTileEntity(TileEntityInventoryProxyFiltered.class, ModConstants.BlockNames.inventoryProxyFilteredBlockName);
         GameRegistry.registerTileEntity(TileEntityHoverPad.class, ModConstants.BlockNames.hoverPadBlockName);
+        GameRegistry.registerTileEntity(TileEntityStorageMatrix.class, ModConstants.BlockNames.storageMatrixBlockName);
     }
 }

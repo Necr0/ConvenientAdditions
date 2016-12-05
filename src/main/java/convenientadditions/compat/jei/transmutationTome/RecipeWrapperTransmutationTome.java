@@ -8,26 +8,12 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class RecipeWrapperTransmutationTome extends BlankRecipeWrapper {
     public ITransmutationTomeJEIRecipe recipe;
 
     public RecipeWrapperTransmutationTome(ITransmutationTomeJEIRecipe r) {
         recipe = r;
-    }
-
-    @Override
-    @Deprecated
-    public List getInputs() {
-        return Arrays.asList(recipe.getBase(), recipe.getTransmutator());
-    }
-
-    @Override
-    @Deprecated
-    public List getOutputs() {
-        return Collections.singletonList(recipe.getResult());
     }
 
     @Override

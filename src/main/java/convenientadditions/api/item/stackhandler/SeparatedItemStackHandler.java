@@ -36,4 +36,9 @@ public class SeparatedItemStackHandler implements IItemHandler {
 	public boolean isInput(int slot){
 		return slot<in.getSlots();
 	}
+
+	@Override
+	public int getSlotLimit(int slot) {
+		return 64;
+	}
 }

@@ -39,4 +39,9 @@ public class ItemHandlerFilteredProxy implements IItemHandler {
             return ItemStack.EMPTY;
     }
 
+    @Override
+    public int getSlotLimit(int slot) {
+        return 64;
+    }
+
 }

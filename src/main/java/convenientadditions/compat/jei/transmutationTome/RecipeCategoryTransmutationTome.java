@@ -36,7 +36,7 @@ public class RecipeCategoryTransmutationTome extends BlankRecipeCategory<RecipeW
         recipeLayout.getItemStacks().init(2, false, 77, 18);
         recipeLayout.getItemStacks().set(0, ingredients.getInputs(ItemStack.class).get(0));
         recipeLayout.getItemStacks().set(1, ingredients.getInputs(ItemStack.class).get(1));
-        recipeLayout.getItemStacks().set(2, ingredients.getOutputs(ItemStack.class));
+        recipeLayout.getItemStacks().set(2, ingredients.getOutputs(ItemStack.class).get(0));
     }
 
 }

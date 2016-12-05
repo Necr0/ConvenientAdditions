@@ -4,8 +4,8 @@ public class ModConstants {
     public static class Mod {
         public static final String modName = "Convenient Additions";
         public static final String MODID = "convenientadditions";
-        public static final String VERSION = "1.0.3";
-        public static final String DEPENDENCIES = "after:Baubles;after:JEI;";
+        public static final String VERSION = "1.0.13";
+        public static final String DEPENDENCIES = "required-after:forge@[13.19.0.2180,);after:baubles;after:jei;";
         public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";
         public static final String clientProxyClassPath = "convenientadditions.proxy.ClientProxy";
     }
@@ -54,11 +54,11 @@ public class ModConstants {
         public static final String inventoryProxySidedBlockName = "inventoryProxySided";
         public static final String inventoryProxyFilteredBlockName = "inventoryProxyFiltered";
         public static final String treetapBlockName = "treetap";
-        public static final String gatewayBlockName = "gateway";
         public static final String hoverPadBlockName = "hoverPad";
         public static final String blastPadBlockName = "blastPad";
         public static final String platformBlockName = "platform";
         public static final String treeBoxBlockName = "treeBox";
+        public static final String storageMatrixBlockName = "storageMatrix";
         //
         public static final String tempLightBlockName = "tempLight";
         public static final String phantomPlatformBlockName = "phantomPlatform";

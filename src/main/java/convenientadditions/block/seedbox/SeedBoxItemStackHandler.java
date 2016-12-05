@@ -55,6 +55,11 @@ public class SeedBoxItemStackHandler implements IItemHandler, IItemHandlerModifi
     }
 
     @Override
+    public int getSlotLimit(int slot) {
+        return 64;
+    }
+
+    @Override
     public void setStackInSlot(int slot, ItemStack stack) {
         insertItem(slot, stack, false);
     }
