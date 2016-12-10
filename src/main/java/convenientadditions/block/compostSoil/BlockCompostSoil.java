@@ -100,13 +100,13 @@ public class BlockCompostSoil extends Block {
             if (b != null && (b instanceof IPlantable || b instanceof IGrowable)) {
                 b.updateTick(world, posU, world.getBlockState(posU), r);
                 int i = deg;
-                if (r.nextInt(15) > i)
+                if (r.nextInt(23) > i)
                     b.updateTick(world, posU, world.getBlockState(posU), r);
                 i++;
-                if (r.nextInt(15) > i)
+                if (r.nextInt(23) > i)
                     b.updateTick(world, posU, world.getBlockState(posU), r);
                 i++;
-                if (r.nextInt(15) > i)
+                if (r.nextInt(23) > i)
                     b.updateTick(world, posU, world.getBlockState(posU), r);
             }
             if (r.nextInt(4) == 0) {

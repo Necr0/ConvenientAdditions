@@ -92,6 +92,7 @@ public class ModConfig {
     public static boolean antidote;
     public static boolean bandage;
     public static boolean blastPad;
+    public static boolean platform;
 
     public static void init() {
         Configuration cfg = new Configuration(new File("config/ConvAdd.cfg"));
@@ -110,6 +111,7 @@ public class ModConfig {
         antidote = cfg.getBoolean("antidote", category, true, "requires sap from treetap");
         bandage = cfg.getBoolean("antidote", category, true, "requires sap from treetap");
         blastPad = cfg.getBoolean("blastPad", category, true, "");
+        platform = cfg.getBoolean("platform", category, true, "");
 
         category = "composter";
         cfg.setCategoryRequiresMcRestart(category, true);

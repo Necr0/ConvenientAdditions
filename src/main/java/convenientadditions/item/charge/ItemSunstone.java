@@ -91,12 +91,14 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
             for (int x = 0; x < 9; x++) {
                 for (int y = 0; y < 9; y++) {
                     for (int z = 0; z < 9; z++) {
-                        BlockPos pos = new BlockPos(x - 4 + (int) player.posX, y - 4 + (int) player.posY, z - 4 + (int) player.posZ);
-                        IBlockState state = world.getBlockState(pos);
-                        Block b = state.getBlock();
-                        if (b.isAir(state, world, pos) && b != ModBlocks.tempLightBlock && b != ModBlocks.phantomPlatformBlock) {
-                            world.setBlockState(pos, ModBlocks.tempLightBlock.getDefaultState(), 3);
-                            world.scheduleBlockUpdate(pos, ModBlocks.tempLightBlock, 20 + world.rand.nextInt(20), 0);
+                        if(world.rand.nextBoolean()) {
+                            BlockPos pos = new BlockPos(x - 4 + (int) player.posX, y - 4 + (int) player.posY, z - 4 + (int) player.posZ);
+                            IBlockState state = world.getBlockState(pos);
+                            Block b = state.getBlock();
+                            if (b.isAir(state, world, pos) && b != ModBlocks.tempLightBlock && b != ModBlocks.phantomPlatformBlock) {
+                                world.setBlockState(pos, ModBlocks.tempLightBlock.getDefaultState(), 3);
+                                world.scheduleBlockUpdate(pos, ModBlocks.tempLightBlock, 80 + world.rand.nextInt(140), 0);
+                            }
                         }
                     }
                 }

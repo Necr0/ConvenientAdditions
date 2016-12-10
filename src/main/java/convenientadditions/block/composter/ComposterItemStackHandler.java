@@ -24,7 +24,7 @@ public class ComposterItemStackHandler implements IItemHandler, IItemHandlerModi
 
     @Override
     public ItemStack getStackInSlot(int slot) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ComposterItemStackHandler implements IItemHandler, IItemHandlerModi
         int simulate_content = composter.getContentValue(stack);
         stack = stack.copy();
         while (!stack.isEmpty()) {
-            if (!(composter.content < ModConfig.composter_capacity && composter.getContentValue(stack) > 0) || (simulate && simulate_content < ModConfig.composter_capacity))
+            if (!(composter.content < ModConfig.composter_capacity && composter.getContentValue(stack) > 0) || (simulate && simulate_content > ModConfig.composter_capacity))
                 return stack;
             if (!simulate) {
                 composter.content += composter.getContentValue(stack);

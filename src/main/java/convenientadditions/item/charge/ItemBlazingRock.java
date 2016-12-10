@@ -25,10 +25,10 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
 
     @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
-        if (!hasContainerItem(itemStack))
-            return null;
-        ItemStack ret = itemStack.copy();
-        consumeCharge(ret, getFuelTime(itemStack) * 4);
+        ItemStack ret = new ItemStack(this, itemStack.isEmpty()?1:itemStack.getCount(), itemStack.getItemDamage());
+        if(itemStack.getTagCompound()!=null)
+            ret.setTagCompound(itemStack.getTagCompound().copy());
+        consumeCharge(ret, getFuelTime(ret) * 12);
         ret.setCount(1);
         return ret;
     }
@@ -40,12 +40,12 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
 
     @Override
     public boolean isFuelItem(ItemStack item) {
-        return hasContainerItem(item);
+        return true;
     }
 
     @Override
     public int getFuelTime(ItemStack item) {
-        return Math.min(getCharge(item), 55);
+        return Math.min(getCharge(item)/12, 38);
     }
 
     @Override

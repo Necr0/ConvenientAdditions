@@ -154,14 +154,13 @@ public class LevelUp {
     }
 
     public static void applyRandomUpgrade(ItemStack s) {
-        //fix
-        List<Tuple<String, Integer>> u = new ArrayList<Tuple<String, Integer>>();
+        List<Tuple<String, Integer>> u = new ArrayList<>();
         int sum = 0;
         for (String p : getUpgradableStats(s)) {
             switch (p) {
                 case "mining_speed":
                     u.add(new Tuple<>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_mined") + 20));
-                    sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "stone_mined") + 20;
+                    sum += (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_mined") + 20;
                     break;
                 case "digging_speed":
                     u.add(new Tuple<>(p, (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "blocks_digged") + 20));

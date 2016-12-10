@@ -29,8 +29,8 @@ public class ChargeTickHandler {
                 ItemStack stack=slot.getItem();
                 if (stack != null && stack.getItem() instanceof ISunlightChargeable) {
                     ISunlightChargeable sitem = (ISunlightChargeable) (stack.getItem());
-                    if (sitem.isSunlightChargeable(stack, slot)) {
-                        sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, slot) * 20);
+                    if (sitem.isSunlightChargeable(stack, slot, player)) {
+                        sitem.chargeItem(stack, sitem.getSunlightChargeRate(stack, slot, player) * 20);
                     }
                 }
             }

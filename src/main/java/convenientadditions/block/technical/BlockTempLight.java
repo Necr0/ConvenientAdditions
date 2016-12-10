@@ -1,9 +1,11 @@
 package convenientadditions.block.technical;
 
 import convenientadditions.ModConstants;
+import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -18,14 +20,20 @@ public class BlockTempLight extends Block {
     public BlockTempLight(float intensisty) {
         super(Material.FIRE);
         this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.tempLightBlockName)
-                .setLightLevel(intensisty)
-                .setTickRandomly(true);
+                .setLightLevel(intensisty).setTickRandomly(false);
         this.disableStats();
         this.translucent = true;
     }
 
     @Override
     public void updateTick(World world, BlockPos pos, IBlockState state, Random r) {
+        this.setTickRandomly(false);
+        if(!world.getEntitiesWithinAABB(EntityPlayer.class,new AxisAlignedBB(pos.add(-4,-4,-4),pos.add(4,4,4))).isEmpty()) {
+            if(r.nextInt(6)!=0){
+                world.scheduleBlockUpdate(pos, ModBlocks.tempLightBlock, 80, 0);
+                return;
+            }
+        }
         world.setBlockToAir(pos);
     }
 

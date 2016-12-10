@@ -12,11 +12,10 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResourceLocationProvider {
 
@@ -25,7 +24,8 @@ public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResour
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
+    @Override
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
         for (EnumLaunchingArrowVariant e : EnumLaunchingArrowVariant.values()) {
             subItems.add(new ItemStack(this, 1, e.ordinal()));
         }

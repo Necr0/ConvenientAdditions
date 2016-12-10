@@ -316,18 +316,18 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
 
     public String getRepairMaterial(ItemStack s) {
         int lvl = (int) getToolProperty(s, "mining_level");
-        String[] ores = new String[]{"planksWood", "cobblestone", "ingotIron", "gemDiamond"};
+        String[] ores = new String[]{"plankWood", "cobblestone", "ingotIron", "gemDiamond"};
         return ores[lvl];
     }
 
     @Override
     public boolean isSoulbound(ItemStack i, EntityPlayer p) {
-        return (boolean) ModItems.itemAdventurersPickaxe.getToolProperty(i, "soulbound");
+        return !isBroken(i) && (boolean)ModItems.itemAdventurersPickaxe.getToolProperty(i, "soulbound");
     }
 
     @Override
     public void onPlayerInventoryTick(ItemStack item, SlotNotation slot, EntityPlayer player) {
-        if (player.getHeldItemMainhand() == item) {
+        if (player.getHeldItemMainhand() == item && !isBroken(item) && (boolean)getToolProperty(item,"magnetic")) {
             OreMagnet.attractOres(player);
         }
     }

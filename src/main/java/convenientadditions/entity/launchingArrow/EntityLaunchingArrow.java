@@ -9,7 +9,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class EntityLaunchingArrow extends EntityArrow {
     public static final DataParameter<Byte> VARIANT = EntityDataManager.<Byte>createKey(EntityLaunchingArrow.class, DataSerializers.BYTE);
@@ -18,18 +21,21 @@ public class EntityLaunchingArrow extends EntityArrow {
 
     public EntityLaunchingArrow(World worldIn) {
         super(worldIn);
-        this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+        if(getVariant()==EnumLaunchingArrowVariant.creeper)
+            this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
     }
 
     public EntityLaunchingArrow(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
-        this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+        if(getVariant()==EnumLaunchingArrowVariant.creeper)
+            this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
     }
 
     public EntityLaunchingArrow(World worldIn, EntityLivingBase shooter, EnumLaunchingArrowVariant variant) {
         super(worldIn, shooter);
         this.setVariant(variant);
-        this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+        if(getVariant()==EnumLaunchingArrowVariant.creeper)
+            this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
     }
 
     @Override
@@ -41,10 +47,14 @@ public class EntityLaunchingArrow extends EntityArrow {
         this.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
         super.onUpdate();
 
-        if (this.inGround && !getEntityWorld().isRemote) {
-            if (getEntityWorld().getClosestPlayerToEntity(this, 1.5D) != null) {
-                ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(getVariant(), this));
-                this.setDead();
+        if (getVariant()==EnumLaunchingArrowVariant.slime && this.inGround && !getEntityWorld().isRemote) {
+            List<EntityLivingBase> es = getEntityWorld().getEntitiesWithinAABB(EntityLivingBase.class,new AxisAlignedBB(posX-1.5D,posY-1.5D,posZ-1.5D,posX+1.5D,posY+1.5D,posZ+1.5D));
+            for (EntityLivingBase e:es) {
+                if(e.getDistanceSqToEntity(this)<=2.25){
+                    ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(getVariant(), this));
+                    this.setDead();
+                    break;
+                }
             }
         }
     }

@@ -65,20 +65,23 @@ public class BlockPowderKeg extends BlockContainer {
         ItemStack current = player.inventory.getStackInSlot(player.inventory.currentItem);
         if (world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote) {
             TileEntityPowderKeg keg = (TileEntityPowderKeg) world.getTileEntity(pos);
-            if (!player.isSneaking() && !world.isRemote) {
-                if (current!=ItemStack.EMPTY) {
-                    player.sendMessage(new TextComponentString(keg.getAmount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored")));
+            if (!world.isRemote) {
+                if (current.getItem() == Items.GUNPOWDER) {
+                    player.setHeldItem(hand, keg.insertStack(player.getHeldItem(hand)));
+                    return true;
                 } else if (current.getItem() == Items.FLINT_AND_STEEL) {
                     if (explode(world, pos)) {
                         current.damageItem(1, player);
                         return true;
                     }
-                    return false;
-                } else if (current.getItem() == Items.GUNPOWDER) {
-                    player.setHeldItem(hand, keg.insertStack(player.getHeldItem(hand)));
+                }else if (current.isEmpty()) {
+                    if(player.isSneaking() && keg.getAmount() != 0){
+                        Helper.spawnItemInPlace(world, pos.getX() + .5, pos.getY() + 1.2, pos.getZ() + .5, keg.removeStack(64));
+                        return false;
+                    }
                 }
-            } else if (keg.getAmount() != 0 && current.isEmpty()) {
-                Helper.spawnItemInPlace(world, pos.getX() + .5, pos.getY() + 1.2, pos.getZ() + .5, keg.removeStack(64));
+                player.sendMessage(new TextComponentString(keg.getAmount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored")));
+                return true;
             }
         }
         return true;

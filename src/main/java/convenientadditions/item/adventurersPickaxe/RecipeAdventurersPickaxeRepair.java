@@ -33,7 +33,7 @@ public class RecipeAdventurersPickaxeRepair implements IRecipe {
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
-        NonNullList<ItemStack> aitemstack = NonNullList.create();
+        NonNullList<ItemStack> aitemstack = NonNullList.withSize(9,ItemStack.EMPTY);
 
         for (int i = 0; i < inv.getSizeInventory(); ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
@@ -66,8 +66,11 @@ public class RecipeAdventurersPickaxeRepair implements IRecipe {
 
         for (ItemStack i : list) {
             String ore = ModItems.itemAdventurersPickaxe.getRepairMaterial(pick);
-            if (OreDictionary.containsMatch(false, OreDictionary.getOres(ore), i))
-                return true;
+            for (int id : OreDictionary.getOreIDs(i)) {
+                String name=OreDictionary.getOreName(id);
+                if (name.equals(ore))
+                    return true;
+            }
         }
         return false;
     }

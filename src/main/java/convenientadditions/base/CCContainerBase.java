@@ -47,7 +47,6 @@ public abstract class CCContainerBase extends Container {
 	    		}else if((mode==ClickType.QUICK_MOVE)&&(button==0||button==1)){
 	    			adder=button==0?8:-8;
 	    	        slotAdd(s,adder);
-
 	    		}
 	        	this.detectAndSendChanges();
 	    		return ItemStack.EMPTY;

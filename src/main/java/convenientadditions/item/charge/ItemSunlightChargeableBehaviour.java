@@ -2,10 +2,9 @@ package convenientadditions.item.charge;
 
 import convenientadditions.api.entity.specialitem.BehaviourRegistry;
 import convenientadditions.api.entity.specialitem.EntitySpecialItem;
-import convenientadditions.api.inventory.SlotNotation;
+import convenientadditions.api.entity.specialitem.behaviours.BehaviourSunlightChargeable;
 import convenientadditions.api.item.IBehaviourProvider;
 import convenientadditions.api.item.charge.ItemSunlightChargeable;
-import convenientadditions.api.entity.specialitem.behaviours.BehaviourSunlightChargeable;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -44,10 +43,5 @@ public abstract class ItemSunlightChargeableBehaviour extends ItemSunlightCharge
     @Override
     public void getBehaviours(ItemStack stack, List<Long> behaviours) {
         behaviours.add(BehaviourSunlightChargeable.DISCRIMINATOR);
-    }
-
-    @Override
-    public boolean isSunlightChargeable(ItemStack item, SlotNotation slot) {
-        return slot.isCommonChargable();
     }
 }

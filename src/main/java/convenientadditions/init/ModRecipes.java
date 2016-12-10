@@ -31,37 +31,6 @@ public class ModRecipes {
         if (ModConfig.transmutationTome_recipe)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemTransmutationTome, 1), Items.BOOK, Items.BLAZE_ROD, Items.ENDER_EYE, Items.WHEAT_SEEDS));
 
-        if (ModConfig.hoverPad_recipe)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.hoverPadBlock, 1),
-                    "iei",
-                    "pgp",
-                    "scs",
-                    'i', "ingotIron",
-                    'e', Items.ENDER_EYE,
-                    'p', Blocks.PISTON,
-                    'g', "ingotGold",
-                    's', "stone",
-                    'c', Items.COMPARATOR));
-
-        if (ModConfig.blastPad)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blastPadBlock, 1),
-                    "iki",
-                    "sds",
-                    "scs",
-                    'i', "ingotIron",
-                    'd', Blocks.DISPENSER,
-                    'k', ModItems.itemSlimeKit,
-                    's', "stone",
-                    'c', Items.COMPARATOR));
-
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.platformBlock, 4),
-                "bpb",
-                "pep",
-                "bpb",
-                'e', Items.ENDER_EYE,
-                'b', "dyeBlue",
-                'p', "paneGlass"));
-
         initCompost();
         initArrows();
         initChargeItems();
@@ -95,6 +64,38 @@ public class ModRecipes {
     }
 
     private static void initBlocks() {
+        if (ModConfig.hoverPad_recipe)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.hoverPadBlock, 1),
+                    "iei",
+                    "pgp",
+                    "scs",
+                    'i', "ingotIron",
+                    'e', Items.ENDER_EYE,
+                    'p', Blocks.PISTON,
+                    'g', "ingotGold",
+                    's', "stone",
+                    'c', Items.COMPARATOR));
+
+        if (ModConfig.blastPad)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blastPadBlock, 1),
+                    "iki",
+                    "sds",
+                    "scs",
+                    'i', "ingotIron",
+                    'd', Blocks.DISPENSER,
+                    'k', ModItems.itemSlimeKit,
+                    's', "stone",
+                    'c', Items.COMPARATOR));
+
+        if (ModConfig.platform)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.platformBlock, 4),
+                    "bpb",
+                    "pep",
+                    "bpb",
+                    'e', Items.ENDER_EYE,
+                    'b', "dyeBlue",
+                    'p', "paneGlass"));
+
         if (ModConfig.powderKeg)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.powderKegBlock),
                     "psp",

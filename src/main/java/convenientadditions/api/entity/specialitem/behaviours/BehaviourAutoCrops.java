@@ -24,11 +24,10 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
         return true;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void onItemEntityUpdate(EntityItem item) {
         World w = item.getEntityWorld();
-        int x = MathHelper.floor(item.posX), y = MathHelper.floor(item.posY) - 1, z = MathHelper.floor(item.posZ);
+        int x = MathHelper.floor(item.posX), y = MathHelper.floor(item.posY-0.001d), z = MathHelper.floor(item.posZ);
         BlockPos pos = new BlockPos(x, y, z);
         BlockPos pos_e = new BlockPos(x, y + 1, z);
         IBlockState state = w.getBlockState(pos);

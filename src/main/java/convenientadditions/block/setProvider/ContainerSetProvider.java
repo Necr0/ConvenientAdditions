@@ -68,7 +68,7 @@ public class ContainerSetProvider extends CCContainerBase {
             }
 
             if (current.getCount() == 0)
-                slot.putStack(null);
+                slot.putStack(ItemStack.EMPTY);
             else
                 slot.onSlotChanged();
 

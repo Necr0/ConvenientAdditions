@@ -74,7 +74,7 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
 
     @Override
     public void onPlayerInventoryTick(ItemStack item, SlotNotation slot, EntityPlayer player) {
-        if (player.getEntityWorld().isRemote || slot.isCommonActive())
+        if (player.getEntityWorld().isRemote || !slot.isCommonActive())
             return;
         WorldServer world = (WorldServer) player.getEntityWorld();
         if (isActive(item)) {

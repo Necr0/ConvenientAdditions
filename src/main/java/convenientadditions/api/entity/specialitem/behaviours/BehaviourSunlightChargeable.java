@@ -26,9 +26,9 @@ public class BehaviourSunlightChargeable implements IEntitySpecialItemBehaviour 
         ItemStack s = item.getEntityItem();
         if (!s.isEmpty() && s.getItem() instanceof ISunlightChargeable) {
             ISunlightChargeable sitem = (ISunlightChargeable) (s.getItem());
-            if (sitem.isSunlightChargeable(s, SlotNotation.SLOT_GROUND)) {
+            if (sitem.isSunlightChargeable(s, SlotNotation.SLOT_GROUND, null)) {
                 if (item.getEntityWorld().isDaytime() && !item.getEntityWorld().isRaining() && Helper.canEntitySeeSky(item)) {
-                    sitem.chargeItem(s, sitem.getSunlightChargeRate(s, SlotNotation.SLOT_GROUND));
+                    sitem.chargeItem(s, sitem.getSunlightChargeRate(s, SlotNotation.SLOT_GROUND, null));
                 }
             }
         }

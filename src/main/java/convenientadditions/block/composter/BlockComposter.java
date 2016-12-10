@@ -31,7 +31,7 @@ public class BlockComposter extends BlockContainer {
             ItemStack held=player.getHeldItem(hand);
             if (!held.isEmpty()) {
                 ItemStack insert=held.splitStack(1);
-                player.setHeldItem(hand, t.insertStack(insert));
+                insert=t.insertStack(insert);
                 if(!insert.isEmpty())
                     held.grow(insert.getCount());
             }

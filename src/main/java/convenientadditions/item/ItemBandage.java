@@ -61,7 +61,7 @@ public class ItemBandage extends Item {
 
     @Override
     public int getMaxItemUseDuration(ItemStack stack) {
-        return 100;
+        return 70;
     }
 
     @Override
