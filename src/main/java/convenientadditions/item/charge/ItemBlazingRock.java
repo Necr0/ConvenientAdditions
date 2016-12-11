@@ -3,12 +3,17 @@ package convenientadditions.item.charge;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.item.IFuelItem;
+import convenientadditions.api.util.Helper;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements IFuelItem {
     public static ItemStack FULLY_CHARGED;
@@ -53,5 +58,12 @@ public class ItemBlazingRock extends ItemSunlightChargeableBehaviour implements 
     public void getSubItems(Item i, CreativeTabs c, NonNullList<ItemStack> l) {
         l.add(new ItemStack(i, 1, 0));
         l.add(FULLY_CHARGED.copy());
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
+        list.add(TextFormatting.YELLOW+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.blazingRockItemName + "1"));
+        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.blazingRockItemName + "2"));
+        super.addInformation(stack, player, list, par4);
     }
 }

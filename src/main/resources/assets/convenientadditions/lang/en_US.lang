@@ -46,7 +46,7 @@ item.convenientadditions:compost.name=Compost
 item.convenientadditions:fertilizer.name=Fertilizer
 item.convenientadditions:dirtChunk.name=Dirt Chunk
 item.convenientadditions:sunstone.name=Sunstone
-item.convenientadditions:blazingRock.name=Blazing Rock
+item.convenientadditions:blazingRock.name=Blazing Orb
 item.convenientadditions:enderPlate.name=Ender Plate
 item.convenientadditions:launchingArrow_0.name=Creeper Arrow
 item.convenientadditions:launchingArrow_1.name=Blast Arrow
@@ -68,17 +68,6 @@ item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
 item.convenientadditions:breathAmulet.name=Amulet of Breath
 item.convenientadditions:chargingRing.name=Ring of Charging
-# Goo
-item.convenientadditions:royalGoo.name=Royal Goo
-item.convenientadditions:kittyGoo.name=Kitty Goo
-item.convenientadditions:pinkGoo.name=Pink Goo
-item.convenientadditions:stoneGoo.name=Stone Goo
-item.convenientadditions:blazingGoo.name=Blazing Goo
-item.convenientadditions:enderGoo.name=Ender Goo
-item.convenientadditions:undeadGoo.name=Undead Goo
-item.convenientadditions:shroomGoo.name=Shroom Goo
-item.convenientadditions:honeyGoo.name=Honey Goo
-item.convenientadditions:boomGoo.name=Boom Goo
 
 # Enchantment
 enchantment.capacity=Capacity
@@ -111,6 +100,8 @@ tooltip.convenientadditions:enderSlate=Screw gravity!
 tooltip.convenientadditions:enderSlateActive=(right click to deactivate)
 tooltip.convenientadditions:enderSlateInactive=(right click to activate)
 tooltip.convenientadditions:enderSlateDrained=(stay near end crystal to charge)
+tooltip.convenientadditions:blazingRock1=Dwarfs may call it Molten Core
+tooltip.convenientadditions:blazingRock2=Can be used as fuel.
 
 tooltip.convenientadditions:adventurersPickaxeLVL=Level : %l
 tooltip.convenientadditions:adventurersPickaxeXP=XP : %x/%X
