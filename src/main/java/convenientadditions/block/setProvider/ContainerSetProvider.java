@@ -1,8 +1,8 @@
 package convenientadditions.block.setProvider;
 
-import convenientadditions.base.CCContainerBase;
-import convenientadditions.api.gui.container.SlotFake;
+import convenientadditions.api.gui.container.SlotFakeWithAmount;
 import convenientadditions.api.gui.container.SlotOutputOnly;
+import convenientadditions.base.CCContainerBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -22,7 +22,7 @@ public class ContainerSetProvider extends CCContainerBase {
         }
         //filter
         for (int j = 0; j < 9; j++) {
-            addSlotToContainer(new SlotFake(ent.filter, j, j * 18 + 8, 50));
+            addSlotToContainer(new SlotFakeWithAmount(ent.filter, j, j * 18 + 8, 50));
         }
         //output
         for (int i = 0; i < 2; i++) {

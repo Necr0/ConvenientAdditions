@@ -1,6 +1,6 @@
 package convenientadditions.base;
 
-import convenientadditions.api.gui.container.SlotFake;
+import convenientadditions.api.gui.container.IFakeSlot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ClickType;
@@ -11,45 +11,13 @@ import net.minecraft.item.ItemStack;
 public abstract class CCContainerBase extends Container {
     @Override
     public ItemStack slotClick(int index, int button, ClickType mode, EntityPlayer player) {
-        int adder=0;
         InventoryPlayer inventoryplayer = player.inventory;
         ItemStack held=inventoryplayer.getItemStack();
         if(index>=0){
 	        Slot s=getSlot(index);
 	        
-	        if(s instanceof SlotFake){
-
-	        	if(mode==ClickType.THROW){
-	        		if(button==0)
-	        			slotAdd(s,-1);
-	        		else
-	        			slotAdd(s,-64);
-
-	        	}else if(mode==ClickType.SWAP){
-	        		return ItemStack.EMPTY;
-
-	        	}else if((mode==ClickType.PICKUP||mode==ClickType.PICKUP_ALL)&&(button==0||button==1)){
-		    		ItemStack stack=s.getStack();
-		    		if(!stack.isEmpty()&&s.isItemValid(held)){
-		    			if(button==0){
-		    				adder=held.getCount();
-		    			}else if(button==1){
-		    				adder=1;
-		    			}
-		    			slotAdd(s, adder);
-		    		}else if(!held.isEmpty()){
-		    			s.putStack(held.copy());
-		    		}else if(!stack.isEmpty()&&held.isEmpty()){
-		    			adder=button==0?1:-1;
-		    	        slotAdd(s,adder);
-		    		}
-
-	    		}else if((mode==ClickType.QUICK_MOVE)&&(button==0||button==1)){
-	    			adder=button==0?8:-8;
-	    	        slotAdd(s,adder);
-	    		}
-	        	this.detectAndSendChanges();
-	    		return ItemStack.EMPTY;
+	        if(s instanceof IFakeSlot){
+				return ((IFakeSlot) s).slotClick(this, button, mode, player);
 	        }else if (mode == ClickType.PICKUP_ALL && index >= 0){
 	            Slot slot2 = this.inventorySlots.get(index);
 	            ItemStack itemstack4 = inventoryplayer.getItemStack();
@@ -65,7 +33,7 @@ public abstract class CCContainerBase extends Container {
 	                    {
 	                        Slot slot8 = this.inventorySlots.get(j3);
 
-	                        if (!(slot8 instanceof SlotFake)&&slot8.getHasStack() && canAddItemToSlot(slot8, itemstack4, true) && slot8.canTakeStack(player) && this.canMergeSlot(itemstack4, slot8) && (i3 != 0 || slot8.getStack().getCount() != slot8.getStack().getMaxStackSize()))
+	                        if (!(slot8 instanceof IFakeSlot)&&slot8.getHasStack() && canAddItemToSlot(slot8, itemstack4, true) && slot8.canTakeStack(player) && this.canMergeSlot(itemstack4, slot8) && (i3 != 0 || slot8.getStack().getCount() != slot8.getStack().getMaxStackSize()))
 	                        {
 	                            int l = Math.min(itemstack4.getMaxStackSize() - itemstack4.getCount(), slot8.getStack().getCount());
 	                            ItemStack itemstack2 = slot8.decrStackSize(l);
