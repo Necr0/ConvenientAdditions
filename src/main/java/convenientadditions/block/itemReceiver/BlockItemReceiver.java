@@ -2,26 +2,25 @@ package convenientadditions.block.itemReceiver;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.ModGuiHandler;
+import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.block.IDismantleable;
-import net.minecraft.block.BlockContainer;
+import convenientadditions.base.CABlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockItemReceiver extends BlockContainer implements IDismantleable {
+public class BlockItemReceiver extends CABlockContainer implements IDismantleable {
     public BlockItemReceiver() {
-        super(Material.IRON);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.itemReceiverBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.itemReceiverBlockName,Material.IRON);
+        this.setHardness(4F).setResistance(8F);
     }
 
     @Override
@@ -34,11 +33,6 @@ public class BlockItemReceiver extends BlockContainer implements IDismantleable 
         if (!world.isRemote)
             player.openGui(ConvenientAdditions.INSTANCE, ModGuiHandler.GUI_ITEM_RECEIVER_ID, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 
     @Override

@@ -2,8 +2,8 @@ package convenientadditions.block.setProvider;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.ModGuiHandler;
-import convenientadditions.api.block.BlockMachineConfigurable;
+import convenientadditions.handler.ModGuiHandler;
+import convenientadditions.base.CABlockMachineConfigurable;
 import convenientadditions.block.setProvider.TileEntitySetProvider.EnumOutletMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -14,7 +14,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
@@ -22,7 +21,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSetProvider extends BlockMachineConfigurable {
+public class BlockSetProvider extends CABlockMachineConfigurable {
 
     public static final PropertyEnum<EnumOutletMode> OUTLET_TOP = PropertyEnum.<EnumOutletMode>create("outlet_top", EnumOutletMode.class);
     public static final PropertyEnum<EnumOutletMode> OUTLET_BOTTOM = PropertyEnum.<EnumOutletMode>create("outlet_bottom", EnumOutletMode.class);
@@ -32,8 +31,8 @@ public class BlockSetProvider extends BlockMachineConfigurable {
     public static final PropertyEnum<EnumOutletMode> OUTLET_WEST = PropertyEnum.<EnumOutletMode>create("outlet_west", EnumOutletMode.class);
 
     public BlockSetProvider() {
-        super(Material.IRON);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.setProviderBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.setProviderBlockName,Material.IRON);
+        this.setHardness(4F).setResistance(8F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP, EnumOutletMode.disabled).withProperty(OUTLET_BOTTOM, EnumOutletMode.disabled).withProperty(OUTLET_NORTH, EnumOutletMode.disabled).withProperty(OUTLET_EAST, EnumOutletMode.disabled).withProperty(OUTLET_SOUTH, EnumOutletMode.disabled).withProperty(OUTLET_WEST, EnumOutletMode.disabled));
     }
 
@@ -83,11 +82,6 @@ public class BlockSetProvider extends BlockMachineConfigurable {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, OUTLET_TOP, OUTLET_BOTTOM, OUTLET_NORTH, OUTLET_EAST, OUTLET_SOUTH, OUTLET_WEST);
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 
     @Override

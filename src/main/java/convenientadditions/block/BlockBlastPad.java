@@ -1,7 +1,7 @@
 package convenientadditions.block;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.base.CABlock;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.block.Block;
@@ -20,12 +20,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BlockBlastPad extends Block {
+public class BlockBlastPad extends CABlock {
     public static PropertyBool READY = PropertyBool.create("ready");
 
     public BlockBlastPad() {
-        super(Material.IRON);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.blastPadBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.blastPadBlockName,Material.IRON);
+        this.setHardness(4F).setResistance(8F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(READY,true));
     }
 

@@ -1,10 +1,9 @@
 package convenientadditions.block.powderkeg;
 
-import convenientadditions.api.util.Helper;
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.util.Helper;
+import convenientadditions.base.CABlockContainer;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -15,7 +14,6 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -23,11 +21,11 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-public class BlockPowderKeg extends BlockContainer {
+public class BlockPowderKeg extends CABlockContainer {
 
     public BlockPowderKeg() {
-        super(Material.WOOD);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.powderKegBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.powderKegBlockName,Material.WOOD);
+        this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
     }
 
@@ -127,10 +125,5 @@ public class BlockPowderKeg extends BlockContainer {
     @Override
     public boolean canDropFromExplosion(Explosion e) {
         return false;
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 }

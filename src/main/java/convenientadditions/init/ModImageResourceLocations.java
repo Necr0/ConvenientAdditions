@@ -1,6 +1,6 @@
 package convenientadditions.init;
 
-import convenientadditions.api.gui.widget.ImageResourceLocation;
+import convenientadditions.api.gui.ImageResourceLocation;
 import convenientadditions.ModConstants;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,4 +19,6 @@ public class ModImageResourceLocations {
     public static final ImageResourceLocation LOWRS = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 32, 48, 16, 16);
     public static final ImageResourceLocation PULSERS = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 48, 48, 16, 16);
     public static final ImageResourceLocation AUTO = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 32, 0, 16, 16);
+    public static final ImageResourceLocation INV = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 0, 128, 16, 16);
+    public static final ImageResourceLocation NOINV = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 16, 128, 16, 16);
 }

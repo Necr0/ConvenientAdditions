@@ -2,12 +2,11 @@ package convenientadditions.item.charge.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.api.util.Helper;
+import convenientadditions.StringHelper;
+import convenientadditions.base.CAItemSunlightChargeable;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,16 +23,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
-public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemSunlightRing extends CAItemSunlightChargeable implements IBauble {
     public static ItemStack FULLY_CHARGED;
 
     public ItemSunlightRing() {
-        super(60000, true, true, 21);
-        this.setHasSubtypes(true)
-                .setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunlightRingItemName)
-                .setCreativeTab(ConvenientAdditions.CREATIVETAB)
-                .setHasSubtypes(true)
-                .setMaxStackSize(1);
+        super(ModConstants.ItemNames.sunlightRingItemName, 60000, true, true, 21);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -87,7 +81,7 @@ public class ItemSunlightRing extends ItemSunlightChargeableBehaviour implements
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip.convenientadditions:sunstone"));
+        list.add(StringHelper.getJoke(stack));
         super.addInformation(stack, player, list, par4);
     }
 

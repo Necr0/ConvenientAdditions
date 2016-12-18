@@ -2,7 +2,7 @@ package convenientadditions.block.itemTransmitter;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.ModGuiHandler;
+import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.block.IDismantleable;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 public class BlockItemTransmitter extends BlockInventoryProxy implements IDismantleable {
     public BlockItemTransmitter() {
         super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.itemTransmitterBlockName);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.itemTransmitterBlockName).setRegistryName(ModConstants.BlockNames.itemTransmitterBlockName);
     }
 
     @Override

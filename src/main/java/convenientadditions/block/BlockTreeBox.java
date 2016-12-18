@@ -1,9 +1,8 @@
 package convenientadditions.block;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import net.minecraft.block.Block;
+import convenientadditions.base.CABlock;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -17,11 +16,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class BlockTreeBox extends Block {
+public class BlockTreeBox extends CABlock {
 
     public BlockTreeBox() {
-        super(Material.WOOD);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.treeBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.treeBoxBlockName,Material.WOOD);
+        this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
     }
 

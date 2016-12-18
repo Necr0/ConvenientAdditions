@@ -17,7 +17,8 @@ public class CustomModelMeshAdventurersPickaxe implements ItemMeshDefinition {
         ArrayList<ModelResourceLocation> locs = new ArrayList<>();
         for (int head = 0; head < 4; head++) {
             for (int handle = 0; handle < 3; handle++) {
-                locs.add(new ModelResourceLocation(ModItems.itemAdventurersPickaxe.getRegistryName().toString().toLowerCase(), "handle=" + handle + ",head=" + head));
+                for (int broken = 0; broken < 2; broken++)
+                locs.add(new ModelResourceLocation(ModItems.itemAdventurersPickaxe.getRegistryName().toString().toLowerCase(), "handle=" + handle + ",head=" + head + ",broken=" + (broken==1)));
             }
         }
         ModelLoader.registerItemVariants(ModItems.itemAdventurersPickaxe, locs.toArray(new ModelResourceLocation[locs.size()]));
@@ -27,7 +28,8 @@ public class CustomModelMeshAdventurersPickaxe implements ItemMeshDefinition {
     public ModelResourceLocation getModelLocation(ItemStack stack) {
         int head = (int) ModItems.itemAdventurersPickaxe.getToolProperty(stack, "mining_level");
         int dur = (int) ModItems.itemAdventurersPickaxe.getToolProperty(stack, "durability");
+        boolean broken = ModItems.itemAdventurersPickaxe.isBroken(stack);
         int handle = ((dur < 1000) ? 0 : (dur < 2500 ? 1 : 2));
-        return new ModelResourceLocation(ModItems.itemAdventurersPickaxe.getRegistryName(), "handle=" + handle + ",head=" + head);
+        return new ModelResourceLocation(ModItems.itemAdventurersPickaxe.getRegistryName(), "handle=" + handle + ",head=" + head + ",broken=" + broken);
     }
 }

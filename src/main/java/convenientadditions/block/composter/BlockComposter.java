@@ -1,26 +1,24 @@
 package convenientadditions.block.composter;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import net.minecraft.block.BlockContainer;
+import convenientadditions.base.CABlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockComposter extends BlockContainer {
+public class BlockComposter extends CABlockContainer {
 
     public BlockComposter() {
-        super(Material.WOOD);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.composterBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.composterBlockName,Material.WOOD);
+        this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
     }
 
@@ -28,11 +26,11 @@ public class BlockComposter extends BlockContainer {
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (world.getTileEntity(pos) instanceof TileEntityComposter && !player.isSneaking()) {
             TileEntityComposter t = (TileEntityComposter) world.getTileEntity(pos);
-            ItemStack held=player.getHeldItem(hand);
+            ItemStack held = player.getHeldItem(hand);
             if (!held.isEmpty()) {
-                ItemStack insert=held.splitStack(1);
-                insert=t.insertStack(insert);
-                if(!insert.isEmpty())
+                ItemStack insert = held.splitStack(1);
+                insert = t.insertStack(insert);
+                if (!insert.isEmpty())
                     held.grow(insert.getCount());
             }
             return true;
@@ -43,11 +41,6 @@ public class BlockComposter extends BlockContainer {
     @Override
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
         return new TileEntityComposter();
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 
     @Override

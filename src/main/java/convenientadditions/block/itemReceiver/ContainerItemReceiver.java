@@ -1,12 +1,12 @@
 package convenientadditions.block.itemReceiver;
 
-import convenientadditions.base.CCContainerBase;
+import convenientadditions.base.CAContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerItemReceiver extends CCContainerBase {
+public class ContainerItemReceiver extends CAContainer {
 
     public TileEntityItemReceiver te;
 
@@ -35,7 +35,7 @@ public class ContainerItemReceiver extends CCContainerBase {
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
-        ItemStack previous = null;
+        ItemStack previous = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(fromSlot);
 
         if (slot != null && slot.getHasStack()) {
@@ -45,11 +45,11 @@ public class ContainerItemReceiver extends CCContainerBase {
             if (fromSlot < 3) {
                 // From TE Inventory to Player Inventory
                 if (!this.mergeItemStack(current, 3, 39, true))
-                    return null;
+                    return ItemStack.EMPTY;
             } else {
                 // From Player Inventory to TE Inventory
                 if (!this.mergeItemStack(current, 0, 3, false))
-                    return null;
+                    return ItemStack.EMPTY;
             }
 
             if (current.getCount() == 0)
@@ -58,7 +58,7 @@ public class ContainerItemReceiver extends CCContainerBase {
                 slot.onSlotChanged();
 
             if (current.getCount() == previous.getCount())
-                return null;
+                return ItemStack.EMPTY;
             slot.onTake(playerIn, current);
         }
         return previous;

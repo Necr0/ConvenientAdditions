@@ -1,8 +1,7 @@
 package convenientadditions.block;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import net.minecraft.block.Block;
+import convenientadditions.base.CABlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,12 +17,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class BlockPlatform extends Block {
+public class BlockPlatform extends CABlock {
     public static AxisAlignedBB AABBPlatform=new AxisAlignedBB(0d,15/16d,0d,1d,1d,1d);
 
     public BlockPlatform() {
-        super(Material.GLASS);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.platformBlockName).setHardness(2F).setResistance(.5F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.platformBlockName,Material.GLASS);
+        this.setHardness(2F).setResistance(.5F);
         this.setSoundType(SoundType.GLASS);
     }
 

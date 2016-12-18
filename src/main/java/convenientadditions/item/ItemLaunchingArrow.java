@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResourceLocationProvider {
 
     public ItemLaunchingArrow() {
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
+        this.setRegistryName(ModConstants.ItemNames.launchingArrowItemName).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
     }
 
     @SideOnly(Side.CLIENT)

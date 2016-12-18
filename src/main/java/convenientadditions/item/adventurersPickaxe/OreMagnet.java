@@ -12,7 +12,7 @@ public class OreMagnet {
     public static void attractOres(EntityPlayer p) {
         List<EntityItem> l = p.getEntityWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(p.posX - 9, p.posY - 9, p.posZ - 9, p.posX + 9, p.posY + 9, p.posZ + 9));
         for (EntityItem i : l) {
-            if (!i.getEntityItem().isEmpty() && isOreItem(i.getEntityItem())) {
+            if (!i.isDead && !i.getEntityItem().isEmpty() && isOreItem(i.getEntityItem())) {
                 i.addVelocity((p.posX - i.posX) / 48, (p.posY - i.posY) / 48, (p.posZ - i.posZ) / 48);
             }
         }

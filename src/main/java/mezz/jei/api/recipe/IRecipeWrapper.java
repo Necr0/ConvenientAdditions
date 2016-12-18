@@ -49,7 +49,7 @@ public interface IRecipeWrapper {
 
 	/**
 	 * Called when a player clicks the recipe.
-	 * Useful for implementing buttons, hyperlinks, and other interactions to your recipe.
+	 * Useful for implementing button, hyperlinks, and other interactions to your recipe.
 	 *
 	 * @param mouseX      the X position of the mouse, relative to the recipe.
 	 * @param mouseY      the Y position of the mouse, relative to the recipe.

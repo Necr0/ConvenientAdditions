@@ -4,7 +4,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.Tuple;
 
-public class TransmutationTomeRecipe implements ITransmutationTomeRecipe, ITransmutationTomeJEIRecipe {
+import java.util.Collections;
+import java.util.List;
+
+public class TransmutationTomeRecipe implements ITransmutationTomeRecipe, ITransmutationTomeJEIRecipe, ITransmutationTomeLookupProvider {
     ItemStack base, transmutator, result;
     int time, level;
 
@@ -85,4 +88,8 @@ public class TransmutationTomeRecipe implements ITransmutationTomeRecipe, ITrans
         return this.level;
     }
 
+    @Override
+    public List<Lookup> getLookups() {
+        return Collections.singletonList(new Lookup(this.base,this.transmutator,this.result,getLevel()));
+    }
 }

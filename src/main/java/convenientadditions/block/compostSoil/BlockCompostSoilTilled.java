@@ -1,9 +1,13 @@
 package convenientadditions.block.compostSoil;
 
 import convenientadditions.ModConstants;
+import convenientadditions.base.CABlock;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +16,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -25,12 +28,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockCompostSoilTilled extends BlockCompostSoil {
+public class BlockCompostSoilTilled extends CABlock {
+    protected static final AxisAlignedBB FARMLAND_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.9375D, 1.0D);
 
     public BlockCompostSoilTilled() {
-        super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.compostSoilTilledBlockName).setCreativeTab(null);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, 0));
+        super(ModConstants.BlockNames.compostSoilTilledBlockName, Material.GROUND);
+        this.setTickRandomly(true).setHardness(0.5F);
+        this.setSoundType(SoundType.GROUND);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(BlockCompostSoil.DEGRADATION, 0));
     }
 
     @Override
@@ -49,7 +54,7 @@ public class BlockCompostSoilTilled extends BlockCompostSoil {
             BlockPos posU = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
             Block b = world.getBlockState(posU).getBlock();
             IBlockState newB = world.getBlockState(posU);
-            int deg = state.getValue(DEGRADATION);
+            int deg = state.getValue(BlockCompostSoil.DEGRADATION);
             if (b instanceof IPlantable || b instanceof IGrowable) {
                 b.updateTick(world, posU, world.getBlockState(posU), r);
                 int i = deg;
@@ -64,12 +69,12 @@ public class BlockCompostSoilTilled extends BlockCompostSoil {
             }
             if (r.nextInt(4) == 0) {
                 if (deg < 10)
-                    world.setBlockState(pos, state.withProperty(DEGRADATION, deg + 1));
+                    world.setBlockState(pos, state.withProperty(BlockCompostSoil.DEGRADATION, deg + 1));
                 else
                     world.setBlockState(pos, Blocks.FARMLAND.getDefaultState());
             }
             if (newB.getMaterial().isSolid())
-                world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState().withProperty(DEGRADATION, deg), 2);
+                world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState().withProperty(BlockCompostSoil.DEGRADATION, deg), 2);
         }
     }
 
@@ -85,23 +90,23 @@ public class BlockCompostSoilTilled extends BlockCompostSoil {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        return false;
-    }
-
-    @Override
     public void onFallenUpon(World world, BlockPos pos, Entity entity, float height) {
-        if (!world.isRemote && world.rand.nextFloat() < height - 0.5F) {
+        if (!world.isRemote && entity.canTrample(world, this, pos, height)) {
             if (!(entity instanceof EntityPlayer) && !world.getGameRules().getBoolean("mobGriefing")) {
                 return;
             }
+            world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(this.getMetaFromState(world.getBlockState(pos))));
+            AxisAlignedBB axisalignedbb = ModBlocks.compostSoilBlock.getDefaultState().getCollisionBoundingBox(world, pos).offset(pos);
 
-            world.setBlockState(pos, ModBlocks.compostSoilBlock.getStateFromMeta(this.getMetaFromState(world.getBlockState(pos))), 3);
+            for (Entity e : world.getEntitiesWithinAABBExcludingEntity((Entity)null, axisalignedbb))
+            {
+                e.setPosition(entity.posX, axisalignedbb.maxY, entity.posZ);
+            }
         }
     }
 
     public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state) {
-        return new AxisAlignedBB((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), (double) (pos.getX() + 1), (double) (pos.getY() + 1), (double) (pos.getZ() + 1));
+        return FARMLAND_AABB;
     }
 
     @Override
@@ -112,5 +117,33 @@ public class BlockCompostSoilTilled extends BlockCompostSoil {
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
+    }
+
+    @Override
+    public boolean isFertile(World world, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public int damageDropped(IBlockState state) {
+        return this.getMetaFromState(state);
+    }
+
+    //
+    // BLOCKSTATE STUFF
+    //
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(BlockCompostSoil.DEGRADATION, meta);
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return state.getValue(BlockCompostSoil.DEGRADATION);
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, BlockCompostSoil.DEGRADATION);
     }
 }

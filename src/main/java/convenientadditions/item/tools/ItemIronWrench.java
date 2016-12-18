@@ -1,20 +1,20 @@
 package convenientadditions.item.tools;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.block.IDismantleable;
+import convenientadditions.base.CAItem;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemIronWrench extends Item {
+public class ItemIronWrench extends CAItem {
     public ItemIronWrench() {
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.ironWrenchItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1);
+        super(ModConstants.ItemNames.ironWrenchItemName);
+        this.setMaxStackSize(1);
     }
 
     @Override

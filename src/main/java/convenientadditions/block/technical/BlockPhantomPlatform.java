@@ -27,7 +27,7 @@ public class BlockPhantomPlatform extends Block {
 
     public BlockPhantomPlatform() {
         super(Material.FIRE);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.phantomPlatformBlockName);
+        this.setRegistryName(ModConstants.BlockNames.phantomPlatformBlockName).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.phantomPlatformBlockName);
         this.disableStats();
         this.translucent = true;
         this.setDefaultState(this.blockState.getBaseState().withProperty(DESPAWN, true));

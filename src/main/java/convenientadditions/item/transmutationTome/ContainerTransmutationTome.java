@@ -1,8 +1,8 @@
 package convenientadditions.item.transmutationTome;
 
 import convenientadditions.api.gui.container.IContainerTickable;
-import convenientadditions.base.CCContainerBase;
-import convenientadditions.api.item.stackhandler.ItemStackHandlerOutputOnly;
+import convenientadditions.base.CAContainer;
+import convenientadditions.api.inventory.stackhandler.ItemStackHandlerOutputOnly;
 import convenientadditions.api.registry.transmutationTome.TransmutationTomeRecipeHandler;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModNetworking;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerTransmutationTome extends CCContainerBase implements IContainerTickable {
+public class ContainerTransmutationTome extends CAContainer implements IContainerTickable {
 
     ItemStackHandler handler;
     ItemStackHandler out;
@@ -55,7 +55,7 @@ public class ContainerTransmutationTome extends CCContainerBase implements ICont
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
-        ItemStack previous = null;
+        ItemStack previous = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(fromSlot);
 
         if (slot != null && slot.getHasStack()) {
@@ -70,13 +70,13 @@ public class ContainerTransmutationTome extends CCContainerBase implements ICont
                     return ItemStack.EMPTY;
             }
 
-            if (current.isEmpty())
+            if (current.getCount() == 0)
                 slot.putStack(ItemStack.EMPTY);
             else
                 slot.onSlotChanged();
 
             if (current.getCount() == previous.getCount())
-                return null;
+                return ItemStack.EMPTY;
             slot.onTake(playerIn, current);
         }
         return previous;

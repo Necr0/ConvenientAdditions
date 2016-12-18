@@ -1,7 +1,8 @@
 package convenientadditions.block.compostSoil;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.api.util.Helper;
+import convenientadditions.base.CABlock;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -24,15 +25,18 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
 import java.util.Random;
 
-public class BlockCompostSoil extends Block {
+public class BlockCompostSoil extends CABlock {
     public static final PropertyInteger DEGRADATION = PropertyInteger.create("degradation", 0, 10);
 
     public BlockCompostSoil() {
-        super(Material.GROUND);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.compostSoilBlockName).setTickRandomly(true).setHardness(0.5F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.compostSoilBlockName,Material.GROUND);
+        this.setTickRandomly(true).setHardness(0.5F);
         this.setSoundType(SoundType.GROUND);
         this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));
     }
@@ -139,5 +143,11 @@ public class BlockCompostSoil extends Block {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, DEGRADATION);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
+        list.add(Helper.localize("tooltip.convenientadditions:compostDegraded" + stack.getItemDamage()));
     }
 }

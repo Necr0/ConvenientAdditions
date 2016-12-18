@@ -7,10 +7,9 @@ import convenientadditions.block.BlockTreeBox;
 import convenientadditions.block.BlockTreeTap;
 import convenientadditions.block.compostSoil.BlockCompostSoil;
 import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
-import convenientadditions.block.compostSoil.ItemBlockCompostSoil;
 import convenientadditions.block.composter.BlockComposter;
 import convenientadditions.block.hoverPad.BlockHoverPad;
-import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
+import convenientadditions.block.inventoryProxy.BlockInventoryProxyNormal;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxySided;
 import convenientadditions.block.inventoryProxy.filtered.BlockInventoryProxyFiltered;
 import convenientadditions.block.itemReceiver.BlockItemReceiver;
@@ -44,7 +43,7 @@ public class ModBlocks {
     public static final BlockSetProvider setProviderBlock = new BlockSetProvider();
     public static final BlockItemTransmitter itemTransmitterBlock = new BlockItemTransmitter();
     public static final BlockItemReceiver itemReceiverBlock = new BlockItemReceiver();
-    public static final BlockInventoryProxy inventoryProxyBlock = new BlockInventoryProxy();
+    public static final BlockInventoryProxyNormal inventoryProxyBlock = new BlockInventoryProxyNormal();
     public static final BlockInventoryProxySided inventoryProxySidedBlock = new BlockInventoryProxySided();
     public static final BlockInventoryProxyFiltered inventoryProxyFilteredBlock = new BlockInventoryProxyFiltered();
     public static final BlockTreeTap treetapBlock = new BlockTreeTap();
@@ -55,26 +54,26 @@ public class ModBlocks {
     public static final BlockStorageMatrix storageMatrixBlock = new BlockStorageMatrix();
 
     public static void init() {
-        registerBlock(composterBlock, ModConstants.BlockNames.composterBlockName);
-        registerBlock(compostSoilTilledBlock, ModConstants.BlockNames.compostSoilTilledBlockName);
-        registerBlock(powderKegBlock, ModConstants.BlockNames.powderKegBlockName);
-        registerBlock(playerInterfaceBlock, ModConstants.BlockNames.playerInterfaceBlockName);
-        registerBlock(proximitySensorBlock, ModConstants.BlockNames.proximitySensorBlockName);
-        registerBlock(tempLightBlock, ModConstants.BlockNames.tempLightBlockName);
-        registerBlock(phantomPlatformBlock, ModConstants.BlockNames.phantomPlatformBlockName);
-        registerBlock(seedBoxBlock, ModConstants.BlockNames.seedBoxBlockName);
-        registerBlock(setProviderBlock, ModConstants.BlockNames.setProviderBlockName);
-        registerBlock(itemTransmitterBlock, ModConstants.BlockNames.itemTransmitterBlockName);
-        registerBlock(itemReceiverBlock, ModConstants.BlockNames.itemReceiverBlockName);
-        registerBlock(inventoryProxyBlock, ModConstants.BlockNames.inventoryProxyBlockName);
-        registerBlock(inventoryProxySidedBlock, ModConstants.BlockNames.inventoryProxySidedBlockName);
-        registerBlock(inventoryProxyFilteredBlock, ModConstants.BlockNames.inventoryProxyFilteredBlockName);
-        registerBlock(treetapBlock, ModConstants.BlockNames.treetapBlockName);
-        registerBlock(hoverPadBlock, ModConstants.BlockNames.hoverPadBlockName);
-        registerBlock(blastPadBlock, ModConstants.BlockNames.blastPadBlockName);
-        registerBlock(platformBlock, ModConstants.BlockNames.platformBlockName);
-        registerBlock(treeBoxBlock, ModConstants.BlockNames.treeBoxBlockName);
-        registerBlock(compostSoilBlock, new ItemBlockCompostSoil(compostSoilBlock), ModConstants.BlockNames.compostSoilBlockName);
+        registerBlock(composterBlock);
+        registerBlock(compostSoilTilledBlock);
+        registerBlock(powderKegBlock);
+        registerBlock(playerInterfaceBlock);
+        registerBlock(proximitySensorBlock);
+        registerBlock(tempLightBlock);
+        registerBlock(phantomPlatformBlock);
+        registerBlock(seedBoxBlock);
+        registerBlock(setProviderBlock);
+        registerBlock(itemTransmitterBlock);
+        registerBlock(itemReceiverBlock);
+        registerBlock(inventoryProxyBlock);
+        registerBlock(inventoryProxySidedBlock);
+        registerBlock(inventoryProxyFilteredBlock);
+        registerBlock(treetapBlock);
+        registerBlock(hoverPadBlock);
+        registerBlock(blastPadBlock);
+        registerBlock(platformBlock);
+        registerBlock(treeBoxBlock);
+        registerBlock(compostSoilBlock);
         //registerBlock(storageMatrixBlock, new ItemBlockStorageMatrix(storageMatrixBlock), ModConstants.BlockNames.storageMatrixBlockName);
     }
 
@@ -102,17 +101,13 @@ public class ModBlocks {
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilTilledBlock), new ModelResourceLocation(compostSoilBlock.getRegistryName(), "inventory"));
     }
 
-    public static void registerBlock(Block block, String registryName) {
-        if (block.getRegistryName() == null)
-            block.setRegistryName(registryName);
+    public static void registerBlock(Block block) {
         GameRegistry.register(block);
-        GameRegistry.register(new ItemBlock(block).setRegistryName(registryName));
+        GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
     }
 
-    public static void registerBlock(Block block, ItemBlock item, String registryName) {
-        if (block.getRegistryName() == null)
-            block.setRegistryName(registryName);
+    public static void registerBlock(Block block, ItemBlock item) {
         GameRegistry.register(block);
-        GameRegistry.register(item.setRegistryName(registryName));
+        GameRegistry.register(item.setRegistryName(block.getRegistryName()));
     }
 }

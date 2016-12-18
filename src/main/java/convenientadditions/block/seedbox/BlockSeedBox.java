@@ -1,21 +1,19 @@
 package convenientadditions.block.seedbox;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.api.block.BlockConfigurable;
+import convenientadditions.base.CABlockConfigurable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSeedBox extends BlockConfigurable {
+public class BlockSeedBox extends CABlockConfigurable {
     public static final PropertyBool OUTLET_TOP = PropertyBool.create("outlet_top");
     public static final PropertyBool OUTLET_BOTTOM = PropertyBool.create("outlet_bottom");
     public static final PropertyBool OUTLET_NORTH = PropertyBool.create("outlet_north");
@@ -24,8 +22,8 @@ public class BlockSeedBox extends BlockConfigurable {
     public static final PropertyBool OUTLET_WEST = PropertyBool.create("outlet_west");
 
     public BlockSeedBox() {
-        super(Material.WOOD);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.seedBoxBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.seedBoxBlockName,Material.WOOD);
+        this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP, false).withProperty(OUTLET_BOTTOM, true).withProperty(OUTLET_NORTH, false).withProperty(OUTLET_EAST, false).withProperty(OUTLET_SOUTH, false).withProperty(OUTLET_WEST, false));
     }
@@ -57,10 +55,5 @@ public class BlockSeedBox extends BlockConfigurable {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, OUTLET_TOP, OUTLET_BOTTOM, OUTLET_NORTH, OUTLET_EAST, OUTLET_SOUTH, OUTLET_WEST);
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 }

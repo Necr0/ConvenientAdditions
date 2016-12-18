@@ -1,4 +1,4 @@
-package convenientadditions.item.charge;
+package convenientadditions.handler;
 
 import convenientadditions.api.inventory.EnumInventory;
 import convenientadditions.api.inventory.InventoryIterator;

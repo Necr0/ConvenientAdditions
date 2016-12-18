@@ -1,4 +1,4 @@
-package convenientadditions.api.item.stackhandler;
+package convenientadditions.api.inventory.stackhandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
@@ -32,7 +32,7 @@ public class CombinedItemStackHandler implements IItemHandler {
 				return h.getStackInSlot(slot-currentBase);
 			}
 		}
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -60,11 +60,21 @@ public class CombinedItemStackHandler implements IItemHandler {
 				return h.extractItem(slot-currentBase, amount, simulate);
 			}
 		}
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
 	public int getSlotLimit(int slot) {
+
+		int currentBase=0;
+		//Map slots
+		for(IItemHandler h:handlers){
+			if(currentBase+h.getSlots()<=slot)
+				currentBase+=h.getSlots();
+			else{
+				return h.getSlotLimit(slot);
+			}
+		}
 		return 64;
 	}
 }

@@ -1,12 +1,11 @@
 package convenientadditions.item;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.base.CAItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ActionResult;
@@ -14,10 +13,10 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemAntidote extends Item {
+public class ItemAntidote extends CAItem {
     public ItemAntidote() {
-        super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.antidoteItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1);
+        super(ModConstants.ItemNames.antidoteItemName);
+        this.setMaxStackSize(1);
     }
 
     @Override

@@ -2,15 +2,14 @@ package convenientadditions.item.charge.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.StringHelper;
 import convenientadditions.api.inventory.EnumInventory;
 import convenientadditions.api.inventory.InventoryIterator;
 import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.item.charge.IChargeable;
 import convenientadditions.api.util.EnchantmentUtil;
-import convenientadditions.api.util.Helper;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
+import convenientadditions.base.CAItemSunlightChargeable;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,17 +22,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemChargingRing extends CAItemSunlightChargeable implements IBauble {
     public static final int chargingRingBaseCharge = 7;
     public static ItemStack FULLY_CHARGED;
 
     public ItemChargingRing() {
-        super(120000, true, true, 5);
-        this.setHasSubtypes(true)
-                .setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.chargingRingItemName)
-                .setCreativeTab(ConvenientAdditions.CREATIVETAB)
-                .setHasSubtypes(true)
-                .setMaxStackSize(1);
+        super(ModConstants.ItemNames.chargingRingItemName, 120000, true, true, 5);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -86,7 +80,7 @@ public class ItemChargingRing extends ItemSunlightChargeableBehaviour implements
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip.convenientadditions:chargingRing"));
+        list.add(StringHelper.getJoke(stack));
         super.addInformation(stack, player, list, par4);
     }
 

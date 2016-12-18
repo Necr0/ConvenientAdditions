@@ -1,4 +1,4 @@
-package convenientadditions.api.item.stackhandler;
+package convenientadditions.api.inventory.stackhandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
@@ -30,7 +30,7 @@ public class SeparatedItemStackHandler implements IItemHandler {
 
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) {
-		return !isInput(slot)?out.extractItem(slot-in.getSlots(),amount,simulate):null;
+		return !isInput(slot)?out.extractItem(slot-in.getSlots(),amount,simulate):ItemStack.EMPTY;
 	}
 
 	public boolean isInput(int slot){

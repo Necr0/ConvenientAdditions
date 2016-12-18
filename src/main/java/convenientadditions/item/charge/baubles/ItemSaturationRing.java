@@ -2,10 +2,8 @@ package convenientadditions.item.charge.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.api.util.Helper;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
+import convenientadditions.base.CAItemSunlightChargeable;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,19 +13,13 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
 import java.util.Random;
 
-public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemSaturationRing extends CAItemSunlightChargeable implements IBauble {
     public static ItemStack FULLY_CHARGED;
 
     public ItemSaturationRing() {
-        super(12000, true, true, 2);
-        this.setHasSubtypes(true)
-                .setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.saturationRingItemName)
-                .setCreativeTab(ConvenientAdditions.CREATIVETAB)
-                .setHasSubtypes(true)
-                .setMaxStackSize(1);
+        super(ModConstants.ItemNames.saturationRingItemName, 12000, true, true, 2);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -69,12 +61,6 @@ public class ItemSaturationRing extends ItemSunlightChargeableBehaviour implemen
     @Override
     public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
         return true;
-    }
-
-    @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip.convenientadditions:saturationRing"));
-        super.addInformation(stack, player, list, par4);
     }
 
     @Override

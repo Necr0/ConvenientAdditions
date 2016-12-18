@@ -2,10 +2,9 @@ package convenientadditions.item.charge.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.api.util.Helper;
-import convenientadditions.item.charge.ItemSunlightChargeableBehaviour;
+import convenientadditions.StringHelper;
+import convenientadditions.base.CAItemSunlightChargeable;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,16 +16,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements IBauble {
+public class ItemBreathAmulet extends CAItemSunlightChargeable implements IBauble {
     public static ItemStack FULLY_CHARGED;
 
     public ItemBreathAmulet() {
-        super(10000, true, true, 5);
-        this.setHasSubtypes(true)
-                .setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.breathAmuletItemName)
-                .setCreativeTab(ConvenientAdditions.CREATIVETAB)
-                .setHasSubtypes(true)
-                .setMaxStackSize(1);
+        super(ModConstants.ItemNames.breathAmuletItemName, 10000, true, true, 5);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -70,7 +64,7 @@ public class ItemBreathAmulet extends ItemSunlightChargeableBehaviour implements
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip.convenientadditions:breathAmulet"));
+        list.add(StringHelper.getJoke(stack));
         super.addInformation(stack, player, list, par4);
     }
 

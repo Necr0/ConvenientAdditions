@@ -8,7 +8,6 @@ import convenientadditions.compat.jei.transmutationTome.RecipeHandlerTransmutati
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.item.transmutationTome.ContainerTransmutationTome;
-import convenientadditions.item.transmutationTome.GuiTransmutationTome;
 import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
@@ -31,7 +30,7 @@ public class ConvAddJEIPlugin extends BlankModPlugin {
 
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModItems.itemTransmutationTome), ModConstants.Mod.MODID + ":" + ModConstants.Compat.JEI.transmutationTomeCategory);
 
-        registry.addRecipeClickArea(GuiTransmutationTome.class, 152, 2, 13, 83, ModConstants.Mod.MODID + ":" + ModConstants.Compat.JEI.transmutationTomeCategory);
+        //registry.addRecipeClickArea(GuiTransmutationTome.class, 152, 2, 13, 83, ModConstants.Mod.MODID + ":" + ModConstants.Compat.JEI.transmutationTomeCategory);
 
         registry.getRecipeTransferRegistry().addRecipeTransferHandler(ContainerTransmutationTome.class, ModConstants.Mod.MODID + ":" + ModConstants.Compat.JEI.transmutationTomeCategory, 0, 2, 3, 36);
 

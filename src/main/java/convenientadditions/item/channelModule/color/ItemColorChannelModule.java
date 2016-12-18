@@ -4,7 +4,7 @@ import convenientadditions.api.IMatcher;
 import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.ModGuiHandler;
+import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.item.ItemChannelModule;
 import convenientadditions.item.channelModule.matchers.MatcherEnumDyeColor;
 import net.minecraft.creativetab.CreativeTabs;

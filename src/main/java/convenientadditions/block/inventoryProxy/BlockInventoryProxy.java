@@ -1,8 +1,6 @@
 package convenientadditions.block.inventoryProxy;
 
-import convenientadditions.ConvenientAdditions;
-import convenientadditions.ModConstants;
-import net.minecraft.block.BlockContainer;
+import convenientadditions.base.CABlockContainer;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -13,17 +11,16 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockInventoryProxy extends BlockContainer {
+public abstract class BlockInventoryProxy extends CABlockContainer{
     public static final PropertyDirection FACING = BlockDirectional.FACING;
 
     public BlockInventoryProxy() {
         super(Material.WOOD);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.inventoryProxyBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
     }
@@ -36,11 +33,6 @@ public class BlockInventoryProxy extends BlockContainer {
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
         worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer).getOpposite()), 2);
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 
     //BLOCKSTATE

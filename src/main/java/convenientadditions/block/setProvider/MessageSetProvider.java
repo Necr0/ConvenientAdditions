@@ -48,19 +48,19 @@ public class MessageSetProvider extends PacketBase<MessageSetProvider> {
                 TileEntitySetProvider te = ((TileEntitySetProvider) t);
                 switch (message.type) {
                     case 0:
-                        te.setFilterInput(message.value == 0 ? false : true);
+                        te.setFilterInput(message.value != 0);
                         break;
                     case 1:
-                        te.reset();
+                        te.setIgnoreDV(message.value != 0);
                         break;
                     case 2:
-                        te.setIgnoreDV(message.value == 0 ? false : true);
+                        te.setIgnoreNBT(message.value != 0);
                         break;
                     case 3:
-                        te.setIgnoreNBT(message.value == 0 ? false : true);
+                        te.setPushMode(message.value);
                         break;
                     case 4:
-                        te.setResetMode(message.value);
+                        te.setIgnoreOutput(message.value != 0);
                         break;
                     default:
                         break;

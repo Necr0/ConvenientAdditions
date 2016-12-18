@@ -5,10 +5,14 @@
     },
     "variants": {
         "head": {
-	        "0": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_wood"} },
-	        "1": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_stone"} },
-	        "2": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_iron"} },
-	        "3": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_diamond"} }
+	        "0,broken=false": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_wood"} },
+	        "1,broken=false": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_stone"} },
+	        "2,broken=false": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_iron"} },
+	        "3,broken=false": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_diamond"} },
+            "0,broken=true": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_wood_broken"} },
+            "1,broken=true": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_stone_broken"} },
+            "2,broken=true": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_iron_broken"} },
+            "3,broken=true": { "textures": {"layer1" : "convenientadditions:items/adventurerspickaxe/parts/head_diamond_broken"} }
         },
         "handle": {
 	        "0": { "textures": {"layer0" : "convenientadditions:items/adventurerspickaxe/parts/handle_wood"} },

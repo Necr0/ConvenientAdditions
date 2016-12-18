@@ -1,7 +1,7 @@
 package convenientadditions.block.itemReceiver;
 
 import convenientadditions.api.IMatcher;
-import convenientadditions.api.item.stackhandler.CombinedItemStackHandler;
+import convenientadditions.api.inventory.stackhandler.CombinedItemStackHandler;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.ItemChannelModule;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;

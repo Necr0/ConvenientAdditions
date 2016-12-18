@@ -1,4 +1,4 @@
-package convenientadditions.item.transmutationTome;
+package convenientadditions.handler;
 
 import convenientadditions.api.gui.container.IContainerTickable;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

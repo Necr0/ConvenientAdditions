@@ -1,14 +1,12 @@
 package convenientadditions.item.channelModule.color;
 
-import convenientadditions.api.util.Helper;
 import convenientadditions.ModConstants;
+import convenientadditions.api.util.GuiHelper;
+import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModNetworking;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -65,7 +63,7 @@ public class GuiColorChannelModule extends GuiScreen {
         int i = ((this.width - this.xSize) / 2);
         int j = ((this.height - this.ySize) / 2);
         super.mouseClicked(mouseX, mouseY, mouseButton);
-        int adder = 0;
+        int adder;
         if (mouseButton == 0)
             adder = 1;
         else if (mouseButton == 1)
@@ -78,24 +76,20 @@ public class GuiColorChannelModule extends GuiScreen {
             if (new Rectangle(i + 12, j + 12, 25, 57).contains(mouseX, mouseY)) {
                 ModNetworking.INSTANCE.sendToServer(new MessageColorChannelModule(mainhand, (byte) 0, (byte) ((ModItems.itemModuleColor.getColorInts(getItem())[0] + adder) % 15)));
                 getItem().getTagCompound().setInteger("MATCHER_DYE_0", (ModItems.itemModuleColor.getColorInts(getItem())[0] + adder) % 15);
-                playButtonPressSound(this.mc.getSoundHandler());
+                GuiHelper.playButtonPressSound(this.mc.getSoundHandler());
             } else if (new Rectangle(i + 12 + 40, j + 12, 25, 57).contains(mouseX, mouseY)) {
                 ModNetworking.INSTANCE.sendToServer(new MessageColorChannelModule(mainhand, (byte) 1, (byte) ((ModItems.itemModuleColor.getColorInts(getItem())[1] + adder) % 15)));
                 getItem().getTagCompound().setInteger("MATCHER_DYE_1", (ModItems.itemModuleColor.getColorInts(getItem())[1] + adder) % 15);
-                playButtonPressSound(this.mc.getSoundHandler());
+                GuiHelper.playButtonPressSound(this.mc.getSoundHandler());
             } else if (new Rectangle(i + 12 + (40 * 2), j + 12, 25, 57).contains(mouseX, mouseY)) {
                 ModNetworking.INSTANCE.sendToServer(new MessageColorChannelModule(mainhand, (byte) 2, (byte) ((ModItems.itemModuleColor.getColorInts(getItem())[2] + adder) % 15)));
                 getItem().getTagCompound().setInteger("MATCHER_DYE_2", (ModItems.itemModuleColor.getColorInts(getItem())[2] + adder) % 15);
-                playButtonPressSound(this.mc.getSoundHandler());
+                GuiHelper.playButtonPressSound(this.mc.getSoundHandler());
             }
         }
     }
 
     public ItemStack getItem() {
         return Helper.getClientPlayer().getHeldItem(mainhand ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND);
-    }
-
-    public void playButtonPressSound(SoundHandler soundHandlerIn) {
-        soundHandlerIn.playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 }

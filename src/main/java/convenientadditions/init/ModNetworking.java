@@ -3,7 +3,7 @@ package convenientadditions.init;
 import convenientadditions.api.network.PacketExtendedExplosion;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.ModGuiHandler;
+import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.network.PacketParticle;
 import convenientadditions.block.inventoryProxy.filtered.MessageInventoryProxyFiltered;
 import convenientadditions.block.setProvider.MessageSetProvider;

@@ -1,4 +1,4 @@
-package convenientadditions.api.item.stackhandler;
+package convenientadditions.api.inventory.stackhandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
@@ -12,7 +12,7 @@ public class NullItemStackHandler implements IItemHandler {
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override

@@ -1,13 +1,12 @@
 package convenientadditions.item;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.base.CAItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -17,10 +16,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class ItemBandage extends Item {
+public class ItemBandage extends CAItem {
     public ItemBandage() {
-        super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.bandageItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(4);
+        super(ModConstants.ItemNames.bandageItemName);
+        this.setMaxStackSize(4);
     }
 
     @Override

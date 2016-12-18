@@ -1,8 +1,8 @@
 package convenientadditions.item;
 
-import convenientadditions.api.util.Helper;
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.StringHelper;
+import convenientadditions.base.CAItem;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModConfig;
 import net.minecraft.block.Block;
@@ -14,17 +14,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemCompost extends Item {
+public class ItemCompost extends CAItem {
     public ItemCompost() {
-        super();
-        this.setHasSubtypes(true).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compostItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.ItemNames.compostItemName);
+        this.setHasSubtypes(true);
     }
 
     @Override
@@ -58,10 +57,10 @@ public class ItemCompost extends Item {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compostItemName));
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
+        super.addInformation(stack,player,list,advanced);
         if (stack.getItemDamage() == 1)
-            list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compostItemName + "Spores"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compostItemName + "Spores"));
     }
 
     @Override

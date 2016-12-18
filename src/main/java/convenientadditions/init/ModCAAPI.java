@@ -143,7 +143,7 @@ public class ModCAAPI {
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.PUMPKIN, 1), new ItemStack(Items.BLAZE_POWDER, 1), new ItemStack(Blocks.MELON_BLOCK, 1), time_medium, 8);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.DEADBUSH, 3), new ItemStack(Items.WATER_BUCKET, 1), new ItemStack(Items.MELON_SEEDS, 1), time_medium, 8);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.SUGAR, 3), new ItemStack(Blocks.TALLGRASS, 1), new ItemStack(Items.REEDS, 1), time_medium, 4);
-            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.NETHER_WART, 3), new ItemStack(Items.SPIDER_EYE, 1), new ItemStack(Blocks.COCOA, 3), time_long, 7);
+            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.NETHER_WART, 3), new ItemStack(Items.SPIDER_EYE, 1), new ItemStack(Items.DYE, 3, 3), time_long, 7);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.PUMPKIN, 1), new ItemStack(Items.GHAST_TEAR, 1), new ItemStack(Blocks.CACTUS, 1), time_medium, 6);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.POTATO, 1), new ItemStack(Items.SPIDER_EYE, 1), new ItemStack(Items.POISONOUS_POTATO, 1), time_short, 1);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.CARROT, 2), new ItemStack(Items.BLAZE_POWDER, 1), new ItemStack(Items.POTATO, 2), time_medium, 5);

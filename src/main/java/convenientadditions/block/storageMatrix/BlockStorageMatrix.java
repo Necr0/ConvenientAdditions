@@ -1,19 +1,18 @@
 package convenientadditions.block.storageMatrix;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.api.block.BlockMachine;
+import convenientadditions.base.CABlockMachine;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockStorageMatrix extends BlockMachine{
+public class BlockStorageMatrix extends CABlockMachine{
 
     public BlockStorageMatrix() {
-        super(Material.IRON);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.storageMatrixBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.storageMatrixBlockName,Material.IRON);
+        this.setHardness(4F).setResistance(8F);
     }
 
     @Nullable

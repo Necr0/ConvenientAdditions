@@ -1,8 +1,8 @@
 package convenientadditions.item;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.item.IModelVariantResourceLocationProvider;
+import convenientadditions.base.CAItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -12,11 +12,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemSapBottle extends Item implements IModelVariantResourceLocationProvider {
+public class ItemSapBottle extends CAItem implements IModelVariantResourceLocationProvider {
     public ItemSapBottle() {
-        super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sapBottleItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1);
-        this.setHasSubtypes(true);
+        super(ModConstants.ItemNames.sapBottleItemName);
+        this.setMaxStackSize(1).setHasSubtypes(true).setMaxDamage(2);
     }
 
     @SideOnly(Side.CLIENT)

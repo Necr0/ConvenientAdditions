@@ -1,4 +1,4 @@
-package convenientadditions.api.gui.widget;
+package convenientadditions.api.gui;
 
 import net.minecraft.util.ResourceLocation;
 

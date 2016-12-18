@@ -1,33 +1,21 @@
 package convenientadditions.block.itemReceiver;
 
-import convenientadditions.base.CCGuiContainerBase;
 import convenientadditions.ModConstants;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
+import convenientadditions.api.gui.CAGuiContainer;
+import convenientadditions.api.gui.ImageResourceLocation;
 
-public class GuiItemReceiver extends CCGuiContainerBase {
+public class GuiItemReceiver extends CAGuiContainer {
 
-    private static final ResourceLocation itemReceiverGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemreceiver.png");
+    private static final ImageResourceLocation itemReceiverGuiTextures = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemreceiver.png",0,0,174,114);
     public TileEntityItemReceiver te;
 
     public GuiItemReceiver(ContainerItemReceiver container) {
-        super(container);
+        super(container,itemReceiverGuiTextures);
         this.te = container.te;
-        this.xSize = 174;
-        this.ySize = 114;
     }
 
     @Override
     public void initGui() {
         super.initGui();
-    }
-
-    @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.getTextureManager().bindTexture(itemReceiverGuiTextures);
-        int i = (this.width - this.xSize) / 2;
-        int j = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
     }
 }

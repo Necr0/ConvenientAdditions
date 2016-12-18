@@ -1,9 +1,9 @@
 package convenientadditions.item.charge.enderPlate;
 
-import convenientadditions.api.inventory.SlotNotation;
-import convenientadditions.api.util.Helper;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.StringHelper;
+import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.api.item.charge.ItemChargeable;
 import convenientadditions.block.technical.BlockPhantomPlatform;
@@ -19,7 +19,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,7 +34,8 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
         this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.enderPlateItemName)
                 .setCreativeTab(ConvenientAdditions.CREATIVETAB)
                 .setHasSubtypes(true)
-                .setMaxStackSize(1);
+                .setMaxStackSize(1)
+                .setRegistryName(ModConstants.ItemNames.enderPlateItemName);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -98,12 +98,13 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":enderSlate"));
+        list.add(StringHelper.getJoke(stack));
+        list.add(StringHelper.getInfo(stack));
         super.addInformation(stack, player, list, par4);
-        list.add(TextFormatting.DARK_GRAY + ItemChargeable.localize("tooltip." + ModConstants.Mod.MODID + ":enderSlateDrained"));
+        list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":enderPlateDrained"));
         if (isActive(stack))
-            list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":enderSlateActive"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":enderPlateActive"));
         else
-            list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":enderSlateInactive"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":enderPlateInactive"));
     }
 }

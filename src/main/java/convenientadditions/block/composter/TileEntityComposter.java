@@ -1,10 +1,11 @@
 package convenientadditions.block.composter;
 
-import convenientadditions.api.util.Helper;
 import convenientadditions.api.registry.compost.CompostRegistry;
+import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModConfig;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -78,6 +79,17 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 
     @Override
     public void update() {
+        if(!getWorld().isRemote){
+            for(EntityItem e:getWorld().getEntitiesWithinAABB(EntityItem.class,new AxisAlignedBB(pos.getX(),pos.getY()+1,pos.getZ(),pos.getX()+1,pos.getY()+1.5d,pos.getZ()+1))){
+                if(!e.isDead && !e.getEntityItem().isEmpty()){
+                    ItemStack i=e.getEntityItem();
+                    i.setCount(stackHandler.insertItem(0, i,false).getCount());
+                    if(i.isEmpty())
+                        e.setDead();
+                }
+            }
+        }
+
         IBlockState state = getWorld().getBlockState(pos);
         Random rnd = new Random();
         if (!getWorld().isRemote) {

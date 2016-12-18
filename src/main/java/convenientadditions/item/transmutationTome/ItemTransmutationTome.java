@@ -2,22 +2,21 @@ package convenientadditions.item.transmutationTome;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.ModGuiHandler;
+import convenientadditions.base.CAItem;
+import convenientadditions.handler.ModGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemTransmutationTome extends Item {
+public class ItemTransmutationTome extends CAItem {
 
     public ItemTransmutationTome() {
-        super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.transmutationTomeItemName).setMaxStackSize(1).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.ItemNames.transmutationTomeItemName);
+        this.setMaxStackSize(1);
     }
-
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {

@@ -1,10 +1,10 @@
 package convenientadditions.item.charge;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.StringHelper;
 import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.item.IPlayerInventoryTick;
-import convenientadditions.api.util.Helper;
+import convenientadditions.base.CAItemSunlightChargeable;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +17,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,16 +24,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPlayerInventoryTick {
+public class ItemSunstone extends CAItemSunlightChargeable implements IPlayerInventoryTick {
     public static ItemStack FULLY_CHARGED;
 
     public ItemSunstone() {
-        super(60000, true, true, 20);
-        this.setHasSubtypes(true)
-                .setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName)
-                .setCreativeTab(ConvenientAdditions.CREATIVETAB)
-                .setHasSubtypes(true)
-                .setMaxStackSize(1);
+        super(ModConstants.ItemNames.sunstoneItemName, 60000, true, true, 20);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -51,14 +45,15 @@ public class ItemSunstone extends ItemSunlightChargeableBehaviour implements IPl
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
     }
 
+
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName));
+        list.add(StringHelper.getJoke(stack));
         super.addInformation(stack, player, list, par4);
         if (isActive(stack))
-            list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Active"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Active"));
         else
-            list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Inactive"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Inactive"));
     }
 
     @Override

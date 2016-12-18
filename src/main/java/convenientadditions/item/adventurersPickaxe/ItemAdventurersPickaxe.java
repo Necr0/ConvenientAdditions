@@ -1,11 +1,11 @@
 package convenientadditions.item.adventurersPickaxe;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.api.item.IPlayerInventoryTick;
 import convenientadditions.api.item.ISoulbound;
 import convenientadditions.api.util.Helper;
+import convenientadditions.base.CAItem;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,14 +22,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
-public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerInventoryTick {
+public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlayerInventoryTick {
     public List<ItemStack> subitems;
 
     public ItemAdventurersPickaxe() {
-        super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setMaxStackSize(1).setHasSubtypes(true);
+        super(ModConstants.ItemNames.adventurersPickaxeItemName);
+        this.setMaxStackSize(1).setHasSubtypes(true);
         initSubItems();
     }
 
@@ -275,28 +277,37 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
 
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-        if (worldIn.isRemote)
+        if (state.getBlock().getHarvestTool(state) == null)
             return false;
-        if (!isBroken(stack)) {
-            if (state.getBlock().getHarvestTool(state) == null)
-                return false;
-            else if (state.getBlock().getHarvestTool(state).equals("pickaxe"))
-                setToolProperty(stack, "blocks_mined", (int) getToolProperty(stack, "blocks_mined") + 1);
+
+        if (!worldIn.isRemote||isBroken(stack)) {
+
             EntityPlayer e = (entityLiving != null && entityLiving instanceof EntityPlayer) ? ((EntityPlayer) entityLiving) : null;
-            stack.setItemDamage(stack.getItemDamage() + 1);
-            if (Helper.doesOreDictMatch(state, "stone", false)) {
-                setToolProperty(stack, "stone_mined", (int) getToolProperty(stack, "stone_mined") + 1);
-                LevelUp.gainXP(e, stack, 1);
-            } else if (Helper.doesOreDictMatch(state, "ore", true)) {
-                setToolProperty(stack, "ore_mined", (int) getToolProperty(stack, "ore_mined") + 1);
-                LevelUp.gainXP(e, stack, ModConstants.Items.AdvPick.miningLevelOreExperience[state.getBlock().getHarvestLevel(state)]);
-            } else if (state.getBlock().getHarvestTool(state).equals("shovel")) {
+
+            if (state.getBlock().getHarvestTool(state).equals("pickaxe")){
+                setToolProperty(stack, "blocks_mined", (int) getToolProperty(stack, "blocks_mined") + 1);
+                if (Helper.doesOreDictMatch(state, "stone", false)) {
+                    setToolProperty(stack, "stone_mined", (int) getToolProperty(stack, "stone_mined") + 1);
+                    LevelUp.gainXP(e, stack, 1);
+                }
+                if (Helper.doesOreDictMatch(state, "ore", true)) {
+                    setToolProperty(stack, "ore_mined", (int) getToolProperty(stack, "ore_mined") + 1);
+                    LevelUp.gainXP(e, stack, ModConstants.Items.AdvPick.miningLevelOreExperience[state.getBlock().getHarvestLevel(state)]);
+                }else{
+                    LevelUp.gainXP(e, stack, 1);
+                }
+            }
+
+            if (state.getBlock().getHarvestTool(state).equals("shovel")) {
                 setToolProperty(stack, "blocks_digged", (int) getToolProperty(stack, "blocks_digged") + 1);
-                LevelUp.gainXP(e, stack, 1);
-            } else if (state.getBlock().getHarvestTool(state).equals("pickaxe")) {
                 LevelUp.gainXP(e, stack, 1);
             }
         }
+
+        stack.setItemDamage(stack.getItemDamage() + 1);
+        if(isBroken(stack))
+            entityLiving.renderBrokenItemStack(stack);
+
         return false;
     }
 
@@ -312,6 +323,10 @@ public class ItemAdventurersPickaxe extends Item implements ISoulbound, IPlayerI
     @Override
     public double getDurabilityForDisplay(ItemStack item) {
         return ((double) item.getItemDamage() / (int) getToolProperty(item, "durability"));
+    }
+    public int getMaxDamage(ItemStack stack)
+    {
+        return (int)getToolProperty(stack, "durability");
     }
 
     public String getRepairMaterial(ItemStack s) {

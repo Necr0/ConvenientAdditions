@@ -1,25 +1,23 @@
 package convenientadditions.block.playerInterface;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import net.minecraft.block.BlockContainer;
+import convenientadditions.base.CABlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockPlayerInterface extends BlockContainer {
+public class BlockPlayerInterface extends CABlockContainer {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
     public BlockPlayerInterface() {
-        super(Material.IRON);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.playerInterfaceBlockName).setHardness(4F).setResistance(8F).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+        super(ModConstants.BlockNames.playerInterfaceBlockName,Material.IRON);
+        this.setHardness(4F).setResistance(8F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
 
@@ -56,10 +54,5 @@ public class BlockPlayerInterface extends BlockContainer {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, new IProperty[]{ACTIVE});
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 }

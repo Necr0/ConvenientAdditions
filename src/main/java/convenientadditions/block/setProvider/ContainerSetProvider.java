@@ -2,13 +2,13 @@ package convenientadditions.block.setProvider;
 
 import convenientadditions.api.gui.container.SlotFakeWithAmount;
 import convenientadditions.api.gui.container.SlotOutputOnly;
-import convenientadditions.base.CCContainerBase;
+import convenientadditions.base.CAContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerSetProvider extends CCContainerBase {
+public class ContainerSetProvider extends CAContainer {
 
     public TileEntitySetProvider te;
 
@@ -50,21 +50,21 @@ public class ContainerSetProvider extends CCContainerBase {
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
-        ItemStack previous = null;
+        ItemStack previous = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(fromSlot);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack current = slot.getStack();
             previous = current.copy();
 
-            if (fromSlot < 36) {
+            if (fromSlot < 45) {
                 // From TE Inventory to Player Inventory
                 if (!this.mergeItemStack(current, 36, 72, true))
-                    return null;
+                    return ItemStack.EMPTY;
             } else {
                 // From Player Inventory to TE Inventory
                 if (!this.mergeItemStack(current, 0, 18, false))
-                    return null;
+                    return ItemStack.EMPTY;
             }
 
             if (current.getCount() == 0)
@@ -73,7 +73,7 @@ public class ContainerSetProvider extends CCContainerBase {
                 slot.onSlotChanged();
 
             if (current.getCount() == previous.getCount())
-                return null;
+                return ItemStack.EMPTY;
             slot.onTake(playerIn, current);
         }
         return previous;

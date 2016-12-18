@@ -19,7 +19,7 @@ public class BlockTempLight extends Block {
 
     public BlockTempLight(float intensisty) {
         super(Material.FIRE);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.tempLightBlockName)
+        this.setRegistryName(ModConstants.BlockNames.tempLightBlockName).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.tempLightBlockName)
                 .setLightLevel(intensisty).setTickRandomly(false);
         this.disableStats();
         this.translucent = true;

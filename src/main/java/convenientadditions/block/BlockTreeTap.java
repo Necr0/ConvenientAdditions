@@ -1,10 +1,9 @@
 package convenientadditions.block;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
+import convenientadditions.base.CABlock;
 import convenientadditions.init.ModItems;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -31,13 +30,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockTreeTap extends Block {
+public class BlockTreeTap extends CABlock {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyEnum<EnumBottleState> BOTTLE_STATE = PropertyEnum.create("bottle_state", EnumBottleState.class);
 
     public BlockTreeTap() {
-        super(Material.WOOD);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.treetapBlockName).setHardness(2F).setResistance(3F).setCreativeTab(ConvenientAdditions.CREATIVETAB).setTickRandomly(true);
+        super(ModConstants.BlockNames.treetapBlockName,Material.WOOD);
+        this.setHardness(2F).setResistance(3F).setTickRandomly(true);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BOTTLE_STATE, EnumBottleState.empty));
     }

@@ -19,10 +19,10 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
 
     public HashMap<EnumFacing, EnumOutletMode> outletSides = new HashMap<EnumFacing, EnumOutletMode>();
 
-    public boolean ready = true;
     public boolean ignoreDV = false;
     public boolean ignoreNBT = false;
-    public byte resetMode;
+    public byte pushMode=0;//0=pulse,1=high,2=low,3=always
+    public boolean ignoreOutput=false;
     public boolean powered;
     public boolean pulseOpen;
     public boolean filteredInput;
@@ -46,23 +46,12 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
         if (getWorld().isRemote)
             return;
 
-        if (resetMode == 0 && getWorld().isBlockIndirectlyGettingPowered(getPos()) > 0) {
-            reset();
-        } else if (resetMode == 1 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
-            reset();
-        } else if (resetMode == 4 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
-            if (slotConfigReady(false))
-                reset();
-        }
-
-        if (!slotConfigReady(true))
-            return;
-
-        FillSetFilter FILLter = new FillSetFilter(input.getStacks(), filter.getStacks(), ignoreDV, ignoreNBT);
-        if (FILLter.isReadyForOutput() && ready) {
-            input.setStacks(FILLter.getInput());
-            output.setStacks(FILLter.getOutput());
-            ready = false;
+        if (pushMode == 1 && getWorld().isBlockIndirectlyGettingPowered(getPos()) > 0) {
+            tryPush();
+        } else if (pushMode == 2 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
+            tryPush();
+        } else if (pushMode == 3 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
+            tryPush();
         }
     }
 
@@ -80,16 +69,16 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
             output.deserializeNBT((NBTTagCompound) nbt.getTag("OUTPUT"));
         if (nbt.hasKey("FILTER"))
             filter.deserializeNBT((NBTTagCompound) nbt.getTag("FILTER"));
-        if (nbt.hasKey("READY"))
-            ready = nbt.getBoolean("READY");
         if (nbt.hasKey("IGNOREDV"))
             ignoreDV = nbt.getBoolean("IGNOREDV");
         if (nbt.hasKey("IGNORENBT"))
             ignoreNBT = nbt.getBoolean("IGNORENBT");
         if (nbt.hasKey("FILTERINPUT"))
             filteredInput = nbt.getBoolean("FILTERINPUT");
-        if (nbt.hasKey("RSMODE"))
-            resetMode = nbt.getByte("RSMODE");
+        if (nbt.hasKey("PUSHMODE"))
+            pushMode = nbt.getByte("PUSHMODE");
+        if (nbt.hasKey("IGNOREOUTPUT"))
+            ignoreOutput = nbt.getBoolean("IGNOREOUTPUT");
         if (nbt.hasKey("POWERED"))
             powered = nbt.getBoolean("POWERED");
     }
@@ -103,11 +92,11 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
         nbt.setTag("INPUT", input.serializeNBT());
         nbt.setTag("OUTPUT", output.serializeNBT());
         nbt.setTag("FILTER", filter.serializeNBT());
-        nbt.setBoolean("READY", ready);
         nbt.setBoolean("IGNOREDV", ignoreDV);
         nbt.setBoolean("IGNORENBT", ignoreNBT);
         nbt.setBoolean("FILTERINPUT", filteredInput);
-        nbt.setByte("RSMODE", resetMode);
+        nbt.setByte("PUSHMODE", pushMode);
+        nbt.setBoolean("IGNOREOUTPUT", ignoreOutput);
         nbt.setBoolean("POWERED", powered);
         return nbt;
     }
@@ -120,25 +109,36 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
         return true;
     }
 
-    public void reset() {
-        if (slotConfigReady(false))
-            ready = true;
+    public void tryPush() {
+        if (slotConfigReady()){
+            FillSetFilter FILLter = new FillSetFilter(input.getStacks(), filter.getStacks(), output.getStacks(), ignoreDV, ignoreNBT);
+            if (FILLter.isReadyForOutput()) {
+                input.setStacks(FILLter.getInput());
+                output.setStacks(FILLter.getOutput());
+            }
+        }
         pulseOpen = false;
     }
 
-    public boolean slotConfigReady(boolean includeFilter) {
-        for (ItemStack s : output.getStacks()) {
-            if (s != null)
-                return false;
-        }
-        if (includeFilter) {
-            for (ItemStack s : filter.getStacks()) {
-                if (s != null)
-                    return true;
+    public boolean slotConfigReady() {
+        if(!ignoreOutput){
+            for (ItemStack s : output.getStacks()) {
+                if (!s.isEmpty())
+                    return false;
             }
-            return false;
         }
-        return true;
+        boolean flag=false;
+        for (ItemStack s : input.getStacks()) {
+            if (!s.isEmpty())
+                flag=true;
+        }
+        if(!flag)
+            return false;
+        for (ItemStack s : filter.getStacks()) {
+            if (!s.isEmpty())
+                return true;
+        }
+        return false;
     }
 
     public void setIgnoreDV(boolean ignoreDV) {
@@ -159,20 +159,24 @@ public class TileEntitySetProvider extends TileEntityCABase implements IConfigur
         getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 
-    public void setResetMode(byte resetMode) {
-        this.resetMode = resetMode;
+    public void setPushMode(byte resetMode) {
+        this.pushMode = resetMode;
+        markDirty();
+        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+    }
+
+    public void setIgnoreOutput(boolean ignoreOutput) {
+        this.ignoreOutput=ignoreOutput;
         markDirty();
         getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
     }
 
     public void updateRS(boolean power) {
         if (powered != power) {
-            if (!ready) {
-                if (power && resetMode == 2)
-                    this.pulseOpen = true;
-                else if (!power && resetMode == 2 && pulseOpen) {
-                    reset();
-                }
+            if (power && pushMode == 0)
+                this.pulseOpen = true;
+            else if (!power && pushMode == 0 && pulseOpen) {
+                tryPush();
             }
             powered = power;
         }

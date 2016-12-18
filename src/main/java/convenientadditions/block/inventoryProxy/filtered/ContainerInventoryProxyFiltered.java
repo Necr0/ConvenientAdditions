@@ -1,12 +1,12 @@
 package convenientadditions.block.inventoryProxy.filtered;
 
-import convenientadditions.base.CCContainerBase;
+import convenientadditions.base.CAContainer;
 import convenientadditions.api.gui.container.SlotFake;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerInventoryProxyFiltered extends CCContainerBase {
+public class ContainerInventoryProxyFiltered extends CAContainer {
 
     public TileEntityInventoryProxyFiltered te;
 

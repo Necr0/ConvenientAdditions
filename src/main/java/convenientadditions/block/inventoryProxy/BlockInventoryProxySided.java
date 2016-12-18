@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 public class BlockInventoryProxySided extends BlockInventoryProxy {
     public BlockInventoryProxySided() {
         super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.inventoryProxySidedBlockName);
+        this.setRegistryName(ModConstants.BlockNames.inventoryProxySidedBlockName).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.inventoryProxySidedBlockName);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package convenientadditions.item.transmutationTome;
 
-import convenientadditions.api.gui.widget.ImageResourceLocation;
+import convenientadditions.api.gui.ImageResourceLocation;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 

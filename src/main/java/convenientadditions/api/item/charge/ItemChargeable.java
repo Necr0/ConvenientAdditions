@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.MathHelper;
 
 import java.util.List;
 import java.util.Random;
@@ -15,11 +16,13 @@ public abstract class ItemChargeable extends Item implements IChargeable {
 
     private int capacity;
     private boolean showDurBar;
+    private boolean showTooltips;
 
     public ItemChargeable(int capacity, boolean showDurabilityBar, boolean showTooltips) {
         super();
         this.capacity = capacity;
         this.showDurBar = showDurabilityBar;
+        this.showTooltips = showTooltips;
     }
 
     public static String localize(String in, String... replace) {
@@ -121,8 +124,15 @@ public abstract class ItemChargeable extends Item implements IChargeable {
     }
 
     @Override
+    public int getRGBDurabilityForDisplay(ItemStack stack)
+    {
+        return MathHelper.hsvToRGB(Math.max(0.0F, (float)(getChargeCapacity(stack) - getCharge(stack)) / getChargeCapacity(stack)) / 3.0F, 1.0F, 1.0F);
+    }
+
+    @Override
     public void addInformation(ItemStack item, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(ItemChargeable.localize("tooltip.convenientadditions:charge", "%c", "" + getCharge(item), "%C", "" + getChargeCapacity(item), "%p", "" + (int) ((double) getCharge(item) / (double) getChargeCapacity(item) * 100)));
+        if(showTooltips)
+            list.add(ItemChargeable.localize("tooltip.convenientadditions:charge", "%c", "" + getCharge(item), "%C", "" + getChargeCapacity(item), "%p", "" + (int) ((double) getCharge(item) / (double) getChargeCapacity(item) * 100)));
         super.addInformation(item, player, list, par4);
     }
 

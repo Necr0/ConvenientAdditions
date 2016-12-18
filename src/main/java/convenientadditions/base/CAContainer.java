@@ -8,7 +8,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public abstract class CCContainerBase extends Container {
+public abstract class CAContainer extends Container {
     @Override
     public ItemStack slotClick(int index, int button, ClickType mode, EntityPlayer player) {
         InventoryPlayer inventoryplayer = player.inventory;

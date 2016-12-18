@@ -1,4 +1,4 @@
-package convenientadditions.api.item.stackhandler;
+package convenientadditions.api.inventory.stackhandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
