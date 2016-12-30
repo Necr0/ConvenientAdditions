@@ -48,10 +48,13 @@ public class MessageInventoryProxyFiltered extends PacketBase<MessageInventoryPr
                 TileEntityInventoryProxyFiltered te = ((TileEntityInventoryProxyFiltered) t);
                 switch (message.type) {
                     case 0:
-                        te.setIgnoreDV(message.value == 0 ? false : true);
+                        te.setIgnoreDV(message.value != 0);
                         break;
                     case 1:
-                        te.setIgnoreNBT(message.value == 0 ? false : true);
+                        te.setIgnoreNBT(message.value != 0);
+                        break;
+                    case 2:
+                        te.setBlacklist(message.value != 0);
                         break;
                     default:
                         break;

@@ -33,6 +33,11 @@ public class GuiInventoryProxyFiltered extends CAGuiContainer {
                 Helper.localize(ModConstants.Mod.MODID + ":ignore", "%v", Helper.localize(ModConstants.Mod.MODID + ":NBT"))
         };
 
+        String[] blacklistButtonList = new String[]{
+                Helper.localize(ModConstants.Mod.MODID + ":whitelist"),
+                Helper.localize(ModConstants.Mod.MODID + ":blacklist")
+        };
+
         int buttonIndex = 0;
 
         addButton(
@@ -42,12 +47,15 @@ public class GuiInventoryProxyFiltered extends CAGuiContainer {
         addButton(
                 new ButtonIconCycle(buttonIndex, new ImageResourceLocation[]{ModImageResourceLocations.NBT, ModImageResourceLocations.NONBT}, nbtButtonList, guiLeft + 133 + (buttonIndex++) * 18, guiTop + 7)
                         .setCycleIndex(te.ignoreNBT ? 1 : 0));
+        addButton(
+                new ButtonIconCycle(buttonIndex, new ImageResourceLocation[]{ModImageResourceLocations.WHITELIST, ModImageResourceLocations.BLACKLIST}, blacklistButtonList, guiLeft + 7, guiTop + 7)
+                        .setCycleIndex(te.blacklist ? 1 : 0));
     }
 
 
     @Override
     protected void actionPerformed(GuiButton btn) {
-        if (btn.id == 0 || btn.id == 1) {
+        if (btn.id >= 0 || btn.id <= 2) {
             ModNetworking.INSTANCE.sendToServer(new MessageInventoryProxyFiltered(te.getPos(), (byte) btn.id, (byte) ((ButtonIconCycle) btn).getNextIndex()));
             ((ButtonIconCycle) btn).setCycleIndex(((ButtonIconCycle) btn).getNextIndex());
         }

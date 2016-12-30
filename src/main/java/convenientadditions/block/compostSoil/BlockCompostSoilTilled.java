@@ -1,6 +1,7 @@
 package convenientadditions.block.compostSoil;
 
 import convenientadditions.ModConstants;
+import convenientadditions.api.util.Helper;
 import convenientadditions.base.CABlock;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -26,6 +27,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
 import java.util.Random;
 
 public class BlockCompostSoilTilled extends CABlock {
@@ -33,7 +35,7 @@ public class BlockCompostSoilTilled extends CABlock {
 
     public BlockCompostSoilTilled() {
         super(ModConstants.BlockNames.compostSoilTilledBlockName, Material.GROUND);
-        this.setTickRandomly(true).setHardness(0.5F);
+        this.setTickRandomly(true).setHardness(0.5F).setCreativeTab(null);
         this.setSoundType(SoundType.GROUND);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockCompostSoil.DEGRADATION, 0));
     }
@@ -105,7 +107,8 @@ public class BlockCompostSoilTilled extends CABlock {
         }
     }
 
-    public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state) {
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return FARMLAND_AABB;
     }
 
@@ -145,5 +148,11 @@ public class BlockCompostSoilTilled extends CABlock {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, BlockCompostSoil.DEGRADATION);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
+        list.add(Helper.localize("tooltip.convenientadditions:compostDegraded" + stack.getItemDamage()));
     }
 }

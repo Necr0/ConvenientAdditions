@@ -1,8 +1,12 @@
 package convenientadditions.init;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 public class ModConfig {
     //#########COMPOSTER#############
@@ -26,6 +30,9 @@ public class ModConfig {
     public static boolean seedBox_autoCompost;
     public static boolean seedBox_autoBoneMeal;
     public static boolean seedBox_behaviourProviderEntry;
+    public static boolean seedBox_autoFeed;
+    public static List<String> seedBox_autoFeedItems;
+    public static List<String> seedBox_autoFeedBlacklist;
 
     //#########INVENTORY PROXIES#############
     public static boolean inventoryProxies_regular;
@@ -34,6 +41,7 @@ public class ModConfig {
     public static int inventoryProxies_chainLimit;
     public static boolean inventoryProxies_transmitter;
     public static boolean inventoryProxies_receiver;
+    public static List<String> inventoryProxies_blacklist;
 
     //#########CHANNEL MODULES#############
     public static boolean channelModules_player;
@@ -69,6 +77,7 @@ public class ModConfig {
     public static boolean transmutationTome_cropMutation;
     public static boolean transmutationTome_dirtMutation;
     public static boolean transmutationTome_purification;
+    public static boolean transmutationTome_flowerVariatons;
     public static boolean transmutationTome_misc;
 
     //#########SPECIAL ARROWS#############
@@ -111,7 +120,7 @@ public class ModConfig {
         antidote = cfg.getBoolean("antidote", category, true, "requires sap from treetap");
         bandage = cfg.getBoolean("antidote", category, true, "requires sap from treetap");
         blastPad = cfg.getBoolean("blastPad", category, true, "");
-        platform = cfg.getBoolean("platform", category, true, "");
+        platform = cfg.getBoolean("platform", category, true, "also disables semi-solid blocks");
 
         category = "composter";
         cfg.setCategoryRequiresMcRestart(category, true);
@@ -156,6 +165,34 @@ public class ModConfig {
         seedBox_autoCompost = cfg.getBoolean("autoCompost", category, true, "");
         seedBox_autoBoneMeal = cfg.getBoolean("autoBoneMeal", category, true, "also controls auto fertilizer");
         seedBox_behaviourProviderEntry = cfg.getBoolean("behaviourProviderEntry", category, true, "DON'T CHANGE THIS IF YOU DON'T KNOW WHAT IT IS!");
+        seedBox_autoFeed = cfg.getBoolean("autoFeed", category, true, "");
+        seedBox_autoFeedItems = Arrays.asList(cfg.getStringList(
+                "autoFeedItems",category,new String[]{
+                        Items.WHEAT_SEEDS.getRegistryName().toString(),
+                        Items.PUMPKIN_SEEDS.getRegistryName().toString(),
+                        Items.BEETROOT_SEEDS.getRegistryName().toString(),
+                        Items.MELON_SEEDS.getRegistryName().toString(),
+                        Items.WHEAT.getRegistryName().toString(),
+                        Items.GOLDEN_CARROT.getRegistryName().toString(),
+                        Items.GOLDEN_APPLE.getRegistryName().toString(),
+                        Items.CARROT.getRegistryName().toString(),
+                        Items.BEETROOT.getRegistryName().toString(),
+                        Items.POTATO.getRegistryName().toString(),
+                        Items.FISH.getRegistryName().toString(),
+                        Items.PORKCHOP.getRegistryName().toString(),
+                        Items.COOKED_PORKCHOP.getRegistryName().toString(),
+                        Items.BEEF.getRegistryName().toString(),
+                        Items.COOKED_BEEF.getRegistryName().toString(),
+                        Items.CHICKEN.getRegistryName().toString(),
+                        Items.COOKED_CHICKEN.getRegistryName().toString(),
+                        Items.MUTTON.getRegistryName().toString(),
+                        Items.COOKED_MUTTON.getRegistryName().toString(),
+                        Items.RABBIT.getRegistryName().toString(),
+                        Items.COOKED_RABBIT.getRegistryName().toString(),
+                        Blocks.YELLOW_FLOWER.getRegistryName().toString(),
+                        Blocks.HAY_BLOCK.getRegistryName().toString()
+                },"list of item ids"));
+        seedBox_autoFeedBlacklist=Arrays.asList(cfg.getStringList("autoFeedBlacklist",category,new String[0],"Entity registry names e.g.: 'minecraft:chicken'"));
 
         category = "inventoryProxies";
         cfg.setCategoryRequiresMcRestart(category, true);
@@ -165,6 +202,7 @@ public class ModConfig {
         inventoryProxies_chainLimit = cfg.getInt("chainLimit", category, 32, 0, 256, "");
         inventoryProxies_transmitter = cfg.getBoolean("transmitter", category, true, "");
         inventoryProxies_receiver = cfg.getBoolean("receiver", category, true, "");
+        inventoryProxies_blacklist=Arrays.asList(cfg.getStringList("blacklist",category,new String[0],"Blocks that will not be mimiced by proxies or the item transmitter e.g.: 'awesomemod:awesomeblock'"));
 
         category = "channelModules";
         cfg.setCategoryRequiresMcRestart(category, true);
@@ -183,6 +221,7 @@ public class ModConfig {
         transmutationTome_cropMutation = cfg.getBoolean("cropMutation", category, true, "");
         transmutationTome_dirtMutation = cfg.getBoolean("dirtMutation", category, true, "");
         transmutationTome_purification = cfg.getBoolean("purification", category, true, "");
+        transmutationTome_flowerVariatons = cfg.getBoolean("flowerVariatons", category, true, "");
         transmutationTome_misc = cfg.getBoolean("misc", category, true, "");
 
         category = "specialArrows";

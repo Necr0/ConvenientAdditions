@@ -43,6 +43,7 @@ public class BehaviourRegistry {
 
     static {
         API_DISCRIMINATORS.put("autoCrops", addBehaviour(new BehaviourAutoCrops()));
+        API_DISCRIMINATORS.put("autoFeed", addBehaviour(new BehaviourAutoFeed()));
         API_DISCRIMINATORS.put("floaty", addBehaviour(new BehaviourFloaty()));
         API_DISCRIMINATORS.put("heavy", addBehaviour(new BehaviourHeavy()));
         API_DISCRIMINATORS.put("immunityExplosion", addBehaviour(new BehaviourImmunityExplosion()));

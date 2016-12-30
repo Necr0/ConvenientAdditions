@@ -11,8 +11,10 @@ import convenientadditions.item.charge.enderPlate.ItemEnderPlate;
 import convenientadditions.item.charge.enderPlate.RecipeEnderPlateRecharge;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -87,14 +89,29 @@ public class ModRecipes {
                     's', "stone",
                     'c', Items.COMPARATOR));
 
-        if (ModConfig.platform)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.platformBlock, 4),
-                    "bpb",
-                    "pep",
-                    "bpb",
-                    'e', Items.ENDER_EYE,
-                    'b', "dyeBlue",
-                    'p', "paneGlass"));
+        if (ModConfig.platform){
+            for(EnumDyeColor c:EnumDyeColor.values()){
+                String dye="dye"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
+                String pane="paneGlass"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
+                String block="blockGlass"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.platformBlock, 4, c.getMetadata()),
+                        "p p",
+                        " d ",
+                        "p p",
+                        'd', dye,
+                        'p', pane));
+                ItemStack w=new ItemStack(ModBlocks.platformBlock,1, OreDictionary.WILDCARD_VALUE);
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.platformBlock, 4, c.getMetadata()),w,w,w,w,dye));
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.semiSolidBlock, 4, c.getMetadata()),
+                        "b b",
+                        " d ",
+                        "b b",
+                        'd', dye,
+                        'b', block));
+                w=new ItemStack(ModBlocks.semiSolidBlock,1, OreDictionary.WILDCARD_VALUE);
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.semiSolidBlock, 4, c.getMetadata()),w,w,w,w,dye));
+            }
+        }
 
         if (ModConfig.powderKeg)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.powderKegBlock),

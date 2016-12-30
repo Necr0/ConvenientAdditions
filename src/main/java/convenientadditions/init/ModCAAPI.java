@@ -10,6 +10,7 @@ import convenientadditions.block.composter.entries.CompostRegistryEntryDoublePla
 import convenientadditions.block.composter.entries.CompostRegistryEntryFood;
 import convenientadditions.block.seedbox.entries.SeedBoxBehaviourProviderEntry;
 import convenientadditions.block.seedbox.entries.SeedBoxCropsEntry;
+import convenientadditions.block.seedbox.entries.SeedBoxFeedEntry;
 import convenientadditions.entity.behaviour.BehaviourAutoFertilizer;
 import convenientadditions.entity.behaviour.BehaviourCompost;
 import convenientadditions.api.entity.specialitem.behaviours.BehaviourSunlightChargeable;
@@ -44,6 +45,8 @@ public class ModCAAPI {
             SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(Items.DYE,1,15), autoBoneMealDiscriminator, false, true);
             SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemFertilizer), autoFertilizerDiscriminator);
         }
+        if (ModConfig.seedBox_autoFeed)
+            SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxFeedEntry());
     }
 
     private static void initCompost() {
@@ -152,8 +155,8 @@ public class ModCAAPI {
         if (ModConfig.transmutationTome_dirtMutation) {
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.RED_MUSHROOM, 8), new ItemStack(Blocks.GRASS, 1), new ItemStack(Blocks.MYCELIUM), time_long, 11);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.WHEAT_SEEDS, 8), new ItemStack(Blocks.DIRT, 1), new ItemStack(Blocks.GRASS, 1), time_long, 8);
-            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.GUNPOWDER, 8), new ItemStack(Blocks.DIRT, 1), new ItemStack(Blocks.DIRT, 1), time_medium, 6);
-            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.GUNPOWDER, 8), new ItemStack(Blocks.GRASS, 1), new ItemStack(Blocks.DIRT, 2), time_medium, 6);
+            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.DIRT, 8), new ItemStack(Items.GUNPOWDER, 1), new ItemStack(Blocks.DIRT, 4, 8), time_short, 3);
+            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.GRASS, 8), new ItemStack(Items.GUNPOWDER, 1), new ItemStack(Blocks.DIRT, 4, 8), time_short, 3);
         }
         if (ModConfig.transmutationTome_misc) {
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.WHEAT, 8), new ItemStack(Items.MILK_BUCKET, 1), new ItemStack(Items.BREAD, 4), time_short, 1);

@@ -87,7 +87,7 @@ public interface IRecipeRegistry {
 
 	/**
 	 * Returns a drawable recipe layout, for addons that want to draw the layouts somewhere.
-	 * Layouts created this way do not have recipe transfer button, they are not useful for this purpose.
+	 * Layouts created this way do not have recipe transfer buttons, they are not useful for this purpose.
 	 *
 	 * @param recipeCategory the recipe category that the recipe belongs to
 	 * @param recipeWrapper  the specific recipe wrapper to draw.

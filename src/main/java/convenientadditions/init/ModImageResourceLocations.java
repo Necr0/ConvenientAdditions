@@ -14,6 +14,8 @@ public class ModImageResourceLocations {
     public static final ImageResourceLocation NONBT = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 16, 16, 16, 16);
     public static final ImageResourceLocation FILTER = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 0, 96, 16, 16);
     public static final ImageResourceLocation NOFILTER = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 16, 96, 16, 16);
+    public static final ImageResourceLocation BLACKLIST = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 32, 96, 16, 16);
+    public static final ImageResourceLocation WHITELIST = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 48, 96, 16, 16);
     public static final ImageResourceLocation HIGHRS = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 0, 48, 16, 16);
     public static final ImageResourceLocation NORS = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 16, 48, 16, 16);
     public static final ImageResourceLocation LOWRS = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/common_atlas.png", 32, 48, 16, 16);

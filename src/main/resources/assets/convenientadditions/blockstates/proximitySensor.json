@@ -9,22 +9,22 @@
     },
     "variants": {
         "strength": {
-            0: {"textures": {"all": "convenientadditions:blocks/proximitysensor/proximitysensor_inactive"}},
-            1: {},
-            2: {},
-            3: {},
-            4: {},
-            5: {},
-            6: {},
-            7: {},
-            8: {},
-            9: {},
-            10: {},
-            11: {},
-            12: {},
-            13: {},
-            14: {},
-            15: {}
+            "0": {"textures": {"all": "convenientadditions:blocks/proximitysensor/proximitysensor_inactive"}},
+            "1": {},
+            "2": {},
+            "3": {},
+            "4": {},
+            "5": {},
+            "6": {},
+            "7": {},
+            "8": {},
+            "9": {},
+            "10": {},
+            "11": {},
+            "12": {},
+            "13": {},
+            "14": {},
+            "15": {}
         },
         "inventory": [{"textures": {"all": "convenientadditions:blocks/proximitysensor/proximitysensor_inactive"}}]
     }

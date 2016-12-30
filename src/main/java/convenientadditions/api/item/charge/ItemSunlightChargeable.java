@@ -29,7 +29,7 @@ public abstract class ItemSunlightChargeable extends ItemChargeable implements I
 
     @Override
     public boolean isSunlightChargeable(ItemStack item, SlotNotation slot, @Nullable EntityPlayer player) {
-        return slot.isCommonChargable() && player==null||(!player.isInsideOfMaterial(Material.WATER)&&!player.isInsideOfMaterial(Material.LAVA));
+        return slot.isCommonChargable() && (player==null||(!player.isInsideOfMaterial(Material.WATER)&&!player.isInsideOfMaterial(Material.LAVA)));
     }
 
     @Override

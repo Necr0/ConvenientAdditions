@@ -1,31 +1,30 @@
 buildscript {
     repositories {
         jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-		
+        maven { url "http://files.minecraftforge.net/maven" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'com.moowork.gradle:gradle-node-plugin:1.0.1'
     }
 }
-
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.moowork.node'
 //apply plugin: 'com.matthewprenger.cursegradle'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = targetCompatibility = "1.8"
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
 
 ext.configFile = file('build.properties')
 ext.config = parseConfig(configFile)
-ext.privateFile = file('private/private.properties')
-ext.private = parseConfig(privateFile)
+//ext.privateFile = file('private/private.properties')
+//ext.private = parseConfig(privateFile)
 
 version = "${config.version}-build${config.build_number}"
-group= "necro.convenientadditions" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "convenientadditions"
+group= "necro.convenientadditions"
 
 repositories {
     maven { url = "http://dvs1.progwml6.com/files/maven" }
@@ -33,8 +32,7 @@ repositories {
 }
 
 dependencies {
-    //deobfCompile "mezz.jei:jei_${config.jei_mcversion}:${config.jei_version}:api"
-    //runtime "mezz.jei:jei_${config.jei_mcversion}:${config.jei_version}"
+    //deobfCompile "mezz.jei:jei_${config.jei_version}:api"
     //deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}"
 }
 
@@ -45,8 +43,9 @@ minecraft {
     mappings = config.mc_mappings
     replace 'GRADLE:BUILD', config.build_number
     replace 'GRADLE:VERSION', config.version
-}
 
+    replaceIn 'ModConstants.java'
+}
 
 processResources {
     // replace stuff in mcmod.info, nothing else
@@ -59,7 +58,7 @@ processResources {
 
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info', '**/psd/**'
+        exclude 'mcmod.info'
     }
 }
 
@@ -70,3 +69,5 @@ def parseConfig(File cfg) {
         return (new ConfigSlurper().parse(prop))
     }
 }
+
+idea { module { inheritOutputDirs = true } }

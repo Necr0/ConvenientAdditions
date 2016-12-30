@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class ItemSapBottle extends CAItem implements IModelVariantResourceLocationProvider {
     public ItemSapBottle() {
         super(ModConstants.ItemNames.sapBottleItemName);
-        this.setMaxStackSize(1).setHasSubtypes(true).setMaxDamage(2);
+        this.setMaxStackSize(1).setHasSubtypes(true).setMaxDamage(0);
     }
 
     @SideOnly(Side.CLIENT)
@@ -37,6 +38,12 @@ public class ItemSapBottle extends CAItem implements IModelVariantResourceLocati
     @Override
     public double getDurabilityForDisplay(ItemStack item) {
         return 1D - (item.getItemDamage() / 2D);
+    }
+
+    @Override
+    public int getRGBDurabilityForDisplay(ItemStack stack)
+    {
+        return MathHelper.hsvToRGB(Math.max(0.0F, (float)stack.getItemDamage() / 2) / 3.0F, 1.0F, 1.0F);
     }
 
     @Override

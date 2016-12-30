@@ -19,7 +19,7 @@ public class ItemSaturationRing extends CAItemSunlightChargeable implements IBau
     public static ItemStack FULLY_CHARGED;
 
     public ItemSaturationRing() {
-        super(ModConstants.ItemNames.saturationRingItemName, 12000, true, true, 2);
+        super(ModConstants.ItemNames.saturationRingItemName, 30000, true, true, 5);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -41,7 +41,7 @@ public class ItemSaturationRing extends CAItemSunlightChargeable implements IBau
                     p.getFoodStats().setFoodSaturationLevel(p.getFoodStats().getSaturationLevel() + .12f);
                 }
             }
-            consumeCharge(itemstack, 9);
+            consumeCharge(itemstack, 18);
         }
     }
 

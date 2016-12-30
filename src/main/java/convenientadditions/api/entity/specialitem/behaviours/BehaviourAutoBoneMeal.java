@@ -22,7 +22,7 @@ public class BehaviourAutoBoneMeal implements IEntitySpecialItemBehaviour {
         World w = item.getEntityWorld();
         BlockPos pos = new BlockPos(MathHelper.floor(item.posX), MathHelper.floor(item.posY), MathHelper.floor(item.posZ));
         ItemDye.applyBonemeal(item.getEntityItem(),w,pos);
-        if(item.getEntityItem().getCount()>0 && item.onGround){
+        if(!item.getEntityItem().isEmpty() && item.onGround){
             pos=pos.down();
             ItemDye.applyBonemeal(item.getEntityItem(),w,pos);
         }

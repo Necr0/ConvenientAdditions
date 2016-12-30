@@ -126,7 +126,7 @@ public abstract class ItemChargeable extends Item implements IChargeable {
     @Override
     public int getRGBDurabilityForDisplay(ItemStack stack)
     {
-        return MathHelper.hsvToRGB(Math.max(0.0F, (float)(getChargeCapacity(stack) - getCharge(stack)) / getChargeCapacity(stack)) / 3.0F, 1.0F, 1.0F);
+        return MathHelper.hsvToRGB(Math.max(0.0F, (float)getCharge(stack) / getChargeCapacity(stack)) / 3.0F, 1.0F, 1.0F);
     }
 
     @Override

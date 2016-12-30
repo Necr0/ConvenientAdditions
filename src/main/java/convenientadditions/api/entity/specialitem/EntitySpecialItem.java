@@ -68,6 +68,10 @@ public class EntitySpecialItem extends EntityItem {
     public void onUpdate() {
         for (long b : getBehaviours()) {
             BehaviourRegistry.getBehaviour(b).onItemEntityUpdate(this);
+            if(this.getEntityItem().isEmpty()){
+                this.setDead();
+                break;
+            }
         }
         super.onUpdate();
     }

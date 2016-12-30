@@ -19,9 +19,9 @@ public interface IModIngredientRegistration {
 	 *                           This ingredient renderer must be configured to draw in a 16 by 16 pixel space.
 	 */
 	<V> void register(
-			Class<V> ingredientClass,
-			Collection<V> allIngredients,
-			IIngredientHelper<V> ingredientHelper,
-			IIngredientRenderer<V> ingredientRenderer
-	);
+            Class<V> ingredientClass,
+            Collection<V> allIngredients,
+            IIngredientHelper<V> ingredientHelper,
+            IIngredientRenderer<V> ingredientRenderer
+    );
 }

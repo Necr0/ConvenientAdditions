@@ -9,6 +9,7 @@ import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.base.TileEntityCABase;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
 import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
+import convenientadditions.init.ModConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -38,12 +39,16 @@ public class TileEntityItemTransmitter extends TileEntityCABase implements ITick
 
     @Override
     public IItemHandler getItemHandler() {
+        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
+            return null;
         TileEntity te = getWorld().getTileEntity(getTarget());
         return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getFacing().getOpposite());
     }
 
     @Override
     public boolean hasItemHandler() {
+        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
+            return false;
         TileEntity te = getWorld().getTileEntity(getTarget());
         return te != null && !(te instanceof TileEntityItemReceiver) && !(te instanceof IItemProxy) && te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getFacing().getOpposite());
     }

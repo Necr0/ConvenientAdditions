@@ -1,11 +1,29 @@
 {
     "forge_marker": 1,
     "defaults": {
+        "textures":{"face":"convenientadditions:blocks/platform/platform_white"},
         "model": "convenientadditions:platform",
 		"uvlock" : "true"
     },
 	"variants": {
-		"normal": [{}],
-        "inventory": [{}]
+		"color": {
+            "black":{"textures":{"face":"convenientadditions:blocks/platform/platform_black"}},
+            "red":{"textures":{"face":"convenientadditions:blocks/platform/platform_red"}},
+            "green":{"textures":{"face":"convenientadditions:blocks/platform/platform_green"}},
+            "brown":{"textures":{"face":"convenientadditions:blocks/platform/platform_brown"}},
+            "blue":{"textures":{"face":"convenientadditions:blocks/platform/platform_blue"}},
+            "purple":{"textures":{"face":"convenientadditions:blocks/platform/platform_purple"}},
+            "cyan":{"textures":{"face":"convenientadditions:blocks/platform/platform_cyan"}},
+            "silver":{"textures":{"face":"convenientadditions:blocks/platform/platform_silver"}},
+            "gray":{"textures":{"face":"convenientadditions:blocks/platform/platform_gray"}},
+            "pink":{"textures":{"face":"convenientadditions:blocks/platform/platform_pink"}},
+            "lime":{"textures":{"face":"convenientadditions:blocks/platform/platform_lime"}},
+            "yellow":{"textures":{"face":"convenientadditions:blocks/platform/platform_yellow"}},
+            "light_blue":{"textures":{"face":"convenientadditions:blocks/platform/platform_light_blue"}},
+            "magenta":{"textures":{"face":"convenientadditions:blocks/platform/platform_magenta"}},
+            "orange":{"textures":{"face":"convenientadditions:blocks/platform/platform_orange"}},
+            "white":{"textures":{"face":"convenientadditions:blocks/platform/platform_white"}}
+        },
+        "inventory":[{}]
 	}
 }

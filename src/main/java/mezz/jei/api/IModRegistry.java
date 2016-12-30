@@ -1,5 +1,8 @@
 package mezz.jei.api;
 
+import java.util.Collection;
+import java.util.List;
+
 import mezz.jei.api.gui.IAdvancedGuiHandler;
 import mezz.jei.api.ingredients.IIngredientRegistry;
 import mezz.jei.api.recipe.IRecipeCategory;
@@ -8,9 +11,6 @@ import mezz.jei.api.recipe.IRecipeRegistryPlugin;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
-
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Entry point for the JEI API, functions for registering recipes are available from here.

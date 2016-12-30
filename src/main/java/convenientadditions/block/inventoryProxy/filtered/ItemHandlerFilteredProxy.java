@@ -25,7 +25,7 @@ public class ItemHandlerFilteredProxy implements IItemHandler {
 
     @Override
     public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-        if (ItemHelper.match(te.filter.getStacks(), stack, te.ignoreDV, te.ignoreNBT))
+        if (ItemHelper.match(te.filter.getStacks(), stack, te.ignoreDV, te.ignoreNBT)!=te.blacklist)
             return target.insertItem(slot, stack, simulate);
         else
             return stack;
@@ -33,7 +33,7 @@ public class ItemHandlerFilteredProxy implements IItemHandler {
 
     @Override
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
-        if (ItemHelper.match(te.filter.getStacks(), target.getStackInSlot(slot), te.ignoreDV, te.ignoreNBT))
+        if (ItemHelper.match(te.filter.getStacks(), target.getStackInSlot(slot), te.ignoreDV, te.ignoreNBT)!=te.blacklist)
             return target.extractItem(slot, amount, simulate);
         else
             return ItemStack.EMPTY;

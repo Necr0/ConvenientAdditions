@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class RecipeCategoryTransmutationTome extends BlankRecipeCategory<RecipeWrapperTransmutationTome> {
-    private static final ResourceLocation jeiTomeGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/jei/transmutationTome.png");
+    private static final ResourceLocation jeiTomeGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/jei/transmutationtome.png");
     private static final IDrawable background = ConvAddJEIPlugin.jeiHelper.getGuiHelper().createDrawable(jeiTomeGuiTextures, 0, 0, 115, 56);
 
     @Override

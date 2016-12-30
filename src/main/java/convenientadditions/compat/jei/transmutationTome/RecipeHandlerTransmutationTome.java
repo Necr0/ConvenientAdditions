@@ -23,7 +23,7 @@ public class RecipeHandlerTransmutationTome implements IRecipeHandler<RecipeWrap
 
     @Override
     public boolean isRecipeValid(RecipeWrapperTransmutationTome recipe) {
-        return recipe.recipe.getBase().size()> 1 && recipe.recipe.getTransmutator().size()> 1 && recipe.recipe.getResult().size() > 0;
+        return recipe.recipe.getBase().size()> 0 && recipe.recipe.getTransmutator().size()> 0 && recipe.recipe.getResult().size() > 0;
     }
 
 }

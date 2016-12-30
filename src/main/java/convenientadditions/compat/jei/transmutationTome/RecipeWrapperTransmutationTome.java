@@ -24,7 +24,7 @@ public class RecipeWrapperTransmutationTome extends BlankRecipeWrapper {
     @Override
     public void getIngredients(IIngredients ingredients) {
         ingredients.setInputLists(ItemStack.class, Arrays.asList(recipe.getBase(), recipe.getTransmutator()));
-        ingredients.setOutputs(ItemStack.class, recipe.getResult());
+        ingredients.setOutputLists(ItemStack.class, Arrays.asList(recipe.getResult()));
     }
 
 }

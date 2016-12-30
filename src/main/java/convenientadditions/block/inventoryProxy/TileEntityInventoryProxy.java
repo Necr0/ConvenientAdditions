@@ -25,6 +25,8 @@ public class TileEntityInventoryProxy extends TileEntityCABase implements IItemP
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
+            return false;
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             if (!(te instanceof IItemProxy))
@@ -38,6 +40,8 @@ public class TileEntityInventoryProxy extends TileEntityCABase implements IItemP
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
+            return null;
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             if (!(te instanceof IItemProxy))

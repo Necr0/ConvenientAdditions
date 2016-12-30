@@ -24,14 +24,13 @@
     },
     "ambientocclusion": false,
     "textures": {
-        "particle": "convenientadditions:blocks/platform",
-        "face": "convenientadditions:blocks/platform"
+        "particle": "#face"
     },
     "elements":[{
         "from": [ 0, 0, 0 ],
         "to": [ 16, 16, 16 ],
         "faces": {
-        "up":    { "uv": [ 0,  0, 16, 16 ], "texture": "#face" }
+            "up":    { "uv": [ 0,  0, 16, 16 ], "texture": "#face" }
         }
     }]
 }

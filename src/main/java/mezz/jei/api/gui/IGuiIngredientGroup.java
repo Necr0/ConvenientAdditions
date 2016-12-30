@@ -94,10 +94,10 @@ public interface IGuiIngredientGroup<T> {
 	 * @see IGuiFluidStackGroup#init(int, boolean, int, int, int, int, int, boolean, IDrawable)
 	 */
 	void init(int slotIndex, boolean input,
-			  IIngredientRenderer<T> ingredientRenderer,
-			  int xPosition, int yPosition,
-			  int width, int height,
-			  int xPadding, int yPadding);
+              IIngredientRenderer<T> ingredientRenderer,
+              int xPosition, int yPosition,
+              int width, int height,
+              int xPadding, int yPadding);
 
 	/*
 	 * Force this ingredient group to display a different focus.

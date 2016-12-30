@@ -2,6 +2,7 @@ package convenientadditions.block.technical;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
+import convenientadditions.block.platform.BlockPlatform;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -41,9 +42,9 @@ public class BlockPhantomPlatform extends Block {
     }
 
     @Override
-    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity ent) {
+    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity ent, boolean dontknow) {
         if (ent instanceof EntityPlayer && ent.posY >= (pos.getY() + 1) && !ent.isSneaking())
-            addCollisionBoxToList(pos, entityBox, collidingBoxes, FULL_BLOCK_AABB);
+            addCollisionBoxToList(pos, entityBox, collidingBoxes, BlockPlatform.AABBPlatform);
     }
 
     @Override

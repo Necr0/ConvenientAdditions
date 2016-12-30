@@ -72,6 +72,23 @@ public class BlockTreeTap extends CABlock {
     }
 
     @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        EnumBottleState b=state.getValue(BOTTLE_STATE);
+        if (b != EnumBottleState.empty) {
+            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
+            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
+            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
+            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, new ItemStack(ModItems.itemSapBottle, 1, b.ordinal() - 1));
+            float factor = 0.05F;
+            entityItem.motionX = world.rand.nextGaussian() * factor;
+            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
+            entityItem.motionZ = world.rand.nextGaussian() * factor;
+            world.spawnEntity(entityItem);
+        }
+        super.breakBlock(world, pos, state);
+    }
+
+    @Override
     public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         if (!worldIn.isRemote && rand.nextInt(12) == 0) {
             IBlockState log = worldIn.getBlockState(pos.add(state.getValue(FACING).getDirectionVec()));
