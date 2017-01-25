@@ -33,6 +33,8 @@ public class ModConstants {
         public static final String obsidianPlateItemName = "obsidianPlate";
         public static final String modulePlayerItemName = "modulePlayer";
         public static final String moduleColorItemName = "moduleColor";
+        //
+        public static final String moduleLocationItemName = "moduleLocation";
         //baubles
         public static final String sunlightRingItemName = "sunlightRing";
         public static final String saturationRingItemName = "saturationRing";

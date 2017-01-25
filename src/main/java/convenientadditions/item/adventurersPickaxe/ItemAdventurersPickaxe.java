@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -37,9 +38,9 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
 
     @Override
     public float getStrVsBlock(ItemStack stack, IBlockState state) {
-        if (state.getBlock().getHarvestTool(state) == null || isBroken(stack))
-            return 1.0f;
-        if (state.getBlock().getHarvestTool(state).equals("pickaxe")) {
+        if(isBroken(stack))
+            return .8f;
+        if (isEffective(state)) {
             float f = (float) getToolProperty(stack, "mining_speed");
             return f + (state.getBlock().getHarvestLevel(state) < getHarvestLevel(stack, "pickaxe", null, state) ? (float) getToolProperty(stack, "mining_soft_speed") : 0f);
         }
@@ -49,8 +50,12 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
         return 1.0f;
     }
 
+    public boolean isEffective(IBlockState state) {
+        return state.getBlock().getHarvestTool(state)==null || state.getBlock().getHarvestTool(state).equals("pickaxe");
+    }
+
     @Override
-    public int getHarvestLevel(ItemStack stack, String toolClass, EntityPlayer player, IBlockState state) {
+    public int getHarvestLevel(ItemStack stack, String toolClass, @Nullable EntityPlayer player, @Nullable IBlockState state) {
         if (isBroken(stack))
             return -1;
         if (toolClass.equals("pickaxe"))
@@ -59,6 +64,12 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
             return super.getHarvestLevel(stack, toolClass, player, state);
     }
 
+    @Override
+    public boolean canHarvestBlock(IBlockState blockIn, ItemStack item) {
+        return blockIn.getBlock().getHarvestTool(blockIn) == null || blockIn.getBlock().getHarvestLevel(blockIn) <= getHarvestLevel(item, blockIn.getBlock().getHarvestTool(blockIn), null, blockIn);
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack stack) {
         return false;
@@ -219,8 +230,13 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
             list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "DiggingSpeed", "%s", "" + (float) getToolProperty(stack, "digging_speed")));
             list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "MiningVeins", "%v", "" + (int) getToolProperty(stack, "mining_veins")));
             list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "SoftSpeed", "%s", "" + (float) getToolProperty(stack, "mining_soft_speed")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Luck", "%l", "" + (int) getToolProperty(stack, "mining_luck")));
             list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "RepairMaterial", "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningRepairMaterialNames[(int) getToolProperty(stack, "mining_level")])));
             list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Durability", "%c", "" + ((int) getToolProperty(stack, "durability") - stack.getItemDamage()), "%D", "" + (int) getToolProperty(stack, "durability")));
+            if((boolean)getToolProperty(stack,"magnetic"))
+                list.add(TextFormatting.YELLOW+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Magnetic"));
+            if(isSoulbound(stack,player))
+                list.add(TextFormatting.YELLOW+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Soulbound"));
         }
     }
 
@@ -324,6 +340,8 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
     public double getDurabilityForDisplay(ItemStack item) {
         return ((double) item.getItemDamage() / (int) getToolProperty(item, "durability"));
     }
+
+    @Override
     public int getMaxDamage(ItemStack stack)
     {
         return (int)getToolProperty(stack, "durability");
@@ -367,6 +385,7 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
         s = new ItemStack(this);
         setToolProperty(s, "lvl", 25);
         setToolProperty(s, "mining_level", 3);
+        setToolProperty(s, "magnetic", true);
         setToolProperty(s, "mining_luck", 1);
         setToolProperty(s, "durability", (int) getToolProperty(s, "durability") + 650);
         setToolProperty(s, "mining_speed", ToolMaterial.DIAMOND.getEfficiencyOnProperMaterial());

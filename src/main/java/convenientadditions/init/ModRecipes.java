@@ -163,6 +163,15 @@ public class ModRecipes {
                     'h', Blocks.HOPPER,
                     'c', Items.COMPARATOR,
                     'b', Blocks.IRON_BARS));
+
+        if (ModConfig.storageMatrix)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.storageMatrixBlock),
+                    "ici",
+                    "cec",
+                    "ici",
+                    'i', "ingotIron",
+                    'e', Items.ENDER_EYE,
+                    'c', "chestWood"));
     }
 
     private static void initChargeItems() {

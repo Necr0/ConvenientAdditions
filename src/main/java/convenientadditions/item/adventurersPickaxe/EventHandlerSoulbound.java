@@ -18,6 +18,8 @@ public class EventHandlerSoulbound {
 	@SubscribeEvent
 	public void onPlayerDrops(PlayerDropsEvent e)
     {
+    	if(e.getEntityPlayer().getEntityWorld().isRemote || e.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
+    		return;
 		Iterator<EntityItem> i=e.getDrops().iterator();
     	while(i.hasNext()){
     		EntityItem ent=i.next();
@@ -36,6 +38,8 @@ public class EventHandlerSoulbound {
 	@SubscribeEvent
 	public void onPlayerClone(PlayerEvent.Clone e)
     {
+		if(e.getEntityPlayer().getEntityWorld().isRemote || e.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
+			return;
 		EntityPlayer original=e.getOriginal();
 		EntityPlayer clone=e.getEntityPlayer();
 		IItemHandler h=original.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);

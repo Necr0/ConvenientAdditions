@@ -59,9 +59,11 @@ public class EntityLaunchingArrow extends EntityArrow {
         }
     }
 
+    @Override
     protected void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
-        ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(getVariant(), this));
+        if(!living.world.isRemote)
+            ExtendedExplosion.newExplosion(EnumLaunchingArrowVariant.getExtendedExplosionFromVariant(getVariant(), this));
         this.setDead();
     }
 

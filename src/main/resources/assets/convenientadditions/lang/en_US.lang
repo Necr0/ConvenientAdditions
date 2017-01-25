@@ -50,6 +50,7 @@ tile.convenientadditions:semiSolidBlock.lightBlue.name=Light Blue Semi-Solid Blo
 tile.convenientadditions:semiSolidBlock.magenta.name=Magenta Semi-Solid Block
 tile.convenientadditions:semiSolidBlock.orange.name=Orange Semi-Solid Block
 tile.convenientadditions:semiSolidBlock.white.name=White Semi-Solid Block
+tile.convenientadditions:storageMatrix.name=Storage Matrix
 
 ### TEs
 tileentity.convenientadditions:composter.name=Composter
@@ -94,6 +95,8 @@ item.convenientadditions:adventurersPickaxe.name=Adventurer's Pickaxe
 item.convenientadditions:obsidianPlate.name=Obsidian Plate
 item.convenientadditions:modulePlayer.name=Player Channel Module
 item.convenientadditions:moduleColor.name=Color Channel Module
+#
+item.convenientadditions:moduleLocation.name=Location Module
 # Baubles
 item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
@@ -153,6 +156,10 @@ tooltip.convenientadditions:inventoryProxyInfo=Mimics the targeted inventory.
 tooltip.convenientadditions:inventoryProxySidedInfo=Mimics the targeted inventory and respects accessed side.
 tooltip.convenientadditions:inventoryProxyFilteredInfo=Mimics the targeted inventory and filters.
 tooltip.convenientadditions:composterInfo=Produces compost from given biomass.
+tooltip.convenientadditions:storageMatrixInfo=Has a large inventory but no GUI.
+tooltip.convenientadditions:moduleLocationInfo=Can store a block location.
+
+tooltip.convenientadditions:storageMatrixHoldingInventory=(Holding inventory)
 
 tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
 tooltip.convenientadditions:sunstoneInactive=(right click to activate)
@@ -168,11 +175,16 @@ tooltip.convenientadditions:adventurersPickaxeMiningSpeed=Mining Speed : %s
 tooltip.convenientadditions:adventurersPickaxeSoftSpeed=Soft Mining Bonus : %s
 tooltip.convenientadditions:adventurersPickaxeDiggingSpeed=Digging Speed : %s
 tooltip.convenientadditions:adventurersPickaxeMiningVeins=Vein Size : %v
+tooltip.convenientadditions:adventurersPickaxeLuck=Luck : %l
 tooltip.convenientadditions:adventurersPickaxeRepairMaterial=Repair Material : %m
 tooltip.convenientadditions:adventurersPickaxeDurability=Durability : %c/%D
+tooltip.convenientadditions:adventurersPickaxeMagnetic=Magnetic
+tooltip.convenientadditions:adventurersPickaxeSoulbound=Soulbound
 # Channel Modules
-tooltip.convenientadditions:modulePlayerPrefix=Player: %p
+tooltip.convenientadditions:modulePlayerPlayer=Player: %p
 tooltip.convenientadditions:modulePlayerNotSet=(right click to set player)
+tooltip.convenientadditions:moduleLocationLocation=Location: %x, %y, %z
+tooltip.convenientadditions:moduleLocationNotSet=(sneak + use on a block to set location)
 tooltip.convenientadditions:moduleColorsPrefix=Colors: %c0, %c1, %c2
 # Set Provider
 tooltip.convenientadditions:pushOn=Push on %v.
@@ -272,6 +284,10 @@ waila.convenientadditions:compostingMass=%m/%M composting mass stored. (%p%)
 
 ### Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.
+message.convenientadditions:locationSetTo=Location set to %x, %y, %z.
+message.convenientadditions:playerSetTo=Player set to %p.
+message.convenientadditions:locationReset=Location has been reset.
+message.convenientadditions:playerReset=Player has been reset.
 # Adv Pick
 message.convenientadditions:adventurersPickaxeLevelUpMiningLevel=Mining Level increased to %m!
 message.convenientadditions:adventurersPickaxeLevelUpLuck=Luck increased to %m!

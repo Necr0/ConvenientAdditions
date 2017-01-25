@@ -12,8 +12,18 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemAntidote extends CAItem {
+    @GameRegistry.ObjectHolder("minecraft:nausea")
+    public static Potion NAUSEA;
+    @GameRegistry.ObjectHolder("minecraft:hunger")
+    public static Potion HUNGER;
+    @GameRegistry.ObjectHolder("minecraft:poison")
+    public static Potion POISON;
+    @GameRegistry.ObjectHolder("minecraft:wither")
+    public static Potion WITHER;
+
     public ItemAntidote() {
         super(ModConstants.ItemNames.antidoteItemName);
         this.setMaxStackSize(1);
@@ -43,10 +53,10 @@ public class ItemAntidote extends CAItem {
         }
 
         if (!worldIn.isRemote) {
-            entityLiving.removePotionEffect(Potion.getPotionById(9));
-            entityLiving.removePotionEffect(Potion.getPotionById(17));
-            entityLiving.removePotionEffect(Potion.getPotionById(19));
-            entityLiving.removePotionEffect(Potion.getPotionById(20));
+            entityLiving.removePotionEffect(NAUSEA);
+            entityLiving.removePotionEffect(HUNGER);
+            entityLiving.removePotionEffect(POISON);
+            entityLiving.removePotionEffect(WITHER);
         }
 
         if (entityplayer == null || !entityplayer.capabilities.isCreativeMode) {

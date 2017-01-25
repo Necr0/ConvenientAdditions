@@ -102,6 +102,7 @@ public class ModConfig {
     public static boolean bandage;
     public static boolean blastPad;
     public static boolean platform;
+    public static boolean storageMatrix;
 
     public static void init() {
         Configuration cfg = new Configuration(new File("config/ConvAdd.cfg"));
@@ -121,6 +122,7 @@ public class ModConfig {
         bandage = cfg.getBoolean("antidote", category, true, "requires sap from treetap");
         blastPad = cfg.getBoolean("blastPad", category, true, "");
         platform = cfg.getBoolean("platform", category, true, "also disables semi-solid blocks");
+        storageMatrix = cfg.getBoolean("storageMatrix", category, true, "");
 
         category = "composter";
         cfg.setCategoryRequiresMcRestart(category, true);

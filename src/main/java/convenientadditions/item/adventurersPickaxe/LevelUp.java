@@ -40,10 +40,12 @@ public class LevelUp {
 
         applyRandomUpgrade(s);
 
+        boolean msg=p != null && !p.world.isRemote;
+
         switch (lvl) {
             case 5:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 1);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
@@ -55,7 +57,7 @@ public class LevelUp {
                 break;
             case 10:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "magnetic", true);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMagnetic")
@@ -65,7 +67,7 @@ public class LevelUp {
                 break;
             case 15:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 2);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
@@ -77,7 +79,7 @@ public class LevelUp {
                 break;
             case 20:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 1);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
@@ -89,7 +91,7 @@ public class LevelUp {
                 break;
             case 25:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 3);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
@@ -101,7 +103,7 @@ public class LevelUp {
                 break;
             case 30:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "soulbound", true);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpSoulbound")
@@ -111,7 +113,7 @@ public class LevelUp {
                 break;
             case 35:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 2);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
@@ -123,7 +125,7 @@ public class LevelUp {
                 break;
             case 45:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 3);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
@@ -135,7 +137,7 @@ public class LevelUp {
                 break;
             case 55:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_luck", 4);
-                if (p != null) {
+                if (msg) {
                     p.sendMessage(
                             new TextComponentString(
                                     Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",

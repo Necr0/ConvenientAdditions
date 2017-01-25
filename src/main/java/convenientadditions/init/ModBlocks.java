@@ -22,6 +22,7 @@ import convenientadditions.block.proximitySensor.BlockProximitySensor;
 import convenientadditions.block.seedbox.BlockSeedBox;
 import convenientadditions.block.setProvider.BlockSetProvider;
 import convenientadditions.block.storageMatrix.BlockStorageMatrix;
+import convenientadditions.block.storageMatrix.ItemBlockStorageMatrix;
 import convenientadditions.block.technical.BlockPhantomPlatform;
 import convenientadditions.block.technical.BlockTempLight;
 import net.minecraft.block.Block;
@@ -81,7 +82,7 @@ public class ModBlocks {
         registerBlock(treeBoxBlock);
         registerBlock(compostSoilBlock, new ItemBlockMetadata(compostSoilBlock));
         registerBlock(compostSoilTilledBlock);
-        //registerBlock(storageMatrixBlock, new ItemBlockStorageMatrix(storageMatrixBlock));
+        registerBlock(storageMatrixBlock, new ItemBlockStorageMatrix(storageMatrixBlock));
     }
 
     @SideOnly(Side.CLIENT)
@@ -104,7 +105,7 @@ public class ModBlocks {
         ModelLoader.setCustomMeshDefinition(ItemBlock.getItemFromBlock(platformBlock), stack -> new ModelResourceLocation(platformBlock.getRegistryName(),BlockPlatform.COLOR.getName() + "=" + EnumDyeColor.byMetadata(stack.getItemDamage()).getName()));
         ModelLoader.setCustomMeshDefinition(ItemBlock.getItemFromBlock(semiSolidBlock), stack -> new ModelResourceLocation(semiSolidBlock.getRegistryName(),BlockSemiSolid.COLOR.getName() + "=" + EnumDyeColor.byMetadata(stack.getItemDamage()).getName()));
         ModItems.registerItemBlockModel(treeBoxBlock);
-        //ModItems.registerItemBlockModel(storageMatrixBlock);
+        ModItems.registerItemBlockModel(storageMatrixBlock);
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilBlock), new ModelResourceLocation(compostSoilBlock.getRegistryName(), "inventory"));
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilTilledBlock), new ModelResourceLocation(compostSoilBlock.getRegistryName(), "inventory"));
     }

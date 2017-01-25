@@ -44,6 +44,8 @@ public class ModItems {
     //channel modules
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
+    //
+    public static final ItemLocationModule itemModuleLocation = new ItemLocationModule();
     //dummy
     public static final Item itemDirtChunk = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     public static final Item itemObsidianPlate = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.obsidianPlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
@@ -81,6 +83,8 @@ public class ModItems {
         //channel modules
         registerItem(itemModulePlayer, ModConstants.ItemNames.modulePlayerItemName);
         registerItem(itemModuleColor, ModConstants.ItemNames.moduleColorItemName);
+        //
+        registerItem(itemModuleLocation, ModConstants.ItemNames.moduleLocationItemName);
         //baubles
         registerItem(itemSunlightRing, ModConstants.ItemNames.sunlightRingItemName);
         registerItem(itemSaturationRing, ModConstants.ItemNames.saturationRingItemName);
@@ -118,6 +122,8 @@ public class ModItems {
         //channel modules
         registerModelLocation(itemModulePlayer);
         registerModelLocation(itemModuleColor);
+        //
+        registerModelLocation(itemModuleLocation);
         //baubles
         registerModelLocation(itemSunlightRing);
         registerModelLocation(itemSaturationRing);

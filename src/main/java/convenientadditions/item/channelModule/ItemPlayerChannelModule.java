@@ -39,10 +39,16 @@ public class ItemPlayerChannelModule extends ItemChannelModule {
         if (!world.isRemote) {
             if (!item.hasTagCompound())
                 item.setTagCompound(new NBTTagCompound());
-            if (!item.getTagCompound().hasKey("MATCHER_PLAYER_ID")) {
-                item.getTagCompound().setString("MATCHER_PLAYER_ID", player.getUniqueID().toString());
-                item.getTagCompound().setString("MATCHER_PLAYER_NAME", player.getDisplayNameString());
-                player.sendMessage(new TextComponentString("Successfully set player!"));
+            NBTTagCompound t=item.getTagCompound();
+            if (!player.isSneaking()) {
+                t.setString("MATCHER_PLAYER_ID", player.getUniqueID().toString());
+                t.setString("MATCHER_PLAYER_NAME", player.getDisplayNameString());
+                player.sendMessage(new TextComponentString(Helper.localize("message."+ModConstants.Mod.MODID+":playerSetTo","%p", player.getDisplayNameString())));
+                new ActionResult<>(EnumActionResult.SUCCESS, item);
+            }else{
+                t.removeTag("MATCHER_PLAYER_ID");
+                t.removeTag("MATCHER_PLAYER_NAME");
+                player.sendMessage(new TextComponentString(Helper.localize("message."+ModConstants.Mod.MODID+":playerReset")));
                 new ActionResult<>(EnumActionResult.SUCCESS, item);
             }
         }
@@ -52,7 +58,7 @@ public class ItemPlayerChannelModule extends ItemChannelModule {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
         if (hasMatcher(stack))
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":modulePlayerPrefix", "%p", stack.getTagCompound().hasKey("MATCHER_PLAYER_NAME") ? stack.getTagCompound().getString("MATCHER_PLAYER_NAME") : stack.getTagCompound().getString("MATCHER_PLAYER_ID")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":modulePlayerPlayer", "%p", stack.getTagCompound().hasKey("MATCHER_PLAYER_NAME") ? stack.getTagCompound().getString("MATCHER_PLAYER_NAME") : stack.getTagCompound().getString("MATCHER_PLAYER_ID")));
         else
             list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":modulePlayerNotSet"));
         super.addInformation(stack, player, list, par4);

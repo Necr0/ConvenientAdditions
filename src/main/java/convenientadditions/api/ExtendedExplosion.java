@@ -324,7 +324,8 @@ public class ExtendedExplosion extends Explosion {
     }
 
     public Vec3d getPosition(){ return this.position; }
-	
+
+
     public static Explosion newExplosion(ExtendedExplosion e)
     {
         if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(e.getWorld(), e)) return e;
@@ -338,7 +339,7 @@ public class ExtendedExplosion extends Explosion {
 
         for (EntityPlayer entityplayer : e.getWorld().playerEntities)
         {
-            if (entityplayer.getDistanceSq(e.explosionX, e.explosionY, e.explosionZ) < 4096.0D)
+            if (entityplayer instanceof EntityPlayerMP && entityplayer.getDistanceSq(e.explosionX, e.explosionY, e.explosionZ) < 4096.0D)
             {
                 ModNetworking.INSTANCE.sendTo(new PacketExtendedExplosion(e.explosionX, e.explosionY, e.explosionZ, e.explosionSize, e.getAffectedBlockPositions(), (Vec3d)e.getPlayerKnockbackMap().get(entityplayer)),(EntityPlayerMP)entityplayer);
             }
