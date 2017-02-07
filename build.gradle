@@ -3,6 +3,7 @@ buildscript {
         jcenter()
         maven { url "http://files.minecraftforge.net/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "http://dvs1.progwml6.com/files/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
@@ -32,7 +33,11 @@ repositories {
 }
 
 dependencies {
-    //deobfCompile "mezz.jei:jei_${config.jei_version}:api"
+    //compile files(
+    //        "libs/Baubles-${config.baubles_version}-deobf.jar"
+    //)
+    compile "mezz.jei:jei_${config.jei_version}:api"
+    runtime "mezz.jei:jei_${config.jei_version}"
     //deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}"
 }
 
