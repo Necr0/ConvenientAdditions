@@ -31,7 +31,7 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
     public List<ItemStack> subitems;
 
     public ItemAdventurersPickaxe() {
-        super(ModConstants.ItemNames.adventurersPickaxeItemName);
+        super(ModConstants.ItemNames.adventurersPickaxe);
         this.setMaxStackSize(1).setHasSubtypes(true);
         initSubItems();
     }
@@ -220,23 +220,23 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
         boolean shift = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
         int lvl = (int) getToolProperty(stack, "lvl");
-        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "MiningLevel", "%l", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[(int) getToolProperty(stack, "mining_level")])));
-        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LVL", "%l", "" + lvl));
-        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "XP", "%x", "" + (int) getToolProperty(stack, "xp"), "%X", "" + LevelUp.getXPRequiredForLvlUp(lvl)));
+        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "MiningLevel", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[(int) getToolProperty(stack, "mining_level")])));
+        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LVL", lvl));
+        list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "XP", getToolProperty(stack, "xp"), LevelUp.getXPRequiredForLvlUp(lvl)));
         if (!shift) {
             list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":shiftInfo"));
         } else {
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "MiningSpeed", "%s", "" + (float) getToolProperty(stack, "mining_speed")));
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "DiggingSpeed", "%s", "" + (float) getToolProperty(stack, "digging_speed")));
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "MiningVeins", "%v", "" + (int) getToolProperty(stack, "mining_veins")));
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "SoftSpeed", "%s", "" + (float) getToolProperty(stack, "mining_soft_speed")));
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Luck", "%l", "" + (int) getToolProperty(stack, "mining_luck")));
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "RepairMaterial", "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningRepairMaterialNames[(int) getToolProperty(stack, "mining_level")])));
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Durability", "%c", "" + ((int) getToolProperty(stack, "durability") - stack.getItemDamage()), "%D", "" + (int) getToolProperty(stack, "durability")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "MiningSpeed", getToolProperty(stack, "mining_speed")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "DiggingSpeed", getToolProperty(stack, "digging_speed")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "MiningVeins", getToolProperty(stack, "mining_veins")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "SoftSpeed", getToolProperty(stack, "mining_soft_speed")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "Luck", getToolProperty(stack, "mining_luck")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "RepairMaterial", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningRepairMaterialNames[(int) getToolProperty(stack, "mining_level")])));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "Durability", ((int) getToolProperty(stack, "durability") - stack.getItemDamage()), getToolProperty(stack, "durability")));
             if((boolean)getToolProperty(stack,"magnetic"))
-                list.add(TextFormatting.YELLOW+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Magnetic"));
+                list.add(TextFormatting.YELLOW+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "Magnetic"));
             if(isSoulbound(stack,player))
-                list.add(TextFormatting.YELLOW+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "Soulbound"));
+                list.add(TextFormatting.YELLOW+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "Soulbound"));
         }
     }
 
@@ -356,6 +356,12 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
     @Override
     public boolean isSoulbound(ItemStack i, EntityPlayer p) {
         return !isBroken(i) && (boolean)ModItems.itemAdventurersPickaxe.getToolProperty(i, "soulbound");
+    }
+
+    @Override
+    public boolean isDamaged(ItemStack stack)
+    {
+        return false;
     }
 
     @Override

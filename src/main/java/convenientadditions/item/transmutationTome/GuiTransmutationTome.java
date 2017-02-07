@@ -65,8 +65,8 @@ public class GuiTransmutationTome extends CAGuiContainer {
             int xp_bar = (int) (percentage * 68);
             this.drawTexturedModalRect(leftX + 153, topY + 9 + (68 - xp_bar), 176 + ((int) ((time / 600) % 2) * 13), 1 + (68 - xp_bar), 11, xp_bar);
             //xp string
-            this.drawCenteredString(this.fontRendererObj, "" + player.experienceLevel, leftX + 159, topY + 78, (player.experienceLevel >= tcontainer.getLevelRequired()) ? 0x009900 : 0xFF1111);
-            this.drawCenteredString(this.fontRendererObj, "" + tcontainer.getLevelRequired(), leftX + 159, topY, 0x009900);
+            this.drawCenteredString(this.fontRenderer, "" + player.experienceLevel, leftX + 159, topY + 78, (player.experienceLevel >= tcontainer.getLevelRequired()) ? 0x009900 : 0xFF1111);
+            this.drawCenteredString(this.fontRenderer, "" + tcontainer.getLevelRequired(), leftX + 159, topY, 0x009900);
 
             //particles
             if (tcontainer.isWorking()) {
@@ -84,7 +84,7 @@ public class GuiTransmutationTome extends CAGuiContainer {
                 }
             }
         } else {
-            this.drawCenteredString(this.fontRendererObj, "" + player.experienceLevel, leftX + 159, topY + 78, 0x009900);
+            this.drawCenteredString(this.fontRenderer, "" + player.experienceLevel, leftX + 159, topY + 78, 0x009900);
         }
     }
 

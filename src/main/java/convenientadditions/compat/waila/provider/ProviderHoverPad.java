@@ -2,7 +2,7 @@ package convenientadditions.compat.waila.provider;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.block.hoverPad.TileEntityHoverPad;
+import convenientadditions.block.machine.hoverPad.TileEntityHoverPad;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -30,7 +30,7 @@ public class ProviderHoverPad implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity te=accessor.getTileEntity();
         if(te!=null&&te instanceof TileEntityHoverPad){
-            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":powerLevel","%l",accessor.getWorld().isBlockIndirectlyGettingPowered(accessor.getPosition())+""));
+            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":powerLevel",accessor.getWorld().isBlockIndirectlyGettingPowered(accessor.getPosition())));
         }
         return  currenttip;
     }

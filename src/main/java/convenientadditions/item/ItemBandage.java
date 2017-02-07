@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class ItemBandage extends CAItem {
     public ItemBandage() {
-        super(ModConstants.ItemNames.bandageItemName);
+        super(ModConstants.ItemNames.bandage);
         this.setMaxStackSize(4);
     }
 

@@ -2,9 +2,10 @@ package convenientadditions.block.itemTransmitter;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.block.IDismantleable;
-import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
+import convenientadditions.base.CABlockContainer;
+import convenientadditions.handler.ModGuiHandler;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,10 +17,9 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockItemTransmitter extends BlockInventoryProxy implements IDismantleable {
+public class BlockItemTransmitter extends CABlockContainer implements IDismantleable {
     public BlockItemTransmitter() {
-        super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.itemTransmitterBlockName).setRegistryName(ModConstants.BlockNames.itemTransmitterBlockName);
+        super(ModConstants.BlockNames.itemTransmitter, Material.IRON);
     }
 
     @Override

@@ -67,7 +67,7 @@ public abstract class CAGuiContainer extends GuiContainer implements IGui {
 		for(IWidget widget:widgetList){
 			if(widget instanceof IWidgetTooltip){
 				if(widget.isVisible()&&((IWidgetTooltip) widget).hasTooltip(this)&&widget.isHovered(this,mouseX,mouseY)){
-					GuiUtils.drawHoveringText(((IWidgetTooltip)widget).getTooltip(this,partialTicks,mouseX,mouseY), mouseX, mouseY, width, height, -1, fontRendererObj);
+					GuiUtils.drawHoveringText(((IWidgetTooltip)widget).getTooltip(this,partialTicks,mouseX,mouseY), mouseX, mouseY, width, height, -1, fontRenderer);
 				}
 			}
 		}
@@ -97,7 +97,7 @@ public abstract class CAGuiContainer extends GuiContainer implements IGui {
 	{
 		this.mc = mc;
 		this.itemRender = mc.getRenderItem();
-		this.fontRendererObj = mc.fontRendererObj;
+		this.fontRenderer = mc.fontRenderer;
 		this.width = width;
 		this.height = height;
 		setupGui();

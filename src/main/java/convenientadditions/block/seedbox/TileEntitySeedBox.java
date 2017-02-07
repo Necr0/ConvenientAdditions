@@ -2,7 +2,7 @@ package convenientadditions.block.seedbox;
 
 import convenientadditions.api.util.MathHelper;
 import convenientadditions.api.block.IConfigurable;
-import convenientadditions.base.TileEntityCABase;
+import convenientadditions.base.CATileEntity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class TileEntitySeedBox extends TileEntityCABase implements IConfigurable {
+public class TileEntitySeedBox extends CATileEntity implements IConfigurable {
 
     public HashMap<EnumFacing, Boolean> outletSides = new HashMap<EnumFacing, Boolean>();
 

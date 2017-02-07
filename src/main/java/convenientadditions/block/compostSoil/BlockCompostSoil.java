@@ -35,7 +35,7 @@ public class BlockCompostSoil extends CABlock {
     public static final PropertyInteger DEGRADATION = PropertyInteger.create("degradation", 0, 10);
 
     public BlockCompostSoil() {
-        super(ModConstants.BlockNames.compostSoilBlockName,Material.GROUND);
+        super(ModConstants.BlockNames.compostSoil,Material.GROUND);
         this.setTickRandomly(true).setHardness(0.5F);
         this.setSoundType(SoundType.GROUND);
         this.setDefaultState(this.blockState.getBaseState().withProperty(DEGRADATION, Integer.valueOf(0)));

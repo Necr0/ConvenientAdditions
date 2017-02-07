@@ -89,6 +89,10 @@ public class ModConfig {
     public static boolean hoverPad_recipe;
     public static int hoverPad_range;
 
+    //#########MOB CATCHER#############
+    public static boolean mobCatcher_recipe;
+    public static List<String> mobCatcher_blacklist;
+
     //#########GENERAL#############
     public static boolean ironWrench;
     public static boolean launchingArrows;
@@ -236,6 +240,10 @@ public class ModConfig {
         cfg.setCategoryRequiresMcRestart(category, true);
         hoverPad_recipe = cfg.getBoolean("recipe", category, true, "");
         hoverPad_range = cfg.getInt("range", category, 15, 1, 255, "");
+
+        category = "mobCatcher";
+        mobCatcher_recipe = cfg.getBoolean("recipe", category, true, "");
+        mobCatcher_blacklist = Arrays.asList(cfg.getStringList("blacklist",category,new String[]{"minecraft:wither","minecraft:ender_dragon"},"Entity registry names e.g.: 'minecraft:chicken'"));
 
         if (cfg.hasChanged())
             cfg.save();

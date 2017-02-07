@@ -48,8 +48,8 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
-                                            "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[1])
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpMiningLevel",
+                                            Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[1])
                                     )
                             )
                     );
@@ -60,7 +60,7 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMagnetic")
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpMagnetic")
                             )
                     );
                 }
@@ -70,8 +70,8 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
-                                            "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[2])
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpMiningLevel",
+                                            Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[2])
                                     )
                             )
                     );
@@ -82,9 +82,7 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                            "%m", "1"
-                                    )
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpLuck",1)
                             )
                     );
                 }
@@ -94,8 +92,8 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpMiningLevel",
-                                            "%m", Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[3])
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpMiningLevel",
+                                            Helper.localize(ModConstants.Items.AdvPick.unlocalizedMiningLevelNames[3])
                                     )
                             )
                     );
@@ -106,7 +104,7 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpSoulbound")
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpSoulbound")
                             )
                     );
                 }
@@ -116,9 +114,7 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                            "%m", "2"
-                                    )
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpLuck",2)
                             )
                     );
                 }
@@ -128,9 +124,7 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                            "%m", "3"
-                                    )
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpLuck",3)
                             )
                     );
                 }
@@ -140,9 +134,7 @@ public class LevelUp {
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
-                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxeItemName + "LevelUpLuck",
-                                            "%m", "4"
-                                    )
+                                    Helper.localize("message." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.adventurersPickaxe + "LevelUpLuck",4)
                             )
                     );
                 }

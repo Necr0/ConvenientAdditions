@@ -17,17 +17,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Random;
 
+@Optional.Interface(iface = "baubles.api.IBauble",modid = "Baubles",striprefs = true)
 public class ItemSunlightRing extends CAItemSunlightChargeable implements IBauble {
     public static ItemStack FULLY_CHARGED;
 
     public ItemSunlightRing() {
-        super(ModConstants.ItemNames.sunlightRingItemName, 60000, true, true, 21);
+        super(ModConstants.ItemNames.sunlightRing, 60000, true, true, 21);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }

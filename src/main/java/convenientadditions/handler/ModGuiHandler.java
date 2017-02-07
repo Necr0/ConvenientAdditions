@@ -9,9 +9,12 @@ import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
 import convenientadditions.block.itemTransmitter.ContainerItemTransmitter;
 import convenientadditions.block.itemTransmitter.GuiItemTransmitter;
 import convenientadditions.block.itemTransmitter.TileEntityItemTransmitter;
-import convenientadditions.block.setProvider.ContainerSetProvider;
-import convenientadditions.block.setProvider.GuiSetProvider;
-import convenientadditions.block.setProvider.TileEntitySetProvider;
+import convenientadditions.block.machine.jumpPad.ContainerJumpPad;
+import convenientadditions.block.machine.jumpPad.GuiJumpPad;
+import convenientadditions.block.machine.jumpPad.TileEntityJumpPad;
+import convenientadditions.block.machine.setProvider.ContainerSetProvider;
+import convenientadditions.block.machine.setProvider.GuiSetProvider;
+import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import convenientadditions.item.channelModule.color.GuiColorChannelModule;
 import convenientadditions.item.transmutationTome.ContainerTransmutationTome;
 import convenientadditions.item.transmutationTome.GuiTransmutationTome;
@@ -30,6 +33,7 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int GUI_FILTERED_PROXY_ID = 4;
     public static final int GUI_TRANSMUTATION_TOME_ID = 5;
     public static final int GUI_TRANSMUTATION_TOME_LOOKUP_ID = 6;
+    public static final int GUI_JUMP_PAD_ID = 7;
 
 
     @Override
@@ -45,6 +49,8 @@ public class ModGuiHandler implements IGuiHandler {
                 return new ContainerInventoryProxyFiltered((TileEntityInventoryProxyFiltered) world.getTileEntity(new BlockPos(x, y, z)), player);
             case GUI_TRANSMUTATION_TOME_ID:
                 return new ContainerTransmutationTome(player);
+            case GUI_JUMP_PAD_ID:
+                return new ContainerJumpPad((TileEntityJumpPad) world.getTileEntity(new BlockPos(x,y,z)),player);
             default:
                 return null;
         }
@@ -67,6 +73,8 @@ public class ModGuiHandler implements IGuiHandler {
                 return new GuiTransmutationTome(new ContainerTransmutationTome(player),true);
             case GUI_TRANSMUTATION_TOME_LOOKUP_ID:
                 return new GuiTransmutationTomeRecipeLookup(x);
+            case GUI_JUMP_PAD_ID:
+                return new GuiJumpPad(new ContainerJumpPad((TileEntityJumpPad) world.getTileEntity(new BlockPos(x,y,z)),player));
             default:
                 return null;
         }

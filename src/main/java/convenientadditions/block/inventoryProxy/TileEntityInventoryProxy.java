@@ -1,7 +1,7 @@
 package convenientadditions.block.inventoryProxy;
 
 import convenientadditions.api.block.tileentity.IItemProxy;
-import convenientadditions.base.TileEntityCABase;
+import convenientadditions.base.CATileEntity;
 import convenientadditions.init.ModConfig;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -11,7 +11,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class TileEntityInventoryProxy extends TileEntityCABase implements IItemProxy {
+public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy {
     public static int chainLimit = 16;
 
     public boolean sided = false;

@@ -30,7 +30,7 @@ public class BlockPlatform extends CABlock {
     public static AxisAlignedBB AABBPlatform=new AxisAlignedBB(0d,31/32d,0d,1d,1d,1d);
 
     public BlockPlatform() {
-        super(ModConstants.BlockNames.platformBlockName,Material.GLASS);
+        super(ModConstants.BlockNames.platform,Material.GLASS);
         this.setHardness(2F).setResistance(.5F);
         this.setSoundType(SoundType.GLASS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));

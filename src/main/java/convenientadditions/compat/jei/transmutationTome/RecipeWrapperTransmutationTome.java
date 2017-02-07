@@ -18,7 +18,7 @@ public class RecipeWrapperTransmutationTome extends BlankRecipeWrapper {
 
     @Override
     public void drawInfo(@Nonnull Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-        minecraft.currentScreen.drawCenteredString(minecraft.fontRendererObj, "" + recipe.getLevel(), 60, 15, 0x009900);
+        minecraft.currentScreen.drawCenteredString(minecraft.fontRenderer, "" + recipe.getLevel(), 60, 15, 0x009900);
     }
 
     @Override

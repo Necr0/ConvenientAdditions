@@ -12,60 +12,62 @@ public class ModConstants {
     }
 
     public static class ItemNames {
-        public static final String compostItemName = "compost";
-        public static final String fertilizerItemName = "fertilizer";
-        public static final String dirtChunkItemName = "dirtChunk";
-        public static final String sunstoneItemName = "sunstone";
-        public static final String ironWrenchItemName = "ironWrench";
-        public static final String blazingRockItemName = "blazingRock";
-        public static final String enderPlateItemName = "enderPlate";
-        public static final String launchingArrowItemName = "launchingArrow";
-        public static final String creeperKitItemName = "creeperKit";
-        public static final String blastKitItemName = "blastKit";
-        public static final String slimeKitItemName = "slimeKit";
-        public static final String sapBottleItemName = "sapBottle";
-        public static final String antidoteItemName = "antidote";
-        public static final String bandageItemName = "bandage";
-        public static final String adventurersPickaxeItemName = "adventurersPickaxe";
+        public static final String compost = "compost";
+        public static final String fertilizer = "fertilizer";
+        public static final String dirtChunk = "dirtChunk";
+        public static final String sunstone = "sunstone";
+        public static final String ironWrench = "ironWrench";
+        public static final String blazingRock = "blazingRock";
+        public static final String enderPlate = "enderPlate";
+        public static final String launchingArrow = "launchingArrow";
+        public static final String creeperKit = "creeperKit";
+        public static final String blastKit = "blastKit";
+        public static final String slimeKit = "slimeKit";
+        public static final String sapBottle = "sapBottle";
+        public static final String antidote = "antidote";
+        public static final String bandage = "bandage";
+        public static final String adventurersPickaxe = "adventurersPickaxe";
+        public static final String mobCatcher = "mobCatcher";
         //
-        public static final String transmutationTomeItemName = "transmutationTome";
+        public static final String transmutationTome = "transmutationTome";
         //channel modules
-        public static final String obsidianPlateItemName = "obsidianPlate";
-        public static final String modulePlayerItemName = "modulePlayer";
-        public static final String moduleColorItemName = "moduleColor";
+        public static final String obsidianPlate = "obsidianPlate";
+        public static final String modulePlayer = "modulePlayer";
+        public static final String moduleColor = "moduleColor";
         //
-        public static final String moduleLocationItemName = "moduleLocation";
+        public static final String moduleLocation = "moduleLocation";
         //baubles
-        public static final String sunlightRingItemName = "sunlightRing";
-        public static final String saturationRingItemName = "saturationRing";
-        public static final String breathAmuletItemName = "breathAmulet";
-        public static final String chargingRingItemName = "chargingRing";
+        public static final String sunlightRing = "sunlightRing";
+        public static final String saturationRing = "saturationRing";
+        public static final String breathAmulet = "breathAmulet";
+        public static final String chargingRing = "chargingRing";
     }
 
     public static class BlockNames {
-        public static final String composterBlockName = "composter";
-        public static final String compostSoilBlockName = "compostSoil";
-        public static final String compostSoilTilledBlockName = "compostSoilTilled";
-        public static final String powderKegBlockName = "powderKeg";
-        public static final String playerInterfaceBlockName = "playerInterface";
-        public static final String proximitySensorBlockName = "proximitySensor";
-        public static final String seedBoxBlockName = "seedBox";
-        public static final String setProviderBlockName = "setProvider";
-        public static final String itemTransmitterBlockName = "itemTransmitter";
-        public static final String itemReceiverBlockName = "itemReceiver";
-        public static final String inventoryProxyBlockName = "inventoryProxy";
-        public static final String inventoryProxySidedBlockName = "inventoryProxySided";
-        public static final String inventoryProxyFilteredBlockName = "inventoryProxyFiltered";
-        public static final String treetapBlockName = "treetap";
-        public static final String hoverPadBlockName = "hoverPad";
-        public static final String blastPadBlockName = "blastPad";
-        public static final String platformBlockName = "platform";
-        public static final String semiSolidBlockName = "semiSolidBlock";
-        public static final String treeBoxBlockName = "treeBox";
-        public static final String storageMatrixBlockName = "storageMatrix";
+        public static final String composter = "composter";
+        public static final String compostSoil = "compostSoil";
+        public static final String compostSoilTilled = "compostSoilTilled";
+        public static final String powderKeg = "powderKeg";
+        public static final String playerInterface = "playerInterface";
+        public static final String proximitySensor = "proximitySensor";
+        public static final String seedBox = "seedBox";
+        public static final String setProvider = "setProvider";
+        public static final String itemTransmitter = "itemTransmitter";
+        public static final String itemReceiver = "itemReceiver";
+        public static final String inventoryProxy = "inventoryProxy";
+        public static final String inventoryProxySided = "inventoryProxySided";
+        public static final String inventoryProxyFiltered = "inventoryProxyFiltered";
+        public static final String treetap = "treetap";
+        public static final String hoverPad = "hoverPad";
+        public static final String blastPad = "blastPad";
+        public static final String jumpPad = "jumpPad";
+        public static final String platform = "platform";
+        public static final String semiSolidBlock = "semiSolidBlock";
+        public static final String storageMatrix = "storageMatrix";
+        public static final String machineBlock = "machineBlock";
         //
-        public static final String tempLightBlockName = "tempLight";
-        public static final String phantomPlatformBlockName = "phantomPlatform";
+        public static final String tempLight = "tempLight";
+        public static final String phantomPlatform = "phantomPlatform";
     }
 
     public static class Entities {
@@ -81,7 +83,7 @@ public class ModConstants {
         }
 
         public static class Waila {
-            public static final String registerProviderFQCN = "convenientadditions.compat.waila.ConvAddWailaPlugin.registerProvider";
+            public static final String registerProviderFQCN = "convenientadditions.compat.waila.ConvAddWailaCallback.registerProvider";
         }
     }
 

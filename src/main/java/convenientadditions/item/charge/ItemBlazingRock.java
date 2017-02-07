@@ -18,7 +18,7 @@ public class ItemBlazingRock extends CAItemSunlightChargeable implements IFuelIt
     public static ItemStack FULLY_CHARGED;
 
     public ItemBlazingRock() {
-        super(ModConstants.ItemNames.blazingRockItemName, 48000, true, true, 12);
+        super(ModConstants.ItemNames.blazingRock, 48000, true, true, 12);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }

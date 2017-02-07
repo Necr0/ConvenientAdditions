@@ -31,11 +31,11 @@ public class ItemEnderPlate extends ItemChargeable implements IPlayerInventoryTi
 
     public ItemEnderPlate() {
         super(96000, true, true);//8
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.enderPlateItemName)
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.enderPlate)
                 .setCreativeTab(ConvenientAdditions.CREATIVETAB)
                 .setHasSubtypes(true)
                 .setMaxStackSize(1)
-                .setRegistryName(ModConstants.ItemNames.enderPlateItemName);
+                .setRegistryName(ModConstants.ItemNames.enderPlate);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }

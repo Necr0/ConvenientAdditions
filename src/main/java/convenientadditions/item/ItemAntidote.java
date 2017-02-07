@@ -25,7 +25,7 @@ public class ItemAntidote extends CAItem {
     public static Potion WITHER;
 
     public ItemAntidote() {
-        super(ModConstants.ItemNames.antidoteItemName);
+        super(ModConstants.ItemNames.antidote);
         this.setMaxStackSize(1);
     }
 

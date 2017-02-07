@@ -36,13 +36,13 @@ public class ConvenientAdditions {
         ModSounds.init();
         PROXY.InitModels();
         PROXY.registerRenderers();
-        PROXY.registerEventHandlers();
+        ModEventHandlers.init();
         ModCAAPI.init();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        PROXY.registerEntities();
+        ModEntities.init();
         PROXY.initWaila();
     }
 }

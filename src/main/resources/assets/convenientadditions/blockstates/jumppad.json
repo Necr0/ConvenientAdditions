@@ -1,0 +1,16 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_bottom_top",
+		"textures": {
+			"side": "convenientadditions:blocks/jumppad/jumppad_side",
+	        "top": "convenientadditions:blocks/jumppad/jumppad_top_animated",
+	        "bottom": "convenientadditions:blocks/jumppad/jumppad_bottom"
+		},
+		"uvlock" : "true"
+    },
+	"variants": {
+		"normal": [{}],
+        "inventory": [{}]
+	}
+}

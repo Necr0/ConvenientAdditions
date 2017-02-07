@@ -2,27 +2,27 @@ package convenientadditions.init;
 
 import convenientadditions.ModConstants;
 import convenientadditions.base.ItemBlockMetadata;
-import convenientadditions.block.BlockBlastPad;
-import convenientadditions.block.BlockTreeBox;
+import convenientadditions.block.machine.BlockBlastPad;
 import convenientadditions.block.BlockTreeTap;
 import convenientadditions.block.compostSoil.BlockCompostSoil;
 import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.composter.BlockComposter;
-import convenientadditions.block.hoverPad.BlockHoverPad;
+import convenientadditions.block.machine.BlockMachineBlock;
+import convenientadditions.block.machine.hoverPad.BlockHoverPad;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxyNormal;
 import convenientadditions.block.inventoryProxy.BlockInventoryProxySided;
 import convenientadditions.block.inventoryProxy.filtered.BlockInventoryProxyFiltered;
 import convenientadditions.block.itemReceiver.BlockItemReceiver;
 import convenientadditions.block.itemTransmitter.BlockItemTransmitter;
+import convenientadditions.block.machine.jumpPad.BlockJumpPad;
 import convenientadditions.block.platform.BlockPlatform;
 import convenientadditions.block.platform.BlockSemiSolid;
-import convenientadditions.block.playerInterface.BlockPlayerInterface;
+import convenientadditions.block.machine.playerInterface.BlockPlayerInterface;
 import convenientadditions.block.powderkeg.BlockPowderKeg;
 import convenientadditions.block.proximitySensor.BlockProximitySensor;
 import convenientadditions.block.seedbox.BlockSeedBox;
-import convenientadditions.block.setProvider.BlockSetProvider;
-import convenientadditions.block.storageMatrix.BlockStorageMatrix;
-import convenientadditions.block.storageMatrix.ItemBlockStorageMatrix;
+import convenientadditions.block.machine.setProvider.BlockSetProvider;
+import convenientadditions.block.machine.storageMatrix.BlockStorageMatrix;
 import convenientadditions.block.technical.BlockPhantomPlatform;
 import convenientadditions.block.technical.BlockTempLight;
 import net.minecraft.block.Block;
@@ -55,10 +55,12 @@ public class ModBlocks {
     public static final BlockTreeTap treetapBlock = new BlockTreeTap();
     public static final BlockHoverPad hoverPadBlock = new BlockHoverPad();
     public static final BlockBlastPad blastPadBlock = new BlockBlastPad();
+    public static final BlockJumpPad jumpPadBlock = new BlockJumpPad();
     public static final BlockPlatform platformBlock = new BlockPlatform();
     public static final BlockSemiSolid semiSolidBlock = new BlockSemiSolid();
-    public static final BlockTreeBox treeBoxBlock = new BlockTreeBox();
     public static final BlockStorageMatrix storageMatrixBlock = new BlockStorageMatrix();
+    //dummy
+    public static final BlockMachineBlock machineBlock = new BlockMachineBlock();
 
     public static void init() {
         registerBlock(composterBlock);
@@ -77,12 +79,13 @@ public class ModBlocks {
         registerBlock(treetapBlock);
         registerBlock(hoverPadBlock);
         registerBlock(blastPadBlock);
+        registerBlock(jumpPadBlock);
         registerBlock(platformBlock, new ItemCloth(platformBlock));
         registerBlock(semiSolidBlock, new ItemCloth(semiSolidBlock));
-        registerBlock(treeBoxBlock);
         registerBlock(compostSoilBlock, new ItemBlockMetadata(compostSoilBlock));
         registerBlock(compostSoilTilledBlock);
-        registerBlock(storageMatrixBlock, new ItemBlockStorageMatrix(storageMatrixBlock));
+        registerBlock(storageMatrixBlock);
+        registerBlock(machineBlock);
     }
 
     @SideOnly(Side.CLIENT)
@@ -102,12 +105,13 @@ public class ModBlocks {
         ModItems.registerItemBlockModel(phantomPlatformBlock);
         ModItems.registerItemBlockModel(hoverPadBlock);
         ModItems.registerItemBlockModel(blastPadBlock);
+        ModItems.registerItemBlockModel(jumpPadBlock);
         ModelLoader.setCustomMeshDefinition(ItemBlock.getItemFromBlock(platformBlock), stack -> new ModelResourceLocation(platformBlock.getRegistryName(),BlockPlatform.COLOR.getName() + "=" + EnumDyeColor.byMetadata(stack.getItemDamage()).getName()));
         ModelLoader.setCustomMeshDefinition(ItemBlock.getItemFromBlock(semiSolidBlock), stack -> new ModelResourceLocation(semiSolidBlock.getRegistryName(),BlockSemiSolid.COLOR.getName() + "=" + EnumDyeColor.byMetadata(stack.getItemDamage()).getName()));
-        ModItems.registerItemBlockModel(treeBoxBlock);
         ModItems.registerItemBlockModel(storageMatrixBlock);
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilBlock), new ModelResourceLocation(compostSoilBlock.getRegistryName(), "inventory"));
         ModItems.registerIndependentModelLocation(ItemBlock.getItemFromBlock(compostSoilTilledBlock), new ModelResourceLocation(compostSoilBlock.getRegistryName(), "inventory"));
+        ModItems.registerItemBlockModel(machineBlock);
     }
 
     public static void registerBlock(Block block) {

@@ -16,7 +16,7 @@ public class BlockInventoryProxyFiltered extends BlockInventoryProxy {
 
     public BlockInventoryProxyFiltered() {
         super();
-        this.setRegistryName(ModConstants.BlockNames.inventoryProxyFilteredBlockName).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.inventoryProxyFilteredBlockName);
+        this.setRegistryName(ModConstants.BlockNames.inventoryProxyFiltered).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.inventoryProxyFiltered);
     }
 
     @Override

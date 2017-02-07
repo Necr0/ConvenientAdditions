@@ -24,13 +24,13 @@ public class GuiInventoryProxyFiltered extends CAGuiContainer {
         super.initGui();
 
         String[] dvButtonList = new String[]{
-                Helper.localize(ModConstants.Mod.MODID + ":match", "%v", Helper.localize(ModConstants.Mod.MODID + ":damageValue")),
-                Helper.localize(ModConstants.Mod.MODID + ":ignore", "%v", Helper.localize(ModConstants.Mod.MODID + ":damageValue"))
+                Helper.localize(ModConstants.Mod.MODID + ":match", Helper.localize(ModConstants.Mod.MODID + ":damageValue")),
+                Helper.localize(ModConstants.Mod.MODID + ":ignore", Helper.localize(ModConstants.Mod.MODID + ":damageValue"))
         };
 
         String[] nbtButtonList = new String[]{
-                Helper.localize(ModConstants.Mod.MODID + ":match", "%v", Helper.localize(ModConstants.Mod.MODID + ":NBT")),
-                Helper.localize(ModConstants.Mod.MODID + ":ignore", "%v", Helper.localize(ModConstants.Mod.MODID + ":NBT"))
+                Helper.localize(ModConstants.Mod.MODID + ":match", Helper.localize(ModConstants.Mod.MODID + ":NBT")),
+                Helper.localize(ModConstants.Mod.MODID + ":ignore", Helper.localize(ModConstants.Mod.MODID + ":NBT"))
         };
 
         String[] blacklistButtonList = new String[]{

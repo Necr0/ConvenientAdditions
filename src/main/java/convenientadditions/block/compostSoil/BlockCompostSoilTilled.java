@@ -34,7 +34,7 @@ public class BlockCompostSoilTilled extends CABlock {
     protected static final AxisAlignedBB FARMLAND_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.9375D, 1.0D);
 
     public BlockCompostSoilTilled() {
-        super(ModConstants.BlockNames.compostSoilTilledBlockName, Material.GROUND);
+        super(ModConstants.BlockNames.compostSoilTilled, Material.GROUND);
         this.setTickRandomly(true).setHardness(0.5F).setCreativeTab(null);
         this.setSoundType(SoundType.GROUND);
         this.setDefaultState(this.blockState.getBaseState().withProperty(BlockCompostSoil.DEGRADATION, 0));

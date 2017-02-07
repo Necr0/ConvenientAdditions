@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 public class ItemTransmutationTome extends CAItem {
 
     public ItemTransmutationTome() {
-        super(ModConstants.ItemNames.transmutationTomeItemName);
+        super(ModConstants.ItemNames.transmutationTome);
         this.setMaxStackSize(1);
     }
 

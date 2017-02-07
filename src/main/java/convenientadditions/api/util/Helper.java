@@ -1,17 +1,16 @@
 package convenientadditions.api.util;
 
-import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -21,7 +20,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 public class Helper {
@@ -118,34 +116,22 @@ public class Helper {
 	}
 	
 	public static boolean canEntitySeeSky(Entity e){
-		return e.getEntityWorld().canBlockSeeSky(new BlockPos(MathHelper.floor(e.posX), MathHelper.floor(e.posY), MathHelper.floor(e.posZ)));
+		return e.getEntityWorld().canBlockSeeSky(new BlockPos(e));
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static EntityPlayer getClientPlayer(){
+	public static EntityPlayerSP getClientPlayer(){
 		return FMLClientHandler.instance().getClient().player;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static World getClientWorld(){
+	public static WorldClient getClientWorld(){
 		return FMLClientHandler.instance().getClient().world;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static String localize(String in,String... replace){
-		String tmp=I18n.format(in, new Object[0]);
-		if(tmp.startsWith("Format error: "))
-			tmp=tmp.replaceFirst("Format error: ", "");
-		String match = null;
-		for(String s:replace){
-			if(match==null){
-				match=s;
-			}else{
-				tmp=tmp.replace(match, s);
-				match=null;
-			}
-		}
-		return tmp;
+	public static String localize(String in,Object... replace){
+		return I18n.format(in, replace);
 	}
 	
 	public static boolean doesOreDictMatch(IBlockState b,String entry,boolean startsWith){
@@ -167,28 +153,6 @@ public class Helper {
 				if(ib.getBlock()==b.getBlock()){
 					return true;
 				}
-			}
-		}
-		return false;
-	}
-
-	public static boolean canDecay(World worldIn,BlockPos pos,IBlockState state){
-		if (state.getValue(BlockLeaves.CHECK_DECAY) && state.getValue(BlockLeaves.DECAYABLE))
-		{
-			int k = pos.getX();
-			int l = pos.getY();
-			int i1 = pos.getZ();
-
-			if (worldIn.isAreaLoaded(new BlockPos(k - 5, l - 5, i1 - 5), new BlockPos(k + 5, l + 5, i1 + 5)))
-			{
-				Iterator<BlockPos> iter=BlockPos.getAllInBox(new BlockPos(k - 5, l - 5, i1 - 5), new BlockPos(k + 5, l + 5, i1 + 5)).iterator();
-				while(iter.hasNext()){
-					BlockPos p=iter.next();
-					IBlockState s=worldIn.getBlockState(p);
-					if(s.getBlock().canSustainLeaves(s,worldIn,p))
-						return false;
-				}
-				return true;
 			}
 		}
 		return false;

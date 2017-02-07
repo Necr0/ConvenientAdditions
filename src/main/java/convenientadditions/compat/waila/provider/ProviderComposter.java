@@ -32,7 +32,7 @@ public class ProviderComposter implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity te=accessor.getTileEntity();
         if(te!=null&&te instanceof TileEntityComposter){
-            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":compostingMass","%m",((TileEntityComposter)te).content+"", "%M", ModConfig.composter_capacity+"", "%p", ((TileEntityComposter)te).getContentCapacityPercentage()+""));
+            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":compostingMass",((TileEntityComposter)te).content, ModConfig.composter_capacity, ((TileEntityComposter)te).getContentCapacityPercentage()));
         }
         return  currenttip;
     }

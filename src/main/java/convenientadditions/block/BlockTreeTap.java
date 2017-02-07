@@ -35,7 +35,7 @@ public class BlockTreeTap extends CABlock {
     public static final PropertyEnum<EnumBottleState> BOTTLE_STATE = PropertyEnum.create("bottle_state", EnumBottleState.class);
 
     public BlockTreeTap() {
-        super(ModConstants.BlockNames.treetapBlockName,Material.WOOD);
+        super(ModConstants.BlockNames.treetap,Material.WOOD);
         this.setHardness(2F).setResistance(3F).setTickRandomly(true);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BOTTLE_STATE, EnumBottleState.empty));

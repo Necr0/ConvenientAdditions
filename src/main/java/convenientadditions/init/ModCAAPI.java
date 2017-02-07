@@ -11,6 +11,7 @@ import convenientadditions.block.composter.entries.CompostRegistryEntryFood;
 import convenientadditions.block.seedbox.entries.SeedBoxBehaviourProviderEntry;
 import convenientadditions.block.seedbox.entries.SeedBoxCropsEntry;
 import convenientadditions.block.seedbox.entries.SeedBoxFeedEntry;
+import convenientadditions.entity.behaviour.BehaviourAutoFeed;
 import convenientadditions.entity.behaviour.BehaviourAutoFertilizer;
 import convenientadditions.entity.behaviour.BehaviourCompost;
 import convenientadditions.api.entity.specialitem.behaviours.BehaviourSunlightChargeable;
@@ -23,12 +24,14 @@ public class ModCAAPI {
     public static Long sunlightChargableDiscriminator;
     public static Long autoBoneMealDiscriminator;
     public static Long autoFertilizerDiscriminator;
+    public static Long autoFeedDiscriminator;
 
     public static void init() {
         compostDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourCompost());
         sunlightChargableDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourSunlightChargeable());
         autoBoneMealDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourAutoBoneMeal());
         autoFertilizerDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourAutoFertilizer());
+        autoFeedDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourAutoFeed());
         initSeedBox();
         initCompost();
         initTome();

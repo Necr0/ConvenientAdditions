@@ -6,7 +6,7 @@ import convenientadditions.api.gui.ImageResourceLocation;
 
 public class GuiItemTransmitter extends CAGuiContainer {
 
-    private static final ImageResourceLocation itemTransmitterGuiTextures = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemtransmitter.png",0,0,174,114);
+    private static final ImageResourceLocation itemTransmitterGuiTextures = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemtransmitter.png",0,0,175,134);
     public TileEntityItemTransmitter te;
 
     public GuiItemTransmitter(ContainerItemTransmitter container) {

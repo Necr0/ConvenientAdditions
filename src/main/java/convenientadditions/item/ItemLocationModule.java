@@ -6,6 +6,7 @@ import convenientadditions.base.CAItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class ItemLocationModule extends CAItem {
     public ItemLocationModule() {
-        super(ModConstants.ItemNames.moduleLocationItemName);
+        super(ModConstants.ItemNames.moduleLocation);
         this.setMaxStackSize(1);
     }
 
@@ -28,13 +29,18 @@ public class ItemLocationModule extends CAItem {
         if(!stack.hasTagCompound())
             return false;
         NBTTagCompound t=stack.getTagCompound();
-        return t.hasKey("MODULE_LOCATION") && t.getTag("MODULE_LOCATION") instanceof  NBTTagIntArray && t.getIntArray("MODULE_LOCATION").length==3;
+        return t.hasKey("MODULE_LOCATION") && t.getTag("MODULE_LOCATION") instanceof  NBTTagIntArray && t.getIntArray("MODULE_LOCATION").length==3 && t.hasKey("MODULE_LOCATION_DIM") && t.getTag("MODULE_LOCATION_DIM") instanceof NBTTagInt;
     }
 
     public BlockPos getLocation(ItemStack stack) {
         NBTTagCompound t=stack.getTagCompound();
         int[] arr=t.getIntArray("MODULE_LOCATION");
         return new BlockPos(arr[0],arr[1],arr[2]);
+    }
+
+    public int getDimension(ItemStack stack) {
+        NBTTagCompound t=stack.getTagCompound();
+        return t.getInteger("MODULE_LOCATION_DIM");
     }
 
     @Override
@@ -46,7 +52,8 @@ public class ItemLocationModule extends CAItem {
                 item.setTagCompound(new NBTTagCompound());
             if (player.isSneaking()) {
                 item.getTagCompound().setIntArray("MODULE_LOCATION", new int[]{p.getX(),p.getY(),p.getZ()});
-                player.sendMessage(new TextComponentString(Helper.localize("message."+ModConstants.Mod.MODID+":locationSetTo","%x", ""+p.getX(), "%y", ""+p.getY(), "%z", ""+p.getZ())));
+                item.getTagCompound().setInteger("MODULE_LOCATION_DIM", world.provider.getDimension());
+                player.sendMessage(new TextComponentString(Helper.localize("message."+ModConstants.Mod.MODID+":locationSetTo",p.getX(), p.getY(), p.getZ(), world.provider.getDimension())));
                 return EnumActionResult.SUCCESS;
             }
         }
@@ -73,7 +80,7 @@ public class ItemLocationModule extends CAItem {
         super.addInformation(stack, player, list, par4);
         if (hasLocation(stack)) {
             BlockPos p=getLocation(stack);
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":moduleLocationLocation", "%x", ""+p.getX(), "%y", ""+p.getY(), "%z", ""+p.getZ()));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":moduleLocationLocation", p.getX(), p.getY(), p.getZ(), getDimension(stack)));
         }else
             list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":moduleLocationNotSet"));
     }

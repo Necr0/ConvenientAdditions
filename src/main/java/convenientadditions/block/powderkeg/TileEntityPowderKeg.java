@@ -1,7 +1,7 @@
 package convenientadditions.block.powderkeg;
 
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
-import convenientadditions.base.TileEntityCABase;
+import convenientadditions.base.CATileEntity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,7 +9,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileEntityPowderKeg extends TileEntityCABase {
+public class TileEntityPowderKeg extends CATileEntity {
 
     public ItemStackHandlerAutoSaveRestricted stackHandler = new ItemStackHandlerAutoSaveRestricted(this, Items.GUNPOWDER);
 

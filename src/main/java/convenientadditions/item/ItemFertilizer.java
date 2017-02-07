@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class ItemFertilizer extends CAItem {
     public ItemFertilizer() {
-        super(ModConstants.ItemNames.fertilizerItemName);
+        super(ModConstants.ItemNames.fertilizer);
     }
 
     @Override

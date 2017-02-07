@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 public class BlockPowderKeg extends CABlockContainer {
 
     public BlockPowderKeg() {
-        super(ModConstants.BlockNames.powderKegBlockName,Material.WOOD);
+        super(ModConstants.BlockNames.powderKeg,Material.WOOD);
         this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
     }

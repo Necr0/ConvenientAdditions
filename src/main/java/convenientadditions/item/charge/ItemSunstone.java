@@ -28,7 +28,7 @@ public class ItemSunstone extends CAItemSunlightChargeable implements IPlayerInv
     public static ItemStack FULLY_CHARGED;
 
     public ItemSunstone() {
-        super(ModConstants.ItemNames.sunstoneItemName, 60000, true, true, 20);
+        super(ModConstants.ItemNames.sunstone, 60000, true, true, 20);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }
@@ -51,9 +51,9 @@ public class ItemSunstone extends CAItemSunlightChargeable implements IPlayerInv
         list.add(StringHelper.getJoke(stack));
         super.addInformation(stack, player, list, par4);
         if (isActive(stack))
-            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Active"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstone + "Active"));
         else
-            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstoneItemName + "Inactive"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.sunstone + "Inactive"));
     }
 
     @Override

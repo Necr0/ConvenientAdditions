@@ -1,32 +1,15 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "model": "piston",
-	    "textures": {
-	        "bottom": "convenientadditions:blocks/itemtransmitter/itemtransmitter_back",
-	        "side": "convenientadditions:blocks/itemtransmitter/itemtransmitter_side",
-	        "platform": "convenientadditions:blocks/itemtransmitter/itemtransmitter_output"
-	    },
-        "uvlock": false
-    },
-    "variants": {
-        "facing": {
-	        "down": { "x": 90 },
-	        "up": { "x": 270 },
-	        "north": { },
-	        "south": { "y": 180 },
-	        "west": { "y": 270 },
-	        "east": { "y": 90 }
-        },
-	    "inventory": [
-	    	{
-	    		"model": "cube_bottom_top",
-			    "textures": {
-			        "bottom": "convenientadditions:blocks/itemtransmitter/itemtransmitter_back",
-			        "side": "convenientadditions:blocks/itemtransmitter/itemtransmitter_side",
-			        "top": "convenientadditions:blocks/itemtransmitter/itemtransmitter_output"
-			    }
-	    	}
-	    ]
-    }
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_bottom_top",
+		"textures": {
+			"bottom": "convenientadditions:blocks/itemtransmitter/itemtransmitter_end",
+			"top": "convenientadditions:blocks/itemtransmitter/itemtransmitter_end",
+			"side": "convenientadditions:blocks/itemtransmitter/itemtransmitter_side"
+		}
+	},
+	"variants": {
+		"normal": [{}],
+		"inventory": [{}]
+	}
 }

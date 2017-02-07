@@ -4,6 +4,8 @@ import baubles.api.BaublesApi;
 import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.Optional;
 
 public class SlotNotation{
     //IMPORTANT!!!: THIS IS NOT THE ONLY POSSIBLE INSTANCE OF THE GROUND SLOT!!!
@@ -38,8 +40,10 @@ public class SlotNotation{
                 }
                 break;
             case BAUBLES:
-                IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
-                return b==null?ItemStack.EMPTY:b.getStackInSlot(slot);
+                if(Loader.isModLoaded("Baubles")){
+                    return getBaublesSlot(slot);
+                }
+                return null;
             case ENDER:
                 return player.getInventoryEnderChest().getStackInSlot(slot);
             default:
@@ -69,9 +73,9 @@ public class SlotNotation{
                 }
                 break;
             case BAUBLES:
-                IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
-                if(b!=null)
-                    b.setStackInSlot(slot,stack);
+                if(Loader.isModLoaded("Baubles")){
+                    setBaublesSlot(slot,stack);
+                }
                 break;
             case ENDER:
                 player.getInventoryEnderChest().setInventorySlotContents(slot,stack);
@@ -79,6 +83,19 @@ public class SlotNotation{
             default:
                 break;
         }
+    }
+
+    @Optional.Method(modid = "Baubles")
+    private ItemStack getBaublesSlot(int slot){
+        IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
+        return b==null?ItemStack.EMPTY:b.getStackInSlot(slot);
+    }
+
+    @Optional.Method(modid = "Baubles")
+    private void setBaublesSlot(int slot, ItemStack stack){
+        IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
+        if(b!=null)
+            b.setStackInSlot(slot,stack);
     }
 
     public EntityPlayer getPlayer() {

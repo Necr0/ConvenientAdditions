@@ -11,16 +11,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
+@Optional.Interface(iface = "baubles.api.IBauble",modid = "Baubles",striprefs = true)
 public class ItemBreathAmulet extends CAItemSunlightChargeable implements IBauble {
     public static ItemStack FULLY_CHARGED;
 
     public ItemBreathAmulet() {
-        super(ModConstants.ItemNames.breathAmuletItemName, 10000, true, true, 5);
+        super(ModConstants.ItemNames.breathAmulet, 10000, true, true, 5);
         FULLY_CHARGED = new ItemStack(this, 1, 0);
         chargeItem(FULLY_CHARGED, getChargeCapacity(FULLY_CHARGED));
     }

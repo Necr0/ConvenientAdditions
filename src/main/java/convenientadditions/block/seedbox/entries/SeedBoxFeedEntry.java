@@ -1,7 +1,7 @@
 package convenientadditions.block.seedbox.entries;
 
-import convenientadditions.api.entity.specialitem.BehaviourRegistry;
 import convenientadditions.api.registry.seedbox.ISeedBoxItemBehaviourRegistryEntry;
+import convenientadditions.init.ModCAAPI;
 import convenientadditions.init.ModConfig;
 import net.minecraft.item.ItemStack;
 
@@ -16,7 +16,7 @@ public class SeedBoxFeedEntry implements ISeedBoxItemBehaviourRegistryEntry {
 
     @Override
     public void getDiscriminators(ItemStack stack, List<Long> behaviours) {
-        behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("autoFeed"));
+        behaviours.add(ModCAAPI.autoFeedDiscriminator);
     }
 
 }

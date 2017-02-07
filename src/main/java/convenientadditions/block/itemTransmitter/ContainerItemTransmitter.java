@@ -16,15 +16,19 @@ public class ContainerItemTransmitter extends CAContainer {
         for (int i = 0; i < 3; i++) {
             addSlotToContainer(new SlotItemHandler(ent.channels, i, i * 18 + 62, 8));
         }
+        //buffer
+        for (int k = 0; k < 9; ++k) {
+            this.addSlotToContainer(new SlotItemHandler(ent.buffer, k, 8 + k * 18, 30));
+        }
         //player inventory
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
-                this.addSlotToContainer(new Slot(p.inventory, j + i * 9 + 9, 8 + j * 18, 32 + i * 18));
+                this.addSlotToContainer(new Slot(p.inventory, j + i * 9 + 9, 8 + j * 18, 52 + i * 18));
             }
         }
         //player hotbar
         for (int k = 0; k < 9; ++k) {
-            this.addSlotToContainer(new Slot(p.inventory, k, 8 + k * 18, 90));
+            this.addSlotToContainer(new Slot(p.inventory, k, 8 + k * 18, 110));
         }
     }
 
@@ -42,13 +46,13 @@ public class ContainerItemTransmitter extends CAContainer {
             ItemStack current = slot.getStack();
             previous = current.copy();
 
-            if (fromSlot < 3) {
+            if (fromSlot < 12) {
                 // From TE Inventory to Player Inventory
-                if (!this.mergeItemStack(current, 3, 39, true))
+                if (!this.mergeItemStack(current, 12, 48, true))
                     return ItemStack.EMPTY;
             } else {
                 // From Player Inventory to TE Inventory
-                if (!this.mergeItemStack(current, 0, 3, false))
+                if (!this.mergeItemStack(current, 0, 12, false))
                     return ItemStack.EMPTY;
             }
 

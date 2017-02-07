@@ -41,17 +41,18 @@ public class ModItems {
     public static final ItemSapBottle itemSapBottle = new ItemSapBottle();
     public static final ItemAntidote itemAntidote = new ItemAntidote();
     public static final ItemBandage itemBandage = new ItemBandage();
+    public static final ItemMobCatcher itemMobCatcher = new ItemMobCatcher();
     //channel modules
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
     //
     public static final ItemLocationModule itemModuleLocation = new ItemLocationModule();
     //dummy
-    public static final Item itemDirtChunk = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.dirtChunkItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemObsidianPlate = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.obsidianPlateItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemCreeperKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.creeperKitItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemBlastKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.blastKitItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemSlimeKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.slimeKitItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemDirtChunk = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.dirtChunk).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemObsidianPlate = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.obsidianPlate).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemCreeperKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.creeperKit).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemBlastKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.blastKit).setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    public static final Item itemSlimeKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.slimeKit).setCreativeTab(ConvenientAdditions.CREATIVETAB);
     //baubles
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
@@ -62,36 +63,37 @@ public class ModItems {
 
     public static void init() {
         //dummy
-        registerItem(itemDirtChunk, ModConstants.ItemNames.dirtChunkItemName);
-        registerItem(itemObsidianPlate, ModConstants.ItemNames.obsidianPlateItemName);
-        registerItem(itemCreeperKit, ModConstants.ItemNames.creeperKitItemName);
-        registerItem(itemBlastKit, ModConstants.ItemNames.blastKitItemName);
-        registerItem(itemSlimeKit, ModConstants.ItemNames.slimeKitItemName);
+        registerItem(itemDirtChunk, ModConstants.ItemNames.dirtChunk);
+        registerItem(itemObsidianPlate, ModConstants.ItemNames.obsidianPlate);
+        registerItem(itemCreeperKit, ModConstants.ItemNames.creeperKit);
+        registerItem(itemBlastKit, ModConstants.ItemNames.blastKit);
+        registerItem(itemSlimeKit, ModConstants.ItemNames.slimeKit);
         //tools
-        registerItem(itemIronWrench, ModConstants.ItemNames.ironWrenchItemName);
+        registerItem(itemIronWrench, ModConstants.ItemNames.ironWrench);
         //misc
-        registerItem(itemFertilizer, ModConstants.ItemNames.fertilizerItemName);
-        registerItem(itemCompost, ModConstants.ItemNames.compostItemName);
-        registerItem(itemSunstone, ModConstants.ItemNames.sunstoneItemName);
-        registerItem(itemBlazingRock, ModConstants.ItemNames.blazingRockItemName);
-        registerItem(itemEnderPlate, ModConstants.ItemNames.enderPlateItemName);
-        registerItem(itemLaunchingArrow, ModConstants.ItemNames.launchingArrowItemName);
-        registerItem(itemTransmutationTome, ModConstants.ItemNames.transmutationTomeItemName);
-        registerItem(itemSapBottle, ModConstants.ItemNames.sapBottleItemName);
-        registerItem(itemAntidote, ModConstants.ItemNames.antidoteItemName);
-        registerItem(itemBandage, ModConstants.ItemNames.bandageItemName);
+        registerItem(itemFertilizer, ModConstants.ItemNames.fertilizer);
+        registerItem(itemCompost, ModConstants.ItemNames.compost);
+        registerItem(itemSunstone, ModConstants.ItemNames.sunstone);
+        registerItem(itemBlazingRock, ModConstants.ItemNames.blazingRock);
+        registerItem(itemEnderPlate, ModConstants.ItemNames.enderPlate);
+        registerItem(itemLaunchingArrow, ModConstants.ItemNames.launchingArrow);
+        registerItem(itemTransmutationTome, ModConstants.ItemNames.transmutationTome);
+        registerItem(itemSapBottle, ModConstants.ItemNames.sapBottle);
+        registerItem(itemAntidote, ModConstants.ItemNames.antidote);
+        registerItem(itemBandage, ModConstants.ItemNames.bandage);
+        registerItem(itemMobCatcher, ModConstants.ItemNames.mobCatcher);
         //channel modules
-        registerItem(itemModulePlayer, ModConstants.ItemNames.modulePlayerItemName);
-        registerItem(itemModuleColor, ModConstants.ItemNames.moduleColorItemName);
+        registerItem(itemModulePlayer, ModConstants.ItemNames.modulePlayer);
+        registerItem(itemModuleColor, ModConstants.ItemNames.moduleColor);
         //
-        registerItem(itemModuleLocation, ModConstants.ItemNames.moduleLocationItemName);
+        registerItem(itemModuleLocation, ModConstants.ItemNames.moduleLocation);
         //baubles
-        registerItem(itemSunlightRing, ModConstants.ItemNames.sunlightRingItemName);
-        registerItem(itemSaturationRing, ModConstants.ItemNames.saturationRingItemName);
-        registerItem(itemBreathAmulet, ModConstants.ItemNames.breathAmuletItemName);
-        registerItem(itemChargingRing, ModConstants.ItemNames.chargingRingItemName);
+        registerItem(itemSunlightRing, ModConstants.ItemNames.sunlightRing);
+        registerItem(itemSaturationRing, ModConstants.ItemNames.saturationRing);
+        registerItem(itemBreathAmulet, ModConstants.ItemNames.breathAmulet);
+        registerItem(itemChargingRing, ModConstants.ItemNames.chargingRing);
 
-        registerItem(itemAdventurersPickaxe, ModConstants.ItemNames.adventurersPickaxeItemName);
+        registerItem(itemAdventurersPickaxe, ModConstants.ItemNames.adventurersPickaxe);
     }
 
     @SideOnly(Side.CLIENT)
@@ -119,6 +121,8 @@ public class ModItems {
         registerVariants(itemSapBottle, itemSapBottle.getModelResourceLocations());
         registerModelLocation(itemAntidote);
         registerModelLocation(itemBandage);
+        registerModelLocation(itemMobCatcher, 0, new ModelResourceLocation(itemMobCatcher.getRegistryName().toString().toLowerCase() + "_empty"));
+        registerModelLocation(itemMobCatcher, 1, new ModelResourceLocation(itemMobCatcher.getRegistryName().toString().toLowerCase() + "_filled"));
         //channel modules
         registerModelLocation(itemModulePlayer);
         registerModelLocation(itemModuleColor);

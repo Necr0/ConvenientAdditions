@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ItemSapBottle extends CAItem implements IModelVariantResourceLocationProvider {
     public ItemSapBottle() {
-        super(ModConstants.ItemNames.sapBottleItemName);
+        super(ModConstants.ItemNames.sapBottle);
         this.setMaxStackSize(1).setHasSubtypes(true).setMaxDamage(0);
     }
 

@@ -1,57 +1,48 @@
 package convenientadditions.block.itemTransmitter;
 
 import convenientadditions.api.IMatcher;
-import convenientadditions.api.block.tileentity.IItemProxy;
+import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.ItemChannelModule;
 import convenientadditions.api.provider.itemnetwork.IItemProvider;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
-import convenientadditions.base.TileEntityCABase;
-import convenientadditions.block.inventoryProxy.BlockInventoryProxy;
-import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
-import convenientadditions.init.ModConfig;
+import convenientadditions.base.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.ArrayList;
 
-public class TileEntityItemTransmitter extends TileEntityCABase implements ITickable, IItemProvider {
+public class TileEntityItemTransmitter extends CATileEntity implements ITickable, IItemProvider {
 
     ItemStackHandlerAutoSaveRestricted channels;
+    ItemStackHandlerAutoSave buffer;
 
     public TileEntityItemTransmitter() {
         channels = new ItemStackHandlerAutoSaveRestricted(this, 3, ItemChannelModule.class);
-    }
-
-    public EnumFacing getFacing() {
-        return getWorld().getBlockState(getPos()).getValue(BlockInventoryProxy.FACING);
-    }
-
-    public BlockPos getTarget() {
-        return new BlockPos(getPos().getX() + getFacing().getFrontOffsetX(), getPos().getY() + getFacing().getFrontOffsetY(), getPos().getZ() + getFacing().getFrontOffsetZ());
+        buffer = new ItemStackHandlerAutoSave(this, 9);
     }
 
     @Override
-    public IItemHandler getItemHandler() {
-        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
-            return null;
-        TileEntity te = getWorld().getTileEntity(getTarget());
-        return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getFacing().getOpposite());
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T)buffer : super.getCapability(capability, facing);
     }
 
     @Override
-    public boolean hasItemHandler() {
-        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
-            return false;
-        TileEntity te = getWorld().getTileEntity(getTarget());
-        return te != null && !(te instanceof TileEntityItemReceiver) && !(te instanceof IItemProxy) && te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, getFacing().getOpposite());
-    }
+    public IItemHandler getItemHandler(){ return this.buffer; }
+
+    @Override
+    public boolean hasItemHandler(){ return true; }
 
     @Override
     public IMatcher[] getAccess() {

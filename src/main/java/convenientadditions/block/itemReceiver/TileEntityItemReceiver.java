@@ -5,7 +5,7 @@ import convenientadditions.api.inventory.stackhandler.CombinedItemStackHandler;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.ItemChannelModule;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
-import convenientadditions.base.TileEntityCABase;
+import convenientadditions.base.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -18,7 +18,7 @@ import net.minecraftforge.items.IItemHandler;
 
 import java.util.ArrayList;
 
-public class TileEntityItemReceiver extends TileEntityCABase {
+public class TileEntityItemReceiver extends CATileEntity {
 
     ItemStackHandlerAutoSaveRestricted channels;
 
@@ -28,7 +28,7 @@ public class TileEntityItemReceiver extends TileEntityCABase {
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? true : super.hasCapability(capability, facing);
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")

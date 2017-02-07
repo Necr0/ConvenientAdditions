@@ -3,10 +3,11 @@ package convenientadditions.init;
 import convenientadditions.api.network.PacketExtendedExplosion;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.block.machine.jumpPad.MessageJumpPad;
 import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.network.PacketParticle;
 import convenientadditions.block.inventoryProxy.filtered.MessageInventoryProxyFiltered;
-import convenientadditions.block.setProvider.MessageSetProvider;
+import convenientadditions.block.machine.setProvider.MessageSetProvider;
 import convenientadditions.item.channelModule.color.MessageColorChannelModule;
 import convenientadditions.item.transmutationTome.MessageTransmutationTome;
 import net.minecraft.util.EnumParticleTypes;
@@ -27,6 +28,7 @@ public class ModNetworking {
         INSTANCE.registerMessage(MessageTransmutationTome.class, MessageTransmutationTome.class, i++, Side.CLIENT);
         INSTANCE.registerMessage(PacketExtendedExplosion.class, PacketExtendedExplosion.class, i++, Side.CLIENT);
         INSTANCE.registerMessage(PacketParticle.class, PacketParticle.class, i++, Side.CLIENT);
+        INSTANCE.registerMessage(MessageJumpPad.class, MessageJumpPad.class, i++, Side.SERVER);
     }
 
     public static void spawnParticle(World w, EnumParticleTypes t, double x, double y, double z, double xs, double ys, double zs){

@@ -20,7 +20,7 @@ import java.util.List;
 public class ItemPlayerChannelModule extends ItemChannelModule {
     public ItemPlayerChannelModule() {
         super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.modulePlayerItemName);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.modulePlayer);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ItemPlayerChannelModule extends ItemChannelModule {
             if (!player.isSneaking()) {
                 t.setString("MATCHER_PLAYER_ID", player.getUniqueID().toString());
                 t.setString("MATCHER_PLAYER_NAME", player.getDisplayNameString());
-                player.sendMessage(new TextComponentString(Helper.localize("message."+ModConstants.Mod.MODID+":playerSetTo","%p", player.getDisplayNameString())));
+                player.sendMessage(new TextComponentString(Helper.localize("message."+ModConstants.Mod.MODID+":playerSetTo", player.getDisplayNameString())));
                 new ActionResult<>(EnumActionResult.SUCCESS, item);
             }else{
                 t.removeTag("MATCHER_PLAYER_ID");

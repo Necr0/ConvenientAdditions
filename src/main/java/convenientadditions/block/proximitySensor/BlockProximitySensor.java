@@ -15,7 +15,7 @@ public class BlockProximitySensor extends CABlockContainer {
     public static final PropertyInteger STRENGTH = PropertyInteger.create("strength", 0, 15);
 
     public BlockProximitySensor() {
-        super(ModConstants.BlockNames.proximitySensorBlockName,Material.IRON);
+        super(ModConstants.BlockNames.proximitySensor,Material.IRON);
         this.setHardness(4F).setResistance(8F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(STRENGTH, 0));
     }

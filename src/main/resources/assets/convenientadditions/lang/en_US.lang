@@ -17,7 +17,7 @@ tile.convenientadditions:inventoryProxyFiltered.name=Filtered Inventory Proxy
 tile.convenientadditions:treetap.name=Tree Tap
 tile.convenientadditions:hoverPad.name=Hover Pad
 tile.convenientadditions:blastPad.name=Blast Pad
-tile.convenientadditions:treeBox.name=Leaf Collector
+tile.convenientadditions:jumpPad.name=Jump Pad
 tile.convenientadditions:platform.black.name=Black Platform
 tile.convenientadditions:platform.red.name=Red Platform
 tile.convenientadditions:platform.green.name=Green Platform
@@ -91,6 +91,7 @@ item.convenientadditions:sapBottle.name=Sap Bottle
 item.convenientadditions:antidote.name=Antidote
 item.convenientadditions:bandage.name=Bandage
 item.convenientadditions:adventurersPickaxe.name=Adventurer's Pickaxe
+item.convenientadditions:mobCatcher.name=Mob Containment Device
 # Channel Modules
 item.convenientadditions:obsidianPlate.name=Obsidian Plate
 item.convenientadditions:modulePlayer.name=Player Channel Module
@@ -113,7 +114,7 @@ itemGroup.convenientadditions=Convenient Additions
 
 ### Tooltips
 # Charge Abstract
-tooltip.convenientadditions:charge=%c/%C charges (%p%)
+tooltip.convenientadditions:charge=%d/%d charges (%d%%)
 tooltip.convenientadditions:compostSpores=(contains mushroom spores)
 # Sunstone
 tooltip.convenientadditions:sunstoneJoke=Enlightening!
@@ -139,13 +140,13 @@ tooltip.convenientadditions:saturationRingInfo=Keeps you saturated.
 tooltip.convenientadditions:seedBoxInfo=Drops self-planting seeds.
 tooltip.convenientadditions:hoverPadInfo=Pushes you upwards.
 tooltip.convenientadditions:blastPadInfo=Blasts you upwards.
+tooltip.convenientadditions:jumpPadInfo=Teleports you vertically or can be linked to another Jump Pad.
 tooltip.convenientadditions:powderKegInfo=Explodable Gunpowder Storage
 tooltip.convenientadditions:sapBottleInfo=Holds sap from tree tapping.
 tooltip.convenientadditions:treetapInfo=Collects sap from trees when a Sap Bottle is attached.
 tooltip.convenientadditions:playerInterfaceInfo=Allows accessing the inventory of the player on top it.
 tooltip.convenientadditions:proximitySensorInfo=Gives a comparator output depending on player proximity.
 tooltip.convenientadditions:playerInterfaceInfo=Allows accessing the inventory of the player on top it.
-tooltip.convenientadditions:treeBoxInfo=Breaks nearby decaying leafs and collects drops.
 tooltip.convenientadditions:playerInterfaceInfo=Allows accessing the inventory of the player on top it.
 tooltip.convenientadditions:platformInfo=Sneak to drop right through it.
 tooltip.convenientadditions:semiSolidBlockInfo=Sneak to pass right through it.
@@ -158,8 +159,11 @@ tooltip.convenientadditions:inventoryProxyFilteredInfo=Mimics the targeted inven
 tooltip.convenientadditions:composterInfo=Produces compost from given biomass.
 tooltip.convenientadditions:storageMatrixInfo=Has a large inventory but no GUI.
 tooltip.convenientadditions:moduleLocationInfo=Can store a block location.
+tooltip.convenientadditions:mobCatcherInfo=Can pickup and store mobs.
 
-tooltip.convenientadditions:storageMatrixHoldingInventory=(Holding inventory)
+tooltip.convenientadditions:storageMatrixHoldingInventory=(holding inventory)
+tooltip.convenientadditions:mobCatcherHoldingEntity=(holding a mob)
+tooltip.convenientadditions:mobCatcherNotHoldingEntity=(right-click a mob to pick it up)
 
 tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
 tooltip.convenientadditions:sunstoneInactive=(right click to activate)
@@ -168,26 +172,26 @@ tooltip.convenientadditions:enderPlateActive=(right click to deactivate)
 tooltip.convenientadditions:enderPlateInactive=(right click to activate)
 tooltip.convenientadditions:enderPlateDrained=(stay near end crystal to charge)
 # Adv Pick
-tooltip.convenientadditions:adventurersPickaxeLVL=Level : %l
-tooltip.convenientadditions:adventurersPickaxeXP=XP : %x/%X
-tooltip.convenientadditions:adventurersPickaxeMiningLevel=Mining Level : %l
-tooltip.convenientadditions:adventurersPickaxeMiningSpeed=Mining Speed : %s
-tooltip.convenientadditions:adventurersPickaxeSoftSpeed=Soft Mining Bonus : %s
-tooltip.convenientadditions:adventurersPickaxeDiggingSpeed=Digging Speed : %s
-tooltip.convenientadditions:adventurersPickaxeMiningVeins=Vein Size : %v
-tooltip.convenientadditions:adventurersPickaxeLuck=Luck : %l
-tooltip.convenientadditions:adventurersPickaxeRepairMaterial=Repair Material : %m
-tooltip.convenientadditions:adventurersPickaxeDurability=Durability : %c/%D
+tooltip.convenientadditions:adventurersPickaxeLVL=Level : %d
+tooltip.convenientadditions:adventurersPickaxeXP=XP : %d/%d
+tooltip.convenientadditions:adventurersPickaxeMiningLevel=Mining Level : %d
+tooltip.convenientadditions:adventurersPickaxeMiningSpeed=Mining Speed : %f
+tooltip.convenientadditions:adventurersPickaxeSoftSpeed=Soft Mining Bonus : %f
+tooltip.convenientadditions:adventurersPickaxeDiggingSpeed=Digging Speed : %f
+tooltip.convenientadditions:adventurersPickaxeMiningVeins=Vein Size : %d
+tooltip.convenientadditions:adventurersPickaxeLuck=Luck : %d
+tooltip.convenientadditions:adventurersPickaxeRepairMaterial=Repair Material : %s
+tooltip.convenientadditions:adventurersPickaxeDurability=Durability : %d/%d
 tooltip.convenientadditions:adventurersPickaxeMagnetic=Magnetic
 tooltip.convenientadditions:adventurersPickaxeSoulbound=Soulbound
 # Channel Modules
-tooltip.convenientadditions:modulePlayerPlayer=Player: %p
+tooltip.convenientadditions:modulePlayerPlayer=Player: %s
 tooltip.convenientadditions:modulePlayerNotSet=(right click to set player)
-tooltip.convenientadditions:moduleLocationLocation=Location: %x, %y, %z
+tooltip.convenientadditions:moduleLocationLocation=Location: %d, %d, %d (%d)
 tooltip.convenientadditions:moduleLocationNotSet=(sneak + use on a block to set location)
-tooltip.convenientadditions:moduleColorsPrefix=Colors: %c0, %c1, %c2
+tooltip.convenientadditions:moduleColorsPrefix=Colors: %s, %s, %s
 # Set Provider
-tooltip.convenientadditions:pushOn=Push on %v.
+tooltip.convenientadditions:pushOn=Push on %s.
 tooltip.convenientadditions:pushAlways=Push always.
 tooltip.convenientadditions:dontPushIfOutputsNotEmpty=Don't push if output's not empty.
 tooltip.convenientadditions:pushEvenIfOutputsNotEmpty=Push even if output's not empty.
@@ -214,12 +218,12 @@ convenientadditions:lowrs=Low Redstone Signal
 convenientadditions:pulsers=Redstone Pulse
 convenientadditions:ignorers=Ignore Redstone
 #
-convenientadditions:match=Match %v.
-convenientadditions:ignore=Ignore %v.
-convenientadditions:filter=Filter %v.
-convenientadditions:filterNot=Don't Filter %v.
-convenientadditions:restrict=Restrict %v.
-convenientadditions:restrictNot=Don't Restrict %v.
+convenientadditions:match=Match %s.
+convenientadditions:ignore=Ignore %s.
+convenientadditions:filter=Filter %s.
+convenientadditions:filterNot=Don't Filter %s.
+convenientadditions:restrict=Restrict %s.
+convenientadditions:restrictNot=Don't Restrict %s.
 #
 convenientadditions:damageValue=Damage Value
 convenientadditions:NBT=NBT
@@ -277,20 +281,20 @@ gui.convenientadditions:transmutationTomeLookup=Recipes
 ### Compat
 jei.convenientadditions:transmutationTome.name=Tome of Transmutation
 
-waila.convenientadditions:powerLevel=Power Level: %l
-waila.convenientadditions:compostingMass=%m/%M composting mass stored. (%p%)
+waila.convenientadditions:powerLevel=Power Level: %d
+waila.convenientadditions:compostingMass=%d/%d composting mass stored. (%d%%)
 
 ### Entity
 
 ### Messages
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.
-message.convenientadditions:locationSetTo=Location set to %x, %y, %z.
-message.convenientadditions:playerSetTo=Player set to %p.
+message.convenientadditions:locationSetTo=Location set to %d, %d, %d (%d).
+message.convenientadditions:playerSetTo=Player set to %s.
 message.convenientadditions:locationReset=Location has been reset.
 message.convenientadditions:playerReset=Player has been reset.
 # Adv Pick
-message.convenientadditions:adventurersPickaxeLevelUpMiningLevel=Mining Level increased to %m!
-message.convenientadditions:adventurersPickaxeLevelUpLuck=Luck increased to %m!
+message.convenientadditions:adventurersPickaxeLevelUpMiningLevel=Mining Level increased to %d!
+message.convenientadditions:adventurersPickaxeLevelUpLuck=Luck increased to %d!
 message.convenientadditions:adventurersPickaxeLevelUpSilktouch=Silktouch mode unlocked!
 message.convenientadditions:adventurersPickaxeLevelUpMagnetic=Ore Magnet unlocked!
 message.convenientadditions:adventurersPickaxeLevelUpSoulbound=Soulbound unlocked!

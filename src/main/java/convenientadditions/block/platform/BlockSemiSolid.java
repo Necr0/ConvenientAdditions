@@ -30,7 +30,7 @@ public class BlockSemiSolid extends CABlock {
     public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor>create("color", EnumDyeColor.class);
 
     public BlockSemiSolid() {
-        super(ModConstants.BlockNames.semiSolidBlockName, Material.GLASS);
+        super(ModConstants.BlockNames.semiSolidBlock, Material.GLASS);
         this.setHardness(2F).setResistance(.5F);
         this.setSoundType(SoundType.GLASS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));

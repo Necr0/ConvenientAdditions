@@ -30,7 +30,7 @@ public class ProviderProximitySensor implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity te=accessor.getTileEntity();
         if(te!=null&&te instanceof TileEntityProximitySensor){
-            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":powerLevel","%l",((TileEntityProximitySensor) te).getComp()+""));
+            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":powerLevel",((TileEntityProximitySensor) te).getComp()));
         }
         return  currenttip;
     }

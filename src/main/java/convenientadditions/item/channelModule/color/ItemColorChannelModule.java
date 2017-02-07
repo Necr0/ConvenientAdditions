@@ -29,7 +29,7 @@ public class ItemColorChannelModule extends ItemChannelModule {
 
     public ItemColorChannelModule() {
         super();
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.moduleColorItemName);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.moduleColor);
         ItemStack tmp_stack = new ItemStack(this);
         NBTTagCompound tmp_nbt = new NBTTagCompound();
         tmp_nbt.setInteger("MATCHER_DYE_0", 15);
@@ -53,9 +53,9 @@ public class ItemColorChannelModule extends ItemChannelModule {
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
         if (hasMatcher(stack)) {
             list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":moduleColorsPrefix",
-                    "%c0", Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[0].getUnlocalizedName()),
-                    "%c1", Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[1].getUnlocalizedName()),
-                    "%c2", Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[2].getUnlocalizedName())));
+                    Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[0].getUnlocalizedName()),
+                    Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[1].getUnlocalizedName()),
+                    Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[2].getUnlocalizedName())));
         }
         super.addInformation(stack, player, list, par4);
     }

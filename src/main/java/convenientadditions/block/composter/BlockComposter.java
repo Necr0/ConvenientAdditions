@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 public class BlockComposter extends CABlockContainer {
 
     public BlockComposter() {
-        super(ModConstants.BlockNames.composterBlockName,Material.WOOD);
+        super(ModConstants.BlockNames.composter,Material.WOOD);
         this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
     }

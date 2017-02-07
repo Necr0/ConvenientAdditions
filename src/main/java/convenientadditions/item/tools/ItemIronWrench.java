@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class ItemIronWrench extends CAItem {
     public ItemIronWrench() {
-        super(ModConstants.ItemNames.ironWrenchItemName);
+        super(ModConstants.ItemNames.ironWrench);
         this.setMaxStackSize(1);
     }
 

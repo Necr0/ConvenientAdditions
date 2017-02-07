@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResourceLocationProvider {
 
     public ItemLaunchingArrow() {
-        this.setRegistryName(ModConstants.ItemNames.launchingArrowItemName).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
+        this.setRegistryName(ModConstants.ItemNames.launchingArrow).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrow).setCreativeTab(ConvenientAdditions.CREATIVETAB).setHasSubtypes(true);
     }
 
     @SideOnly(Side.CLIENT)
@@ -38,7 +38,7 @@ public class ItemLaunchingArrow extends ItemArrow implements IModelVariantResour
     }
 
     public String getItemStackDisplayName(ItemStack stack) {
-        return net.minecraft.util.text.translation.I18n.translateToLocal("item." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrowItemName + "_" + stack.getItemDamage() + ".name");
+        return net.minecraft.util.text.translation.I18n.translateToLocal("item." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.launchingArrow + "_" + stack.getItemDamage() + ".name");
     }
 
     @Override

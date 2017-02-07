@@ -14,7 +14,7 @@ public class GuiHelper {
     public static RenderItem getRenderItem(){ return FMLClientHandler.instance().getClient().getRenderItem(); }
 
     @SideOnly(Side.CLIENT)
-    public static FontRenderer getFontRenderer(){ return FMLClientHandler.instance().getClient().fontRendererObj; }
+    public static FontRenderer getFontRenderer(){ return FMLClientHandler.instance().getClient().fontRenderer; }
 
     @SideOnly(Side.CLIENT)
     public static void playButtonPressSound(SoundHandler soundHandlerIn) {

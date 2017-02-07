@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 public class BlockItemReceiver extends CABlockContainer implements IDismantleable {
     public BlockItemReceiver() {
-        super(ModConstants.BlockNames.itemReceiverBlockName,Material.IRON);
+        super(ModConstants.BlockNames.itemReceiver,Material.IRON);
         this.setHardness(4F).setResistance(8F);
     }
 

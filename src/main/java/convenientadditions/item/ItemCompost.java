@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ItemCompost extends CAItem {
     public ItemCompost() {
-        super(ModConstants.ItemNames.compostItemName);
+        super(ModConstants.ItemNames.compost);
         this.setHasSubtypes(true);
     }
 
@@ -60,7 +60,7 @@ public class ItemCompost extends CAItem {
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
         super.addInformation(stack,player,list,advanced);
         if (stack.getItemDamage() == 1)
-            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compostItemName + "Spores"));
+            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compost + "Spores"));
     }
 
     @Override
