@@ -1,77 +1,57 @@
 {
     "parent": "block/block",
+    "ambientocclusion": false,
     "elements": [
         {   "from": [ 0, 0, 0 ],
             "to": [ 16, 1, 16 ],
             "faces": {
-                "down":  { "texture": "#base_face_bottom", "cullface": "down" },
-                "up":    { "texture": "#base_face_top" },
-                "north": { "uv": [ 0, 0, 16, 1 ], "texture": "#base_strip_north", "cullface": "north" },
-                "south": { "uv": [ 0, 0, 16, 1 ], "texture": "#base_strip_south", "cullface": "south" },
-                "west":  { "uv": [ 0, 0, 16, 1 ], "texture": "#base_strip_west", "cullface": "west" },
-                "east":  { "uv": [ 0, 0, 16, 1 ], "texture": "#base_strip_east", "cullface": "east" }
+                "down":  { "texture": "block", "cullface": "down" },
+                "up":    { "texture": "block" },
+                "north": { "uv": [ 0, 15, 16, 16 ], "texture": "#block", "cullface": "north" },
+                "south": { "uv": [ 0, 15, 16, 16 ], "texture": "#block", "cullface": "south" },
+                "west":  { "uv": [ 0, 15, 16, 16 ], "texture": "#block", "cullface": "west" },
+                "east":  { "uv": [ 0, 15, 16, 16 ], "texture": "#block", "cullface": "east" }
             }
         },
         {   "from": [ 0, 1, 0 ],
             "to": [ 15, 16, 1 ],
             "faces": {
-                "down":  { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_down", "cullface": "down" },
-                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_up", "cullface": "up" },
-                "north": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_outside", "cullface": "north" },
-                "south": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_inside" },
-                "west":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_outside", "cullface": "west" },
-                "east":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_inside", "cullface": "east" }
+                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#block", "cullface": "up" },
+                "north": { "uv": [ 1, 0, 16, 15 ],  "texture": "#block", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 15, 15 ],  "texture": "#block" },
+                "west":  { "uv": [ 0, 0, 1, 15], "texture": "#block", "cullface": "west" }
             }
         },
         {   "from": [ 15, 1, 0 ],
             "to": [ 16, 16, 15 ],
             "faces": {
-                "down":  { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_down", "cullface": "down" },
-                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_up", "cullface": "up" },
-                "east": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_outside", "cullface": "east" },
-                "west": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_inside" },
-                "north":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_outside", "cullface": "north" },
-                "south":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_inside", "cullface": "south" }
+                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#block", "cullface": "up" },
+                "east": { "uv": [ 1, 0, 16, 15 ],  "texture": "#block", "cullface": "east" },
+                "west": { "uv": [ 0, 0, 15, 15 ],  "texture": "#block" },
+                "north":  { "uv": [ 0, 0, 1, 15], "texture": "#block", "cullface": "north" }
             }
         },
-        {
-            "from": [ 1, 1, 15 ],
+        {   "from": [ 1, 1, 15 ],
             "to": [ 16, 16, 16 ],
             "faces": {
-                "down":  { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_down", "cullface": "down" },
-                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_up", "cullface": "up" },
-                "south": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_outside", "cullface": "south" },
-                "north": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_inside" },
-                "east":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_outside", "cullface": "east" },
-                "west":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_inside", "cullface": "west" }
+                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#block", "cullface": "up" },
+                "south": { "uv": [ 1, 0, 16, 15 ],  "texture": "#block", "cullface": "south" },
+                "north": { "uv": [ 0, 0, 15, 15 ],  "texture": "#block" },
+                "east":  { "uv": [ 0, 0, 1, 15], "texture": "#block", "cullface": "east" }
             }
         },
-        {
-            "from": [ 0, 1, 1 ],
+        {   "from": [ 0, 1, 1 ],
             "to": [ 1, 16, 16 ],
             "faces": {
-                "down":  { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_down", "cullface": "down" },
-                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#wall_strip_up", "cullface": "up" },
-                "west": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_outside", "cullface": "west" },
-                "east": { "uv": [ 0, 0, 15, 15 ],  "texture": "#wall_face_inside" },
-                "south":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_outside", "cullface": "south" },
-                "north":  { "uv": [ 0, 0, 1, 15 ], "texture": "#wall_strip_inside", "cullface": "north" }
+                "up":    { "uv": [ 0, 0, 15, 1 ], "texture": "#block", "cullface": "up" },
+                "west": { "uv": [ 1, 0, 16, 15 ],  "texture": "#block", "cullface": "west" },
+                "east": { "uv": [ 0, 0, 15, 15 ],  "texture": "#block" },
+                "south":  { "uv": [ 0, 0, 1, 15], "texture": "#block", "cullface": "south" }
             }
         }
     ],
     "textures": {
-        "particle": "convenientadditions:blocks/composter/composter_base_face_2",
-        "base_face_top": "convenientadditions:blocks/composter/composter_base_face_1",
-        "base_face_bottom": "convenientadditions:blocks/composter/composter_base_face_2",
-        "base_strip_north": "convenientadditions:blocks/composter/composter_base_strip_1",
-        "base_strip_east": "convenientadditions:blocks/composter/composter_base_strip_2",
-        "base_strip_south": "convenientadditions:blocks/composter/composter_base_strip_3",
-        "base_strip_west": "convenientadditions:blocks/composter/composter_base_strip_4",
-        "wall_face_outside": "convenientadditions:blocks/composter/composter_wall_face_1",
-        "wall_face_inside": "convenientadditions:blocks/composter/composter_wall_face_2",
-        "wall_strip_up": "convenientadditions:blocks/composter/composter_wall_strip_1",
-        "wall_strip_down": "convenientadditions:blocks/composter/composter_wall_strip_2",
-        "wall_strip_inside": "convenientadditions:blocks/composter/composter_wall_strip_3",
-        "wall_strip_outside": "convenientadditions:blocks/composter/composter_wall_strip_4"
+        "particle": "convenientadditions:blocks/composter/composter_block",
+        "block": "convenientadditions:blocks/composter/composter_block"
     }
 }

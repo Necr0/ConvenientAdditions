@@ -2,7 +2,8 @@ package convenientadditions.item.tools;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.block.IDismantleable;
-import convenientadditions.base.CAItem;
+import convenientadditions.base.item.CAItem;
+import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumActionResult;
@@ -15,6 +16,7 @@ public class ItemIronWrench extends CAItem {
     public ItemIronWrench() {
         super(ModConstants.ItemNames.ironWrench);
         this.setMaxStackSize(1);
+        this.setCategory(EnumItemCategory.TOOL);
     }
 
     @Override

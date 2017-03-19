@@ -143,10 +143,14 @@ public class PacketExtendedExplosion extends PacketBase<PacketExtendedExplosion>
 
 	@Override
 	public PacketExtendedExplosion onMessage(PacketExtendedExplosion message, MessageContext ctx) {
-		ExtendedExplosion explosion = new ExtendedExplosion(Helper.getClientWorld(), null, message.posX, message.posY, message.posZ, message.strength, message.affectedBlockPositions);
-        explosion.doExplosionB(true);
-        Helper.getClientPlayer().addVelocity(message.getMotionX(),(double)message.getMotionY(),(double)message.getMotionZ());
+        onClientReceive(message, ctx);
 		return null;
 	}
 
+	@SideOnly(Side.CLIENT)
+    public void onClientReceive(PacketExtendedExplosion message, MessageContext ctx){
+        ExtendedExplosion explosion = new ExtendedExplosion(Helper.getClientWorld(), null, message.posX, message.posY, message.posZ, message.strength, message.affectedBlockPositions);
+        explosion.doExplosionB(true);
+        Helper.getClientPlayer().addVelocity(message.getMotionX(),(double)message.getMotionY(),(double)message.getMotionZ());
+    }
 }

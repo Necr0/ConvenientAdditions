@@ -12,6 +12,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class BlockInventoryProxyFiltered extends BlockInventoryProxy {
 
     public BlockInventoryProxyFiltered() {
@@ -19,8 +21,10 @@ public class BlockInventoryProxyFiltered extends BlockInventoryProxy {
         this.setRegistryName(ModConstants.BlockNames.inventoryProxyFiltered).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.inventoryProxyFiltered);
     }
 
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityInventoryProxyFiltered();
     }
 

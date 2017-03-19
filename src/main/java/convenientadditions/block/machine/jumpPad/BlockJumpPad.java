@@ -3,7 +3,7 @@ package convenientadditions.block.machine.jumpPad;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.event.PlayerMovementEvent;
-import convenientadditions.base.CABlockMachine;
+import convenientadditions.base.block.CABlockMachine;
 import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.block.material.Material;
@@ -27,6 +27,7 @@ public class BlockJumpPad extends CABlockMachine {
         super(ModConstants.BlockNames.jumpPad,Material.IRON);
         this.setHardness(4F).setResistance(8F);
         MinecraftForge.EVENT_BUS.register(this);
+        this.setDefaultAdditionalInfo(true);
     }
 
     @SubscribeEvent
@@ -45,6 +46,12 @@ public class BlockJumpPad extends CABlockMachine {
     public BlockPos getTargetLocation(BlockPos pos, World w, boolean isSneaking){
         int range=16;
         if(isSneaking){
+            TileEntity te=w.getTileEntity(pos);
+            if(te!=null && te instanceof TileEntityJumpPad){
+                BlockPos p=((TileEntityJumpPad) te).getCustomLocation(false);
+                if(p!=null &&  w.getBlockState(p).getBlock()==this && validateLocation(p,w))
+                    return p;
+            }
             for(int i=3;i<range;i++){
                 BlockPos p=pos.down(i);
                 IBlockState state=w.getBlockState(p);
@@ -58,7 +65,7 @@ public class BlockJumpPad extends CABlockMachine {
         }else{
             TileEntity te=w.getTileEntity(pos);
             if(te!=null && te instanceof TileEntityJumpPad){
-                BlockPos p=((TileEntityJumpPad) te).getCustomLocation();
+                BlockPos p=((TileEntityJumpPad) te).getCustomLocation(true);
                 if(p!=null &&  w.getBlockState(p).getBlock()==this && validateLocation(p,w))
                     return p;
             }
@@ -96,7 +103,16 @@ public class BlockJumpPad extends CABlockMachine {
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityJumpPad();
+    }
+
+    @Override
+    public void dropItems(World world, BlockPos pos) {
+        TileEntity te=world.getTileEntity(pos);
+        if (!world.isRemote && te != null && te instanceof TileEntityJumpPad) {
+            dropItemHandler(world,pos,((TileEntityJumpPad) te).location,true);
+        }
     }
 }

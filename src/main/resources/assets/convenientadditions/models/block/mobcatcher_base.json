@@ -1,0 +1,7 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "convenientadditions:items/mobcatcher/mobcatcher_regular",
+        "layer1": "convenientadditions:items/mobcatcher/empty"
+    }
+}

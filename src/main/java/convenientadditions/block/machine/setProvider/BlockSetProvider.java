@@ -2,24 +2,24 @@ package convenientadditions.block.machine.setProvider;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.handler.ModGuiHandler;
-import convenientadditions.base.CABlockMachineConfigurable;
+import convenientadditions.base.block.CABlockMachineConfigurable;
+import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider.EnumOutletMode;
+import convenientadditions.handler.ModGuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class BlockSetProvider extends CABlockMachineConfigurable {
 
@@ -34,10 +34,13 @@ public class BlockSetProvider extends CABlockMachineConfigurable {
         super(ModConstants.BlockNames.setProvider,Material.IRON);
         this.setHardness(4F).setResistance(8F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP, EnumOutletMode.disabled).withProperty(OUTLET_BOTTOM, EnumOutletMode.disabled).withProperty(OUTLET_NORTH, EnumOutletMode.disabled).withProperty(OUTLET_EAST, EnumOutletMode.disabled).withProperty(OUTLET_SOUTH, EnumOutletMode.disabled).withProperty(OUTLET_WEST, EnumOutletMode.disabled));
+        this.setCategory(EnumItemCategory.MACHINE).setDefaultAdditionalInfo(true);
     }
 
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntitySetProvider();
     }
 
@@ -85,48 +88,11 @@ public class BlockSetProvider extends CABlockMachineConfigurable {
     }
 
     @Override
-    public NonNullList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
-        dropItems(world, pos);
-        return super.dismantleBlock(player, world, pos, returnDrops);
-    }
-
-    @Override
-    public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        dropItems(world, pos);
-        super.breakBlock(world, pos, state);
-    }
-
-    private void dropItems(World world, BlockPos pos) {
-        if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntitySetProvider && !world.isRemote) {
-            TileEntitySetProvider p = (TileEntitySetProvider) world.getTileEntity(pos);
-            for (ItemStack item : p.input.getStacks()) {
-                if (!item.isEmpty()) {
-                    float rx = world.rand.nextFloat() * 0.8F + 0.1F;
-                    float ry = world.rand.nextFloat() * 0.8F + 0.1F;
-                    float rz = world.rand.nextFloat() * 0.8F + 0.1F;
-                    EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
-                    float factor = 0.05F;
-                    entityItem.motionX = world.rand.nextGaussian() * factor;
-                    entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
-                    entityItem.motionZ = world.rand.nextGaussian() * factor;
-                    world.spawnEntity(entityItem);
-                }
-            }
-            p.input.setStacks(NonNullList.withSize(p.input.getSlots(),ItemStack.EMPTY));
-            for (ItemStack item : p.output.getStacks()) {
-                if (!item.isEmpty()) {
-                    float rx = world.rand.nextFloat() * 0.8F + 0.1F;
-                    float ry = world.rand.nextFloat() * 0.8F + 0.1F;
-                    float rz = world.rand.nextFloat() * 0.8F + 0.1F;
-                    EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
-                    float factor = 0.05F;
-                    entityItem.motionX = world.rand.nextGaussian() * factor;
-                    entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
-                    entityItem.motionZ = world.rand.nextGaussian() * factor;
-                    world.spawnEntity(entityItem);
-                }
-            }
-            p.output.setStacks(NonNullList.withSize(p.input.getSlots(),ItemStack.EMPTY));
+    public void dropItems(World world, BlockPos pos) {
+        TileEntity te=world.getTileEntity(pos);
+        if (!world.isRemote && te != null && te instanceof TileEntitySetProvider) {
+            dropItemHandler(world,pos,((TileEntitySetProvider) te).input,true);
+            dropItemHandler(world,pos,((TileEntitySetProvider) te).output,true);
         }
     }
 }

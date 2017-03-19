@@ -1,21 +1,27 @@
 package convenientadditions.init;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.base.item.CAItem;
+import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.item.*;
-import convenientadditions.item.adventurersPickaxe.CustomModelMeshAdventurersPickaxe;
-import convenientadditions.item.adventurersPickaxe.ItemAdventurersPickaxe;
-import convenientadditions.item.channelModule.ItemPlayerChannelModule;
-import convenientadditions.item.channelModule.color.ItemColorChannelModule;
-import convenientadditions.item.charge.ItemBlazingRock;
-import convenientadditions.item.charge.ItemSunstone;
-import convenientadditions.item.charge.baubles.ItemBreathAmulet;
-import convenientadditions.item.charge.baubles.ItemChargingRing;
-import convenientadditions.item.charge.baubles.ItemSaturationRing;
-import convenientadditions.item.charge.baubles.ItemSunlightRing;
-import convenientadditions.item.charge.enderPlate.ItemEnderPlate;
+import convenientadditions.item.tools.adventurersPickaxe.CustomModelMeshAdventurersPickaxe;
+import convenientadditions.item.tools.adventurersPickaxe.ItemAdventurersPickaxe;
+import convenientadditions.item.consumable.ItemAntidote;
+import convenientadditions.item.consumable.ItemBandage;
+import convenientadditions.item.consumable.ItemCompost;
+import convenientadditions.item.consumable.ItemFertilizer;
+import convenientadditions.item.module.ItemLocationModule;
+import convenientadditions.item.module.ItemPlayerChannelModule;
+import convenientadditions.item.module.color.ItemColorChannelModule;
+import convenientadditions.item.relic.ItemBlazingRock;
+import convenientadditions.item.relic.ItemSunstone;
+import convenientadditions.item.trinket.*;
+import convenientadditions.item.relic.ItemEnderPlate;
+import convenientadditions.item.trinket.doubleJump.ItemMultiJumpTrinket;
+import convenientadditions.item.tools.mobCatcher.EnumMobCatcherType;
+import convenientadditions.item.tools.mobCatcher.ItemMobCatcher;
 import convenientadditions.item.tools.ItemIronWrench;
-import convenientadditions.item.transmutationTome.ItemTransmutationTome;
+import convenientadditions.item.relic.transmutationTome.ItemTransmutationTome;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -41,71 +47,111 @@ public class ModItems {
     public static final ItemSapBottle itemSapBottle = new ItemSapBottle();
     public static final ItemAntidote itemAntidote = new ItemAntidote();
     public static final ItemBandage itemBandage = new ItemBandage();
-    public static final ItemMobCatcher itemMobCatcher = new ItemMobCatcher();
-    //channel modules
+    //
+    public static final ItemMobCatcher itemMobCatcherRegular = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherRegular, EnumMobCatcherType.DEFAULT);
+    public static final ItemMobCatcher itemMobCatcherSuper = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherSuper, EnumMobCatcherType.SUPER);
+    public static final ItemMobCatcher itemMobCatcherHyper = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherHyper, EnumMobCatcherType.HYPER);
+    public static final ItemMobCatcher itemMobCatcherMega = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherMega, EnumMobCatcherType.MEGA);
+    public static final ItemMobCatcher itemMobCatcherMaster = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherMaster, EnumMobCatcherType.MASTER);
+    //modules
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
-    //
     public static final ItemLocationModule itemModuleLocation = new ItemLocationModule();
     //dummy
-    public static final Item itemDirtChunk = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.dirtChunk).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemObsidianPlate = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.obsidianPlate).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemCreeperKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.creeperKit).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemBlastKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.blastKit).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    public static final Item itemSlimeKit = new Item().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.slimeKit).setCreativeTab(ConvenientAdditions.CREATIVETAB);
-    //baubles
+    public static final CAItem itemDirtChunk = new CAItem(ModConstants.ItemNames.dirtChunk).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
+    public static final CAItem itemObsidianPlate = new CAItem(ModConstants.ItemNames.obsidianPlate).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
+    public static final CAItem itemCreeperKit = new CAItem(ModConstants.ItemNames.creeperKit).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
+    public static final CAItem itemBlastKit = new CAItem(ModConstants.ItemNames.blastKit).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
+    public static final CAItem itemSlimeKit = new CAItem(ModConstants.ItemNames.slimeKit).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
+    public static final CAItem itemDislocationCore = new CAItem(ModConstants.ItemNames.dislocationCore).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
+    
+    //trinkets
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
     public static final ItemSaturationRing itemSaturationRing = new ItemSaturationRing();
-    public static final ItemBreathAmulet itemBreathAmulet = new ItemBreathAmulet();
-    public static final ItemChargingRing itemChargingRing = new ItemChargingRing();
+    public static final ItemWaterTrinket itemBreathAmulet = new ItemWaterTrinket();
+    public static final ItemWaterTrinket itemFlippers = new ItemWaterTrinket(ModConstants.ItemNames.flippers,false,.085f,0f);
+    public static final ItemWaterTrinket itemFlowingWaterRune = new ItemWaterTrinket(ModConstants.ItemNames.flowingWaterRune,false,0f,1f);
+    public static final ItemWaterTrinket itemTideAmulet = new ItemWaterTrinket(ModConstants.ItemNames.tideAmulet,true,.1f,1.2f);
+    public static final ItemMultiJumpTrinket itemCloudJar = new ItemMultiJumpTrinket();
+    public static final ItemMultiJumpTrinket itemSlimeBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.slimeBalloon,0,.1325f,1f);
+    public static final ItemMultiJumpTrinket itemCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.cloudBalloon,1,.1325f,1.75f);
+    public static final ItemMultiJumpTrinket itemEnderCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.enderCloudBalloon,2,.2325f,2.6f);
+    public static final ItemSpeedTrinket itemWindGem = new ItemSpeedTrinket();
+    public static final ItemSpeedTrinket itemSpikedSole = new ItemSpeedTrinket(ModConstants.ItemNames.spikedSole,0f,.5f,0f,0f);
+    public static final ItemSpeedTrinket itemGlider = new ItemSpeedTrinket(ModConstants.ItemNames.glider,0f,0f,-.375f,.1f);
+    public static final ItemSpeedTrinket itemValkyrieWings = new ItemSpeedTrinket(ModConstants.ItemNames.valkyrieWings,.12f,.5f,-.295f,.135f);
+    public static final ItemNetherTrinket itemFireproofCloak = new ItemNetherTrinket();
+    public static final ItemNetherTrinket itemNetherTalisman = new ItemNetherTrinket(ModConstants.ItemNames.netherTalisman,false,true,0f,0f,true);
+    public static final ItemNetherTrinket itemNetherCloak = new ItemNetherTrinket(ModConstants.ItemNames.netherCloak,true,true,.5f,.5f,true);
     //ttools
     public static final ItemIronWrench itemIronWrench = new ItemIronWrench();
 
     public static void init() {
         //dummy
-        registerItem(itemDirtChunk, ModConstants.ItemNames.dirtChunk);
-        registerItem(itemObsidianPlate, ModConstants.ItemNames.obsidianPlate);
-        registerItem(itemCreeperKit, ModConstants.ItemNames.creeperKit);
-        registerItem(itemBlastKit, ModConstants.ItemNames.blastKit);
-        registerItem(itemSlimeKit, ModConstants.ItemNames.slimeKit);
+        registerItem(itemDirtChunk);
+        registerItem(itemObsidianPlate);
+        registerItem(itemCreeperKit);
+        registerItem(itemBlastKit);
+        registerItem(itemSlimeKit);
+        registerItem(itemDislocationCore);
         //tools
-        registerItem(itemIronWrench, ModConstants.ItemNames.ironWrench);
+        registerItem(itemIronWrench);
         //misc
-        registerItem(itemFertilizer, ModConstants.ItemNames.fertilizer);
-        registerItem(itemCompost, ModConstants.ItemNames.compost);
-        registerItem(itemSunstone, ModConstants.ItemNames.sunstone);
-        registerItem(itemBlazingRock, ModConstants.ItemNames.blazingRock);
-        registerItem(itemEnderPlate, ModConstants.ItemNames.enderPlate);
-        registerItem(itemLaunchingArrow, ModConstants.ItemNames.launchingArrow);
-        registerItem(itemTransmutationTome, ModConstants.ItemNames.transmutationTome);
-        registerItem(itemSapBottle, ModConstants.ItemNames.sapBottle);
-        registerItem(itemAntidote, ModConstants.ItemNames.antidote);
-        registerItem(itemBandage, ModConstants.ItemNames.bandage);
-        registerItem(itemMobCatcher, ModConstants.ItemNames.mobCatcher);
-        //channel modules
-        registerItem(itemModulePlayer, ModConstants.ItemNames.modulePlayer);
-        registerItem(itemModuleColor, ModConstants.ItemNames.moduleColor);
+        registerItem(itemFertilizer);
+        registerItem(itemCompost);
+        registerItem(itemSunstone);
+        registerItem(itemBlazingRock);
+        registerItem(itemEnderPlate);
+        registerItem(itemLaunchingArrow);
+        registerItem(itemTransmutationTome);
+        registerItem(itemSapBottle);
+        registerItem(itemAntidote);
+        registerItem(itemBandage);
         //
-        registerItem(itemModuleLocation, ModConstants.ItemNames.moduleLocation);
-        //baubles
-        registerItem(itemSunlightRing, ModConstants.ItemNames.sunlightRing);
-        registerItem(itemSaturationRing, ModConstants.ItemNames.saturationRing);
-        registerItem(itemBreathAmulet, ModConstants.ItemNames.breathAmulet);
-        registerItem(itemChargingRing, ModConstants.ItemNames.chargingRing);
+        registerItem(itemMobCatcherRegular);
+        registerItem(itemMobCatcherSuper);
+        registerItem(itemMobCatcherHyper);
+        registerItem(itemMobCatcherMega);
+        registerItem(itemMobCatcherMaster);
+        //channel modules
+        registerItem(itemModulePlayer);
+        registerItem(itemModuleColor);
+        //
+        registerItem(itemModuleLocation);
+        //trinkets
+        registerItem(itemSunlightRing);
+        registerItem(itemSaturationRing);
+        registerItem(itemBreathAmulet);
+        registerItem(itemFlippers);
+        registerItem(itemFlowingWaterRune);
+        registerItem(itemTideAmulet);
+        registerItem(itemCloudJar);
+        registerItem(itemSlimeBalloon);
+        registerItem(itemCloudBalloon);
+        registerItem(itemEnderCloudBalloon);
+        registerItem(itemWindGem);
+        registerItem(itemSpikedSole);
+        registerItem(itemGlider);
+        registerItem(itemValkyrieWings);
+        registerItem(itemFireproofCloak);
+        registerItem(itemNetherTalisman);
+        registerItem(itemNetherCloak);
 
-        registerItem(itemAdventurersPickaxe, ModConstants.ItemNames.adventurersPickaxe);
+        registerItem(itemAdventurersPickaxe);
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModelLoader() {
         CustomModelMeshAdventurersPickaxe.initVariants();
         ModelLoader.setCustomMeshDefinition(itemAdventurersPickaxe, new CustomModelMeshAdventurersPickaxe());
+        ItemMobCatcher.initModels();
         //
         registerModelLocation(itemDirtChunk);
         registerModelLocation(itemObsidianPlate);
         registerModelLocation(itemCreeperKit);
         registerModelLocation(itemBlastKit);
         registerModelLocation(itemSlimeKit);
+        registerModelLocation(itemDislocationCore);
         //tools
         registerModelLocation(itemIronWrench);
         //misc
@@ -121,18 +167,32 @@ public class ModItems {
         registerVariants(itemSapBottle, itemSapBottle.getModelResourceLocations());
         registerModelLocation(itemAntidote);
         registerModelLocation(itemBandage);
-        registerModelLocation(itemMobCatcher, 0, new ModelResourceLocation(itemMobCatcher.getRegistryName().toString().toLowerCase() + "_empty"));
-        registerModelLocation(itemMobCatcher, 1, new ModelResourceLocation(itemMobCatcher.getRegistryName().toString().toLowerCase() + "_filled"));
-        //channel modules
+        //modules
         registerModelLocation(itemModulePlayer);
         registerModelLocation(itemModuleColor);
-        //
         registerModelLocation(itemModuleLocation);
-        //baubles
+        //trinkets
         registerModelLocation(itemSunlightRing);
         registerModelLocation(itemSaturationRing);
         registerModelLocation(itemBreathAmulet);
-        registerModelLocation(itemChargingRing);
+        registerModelLocation(itemFlippers);
+        registerModelLocation(itemFlowingWaterRune);
+        registerModelLocation(itemTideAmulet);
+        registerModelLocation(itemCloudJar);
+        registerModelLocation(itemSlimeBalloon);
+        registerModelLocation(itemCloudBalloon);
+        registerModelLocation(itemEnderCloudBalloon);
+        registerModelLocation(itemWindGem);
+        registerModelLocation(itemSpikedSole);
+        registerModelLocation(itemGlider);
+        registerModelLocation(itemValkyrieWings);
+        registerModelLocation(itemFireproofCloak);
+        registerModelLocation(itemNetherTalisman);
+        registerModelLocation(itemNetherCloak);
+    }
+
+    public static void registerItem(Item item) {
+        GameRegistry.register(item);
     }
 
     public static void registerItem(Item item, String registryName) {

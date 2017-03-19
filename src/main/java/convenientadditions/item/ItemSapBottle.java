@@ -2,7 +2,7 @@ package convenientadditions.item;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.item.IModelVariantResourceLocationProvider;
-import convenientadditions.base.CAItem;
+import convenientadditions.base.item.CAItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

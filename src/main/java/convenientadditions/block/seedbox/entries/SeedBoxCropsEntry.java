@@ -18,8 +18,8 @@ public class SeedBoxCropsEntry implements ISeedBoxItemBehaviourRegistryEntry {
     }
 
     @Override
-    public void getDiscriminators(ItemStack stack, List<Long> behaviours) {
-        behaviours.add(BehaviourRegistry.API_DISCRIMINATORS.get("autoCrops"));
+    public void getDiscriminators(ItemStack stack, List<String> behaviours) {
+        behaviours.add(BehaviourRegistry.BEHAVIOUR_AUTO_CROPS);
     }
 
 }

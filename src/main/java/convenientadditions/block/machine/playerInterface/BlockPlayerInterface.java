@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.playerInterface;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.CABlockMachine;
+import convenientadditions.base.block.CABlockMachine;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -12,6 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class BlockPlayerInterface extends CABlockMachine {
     public static final PropertyBool ACTIVE = PropertyBool.create("active");
 
@@ -21,8 +23,10 @@ public class BlockPlayerInterface extends CABlockMachine {
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
     }
 
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityPlayerInterface();
     }
 

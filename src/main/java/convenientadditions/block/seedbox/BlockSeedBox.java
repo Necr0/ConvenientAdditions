@@ -1,7 +1,7 @@
 package convenientadditions.block.seedbox;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.CABlockConfigurable;
+import convenientadditions.base.block.CABlockConfigurable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -12,6 +12,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class BlockSeedBox extends CABlockConfigurable {
     public static final PropertyBool OUTLET_TOP = PropertyBool.create("outlet_top");
@@ -26,10 +28,13 @@ public class BlockSeedBox extends CABlockConfigurable {
         this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP, false).withProperty(OUTLET_BOTTOM, true).withProperty(OUTLET_NORTH, false).withProperty(OUTLET_EAST, false).withProperty(OUTLET_SOUTH, false).withProperty(OUTLET_WEST, false));
+        this.setDefaultAdditionalInfo(true);
     }
 
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntitySeedBox();
     }
 

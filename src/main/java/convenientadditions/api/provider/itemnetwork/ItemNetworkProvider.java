@@ -20,6 +20,8 @@ public class ItemNetworkProvider {
     }
 
     public static void addEntry(World world, BlockPos provider) {
+        if(world.isRemote)
+            return;
         for (Tuple<World, BlockPos> t : entryList) {
             if (world == t.getFirst() && t.getSecond().equals(provider))
                 return;
@@ -48,6 +50,8 @@ public class ItemNetworkProvider {
     }
 
     public static IItemProvider getProvider(World w, BlockPos p) {
+        if(!w.isBlockLoaded(p))
+            return null;
         TileEntity te = w.getTileEntity(p);
         return (te != null && te instanceof IItemProvider) ? (IItemProvider) te : null;
     }

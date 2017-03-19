@@ -16,7 +16,7 @@ public class SeedBoxBehaviourProviderEntry implements ISeedBoxItemBehaviourRegis
     }
 
     @Override
-    public void getDiscriminators(ItemStack stack, List<Long> behaviours) {
+    public void getDiscriminators(ItemStack stack, List<String> behaviours) {
         if (stack.getItem() instanceof IBehaviourProvider)
             ((IBehaviourProvider) stack.getItem()).getBehaviours(stack, behaviours);
     }

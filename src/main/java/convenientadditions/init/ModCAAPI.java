@@ -1,5 +1,6 @@
 package convenientadditions.init;
 
+import convenientadditions.ModConstants;
 import convenientadditions.api.entity.specialitem.BehaviourRegistry;
 import convenientadditions.api.entity.specialitem.behaviours.BehaviourAutoBoneMeal;
 import convenientadditions.api.registry.compost.CompostRegistry;
@@ -14,24 +15,22 @@ import convenientadditions.block.seedbox.entries.SeedBoxFeedEntry;
 import convenientadditions.entity.behaviour.BehaviourAutoFeed;
 import convenientadditions.entity.behaviour.BehaviourAutoFertilizer;
 import convenientadditions.entity.behaviour.BehaviourCompost;
-import convenientadditions.api.entity.specialitem.behaviours.BehaviourSunlightChargeable;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 public class ModCAAPI {
-    public static Long compostDiscriminator;
-    public static Long sunlightChargableDiscriminator;
-    public static Long autoBoneMealDiscriminator;
-    public static Long autoFertilizerDiscriminator;
-    public static Long autoFeedDiscriminator;
+    public static String BEHAVIOUR_COMPOST;
+    public static String BEHAVIOUR_AUTO_BONEMEAL;
+    public static String BEHAVIOUR_AUTO_FERTILIZER;
+    public static String BEHAVIOUR_AUTO_FEED;
 
     public static void init() {
-        compostDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourCompost());
-        sunlightChargableDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourSunlightChargeable());
-        autoBoneMealDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourAutoBoneMeal());
-        autoFertilizerDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourAutoFertilizer());
-        autoFeedDiscriminator = BehaviourRegistry.addBehaviour(new BehaviourAutoFeed());
+         BEHAVIOUR_COMPOST = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"compost"), new BehaviourCompost());
+         BEHAVIOUR_AUTO_BONEMEAL = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoBonemeal"), new BehaviourAutoBoneMeal());
+         BEHAVIOUR_AUTO_FERTILIZER = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFertilizer"), new BehaviourAutoFertilizer());
+         BEHAVIOUR_AUTO_FEED = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFeed"), new BehaviourAutoFeed());
         initSeedBox();
         initCompost();
         initTome();
@@ -41,12 +40,12 @@ public class ModCAAPI {
         if (ModConfig.seedBox_autoCrops)
             SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxCropsEntry());
         if (ModConfig.seedBox_autoCompost)
-            SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemCompost), compostDiscriminator);
+            SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemCompost), BEHAVIOUR_COMPOST);
         if (ModConfig.seedBox_behaviourProviderEntry)
             SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxBehaviourProviderEntry());
         if (ModConfig.seedBox_autoBoneMeal){
-            SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(Items.DYE,1,15), autoBoneMealDiscriminator, false, true);
-            SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemFertilizer), autoFertilizerDiscriminator);
+            SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(Items.DYE,1,15), BEHAVIOUR_AUTO_BONEMEAL, false, true);
+            SeedBoxItemBehaviourRegistry.addItemBehaviour(new ItemStack(ModItems.itemFertilizer), BEHAVIOUR_AUTO_FERTILIZER);
         }
         if (ModConfig.seedBox_autoFeed)
             SeedBoxItemBehaviourRegistry.addEntry(new SeedBoxFeedEntry());
@@ -158,8 +157,8 @@ public class ModCAAPI {
         if (ModConfig.transmutationTome_dirtMutation) {
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.RED_MUSHROOM, 8), new ItemStack(Blocks.GRASS, 1), new ItemStack(Blocks.MYCELIUM), time_long, 11);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.WHEAT_SEEDS, 8), new ItemStack(Blocks.DIRT, 1), new ItemStack(Blocks.GRASS, 1), time_long, 8);
-            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.DIRT, 8), new ItemStack(Items.GUNPOWDER, 1), new ItemStack(Blocks.DIRT, 4, 8), time_short, 3);
-            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.GRASS, 8), new ItemStack(Items.GUNPOWDER, 1), new ItemStack(Blocks.DIRT, 4, 8), time_short, 3);
+            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.DIRT, 8), new ItemStack(Items.GUNPOWDER, 1), new ItemStack(Blocks.DIRT, 4, 1), time_short, 3);
+            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.GRASS, 8), new ItemStack(Items.GUNPOWDER, 1), new ItemStack(Blocks.DIRT, 4, 2), time_short, 3);
         }
         if (ModConfig.transmutationTome_misc) {
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.WHEAT, 8), new ItemStack(Items.MILK_BUCKET, 1), new ItemStack(Items.BREAD, 4), time_short, 1);

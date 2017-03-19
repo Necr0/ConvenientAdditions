@@ -4,12 +4,14 @@ import convenientadditions.api.network.PacketExtendedExplosion;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.block.machine.jumpPad.MessageJumpPad;
+import convenientadditions.block.machine.proximitySensor.MessageProximitySensor;
 import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.network.PacketParticle;
 import convenientadditions.block.inventoryProxy.filtered.MessageInventoryProxyFiltered;
 import convenientadditions.block.machine.setProvider.MessageSetProvider;
-import convenientadditions.item.channelModule.color.MessageColorChannelModule;
-import convenientadditions.item.transmutationTome.MessageTransmutationTome;
+import convenientadditions.item.module.color.MessageColorChannelModule;
+import convenientadditions.item.trinket.doubleJump.PacketDoubleJump;
+import convenientadditions.item.relic.transmutationTome.MessageTransmutationTome;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -29,9 +31,15 @@ public class ModNetworking {
         INSTANCE.registerMessage(PacketExtendedExplosion.class, PacketExtendedExplosion.class, i++, Side.CLIENT);
         INSTANCE.registerMessage(PacketParticle.class, PacketParticle.class, i++, Side.CLIENT);
         INSTANCE.registerMessage(MessageJumpPad.class, MessageJumpPad.class, i++, Side.SERVER);
+        INSTANCE.registerMessage(PacketDoubleJump.class, PacketDoubleJump.class, i++, Side.SERVER);
+        INSTANCE.registerMessage(MessageProximitySensor.class, MessageProximitySensor.class, i++, Side.SERVER);
     }
 
     public static void spawnParticle(World w, EnumParticleTypes t, double x, double y, double z, double xs, double ys, double zs){
         INSTANCE.sendToAllAround(new PacketParticle(t,x,y,z,xs,ys,zs),new NetworkRegistry.TargetPoint(w.provider.getDimension(),x,y,z,64));
+    }
+
+    public static void spawnParticle(World w, EnumParticleTypes t, double x, double y, double z, double xs, double ys, double zs, int... params){
+        INSTANCE.sendToAllAround(new PacketParticle(t,x,y,z,xs,ys,zs,params),new NetworkRegistry.TargetPoint(w.provider.getDimension(),x,y,z,64));
     }
 }

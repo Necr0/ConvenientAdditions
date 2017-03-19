@@ -3,7 +3,6 @@ package convenientadditions.block.technical;
 import convenientadditions.ModConstants;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumBlockRenderType;
@@ -18,7 +17,7 @@ import java.util.Random;
 public class BlockTempLight extends Block {
 
     public BlockTempLight(float intensisty) {
-        super(Material.FIRE);
+        super(MaterialNotQuiteAir.NOT_QUITE_AIR);
         this.setRegistryName(ModConstants.BlockNames.tempLight).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.tempLight)
                 .setLightLevel(intensisty).setTickRandomly(false);
         this.disableStats();

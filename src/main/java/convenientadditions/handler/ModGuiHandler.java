@@ -3,22 +3,27 @@ package convenientadditions.handler;
 import convenientadditions.block.inventoryProxy.filtered.ContainerInventoryProxyFiltered;
 import convenientadditions.block.inventoryProxy.filtered.GuiInventoryProxyFiltered;
 import convenientadditions.block.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
-import convenientadditions.block.itemReceiver.ContainerItemReceiver;
-import convenientadditions.block.itemReceiver.GuiItemReceiver;
-import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
-import convenientadditions.block.itemTransmitter.ContainerItemTransmitter;
-import convenientadditions.block.itemTransmitter.GuiItemTransmitter;
-import convenientadditions.block.itemTransmitter.TileEntityItemTransmitter;
+import convenientadditions.block.machine.itemReceiver.ContainerItemReceiver;
+import convenientadditions.block.machine.itemReceiver.GuiItemReceiver;
+import convenientadditions.block.machine.itemReceiver.TileEntityItemReceiver;
+import convenientadditions.block.machine.itemTransmitter.ContainerItemTransmitter;
+import convenientadditions.block.machine.itemTransmitter.GuiItemTransmitter;
+import convenientadditions.block.machine.itemTransmitter.TileEntityItemTransmitter;
 import convenientadditions.block.machine.jumpPad.ContainerJumpPad;
 import convenientadditions.block.machine.jumpPad.GuiJumpPad;
 import convenientadditions.block.machine.jumpPad.TileEntityJumpPad;
+import convenientadditions.block.machine.remoteInventoryProxy.ContainerRemoteInventoryProxy;
+import convenientadditions.block.machine.remoteInventoryProxy.GuiRemoteInventoryProxy;
+import convenientadditions.block.machine.remoteInventoryProxy.TileEntityRemoteInventoryProxy;
 import convenientadditions.block.machine.setProvider.ContainerSetProvider;
 import convenientadditions.block.machine.setProvider.GuiSetProvider;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
-import convenientadditions.item.channelModule.color.GuiColorChannelModule;
-import convenientadditions.item.transmutationTome.ContainerTransmutationTome;
-import convenientadditions.item.transmutationTome.GuiTransmutationTome;
-import convenientadditions.item.transmutationTome.GuiTransmutationTomeRecipeLookup;
+import convenientadditions.block.machine.proximitySensor.GuiProximitySensor;
+import convenientadditions.block.machine.proximitySensor.TileEntityProximitySensor;
+import convenientadditions.item.module.color.GuiColorChannelModule;
+import convenientadditions.item.relic.transmutationTome.ContainerTransmutationTome;
+import convenientadditions.item.relic.transmutationTome.GuiTransmutationTome;
+import convenientadditions.item.relic.transmutationTome.GuiTransmutationTomeRecipeLookup;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -34,6 +39,8 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int GUI_TRANSMUTATION_TOME_ID = 5;
     public static final int GUI_TRANSMUTATION_TOME_LOOKUP_ID = 6;
     public static final int GUI_JUMP_PAD_ID = 7;
+    public static final int GUI_REMOTE_PROXY_ID = 8;
+    public static final int GUI_PROXIMITY_SENSOR_ID = 9;
 
 
     @Override
@@ -51,6 +58,8 @@ public class ModGuiHandler implements IGuiHandler {
                 return new ContainerTransmutationTome(player);
             case GUI_JUMP_PAD_ID:
                 return new ContainerJumpPad((TileEntityJumpPad) world.getTileEntity(new BlockPos(x,y,z)),player);
+            case GUI_REMOTE_PROXY_ID:
+                return new ContainerRemoteInventoryProxy((TileEntityRemoteInventoryProxy) world.getTileEntity(new BlockPos(x,y,z)),player);
             default:
                 return null;
         }
@@ -75,6 +84,10 @@ public class ModGuiHandler implements IGuiHandler {
                 return new GuiTransmutationTomeRecipeLookup(x);
             case GUI_JUMP_PAD_ID:
                 return new GuiJumpPad(new ContainerJumpPad((TileEntityJumpPad) world.getTileEntity(new BlockPos(x,y,z)),player));
+            case GUI_PROXIMITY_SENSOR_ID:
+                return new GuiProximitySensor((TileEntityProximitySensor)world.getTileEntity(new BlockPos(x,y,z)));
+            case GUI_REMOTE_PROXY_ID:
+                return new GuiRemoteInventoryProxy(new ContainerRemoteInventoryProxy((TileEntityRemoteInventoryProxy) world.getTileEntity(new BlockPos(x,y,z)),player));
             default:
                 return null;
         }

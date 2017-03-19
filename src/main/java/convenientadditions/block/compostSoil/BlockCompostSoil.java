@@ -2,7 +2,7 @@ package convenientadditions.block.compostSoil;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.CABlock;
+import convenientadditions.base.block.CABlock;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -51,7 +51,7 @@ public class BlockCompostSoil extends CABlock {
 
         switch (plantType) {
             case Desert:
-                return true;
+                return false;
             case Nether:
                 return false;
             case Crop:

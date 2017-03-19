@@ -2,15 +2,17 @@ package convenientadditions.init;
 
 import convenientadditions.ModConstants;
 import convenientadditions.block.composter.TileEntityComposter;
+import convenientadditions.block.displayCase.TileEntityDisplayCase;
 import convenientadditions.block.machine.hoverPad.TileEntityHoverPad;
 import convenientadditions.block.inventoryProxy.TileEntityInventoryProxy;
 import convenientadditions.block.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
-import convenientadditions.block.itemReceiver.TileEntityItemReceiver;
-import convenientadditions.block.itemTransmitter.TileEntityItemTransmitter;
+import convenientadditions.block.machine.itemReceiver.TileEntityItemReceiver;
+import convenientadditions.block.machine.itemTransmitter.TileEntityItemTransmitter;
 import convenientadditions.block.machine.jumpPad.TileEntityJumpPad;
 import convenientadditions.block.machine.playerInterface.TileEntityPlayerInterface;
+import convenientadditions.block.machine.remoteInventoryProxy.TileEntityRemoteInventoryProxy;
 import convenientadditions.block.powderkeg.TileEntityPowderKeg;
-import convenientadditions.block.proximitySensor.TileEntityProximitySensor;
+import convenientadditions.block.machine.proximitySensor.TileEntityProximitySensor;
 import convenientadditions.block.seedbox.TileEntitySeedBox;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import convenientadditions.block.machine.storageMatrix.TileEntityStorageMatrix;
@@ -31,5 +33,7 @@ public class ModTileEntities {
         GameRegistry.registerTileEntity(TileEntityHoverPad.class, ModConstants.BlockNames.hoverPad);
         GameRegistry.registerTileEntity(TileEntityJumpPad.class, ModConstants.BlockNames.jumpPad);
         GameRegistry.registerTileEntity(TileEntityStorageMatrix.class, ModConstants.BlockNames.storageMatrix);
+        GameRegistry.registerTileEntity(TileEntityDisplayCase.class, ModConstants.BlockNames.displayCase);
+        GameRegistry.registerTileEntity(TileEntityRemoteInventoryProxy.class, ModConstants.BlockNames.remoteInventoryProxy);
     }
 }

@@ -15,8 +15,8 @@ public class SeedBoxFeedEntry implements ISeedBoxItemBehaviourRegistryEntry {
     }
 
     @Override
-    public void getDiscriminators(ItemStack stack, List<Long> behaviours) {
-        behaviours.add(ModCAAPI.autoFeedDiscriminator);
+    public void getDiscriminators(ItemStack stack, List<String> behaviours) {
+        behaviours.add(ModCAAPI.BEHAVIOUR_AUTO_FEED);
     }
 
 }

@@ -1,10 +1,10 @@
 package convenientadditions.block.machine.setProvider;
 
 import convenientadditions.api.util.FillSetFilter;
-import convenientadditions.api.block.IConfigurable;
+import convenientadditions.api.block.tileentity.IConfigurable;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
-import convenientadditions.base.CATileEntity;
+import convenientadditions.base.block.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

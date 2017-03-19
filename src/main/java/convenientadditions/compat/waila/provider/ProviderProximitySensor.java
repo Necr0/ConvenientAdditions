@@ -2,7 +2,7 @@ package convenientadditions.compat.waila.provider;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.block.proximitySensor.TileEntityProximitySensor;
+import convenientadditions.block.machine.proximitySensor.TileEntityProximitySensor;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -30,7 +30,7 @@ public class ProviderProximitySensor implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity te=accessor.getTileEntity();
         if(te!=null&&te instanceof TileEntityProximitySensor){
-            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":powerLevel",((TileEntityProximitySensor) te).getComp()));
+            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":powerLevel",((TileEntityProximitySensor) te).power));
         }
         return  currenttip;
     }

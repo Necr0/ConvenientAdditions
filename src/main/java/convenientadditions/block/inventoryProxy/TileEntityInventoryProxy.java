@@ -1,7 +1,7 @@
 package convenientadditions.block.inventoryProxy;
 
 import convenientadditions.api.block.tileentity.IItemProxy;
-import convenientadditions.base.CATileEntity;
+import convenientadditions.base.block.CATileEntity;
 import convenientadditions.init.ModConfig;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -12,7 +12,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy {
-    public static int chainLimit = 16;
 
     public boolean sided = false;
 
@@ -79,7 +78,7 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && !(te instanceof IItemProxy))
             return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, (sided ? f : getFacing().getOpposite()));
-        else if (te != null && te instanceof IItemProxy && proxyIndex < ModConfig.inventoryProxies_chainLimit)
+        else if (te != null && proxyIndex < ModConfig.inventoryProxies_chainLimit)
             return ((IItemProxy) te).tryFetchItemHandler(sided ? f : getFacing().getOpposite(), proxyIndex + 1);
         else
             return super.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);

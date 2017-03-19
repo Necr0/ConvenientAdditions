@@ -4,7 +4,7 @@ import convenientadditions.block.compostSoil.BlockCompostSoil;
 import convenientadditions.block.composter.BlockComposter;
 import convenientadditions.block.machine.hoverPad.BlockHoverPad;
 import convenientadditions.block.powderkeg.BlockPowderKeg;
-import convenientadditions.block.proximitySensor.BlockProximitySensor;
+import convenientadditions.block.machine.proximitySensor.BlockProximitySensor;
 import convenientadditions.compat.waila.provider.*;
 import mcp.mobius.waila.api.IWailaRegistrar;
 

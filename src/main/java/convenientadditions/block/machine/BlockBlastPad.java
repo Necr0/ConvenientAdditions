@@ -2,7 +2,8 @@ package convenientadditions.block.machine;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.block.IDismantleable;
-import convenientadditions.base.CABlock;
+import convenientadditions.base.block.CABlock;
+import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.block.Block;
@@ -28,6 +29,7 @@ public class BlockBlastPad extends CABlock implements IDismantleable {
         super(ModConstants.BlockNames.blastPad,Material.IRON);
         this.setHardness(4F).setResistance(8F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(READY,true));
+        this.setCategory(EnumItemCategory.MACHINE);
     }
 
     @Override

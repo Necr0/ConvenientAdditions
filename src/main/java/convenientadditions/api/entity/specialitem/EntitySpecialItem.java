@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntitySpecialItem extends EntityItem {
-    public static final DataParameter<List<Long>> BEHAVIOURS = EntityDataManager.<List<Long>>createKey(EntitySpecialItem.class, CCDataSerializers.LISTLONG);
-    public List<Long> behaviours = new ArrayList<>();
+    public static final DataParameter<List<String>> BEHAVIOURS = EntityDataManager.<List<String>>createKey(EntitySpecialItem.class, CCDataSerializers.LISTSTRING);
+    public List<String> behaviours = new ArrayList<>();
 
     public EntitySpecialItem(World world) {
         super(world);
@@ -28,11 +28,11 @@ public class EntitySpecialItem extends EntityItem {
         super(world, p_i1710_2_, p_i1710_4_, p_i1710_6_, p_i1710_8_);
     }
 
-    public List<Long> getBehaviours() {
+    public List<String> getBehaviours() {
         return getEntityWorld().isRemote ? this.getDataManager().get(BEHAVIOURS) : this.behaviours;
     }
 
-    public void setBehaviours(List<Long> behaviours) {
+    public void setBehaviours(List<String> behaviours) {
         this.behaviours = behaviours;
         this.getDataManager().set(BEHAVIOURS, this.behaviours);
         this.getDataManager().setDirty(BEHAVIOURS);
@@ -42,10 +42,10 @@ public class EntitySpecialItem extends EntityItem {
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeEntityToNBT(par1NBTTagCompound);
         NBTTagCompound bnbt = new NBTTagCompound();
-        bnbt.setInteger("COUNT", behaviours.size());
+        bnbt.setInteger("BEHAVIOUR_COUNT", behaviours.size());
         int i = 0;
-        for (long b : behaviours) {
-            bnbt.setLong("B" + i, b);
+        for (String b : behaviours) {
+            bnbt.setString("BEHAVIOUR" + i, b);
             i++;
         }
         par1NBTTagCompound.setTag("BEHAVIOURS", bnbt);
@@ -57,8 +57,10 @@ public class EntitySpecialItem extends EntityItem {
         this.behaviours = new ArrayList<>();
         if (par1NBTTagCompound.hasKey("BEHAVIOURS")) {
             NBTTagCompound bnbt = par1NBTTagCompound.getCompoundTag("BEHAVIOURS");
-            for (int i = 0; i < bnbt.getInteger("COUNT"); i++) {
-                addBehaviourSilent(bnbt.getLong("B" + i));
+            if(bnbt.hasKey("BEHAVIOUR_COUNT")){
+                for (int i = 0; i < bnbt.getInteger("BEHAVIOUR_COUNT"); i++) {
+                    addBehaviourSilent(bnbt.getString("BEHAVIOUR" + i));
+                }
             }
             syncBehaviours();
         }
@@ -66,8 +68,11 @@ public class EntitySpecialItem extends EntityItem {
 
     @Override
     public void onUpdate() {
-        for (long b : getBehaviours()) {
-            BehaviourRegistry.getBehaviour(b).onItemEntityUpdate(this);
+        for (String b : getBehaviours()) {
+            IEntitySpecialItemBehaviour behaviour=BehaviourRegistry.getBehaviour(b);
+            if(behaviour==null)
+                continue;
+            behaviour.onItemEntityUpdate(this);
             if(this.getEntityItem().isEmpty()){
                 this.setDead();
                 break;
@@ -79,13 +84,14 @@ public class EntitySpecialItem extends EntityItem {
     @Override
     public boolean attackEntityFrom(DamageSource source, float damage) {
         boolean flag = false;
-        for (long b : getBehaviours()) {
-            if (!BehaviourRegistry.getBehaviour(b).onAttackItemEntityFrom(this, source, damage))
+        for (String b : getBehaviours()) {
+            IEntitySpecialItemBehaviour behaviour=BehaviourRegistry.getBehaviour(b);
+            if(behaviour==null)
+                continue;
+            if (behaviour.onAttackItemEntityFrom(this, source, damage))
                 flag = true;
         }
-        if (flag)
-            return false;
-        return super.attackEntityFrom(source, damage);
+        return !flag && super.attackEntityFrom(source, damage);
     }
 
     //DATA STUFF
@@ -93,33 +99,36 @@ public class EntitySpecialItem extends EntityItem {
     protected void entityInit() {
         behaviours = (behaviours != null ? behaviours : new ArrayList<>());
         this.getDataManager().register(BEHAVIOURS, behaviours);
-        for (long b : getBehaviours()) {
-            BehaviourRegistry.getBehaviour(b).onCreate(this);
+        for (String b : getBehaviours()) {
+            IEntitySpecialItemBehaviour behaviour=BehaviourRegistry.getBehaviour(b);
+            if(behaviour==null)
+                continue;
+            behaviour.onCreate(this);
         }
         super.entityInit();
     }
 
-    public void addBehaviour(long... behaviours) {
-        for (Long b : behaviours) {
+    public void addBehaviour(String... behaviours) {
+        for (String b : behaviours) {
             this.behaviours.add(b);
         }
         this.getDataManager().set(BEHAVIOURS, this.behaviours);
         this.getDataManager().setDirty(BEHAVIOURS);
     }
 
-    public void addBehaviours(List<Long> behaviours) {
+    public void addBehaviours(List<String> behaviours) {
         this.behaviours.addAll(behaviours);
         this.getDataManager().set(BEHAVIOURS, this.behaviours);
         this.getDataManager().setDirty(BEHAVIOURS);
     }
 
-    public void addBehaviourSilent(long... behaviours) {
-        for (Long b : behaviours) {
+    public void addBehaviourSilent(String... behaviours) {
+        for (String b : behaviours) {
             this.behaviours.add(b);
         }
     }
 
-    public void addBehavioursSilent(List<Long> behaviours) {
+    public void addBehavioursSilent(List<String> behaviours) {
         this.behaviours.addAll(behaviours);
     }
 

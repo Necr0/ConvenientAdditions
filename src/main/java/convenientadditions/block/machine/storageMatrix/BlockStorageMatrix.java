@@ -2,7 +2,7 @@ package convenientadditions.block.machine.storageMatrix;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.CABlockMachine;
+import convenientadditions.base.block.CABlockMachine;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,11 +25,13 @@ public class BlockStorageMatrix extends CABlockMachine{
     public BlockStorageMatrix() {
         super(ModConstants.BlockNames.storageMatrix,Material.IRON);
         this.setHardness(4F).setResistance(8F);
+        this.setDefaultAdditionalInfo(true);
     }
 
-    @Override
     @Nullable
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityStorageMatrix();
     }
 

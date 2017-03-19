@@ -1,6 +1,6 @@
 package convenientadditions.block.inventoryProxy;
 
-import convenientadditions.base.CABlockContainer;
+import convenientadditions.base.block.CABlockContainer;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,6 +15,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public abstract class BlockInventoryProxy extends CABlockContainer{
     public static final PropertyDirection FACING = BlockDirectional.FACING;
 
@@ -25,8 +27,10 @@ public abstract class BlockInventoryProxy extends CABlockContainer{
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
     }
 
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityInventoryProxy(false);
     }
 
@@ -42,7 +46,7 @@ public abstract class BlockInventoryProxy extends CABlockContainer{
     }
 
     public int getMetaFromState(IBlockState state) {
-        return ((EnumFacing) state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     protected BlockStateContainer createBlockState() {

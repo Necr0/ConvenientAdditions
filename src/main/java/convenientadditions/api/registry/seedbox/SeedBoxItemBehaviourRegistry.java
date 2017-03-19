@@ -12,16 +12,16 @@ public class SeedBoxItemBehaviourRegistry {
         REGISTRY.add(entry);
     }
 
-    public static void addItemBehaviour(ItemStack stack, long discriminator) {
+    public static void addItemBehaviour(ItemStack stack, String discriminator) {
         REGISTRY.add(new SeedBoxEntitySpecialItemEntry(stack, discriminator));
     }
 
-    public static void addItemBehaviour(ItemStack stack, long discriminator, boolean ignoreDamage, boolean ignoreNBT) {
+    public static void addItemBehaviour(ItemStack stack, String discriminator, boolean ignoreDamage, boolean ignoreNBT) {
         REGISTRY.add(new SeedBoxEntitySpecialItemEntry(stack, discriminator, ignoreDamage, ignoreNBT));
     }
 
-    public static List<Long> getItemBehaviour(ItemStack stack) {
-        ArrayList<Long> ret = new ArrayList<>();
+    public static List<String> getItemBehaviour(ItemStack stack) {
+        ArrayList<String> ret = new ArrayList<>();
         for (ISeedBoxItemBehaviourRegistryEntry e : REGISTRY) {
             if (e.hasSpecialBehaviour(stack))
                 e.getDiscriminators(stack, ret);

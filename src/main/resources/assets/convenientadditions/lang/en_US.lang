@@ -1,4 +1,5 @@
-### Tiles
+### BLOCK NAMES ###
+
 tile.convenientadditions:oreTitanium.name=Titanium Ore
 tile.convenientadditions:composter.name=Composter
 tile.convenientadditions:compostSoil.name=Compost Soil
@@ -18,6 +19,11 @@ tile.convenientadditions:treetap.name=Tree Tap
 tile.convenientadditions:hoverPad.name=Hover Pad
 tile.convenientadditions:blastPad.name=Blast Pad
 tile.convenientadditions:jumpPad.name=Jump Pad
+tile.convenientadditions:storageMatrix.name=Storage Matrix
+tile.convenientadditions:machineBlock.name=Machine Block
+tile.convenientadditions:displayCase.name=Display Case
+tile.convenientadditions:remoteInventoryProxy.name=Remote Inventory Proxy
+# platforms
 tile.convenientadditions:platform.black.name=Black Platform
 tile.convenientadditions:platform.red.name=Red Platform
 tile.convenientadditions:platform.green.name=Green Platform
@@ -50,29 +56,11 @@ tile.convenientadditions:semiSolidBlock.lightBlue.name=Light Blue Semi-Solid Blo
 tile.convenientadditions:semiSolidBlock.magenta.name=Magenta Semi-Solid Block
 tile.convenientadditions:semiSolidBlock.orange.name=Orange Semi-Solid Block
 tile.convenientadditions:semiSolidBlock.white.name=White Semi-Solid Block
-tile.convenientadditions:storageMatrix.name=Storage Matrix
 
-### TEs
-tileentity.convenientadditions:composter.name=Composter
-tileentity.convenientadditions:playerInterface.name=Player Interface
-tileentity.convenientadditions:powderKeg.name=Powder Keg
-tileentity.convenientadditions:proximitySensor.name=Proximity Sensor
-tileentity.convenientadditions:seedBox.name=Seed Box
-tileentity.convenientadditions:setProvider.name=Set Provider
-tileentity.convenientadditions:itemTransmitter.name=Item Transmitter
-tileentity.convenientadditions:itemReceiver.name=Item Receiver
-tileentity.convenientadditions:inventoryProxy.name=Inventory Proxy
-tileentity.convenientadditions:inventoryProxyFiltered.name=Filtered Inventory Proxy
 
-### Items
-item.convenientadditions:ingotTitanium.name=Titanium Ingot
-item.convenientadditions:nuggetTitanium.name=Titanium Nugget
-item.convenientadditions:pickaxeTitanium.name=Titanium Pickaxe
-item.convenientadditions:axeTitanium.name=Titanium Axe
-item.convenientadditions:spadeTitanium.name=Titanium Shovel
-item.convenientadditions:hoeTitanium.name=Titanium Hoe
-item.convenientadditions:swordTitanium.name=Titanium Sword
-item.convenientadditions:titaniumWrench.name=Titanium Wrench
+
+### ITEM NAMES ###
+
 item.convenientadditions:ironWrench.name=Iron Wrench
 item.convenientadditions:compost.name=Compost
 item.convenientadditions:fertilizer.name=Fertilizer
@@ -83,148 +71,202 @@ item.convenientadditions:enderPlate.name=Ender Plate
 item.convenientadditions:launchingArrow_0.name=Creeper Arrow
 item.convenientadditions:launchingArrow_1.name=Blast Arrow
 item.convenientadditions:launchingArrow_2.name=Slime Arrow
-item.convenientadditions:creeperKit.name=Creeper Arrow Kit
-item.convenientadditions:blastKit.name=Blast Arrow Kit
-item.convenientadditions:slimeKit.name=Slime Arrow Kit
+item.convenientadditions:creeperKit.name=Creeper Kit
+item.convenientadditions:blastKit.name=Blast Kit
+item.convenientadditions:slimeKit.name=Slime Kit
 item.convenientadditions:transmutationTome.name=Tome of Transmutation
 item.convenientadditions:sapBottle.name=Sap Bottle
 item.convenientadditions:antidote.name=Antidote
 item.convenientadditions:bandage.name=Bandage
 item.convenientadditions:adventurersPickaxe.name=Adventurer's Pickaxe
-item.convenientadditions:mobCatcher.name=Mob Containment Device
-# Channel Modules
+item.convenientadditions:dislocationCore.name=Dislocation Core
+# mcds
+item.convenientadditions:mobCatcher.regular.name=Mob Containment Device
+item.convenientadditions:mobCatcher.super.name=Super MCD
+item.convenientadditions:mobCatcher.hyper.name=Hyper MCD
+item.convenientadditions:mobCatcher.mega.name=Mega MCD
+item.convenientadditions:mobCatcher.master.name=Master MCD
+# modules
 item.convenientadditions:obsidianPlate.name=Obsidian Plate
 item.convenientadditions:modulePlayer.name=Player Channel Module
 item.convenientadditions:moduleColor.name=Color Channel Module
-#
 item.convenientadditions:moduleLocation.name=Location Module
-# Baubles
+# trinkets
 item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
 item.convenientadditions:breathAmulet.name=Amulet of Breath
-item.convenientadditions:chargingRing.name=Ring of Charging
+item.convenientadditions:flippers.name=Flippers
+item.convenientadditions:flowingWaterRune.name=Rune of Flowing Water
+item.convenientadditions:tideAmulet.name=Amulet of the Tides
+item.convenientadditions:cloudJar.name=Cloud in a Jar
+item.convenientadditions:slimeBalloon.name=Slime Balloon
+item.convenientadditions:cloudBalloon.name=Cloud in a Slime Balloon
+item.convenientadditions:enderCloudBalloon.name=Ender Cloud in a Slime Balloon
+item.convenientadditions:windGem.name=Gem of the Winds
+item.convenientadditions:spikedSole.name=Spiked Sole
+item.convenientadditions:glider.name=Glider
+item.convenientadditions:valkyrieWings.name=Valkyrie Wings
+item.convenientadditions:fireproofCloak.name=Fireproof Cloak
+item.convenientadditions:netherTalisman.name=Talisman of the Nether
+item.convenientadditions:netherCloak.name=Cloak of the Nether
 
-### Enchantments
-enchantment.capacity=Capacity
-enchantment.chargeEfficiency=Charge Efficiency
-enchantment.drain=Drain
 
-### CTabs
+
+### ITEM GROUPS ###
+
 itemGroup.convenientadditions=Convenient Additions
 
-### Tooltips
-# Charge Abstract
-tooltip.convenientadditions:charge=%d/%d charges (%d%%)
-tooltip.convenientadditions:compostSpores=(contains mushroom spores)
-# Sunstone
-tooltip.convenientadditions:sunstoneJoke=Enlightening!
-tooltip.convenientadditions:sunlightRingJoke=Bright Idea!
-tooltip.convenientadditions:enderPlateJoke=Screw gravity!
-tooltip.convenientadditions:breathAmuletJoke=Breathtaking! Wait .. what?
-tooltip.convenientadditions:chargingRingJoke=Run really fast! (not really)
-tooltip.convenientadditions:blazingRockJoke=Dwarfs may call it Molten Core.
 
-tooltip.convenientadditions:sunstoneInfo=Portable Light Source
-tooltip.convenientadditions:sunlightRingInfo=Portable Light Source
-tooltip.convenientadditions:enderPlateInfo=Allows walking on air.
-tooltip.convenientadditions:breathAmuletInfo=Prevents drowning.
-tooltip.convenientadditions:chargingRingInfo=Charge Battery
-tooltip.convenientadditions:blazingRockInfo=Can be used as fuel.
-tooltip.convenientadditions:compostInfo=Can be used on dirt or farmland.
-tooltip.convenientadditions:fertilizerInfo=Can be used on plants.
-tooltip.convenientadditions:bandageInfo=Heals wounds.
-tooltip.convenientadditions:antidoteInfo=Heals poisoning.
-tooltip.convenientadditions:transmutationTomeInfo=Changes stuff using experience levels.
-tooltip.convenientadditions:ironWrenchInfo=Used for rotating, configuring & dismantling.
-tooltip.convenientadditions:saturationRingInfo=Keeps you saturated.
-tooltip.convenientadditions:seedBoxInfo=Drops self-planting seeds.
-tooltip.convenientadditions:hoverPadInfo=Pushes you upwards.
-tooltip.convenientadditions:blastPadInfo=Blasts you upwards.
-tooltip.convenientadditions:jumpPadInfo=Teleports you vertically or can be linked to another Jump Pad.
-tooltip.convenientadditions:powderKegInfo=Explodable Gunpowder Storage
-tooltip.convenientadditions:sapBottleInfo=Holds sap from tree tapping.
-tooltip.convenientadditions:treetapInfo=Collects sap from trees when a Sap Bottle is attached.
-tooltip.convenientadditions:playerInterfaceInfo=Allows accessing the inventory of the player on top it.
-tooltip.convenientadditions:proximitySensorInfo=Gives a comparator output depending on player proximity.
-tooltip.convenientadditions:playerInterfaceInfo=Allows accessing the inventory of the player on top it.
-tooltip.convenientadditions:playerInterfaceInfo=Allows accessing the inventory of the player on top it.
-tooltip.convenientadditions:platformInfo=Sneak to drop right through it.
-tooltip.convenientadditions:semiSolidBlockInfo=Sneak to pass right through it.
-tooltip.convenientadditions:setProviderInfo=Makes distributing sets of items easy.
-tooltip.convenientadditions:itemTransmitterInfo=Sends inventory for wireless item networking.
-tooltip.convenientadditions:itemReceiverInfo=Receives inventoryies for wireless item networking.
-tooltip.convenientadditions:inventoryProxyInfo=Mimics the targeted inventory.
-tooltip.convenientadditions:inventoryProxySidedInfo=Mimics the targeted inventory and respects accessed side.
-tooltip.convenientadditions:inventoryProxyFilteredInfo=Mimics the targeted inventory and filters.
-tooltip.convenientadditions:composterInfo=Produces compost from given biomass.
-tooltip.convenientadditions:storageMatrixInfo=Has a large inventory but no GUI.
-tooltip.convenientadditions:moduleLocationInfo=Can store a block location.
-tooltip.convenientadditions:mobCatcherInfo=Can pickup and store mobs.
 
+### TOOLTIPS ###
+
+## Jokes
+tooltip.convenientadditions:sunstone.joke=Enlightening!
+tooltip.convenientadditions:sunlightRing.joke=Bright Idea!
+tooltip.convenientadditions:enderPlate.joke=Screw gravity!
+tooltip.convenientadditions:breathAmulet.joke=Breathtaking! Wait .. what?
+tooltip.convenientadditions:blazingRock.joke=Dwarfs may call it Molten Core.
+
+## Info
+tooltip.convenientadditions:adventurersPickaxe.info=It improves as you use it.
+tooltip.convenientadditions:antidote.info=Heals poisoning.
+tooltip.convenientadditions:bandage.info=Heals wounds.
+tooltip.convenientadditions:compost.info=Can be used on dirt or farmland.
+tooltip.convenientadditions:composter.info=Produces compost from given biomass.
+tooltip.convenientadditions:fertilizer.info=Can be used on plants.
+tooltip.convenientadditions:inventoryProxy.info=Mimics the targeted block's inventory.
+tooltip.convenientadditions:inventoryProxyFiltered.info=Mimics the targeted block's inventory and filters.
+tooltip.convenientadditions:inventoryProxySided.info=Mimics the targeted block's inventory and respects accessed side.
+tooltip.convenientadditions:ironWrench.info=Used for rotating, configuring & dismantling.
+tooltip.convenientadditions:mobCatcher.info=Can pickup and store mobs.
+tooltip.convenientadditions:sapBottle.info=Holds sap from tree tapping.
+tooltip.convenientadditions:platform.info=Sneak to drop right through it.
+tooltip.convenientadditions:powderKeg.info=Explodable Gunpowder Storage
+tooltip.convenientadditions:seedBox.info=Drops self-planting seeds.
+tooltip.convenientadditions:semiSolidBlock.info=Sneak to pass right through it.
+tooltip.convenientadditions:treetap.info=Collects sap from trees when a Sap Bottle is attached.
+# relics
+tooltip.convenientadditions:blazingRock.info=Can sometimes be used as fuel.
+tooltip.convenientadditions:enderPlate.info=Allows walking on air.
+tooltip.convenientadditions:sunstone.info=Portable Light Source
+tooltip.convenientadditions:transmutationTome.info=Changes stuff using experience levels.
+# modules
+tooltip.convenientadditions:moduleLocation.info=Can store a block location.
+# machines
+tooltip.convenientadditions:blastPad.info=Blasts you upwards.
+tooltip.convenientadditions:hoverPad.info=Pushes you upwards.
+tooltip.convenientadditions:itemReceiver.info=Receives inventoryies for wireless item networking.
+tooltip.convenientadditions:itemTransmitter.info=Sends inventory for wireless item networking.
+tooltip.convenientadditions:jumpPad.info=Teleports you vertically or can be linked to another Jump Pad.
+tooltip.convenientadditions:playerInterface.info=Allows accessing the inventory of the player on top it.
+tooltip.convenientadditions:proximitySensor.info=Gives a configurable redstone signal on player proximity.
+tooltip.convenientadditions:setProvider.info=Makes distributing sets of items easy.
+tooltip.convenientadditions:storageMatrix.info=Has a large inventory but no GUI.
+tooltip.convenientadditions:remoteInventoryProxy.info=Mimics the specified block's inventory.
+# trinkets
+tooltip.convenientadditions:saturationRing.info=Keeps you saturated.
+tooltip.convenientadditions:sunlightRing.info=Portable Light Source
+tooltip.convenientadditions:breathAmulet.info=Prevents drowning.
+tooltip.convenientadditions:flippers.info=Gives the ability swim faster.
+tooltip.convenientadditions:flowingWaterRune.info=Increases mining speed while in water.
+tooltip.convenientadditions:tideAmulet.info=Makes you swim and mine even faster in water and prevents drowning.
+tooltip.convenientadditions:cloudJar.info=Gives the ability to double-jump.
+tooltip.convenientadditions:slimeBalloon.info=Gives the ability to jump higher.
+tooltip.convenientadditions:cloudBalloon.info=Gives the ability to jump higher and double-jump.
+tooltip.convenientadditions:enderCloudBalloon.info=Gives the ability to jump even higher and triple-jump.
+tooltip.convenientadditions:windGem.info=Gives the ability walk and run faster.
+tooltip.convenientadditions:spikedSole.info=Gives the ability to walk up blocks.
+tooltip.convenientadditions:glider.info=Gives the ability glide and fall slowly.
+tooltip.convenientadditions:valkyrieWings.info=Gives the ability to run and glide even faster and walk up blocks.
+tooltip.convenientadditions:fireproofCloak.info=Prevents burning and reduces damage from fire.
+tooltip.convenientadditions:netherTalisman.info=Prevents magma damage and speeds up nether portals.
+tooltip.convenientadditions:netherCloak.info=Prevents burning, reduces damage from fire, magma and lava, and speeds up nether portals.
+
+## Additional Info
+tooltip.convenientadditions:storageMatrix.additionalInfo=Break it with a wrench to preserve its inventory.
+tooltip.convenientadditions:setProvider.additionalInfo=Use a wrench to configure its output faces.
+tooltip.convenientadditions:seedBox.additionalInfo=Use a wrench to configure its input and output faces.
+tooltip.convenientadditions:treetap.additionalInfo=Has to be attached to wood logs to function.
+tooltip.convenientadditions:itemTransmitter.additionalInfo=Use channel modules to define transmision channels.
+tooltip.convenientadditions:itemReceiver.additionalInfo=Use channel modules to define received channels.
+tooltip.convenientadditions:jumpPad.additionalInfo=Use location modules to define destinations.
+tooltip.convenientadditions:remoteInventoryProxy.additionalInfo=Use a location module to define the target.
+tooltip.convenientadditions:blazingRock.additionalInfo=Only works as fuel while glowing.
+
+## Item Categories
+tooltip.convenientadditions:itemCategory=Item Category: %s
+tooltip.convenientadditions:itemCategory.craftingMaterial=Crafting Material
+tooltip.convenientadditions:itemCategory.trinket=Trinket
+tooltip.convenientadditions:itemCategory.relic=Relic
+tooltip.convenientadditions:itemCategory.tool=Tool
+tooltip.convenientadditions:itemCategory.consumable=Consumable
+tooltip.convenientadditions:itemCategory.machine=Machine
+tooltip.convenientadditions:itemCategory.module=Module
+tooltip.convenientadditions:itemCategory.misc=Miscellaneous
+
+## Misc
 tooltip.convenientadditions:storageMatrixHoldingInventory=(holding inventory)
-tooltip.convenientadditions:mobCatcherHoldingEntity=(holding a mob)
-tooltip.convenientadditions:mobCatcherNotHoldingEntity=(right-click a mob to pick it up)
-
-tooltip.convenientadditions:sunstoneActive=(right click to deactivate)
-tooltip.convenientadditions:sunstoneInactive=(right click to activate)
-tooltip.convenientadditions:sunstoneDrained=(stay in sunlight to charge)
-tooltip.convenientadditions:enderPlateActive=(right click to deactivate)
-tooltip.convenientadditions:enderPlateInactive=(right click to activate)
-tooltip.convenientadditions:enderPlateDrained=(stay near end crystal to charge)
-# Adv Pick
-tooltip.convenientadditions:adventurersPickaxeLVL=Level : %d
-tooltip.convenientadditions:adventurersPickaxeXP=XP : %d/%d
-tooltip.convenientadditions:adventurersPickaxeMiningLevel=Mining Level : %d
-tooltip.convenientadditions:adventurersPickaxeMiningSpeed=Mining Speed : %f
-tooltip.convenientadditions:adventurersPickaxeSoftSpeed=Soft Mining Bonus : %f
-tooltip.convenientadditions:adventurersPickaxeDiggingSpeed=Digging Speed : %f
-tooltip.convenientadditions:adventurersPickaxeMiningVeins=Vein Size : %d
-tooltip.convenientadditions:adventurersPickaxeLuck=Luck : %d
-tooltip.convenientadditions:adventurersPickaxeRepairMaterial=Repair Material : %s
-tooltip.convenientadditions:adventurersPickaxeDurability=Durability : %d/%d
-tooltip.convenientadditions:adventurersPickaxeMagnetic=Magnetic
-tooltip.convenientadditions:adventurersPickaxeSoulbound=Soulbound
-# Channel Modules
+tooltip.convenientadditions:compost.effectiveness=Effectiveness: %s
+tooltip.convenientadditions:showRecipes=Show Recipes
+tooltip.convenientadditions:shiftInfo=<Hold shift for more information>
+tooltip.convenientadditions:baublesRequired=The Baubles mod is required for this item to be functional. If you which to use it install the Baubles mod.
+#
+tooltip.convenientadditions:sunstone.active=(right click to deactivate)
+tooltip.convenientadditions:sunstone.inactive=(right click to activate)
+tooltip.convenientadditions:enderPlate.active=(right click to deactivate)
+tooltip.convenientadditions:enderPlate.inactive=(right click to activate)
+# adv pickaxe
+tooltip.convenientadditions:adventurersPickaxe.lvl=Level : %d
+tooltip.convenientadditions:adventurersPickaxe.xp=XP : %d/%d
+tooltip.convenientadditions:adventurersPickaxe.miningLevel=Mining Level : %d
+tooltip.convenientadditions:adventurersPickaxe.miningSpeed=Mining Speed : %f
+tooltip.convenientadditions:adventurersPickaxe.softSpeed=Soft Mining Bonus : %f
+tooltip.convenientadditions:adventurersPickaxe.diggingSpeed=Digging Speed : %f
+tooltip.convenientadditions:adventurersPickaxe.miningVeins=Vein Size : %d
+tooltip.convenientadditions:adventurersPickaxe.luck=Luck : %d
+tooltip.convenientadditions:adventurersPickaxe.repairMaterial=Repair Material : %s
+tooltip.convenientadditions:adventurersPickaxe.durability=Durability : %d/%d
+tooltip.convenientadditions:adventurersPickaxe.magnetic=Magnetic
+tooltip.convenientadditions:adventurersPickaxe.soulbound=Soulbound
+# modules
 tooltip.convenientadditions:modulePlayerPlayer=Player: %s
 tooltip.convenientadditions:modulePlayerNotSet=(right click to set player)
 tooltip.convenientadditions:moduleLocationLocation=Location: %d, %d, %d (%d)
 tooltip.convenientadditions:moduleLocationNotSet=(sneak + use on a block to set location)
 tooltip.convenientadditions:moduleColorsPrefix=Colors: %s, %s, %s
-# Set Provider
+# set provider
 tooltip.convenientadditions:pushOn=Push on %s.
 tooltip.convenientadditions:pushAlways=Push always.
 tooltip.convenientadditions:dontPushIfOutputsNotEmpty=Don't push if output's not empty.
 tooltip.convenientadditions:pushEvenIfOutputsNotEmpty=Push even if output's not empty.
-# Compost
-tooltip.convenientadditions:compostDegraded0=Perfect!
-tooltip.convenientadditions:compostDegraded1=Subtly degraded.
-tooltip.convenientadditions:compostDegraded2=Very slightly degraded.
-tooltip.convenientadditions:compostDegraded3=Slightly degraded.
-tooltip.convenientadditions:compostDegraded4=A little bit degraded.
-tooltip.convenientadditions:compostDegraded5=Partially degraded.
-tooltip.convenientadditions:compostDegraded6=Somewhat degraded.
-tooltip.convenientadditions:compostDegraded7=Quite degraded.
-tooltip.convenientadditions:compostDegraded8=Notably degraded.
-tooltip.convenientadditions:compostDegraded9=Very degraded.
-tooltip.convenientadditions:compostDegraded10=Miserably degraded.
+# mcds
+tooltip.convenientadditions:mobCatcherHoldingEntity=(holding a mob)
+tooltip.convenientadditions:mobCatcherNotHoldingEntity=(throw at a mob to capture it)
+tooltip.convenientadditions:mobCatcher.strength=Strength: %f
+tooltip.convenientadditions:mobCatcher.hostile=Hostile: %s
+tooltip.convenientadditions:mobCatcher.boss=Bosses: %s
 
-tooltip.convenientadditions:showRecipes=Show Recipes
-tooltip.convenientadditions:shiftInfo=<Hold shift for more information>
 
-### GENERAL
-# Redstone
+
+### GENERAL ###
+
+## Redstone
 convenientadditions:highrs=High Redstone Signal
 convenientadditions:lowrs=Low Redstone Signal
 convenientadditions:pulsers=Redstone Pulse
 convenientadditions:ignorers=Ignore Redstone
-#
+
+## Imperatives
 convenientadditions:match=Match %s.
 convenientadditions:ignore=Ignore %s.
 convenientadditions:filter=Filter %s.
 convenientadditions:filterNot=Don't Filter %s.
 convenientadditions:restrict=Restrict %s.
 convenientadditions:restrictNot=Don't Restrict %s.
-#
+convenientadditions:yes=Yes
+convenientadditions:no=No
+
+## Common
 convenientadditions:damageValue=Damage Value
 convenientadditions:NBT=NBT
 #
@@ -233,13 +275,20 @@ convenientadditions:output=Output
 #
 convenientadditions:blacklist=Blacklist
 convenientadditions:whitelist=Whitelist
-# Mining Levels
+#
+convenientadditions:page=Page
+convenientadditions:done=Done
+convenientadditions:range=Range
+convenientadditions:unit.blocks=blocks
+
+## Materials
+# mining level names
 convenientadditions:miningLevel0=Wood
 convenientadditions:miningLevel1=Stone
 convenientadditions:miningLevel2=Iron
 convenientadditions:miningLevel3=Diamond
 convenientadditions:miningLevel4=Cobalt
-# Materials
+# material names (not used)
 convenientadditions:materialWood=Wood
 convenientadditions:materialStone=Stone
 convenientadditions:materialIron=Iron
@@ -247,7 +296,7 @@ convenientadditions:materialGold=Gold
 convenientadditions:materialDiamond=Diamond
 convenientadditions:materialObsidian=Obsidian
 convenientadditions:materialCobalt=Cobalt
-# Repair Materials
+# repair material names
 convenientadditions:repairMaterialWood=Wooden Planks
 convenientadditions:repairMaterialStone=Cobblestone
 convenientadditions:repairMaterialIron=Iron Ingot
@@ -255,7 +304,8 @@ convenientadditions:repairMaterialGold=Gold Ingot
 convenientadditions:repairMaterialDiamond=Diamond
 convenientadditions:repairMaterialObsidian=Obsidian
 convenientadditions:repairMaterialCobalt=Cobalt Ingot
-# Colors
+
+## Colors
 color.convenientadditions:black=Black
 color.convenientadditions:red=Red
 color.convenientadditions:green=Green
@@ -273,26 +323,35 @@ color.convenientadditions:magenta=Magenta
 color.convenientadditions:orange=Orange
 color.convenientadditions:white=White
 
-convenientadditions:page=Page
 
-### GUI
+
+### GUI ###
+
 gui.convenientadditions:transmutationTomeLookup=Recipes
+gui.convenientadditions:transmutationTome.insufficientXp=Not Enough XP
 
-### Compat
+
+
+### COMPAT ###
+
+## Jei
 jei.convenientadditions:transmutationTome.name=Tome of Transmutation
 
+## Waila
 waila.convenientadditions:powerLevel=Power Level: %d
 waila.convenientadditions:compostingMass=%d/%d composting mass stored. (%d%%)
 
-### Entity
 
-### Messages
+
+### MESSAGES ###
+
 message.convenientadditions:gunpowderStored= / 64 gunpowder stored.
 message.convenientadditions:locationSetTo=Location set to %d, %d, %d (%d).
 message.convenientadditions:playerSetTo=Player set to %s.
 message.convenientadditions:locationReset=Location has been reset.
 message.convenientadditions:playerReset=Player has been reset.
-# Adv Pick
+
+## Adv Pick
 message.convenientadditions:adventurersPickaxeLevelUpMiningLevel=Mining Level increased to %d!
 message.convenientadditions:adventurersPickaxeLevelUpLuck=Luck increased to %d!
 message.convenientadditions:adventurersPickaxeLevelUpSilktouch=Silktouch mode unlocked!

@@ -27,20 +27,39 @@ public class ModConstants {
         public static final String antidote = "antidote";
         public static final String bandage = "bandage";
         public static final String adventurersPickaxe = "adventurersPickaxe";
+        public static final String dislocationCore = "dislocationCore";
+        //
         public static final String mobCatcher = "mobCatcher";
+        public static final String mobCatcherRegular = "regular";
+        public static final String mobCatcherSuper = "super";
+        public static final String mobCatcherHyper = "hyper";
+        public static final String mobCatcherMega = "mega";
+        public static final String mobCatcherMaster = "master";
         //
         public static final String transmutationTome = "transmutationTome";
-        //channel modules
+        //modules
         public static final String obsidianPlate = "obsidianPlate";
         public static final String modulePlayer = "modulePlayer";
         public static final String moduleColor = "moduleColor";
-        //
         public static final String moduleLocation = "moduleLocation";
-        //baubles
+        //trinkets
         public static final String sunlightRing = "sunlightRing";
         public static final String saturationRing = "saturationRing";
         public static final String breathAmulet = "breathAmulet";
-        public static final String chargingRing = "chargingRing";
+        public static final String flippers = "flippers";
+        public static final String tideAmulet = "tideAmulet";
+        public static final String cloudJar = "cloudJar";
+        public static final String slimeBalloon = "slimeBalloon";
+        public static final String cloudBalloon = "cloudBalloon";
+        public static final String enderCloudBalloon = "enderCloudBalloon";
+        public static final String windGem = "windGem";
+        public static final String spikedSole = "spikedSole";
+        public static final String glider = "glider";
+        public static final String valkyrieWings = "valkyrieWings";
+        public static final String fireproofCloak = "fireproofCloak";
+        public static final String netherTalisman = "netherTalisman";
+        public static final String netherCloak = "netherCloak";
+        public static final String flowingWaterRune = "flowingWaterRune";
     }
 
     public static class BlockNames {
@@ -65,6 +84,8 @@ public class ModConstants {
         public static final String semiSolidBlock = "semiSolidBlock";
         public static final String storageMatrix = "storageMatrix";
         public static final String machineBlock = "machineBlock";
+        public static final String remoteInventoryProxy = "remoteInventoryProxy";
+        public static final String displayCase = "displayCase";
         //
         public static final String tempLight = "tempLight";
         public static final String phantomPlatform = "phantomPlatform";
@@ -75,6 +96,8 @@ public class ModConstants {
         public static final String launchingArrowEntityName = "launchingArrow";
         public static final int specialItemEntityId = 2;
         public static final String specialItemEntityName = "specialItem";
+        public static final int mobCatcherEntityId = 3;
+        public static final String mobCatcherEntityName = "mobCatcher";
     }
 
     public static class Compat {

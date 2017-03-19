@@ -1,18 +1,20 @@
 package convenientadditions.proxy;
 
+import convenientadditions.api.util.GuiHelper;
 import convenientadditions.block.composter.TileEntityComposter;
 import convenientadditions.block.composter.render.RenderComposter;
+import convenientadditions.block.displayCase.TESRDisplayCase;
+import convenientadditions.block.displayCase.TileEntityDisplayCase;
 import convenientadditions.compat.waila.ConvAddWailaPlugin;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.entity.launchingArrow.RenderLaunchingArrow;
+import convenientadditions.entity.mobCatcher.EntityMobCatcher;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -27,12 +29,9 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerRenderers() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComposter.class, new RenderComposter());
-        RenderingRegistry.registerEntityRenderingHandler(EntityLaunchingArrow.class, new IRenderFactory<EntityLaunchingArrow>() {
-            @Override
-            public Render<EntityLaunchingArrow> createRenderFor(RenderManager manager) {
-                return new RenderLaunchingArrow(manager);
-            }
-        });
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDisplayCase.class, new TESRDisplayCase());
+        RenderingRegistry.registerEntityRenderingHandler(EntityLaunchingArrow.class, manager -> new RenderLaunchingArrow(manager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityMobCatcher.class, manager -> new RenderSnowball<>(manager,ModItems.itemMobCatcherRegular,GuiHelper.getRenderItem()));
     }
 
     @Override

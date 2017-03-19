@@ -2,35 +2,16 @@ package convenientadditions.api.block.tileentity;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.NonNullList;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.ItemStackHandler;
 
-public class ItemStackHandlerAutoSaveOutputOnly extends ItemStackHandler implements IItemHandlerModifiable {
-    public TileEntity te;
+public class ItemStackHandlerAutoSaveOutputOnly extends ItemStackHandlerAutoSave {
 
     public ItemStackHandlerAutoSaveOutputOnly(TileEntity tile, int slots) {
-        super(slots);
-        this.te = tile;
+        super(tile, slots);
     }
-
 
     public ItemStackHandlerAutoSaveOutputOnly(TileEntity tile) {
-        super(1);
+        super(tile);
         this.te = tile;
-    }
-
-    @Override
-    protected void onContentsChanged(int slot) {
-        te.markDirty();
-    }
-
-    public NonNullList<ItemStack> getStacks(){return this.stacks;}
-
-    public void setStacks(NonNullList<ItemStack> stacks){
-        this.stacks=stacks;
-        for (int i = 0; i < getSlots(); i++)
-            onContentsChanged(i);
     }
 
     @Override

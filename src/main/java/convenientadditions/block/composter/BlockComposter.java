@@ -1,7 +1,7 @@
 package convenientadditions.block.composter;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.CABlockContainer;
+import convenientadditions.base.block.CABlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +13,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class BlockComposter extends CABlockContainer {
 
@@ -38,18 +40,28 @@ public class BlockComposter extends CABlockContainer {
         return false;
     }
 
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityComposter();
-    }
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
     }
 
     @Override
     public boolean isSideSolid(IBlockState base_state, IBlockAccess world, BlockPos pos, EnumFacing side) {
         return side != EnumFacing.UP;
+    }
+
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
     }
 }

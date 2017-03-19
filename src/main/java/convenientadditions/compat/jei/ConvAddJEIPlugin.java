@@ -7,7 +7,7 @@ import convenientadditions.compat.jei.transmutationTome.RecipeGeneratorTransmuta
 import convenientadditions.compat.jei.transmutationTome.RecipeHandlerTransmutationTome;
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
-import convenientadditions.item.transmutationTome.ContainerTransmutationTome;
+import convenientadditions.item.relic.transmutationTome.ContainerTransmutationTome;
 import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;

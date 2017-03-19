@@ -6,11 +6,15 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.client.config.GuiUtils;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +41,22 @@ public abstract class CAGuiContainer extends GuiContainer implements IGui {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks)
 	{
-		super.drawScreen(mouseX, mouseY, partialTicks);
+		super.drawScreen(mouseX,mouseY,partialTicks);
 		drawDrawables(partialTicks, mouseX, mouseY);
 		drawTooltips(partialTicks, mouseX, mouseY);
+
+		//render tooltip again above widgets
+		try {
+			InventoryPlayer inventoryplayer = this.mc.player.inventory;
+			Field f=GuiContainer.class.getDeclaredField("theSlot");
+			f.setAccessible(true);
+			Slot theSlot=(Slot) f.get(this);
+			if (inventoryplayer.getItemStack().isEmpty() && theSlot != null && theSlot.getHasStack())
+			{
+				ItemStack itemstack1 = theSlot.getStack();
+				this.renderToolTip(itemstack1, mouseX, mouseY);
+			}
+		} catch (Exception e) {}
 	}
 
 	@Override

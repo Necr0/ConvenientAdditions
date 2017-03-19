@@ -13,8 +13,7 @@ public class MessageSetProvider extends PacketBase<MessageSetProvider> {
     byte type;
     byte value;
 
-    public MessageSetProvider() {
-    }
+    public MessageSetProvider(){}
 
     //types: 0=inputfilter 1=reset, 2=dv, 3=nbt, 4=rsmode
     public MessageSetProvider(BlockPos pos, byte type, byte value) {

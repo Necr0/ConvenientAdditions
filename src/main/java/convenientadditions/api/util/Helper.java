@@ -6,10 +6,13 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -23,13 +26,14 @@ import java.util.Collection;
 import java.util.List;
 
 public class Helper {
-	public static void spawnItemInPlace(World w,double x,double y,double z,ItemStack i){
+	public static EntityItem spawnItemInPlace(World w,double x,double y,double z,ItemStack i){
 		EntityItem e=new EntityItem(w, x, y, z, i);
 		e.motionX = 0;
 		e.motionY = 0;
 		e.motionZ = 0;
 		if(!w.isRemote)
 			w.spawnEntity(e);
+		return e;
 	}
 	
 	public static boolean checkForFire(IBlockAccess world,BlockPos pos){
@@ -156,5 +160,17 @@ public class Helper {
 			}
 		}
 		return false;
+	}
+
+	public static void insertOrDrop(EntityPlayer p,ItemStack stack){
+		if(stack.getCount()==0)
+			return;
+		World w=p.world;
+		if(p.inventory.addItemStackToInventory(stack))
+			w.playSound(null, p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ((w.rand.nextFloat() - w.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+		if(!stack.isEmpty()){
+			EntityItem e=Helper.spawnItemInPlace(w, p.posX, p.posY, p.posZ, stack);
+			e.setOwner(p.getName());
+		}
 	}
 }

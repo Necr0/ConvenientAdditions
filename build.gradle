@@ -29,7 +29,7 @@ group= "necro.convenientadditions"
 
 repositories {
     maven { url = "http://dvs1.progwml6.com/files/maven" }
-    //maven { url = "http://mobiusstrip.eu/maven" }
+    maven { url = "http://mobiusstrip.eu/maven" }
 }
 
 dependencies {
@@ -38,7 +38,8 @@ dependencies {
     //)
     compile "mezz.jei:jei_${config.jei_version}:api"
     runtime "mezz.jei:jei_${config.jei_version}"
-    //deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}"
+    deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}:dev"
+    runtime "mcp.mobius.waila:Waila:${config.waila_version}"
 }
 
 minecraft {

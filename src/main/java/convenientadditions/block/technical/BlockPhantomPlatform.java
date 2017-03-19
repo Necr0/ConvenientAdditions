@@ -4,7 +4,6 @@ import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
 import convenientadditions.block.platform.BlockPlatform;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -27,7 +26,7 @@ public class BlockPhantomPlatform extends Block {
     public static final PropertyBool DESPAWN = PropertyBool.create("despawn");
 
     public BlockPhantomPlatform() {
-        super(Material.FIRE);
+        super(MaterialNotQuiteAir.NOT_QUITE_AIR);
         this.setRegistryName(ModConstants.BlockNames.phantomPlatform).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.BlockNames.phantomPlatform);
         this.disableStats();
         this.translucent = true;

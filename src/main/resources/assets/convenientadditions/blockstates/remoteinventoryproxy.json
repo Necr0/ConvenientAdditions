@@ -1,0 +1,15 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_bottom_top",
+		"textures": {
+			"side": "convenientadditions:blocks/remoteinventoryproxy/remoteinventoryproxy_side",
+	        "top": "convenientadditions:blocks/remoteinventoryproxy/remoteinventoryproxy_end",
+	        "bottom": "convenientadditions:blocks/remoteinventoryproxy/remoteinventoryproxy_end"
+		}
+    },
+	"variants": {
+		"normal": [{}],
+        "inventory": [{}]
+	}
+}

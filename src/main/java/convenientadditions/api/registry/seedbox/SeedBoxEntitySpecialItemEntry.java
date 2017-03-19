@@ -6,15 +6,15 @@ import java.util.List;
 
 public class SeedBoxEntitySpecialItemEntry implements ISeedBoxItemBehaviourRegistryEntry {
     public ItemStack stack;
-    public long discriminator;
+    public String discriminator;
     public boolean ignoreDamage = true, ignoreNBT = true;
 
-    public SeedBoxEntitySpecialItemEntry(ItemStack stack, long discriminator) {
+    public SeedBoxEntitySpecialItemEntry(ItemStack stack, String discriminator) {
         this.stack = stack;
         this.discriminator = discriminator;
     }
 
-    public SeedBoxEntitySpecialItemEntry(ItemStack stack, long discriminator, boolean ignoreDamage, boolean ignoreNBT) {
+    public SeedBoxEntitySpecialItemEntry(ItemStack stack, String discriminator, boolean ignoreDamage, boolean ignoreNBT) {
         this.stack = stack;
         this.discriminator = discriminator;
         this.ignoreDamage = ignoreDamage;
@@ -28,7 +28,7 @@ public class SeedBoxEntitySpecialItemEntry implements ISeedBoxItemBehaviourRegis
                 (!stack.hasTagCompound() || stack.getTagCompound().equals(this.stack.getTagCompound()))));
     }
 
-    public void getDiscriminators(ItemStack stack, List<Long> behaviours) {
+    public void getDiscriminators(ItemStack stack, List<String> behaviours) {
         behaviours.add(this.discriminator);
     }
 }

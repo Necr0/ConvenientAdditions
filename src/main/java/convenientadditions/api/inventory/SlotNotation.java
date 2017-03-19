@@ -11,10 +11,10 @@ public class SlotNotation{
     //IMPORTANT!!!: THIS IS NOT THE ONLY POSSIBLE INSTANCE OF THE GROUND SLOT!!!
     public static final SlotNotation SLOT_GROUND=new SlotNotation(null, EnumInventory.GROUND, EnumSubInventory.NONE, 0);
 
-    private EntityPlayer player;
-    private EnumInventory inventory;
-    private EnumSubInventory subInventory;
-    private int slot;
+    public EntityPlayer player;
+    public EnumInventory inventory;
+    public EnumSubInventory subInventory;
+    public int slot;
 
     public SlotNotation(EntityPlayer player, EnumInventory inventory, EnumSubInventory subInventory, int slot){
         this.player=player;
@@ -40,10 +40,10 @@ public class SlotNotation{
                 }
                 break;
             case BAUBLES:
-                if(Loader.isModLoaded("Baubles")){
+                if(Loader.isModLoaded("baubles")){
                     return getBaublesSlot(slot);
                 }
-                return null;
+                return ItemStack.EMPTY;
             case ENDER:
                 return player.getInventoryEnderChest().getStackInSlot(slot);
             default:
@@ -73,7 +73,7 @@ public class SlotNotation{
                 }
                 break;
             case BAUBLES:
-                if(Loader.isModLoaded("Baubles")){
+                if(Loader.isModLoaded("baubles")){
                     setBaublesSlot(slot,stack);
                 }
                 break;
@@ -85,13 +85,13 @@ public class SlotNotation{
         }
     }
 
-    @Optional.Method(modid = "Baubles")
+    @Optional.Method(modid = "baubles")
     private ItemStack getBaublesSlot(int slot){
         IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
         return b==null?ItemStack.EMPTY:b.getStackInSlot(slot);
     }
 
-    @Optional.Method(modid = "Baubles")
+    @Optional.Method(modid = "baubles")
     private void setBaublesSlot(int slot, ItemStack stack){
         IBaublesItemHandler b=BaublesApi.getBaublesHandler(player);
         if(b!=null)

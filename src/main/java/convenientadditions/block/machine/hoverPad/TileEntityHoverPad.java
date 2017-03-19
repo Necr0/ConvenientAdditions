@@ -1,6 +1,6 @@
 package convenientadditions.block.machine.hoverPad;
 
-import convenientadditions.base.CATileEntity;
+import convenientadditions.base.block.CATileEntity;
 import convenientadditions.init.ModConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,10 +21,11 @@ public class TileEntityHoverPad extends CATileEntity implements ITickable {
             return;
         List<EntityLivingBase> l = getWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + checkForObstuctions(), pos.getZ() + 1));
         for (EntityLivingBase e : l) {
-            double acc = .2d * mult;
+            double acc = mult*.3d;
             if (e instanceof EntityPlayer && e.isSneaking())
-                acc /= 2.35d;
-            e.setVelocity(e.motionX, Math.max(e.motionY, Math.min(e.motionY + acc, .72)), e.motionZ);
+                e.setVelocity(e.motionX, Math.max(e.motionY,Math.min(e.motionY+acc/4,acc/4)), e.motionZ);
+            else
+                e.setVelocity(e.motionX, Math.max(e.motionY,Math.min(e.motionY+acc,acc*2)), e.motionZ);
             if (e.motionY > -.666)
                 e.fallDistance = 0;
         }

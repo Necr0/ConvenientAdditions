@@ -2,11 +2,9 @@ package convenientadditions.block.compostSoil;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.CABlock;
+import convenientadditions.base.block.CABlock;
 import convenientadditions.init.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.IGrowable;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -44,10 +42,8 @@ public class BlockCompostSoilTilled extends CABlock {
     public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable) {
         BlockPos plantPos = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
         EnumPlantType plantType = plantable.getPlantType(world, plantPos);
-
-        if (plantType == EnumPlantType.Crop) return true;
-
-        return super.canSustainPlant(state, world, pos, side, plantable);
+        System.out.println(plantType.toString());
+        return plantType == EnumPlantType.Crop || ModBlocks.compostSoilBlock.canSustainPlant(state,world,pos,side,plantable);
     }
 
     @Override

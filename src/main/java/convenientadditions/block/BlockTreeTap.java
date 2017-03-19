@@ -2,7 +2,7 @@ package convenientadditions.block;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.CABlock;
+import convenientadditions.base.block.CABlock;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -39,6 +39,7 @@ public class BlockTreeTap extends CABlock {
         this.setHardness(2F).setResistance(3F).setTickRandomly(true);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BOTTLE_STATE, EnumBottleState.empty));
+        this.setDefaultAdditionalInfo(true);
     }
 
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
@@ -64,9 +65,7 @@ public class BlockTreeTap extends CABlock {
             }
         } else {
             world.setBlockState(pos, state.withProperty(BOTTLE_STATE, EnumBottleState.empty));
-            EntityItem e = new EntityItem(world, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, new ItemStack(ModItems.itemSapBottle, 1, s.ordinal() - 1));
-            e.setVelocity((player.posX - pos.getX() + .5) / 8, (player.posY - pos.getY() + .5) / 8, (player.posZ - pos.getZ() + .5) / 8);
-            world.spawnEntity(e);
+            Helper.insertOrDrop(player,new ItemStack(ModItems.itemSapBottle, 1, s.ordinal() - 1));
         }
         return true;
     }

@@ -7,5 +7,5 @@ import java.util.List;
 public interface ISeedBoxItemBehaviourRegistryEntry {
     boolean hasSpecialBehaviour(ItemStack stack);
 
-    void getDiscriminators(ItemStack stack, List<Long> behaviours);
+    void getDiscriminators(ItemStack stack, List<String> behaviours);
 }

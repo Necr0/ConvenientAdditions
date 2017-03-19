@@ -9,12 +9,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class StringHelper {
     @SideOnly(Side.CLIENT)
     public static String getJoke(ItemStack stack){
-        return TextFormatting.YELLOW+Helper.localize("tooltip." + stack.getItem().getUnlocalizedName().split("\\.")[1]+"Joke");
+        return TextFormatting.YELLOW+Helper.localize("tooltip." + stack.getItem().getUnlocalizedName().split("\\.")[1]+".joke");
     }
 
     @SideOnly(Side.CLIENT)
     public static String getInfo(ItemStack stack){
-        return Helper.localize("tooltip." + stack.getItem().getUnlocalizedName().split("\\.")[1]+"Info");
+        return Helper.localize("tooltip." + stack.getItem().getUnlocalizedName().split("\\.")[1]+".info");
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static String getAdditionalInfo(ItemStack stack){
+        return Helper.localize("tooltip." + stack.getItem().getUnlocalizedName().split("\\.")[1]+".additionalInfo");
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static String getBaublesRequiredInfo(){
+        return TextFormatting.RED+Helper.localize("tooltip." + ModConstants.Mod.MODID + ":baublesRequired");
     }
 
     @SideOnly(Side.CLIENT)

@@ -1,7 +1,0 @@
-{
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "convenientadditions:items/adventurersPickaxe/parts/handle_wood",
-        "layer1": "convenientadditions:items/adventurersPickaxe/parts/head_wood"
-    }
-}

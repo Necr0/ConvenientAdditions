@@ -1,18 +1,13 @@
 package convenientadditions.init;
 
-import convenientadditions.item.adventurersPickaxe.RecipeAdventurersPickaxeRepair;
-import convenientadditions.item.charge.ItemBlazingRock;
-import convenientadditions.item.charge.ItemSunstone;
-import convenientadditions.item.charge.baubles.ItemBreathAmulet;
-import convenientadditions.item.charge.baubles.ItemChargingRing;
-import convenientadditions.item.charge.baubles.ItemSaturationRing;
-import convenientadditions.item.charge.baubles.ItemSunlightRing;
-import convenientadditions.item.charge.enderPlate.ItemEnderPlate;
-import convenientadditions.item.charge.enderPlate.RecipeEnderPlateRecharge;
+import convenientadditions.item.tools.adventurersPickaxe.RecipeAdventurersPickaxeRepair;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionType;
+import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
@@ -25,23 +20,35 @@ public class ModRecipes {
     public static void init() {
         if (ModConfig.ironWrench)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemIronWrench, 1),
-                    "i i",
+                    "n n",
                     " i ",
-                    "i i",
-                    'i', "ingotIron"));
+                    "n n",
+                    'i', "ingotIron",
+                    'n', "nuggetIron"));
 
         if (ModConfig.transmutationTome_recipe)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemTransmutationTome, 1), Items.BOOK, Items.BLAZE_ROD, Items.ENDER_EYE, Items.WHEAT_SEEDS));
 
+        if(ModConfig.dislocationCore)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemDislocationCore,3),
+                    " e ",
+                    "lrl",
+                    " e ",
+                    'e', "enderpearl",
+                    'r', "dustRedstone",
+                    'l', new ItemStack(Items.DYE,1,4)));
+
         initCompost();
+        initBlocks();
+        initMachines();
         initArrows();
         initChargeItems();
         initBaubles();
         initInventoryProxies();
-        initChannelModules();
+        initModules();
         initTreeTap();
-        initBlocks();
         initAdvPickaxe();
+        initMCDs();
     }
 
     private static void initCompost() {
@@ -66,29 +73,6 @@ public class ModRecipes {
     }
 
     private static void initBlocks() {
-        if (ModConfig.hoverPad_recipe)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.hoverPadBlock, 1),
-                    "iei",
-                    "pgp",
-                    "scs",
-                    'i', "ingotIron",
-                    'e', Items.ENDER_EYE,
-                    'p', Blocks.PISTON,
-                    'g', "ingotGold",
-                    's', "stone",
-                    'c', Items.COMPARATOR));
-
-        if (ModConfig.blastPad)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blastPadBlock, 1),
-                    "iki",
-                    "sds",
-                    "scs",
-                    'i', "ingotIron",
-                    'd', Blocks.DISPENSER,
-                    'k', ModItems.itemSlimeKit,
-                    's', "stone",
-                    'c', Items.COMPARATOR));
-
         if (ModConfig.platform){
             for(EnumDyeColor c:EnumDyeColor.values()){
                 String dye="dye"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
@@ -131,52 +115,143 @@ public class ModRecipes {
                     'p', "plankWood",
                     't', "ingotIron"));
 
+        if (ModConfig.displayCase)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.displayCaseBlock,2),
+                    "ppp",
+                    "p p",
+                    "sss",
+                    's', "slabWood",
+                    'p', "paneGlassColorless"));
+    }
+
+    private static void initMachines(){
+        if (ModConfig.machineBlock)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.machineBlock, 4),
+                    "sbs",
+                    "bpb",
+                    "sbs",
+                    's', "stone",
+                    'b', Blocks.IRON_BARS,
+                    'p', Blocks.PISTON));
+
+        if (ModConfig.hoverPad_recipe)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.hoverPadBlock, 1),
+                    "iei",
+                    "pmp",
+                    "scs",
+                    'i', "ingotIron",
+                    'e', Items.ENDER_EYE,
+                    'p', Blocks.PISTON,
+                    'm', ModBlocks.machineBlock,
+                    's', "stone",
+                    'c', Items.COMPARATOR));
+
+        if (ModConfig.blastPad)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blastPadBlock, 1),
+                    "iki",
+                    "dmd",
+                    "scs",
+                    'i', "ingotIron",
+                    'd', Blocks.DISPENSER,
+                    'k', ModItems.itemSlimeKit,
+                    's', "stone",
+                    'm', ModBlocks.machineBlock,
+                    'c', Items.COMPARATOR));
+
         if (ModConfig.playerInterface)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.playerInterfaceBlock),
-                    "tpt",
-                    "geg",
-                    "srs",
-                    't', "ingotIron",
-                    'e', Items.ENDER_PEARL,
+                    "php",
+                    "gmg",
+                    "sds",
+                    'd', ModItems.itemDislocationCore,
                     'p', Blocks.STONE_PRESSURE_PLATE,
+                    'h', Blocks.HOPPER,
+                    'm', ModBlocks.machineBlock,
                     'g', "ingotGold",
-                    's', "dustGlowstone",
-                    'r', "blockRedstone"));
+                    's', "stone"));
+
+        if (ModConfig.setProvider)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.setProviderBlock),
+                    "ihi",
+                    "cmc",
+                    "shs",
+                    'i', "ingotIron",
+                    'h', Blocks.HOPPER,
+                    'c', Items.COMPARATOR,
+                    'm', ModBlocks.machineBlock,
+                    's', "stone"));
+
+        if (ModConfig.storageMatrix)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.storageMatrixBlock),
+                    "ece",
+                    "cmc",
+                    "ici",
+                    'i', "ingotIron",
+                    'e', Items.ENDER_EYE,
+                    'm', ModBlocks.machineBlock,
+                    'c', "chestWood"));
+
+        if (ModConfig.jumpPad)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.jumpPadBlock,2),
+                    "pep",
+                    "dmd",
+                    "sgs",
+                    'g', "ingotGold",
+                    'e', "enderpearl",
+                    'm', ModBlocks.machineBlock,
+                    'p', Blocks.STONE_PRESSURE_PLATE,
+                    's', "stone",
+                    'd', ModItems.itemDislocationCore));
+
+        if (ModConfig.itemTransmitter)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.itemTransmitterBlock),
+                    "gcg",
+                    "dmd",
+                    "ses",
+                    'g', "ingotGold",
+                    'e', Items.ENDER_EYE,
+                    'm', ModBlocks.machineBlock,
+                    'c', "chest",
+                    's', "stone",
+                    'd', ModItems.itemDislocationCore));
+
+        if (ModConfig.itemReceiver)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.itemReceiverBlock),
+                    "ghg",
+                    "dmd",
+                    "sis",
+                    'g', "ingotGold",
+                    'i', ModBlocks.inventoryProxyBlock,
+                    'm', ModBlocks.machineBlock,
+                    'h', Blocks.HOPPER,
+                    's', "stone",
+                    'd', ModItems.itemDislocationCore));
 
         if (ModConfig.proximitySensor)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.proximitySensorBlock),
                     "sgs",
-                    "tet",
-                    "rgr",
+                    "tmt",
+                    "ege",
                     't', "ingotIron",
                     'e', Items.ENDER_EYE,
                     'g', "ingotGold",
                     's', "dustGlowstone",
-                    'r', "blockRedstone"));
+                    'm', ModBlocks.machineBlock));
 
-        if (ModConfig.setProvider)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.setProviderBlock),
-                    "tht",
-                    "bcb",
-                    "tht",
-                    't', "ingotIron",
-                    'h', Blocks.HOPPER,
-                    'c', Items.COMPARATOR,
-                    'b', Blocks.IRON_BARS));
-
-        if (ModConfig.storageMatrix)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.storageMatrixBlock),
-                    "ici",
-                    "cec",
-                    "ici",
+        if (ModConfig.inventoryProxies_remote)
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.remoteInventoryProxyBlock),
+                    "ipi",
+                    "dmd",
+                    "ipi",
                     'i', "ingotIron",
-                    'e', Items.ENDER_EYE,
-                    'c', "chestWood"));
+                    'd', ModItems.itemDislocationCore,
+                    'p', ModBlocks.inventoryProxySidedBlock,
+                    'm', ModBlocks.machineBlock));
     }
 
     private static void initChargeItems() {
         if (ModConfig.charge_sunstone)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ItemSunstone.FULLY_CHARGED.copy(),
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunstone,
                     "grg",
                     "tdt",
                     "grg",
@@ -186,7 +261,7 @@ public class ModRecipes {
                     'g', "dustGlowstone"));
 
         if (ModConfig.charge_blazingRock)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ItemBlazingRock.FULLY_CHARGED.copy(),
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBlazingRock,
                     "tlt",
                     "bdb",
                     "tgt",
@@ -197,24 +272,19 @@ public class ModRecipes {
                     'g', "dustGlowstone"));
 
         if (ModConfig.enderPlate_recipe)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ItemEnderPlate.FULLY_CHARGED.copy(),
-                    "rer",
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemEnderPlate,
+                    "rdr",
                     "bsb",
-                    "rer",
-                    'e', Items.ENDER_PEARL,
+                    "rdr",
+                    'd', ModItems.itemDislocationCore,
                     'b', Items.DRAGON_BREATH,
                     'r', "dustRedstone",
                     's', ModItems.itemObsidianPlate));
-
-        if (ModConfig.enderPlate_enderEyeRechargeRecipe) {
-            RecipeSorter.register("RecipeEnderPlateRecharge", RecipeEnderPlateRecharge.class, Category.SHAPELESS, "");
-            GameRegistry.addRecipe(new RecipeEnderPlateRecharge());
-        }
     }
 
     private static void initBaubles() {
         if (ModConfig.baubles_ring_of_sunlight)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ItemSunlightRing.FULLY_CHARGED.copy(),
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunlightRing,
                     "ysy",
                     "t t",
                     "yty",
@@ -223,7 +293,7 @@ public class ModRecipes {
                     'y', "string"));
 
         if (ModConfig.baubles_ring_of_saturation)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ItemSaturationRing.FULLY_CHARGED.copy(),
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSaturationRing,
                     "ygy",
                     "t t",
                     "yty",
@@ -231,24 +301,118 @@ public class ModRecipes {
                     'g', Items.GOLDEN_CARROT,
                     'y', "string"));
 
+        if (ModConfig.baubles_cloud_jar)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemCloudJar,
+                    Items.EXPERIENCE_BOTTLE, Items.RABBIT_FOOT, "slimeball", "gunpowder"));
+
+        if (ModConfig.baubles_slime_balloon)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSlimeBalloon,
+                    "s",
+                    "y",
+                    "y",
+                    's', "blockSlime",
+                    'y', "string"));
+
+        if (ModConfig.baubles_cloud_balloon)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemCloudBalloon,
+                    Items.GHAST_TEAR,ModItems.itemCloudJar,ModItems.itemSlimeBalloon));
+
+        if (ModConfig.baubles_ender_cloud_balloon)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemEnderCloudBalloon,
+                    Items.DRAGON_BREATH,ModItems.itemCloudBalloon,Items.ENDER_EYE));
+
+        if (ModConfig.baubles_wind_gem)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemWindGem,
+                    " f ",
+                    "ses",
+                    " f ",
+                    'e', "gemEmerald",
+                    's', PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionType.getPotionTypeForName("strong_swiftness")),
+                    'f', "feather"));
+
+        if (ModConfig.baubles_spiked_sole)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSpikedSole,
+                    "lll",
+                    "sss",
+                    'l', "leather",
+                    's', "stickWood"));
+
+        if (ModConfig.baubles_glider)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemGlider,
+                    "ysy",
+                    "sls",
+                    "l l",
+                    'y', "string",
+                    'l', "leather",
+                    's', "stickWood"));
+
+        if (ModConfig.baubles_valkyrie_wings)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemValkyrieWings,
+                    "fwf",
+                    "bgb",
+                    "fsf",
+                    'f', "feather",
+                    'w', ModItems.itemWindGem,
+                    'b', Items.DRAGON_BREATH,
+                    'g', ModItems.itemGlider,
+                    's', ModItems.itemSpikedSole));
+
         if (ModConfig.baubles_amulet_of_breath)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ItemBreathAmulet.FULLY_CHARGED.copy(),
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemBreathAmulet,
                     "yty",
                     "t t",
                     "ypy",
                     't', "ingotIron",
-                    'p', new ItemStack(Items.POTIONITEM, 1, 0),
+                    'p', PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionType.getPotionTypeForName("water_breathing")),
                     'y', "string"));
 
-        if (ModConfig.baubles_ring_of_charging)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ItemChargingRing.FULLY_CHARGED.copy(),
-                    "yry",
-                    "gsg",
-                    "ygy",
-                    'r', "blockRedstone",
-                    'g', "dustGlowstone",
-                    's', ModItems.itemSunlightRing,
-                    'y', "string"));
+        if (ModConfig.baubles_flippers)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemFlippers,
+                    "l l",
+                    "c c",
+                    "c c",
+                    'l', "leather",
+                    'c', new ItemStack(Items.DYE,1,2)));
+
+        if (ModConfig.baubles_flowing_water_rune)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemFlowingWaterRune,
+                    "rpr",
+                    "wsw",
+                    "rpr",
+                    'p', "gemPrismarine",
+                    's', "stone",
+                    'r', "dustRedstone",
+                    'w', Items.WATER_BUCKET));
+
+        if (ModConfig.baubles_tide_amulet)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemTideAmulet,
+                    "sbs",
+                    "crc",
+                    "sfs",
+                    's', "gemPrismarine",
+                    'c', "dustPrismarine",
+                    'b', ModItems.itemBreathAmulet,
+                    'r', ModItems.itemFlowingWaterRune,
+                    'f', ModItems.itemFlippers));
+
+        if (ModConfig.baubles_fireproof_cloak)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemFireproofCloak,
+                    "iwy",
+                    "swl",
+                    "swl",
+                    'i',new ItemStack(Items.DYE,1,0),
+                    'w',Blocks.WOOL,
+                    'y',"string",
+                    's',"slimeball",
+                    'l',"leather"));
+
+        if (ModConfig.baubles_nether_talisman)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemNetherTalisman,
+                    "paper","dyeRed","dyeBlack","feather","string"));
+
+        if (ModConfig.baubles_nether_cloak)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.itemNetherCloak,
+                    ModItems.itemNetherTalisman, ModItems.itemFireproofCloak, Items.MAGMA_CREAM, Items.GHAST_TEAR));
     }
 
     private static void initInventoryProxies() {
@@ -268,36 +432,16 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.inventoryProxyBlock), ModBlocks.inventoryProxySidedBlock));
         if (ModConfig.inventoryProxies_filtered)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.inventoryProxyFilteredBlock), ModBlocks.inventoryProxyBlock, Items.COMPARATOR));
-
-        if (ModConfig.inventoryProxies_transmitter)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.itemTransmitterBlock, 1),
-                    "tot",
-                    "epe",
-                    "tht",
-                    't', "ingotIron",
-                    'e', Items.ENDER_EYE,
-                    'h', Blocks.HOPPER,
-                    'p', ModBlocks.inventoryProxyBlock,
-                    'o', ModItems.itemObsidianPlate));
-
-        if (ModConfig.inventoryProxies_receiver)
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.itemReceiverBlock, 1),
-                    "gog",
-                    "epe",
-                    "ghg",
-                    'g', "ingotGold",
-                    'e', Items.ENDER_EYE,
-                    'h', Blocks.HOPPER,
-                    'p', ModBlocks.inventoryProxyBlock,
-                    'o', ModItems.itemObsidianPlate));
     }
 
-    private static void initChannelModules() {
+    private static void initModules() {
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianPlate, 6), Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.STONE));
         if (ModConfig.channelModules_player)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModulePlayer), ModItems.itemObsidianPlate, Items.ENDER_EYE, new ItemStack(Items.SKULL, 1, 1)));
         if (ModConfig.channelModules_color)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModuleColor), ModItems.itemObsidianPlate, Items.ENDER_EYE, "dye", "dye", "dye"));
+        if (ModConfig.moduleLocation)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModuleLocation), ModItems.itemObsidianPlate, Items.ENDER_EYE, "dustRedstone", "dustGlowstone"));
     }
 
     private static void initTreeTap() {
@@ -305,7 +449,7 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemSapBottle), Items.GLASS_BOTTLE, new ItemStack(Items.DYE, 1, 2)));
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetapBlock), "ingotIron", "slimeball", "stickWood"));
         if (ModConfig.antidote)
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemAntidote), new ItemStack(Items.POTIONITEM, 1, 0), "sap", Blocks.RED_MUSHROOM, Items.BEETROOT));
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemAntidote), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.WATER), "sap", Blocks.RED_MUSHROOM, Items.BEETROOT));
         if (ModConfig.bandage)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemBandage), "string", "string", "string", "string", "string", "string", "sap"));
     }
@@ -351,6 +495,35 @@ public class ModRecipes {
                     'g', "gunpowder",
                     't', Blocks.TNT));
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemLaunchingArrow, 8, 2), ModItems.itemSlimeKit, Items.ARROW, Items.ARROW, Items.ARROW, Items.ARROW, Items.ARROW, Items.ARROW, Items.ARROW, Items.ARROW));
+        }
+    }
+
+    private static void initMCDs() {
+        if(ModConfig.mobCatcher_recipe){
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemMobCatcherRegular,1),
+                    "ysy",
+                    "sds",
+                    "ysy",
+                    'd', ModItems.itemDislocationCore,
+                    'y', "string",
+                    's', "slimeball"));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemMobCatcherSuper,1),
+                    "pip",
+                    "idi",
+                    "pip",
+                    'd', ModItems.itemDislocationCore,
+                    'i', "ingotIron",
+                    'p', "gemPrismarine"));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemMobCatcherHyper,1),
+                    "isi",
+                    "bdb",
+                    "isi",
+                    'd', ModItems.itemDislocationCore,
+                    'i', "ingotIron",
+                    'b', Blocks.IRON_BARS,
+                    's', Items.SHULKER_SHELL));
         }
     }
 }

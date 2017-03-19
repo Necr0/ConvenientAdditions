@@ -13,7 +13,8 @@ public class ContainerJumpPad extends CAContainer {
     public ContainerJumpPad(TileEntityJumpPad ent, EntityPlayer p) {
         te = ent;
         //input
-        addSlotToContainer(new SlotItemHandler(ent.location, 0, 80, 8));
+        addSlotToContainer(new SlotItemHandler(ent.location, 0, 44, 8));
+        addSlotToContainer(new SlotItemHandler(ent.location, 1, 116, 8));
         //player inventory
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {

@@ -39,9 +39,8 @@ public class ModConfig {
     public static boolean inventoryProxies_sided;
     public static boolean inventoryProxies_filtered;
     public static int inventoryProxies_chainLimit;
-    public static boolean inventoryProxies_transmitter;
-    public static boolean inventoryProxies_receiver;
     public static List<String> inventoryProxies_blacklist;
+    public static boolean inventoryProxies_remote;
 
     //#########CHANNEL MODULES#############
     public static boolean channelModules_player;
@@ -52,19 +51,27 @@ public class ModConfig {
     public static boolean charge_blazingRock;
 
     //#########BAUBLES#############
-    public static boolean baubles_ring_of_charging;
     public static boolean baubles_amulet_of_breath;
     public static boolean baubles_amulet_of_wisdom;
     public static boolean baubles_ring_of_saturation;
     public static boolean baubles_ring_of_sunlight;
-    public static boolean baubles_nether_charm;
+    public static boolean baubles_cloud_jar;
+    public static boolean baubles_slime_balloon;
+    public static boolean baubles_cloud_balloon;
+    public static boolean baubles_ender_cloud_balloon;
+    public static boolean baubles_wind_gem;
+    public static boolean baubles_spiked_sole;
+    public static boolean baubles_glider;
+    public static boolean baubles_valkyrie_wings;
+    public static boolean baubles_flippers;
+    public static boolean baubles_flowing_water_rune;
+    public static boolean baubles_tide_amulet;
+    public static boolean baubles_fireproof_cloak;
+    public static boolean baubles_nether_talisman;
+    public static boolean baubles_nether_cloak;
 
     //#########ENDERSLATE#############
     public static boolean enderPlate_recipe;
-    public static boolean enderPlate_crystalCharge;
-    public static int enderPlate_crystalChargeRate;
-    public static boolean enderPlate_enderEyeRechargeRecipe;
-    public static float enderPlate_enderEyeRechargePercentage;
 
     //#########TRANSMUTATION TOME#############
     public static boolean transmutationTome_recipe;
@@ -91,7 +98,9 @@ public class ModConfig {
 
     //#########MOB CATCHER#############
     public static boolean mobCatcher_recipe;
+    public static boolean mobCatcher_loot;
     public static List<String> mobCatcher_blacklist;
+    public static List<String> mobCatcher_bosses;
 
     //#########GENERAL#############
     public static boolean ironWrench;
@@ -105,8 +114,15 @@ public class ModConfig {
     public static boolean antidote;
     public static boolean bandage;
     public static boolean blastPad;
+    public static boolean jumpPad;
     public static boolean platform;
     public static boolean storageMatrix;
+    public static boolean machineBlock;
+    public static boolean itemTransmitter;
+    public static boolean itemReceiver;
+    public static boolean moduleLocation;
+    public static boolean dislocationCore;
+    public static boolean displayCase;
 
     public static void init() {
         Configuration cfg = new Configuration(new File("config/ConvAdd.cfg"));
@@ -114,7 +130,7 @@ public class ModConfig {
 
         String category = Configuration.CATEGORY_GENERAL;
         cfg.setCategoryRequiresMcRestart(category, true);
-        ironWrench = cfg.getBoolean("ironWrench", category, false, "");
+        ironWrench = cfg.getBoolean("ironWrench_recipe", category, true, "");
         launchingArrows = cfg.getBoolean("launchingArrows", category, true, "");
         playerInterface = cfg.getBoolean("playerInterface", category, true, "");
         proximitySensor = cfg.getBoolean("proximitySensor", category, true, "");
@@ -127,6 +143,13 @@ public class ModConfig {
         blastPad = cfg.getBoolean("blastPad", category, true, "");
         platform = cfg.getBoolean("platform", category, true, "also disables semi-solid blocks");
         storageMatrix = cfg.getBoolean("storageMatrix", category, true, "");
+        jumpPad = cfg.getBoolean("jumpPad", category, true, "");
+        machineBlock = cfg.getBoolean("machineBlock", category, true, "required for many recipes");
+        itemTransmitter = cfg.getBoolean("itemTransmitter", category, true, "");
+        itemReceiver = cfg.getBoolean("itemReceiver", category, true, "");
+        moduleLocation = cfg.getBoolean("moduleLocation", category, true, "");
+        dislocationCore = cfg.getBoolean("dislocationCore", category, true, "required for many recipes");
+        displayCase = cfg.getBoolean("displayCase", category, true, "");
 
         category = "composter";
         cfg.setCategoryRequiresMcRestart(category, true);
@@ -149,20 +172,28 @@ public class ModConfig {
 
         category = "baubles";
         cfg.setCategoryRequiresMcRestart(category, true);
-        baubles_ring_of_charging = cfg.getBoolean("ring_of_charging", category, true, "");
-        baubles_amulet_of_breath = cfg.getBoolean("amulet_of_breath", category, true, "");
         baubles_amulet_of_wisdom = cfg.getBoolean("amulet_of_wisdom", category, true, "");
         baubles_ring_of_saturation = cfg.getBoolean("ring_of_saturation", category, true, "");
         baubles_ring_of_sunlight = cfg.getBoolean("ring_of_sunlight", category, true, "");
-        baubles_nether_charm = cfg.getBoolean("nether_charm", category, true, "");
+        baubles_cloud_jar = cfg.getBoolean("cloud_jar", category, true, "");
+        baubles_slime_balloon = cfg.getBoolean("slime_balloon", category, true, "");
+        baubles_cloud_balloon = cfg.getBoolean("cloud_balloon", category, true, "");
+        baubles_ender_cloud_balloon = cfg.getBoolean("ender_cloud_balloon", category, true, "");
+        baubles_wind_gem = cfg.getBoolean("wind_gem", category, true, "");
+        baubles_spiked_sole = cfg.getBoolean("spiked_sole", category, true, "");
+        baubles_glider = cfg.getBoolean("glider", category, true, "");
+        baubles_valkyrie_wings = cfg.getBoolean("valkyrie_wings", category, true, "");
+        baubles_amulet_of_breath = cfg.getBoolean("amulet_of_breath", category, true, "");
+        baubles_flippers = cfg.getBoolean("flippers", category, true, "");
+        baubles_flowing_water_rune = cfg.getBoolean("flowing_water_rune", category, true, "");
+        baubles_tide_amulet = cfg.getBoolean("tide_amulet", category, true, "");
+        baubles_fireproof_cloak = cfg.getBoolean("fireproof_cloak", category, true, "");
+        baubles_nether_talisman = cfg.getBoolean("nether_talisman", category, true, "");
+        baubles_nether_cloak = cfg.getBoolean("nether_cloak", category, true, "");
 
         category = "enderPlate";
         cfg.setCategoryRequiresMcRestart(category, true);
         enderPlate_recipe = cfg.getBoolean("recipe", category, true, "");
-        enderPlate_crystalCharge = cfg.getBoolean("crystalCharge", category, true, "");
-        enderPlate_crystalChargeRate = cfg.getInt("crystalChargeRate", category, 120, 0, Integer.MAX_VALUE, "in charges/second; rate=log_2(crystalCount+1)");
-        enderPlate_enderEyeRechargeRecipe = cfg.getBoolean("enderEyeRechargeRecipe", category, true, "");
-        enderPlate_enderEyeRechargePercentage = cfg.getFloat("enderEyeRechargePercentage", category, 0.45F, 0, 1, "");
 
         category = "seedbox";
         cfg.setCategoryRequiresMcRestart(category, true);
@@ -205,9 +236,8 @@ public class ModConfig {
         inventoryProxies_regular = cfg.getBoolean("regular", category, true, "needed to craft the others");
         inventoryProxies_sided = cfg.getBoolean("sided", category, true, "");
         inventoryProxies_filtered = cfg.getBoolean("filtered", category, true, "");
+        inventoryProxies_remote = cfg.getBoolean("remote", category, true, "");
         inventoryProxies_chainLimit = cfg.getInt("chainLimit", category, 32, 0, 256, "");
-        inventoryProxies_transmitter = cfg.getBoolean("transmitter", category, true, "");
-        inventoryProxies_receiver = cfg.getBoolean("receiver", category, true, "");
         inventoryProxies_blacklist=Arrays.asList(cfg.getStringList("blacklist",category,new String[0],"Blocks that will not be mimiced by proxies or the item transmitter e.g.: 'awesomemod:awesomeblock'"));
 
         category = "channelModules";
@@ -243,7 +273,9 @@ public class ModConfig {
 
         category = "mobCatcher";
         mobCatcher_recipe = cfg.getBoolean("recipe", category, true, "");
-        mobCatcher_blacklist = Arrays.asList(cfg.getStringList("blacklist",category,new String[]{"minecraft:wither","minecraft:ender_dragon"},"Entity registry names e.g.: 'minecraft:chicken'"));
+        mobCatcher_loot = cfg.getBoolean("loot", category, true, "chest loot?");
+        mobCatcher_blacklist = Arrays.asList(cfg.getStringList("blacklist",category,new String[]{"minecraft:ender_dragon"},"Entity registry names e.g.: 'minecraft:chicken'"));
+        mobCatcher_bosses = Arrays.asList(cfg.getStringList("bosses",category,new String[]{"minecraft:wither"},"Entity registry names e.g.: 'minecraft:chicken'"));
 
         if (cfg.hasChanged())
             cfg.save();

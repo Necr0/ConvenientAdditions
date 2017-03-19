@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.hoverPad;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.CABlockMachine;
+import convenientadditions.base.block.CABlockMachine;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -12,6 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class BlockHoverPad extends CABlockMachine {
     public static PropertyBool ACTIVE = PropertyBool.create("active");
 
@@ -21,8 +23,10 @@ public class BlockHoverPad extends CABlockMachine {
         this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE,false));
     }
 
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityHoverPad();
     }
 

@@ -1,53 +1,44 @@
 package convenientadditions.api.entity.specialitem;
 
 import convenientadditions.api.entity.specialitem.behaviours.*;
+import net.minecraft.util.ResourceLocation;
 
 import java.util.HashMap;
 
 public class BehaviourRegistry {
-    public static final HashMap<Long, IEntitySpecialItemBehaviour> REGISTRY = new HashMap<>();
-    public static HashMap<String, Long> API_DISCRIMINATORS = new HashMap<>();
+    public static final HashMap<String, IEntitySpecialItemBehaviour> REGISTRY = new HashMap<>();
 
-    public static long addBehaviour(IEntitySpecialItemBehaviour behaviour) {
-        long ret = getUnoccupiedDiscrimiator();
-        REGISTRY.put(ret, behaviour);
-        return ret;
+    public static final String BEHAVIOUR_AUTO_CROPS=addBehaviour("autoCrops",new BehaviourAutoCrops());
+    public static final String BEHAVIOUR_FLOATY=addBehaviour("floaty", new BehaviourFloaty());
+    public static final String BEHAVIOUR_HEAVY=addBehaviour("heavy", new BehaviourHeavy());
+    public static final String BEHAVIOUR_IMMUNITY_EXPLOSION=addBehaviour("immunityExplosion", new BehaviourImmunityExplosion());
+    public static final String BEHAVIOUR_IMMUNITY_FIRE=addBehaviour("immunityFire", new BehaviourImmunityFire());
+    public static final String BEHAVIOUR_SENSITIVITY_SUNLIGHT=addBehaviour("sensitivitySunlight", new BehaviourSensitivitySunlight());
+    public static final String BEHAVIOUR_SENSITIVITY_WATER=addBehaviour("sensitivityWater", new BehaviourSensitivityWater());
+
+    public static String addBehaviour(ResourceLocation location, IEntitySpecialItemBehaviour behaviour) {
+        REGISTRY.put(location.toString(), behaviour);
+        return location.toString();
     }
 
-    public static long addBehaviour(long discriminator, IEntitySpecialItemBehaviour behaviour) {
+    public static String addBehaviour(String discriminator, IEntitySpecialItemBehaviour behaviour) {
         REGISTRY.put(discriminator, behaviour);
         return discriminator;
     }
 
-    public static IEntitySpecialItemBehaviour getBehaviour(long discriminator) {
+    public static IEntitySpecialItemBehaviour getBehaviour(String discriminator) {
         return REGISTRY.get(discriminator);
     }
 
-    public static Long getDiscriminator(IEntitySpecialItemBehaviour behaviour) {
-        for (Long n : REGISTRY.keySet()) {
-            if (REGISTRY.get(n) == behaviour)
+    public static IEntitySpecialItemBehaviour getBehaviour(ResourceLocation location) {
+        return REGISTRY.get(location.toString());
+    }
+
+    public static String getDiscriminator(IEntitySpecialItemBehaviour behaviour) {
+        for (String n : REGISTRY.keySet()) {
+            if (REGISTRY.get(n).equals(behaviour))
                 return n;
         }
         return null;
-    }
-
-    public static long getUnoccupiedDiscrimiator() {
-        long r = 0;
-        for (long n : REGISTRY.keySet()) {
-            if (n == r || n > r) {
-                r = n + 1;
-            }
-        }
-        return r;
-    }
-
-    static {
-        API_DISCRIMINATORS.put("autoCrops", addBehaviour(new BehaviourAutoCrops()));
-        API_DISCRIMINATORS.put("floaty", addBehaviour(new BehaviourFloaty()));
-        API_DISCRIMINATORS.put("heavy", addBehaviour(new BehaviourHeavy()));
-        API_DISCRIMINATORS.put("immunityExplosion", addBehaviour(new BehaviourImmunityExplosion()));
-        API_DISCRIMINATORS.put("immunityFire", addBehaviour(new BehaviourImmunityFire()));
-        API_DISCRIMINATORS.put("sensitivitySunlight", addBehaviour(new BehaviourSensitivitySunlight()));
-        API_DISCRIMINATORS.put("sensitivityWater", addBehaviour(new BehaviourSensitivityWater()));
     }
 }

@@ -2,7 +2,7 @@ package convenientadditions.block.powderkeg;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.CABlockContainer;
+import convenientadditions.base.block.CABlockContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -21,6 +21,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class BlockPowderKeg extends CABlockContainer {
 
     public BlockPowderKeg() {
@@ -29,8 +31,11 @@ public class BlockPowderKeg extends CABlockContainer {
         this.setSoundType(SoundType.WOOD);
     }
 
+
+    @Nullable
     @Override
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
         return new TileEntityPowderKeg();
     }
 
@@ -43,9 +48,9 @@ public class BlockPowderKeg extends CABlockContainer {
     private void dropItems(World world, BlockPos pos) {
         if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote) {
             TileEntityPowderKeg keg = (TileEntityPowderKeg) world.getTileEntity(pos);
-            if (keg.getAmount() <= 0)
+            ItemStack item = keg.inventory.extractItem(0,64,false);
+            if(item.isEmpty())
                 return;
-            ItemStack item = keg.removeStack(64);
             float rx = world.rand.nextFloat() * 0.8F + 0.1F;
             float ry = world.rand.nextFloat() * 0.8F + 0.1F;
             float rz = world.rand.nextFloat() * 0.8F + 0.1F;
@@ -60,31 +65,31 @@ public class BlockPowderKeg extends CABlockContainer {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        ItemStack current = player.inventory.getStackInSlot(player.inventory.currentItem);
-        if (world.getTileEntity(pos) instanceof TileEntityPowderKeg && !world.isRemote) {
-            TileEntityPowderKeg keg = (TileEntityPowderKeg) world.getTileEntity(pos);
-            if (!world.isRemote) {
-                if (current.getItem() == Items.GUNPOWDER) {
-                    player.setHeldItem(hand, keg.insertStack(player.getHeldItem(hand)));
-                    return true;
-                } else if (current.getItem() == Items.FLINT_AND_STEEL) {
-                    if (explode(world, pos)) {
-                        current.damageItem(1, player);
-                        return true;
-                    }
-                }else if (current.isEmpty()) {
-                    if(player.isSneaking() && keg.getAmount() != 0){
-                        Helper.spawnItemInPlace(world, pos.getX() + .5, pos.getY() + 1.2, pos.getZ() + .5, keg.removeStack(64));
-                        return false;
-                    }
+        ItemStack current = player.getHeldItem(hand);
+        TileEntity tileEntity=world.getTileEntity(pos);
+        if (!world.isRemote && tileEntity!=null && tileEntity instanceof TileEntityPowderKeg) {
+            TileEntityPowderKeg keg= (TileEntityPowderKeg) tileEntity;
+            if (current.getItem() == Items.GUNPOWDER) {
+                player.setHeldItem(hand, keg.inventory.insertItem(0,current,false));
+            } else if (current.getItem() == Items.FLINT_AND_STEEL) {
+                current.damageItem(1,player);
+                if (explode(world, pos)) {
+                    current.damageItem(1, player);
                 }
-                player.sendMessage(new TextComponentString(keg.getAmount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored")));
-                return true;
+            }else{
+                player.sendMessage(new TextComponentString(keg.inventory.getStackInSlot(0).getCount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored")));
             }
         }
         return true;
     }
 
+
+    public void onBlockClicked(World world, BlockPos pos, EntityPlayer player){
+        TileEntity tileEntity=world.getTileEntity(pos);
+        if (!world.isRemote && tileEntity!=null && tileEntity instanceof TileEntityPowderKeg) {
+            Helper.insertOrDrop(player,((TileEntityPowderKeg)tileEntity).inventory.extractItem(0, player.isSneaking()?64:1,false));
+        }
+    }
 
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos from) {
@@ -111,9 +116,10 @@ public class BlockPowderKeg extends CABlockContainer {
     public boolean explode(World w, BlockPos pos) {
         if (w.getTileEntity(pos) != null && w.getTileEntity(pos) instanceof TileEntityPowderKeg) {
             TileEntityPowderKeg k = (TileEntityPowderKeg) w.getTileEntity(pos);
-            if (k.getAmount() > 0 && !w.isRemote) {
-                float strenght = (float) k.getAmount() / 1.5F;
-                k.removeStack(64);
+            int amount=k.inventory.getStackInSlot(0).getCount();
+            if (amount > 0 && !w.isRemote) {
+                float strenght = (float) amount / 1.45F;
+                k.inventory.extractItem(0,64,false);
                 w.setBlockToAir(pos);
                 w.createExplosion(null, (double) pos.getX() + .5, (double) pos.getY() + .5, (double) pos.getZ() + .5, strenght, true);
                 return true;

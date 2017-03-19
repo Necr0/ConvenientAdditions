@@ -37,7 +37,7 @@ public class SeedBoxItemStackHandler implements IItemHandler, IItemHandlerModifi
                 EnumFacing output = (EnumFacing) outputs.toArray()[box.getWorld().rand.nextInt(outputs.size())];
                 BlockPos pos = box.getPos();
                 EntitySpecialItem item = new EntitySpecialItem(box.getWorld(), pos.getX() + 0.5 + (output.getFrontOffsetX() * 0.8), pos.getY() + 0.5 + (output.getFrontOffsetY() * 0.8), pos.getZ() + 0.5 + (output.getFrontOffsetZ() * 0.8), stack);
-                for (long b : SeedBoxItemBehaviourRegistry.getItemBehaviour(stack)) {
+                for (String b : SeedBoxItemBehaviourRegistry.getItemBehaviour(stack)) {
                     item.addBehaviourSilent(b);
                 }
                 item.syncBehaviours();

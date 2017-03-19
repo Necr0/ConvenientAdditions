@@ -30,7 +30,7 @@ public class ProviderPowderKeg implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity te=accessor.getTileEntity();
         if(te!=null&&te instanceof TileEntityPowderKeg){
-            currenttip.add(((TileEntityPowderKeg) te).getAmount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored"));
+            currenttip.add(((TileEntityPowderKeg) te).inventory.getStackInSlot(0).getCount() + Helper.localize("message." + ModConstants.Mod.MODID + ":gunpowderStored"));
         }
         return  currenttip;
     }

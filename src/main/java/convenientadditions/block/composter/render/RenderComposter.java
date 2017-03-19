@@ -11,12 +11,8 @@ import org.lwjgl.opengl.GL11;
 public class RenderComposter extends TileEntitySpecialRenderer<TileEntityComposter> {
     private ModelComposterContent modelComposterContent = new ModelComposterContent();
 
-    public RenderComposter() {
-    }
-
     @Override
-    public void renderTileEntityAt(TileEntityComposter tileEntity, double d0, double d1, double d2, float f, int dest) {
-        TileEntityComposter t = tileEntity;
+    public void renderTileEntityAt(TileEntityComposter t, double d0, double d1, double d2, float f, int dest) {
         if (t.content > 0) {
             GL11.glPushMatrix();
             float d = (float) t.content / ModConfig.composter_capacity;
