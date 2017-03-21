@@ -21,6 +21,10 @@ public abstract class CABlockContainer extends CABlock {
         this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + name).setCreativeTab(ConvenientAdditions.CREATIVETAB).setRegistryName(name);
     }
 
+    @Override
+    public boolean hasTileEntity(IBlockState state){ return true; }
+
     @Nullable
+    @Override
     public abstract TileEntity createTileEntity(World world, IBlockState state);
 }

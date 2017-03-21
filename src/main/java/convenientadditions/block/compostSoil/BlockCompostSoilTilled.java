@@ -4,7 +4,9 @@ import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
 import convenientadditions.base.block.CABlock;
 import convenientadditions.init.ModBlocks;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -149,6 +151,6 @@ public class BlockCompostSoilTilled extends CABlock {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip.convenientadditions:compostDegraded" + stack.getItemDamage()));
+        list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoil+".effectiveness", stack.getItemDamage()));
     }
 }

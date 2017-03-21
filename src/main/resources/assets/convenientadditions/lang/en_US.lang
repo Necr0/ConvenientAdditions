@@ -206,10 +206,10 @@ tooltip.convenientadditions:itemCategory.misc=Miscellaneous
 
 ## Misc
 tooltip.convenientadditions:storageMatrixHoldingInventory=(holding inventory)
-tooltip.convenientadditions:compost.effectiveness=Effectiveness: %s
+tooltip.convenientadditions:compostSoil.effectiveness=Effectiveness: %d
 tooltip.convenientadditions:showRecipes=Show Recipes
 tooltip.convenientadditions:shiftInfo=<Hold shift for more information>
-tooltip.convenientadditions:baublesRequired=The Baubles mod is required for this item to be functional. If you which to use it install the Baubles mod.
+tooltip.convenientadditions:baublesRequired=The Baubles mod is required for this item to be functional. If you wish to use it install the Baubles mod.
 #
 tooltip.convenientadditions:sunstone.active=(right click to deactivate)
 tooltip.convenientadditions:sunstone.inactive=(right click to activate)

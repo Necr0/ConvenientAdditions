@@ -100,7 +100,7 @@ public class BlockCompostSoil extends CABlock {
         if (!world.isRemote) {
             BlockPos posU = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
             Block b = world.getBlockState(posU).getBlock();
-            int deg = state.getValue(DEGRADATION).intValue();
+            int deg = state.getValue(DEGRADATION);
             if (b != null && (b instanceof IPlantable || b instanceof IGrowable)) {
                 b.updateTick(world, posU, world.getBlockState(posU), r);
                 int i = deg;
@@ -148,6 +148,6 @@ public class BlockCompostSoil extends CABlock {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip.convenientadditions:compostDegraded" + stack.getItemDamage()));
+        list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoil+".effectiveness", stack.getItemDamage()));
     }
 }

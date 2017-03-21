@@ -1,6 +1,5 @@
 package convenientadditions.init;
 
-import convenientadditions.ModConstants;
 import convenientadditions.base.item.ItemBlockMetadata;
 import convenientadditions.block.BlockTreeTap;
 import convenientadditions.block.compostSoil.BlockCompostSoil;
@@ -17,13 +16,13 @@ import convenientadditions.block.machine.itemReceiver.BlockItemReceiver;
 import convenientadditions.block.machine.itemTransmitter.BlockItemTransmitter;
 import convenientadditions.block.machine.jumpPad.BlockJumpPad;
 import convenientadditions.block.machine.playerInterface.BlockPlayerInterface;
+import convenientadditions.block.machine.proximitySensor.BlockProximitySensor;
 import convenientadditions.block.machine.remoteInventoryProxy.BlockRemoteInventoryProxy;
 import convenientadditions.block.machine.setProvider.BlockSetProvider;
 import convenientadditions.block.machine.storageMatrix.BlockStorageMatrix;
 import convenientadditions.block.platform.BlockPlatform;
 import convenientadditions.block.platform.BlockSemiSolid;
 import convenientadditions.block.powderkeg.BlockPowderKeg;
-import convenientadditions.block.machine.proximitySensor.BlockProximitySensor;
 import convenientadditions.block.seedbox.BlockSeedBox;
 import convenientadditions.block.technical.BlockPhantomPlatform;
 import convenientadditions.block.technical.BlockTempLight;
@@ -37,7 +36,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@GameRegistry.ObjectHolder(ModConstants.Mod.MODID)
 public class ModBlocks {
     public static final BlockComposter composterBlock = new BlockComposter();
     public static final BlockCompostSoil compostSoilBlock = new BlockCompostSoil();

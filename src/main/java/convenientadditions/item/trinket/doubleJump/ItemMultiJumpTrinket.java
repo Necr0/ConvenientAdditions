@@ -18,8 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.lang.reflect.Field;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 @Optional.Interface(iface = "baubles.api.IBauble",modid = "baubles",striprefs = true)
 public class ItemMultiJumpTrinket extends CAItem implements IBauble, IDoubleJumpProvider {
@@ -85,14 +84,10 @@ public class ItemMultiJumpTrinket extends CAItem implements IBauble, IDoubleJump
         if(!player.isAirBorne)
             return;
 
-        int jumpTicks;
+        int jumpTicks=0;
         try {
-            Field f=EntityLivingBase.class.getDeclaredField("jumpTicks");
-            f.setAccessible(true);
-            jumpTicks=(int)f.get(player);
-        }catch (Exception e){
-            return;
-        }
+            jumpTicks=ReflectionHelper.getPrivateValue(EntityLivingBase.class,player,"jumpTicks","field_70773_bE");
+        }catch (Exception e){e.printStackTrace();}
         if(jumpTicks==10)
             return;
 

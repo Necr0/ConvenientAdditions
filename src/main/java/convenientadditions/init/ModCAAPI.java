@@ -27,10 +27,10 @@ public class ModCAAPI {
     public static String BEHAVIOUR_AUTO_FEED;
 
     public static void init() {
-         BEHAVIOUR_COMPOST = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"compost"), new BehaviourCompost());
-         BEHAVIOUR_AUTO_BONEMEAL = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoBonemeal"), new BehaviourAutoBoneMeal());
-         BEHAVIOUR_AUTO_FERTILIZER = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFertilizer"), new BehaviourAutoFertilizer());
-         BEHAVIOUR_AUTO_FEED = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFeed"), new BehaviourAutoFeed());
+        BEHAVIOUR_COMPOST = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"compost"), new BehaviourCompost());
+        BEHAVIOUR_AUTO_BONEMEAL = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoBonemeal"), new BehaviourAutoBoneMeal());
+        BEHAVIOUR_AUTO_FERTILIZER = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFertilizer"), new BehaviourAutoFertilizer());
+        BEHAVIOUR_AUTO_FEED = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFeed"), new BehaviourAutoFeed());
         initSeedBox();
         initCompost();
         initTome();
