@@ -23,6 +23,11 @@ tile.convenientadditions:storageMatrix.name=Storage Matrix
 tile.convenientadditions:machineBlock.name=Machine Block
 tile.convenientadditions:displayCase.name=Display Case
 tile.convenientadditions:remoteInventoryProxy.name=Remote Inventory Proxy
+tile.convenientadditions:enderProofBlock.name=Ender-Proof Block
+tile.convenientadditions:enderProofGlass.name=Ender-Proof Glass
+tile.convenientadditions:ironFarm.name=Iron Factory
+tile.convenientadditions:ironGolemBlock.name=Iron Golem Block
+tile.convenientadditions:workStation.name=Work Station
 # platforms
 tile.convenientadditions:platform.black.name=Black Platform
 tile.convenientadditions:platform.red.name=Red Platform
@@ -80,6 +85,8 @@ item.convenientadditions:antidote.name=Antidote
 item.convenientadditions:bandage.name=Bandage
 item.convenientadditions:adventurersPickaxe.name=Adventurer's Pickaxe
 item.convenientadditions:dislocationCore.name=Dislocation Core
+item.convenientadditions:soulGem.name=Soul Gem
+item.convenientadditions:spikes.name=Spikes
 # mcds
 item.convenientadditions:mobCatcher.regular.name=Mob Containment Device
 item.convenientadditions:mobCatcher.super.name=Super MCD
@@ -103,12 +110,16 @@ item.convenientadditions:slimeBalloon.name=Slime Balloon
 item.convenientadditions:cloudBalloon.name=Cloud in a Slime Balloon
 item.convenientadditions:enderCloudBalloon.name=Ender Cloud in a Slime Balloon
 item.convenientadditions:windGem.name=Gem of the Winds
-item.convenientadditions:spikedSole.name=Spiked Sole
 item.convenientadditions:glider.name=Glider
 item.convenientadditions:valkyrieWings.name=Valkyrie Wings
 item.convenientadditions:fireproofCloak.name=Fireproof Cloak
 item.convenientadditions:netherTalisman.name=Talisman of the Nether
 item.convenientadditions:netherCloak.name=Cloak of the Nether
+item.convenientadditions:rocketPack.name=Rocket Pack
+item.convenientadditions:climbingClaws.name=Climbing Claws
+item.convenientadditions:spikedSole.name=Spiked Soles
+item.convenientadditions:climbingGear.name=Climbing Gear
+item.convenientadditions:minersBracelet.name=Miner's Bracelet
 
 
 
@@ -145,6 +156,11 @@ tooltip.convenientadditions:powderKeg.info=Explodable Gunpowder Storage
 tooltip.convenientadditions:seedBox.info=Drops self-planting seeds.
 tooltip.convenientadditions:semiSolidBlock.info=Sneak to pass right through it.
 tooltip.convenientadditions:treetap.info=Collects sap from trees when a Sap Bottle is attached.
+tooltip.convenientadditions:enderProofBlock.info=Prevents any kind of ender teleport that goes through it.
+tooltip.convenientadditions:enderProofGlass.info=Prevents any kind of ender teleport that goes through it.
+tooltip.convenientadditions:soulGem.info=Used for crafting with mob souls.
+tooltip.convenientadditions:displayCase.info=Used as a fancy way to present your items.
+tooltip.convenientadditions:workStation.info=It's a workbench that keeps it's items with extra inventory.
 # relics
 tooltip.convenientadditions:blazingRock.info=Can sometimes be used as fuel.
 tooltip.convenientadditions:enderPlate.info=Allows walking on air.
@@ -152,6 +168,8 @@ tooltip.convenientadditions:sunstone.info=Portable Light Source
 tooltip.convenientadditions:transmutationTome.info=Changes stuff using experience levels.
 # modules
 tooltip.convenientadditions:moduleLocation.info=Can store a block location.
+tooltip.convenientadditions:moduleColor.info=Used to specify wireless item channels.
+tooltip.convenientadditions:modulePlayer.info=Used to specify wireless item channels.
 # machines
 tooltip.convenientadditions:blastPad.info=Blasts you upwards.
 tooltip.convenientadditions:hoverPad.info=Pushes you upwards.
@@ -163,6 +181,7 @@ tooltip.convenientadditions:proximitySensor.info=Gives a configurable redstone s
 tooltip.convenientadditions:setProvider.info=Makes distributing sets of items easy.
 tooltip.convenientadditions:storageMatrix.info=Has a large inventory but no GUI.
 tooltip.convenientadditions:remoteInventoryProxy.info=Mimics the specified block's inventory.
+tooltip.convenientadditions:ironFarm.info=Produces 1 iron ingot per minute.
 # trinkets
 tooltip.convenientadditions:saturationRing.info=Keeps you saturated.
 tooltip.convenientadditions:sunlightRing.info=Portable Light Source
@@ -175,12 +194,16 @@ tooltip.convenientadditions:slimeBalloon.info=Gives the ability to jump higher.
 tooltip.convenientadditions:cloudBalloon.info=Gives the ability to jump higher and double-jump.
 tooltip.convenientadditions:enderCloudBalloon.info=Gives the ability to jump even higher and triple-jump.
 tooltip.convenientadditions:windGem.info=Gives the ability walk and run faster.
-tooltip.convenientadditions:spikedSole.info=Gives the ability to walk up blocks.
 tooltip.convenientadditions:glider.info=Gives the ability glide and fall slowly.
-tooltip.convenientadditions:valkyrieWings.info=Gives the ability to run and glide even faster and walk up blocks.
+tooltip.convenientadditions:valkyrieWings.info=Gives the ability to run and glide even faster.
 tooltip.convenientadditions:fireproofCloak.info=Prevents burning and reduces damage from fire.
 tooltip.convenientadditions:netherTalisman.info=Prevents magma damage and speeds up nether portals.
 tooltip.convenientadditions:netherCloak.info=Prevents burning, reduces damage from fire, magma and lava, and speeds up nether portals.
+tooltip.convenientadditions:rocketPack.info=Holding forward while flying with elytra causes acceleration.
+tooltip.convenientadditions:climbingClaws.info=Allows sneaking at walls to climb them.
+tooltip.convenientadditions:spikedSole.info=Gives the ability to walk up blocks.
+tooltip.convenientadditions:climbingGear.info=Gives the ability to walk up blocks and climb up walls.
+tooltip.convenientadditions:minersBracelet.info=Slightly increases your mining speed.
 
 ## Additional Info
 tooltip.convenientadditions:storageMatrix.additionalInfo=Break it with a wrench to preserve its inventory.
@@ -203,10 +226,13 @@ tooltip.convenientadditions:itemCategory.consumable=Consumable
 tooltip.convenientadditions:itemCategory.machine=Machine
 tooltip.convenientadditions:itemCategory.module=Module
 tooltip.convenientadditions:itemCategory.misc=Miscellaneous
+tooltip.convenientadditions:itemCategory.buildingBlock=Building Block
 
 ## Misc
 tooltip.convenientadditions:storageMatrixHoldingInventory=(holding inventory)
 tooltip.convenientadditions:compostSoil.effectiveness=Effectiveness: %d
+tooltip.convenientadditions:compostSoil.degradation=Degradation: %d
+tooltip.convenientadditions:compost.spores=Contains Spores
 tooltip.convenientadditions:showRecipes=Show Recipes
 tooltip.convenientadditions:shiftInfo=<Hold shift for more information>
 tooltip.convenientadditions:baublesRequired=The Baubles mod is required for this item to be functional. If you wish to use it install the Baubles mod.
@@ -240,11 +266,12 @@ tooltip.convenientadditions:pushAlways=Push always.
 tooltip.convenientadditions:dontPushIfOutputsNotEmpty=Don't push if output's not empty.
 tooltip.convenientadditions:pushEvenIfOutputsNotEmpty=Push even if output's not empty.
 # mcds
-tooltip.convenientadditions:mobCatcherHoldingEntity=(holding a mob)
+tooltip.convenientadditions:mobCatcherHoldingEntity=Holding: %s
 tooltip.convenientadditions:mobCatcherNotHoldingEntity=(throw at a mob to capture it)
 tooltip.convenientadditions:mobCatcher.strength=Strength: %f
 tooltip.convenientadditions:mobCatcher.hostile=Hostile: %s
 tooltip.convenientadditions:mobCatcher.boss=Bosses: %s
+tooltip.convenientadditions:soulGemHoldingEntity=Holding: %s
 
 
 
@@ -280,6 +307,8 @@ convenientadditions:page=Page
 convenientadditions:done=Done
 convenientadditions:range=Range
 convenientadditions:unit.blocks=blocks
+#
+convenientadditions:none=None
 
 ## Materials
 # mining level names

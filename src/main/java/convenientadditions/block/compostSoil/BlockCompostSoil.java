@@ -102,9 +102,9 @@ public class BlockCompostSoil extends CABlock {
             Block b = world.getBlockState(posU).getBlock();
             int deg = state.getValue(DEGRADATION);
             if (b != null && (b instanceof IPlantable || b instanceof IGrowable)) {
-                b.updateTick(world, posU, world.getBlockState(posU), r);
-                int i = deg;
-                if (r.nextInt(23) > i)
+                b.updateTick(world, posU, world.getBlockState(posU), r); //trigger growth tick
+                int i = deg; //degradation: 0-10
+                if (r.nextInt(23) > i) //if random number(0-22) is bigger than degradation
                     b.updateTick(world, posU, world.getBlockState(posU), r);
                 i++;
                 if (r.nextInt(23) > i)
@@ -148,6 +148,6 @@ public class BlockCompostSoil extends CABlock {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoil+".effectiveness", stack.getItemDamage()));
+        list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoil+".degradation", stack.getItemDamage()));
     }
 }

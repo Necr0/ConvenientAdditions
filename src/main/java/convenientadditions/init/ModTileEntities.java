@@ -3,6 +3,7 @@ package convenientadditions.init;
 import convenientadditions.ModConstants;
 import convenientadditions.block.composter.TileEntityComposter;
 import convenientadditions.block.displayCase.TileEntityDisplayCase;
+import convenientadditions.block.machine.ironFarm.TileEntityIronFarm;
 import convenientadditions.block.machine.hoverPad.TileEntityHoverPad;
 import convenientadditions.block.inventoryProxy.TileEntityInventoryProxy;
 import convenientadditions.block.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
@@ -16,6 +17,7 @@ import convenientadditions.block.machine.proximitySensor.TileEntityProximitySens
 import convenientadditions.block.seedbox.TileEntitySeedBox;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import convenientadditions.block.machine.storageMatrix.TileEntityStorageMatrix;
+import convenientadditions.block.workStation.TileEntityWorkStation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModTileEntities {
@@ -35,5 +37,7 @@ public class ModTileEntities {
         GameRegistry.registerTileEntity(TileEntityStorageMatrix.class, ModConstants.BlockNames.storageMatrix);
         GameRegistry.registerTileEntity(TileEntityDisplayCase.class, ModConstants.BlockNames.displayCase);
         GameRegistry.registerTileEntity(TileEntityRemoteInventoryProxy.class, ModConstants.BlockNames.remoteInventoryProxy);
+        GameRegistry.registerTileEntity(TileEntityIronFarm.class, ModConstants.BlockNames.ironFarm);
+        GameRegistry.registerTileEntity(TileEntityWorkStation.class, ModConstants.BlockNames.workStation);
     }
 }

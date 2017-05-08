@@ -56,11 +56,11 @@ public class ItemPlayerChannelModule extends CAItemChannelModule {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
+        super.addInformation(stack, player, list, par4);
         if (hasMatcher(stack))
-            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":modulePlayerPlayer", "%p", stack.getTagCompound().hasKey("MATCHER_PLAYER_NAME") ? stack.getTagCompound().getString("MATCHER_PLAYER_NAME") : stack.getTagCompound().getString("MATCHER_PLAYER_ID")));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":modulePlayerPlayer", stack.getTagCompound().hasKey("MATCHER_PLAYER_NAME") ? stack.getTagCompound().getString("MATCHER_PLAYER_NAME") : stack.getTagCompound().getString("MATCHER_PLAYER_ID")));
         else
             list.add(TextFormatting.DARK_GRAY + Helper.localize("tooltip." + ModConstants.Mod.MODID + ":modulePlayerNotSet"));
-        super.addInformation(stack, player, list, par4);
     }
 
 }

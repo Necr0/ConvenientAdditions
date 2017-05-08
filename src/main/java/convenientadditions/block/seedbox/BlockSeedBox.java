@@ -2,6 +2,7 @@ package convenientadditions.block.seedbox;
 
 import convenientadditions.ModConstants;
 import convenientadditions.base.block.CABlockConfigurable;
+import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -28,7 +29,7 @@ public class BlockSeedBox extends CABlockConfigurable {
         this.setHardness(2F).setResistance(3F);
         this.setSoundType(SoundType.WOOD);
         this.setDefaultState(this.blockState.getBaseState().withProperty(OUTLET_TOP, false).withProperty(OUTLET_BOTTOM, true).withProperty(OUTLET_NORTH, false).withProperty(OUTLET_EAST, false).withProperty(OUTLET_SOUTH, false).withProperty(OUTLET_WEST, false));
-        this.setDefaultAdditionalInfo(true);
+        this.setCategory(EnumItemCategory.MISC).setDefaultAdditionalInfo(true);
     }
 
     @Nullable

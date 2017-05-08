@@ -35,8 +35,8 @@ public class LevelUp {
         ModItems.itemAdventurersPickaxe.setToolProperty(s, "xp", 0);
         int lvl = (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "lvl");
 
-        ModItems.itemAdventurersPickaxe.setToolProperty(s, "durability", (int) ModItems.itemAdventurersPickaxe.getToolProperty(s, "durability") + (lvl * 2));
-        s.setItemDamage(s.getItemDamage() + (int) (lvl * 1.8));
+        ModItems.itemAdventurersPickaxe.setToolProperty(s, "durability", (int)ModItems.itemAdventurersPickaxe.getToolProperty(s, "durability") + (lvl * 3));
+        s.setItemDamage(s.getItemDamage() + (lvl * 2));
 
         applyRandomUpgrade(s);
 
@@ -45,6 +45,7 @@ public class LevelUp {
         switch (lvl) {
             case 5:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 1);
+                s.setItemDamage(Math.min(s.getItemDamage() - ((int)ModItems.itemAdventurersPickaxe.getToolProperty(s, "durability")/5),0));
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
@@ -67,6 +68,7 @@ public class LevelUp {
                 break;
             case 15:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 2);
+                s.setItemDamage(Math.min(s.getItemDamage() - ((int)ModItems.itemAdventurersPickaxe.getToolProperty(s, "durability")/5),0));
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(
@@ -89,6 +91,7 @@ public class LevelUp {
                 break;
             case 25:
                 ModItems.itemAdventurersPickaxe.setToolProperty(s, "mining_level", 3);
+                s.setItemDamage(Math.min(s.getItemDamage() - ((int)ModItems.itemAdventurersPickaxe.getToolProperty(s, "durability")/5),0));
                 if (msg) {
                     p.sendMessage(
                             new TextComponentString(

@@ -4,13 +4,13 @@ import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
 import convenientadditions.base.block.CABlockContainer;
 import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -32,7 +32,7 @@ public class BlockDisplayCase extends CABlockContainer {
 
     public BlockDisplayCase() {
         super(ModConstants.BlockNames.displayCase, Material.GLASS);
-        this.setHardness(2F).setResistance(.5F);
+        this.setSoundType(SoundType.GLASS).setHardness(2F).setResistance(.5F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
     }
 
@@ -85,26 +85,10 @@ public class BlockDisplayCase extends CABlockContainer {
     }
 
     @Override
-    public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        dropItems(world, pos);
-        super.breakBlock(world, pos, state);
-    }
-
-    private void dropItems(World world, BlockPos pos) {
-        if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntityDisplayCase && !world.isRemote) {
-            TileEntityDisplayCase keg = (TileEntityDisplayCase) world.getTileEntity(pos);
-            ItemStack item = keg.inventory.extractItem(0,64,false);
-            if(item.isEmpty())
-                return;
-            float rx = world.rand.nextFloat() * 0.8F + 0.1F;
-            float ry = world.rand.nextFloat() * 0.8F + 0.1F;
-            float rz = world.rand.nextFloat() * 0.8F + 0.1F;
-            EntityItem entityItem = new EntityItem(world, pos.getX() + rx, pos.getY() + ry, pos.getZ() + rz, item);
-            float factor = 0.05F;
-            entityItem.motionX = world.rand.nextGaussian() * factor;
-            entityItem.motionY = world.rand.nextGaussian() * factor + 0.2F;
-            entityItem.motionZ = world.rand.nextGaussian() * factor;
-            world.spawnEntity(entityItem);
+    public void dropItems(World world, BlockPos pos) {
+        TileEntity te=world.getTileEntity(pos);
+        if (!world.isRemote && te != null && te instanceof TileEntityDisplayCase) {
+            dropItemHandler(world,pos,((TileEntityDisplayCase) te).inventory,true);
         }
     }
 

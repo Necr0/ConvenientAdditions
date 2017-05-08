@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube",
+		"textures": {
+			"particle": "convenientadditions:blocks/workstation/workstation_front",
+			"down": "convenientadditions:blocks/workstation/workstation_bottom",
+			"up": "convenientadditions:blocks/workstation/workstation_top",
+			"north": "convenientadditions:blocks/workstation/workstation_front",
+			"east": "convenientadditions:blocks/workstation/workstation_side",
+			"south": "convenientadditions:blocks/workstation/workstation_back",
+			"west": "convenientadditions:blocks/workstation/workstation_side"
+		}
+    },
+	"variants": {
+		"normal": [{  }],
+        "inventory": [{  }]
+	}
+}

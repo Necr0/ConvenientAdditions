@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_all",
+		"textures": {
+			"all": "convenientadditions:blocks/enderproofblock"
+		}
+    },
+	"variants": {
+		"normal": [{  }],
+        "inventory": [{  }]
+	}
+}

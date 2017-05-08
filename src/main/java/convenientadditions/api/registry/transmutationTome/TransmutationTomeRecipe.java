@@ -26,25 +26,25 @@ public class TransmutationTomeRecipe implements ITransmutationTomeRecipe, ITrans
 
     @Override
     public Tuple<ItemStack, ItemStack> getLeftovers(ItemStack base, ItemStack transmutator) {
-        ItemStack outputBase = null;
+        ItemStack outputBase = ItemStack.EMPTY;
         if (!base.isEmpty()) {
             outputBase = base.copy();
             if (outputBase.getCount() - this.base.getCount() < 1) {
                 if (outputBase.getItem().hasContainerItem(outputBase))
                     outputBase = outputBase.getItem().getContainerItem(outputBase);
                 else
-                    outputBase = null;
+                    outputBase = ItemStack.EMPTY;
             } else
                 outputBase.shrink(this.base.getCount());
         }
-        ItemStack outputTransmutator = null;
-        if (transmutator != null) {
+        ItemStack outputTransmutator = ItemStack.EMPTY;
+        if (!transmutator.isEmpty()) {
             outputTransmutator = transmutator.copy();
             if (outputTransmutator.getCount() - 1 < 1) {
                 if (outputTransmutator.getItem().hasContainerItem(outputTransmutator))
                     outputTransmutator = outputTransmutator.getItem().getContainerItem(outputTransmutator);
                 else
-                    outputTransmutator = null;
+                    outputTransmutator = ItemStack.EMPTY;
             } else
                 outputTransmutator.shrink(1);
         }

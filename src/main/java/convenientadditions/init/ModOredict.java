@@ -39,5 +39,21 @@ public class ModOredict {
                     's', "sugar",
                     'w', "cropWheat"));
         }
+
+        if (ModConfig.doorOreDictInit) {
+            OreDictionary.registerOre("door", Items.OAK_DOOR);
+            OreDictionary.registerOre("door", Items.BIRCH_DOOR);
+            OreDictionary.registerOre("door", Items.ACACIA_DOOR);
+            OreDictionary.registerOre("door", Items.DARK_OAK_DOOR);
+            OreDictionary.registerOre("door", Items.JUNGLE_DOOR);
+            OreDictionary.registerOre("door", Items.SPRUCE_DOOR);
+            OreDictionary.registerOre("door", Items.IRON_DOOR);
+            OreDictionary.registerOre("doorWood", Items.OAK_DOOR);
+            OreDictionary.registerOre("doorWood", Items.BIRCH_DOOR);
+            OreDictionary.registerOre("doorWood", Items.ACACIA_DOOR);
+            OreDictionary.registerOre("doorWood", Items.DARK_OAK_DOOR);
+            OreDictionary.registerOre("doorWood", Items.JUNGLE_DOOR);
+            OreDictionary.registerOre("doorWood", Items.SPRUCE_DOOR);
+        }
     }
 }

@@ -69,6 +69,10 @@ public class ModConfig {
     public static boolean baubles_fireproof_cloak;
     public static boolean baubles_nether_talisman;
     public static boolean baubles_nether_cloak;
+    public static boolean baubles_rocket_pack;
+    public static boolean baubles_climbing_claws;
+    public static boolean baubles_climbing_gear;
+    public static boolean baubles_miners_bracelet;
 
     //#########ENDERSLATE#############
     public static boolean enderPlate_recipe;
@@ -123,6 +127,14 @@ public class ModConfig {
     public static boolean moduleLocation;
     public static boolean dislocationCore;
     public static boolean displayCase;
+    public static boolean soulGem;
+    public static boolean ironFarm;
+    public static boolean doorOreDictInit;
+    public static boolean ironGolemBlock;
+    public static boolean spikes;
+    public static boolean enderProofBlock;
+    public static boolean enderProofGlass;
+    public static boolean workStation;
 
     public static void init() {
         Configuration cfg = new Configuration(new File("config/ConvAdd.cfg"));
@@ -150,6 +162,14 @@ public class ModConfig {
         moduleLocation = cfg.getBoolean("moduleLocation", category, true, "");
         dislocationCore = cfg.getBoolean("dislocationCore", category, true, "required for many recipes");
         displayCase = cfg.getBoolean("displayCase", category, true, "");
+        soulGem = cfg.getBoolean("soulGem", category, true, "");
+        ironFarm = cfg.getBoolean("ironFarm", category, true, "I can understand if you want to disable it.");
+        doorOreDictInit = cfg.getBoolean("doorOreDictInit", category, true, "DON'T CHANGE THIS IF YOU DON'T KNOW WHAT IT IS!");
+        ironGolemBlock = cfg.getBoolean("ironGolemBlock", category, true, "");
+        spikes = cfg.getBoolean("spikes", category, true, "");
+        enderProofBlock = cfg.getBoolean("enderProofBlock", category, true, "");
+        enderProofGlass = cfg.getBoolean("enderProofGlass", category, true, "");
+        workStation = cfg.getBoolean("workStation", category, true, "");
 
         category = "composter";
         cfg.setCategoryRequiresMcRestart(category, true);
@@ -190,6 +210,10 @@ public class ModConfig {
         baubles_fireproof_cloak = cfg.getBoolean("fireproof_cloak", category, true, "");
         baubles_nether_talisman = cfg.getBoolean("nether_talisman", category, true, "");
         baubles_nether_cloak = cfg.getBoolean("nether_cloak", category, true, "");
+        baubles_rocket_pack = cfg.getBoolean("rocket_pack", category, true, "");
+        baubles_climbing_claws = cfg.getBoolean("climbing_claws", category, true, "");
+        baubles_climbing_gear = cfg.getBoolean("climbing_gear", category, true, "");
+        baubles_miners_bracelet = cfg.getBoolean("miners_bracelet", category, true, "");
 
         category = "enderPlate";
         cfg.setCategoryRequiresMcRestart(category, true);

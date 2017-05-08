@@ -151,6 +151,6 @@ public class BlockCompostSoilTilled extends CABlock {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
-        list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoil+".effectiveness", stack.getItemDamage()));
+        list.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.BlockNames.compostSoil+".degradation", stack.getItemDamage()));
     }
 }

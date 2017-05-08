@@ -3,9 +3,8 @@ package convenientadditions.init;
 import convenientadditions.ModConstants;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.EnumItemCategory;
-import convenientadditions.item.*;
-import convenientadditions.item.tools.adventurersPickaxe.CustomModelMeshAdventurersPickaxe;
-import convenientadditions.item.tools.adventurersPickaxe.ItemAdventurersPickaxe;
+import convenientadditions.item.ItemLaunchingArrow;
+import convenientadditions.item.ItemSapBottle;
 import convenientadditions.item.consumable.ItemAntidote;
 import convenientadditions.item.consumable.ItemBandage;
 import convenientadditions.item.consumable.ItemCompost;
@@ -14,14 +13,17 @@ import convenientadditions.item.module.ItemLocationModule;
 import convenientadditions.item.module.ItemPlayerChannelModule;
 import convenientadditions.item.module.color.ItemColorChannelModule;
 import convenientadditions.item.relic.ItemBlazingRock;
-import convenientadditions.item.relic.ItemSunstone;
-import convenientadditions.item.trinket.*;
 import convenientadditions.item.relic.ItemEnderPlate;
-import convenientadditions.item.trinket.doubleJump.ItemMultiJumpTrinket;
+import convenientadditions.item.relic.ItemSunstone;
+import convenientadditions.item.relic.transmutationTome.ItemTransmutationTome;
+import convenientadditions.item.soulGem.ItemSoulGem;
+import convenientadditions.item.tools.ItemIronWrench;
+import convenientadditions.item.tools.adventurersPickaxe.CustomModelMeshAdventurersPickaxe;
+import convenientadditions.item.tools.adventurersPickaxe.ItemAdventurersPickaxe;
 import convenientadditions.item.tools.mobCatcher.EnumMobCatcherType;
 import convenientadditions.item.tools.mobCatcher.ItemMobCatcher;
-import convenientadditions.item.tools.ItemIronWrench;
-import convenientadditions.item.relic.transmutationTome.ItemTransmutationTome;
+import convenientadditions.item.trinket.*;
+import convenientadditions.item.trinket.doubleJump.ItemMultiJumpTrinket;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -46,6 +48,7 @@ public class ModItems {
     public static final ItemSapBottle itemSapBottle = new ItemSapBottle();
     public static final ItemAntidote itemAntidote = new ItemAntidote();
     public static final ItemBandage itemBandage = new ItemBandage();
+    public static final ItemSoulGem itemSoulGem = new ItemSoulGem();
     //
     public static final ItemMobCatcher itemMobCatcherRegular = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherRegular, EnumMobCatcherType.DEFAULT);
     public static final ItemMobCatcher itemMobCatcherSuper = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherSuper, EnumMobCatcherType.SUPER);
@@ -63,6 +66,7 @@ public class ModItems {
     public static final CAItem itemBlastKit = new CAItem(ModConstants.ItemNames.blastKit).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
     public static final CAItem itemSlimeKit = new CAItem(ModConstants.ItemNames.slimeKit).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
     public static final CAItem itemDislocationCore = new CAItem(ModConstants.ItemNames.dislocationCore).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
+    public static final CAItem itemSpikes = new CAItem(ModConstants.ItemNames.spikes).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
     
     //trinkets
     public static final ItemSunlightRing itemSunlightRing = new ItemSunlightRing();
@@ -76,12 +80,16 @@ public class ModItems {
     public static final ItemMultiJumpTrinket itemCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.cloudBalloon,1,.1325f,1.75f);
     public static final ItemMultiJumpTrinket itemEnderCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.enderCloudBalloon,2,.2325f,2.6f);
     public static final ItemSpeedTrinket itemWindGem = new ItemSpeedTrinket();
-    public static final ItemSpeedTrinket itemSpikedSole = new ItemSpeedTrinket(ModConstants.ItemNames.spikedSole,0f,.5f,0f,0f);
-    public static final ItemSpeedTrinket itemGlider = new ItemSpeedTrinket(ModConstants.ItemNames.glider,0f,0f,-.375f,.1f);
-    public static final ItemSpeedTrinket itemValkyrieWings = new ItemSpeedTrinket(ModConstants.ItemNames.valkyrieWings,.12f,.5f,-.295f,.135f);
+    public static final ItemSpeedTrinket itemGlider = new ItemSpeedTrinket(ModConstants.ItemNames.glider,0f,-.375f,.1f);
+    public static final ItemSpeedTrinket itemValkyrieWings = new ItemSpeedTrinket(ModConstants.ItemNames.valkyrieWings,.125f,-.295f,.1355f);
     public static final ItemNetherTrinket itemFireproofCloak = new ItemNetherTrinket();
     public static final ItemNetherTrinket itemNetherTalisman = new ItemNetherTrinket(ModConstants.ItemNames.netherTalisman,false,true,0f,0f,true);
     public static final ItemNetherTrinket itemNetherCloak = new ItemNetherTrinket(ModConstants.ItemNames.netherCloak,true,true,.5f,.5f,true);
+    public static final ItemRocketPack itemRocketPack = new ItemRocketPack();
+    public static final ItemClimbingClaws itemClimbingClaws = new ItemClimbingClaws();
+    public static final ItemClimbingClaws itemSpikedSole = new ItemClimbingClaws(ModConstants.ItemNames.spikedSole,0f,.5f);
+    public static final ItemClimbingClaws itemClimbingGear = new ItemClimbingClaws(ModConstants.ItemNames.climbingGear,.25f,.5f);
+    public static final ItemMinersBracelet itemMinersBracelet = new ItemMinersBracelet();
     //ttools
     public static final ItemIronWrench itemIronWrench = new ItemIronWrench();
 
@@ -93,6 +101,7 @@ public class ModItems {
         registerItem(itemBlastKit);
         registerItem(itemSlimeKit);
         registerItem(itemDislocationCore);
+        registerItem(itemSpikes);
         //tools
         registerItem(itemIronWrench);
         //misc
@@ -106,6 +115,7 @@ public class ModItems {
         registerItem(itemSapBottle);
         registerItem(itemAntidote);
         registerItem(itemBandage);
+        registerItem(itemSoulGem);
         //
         registerItem(itemMobCatcherRegular);
         registerItem(itemMobCatcherSuper);
@@ -129,12 +139,16 @@ public class ModItems {
         registerItem(itemCloudBalloon);
         registerItem(itemEnderCloudBalloon);
         registerItem(itemWindGem);
-        registerItem(itemSpikedSole);
         registerItem(itemGlider);
         registerItem(itemValkyrieWings);
         registerItem(itemFireproofCloak);
         registerItem(itemNetherTalisman);
         registerItem(itemNetherCloak);
+        registerItem(itemRocketPack);
+        registerItem(itemClimbingClaws);
+        registerItem(itemSpikedSole);
+        registerItem(itemClimbingGear);
+        registerItem(itemMinersBracelet);
 
         registerItem(itemAdventurersPickaxe);
     }
@@ -151,6 +165,7 @@ public class ModItems {
         registerModelLocation(itemBlastKit);
         registerModelLocation(itemSlimeKit);
         registerModelLocation(itemDislocationCore);
+        registerModelLocation(itemSpikes);
         //tools
         registerModelLocation(itemIronWrench);
         //misc
@@ -166,6 +181,7 @@ public class ModItems {
         registerVariants(itemSapBottle, itemSapBottle.getModelResourceLocations());
         registerModelLocation(itemAntidote);
         registerModelLocation(itemBandage);
+        registerModelLocation(itemSoulGem);
         //modules
         registerModelLocation(itemModulePlayer);
         registerModelLocation(itemModuleColor);
@@ -182,12 +198,16 @@ public class ModItems {
         registerModelLocation(itemCloudBalloon);
         registerModelLocation(itemEnderCloudBalloon);
         registerModelLocation(itemWindGem);
-        registerModelLocation(itemSpikedSole);
         registerModelLocation(itemGlider);
         registerModelLocation(itemValkyrieWings);
         registerModelLocation(itemFireproofCloak);
         registerModelLocation(itemNetherTalisman);
         registerModelLocation(itemNetherCloak);
+        registerModelLocation(itemRocketPack);
+        registerModelLocation(itemClimbingClaws);
+        registerModelLocation(itemSpikedSole);
+        registerModelLocation(itemClimbingGear);
+        registerModelLocation(itemMinersBracelet);
     }
 
     public static void registerItem(Item item) {

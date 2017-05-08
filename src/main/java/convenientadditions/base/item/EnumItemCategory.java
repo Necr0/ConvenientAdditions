@@ -17,7 +17,8 @@ public enum EnumItemCategory {
     CONSUMABLE("consumable"),
     MACHINE("machine"),
     MODULE("module"),
-    MISC("misc");
+    MISC("misc"),
+    BUILDING_BLOCK("buildingBlock");
 
     public String name;
 

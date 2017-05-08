@@ -1,7 +1,7 @@
 package convenientadditions.item.consumable;
 
 import convenientadditions.ModConstants;
-import convenientadditions.StringHelper;
+import convenientadditions.api.util.Helper;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.init.ModBlocks;
@@ -62,7 +62,7 @@ public class ItemCompost extends CAItem {
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
         super.addInformation(stack,player,list,advanced);
         if (stack.getItemDamage() == 1)
-            list.add(StringHelper.getHint("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compost + "Spores"));
+            list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.compost + ".spores"));
     }
 
     @Override

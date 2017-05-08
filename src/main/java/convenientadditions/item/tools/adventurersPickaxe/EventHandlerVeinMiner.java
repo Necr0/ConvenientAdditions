@@ -1,5 +1,6 @@
 package convenientadditions.item.tools.adventurersPickaxe;
 
+import convenientadditions.api.util.FloodFill;
 import convenientadditions.api.util.Helper;
 import convenientadditions.init.ModItems;
 import net.minecraft.util.math.BlockPos;
@@ -16,8 +17,9 @@ public class EventHandlerVeinMiner {
             return;
         if (e.getHarvester() != null && !e.getHarvester().isSneaking() && !e.getHarvester().getHeldItemMainhand().isEmpty() && e.getHarvester().getHeldItemMainhand().getItem() == ModItems.itemAdventurersPickaxe) {
             int veins = (int) ModItems.itemAdventurersPickaxe.getToolProperty(e.getHarvester().getHeldItemMainhand(), "mining_veins");
-            if (Helper.doesOreDictMatch(e.getState(), "ore", true) && veins > 0) {
-                List<BlockPos> l = Helper.FloodFill.floodFill(e.getWorld(), e.getPos(), e.getState(), 2, veins, true, true);
+            String ore=Helper.getOreDictMatch(e.getState(), "ore", true);
+            if (ore!=null && veins > 0) {
+                List<BlockPos> l = FloodFill.floodFill(e.getWorld(), e.getPos(), new FloodFill.BlockMatcher(0).set(ore), 2, veins, true, true);
                 if (l.size() > 0) {
                     e.getWorld().setBlockState(e.getPos(), e.getWorld().getBlockState(l.get(l.size() - 1)));
                     e.getWorld().setBlockToAir(l.get(l.size() - 1));

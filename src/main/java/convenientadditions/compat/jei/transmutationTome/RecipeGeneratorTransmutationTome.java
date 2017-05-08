@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeGeneratorTransmutationTome {
-    public static List<RecipeWrapperTransmutationTome> getRecipes(TransmutationTomeRecipeHandler handler) {
-        ArrayList<RecipeWrapperTransmutationTome> l = new ArrayList<>();
+    public static List<ITransmutationTomeJEIRecipe> getRecipes(TransmutationTomeRecipeHandler handler) {
+        ArrayList<ITransmutationTomeJEIRecipe> l = new ArrayList<>();
 
         for (ITransmutationTomeRecipe r : handler.recipes) {
             if (r instanceof ITransmutationTomeJEIRecipe) {
-                l.add(new RecipeWrapperTransmutationTome((ITransmutationTomeJEIRecipe) r));
+                l.add((ITransmutationTomeJEIRecipe) r);
             }
         }
 

@@ -37,8 +37,8 @@ public class MessageJumpPad extends PacketBase<MessageJumpPad> {
             return null;
         EntityPlayer p=ctx.getServerHandler().player;
         BlockPos pos=new BlockPos(p).down();
-        if(p.world.getBlockState(pos).getBlock()==ModBlocks.jumpPadBlock){
-            BlockPos target=ModBlocks.jumpPadBlock.getTargetLocation(pos,p.world,!message.jump);
+        if(p.world.getBlockState(pos).getBlock()==ModBlocks.jumpPad){
+            BlockPos target=ModBlocks.jumpPad.getTargetLocation(pos,p.world,!message.jump);
             if(target!=null){
                 if(!MinecraftForge.EVENT_BUS.post(new EnderTeleportEvent(p,target.getX()+.5,target.getY()+1,target.getZ()+.5, 0f))){
                     p.world.playSound(null, p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.BLOCKS, .15F, 2F);

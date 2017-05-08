@@ -4,6 +4,9 @@ buildscript {
         maven { url "http://files.minecraftforge.net/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "http://dvs1.progwml6.com/files/maven" }
+        maven { url "http://dogforce-games.com/maven" }
+        maven { url = "http://dvs1.progwml6.com/files/maven" }
+        maven { url = "http://mobiusstrip.eu/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
@@ -27,11 +30,6 @@ ext.config = parseConfig(configFile)
 version = "${config.version}-build${config.build_number}"
 group= "necro.convenientadditions"
 
-repositories {
-    maven { url = "http://dvs1.progwml6.com/files/maven" }
-    maven { url = "http://mobiusstrip.eu/maven" }
-}
-
 dependencies {
     //compile files(
     //        "libs/Baubles-${config.baubles_version}-deobf.jar"
@@ -40,6 +38,7 @@ dependencies {
     runtime "mezz.jei:jei_${config.jei_version}"
     deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}:dev"
     runtime "mcp.mobius.waila:Waila:${config.waila_version}"
+    deobfCompile "gigaherz.guidebook:Guidebook-${config.guidebook_version}"
 }
 
 minecraft {

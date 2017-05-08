@@ -6,7 +6,7 @@ public class ModConstants {
         public static final String MODID = "convenientadditions";
         public static final String BUILD = "GRADLE:BUILD";
         public static final String VERSION = "GRADLE:VERSION-" + BUILD;
-        public static final String DEPENDENCIES = "required-after:forge@[13.20.0.2200 ,);after:baubles;after:jei;";
+        public static final String DEPENDENCIES = "required-after:forge@[13.20.0.2282 ,);after:baubles;after:jei;";
         public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";
         public static final String clientProxyClassPath = "convenientadditions.proxy.ClientProxy";
     }
@@ -53,13 +53,19 @@ public class ModConstants {
         public static final String cloudBalloon = "cloudBalloon";
         public static final String enderCloudBalloon = "enderCloudBalloon";
         public static final String windGem = "windGem";
-        public static final String spikedSole = "spikedSole";
         public static final String glider = "glider";
         public static final String valkyrieWings = "valkyrieWings";
         public static final String fireproofCloak = "fireproofCloak";
         public static final String netherTalisman = "netherTalisman";
         public static final String netherCloak = "netherCloak";
         public static final String flowingWaterRune = "flowingWaterRune";
+        public static final String rocketPack = "rocketPack";
+        public static final String climbingClaws = "climbingClaws";
+        public static final String spikedSole = "spikedSole";
+        public static final String climbingGear = "climbingGear";
+        public static final String minersBracelet = "minersBracelet";
+        public static final String soulGem = "soulGem";
+        public static final String spikes = "spikes";
     }
 
     public static class BlockNames {
@@ -86,6 +92,11 @@ public class ModConstants {
         public static final String machineBlock = "machineBlock";
         public static final String remoteInventoryProxy = "remoteInventoryProxy";
         public static final String displayCase = "displayCase";
+        public static final String enderProofBlock = "enderProofBlock";
+        public static final String enderProofGlass = "enderProofGlass";
+        public static final String ironFarm = "ironFarm";
+        public static final String ironGolemBlock = "ironGolemBlock";
+        public static final String workStation = "workStation";
         //
         public static final String tempLight = "tempLight";
         public static final String phantomPlatform = "phantomPlatform";

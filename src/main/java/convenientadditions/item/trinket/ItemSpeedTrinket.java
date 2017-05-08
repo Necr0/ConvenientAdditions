@@ -8,7 +8,6 @@ import convenientadditions.api.inventory.InventoryIterator;
 import convenientadditions.api.inventory.SlotNotation;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.EnumItemCategory;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,18 +17,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Optional.Interface(iface = "baubles.api.IBauble",modid = "baubles",striprefs = true)
 public class ItemSpeedTrinket extends CAItem implements IBauble {
-    public float speedBoost, stepHeightBoost, glidingLift, glidingSpeed;
+    public float speedBoost, glidingLift, glidingSpeed;
 
     public ItemSpeedTrinket() {
-        this(ModConstants.ItemNames.windGem,.08f,0f,0f,0f);
+        this(ModConstants.ItemNames.windGem,.08f,0f,0f);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    public ItemSpeedTrinket(String name, float speedBoost, float stepHeight, float glidingLift, float glidingSpeed) {
+    public ItemSpeedTrinket(String name, float speedBoost, float glidingLift, float glidingSpeed) {
         super(name);
         this.maxStackSize=1;
         this.speedBoost=speedBoost;
-        this.stepHeightBoost=stepHeight;
         this.glidingLift=glidingLift;
         this.glidingSpeed=glidingSpeed;
         this.setCategory(EnumItemCategory.TRINKET).setBaublesRequiredInfo(true);
@@ -41,27 +39,12 @@ public class ItemSpeedTrinket extends CAItem implements IBauble {
         return BaubleType.TRINKET;
     }
 
-    @Override
-    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        player.stepHeight=.6f;
-    }
-
     @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
         if(event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 
             if(!player.isSneaking()) {
-                for (SlotNotation slot : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
-                    ItemStack stack = slot.getItem();
-                    if (!stack.isEmpty() && stack.getItem() instanceof ItemSpeedTrinket) {
-                        ItemSpeedTrinket item=(ItemSpeedTrinket)stack.getItem();
-                        if(item.stepHeightBoost>0){
-                            player.stepHeight=.6f+item.stepHeightBoost;
-                            break;
-                        }
-                    }
-                }
 
                 if((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F && !player.isInWater()) {
                     for (SlotNotation slot : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
@@ -101,8 +84,6 @@ public class ItemSpeedTrinket extends CAItem implements IBauble {
                         }
                     }
                 }
-            }else{
-                player.stepHeight=.6f;
             }
         }
     }

@@ -14,6 +14,8 @@ public class RecipeCategoryTransmutationTome extends BlankRecipeCategory<RecipeW
     private static final ResourceLocation jeiTomeGuiTextures = new ResourceLocation(ModConstants.Mod.MODID + ":textures/gui/jei/transmutationtome.png");
     private static final IDrawable background = ConvAddJEIPlugin.jeiHelper.getGuiHelper().createDrawable(jeiTomeGuiTextures, 0, 0, 115, 56);
 
+    public static final RecipeCategoryTransmutationTome INSTANCE=new RecipeCategoryTransmutationTome();
+
     @Override
     public String getUid() {
         return ModConstants.Mod.MODID + ":" + ModConstants.Compat.JEI.transmutationTomeCategory;

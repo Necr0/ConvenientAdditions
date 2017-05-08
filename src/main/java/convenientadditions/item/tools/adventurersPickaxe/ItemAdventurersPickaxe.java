@@ -381,14 +381,14 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
         s = s.copy();
         setToolProperty(s, "lvl", 5);
         setToolProperty(s, "mining_level", 1);
-        setToolProperty(s, "durability", (int) getToolProperty(s, "durability") + 30);
+        setToolProperty(s, "durability", (int) getToolProperty(s, "durability") + 45);
         setToolProperty(s, "mining_speed", ToolMaterial.STONE.getEfficiencyOnProperMaterial());
         subitems.add(s);
         s = s.copy();
         setToolProperty(s, "lvl", 15);
         setToolProperty(s, "mining_level", 2);
         setToolProperty(s, "magnetic", true);
-        setToolProperty(s, "durability", (int) getToolProperty(s, "durability") + 240);
+        setToolProperty(s, "durability", (int) getToolProperty(s, "durability") + 360);
         setToolProperty(s, "mining_speed", ToolMaterial.IRON.getEfficiencyOnProperMaterial());
         subitems.add(s);
         s = new ItemStack(this);
@@ -396,7 +396,7 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
         setToolProperty(s, "mining_level", 3);
         setToolProperty(s, "magnetic", true);
         setToolProperty(s, "mining_luck", 1);
-        setToolProperty(s, "durability", (int) getToolProperty(s, "durability") + 650);
+        setToolProperty(s, "durability", (int) getToolProperty(s, "durability") + 975);
         setToolProperty(s, "mining_speed", ToolMaterial.DIAMOND.getEfficiencyOnProperMaterial());
         subitems.add(s);
     }

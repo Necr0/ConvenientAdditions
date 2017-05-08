@@ -5,6 +5,7 @@ import convenientadditions.ModConstants;
 import convenientadditions.StringHelper;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -13,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public abstract class CABlock extends Block {
+public class CABlock extends Block {
 
     protected boolean defaultInfo=true;
     protected boolean defaultAdditionalInfo=false;
@@ -66,6 +67,13 @@ public abstract class CABlock extends Block {
 
     public CABlock setBaublesRequiredInfo(boolean baublesRequiredInfo) {
         this.baublesRequiredInfo = baublesRequiredInfo;
+        return this;
+    }
+
+    @Override
+    public CABlock setSoundType(SoundType sound)
+    {
+        this.blockSoundType = sound;
         return this;
     }
 }

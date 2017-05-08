@@ -1,5 +1,7 @@
 package convenientadditions.api.util;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -22,8 +24,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public class Helper {
 	public static EntityItem spawnItemInPlace(World w,double x,double y,double z,ItemStack i){
@@ -43,68 +45,7 @@ public class Helper {
 		}
 		return false;
 	}
-	
-	public static class FloodFill{
-		
-		public static List<BlockPos> getAdjacentBlockPosList(BlockPos pos,int mode){
-			List<BlockPos> ret=new ArrayList<>();
-			
-			for(EnumFacing f:EnumFacing.VALUES){
-				ret.add(pos.add(f.getDirectionVec()));
-			}
-			if(mode>0){
-				for(EnumFacing f:EnumFacing.HORIZONTALS){
-					ret.add(pos.add(EnumFacing.UP.getDirectionVec()).add(f.getDirectionVec()));
-					ret.add(pos.add(EnumFacing.DOWN.getDirectionVec()).add(f.getDirectionVec()));
-					ret.add(pos.add(f.getDirectionVec()).add(f.rotateY().getDirectionVec()));
-				}
-			}
-			if(mode>1){
-				for(EnumFacing f:EnumFacing.HORIZONTALS){
-					ret.add(pos.add(EnumFacing.UP.getDirectionVec()).add(f.getDirectionVec()).add(f.rotateY().getDirectionVec()));
-					ret.add(pos.add(EnumFacing.DOWN.getDirectionVec()).add(f.getDirectionVec()).add(f.rotateY().getDirectionVec()));
-				}
-			}
-			
-			return ret;
-		}
-		
-		public static List<BlockPos> floodFill(World w,BlockPos pos,IBlockState state,int mode){
-			return floodFill(w, pos, state, mode, 64, false, true);
-		}
-		
-		public static List<BlockPos> floodFill(World w,BlockPos pos,IBlockState state,int mode,int limit,boolean ignoreMeta,boolean ignoreFirst){
-			List<BlockPos> ret=new ArrayList<>();
-			if(ignoreFirst){
-				for(BlockPos p:getAdjacentBlockPosList(pos, mode)){
-					floodFillRecursive(w, p, state, mode, limit, ignoreMeta, ret);
-				}
-			}
-			return ret;
-		}
-		
-		public static void floodFillRecursive(World w,BlockPos pos,IBlockState state,int mode,int limit,boolean ignoreMeta,List<BlockPos> markers){
-			if(areBlockStatesEqual(state, w.getBlockState(pos), ignoreMeta)){
-				if(!doesContainBlockPos(markers, pos)){
-					if(markers.size()<limit||limit==-1){
-						markers.add(pos);
-						for(BlockPos p:getAdjacentBlockPosList(pos, mode)){
-							floodFillRecursive(w, p, state, mode, limit, ignoreMeta, markers);
-						}
-					}
-				}
-			}
-		}
-		
-		public static boolean doesContainBlockPos(Collection<BlockPos> c,BlockPos pos){
-			for(BlockPos p:c){
-				if(areBlockPosEqual(pos, p))
-					return true;
-			}
-			return false;
-		}
-	}
-	
+
 	public static boolean areBlockStatesEqual(IBlockState state1,IBlockState state2, boolean ignoreMeta){
 		if(ignoreMeta){
 			if(state1.getBlock()==Blocks.REDSTONE_ORE&&state2.getBlock()==Blocks.LIT_REDSTONE_ORE)
@@ -112,7 +53,7 @@ public class Helper {
 			else if(state2.getBlock()==Blocks.REDSTONE_ORE&&state1.getBlock()==Blocks.LIT_REDSTONE_ORE)
 				return true;
 		}
-		return ( (ignoreMeta || state1.getBlock().getMetaFromState(state1)==state2.getBlock().getMetaFromState(state2)) && state1.getBlock()==state2.getBlock() );
+		return ( (ignoreMeta && state1.getBlock()==state2.getBlock()) || state1==state2 );
 	}
 	
 	public static boolean areBlockPosEqual(BlockPos pos1,BlockPos pos2){
@@ -137,7 +78,7 @@ public class Helper {
 	public static String localize(String in,Object... replace){
 		return I18n.format(in, replace);
 	}
-	
+
 	public static boolean doesOreDictMatch(IBlockState b,String entry,boolean startsWith){
 		if(b.getBlock()==Blocks.LIT_REDSTONE_ORE)
 			b=Blocks.REDSTONE_ORE.getDefaultState();
@@ -160,6 +101,30 @@ public class Helper {
 			}
 		}
 		return false;
+	}
+
+	public static String getOreDictMatch(IBlockState b,String entry,boolean startsWith){
+		if(b.getBlock()==Blocks.LIT_REDSTONE_ORE)
+			b=Blocks.REDSTONE_ORE.getDefaultState();
+		Multimap<String,ItemStack> m=ArrayListMultimap.create();
+		if(startsWith){
+			for(String n:OreDictionary.getOreNames()){
+				if(n.startsWith(entry))
+					m.putAll(n,OreDictionary.getOres(n));
+			}
+		}else{
+			if(OreDictionary.doesOreNameExist(entry))
+				m.putAll(entry,OreDictionary.getOres(entry));
+		}
+		for(Map.Entry<String,ItemStack> e:m.entries()){
+			if(e.getValue().getItem() instanceof ItemBlock){
+				ItemBlock ib=(ItemBlock)e.getValue().getItem();
+				if(ib.getBlock()==b.getBlock()){
+					return e.getKey();
+				}
+			}
+		}
+		return null;
 	}
 
 	public static void insertOrDrop(EntityPlayer p,ItemStack stack){

@@ -87,19 +87,19 @@ public class ContainerTransmutationTome extends CAContainer implements IContaine
         if (player.getEntityWorld().isRemote)
             return;
         InventoryPlayer inventoryplayer = playerIn.inventory;
-        if (inventoryplayer.getItemStack() != null) {
+        if (!inventoryplayer.getItemStack().isEmpty()) {
             playerIn.dropItem(inventoryplayer.getItemStack(), false);
             inventoryplayer.setItemStack(ItemStack.EMPTY);
         }
-        if (handler.getStackInSlot(0) != null) {
+        if (!handler.getStackInSlot(0).isEmpty()) {
             playerIn.dropItem(handler.getStackInSlot(0), false);
             handler.setStackInSlot(0, ItemStack.EMPTY);
         }
-        if (handler.getStackInSlot(1) != null) {
+        if (!handler.getStackInSlot(1).isEmpty()) {
             playerIn.dropItem(handler.getStackInSlot(1), false);
             handler.setStackInSlot(1, ItemStack.EMPTY);
         }
-        if (out.getStackInSlot(0) != null) {
+        if (!out.getStackInSlot(0).isEmpty()) {
             playerIn.dropItem(out.getStackInSlot(0), false);
             out.setStackInSlot(0, ItemStack.EMPTY);
         }

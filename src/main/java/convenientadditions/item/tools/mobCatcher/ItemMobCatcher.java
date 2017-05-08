@@ -9,18 +9,17 @@ import convenientadditions.init.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.storage.AnvilChunkLoader;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemMobCatcher extends CAItem {
@@ -70,6 +69,15 @@ public class ItemMobCatcher extends CAItem {
         return nbt.hasKey("CONTAINED_ENTITY");
     }
 
+    @Nullable
+    public String getEntityId(ItemStack stack){
+        if(isHoldingMob(stack)){
+            NBTTagCompound nbt=stack.getTagCompound();
+            return nbt.hasKey("CONTAINED_ENTITY_ID")?nbt.getString("CONTAINED_ENTITY_ID"):null;
+        }
+        return null;
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced){
@@ -77,10 +85,14 @@ public class ItemMobCatcher extends CAItem {
         tooltip.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.mobCatcher+".strength",type.captureStrength));
         tooltip.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.mobCatcher+".hostile",type.captureHostile?Helper.localize(ModConstants.Mod.MODID+":yes"):Helper.localize(ModConstants.Mod.MODID+":no")));
         tooltip.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":"+ModConstants.ItemNames.mobCatcher+".boss",type.captureBoss?Helper.localize(ModConstants.Mod.MODID+":yes"):Helper.localize(ModConstants.Mod.MODID+":no")));
-        if(stack.hasTagCompound() && stack.getTagCompound().hasKey("CONTAINED_ENTITY"))
-            tooltip.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":mobCatcherHoldingEntity"));
-        else
-            tooltip.add(TextFormatting.DARK_GRAY+Helper.localize("tooltip."+ModConstants.Mod.MODID+":mobCatcherNotHoldingEntity"));
+        if(isHoldingMob(stack)) {
+            EntityEntry entry=ForgeRegistries.ENTITIES.getValue(new ResourceLocation(getEntityId(stack)));
+            if(entry!=null)
+                tooltip.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":mobCatcherHoldingEntity", Helper.localize("entity."+entry.getName()+".name")));
+            else
+                tooltip.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":mobCatcherHoldingEntity", "?"));
+        }else
+            tooltip.add(Helper.localize("tooltip."+ModConstants.Mod.MODID+":mobCatcherHoldingEntity",Helper.localize(ModConstants.Mod.MODID+":none")));
     }
 
     @SideOnly(Side.CLIENT)
@@ -91,5 +103,25 @@ public class ItemMobCatcher extends CAItem {
         ModelLoader.setCustomMeshDefinition(ModItems.itemMobCatcherHyper, new CustomModelMeshMobCatcher());
         ModelLoader.setCustomMeshDefinition(ModItems.itemMobCatcherMega, new CustomModelMeshMobCatcher());
         ModelLoader.setCustomMeshDefinition(ModItems.itemMobCatcherMaster, new CustomModelMeshMobCatcher());
+    }
+
+    @Override
+    public ItemStack getContainerItem(ItemStack itemStack) {
+        if (!hasContainerItem(itemStack))
+            return null;
+        return new ItemStack(itemStack.getItem());
+    }
+
+    @Override
+    public boolean hasContainerItem(ItemStack stack) {
+        return isHoldingMob(stack);
+    }
+
+    public ItemStack setMob(ItemStack stack,String mob) {
+        NBTTagCompound nbt=new NBTTagCompound();
+        nbt.setTag("CONTAINED_ENTITY",new NBTTagCompound());
+        nbt.setString("CONTAINED_ENTITY_ID",mob);
+        stack.setTagCompound(nbt);
+        return stack;
     }
 }

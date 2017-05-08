@@ -60,6 +60,7 @@ public class EntityMobCatcher extends EntityThrowable {
                                 mobCatcherItem.setTagCompound(new NBTTagCompound());
                             NBTTagCompound nbt=mobCatcherItem.getTagCompound();
                             nbt.setTag("CONTAINED_ENTITY",t.serializeNBT());
+                            nbt.setString("CONTAINED_ENTITY_ID",EntityRegistry.getEntry(target.getClass()).getRegistryName().toString());
                             mobCatcherItem.setItemDamage(1);
                             world.playSound(null,result.hitVec.xCoord,result.hitVec.yCoord,result.hitVec.zCoord, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS, .5f, 2f);
                             t.setDead();

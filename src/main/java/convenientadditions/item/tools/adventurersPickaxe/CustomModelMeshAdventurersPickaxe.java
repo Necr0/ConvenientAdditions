@@ -29,7 +29,7 @@ public class CustomModelMeshAdventurersPickaxe implements ItemMeshDefinition {
         int head = (int) ModItems.itemAdventurersPickaxe.getToolProperty(stack, "mining_level");
         int dur = (int) ModItems.itemAdventurersPickaxe.getToolProperty(stack, "durability");
         boolean broken = ModItems.itemAdventurersPickaxe.isBroken(stack);
-        int handle = ((dur < 1000) ? 0 : (dur < 2500 ? 1 : 2));
+        int handle = ((dur < 1500) ? 0 : (dur < 3500 ? 1 : 2));
         return new ModelResourceLocation(ModItems.itemAdventurersPickaxe.getRegistryName().toString().toLowerCase(), "handle=" + handle + ",head=" + head + ",broken=" + broken);
     }
 }

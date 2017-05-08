@@ -50,13 +50,13 @@ public class ItemColorChannelModule extends CAItemChannelModule {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
+        super.addInformation(stack, player, list, par4);
         if (hasMatcher(stack)) {
             list.add(Helper.localize("tooltip." + ModConstants.Mod.MODID + ":moduleColorsPrefix",
                     Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[0].getUnlocalizedName()),
                     Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[1].getUnlocalizedName()),
                     Helper.localize("color." + ModConstants.Mod.MODID + ":" + getDyeColors(stack)[2].getUnlocalizedName())));
         }
-        super.addInformation(stack, player, list, par4);
     }
 
     public EnumDyeColor[] getDyeColors(ItemStack stack) {
