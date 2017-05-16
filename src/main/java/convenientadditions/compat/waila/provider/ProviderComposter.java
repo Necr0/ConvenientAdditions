@@ -3,7 +3,7 @@ package convenientadditions.compat.waila.provider;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.block.composter.TileEntityComposter;
+import convenientadditions.block.misc.composter.TileEntityComposter;
 import convenientadditions.init.ModConfig;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;

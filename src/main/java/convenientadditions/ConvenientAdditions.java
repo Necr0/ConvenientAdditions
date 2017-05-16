@@ -38,6 +38,7 @@ public class ConvenientAdditions {
         PROXY.registerRenderers();
         ModEventHandlers.init();
         ModCAAPI.init();
+        ModPotions.init();
     }
 
     @EventHandler

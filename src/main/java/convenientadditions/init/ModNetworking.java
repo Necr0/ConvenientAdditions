@@ -3,11 +3,12 @@ package convenientadditions.init;
 import convenientadditions.api.network.PacketExtendedExplosion;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.block.machine.autoWorkStation.MessageAutoWorkStation;
 import convenientadditions.block.machine.jumpPad.MessageJumpPad;
 import convenientadditions.block.machine.proximitySensor.MessageProximitySensor;
 import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.api.network.PacketParticle;
-import convenientadditions.block.inventoryProxy.filtered.MessageInventoryProxyFiltered;
+import convenientadditions.block.misc.inventoryProxy.filtered.MessageInventoryProxyFiltered;
 import convenientadditions.block.machine.setProvider.MessageSetProvider;
 import convenientadditions.item.module.color.MessageColorChannelModule;
 import convenientadditions.item.trinket.doubleJump.PacketDoubleJump;
@@ -33,6 +34,7 @@ public class ModNetworking {
         INSTANCE.registerMessage(MessageJumpPad.class, MessageJumpPad.class, i++, Side.SERVER);
         INSTANCE.registerMessage(PacketDoubleJump.class, PacketDoubleJump.class, i++, Side.SERVER);
         INSTANCE.registerMessage(MessageProximitySensor.class, MessageProximitySensor.class, i++, Side.SERVER);
+        INSTANCE.registerMessage(MessageAutoWorkStation.class, MessageAutoWorkStation.class, i++, Side.SERVER);
     }
 
     public static void spawnParticle(World w, EnumParticleTypes t, double x, double y, double z, double xs, double ys, double zs){

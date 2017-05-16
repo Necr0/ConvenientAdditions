@@ -1,10 +1,10 @@
 package convenientadditions.proxy;
 
 import convenientadditions.api.util.GuiHelper;
-import convenientadditions.block.composter.TileEntityComposter;
-import convenientadditions.block.composter.render.RenderComposter;
-import convenientadditions.block.displayCase.TESRDisplayCase;
-import convenientadditions.block.displayCase.TileEntityDisplayCase;
+import convenientadditions.block.misc.composter.TileEntityComposter;
+import convenientadditions.block.misc.composter.render.RenderComposter;
+import convenientadditions.block.misc.displayCase.TESRDisplayCase;
+import convenientadditions.block.misc.displayCase.TileEntityDisplayCase;
 import convenientadditions.compat.waila.ConvAddWailaPlugin;
 import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.entity.launchingArrow.RenderLaunchingArrow;

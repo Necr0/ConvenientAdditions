@@ -1,0 +1,50 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "up": "convenientadditions:blocks/autoworkstation/autoworkstation_end",
+            "down": "convenientadditions:blocks/autoworkstation/autoworkstation_end",
+            "north": "convenientadditions:blocks/autoworkstation/autoworkstation_side",
+            "east": "convenientadditions:blocks/autoworkstation/autoworkstation_side",
+            "south": "convenientadditions:blocks/autoworkstation/autoworkstation_side",
+            "west": "convenientadditions:blocks/autoworkstation/autoworkstation_side",
+            "particle": "convenientadditions:blocks/autoworkstation/autoworkstation_end"
+        },
+        "model": "cube",
+        "uvlock": true
+    },
+    "variants": {
+        "outlet_top":{
+            "output":{"textures": {"up": "convenientadditions:blocks/autoworkstation/autoworkstation_output"}},
+            "input":{"textures": {"up": "convenientadditions:blocks/autoworkstation/autoworkstation_input"}},
+            "disabled":{}
+        },
+        "outlet_bottom":{
+            "output":{"textures": {"down": "convenientadditions:blocks/autoworkstation/autoworkstation_output"}},
+            "input":{"textures": {"down": "convenientadditions:blocks/autoworkstation/autoworkstation_input"}},
+            "disabled":{}
+        },
+        "outlet_north":{
+            "output":{"textures": {"north": "convenientadditions:blocks/autoworkstation/autoworkstation_output"}},
+            "input":{"textures": {"north": "convenientadditions:blocks/autoworkstation/autoworkstation_input"}},
+            "disabled":{}
+        },
+        "outlet_east":{
+            "output":{"textures": {"east": "convenientadditions:blocks/autoworkstation/autoworkstation_output"}},
+            "input":{"textures": {"east": "convenientadditions:blocks/autoworkstation/autoworkstation_input"}},
+            "disabled":{}
+        },
+        "outlet_south":{
+            "output":{"textures": {"south": "convenientadditions:blocks/autoworkstation/autoworkstation_output"}},
+            "input":{"textures": {"south": "convenientadditions:blocks/autoworkstation/autoworkstation_input"}},
+            "disabled":{}
+        },
+        "outlet_west":{
+            "output":{"textures": {"west": "convenientadditions:blocks/autoworkstation/autoworkstation_output"}},
+            "input":{"textures": {"west": "convenientadditions:blocks/autoworkstation/autoworkstation_input"}},
+            "disabled":{}
+        },
+        "inventory": [{}]
+    }
+}
+    

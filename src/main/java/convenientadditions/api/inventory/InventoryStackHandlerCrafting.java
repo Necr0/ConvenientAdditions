@@ -75,7 +75,7 @@ public class InventoryStackHandlerCrafting extends InventoryCrafting {
     public ItemStack decrStackSize(int index, int count)
     {
         ItemStack itemstack = itemHandler.extractItem(index,count,false);
-        if (!itemstack.isEmpty())
+        if (!itemstack.isEmpty() && eventHandler!=null)
         {
             this.eventHandler.onCraftMatrixChanged(this);
         }
@@ -88,7 +88,8 @@ public class InventoryStackHandlerCrafting extends InventoryCrafting {
     public void setInventorySlotContents(int index, ItemStack stack)
     {
         itemHandler.setStackInSlot(index,stack);
-        this.eventHandler.onCraftMatrixChanged(this);
+        if(eventHandler!=null)
+            this.eventHandler.onCraftMatrixChanged(this);
     }
 
     public void clear()

@@ -2,7 +2,7 @@ package convenientadditions.block.technical;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.block.platform.BlockPlatform;
+import convenientadditions.block.misc.platform.BlockPlatform;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;

@@ -4,9 +4,6 @@ buildscript {
         maven { url "http://files.minecraftforge.net/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "http://dvs1.progwml6.com/files/maven" }
-        maven { url "http://dogforce-games.com/maven" }
-        maven { url = "http://dvs1.progwml6.com/files/maven" }
-        maven { url = "http://mobiusstrip.eu/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
@@ -16,7 +13,6 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.moowork.node'
 //apply plugin: 'com.matthewprenger.cursegradle'
-
 sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
     sourceCompatibility = targetCompatibility = "1.8"
@@ -29,6 +25,12 @@ ext.config = parseConfig(configFile)
 
 version = "${config.version}-build${config.build_number}"
 group= "necro.convenientadditions"
+
+repositories {
+    maven { url = "http://dvs1.progwml6.com/files/maven" }
+    maven { url = "http://mobiusstrip.eu/maven" }
+    maven { url = "http://dogforce-games.com/maven" }
+}
 
 dependencies {
     //compile files(

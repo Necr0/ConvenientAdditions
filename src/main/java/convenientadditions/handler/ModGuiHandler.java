@@ -1,8 +1,11 @@
 package convenientadditions.handler;
 
-import convenientadditions.block.inventoryProxy.filtered.ContainerInventoryProxyFiltered;
-import convenientadditions.block.inventoryProxy.filtered.GuiInventoryProxyFiltered;
-import convenientadditions.block.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
+import convenientadditions.block.machine.autoWorkStation.ContainerAutoWorkStation;
+import convenientadditions.block.machine.autoWorkStation.GuiAutoWorkStation;
+import convenientadditions.block.machine.autoWorkStation.TileEntityAutoWorkStation;
+import convenientadditions.block.misc.inventoryProxy.filtered.ContainerInventoryProxyFiltered;
+import convenientadditions.block.misc.inventoryProxy.filtered.GuiInventoryProxyFiltered;
+import convenientadditions.block.misc.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
 import convenientadditions.block.machine.ironFarm.ContainerIronFarm;
 import convenientadditions.block.machine.ironFarm.GuiIronFarm;
 import convenientadditions.block.machine.ironFarm.TileEntityIronFarm;
@@ -23,9 +26,9 @@ import convenientadditions.block.machine.setProvider.GuiSetProvider;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import convenientadditions.block.machine.proximitySensor.GuiProximitySensor;
 import convenientadditions.block.machine.proximitySensor.TileEntityProximitySensor;
-import convenientadditions.block.workStation.ContainerWorkStation;
-import convenientadditions.block.workStation.GuiWorkStation;
-import convenientadditions.block.workStation.TileEntityWorkStation;
+import convenientadditions.block.misc.workStation.ContainerWorkStation;
+import convenientadditions.block.misc.workStation.GuiWorkStation;
+import convenientadditions.block.misc.workStation.TileEntityWorkStation;
 import convenientadditions.item.module.color.GuiColorChannelModule;
 import convenientadditions.item.relic.transmutationTome.ContainerTransmutationTome;
 import convenientadditions.item.relic.transmutationTome.GuiTransmutationTome;
@@ -49,6 +52,7 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int GUI_PROXIMITY_SENSOR_ID = 9;
     public static final int GUI_IRON_FARM_ID = 10;
     public static final int GUI_WORK_STATION_ID = 11;
+    public static final int GUI_AUTO_WORK_STATION_ID = 12;
 
 
     @Override
@@ -72,6 +76,8 @@ public class ModGuiHandler implements IGuiHandler {
                 return new ContainerIronFarm((TileEntityIronFarm) world.getTileEntity(new BlockPos(x,y,z)),player);
             case GUI_WORK_STATION_ID:
                 return new ContainerWorkStation((TileEntityWorkStation) world.getTileEntity(new BlockPos(x,y,z)),player);
+            case GUI_AUTO_WORK_STATION_ID:
+                return new ContainerAutoWorkStation((TileEntityAutoWorkStation) world.getTileEntity(new BlockPos(x,y,z)),player);
             default:
                 return null;
         }
@@ -104,6 +110,8 @@ public class ModGuiHandler implements IGuiHandler {
                 return new GuiIronFarm(new ContainerIronFarm((TileEntityIronFarm) world.getTileEntity(new BlockPos(x,y,z)),player));
             case GUI_WORK_STATION_ID:
                 return new GuiWorkStation(new ContainerWorkStation((TileEntityWorkStation) world.getTileEntity(new BlockPos(x,y,z)),player));
+            case GUI_AUTO_WORK_STATION_ID:
+                return new GuiAutoWorkStation(new ContainerAutoWorkStation((TileEntityAutoWorkStation) world.getTileEntity(new BlockPos(x,y,z)),player));
             default:
                 return null;
         }

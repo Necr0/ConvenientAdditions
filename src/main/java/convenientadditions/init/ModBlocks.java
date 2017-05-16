@@ -4,17 +4,11 @@ import convenientadditions.ModConstants;
 import convenientadditions.base.block.CABlock;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.base.item.ItemBlockMetadata;
-import convenientadditions.block.BlockEnderProof;
-import convenientadditions.block.BlockTreeTap;
 import convenientadditions.block.compostSoil.BlockCompostSoil;
 import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
-import convenientadditions.block.composter.BlockComposter;
-import convenientadditions.block.displayCase.BlockDisplayCase;
-import convenientadditions.block.inventoryProxy.BlockInventoryProxyNormal;
-import convenientadditions.block.inventoryProxy.BlockInventoryProxySided;
-import convenientadditions.block.inventoryProxy.filtered.BlockInventoryProxyFiltered;
 import convenientadditions.block.machine.BlockBlastPad;
 import convenientadditions.block.machine.BlockMachineBlock;
+import convenientadditions.block.machine.autoWorkStation.BlockAutoWorkStation;
 import convenientadditions.block.machine.hoverPad.BlockHoverPad;
 import convenientadditions.block.machine.ironFarm.BlockIronFarm;
 import convenientadditions.block.machine.itemReceiver.BlockItemReceiver;
@@ -25,13 +19,20 @@ import convenientadditions.block.machine.proximitySensor.BlockProximitySensor;
 import convenientadditions.block.machine.remoteInventoryProxy.BlockRemoteInventoryProxy;
 import convenientadditions.block.machine.setProvider.BlockSetProvider;
 import convenientadditions.block.machine.storageMatrix.BlockStorageMatrix;
-import convenientadditions.block.platform.BlockPlatform;
-import convenientadditions.block.platform.BlockSemiSolid;
-import convenientadditions.block.powderkeg.BlockPowderKeg;
-import convenientadditions.block.seedbox.BlockSeedBox;
+import convenientadditions.block.misc.BlockEnderProof;
+import convenientadditions.block.misc.BlockTreeTap;
+import convenientadditions.block.misc.composter.BlockComposter;
+import convenientadditions.block.misc.displayCase.BlockDisplayCase;
+import convenientadditions.block.misc.inventoryProxy.BlockInventoryProxyNormal;
+import convenientadditions.block.misc.inventoryProxy.BlockInventoryProxySided;
+import convenientadditions.block.misc.inventoryProxy.filtered.BlockInventoryProxyFiltered;
+import convenientadditions.block.misc.platform.BlockPlatform;
+import convenientadditions.block.misc.platform.BlockSemiSolid;
+import convenientadditions.block.misc.powderkeg.BlockPowderKeg;
+import convenientadditions.block.misc.seedbox.BlockSeedBox;
+import convenientadditions.block.misc.workStation.BlockWorkStation;
 import convenientadditions.block.technical.BlockPhantomPlatform;
 import convenientadditions.block.technical.BlockTempLight;
-import convenientadditions.block.workStation.BlockWorkStation;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -73,9 +74,11 @@ public class ModBlocks {
     public static final Block enderProofGlass = new BlockEnderProof(ModConstants.BlockNames.enderProofGlass, Material.GLASS).setHardness(5.0F).setResistance(10.0F);
     public static final BlockIronFarm ironFarm = new BlockIronFarm();
     public static final BlockWorkStation workStation = new BlockWorkStation();
+    public static final BlockAutoWorkStation autoWorkStation = new BlockAutoWorkStation();
     //dummy
     public static final BlockMachineBlock machineBlock = new BlockMachineBlock();
     public static final Block ironGolemBlock = new CABlock(ModConstants.BlockNames.ironGolemBlock, Material.IRON).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.METAL).setHardness(5.0F).setResistance(10.0F);
+    public static final Block cheeseBlock = new CABlock(ModConstants.BlockNames.cheeseBlock, Material.CLAY).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.SLIME).setHardness(0.5F);
 
     public static void init() {
         registerBlock(composterBlock);
@@ -108,6 +111,8 @@ public class ModBlocks {
         registerBlock(ironFarm);
         registerBlock(ironGolemBlock);
         registerBlock(workStation);
+        registerBlock(autoWorkStation);
+        registerBlock(cheeseBlock);
     }
 
     @SideOnly(Side.CLIENT)
@@ -141,6 +146,8 @@ public class ModBlocks {
         ModItems.registerItemBlockModel(ironFarm);
         ModItems.registerItemBlockModel(ironGolemBlock);
         ModItems.registerItemBlockModel(workStation);
+        ModItems.registerItemBlockModel(autoWorkStation);
+        ModItems.registerItemBlockModel(cheeseBlock);
     }
 
     public static void registerBlock(Block block) {

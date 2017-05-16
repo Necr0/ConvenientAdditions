@@ -1,10 +1,14 @@
 package convenientadditions.init;
 
+import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.PotionLumbering;
 import convenientadditions.base.item.CAItem;
+import convenientadditions.base.item.CAItemPotion;
 import convenientadditions.base.item.EnumItemCategory;
-import convenientadditions.item.ItemLaunchingArrow;
-import convenientadditions.item.ItemSapBottle;
+import convenientadditions.item.ItemCheeseBucket;
+import convenientadditions.item.misc.ItemLaunchingArrow;
+import convenientadditions.item.misc.ItemSapBottle;
 import convenientadditions.item.consumable.ItemAntidote;
 import convenientadditions.item.consumable.ItemBandage;
 import convenientadditions.item.consumable.ItemCompost;
@@ -29,7 +33,9 @@ import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -49,6 +55,10 @@ public class ModItems {
     public static final ItemAntidote itemAntidote = new ItemAntidote();
     public static final ItemBandage itemBandage = new ItemBandage();
     public static final ItemSoulGem itemSoulGem = new ItemSoulGem();
+    public static final Item itemCheese = new ItemFood(1,0.175f,false).setAlwaysEdible().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.cheese).setCreativeTab(ConvenientAdditions.CREATIVETAB).setRegistryName(ModConstants.ItemNames.cheese);
+    public static final ItemCheeseBucket itemCheeseBucket = new ItemCheeseBucket();
+    public static final Item itemCheeseSandwich = new ItemFood(4,0.475f,false).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.cheeseSandwich).setCreativeTab(ConvenientAdditions.CREATIVETAB).setRegistryName(ModConstants.ItemNames.cheeseSandwich);
+    public static final CAItemPotion itemPotionLumbering = new CAItemPotion(ModConstants.ItemNames.potionLumbering,new PotionEffect(PotionLumbering.INSTANCE,4200,0));
     //
     public static final ItemMobCatcher itemMobCatcherRegular = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherRegular, EnumMobCatcherType.DEFAULT);
     public static final ItemMobCatcher itemMobCatcherSuper = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherSuper, EnumMobCatcherType.SUPER);
@@ -81,7 +91,7 @@ public class ModItems {
     public static final ItemMultiJumpTrinket itemEnderCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.enderCloudBalloon,2,.2325f,2.6f);
     public static final ItemSpeedTrinket itemWindGem = new ItemSpeedTrinket();
     public static final ItemSpeedTrinket itemGlider = new ItemSpeedTrinket(ModConstants.ItemNames.glider,0f,-.375f,.1f);
-    public static final ItemSpeedTrinket itemValkyrieWings = new ItemSpeedTrinket(ModConstants.ItemNames.valkyrieWings,.125f,-.295f,.1355f);
+    public static final ItemSpeedTrinket itemValkyrieWings = new ItemSpeedTrinket(ModConstants.ItemNames.valkyrieWings,.125f,-.295f,.13775f);
     public static final ItemNetherTrinket itemFireproofCloak = new ItemNetherTrinket();
     public static final ItemNetherTrinket itemNetherTalisman = new ItemNetherTrinket(ModConstants.ItemNames.netherTalisman,false,true,0f,0f,true);
     public static final ItemNetherTrinket itemNetherCloak = new ItemNetherTrinket(ModConstants.ItemNames.netherCloak,true,true,.5f,.5f,true);
@@ -90,6 +100,7 @@ public class ModItems {
     public static final ItemClimbingClaws itemSpikedSole = new ItemClimbingClaws(ModConstants.ItemNames.spikedSole,0f,.5f);
     public static final ItemClimbingClaws itemClimbingGear = new ItemClimbingClaws(ModConstants.ItemNames.climbingGear,.25f,.5f);
     public static final ItemMinersBracelet itemMinersBracelet = new ItemMinersBracelet();
+
     //ttools
     public static final ItemIronWrench itemIronWrench = new ItemIronWrench();
 
@@ -116,6 +127,10 @@ public class ModItems {
         registerItem(itemAntidote);
         registerItem(itemBandage);
         registerItem(itemSoulGem);
+        registerItem(itemCheese);
+        registerItem(itemCheeseBucket);
+        registerItem(itemCheeseSandwich);
+        registerItem(itemPotionLumbering);
         //
         registerItem(itemMobCatcherRegular);
         registerItem(itemMobCatcherSuper);
@@ -182,6 +197,10 @@ public class ModItems {
         registerModelLocation(itemAntidote);
         registerModelLocation(itemBandage);
         registerModelLocation(itemSoulGem);
+        registerModelLocation(itemCheese);
+        registerModelLocation(itemCheeseBucket);
+        registerModelLocation(itemCheeseSandwich);
+        registerModelLocation(itemPotionLumbering);
         //modules
         registerModelLocation(itemModulePlayer);
         registerModelLocation(itemModuleColor);

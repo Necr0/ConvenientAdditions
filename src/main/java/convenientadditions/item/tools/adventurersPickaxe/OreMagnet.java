@@ -2,6 +2,7 @@ package convenientadditions.item.tools.adventurersPickaxe;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.oredict.OreDictionary;
@@ -19,6 +20,8 @@ public class OreMagnet {
     }
 
     public static boolean isOreItem(ItemStack stack) {
+        if(stack.getItem() == Items.COAL)
+            return true;
         for (int id : OreDictionary.getOreIDs(stack)) {
             String name=OreDictionary.getOreName(id);
             if (name.startsWith("ore") || name.startsWith("gem") || name.startsWith("nugget") || name.startsWith("dust")) {

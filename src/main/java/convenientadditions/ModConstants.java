@@ -6,7 +6,7 @@ public class ModConstants {
         public static final String MODID = "convenientadditions";
         public static final String BUILD = "GRADLE:BUILD";
         public static final String VERSION = "GRADLE:VERSION-" + BUILD;
-        public static final String DEPENDENCIES = "required-after:forge@[13.20.0.2282 ,);after:baubles;after:jei;";
+        public static final String DEPENDENCIES = "required-after:forge@[13.20.0.2282 ,);after:baubles;after:jei;after:gbook";
         public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";
         public static final String clientProxyClassPath = "convenientadditions.proxy.ClientProxy";
     }
@@ -28,6 +28,10 @@ public class ModConstants {
         public static final String bandage = "bandage";
         public static final String adventurersPickaxe = "adventurersPickaxe";
         public static final String dislocationCore = "dislocationCore";
+        public static final String cheese = "cheese";
+        public static final String cheeseBucket = "cheeseBucket";
+        public static final String cheeseSandwich = "cheeseSandwich";
+        public static final String potionLumbering = "potionLumbering";
         //
         public static final String mobCatcher = "mobCatcher";
         public static final String mobCatcherRegular = "regular";
@@ -97,9 +101,15 @@ public class ModConstants {
         public static final String ironFarm = "ironFarm";
         public static final String ironGolemBlock = "ironGolemBlock";
         public static final String workStation = "workStation";
+        public static final String autoWorkStation = "autoWorkStation";
+        public static final String cheeseBlock = "cheeseBlock";
         //
         public static final String tempLight = "tempLight";
         public static final String phantomPlatform = "phantomPlatform";
+    }
+
+    public static class PotionNames {
+        public static final String lumbering="lumbering";
     }
 
     public static class Entities {

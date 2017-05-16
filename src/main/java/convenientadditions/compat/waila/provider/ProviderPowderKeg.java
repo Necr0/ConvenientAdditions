@@ -2,7 +2,7 @@ package convenientadditions.compat.waila.provider;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.block.powderkeg.TileEntityPowderKeg;
+import convenientadditions.block.misc.powderkeg.TileEntityPowderKeg;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;

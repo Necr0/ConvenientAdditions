@@ -44,7 +44,8 @@ public class ItemClimbingClaws extends CAItem implements IBauble {
 
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        player.stepHeight=.6f;
+        if(((ItemClimbingClaws)itemstack.getItem()).stepHeightBoost>0)
+            player.stepHeight=.6f;
     }
 
     @SubscribeEvent
@@ -52,41 +53,46 @@ public class ItemClimbingClaws extends CAItem implements IBauble {
         if(event.getEntityLiving() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 
-            if(player.isSneaking()) {
-                for (SlotNotation slot : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
-                    ItemStack stack = slot.getItem();
-                    if (!stack.isEmpty() && stack.getItem() instanceof ItemClimbingClaws) {
-                        ItemClimbingClaws item=(ItemClimbingClaws)stack.getItem();
-                        if(item.wallClimbSpeed>0){
-                            Vec3d ppos=new Vec3d(player.posX,player.posY,player.posZ);
-                            Vec3d plook=player.getLookVec();
-                            plook=plook.subtract(0,plook.yCoord,0).normalize();
-                            RayTraceResult r=player.world.rayTraceBlocks(ppos,ppos.add(plook.scale(.425)),false,true,false);
-                            if(r!=null&&r.typeOfHit==RayTraceResult.Type.BLOCK){
-                                IBlockState state=player.world.getBlockState(r.getBlockPos());
-                                if(state.isSideSolid(player.world,r.getBlockPos(),r.sideHit)){
+            for (SlotNotation slot : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
+                ItemStack stack = slot.getItem();
+                if (!stack.isEmpty() && stack.getItem() instanceof ItemClimbingClaws) {
+                    ItemClimbingClaws item=(ItemClimbingClaws)stack.getItem();
+                    if(item.wallClimbSpeed>0){
+                        Vec3d ppos=new Vec3d(player.posX,player.posY,player.posZ);
+                        Vec3d plook=player.getLookVec();
+                        plook=plook.subtract(0,plook.yCoord,0).normalize();
+                        RayTraceResult r=player.world.rayTraceBlocks(ppos,ppos.add(plook.scale(.425)),false,true,false);
+                        if(r!=null&&r.typeOfHit==RayTraceResult.Type.BLOCK){
+                            IBlockState state=player.world.getBlockState(r.getBlockPos());
+                            if(state.isSideSolid(player.world,r.getBlockPos(),r.sideHit)){
+                                if(player.isSneaking()){
                                     if(player.moveForward > 0F) {
                                         player.motionY=Math.max(item.wallClimbSpeed,player.motionY);
                                     }else{
                                         player.motionY=Math.max(0d,player.motionY);
                                     }
                                     player.fallDistance=0;
+                                }else{
+                                    player.motionY=Math.max(player.motionY,Math.min(player.motionY+.1d,-.15d));
+                                    if(player.motionY > -.666)
+                                        player.fallDistance = 0;
                                 }
                             }
-                            break;
                         }
+                        break;
                     }
                 }
-                player.stepHeight=.6f;
-            }else{
-                for (SlotNotation slot : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
-                    ItemStack stack = slot.getItem();
-                    if (!stack.isEmpty() && stack.getItem() instanceof ItemClimbingClaws) {
-                        ItemClimbingClaws item=(ItemClimbingClaws)stack.getItem();
-                        if(item.stepHeightBoost>0){
+            }
+            for (SlotNotation slot : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
+                ItemStack stack = slot.getItem();
+                if (!stack.isEmpty() && stack.getItem() instanceof ItemClimbingClaws) {
+                    ItemClimbingClaws item=(ItemClimbingClaws)stack.getItem();
+                    if(item.stepHeightBoost>0){
+                        if(player.isSneaking())
+                            player.stepHeight=.6f;
+                        else
                             player.stepHeight=.6f+item.stepHeightBoost;
-                            break;
-                        }
+                        break;
                     }
                 }
             }

@@ -8,6 +8,7 @@ import convenientadditions.api.util.Helper;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.init.ModItems;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -49,11 +50,14 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
         if (state.getBlock().getHarvestTool(state).equals("shovel")) {
             return (float) getToolProperty(stack, "digging_speed");
         }
+        if (state.getBlock().getHarvestTool(state)==null)
+            return 1f;
         return 1.0f;
     }
 
     public boolean isEffective(IBlockState state) {
-        return state.getBlock().getHarvestTool(state)==null || state.getBlock().getHarvestTool(state).equals("pickaxe");
+        Material m=state.getMaterial();
+        return m == Material.IRON || m == Material.ANVIL || m == Material.ROCK || state.getBlock().getHarvestTool(state).equals("pickaxe");
     }
 
     @Override
@@ -319,7 +323,8 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
 
             if (state.getBlock().getHarvestTool(state).equals("shovel")) {
                 setToolProperty(stack, "blocks_digged", (int) getToolProperty(stack, "blocks_digged") + 1);
-                LevelUp.gainXP(e, stack, 1);
+                if(worldIn.rand.nextBoolean())
+                    LevelUp.gainXP(e, stack, 1);
             }
         }
 

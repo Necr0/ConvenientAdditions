@@ -106,6 +106,13 @@ public class ModConfig {
     public static List<String> mobCatcher_blacklist;
     public static List<String> mobCatcher_bosses;
 
+    //#########COMPATIBILITY#############
+    public static boolean compat_guideBookRecipe;
+    public static boolean compat_guideBookOnFirstSpawn;
+
+    //#########POTION#############
+    public static boolean potion_lumbering;
+
     //#########GENERAL#############
     public static boolean ironWrench;
     public static boolean launchingArrows;
@@ -135,6 +142,8 @@ public class ModConfig {
     public static boolean enderProofBlock;
     public static boolean enderProofGlass;
     public static boolean workStation;
+    public static boolean cheese;
+    public static boolean autoWorkStation;
 
     public static void init() {
         Configuration cfg = new Configuration(new File("config/ConvAdd.cfg"));
@@ -170,6 +179,14 @@ public class ModConfig {
         enderProofBlock = cfg.getBoolean("enderProofBlock", category, true, "");
         enderProofGlass = cfg.getBoolean("enderProofGlass", category, true, "");
         workStation = cfg.getBoolean("workStation", category, true, "");
+        cheese = cfg.getBoolean("cheese", category, true, "");
+        autoWorkStation = cfg.getBoolean("autoWorkStation", category, true, "");
+
+        category = "compatibility";
+        cfg.setCategoryRequiresMcRestart(category, true);
+        compat_guideBookRecipe = cfg.getBoolean("guideBookRecipe", category, true, "requires gigaherz' guidebook mod");
+        compat_guideBookOnFirstSpawn = cfg.getBoolean("guideBookOnFirstSpawn", category, true, "requires gigaherz' guidebook mod");
+
 
         category = "composter";
         cfg.setCategoryRequiresMcRestart(category, true);
@@ -296,10 +313,15 @@ public class ModConfig {
         hoverPad_range = cfg.getInt("range", category, 15, 1, 255, "");
 
         category = "mobCatcher";
+        cfg.setCategoryRequiresMcRestart(category, true);
         mobCatcher_recipe = cfg.getBoolean("recipe", category, true, "");
         mobCatcher_loot = cfg.getBoolean("loot", category, true, "chest loot?");
         mobCatcher_blacklist = Arrays.asList(cfg.getStringList("blacklist",category,new String[]{"minecraft:ender_dragon"},"Entity registry names e.g.: 'minecraft:chicken'"));
         mobCatcher_bosses = Arrays.asList(cfg.getStringList("bosses",category,new String[]{"minecraft:wither"},"Entity registry names e.g.: 'minecraft:chicken'"));
+
+        category = "potion";
+        cfg.setCategoryRequiresMcRestart(category, true);
+        potion_lumbering = cfg.getBoolean("lumbering", category, true, "");
 
         if (cfg.hasChanged())
             cfg.save();

@@ -13,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -33,6 +34,13 @@ public class Helper {
 		e.motionX = 0;
 		e.motionY = 0;
 		e.motionZ = 0;
+		if(!w.isRemote)
+			w.spawnEntity(e);
+		return e;
+	}
+
+	public static EntityItem spawnItem(World w,double x,double y,double z,ItemStack i){
+		EntityItem e=new EntityItem(w, x, y, z, i);
 		if(!w.isRemote)
 			w.spawnEntity(e);
 		return e;
@@ -137,5 +145,15 @@ public class Helper {
 			EntityItem e=Helper.spawnItemInPlace(w, p.posX, p.posY, p.posZ, stack);
 			e.setOwner(p.getName());
 		}
+	}
+
+	public static NBTTagCompound getPersistentTag(EntityPlayer p,String modid){
+		NBTTagCompound tag = p.getEntityData();
+		if(!tag.hasKey(p.PERSISTED_NBT_TAG))
+			tag.setTag(p.PERSISTED_NBT_TAG,new NBTTagCompound());
+		NBTTagCompound pers = tag.getCompoundTag(p.PERSISTED_NBT_TAG);
+		if(!pers.hasKey(modid))
+			pers.setTag(modid,new NBTTagCompound());
+		return pers.getCompoundTag(modid);
 	}
 }

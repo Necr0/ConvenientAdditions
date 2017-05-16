@@ -44,10 +44,10 @@ public class GuiSetProvider extends CAGuiContainer {
         };
 
         String[] pushButtonList = new String[]{
-                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":pushOn", Helper.localize(ModConstants.Mod.MODID + ":pulsers")),
-                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":pushOn", Helper.localize(ModConstants.Mod.MODID + ":highrs")),
-                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":pushOn", Helper.localize(ModConstants.Mod.MODID + ":lowrs")),
-                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":pushAlways")
+                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":activeOn", Helper.localize(ModConstants.Mod.MODID + ":pulsers")),
+                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":activeOn", Helper.localize(ModConstants.Mod.MODID + ":highrs")),
+                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":activeOn", Helper.localize(ModConstants.Mod.MODID + ":lowrs")),
+                Helper.localize("tooltip." + ModConstants.Mod.MODID + ":activeAlways")
         };
 
         int buttonIndex = 0;

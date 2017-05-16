@@ -3,6 +3,10 @@ package convenientadditions.compat.jei;
 import convenientadditions.ModConstants;
 import convenientadditions.api.registry.transmutationTome.ITransmutationTomeJEIRecipe;
 import convenientadditions.api.registry.transmutationTome.TransmutationTomeRecipeHandler;
+import convenientadditions.block.machine.autoWorkStation.ContainerAutoWorkStation;
+import convenientadditions.block.machine.autoWorkStation.GuiAutoWorkStation;
+import convenientadditions.block.misc.workStation.ContainerWorkStation;
+import convenientadditions.block.misc.workStation.GuiWorkStation;
 import convenientadditions.compat.jei.crafting.ICustomCraftingRecipe;
 import convenientadditions.compat.jei.crafting.RecipeHandlerCustomCrafting;
 import convenientadditions.compat.jei.transmutationTome.RecipeCategoryTransmutationTome;
@@ -11,7 +15,10 @@ import convenientadditions.compat.jei.transmutationTome.RecipeHandlerTransmutati
 import convenientadditions.init.ModBlocks;
 import convenientadditions.init.ModItems;
 import convenientadditions.item.relic.transmutationTome.ContainerTransmutationTome;
-import mezz.jei.api.*;
+import mezz.jei.api.BlankModPlugin;
+import mezz.jei.api.IJeiHelpers;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
@@ -36,6 +43,12 @@ public class ConvAddJEIPlugin extends BlankModPlugin {
 
         jeiHelper.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ModBlocks.tempLightBlock));
 
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.workStation), VanillaRecipeCategoryUid.CRAFTING);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.autoWorkStation), VanillaRecipeCategoryUid.CRAFTING);
+        registry.addRecipeClickArea(GuiWorkStation.class, 88, 23, 28, 23, VanillaRecipeCategoryUid.CRAFTING);
+        registry.addRecipeClickArea(GuiAutoWorkStation.class, 88, 23, 28, 23, VanillaRecipeCategoryUid.CRAFTING);
+        registry.getRecipeTransferRegistry().addRecipeTransferHandler(ContainerWorkStation.class, VanillaRecipeCategoryUid.CRAFTING, 1, 9, 10, 45);
+        registry.getRecipeTransferRegistry().addRecipeTransferHandler(ContainerAutoWorkStation.class, VanillaRecipeCategoryUid.CRAFTING, 1, 9, 10, 54);
 
         registry.handleRecipes(ICustomCraftingRecipe.class,new RecipeHandlerCustomCrafting(), VanillaRecipeCategoryUid.CRAFTING);
         //registry.addRecipes(RecipeGeneratorTransmutationTome.getRecipes(TransmutationTomeRecipeHandler.INSTANCE),RecipeCategoryTransmutationTome.INSTANCE.getUid());

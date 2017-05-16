@@ -17,14 +17,13 @@ import java.util.HashMap;
 
 public class TileEntitySetProvider extends CATileEntity implements IConfigurable, ITickable {
 
-    public HashMap<EnumFacing, EnumOutletMode> outletSides = new HashMap<EnumFacing, EnumOutletMode>();
+    public HashMap<EnumFacing, EnumOutletMode> outletSides = new HashMap<>();
 
     public boolean ignoreDV = false;
     public boolean ignoreNBT = false;
     public byte pushMode=0;//0=pulse,1=high,2=low,3=always
     public boolean ignoreOutput=false;
     public boolean powered;
-    public boolean pulseOpen;
     public boolean filteredInput;
 
     public ItemStackHandlerSPFiltered input;
@@ -36,6 +35,8 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
         for (EnumFacing f : EnumFacing.VALUES) {
             outletSides.put(f, EnumOutletMode.disabled);
         }
+        outletSides.put(EnumFacing.DOWN, EnumOutletMode.output);
+        outletSides.put(EnumFacing.UP, EnumOutletMode.input);
         this.input = new ItemStackHandlerSPFiltered(this, 18);
         this.output = new ItemStackHandlerAutoSaveOutputOnly(this, 18);
         this.filter = new ItemStackHandlerAutoSave(this, 9);
@@ -50,7 +51,7 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
             tryPush();
         } else if (pushMode == 2 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
             tryPush();
-        } else if (pushMode == 3 && getWorld().isBlockIndirectlyGettingPowered(getPos()) == 0) {
+        } else if (pushMode == 3) {
             tryPush();
         }
     }
@@ -117,7 +118,6 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
                 output.setStacks(FILLter.getOutput());
             }
         }
-        pulseOpen = false;
     }
 
     public boolean slotConfigReady() {
@@ -174,10 +174,7 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
     public void updateRS(boolean power) {
         if (powered != power) {
             if (power && pushMode == 0)
-                this.pulseOpen = true;
-            else if (!power && pushMode == 0 && pulseOpen) {
                 tryPush();
-            }
             powered = power;
         }
     }

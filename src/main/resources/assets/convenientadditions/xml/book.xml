@@ -1,0 +1,1080 @@
+<book title="The Convenient Guide" cover="convenientadditions:gbook/cover" fontSize="1">
+	<include ref="gbook:xml/standard.xml" />
+	<include ref="convenientadditions:xml/ca_lib.xml" />
+	<chapter id="chapters">
+		<page id="index">
+			<title>Index</title>
+			<link ref="getting_started:first">Getting Stated</link>
+			<p></p>
+			<p>Item Categories:</p>
+			<link ref="trinkets:index" indent="8">Trinkets</link>
+			<link ref="relics:index" indent="8">Relics</link>
+			<link ref="machines:index" indent="8">Machines</link>
+			<link ref="modules:index" indent="8">Modules</link>
+			<link ref="tools:index" indent="8">Tools</link>
+			<link ref="consumables:index" indent="8">Consumables</link>
+			<link ref="misc:index" indent="8">Miscellaneous</link>
+			<link ref="building_blocks:index" indent="8">Building Blocks</link>
+			<link ref="crafting_materials:index" indent="8">Crafting Materials</link>
+		</page>
+		<page>
+			<p>Topics:</p>
+			<link ref="topics:player_transport" indent="8">Player Transport</link>
+			<link ref="topics:item_transport" indent="8">Item Transport</link>
+			<link ref="topics:farming" indent="8">Farming</link>
+			<p></p>
+			<link href="https://minecraft.curseforge.com/projects/convenient-additions/files">Patch Notes</link>
+		</page>
+	</chapter>
+	<chapter id="getting_started">
+		<page id="first">
+			<title>Getting Started</title>
+			<p>Items for early on in order of usefulness early on:</p>
+			<link ref="tools:adventurerspickaxe">Adventurer's Pickaxe</link>
+			<link ref="trinkets:climbingclaws">Climing Claws</link>
+			<link ref="misc:workstation">Work Station</link>
+			<link ref="misc:composter">Composter</link>
+			<link ref="trinkets:spikedsole">Spiked Soles</link>
+			<link ref="trinkets:climbinggear">Climbing Gear</link>
+		</page>
+		<page>
+			<p>After that:</p>
+			<link ref="relics:sunstone">Sunstone</link>
+			<link ref="trinkets:index">Trinkets</link>
+			<link ref="relics:blazingrock">Blazing Orb</link>
+			<link ref="relics:transmutationtome">Tome of Transmutation</link>
+			<p></p>
+			<p>Later in the game:</p>
+			<link ref="relics:enderplate">Ender Plate</link>
+			<link ref="machines:jumppad">Jump Pad</link>
+			<link ref="machines:ironfactory">Iron Factory</link>
+		</page>
+	</chapter>
+	<chapter id="trinkets">
+		<page id="index">
+			<title>Trinkets</title>
+			<p>Jump Trinkets:</p>
+				<link ref="trinkets:cloudjar" indent="8">Cloud in a Jar</link>
+				<link ref="trinkets:slimeballoon" indent="8">Slime Balloon</link>
+				<link ref="trinkets:cloudballoon" indent="8">Cloud in a Slime Balloon</link>
+				<link ref="trinkets:endercloudballoon" indent="8">Ender Cloud in a Slime Balloon</link>
+			<p>Mobility Trinkets:</p>
+				<link ref="trinkets:windgem" indent="8">Gem of the Winds</link>
+				<link ref="trinkets:glider" indent="8">Glider</link>
+				<link ref="trinkets:valkyriewings" indent="8">Valkyrie Wings</link>
+			<p>Climbing Trinkets:</p>
+				<link ref="trinkets:spikedsole" indent="8">Spiked Soles</link>
+				<link ref="trinkets:climbingclaws" indent="8">Climbing Claws</link>
+				<link ref="trinkets:climbinggear" indent="8">Climbing Gear</link>
+		</page>
+		<page>
+			<p>Water Trinkets:</p>
+				<link ref="trinkets:breathamulet" indent="8">Amulet of Breath</link>
+				<link ref="trinkets:flippers" indent="8">Flippers</link>
+				<link ref="trinkets:flowingwaterrune" indent="8">Rune of Flowing Water</link>
+				<link ref="trinkets:tideamulet" indent="8">Amulet of the Tides</link>
+			<p>Fire Trinkets:</p>
+				<link ref="trinkets:fireproofcloak" indent="8">Fireproof Cloak</link>
+				<link ref="trinkets:nethertalisman" indent="8">Talisman of the Nether</link>
+				<link ref="trinkets:nethercloak" indent="8">Cloak of the Nether</link>
+			<p>Other Trinkets:</p>
+				<link ref="trinkets:rocketpack" indent="8">Rocket Pack</link>
+				<link ref="trinkets:minersbracelet" indent="8">Miner's Bracelet</link>
+				<link ref="trinkets:saturationring" indent="8">Ring of Saturation</link>
+				<link ref="trinkets:sunlightring" indent="8">Ring of Sunlight</link>
+		</page>
+		<page id="cloudjar">
+			<title>Cloud in a Jar</title>
+			<smaller_recipe>
+				<stack item="minecraft:experience_bottle"/><stack item="minecraft:rabbit_foot"/>
+				<stack item="minecraft:slime_ball"/><stack item="minecraft:gunpowder"/>
+				<stack item="convenientadditions:cloudjar"/>
+			</smaller_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to double-jump.</p>
+			<p>This item is a tribute to Terraria.</p>
+		</page>
+		<page id="slimeballoon">
+			<title>Slime Balloon</title>
+			<big_recipe>
+				<space /><stack item="minecraft:slime"/><space />
+				<space /><stack item="minecraft:string"/><space />
+				<space /><stack item="minecraft:string"/><space />
+				<stack item="convenientadditions:slimeballoon"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to jump higher.</p>
+			<p>This item is a tribute to Terraria.</p>
+		</page>
+		<page id="cloudballoon">
+			<title>Cloud in a Slime Balloon</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:cloudjar"/><stack item="convenientadditions:slimeballoon"/>
+				<space /><space />
+				<stack item="convenientadditions:cloudballoon"/>
+			</smaller_recipe>
+			<p>It combines the effects of <link ref="trinkets:cloudjar">Cloud in a Jar</link> and <link ref="trinkets:slimeballoon">Slime Balloon</link></p>
+			<p>This item is a tribute to Terraria.</p>
+		</page>
+		<page id="endercloudballoon">
+			<title>Ender Cloud in a Slime Balloon</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:cloudballoon"/><stack item="minecraft:dragon_breath"/>
+				<stack item="minecraft:ender_eye"/><space />
+				<stack item="convenientadditions:endercloudballoon"/>
+			</smaller_recipe>
+			<p>It's a better version of <link ref="trinkets:cloudballoon">Cloud in a Slime Balloon</link> in that it makes you jump even higher and gives you a triple jump.</p>
+			<p>This item is a tribute to Terraria.</p>
+		</page>
+		<page id="windgem">
+			<title>Gem of the Winds</title>
+			<big_recipe>
+				<space /><stack item="minecraft:feather"/><space />
+				<stack item="minecraft:potion" tag='{Potion:"minecraft:strong_swiftness"}'/><stack item="minecraft:emerald"/><stack item="minecraft:potion" tag='{Potion:"minecraft:strong_swiftness"}'/>
+				<space /><stack item="minecraft:feather"/><space />
+				<stack item="convenientadditions:windgem"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to walk and run faster.</p>
+		</page>
+		<page id="glider">
+			<title>Glider</title>
+			<big_recipe>
+				<stack item="minecraft:string"/><stack item="minecraft:stick"/><stack item="minecraft:string"/>
+				<stack item="minecraft:stick"/><stack item="minecraft:leather"/><stack item="minecraft:stick"/>
+				<stack item="minecraft:leather"/><space /><stack item="minecraft:leather"/>
+				<stack item="convenientadditions:glider"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to glide and fall slowly. This also prevents damage from falling.</p>
+		</page>
+		<page id="valkyriewings">
+			<title>Valkyrie Wings</title>
+			<big_recipe>
+				<stack item="minecraft:feather"/><stack item="convenientadditions:windgem"/><stack item="minecraft:feather"/>
+				<stack item="minecraft:dragon_breath"/><stack item="convenientadditions:glider"/><stack item="minecraft:dragon_breath"/>
+				<stack item="minecraft:feather"/><space /><stack item="minecraft:feather"/>
+				<stack item="convenientadditions:valkyriewings"/>
+			</big_recipe>
+			<p>It combines the effects of <link ref="trinkets:windgem">Gem of the Winds</link> and <link ref="trinkets:glider">Glider</link> and improves them.</p>
+		</page>
+		<page id="spikedsole">
+			<title>Spiked Soles</title>
+			<big_recipe>
+				<stack item="minecraft:leather"/><space /><stack item="minecraft:leather"/>
+				<stack item="convenientadditions:spikes"/><space /><stack item="convenientadditions:spikes"/>
+				<space /><space /><space />
+				<stack item="convenientadditions:spikedsole"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to walk up blocks.</p>
+			<p>This item is a tribute to Terraria.</p>
+		</page>
+		<page id="climbingclaws">
+			<title>Climing Claws</title>
+			<big_recipe>
+				<stack item="convenientadditions:spikes"/><space /><stack item="convenientadditions:spikes"/>
+				<stack item="minecraft:leather"/><space /><stack item="minecraft:leather"/>
+				<space /><space /><space />
+				<stack item="convenientadditions:climbingclaws"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to climb at walls by sneaking. Also the wearer can slide down walls.</p>
+			<p>This item is a tribute to Terraria.</p>
+		</page>
+		<page id="climbinggear">
+			<title>Climing Gear</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:spikedsole"/><stack item="convenientadditions:climbingclaws"/>
+				<space /><space />
+				<stack item="convenientadditions:climbinggear"/>
+			</smaller_recipe>
+			<p>It combines the effects of <link ref="trinkets:spikedsole">Spiked Soles</link> and <link ref="trinkets:climbingclaws">Climbing Claws</link> with improved climbing speed.</p>
+			<p>This item is a tribute to Terraria.</p>
+		</page>
+		<page id="breathamulet">
+			<title>Amulet of Breath</title>
+			<big_recipe>
+				<stack item="minecraft:string"/><stack item="minecraft:iron_ingot"/><stack item="minecraft:string"/>
+				<stack item="minecraft:iron_ingot"/><space /><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:string"/><stack item="minecraft:potion" tag='{Potion:"minecraft:water_breathing"}'/><stack item="minecraft:string"/>
+				<stack item="convenientadditions:breathamulet"/>
+			</big_recipe>
+			<p>When worn as a bauble it prevents the wearer from drowning.</p>
+		</page>
+		<page id="flippers">
+			<title>Flippers</title>
+			<big_recipe>
+				<stack item="minecraft:leather"/><space /><stack item="minecraft:leather"/>
+				<stack item="minecraft:dye" meta="2"/><space /><stack item="minecraft:dye" meta="2"/>
+				<stack item="minecraft:dye" meta="2"/><space /><stack item="minecraft:dye" meta="2"/>
+				<stack item="convenientadditions:flippers"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to swim faster in water.</p>
+		</page>
+		<page id="flowingwaterrune">
+			<title>Rune of Flowing Water</title>
+			<big_recipe>
+				<stack item="minecraft:redstone"/><stack item="minecraft:prismarine_shard"/><stack item="minecraft:redstone"/>
+				<stack item="minecraft:water_bucket"/><stack item="minecraft:stone" meta="0"/><stack item="minecraft:water_bucket"/>
+				<stack item="minecraft:redstone"/><stack item="minecraft:prismarine_shard"/><stack item="minecraft:redstone"/>
+				<stack item="convenientadditions:flowingwaterrune"/>
+			</big_recipe>
+			<p>When worn as a bauble it increases the wearers mining speed when they are in water.</p>
+		</page>
+		<page id="tideamulet">
+			<title>Amulet of the Tides</title>
+			<big_recipe>
+				<stack item="minecraft:prismarine_shard"/><stack item="convenientadditions:breathamulet"/><stack item="minecraft:prismarine_shard"/>
+				<stack item="minecraft:prismarine_crystals"/><stack item="convenientadditions:flowingwaterrune"/><stack item="minecraft:prismarine_crystals"/>
+				<stack item="minecraft:prismarine_shard"/><stack item="convenientadditions:flippers"/><stack item="minecraft:prismarine_shard"/>
+				<stack item="convenientadditions:breathamulet"/>
+			</big_recipe>
+			<p>It combines the effects of <link ref="trinkets:breathamulet">Amulet of Breath</link>, <link ref="trinkets:flippers">Flippers</link> and <link ref="trinkets:flowingwaterrune">Rune of Flowing Water</link> and improves them.</p>
+		</page>
+		<page id="fireproofcloak">
+			<title>Fireproof Cloak</title>
+			<big_recipe>
+				<stack item="minecraft:dye" meta="0"/><stack item="minecraft:wool"/><stack item="minecraft:string"/>
+				<stack item="minecraft:slime_ball"/><stack item="minecraft:wool"/><stack item="minecraft:leather"/>
+				<stack item="minecraft:slime_ball"/><stack item="minecraft:wool"/><stack item="minecraft:leather"/>
+				<stack item="convenientadditions:fireproofcloak"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer a resistance to fire damage and prevents burning.</p>
+		</page>
+		<page id="nethertalisman">
+			<title>Talisman of the Nether</title>
+			<big_recipe>
+				<stack item="minecraft:paper"/><stack item="minecraft:dye" meta="1"/><stack item="minecraft:dye" meta="0"/>
+				<stack item="minecraft:feather"/><stack item="minecraft:string"/><space />
+				<space /><space /><space />
+				<stack item="convenientadditions:nethertalisman"/>
+			</big_recipe>
+			<p>When worn as a bauble it prevents damage from standing on magma blocks. Also Nether Portals will teleport the wearer instantaneously.</p>
+		</page>
+		<page id="nethercloak">
+			<title>Cloak of the Nether</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:fireproofcloak"/><stack item="convenientadditions:nethertalisman"/>
+				<stack item="minecraft:magma_cream"/><stack item="minecraft:ghast_tear"/>
+				<stack item="convenientadditions:nethercloak"/>
+			</smaller_recipe>
+			<p>It combines the effects of <link ref="trinkets:fireproofcloak">Fireproof Cloak</link> and <link ref="trinkets:nethertalisman">Talisman of the Nether</link> and improves them. Also it reduces damage from lava.</p>
+		</page>
+		<page id="rocketpack">
+			<title>Rocket Pack</title>
+			<big_recipe>
+				<stack item="minecraft:fireworks"/><space /><stack item="minecraft:fireworks"/>
+				<stack item="minecraft:ender_eye"/><stack item="minecraft:leather"/><stack item="minecraft:ender_eye"/>
+				<stack item="minecraft:fireworks"/><space /><stack item="minecraft:fireworks"/>
+				<stack item="convenientadditions:rocketpack"/>
+			</big_recipe>
+			<p>When worn as a bauble it gives the wearer the ability to accelerate with the Elytra by pressing forward. This effectively allows infinite flight.</p>
+		</page>
+		<page id="minersbracelet">
+			<title>Miner's Bracelet</title>
+			<big_recipe>
+				<space /><stack item="minecraft:diamond_pickaxe"/><space />
+				<stack item="minecraft:diamond"/><space /><stack item="minecraft:diamond"/>
+				<space /><stack item="minecraft:diamond"/><space />
+				<stack item="convenientadditions:minersbracelet"/>
+			</big_recipe>
+			<p>When worn as a bauble it increases the wearers mining speed. This effect is cumulative.</p>
+		</page>
+		<page id="saturationring">
+			<title>Ring of Saturation</title>
+			<big_recipe>
+				<stack item="minecraft:string"/><stack item="minecraft:golden_carrot"/><stack item="minecraft:string"/>
+				<stack item="minecraft:iron_ingot"/><space /><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:string"/><stack item="minecraft:iron_ingot"/><stack item="minecraft:string"/>
+				<stack item="convenientadditions:saturationring"/>
+			</big_recipe>
+			<p>When worn as a bauble the wearer's hunger bar will periodically be filled slightly. This effect is cumulative.</p>
+		</page>
+		<page id="sunlightring">
+			<title>Ring of Sunlight</title>
+			<big_recipe>
+				<stack item="minecraft:string"/><stack item="convenientadditions:sunstone"/><stack item="minecraft:string"/>
+				<stack item="minecraft:iron_ingot"/><space /><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:string"/><stack item="minecraft:iron_ingot"/><stack item="minecraft:string"/>
+				<stack item="convenientadditions:sunlightring"/>
+			</big_recipe>
+			<p>When worn as a bauble the wearer will have an aura of light. This is the bauble equivalent of the <link ref="relics:sunstone">Sunstone</link>.</p>
+		</page>
+	</chapter>
+	<chapter id="relics">
+		<page id="index">
+			<title>Relics</title>
+			<link ref="relics:sunstone">Sunstone</link>
+			<link ref="relics:enderplate">Ender Plate</link>
+			<link ref="relics:blazingrock">Blazing Orb</link>
+			<link ref="relics:transmutationtome">Tome of Transmutation</link>
+		</page>
+		<page id="sunstone">
+			<title>Sunstone</title>
+			<big_recipe>
+				<stack item="minecraft:glowstone"/><stack item="minecraft:redstone"/><stack item="minecraft:glowstone"/>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:diamond"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:glowstone"/><stack item="minecraft:redstone"/><stack item="minecraft:glowstone"/>
+				<stack item="convenientadditions:sunstone"/>
+			</big_recipe>
+			<p>Right-click to toggle this item on or off. When it is on will the owner have an aura of light while the item is in their hotbar. The bauble equivalent of this item is the <link ref="trinkets:sunlightring">Ring of Sunlight</link>.</p>
+		</page>
+		<page id="enderplate">
+			<title>Ender Plate</title>
+			<big_recipe>
+				<stack item="minecraft:ender_pearl"/><stack item="convenientadditions:obsidianplate"/><stack item="minecraft:ender_pearl"/>
+				<stack item="minecraft:dragon_breath"/><stack item="convenientadditions:soulgem" tag='{CONTAINED_ENTITY_ID:"minecraft:shulker"}'/><stack item="minecraft:dragon_breath"/>
+				<stack item="minecraft:ender_pearl"/><stack item="convenientadditions:obsidianplate"/><stack item="minecraft:ender_pearl"/>
+				<stack item="convenientadditions:enderplate"/>
+			</big_recipe>
+			<p>Right-click to toggle this item on or off. When it is on will the owner can walk on air. He can go upwards by jumping and downwards by sneaking while the item is in their hotbar.</p>
+		</page>
+		<page id="blazingrock">
+			<title>Blazing Orb</title>
+			<big_recipe>
+				<stack item="minecraft:gold_nugget"/><stack item="minecraft:lava_bucket"/><stack item="minecraft:gold_nugget"/>
+				<stack item="minecraft:blaze_powder"/><stack item="minecraft:diamond"/><stack item="minecraft:blaze_powder"/>
+				<stack item="minecraft:gold_nugget"/><stack item="convenientadditions:obsidianplate"/><stack item="minecraft:gold_nugget"/>
+				<stack item="convenientadditions:blazingrock"/>
+			</big_recipe>
+			<p>This item is an infinite furnace fuel. It periodically starts glowing. While it glows it can be put into furnaces. It will then be able to perform 1 smelting operation every time it glows without being used up.</p>
+		</page>
+		<page id="transmutationtome">
+			<title>Tome of Transmutation</title>
+			<smaller_recipe>
+				<stack item="minecraft:book"/><stack item="minecraft:blaze_rod"/>
+				<stack item="minecraft:ender_eye"/><stack item="minecraft:wheat_seeds"/>
+				<stack item="convenientadditions:transmutationtome"/>
+			</smaller_recipe>
+			<p>This book can be used to transmute items using experience levels. Click the "?"-button in the upper-left corner to see a list of the available recipes.</p>
+		</page>
+	</chapter>
+	<chapter id="machines">
+		<page id="index">
+			<title>Machines</title>
+			<link ref="machines:playerinteface">Player Interface</link>
+			<link ref="machines:proximitysensor">Proximity Sensor</link>
+			<link ref="machines:storagematrix">Storage Matrix</link>
+			<link ref="machines:setprovider">Set Provider</link>
+			<link ref="machines:ironfarm">Iron Factory</link>
+			<link ref="machines:autoworkstation">Automatic Work Station</link>
+			<p>Player Transport</p>
+			<link ref="machines:blastpad" indent="8">Blast Pad</link>
+			<link ref="machines:jumppad" indent="8">Jump Pad</link>
+			<link ref="machines:hoverpad" indent="8">Hover Pad</link>
+		</page>
+		<page>
+			<p>Item Transport</p>
+			<link ref="machines:itemtransmitter" indent="8">Item Transmitter</link>
+			<link ref="machines:itemreceiver" indent="8">Item Receiver</link>
+			<link ref="machines:remoteinventoryproxy" indent="8">Remote Inventory Proxy</link>
+		</page>
+		<page id="playerinterface">
+			<title>Player Interface</title>
+			<big_recipe>
+				<stack item="minecraft:stone_pressure_plate"/><stack item="minecraft:hopper"/><stack item="minecraft:stone_pressure_plate"/>
+				<stack item="minecraft:gold_ingot"/><stack item="convenientadditions:machineblock"/><stack item="minecraft:gold_ingot"/>
+				<stack item="minecraft:stone"/><stack item="convenientadditions:dislocationcore"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:playerinterface"/>
+			</big_recipe>
+			<p>When something would be interacting with this block's inventory it will instead interact with the inventory of the player who is standing on top of it.</p>
+		</page>
+		<page id="proximitysensor">
+			<title>Proximity Sensor</title>
+			<big_recipe>
+				<stack item="minecraft:glowstone_dust"/><stack item="minecraft:gold_ingot"/><stack item="minecraft:glowstone_dust"/>
+				<stack item="minecraft:iron_ingot"/><stack item="convenientadditions:machineblock"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:ender_eye"/><stack item="minecraft:gold_ingot"/><stack item="minecraft:ender_eye"/>
+				<stack item="convenientadditions:proximitysensor"/>
+			</big_recipe>
+			<p>This block will give a redstone output depending on the distance of the closest player. The closer the player the stronger the signal. It's maximum range can be changed.</p>
+		</page>
+		<page>
+			<p>This also changes the precision of the redstone signal. The smaller the range the more precise the redstone signal. The power of the redstone signal changes in a linear fashion depending on the player's distance.</p>
+		</page>
+		<page id="storagematrix">
+			<title>Storage Matrix</title>
+			<big_recipe>
+				<stack item="minecraft:ender_eye"/><stack item="minecraft:chest"/><stack item="minecraft:ender_eye"/>
+				<stack item="minecraft:chest"/><stack item="convenientadditions:machineblock"/><stack item="minecraft:chest"/>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:chest"/><stack item="minecraft:iron_ingot"/>
+				<stack item="convenientadditions:storagematrix"/>
+			</big_recipe>
+			<p>This block has an inventory with 256 slots. It has no GUI. Dismantle it with a wrench to have it keep it's inventory.</p>
+		</page>
+		<page id="setprovider">
+			<title>Set Provider</title>
+			<big_recipe>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:hopper"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:comparator"/><stack item="convenientadditions:machineblock"/><stack item="minecraft:comparator"/>
+				<stack item="minecraft:stone"/><stack item="minecraft:hopper"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:setprovider"/>
+			</big_recipe>
+			<p>This block helps you provide sets of items. A set of items can be defined in the filter. It will only push sets one at a time and only if there's enough items. Use a wrench to configure it's I/O-sides.</p>
+		</page>
+		<page id="ironfarm">
+			<title>Iron Factory</title>
+			<big_recipe>
+				<stack item="convenientadditions:soulgem" tag='{CONTAINED_ENTITY_ID:"minecraft:villager_golem"}'/><stack item="minecraft:dragon_breath"/><stack item="convenientadditions:soulgem" tag='{CONTAINED_ENTITY_ID:"minecraft:villager_golem"}'/>
+				<stack item="convenientadditions:soulgem" tag='{CONTAINED_ENTITY_ID:"minecraft:villager"}'/><stack item="convenientadditions:machineblock"/><stack item="convenientadditions:soulgem" tag='{CONTAINED_ENTITY_ID:"minecraft:villager"}'/>
+				<stack item="minecraft:iron_block"/><stack item="minecraft:wooden_door"/><stack item="minecraft:iron_block"/>
+				<stack item="convenientadditions:ironfarm"/>
+			</big_recipe>
+			<p>This block will produce 1 iron ingot every 2.5 minutes. It's purpose is to lower the server's load because people can use it instead of iron golem farms.</p>
+		</page>
+		<page id="autoworkstation">
+			<title>Automatic Work Station</title>
+			<big_recipe>
+				<stack item="minecraft:stone"/><stack item="convenientadditions:workstation"/><stack item="minecraft:stone"/>
+				<stack item="minecraft:iron_bars"/><stack item="convenientadditions:machineblock"/><stack item="minecraft:iron_bars"/>
+				<stack item="minecraft:stone"/><stack item="minecraft:chest"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:autoworkstation"/>
+			</big_recipe>
+			<p>It's an improved <link ref="misc:workstation">Work Station</link>. It has 9 extra inventory slots and is capable of crafting automatically. Use a wrench to configure it's I/O-sides.</p>
+		</page>
+		<page id="blastpad">
+			<title>Blast Pad</title>
+			<big_recipe>
+				<stack item="minecraft:iron_ingot"/><stack item="convenientadditions:slimekit"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:dispenser"/><stack item="convenientadditions:machineblock"/><stack item="minecraft:dispenser"/>
+				<stack item="minecraft:stone"/><stack item="minecraft:comparator"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:blastpad"/>
+			</big_recipe>
+			<p>When this block receives a redstone pulse it will blast the players standing on top of it upwards. The power of the blast depends on the power of the redstone signal.</p>
+		</page>
+		<page id="jumppad">
+			<title>Jump Pad</title>
+			<big_recipe>
+				<stack item="minecraft:stone_pressure_plate"/><stack item="minecraft:ender_pearl"/><stack item="minecraft:stone_pressure_plate"/>
+				<stack item="convenientadditions:dislocationcore"/><stack item="convenientadditions:machineblock"/><stack item="convenientadditions:dislocationcore"/>
+				<stack item="minecraft:stone"/><stack item="minecraft:gold_ingot"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:jumppad"/>
+			</big_recipe>
+			<p>This block functions as a teleporter. If you don't specify the target locations it will teleport you to the closest Jump Pad straight upwards as soon as you jump.</p>
+		</page>
+		<page>
+			<p>If you sneak it teleports you to the closest Jump Pad straight down. You can also right-click it to insert <link ref="modules:modulelocation">Location Modules</link> to target a specific Jump Pad in the same dimension.</p>
+		</page>
+		<page id="hoverpad">
+			<title>Hover Pad</title>
+			<big_recipe>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:ender_eye"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:piston"/><stack item="convenientadditions:machineblock"/><stack item="minecraft:piston"/>
+				<stack item="minecraft:stone"/><stack item="minecraft:comparator"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:blastpad"/>
+			</big_recipe>
+			<p>While this block is powered it will push all players within a specific unobstructed range directly above it upwards. The power of the pushing depends on the power of the redstone signal.</p>
+		</page>
+		<page id="itemtransmitter">
+			<title>Item Transmitter</title>
+			<big_recipe>
+				<stack item="minecraft:gold_ingot"/><stack item="minecraft:chest"/><stack item="minecraft:gold_ingot"/>
+				<stack item="convenientadditions:dislocationcore"/><stack item="convenientadditions:machineblock"/><stack item="convenientadditions:dislocationcore"/>
+				<stack item="minecraft:stone"/><stack item="minecraft:ender_eye"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:itemtransmitter"/>
+			</big_recipe>
+			<p>This block has 9 inventory slots which it will broadcast to up to 3 channels seperate at once. Channels can be specified using <link ref="modules:channelmodules">Channel Modules</link>.</p>
+		</page>
+		<page id="itemreceiver">
+			<title>Item Receiver</title>
+			<big_recipe>
+				<stack item="minecraft:gold_ingot"/><stack item="minecraft:hopper"/><stack item="minecraft:gold_ingot"/>
+				<stack item="convenientadditions:dislocationcore"/><stack item="convenientadditions:machineblock"/><stack item="convenientadditions:dislocationcore"/>
+				<stack item="minecraft:stone"/><stack item="convenientadditions:inventoryproxy"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:itemreceiver"/>
+			</big_recipe>
+			<p>When interacting with this blocks inventory you instead interact with inventories of up to 3 received channels. Channels can be specified using <link ref="modules:channelmodules">Channel Modules</link>.</p>
+		</page>
+		<page id="remoteinventoryproxy">
+			<title>Remote Inventory Proxy</title>
+			<big_recipe>
+				<stack item="minecraft:iron_ingot"/><stack item="convenientadditions:inventoryproxysided"/><stack item="minecraft:iron_ingot"/>
+				<stack item="convenientadditions:dislocationcore"/><stack item="convenientadditions:machineblock"/><stack item="convenientadditions:dislocationcore"/>
+				<stack item="minecraft:iron_ingot"/><stack item="convenientadditions:inventoryproxysided"/><stack item="minecraft:iron_ingot"/>
+				<stack item="convenientadditions:remoteinventoryproxy"/>
+			</big_recipe>
+			<p>When interacting with this blocks inventory you instead access the inventory of the block specified using a <link ref="modules:modulelocation">Location Module</link>. This works like a <link ref="misc:inventoryproxies">Side-Aware Inventory Proxy</link>.</p>
+		</page>
+	</chapter>
+	<chapter id="modules">
+		<page id="index">
+			<title>Modules</title>
+			<link ref="modules:channelmodules">Channel Modules:</link>
+			<link ref="modules:modulecolor" indent="8">Color Channel Module</link>
+			<link ref="modules:moduleplayer" indent="8">Color Channel Module</link>
+			<link ref="modules:modulelocation">Location Module</link>
+		</page>
+		<page id="channelmodules">
+			<title>Channel Modules</title>
+			<p>Channel Modules are used to specify channels for wireless item networking.</p>
+			<p></p>
+			<p>See also:</p>
+			<link ref="machines:itemtransmitter">Item Tranmitter</link>
+			<link ref="machines:itemreceiver">Item Receiver</link>
+		</page>
+		<page id="modulecolor">
+			<title>Color Channel Module</title>
+			<big_recipe>
+				<stack item="convenientadditions:obsidianplate"/><stack item="minecraft:ender_eye"/><stack item="minecraft:dye"/>
+				<stack item="minecraft:dye"/><stack item="minecraft:dye"/><space />
+				<space /><space /><space />
+				<stack item="convenientadditions:modulecolor"/>
+			</big_recipe>
+			<p>Right-clicking this item shows a GUI. In this GUI you can set a color code to specify a channel.</p>
+		</page>
+		<page id="moduleplayer">
+			<title>Player Channel Module</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:obsidianplate"/><stack item="minecraft:ender_eye"/>
+				<stack item="minecraft:skull" meta="1"/><space />
+				<stack item="convenientadditions:moduleplayer"/>
+			</smaller_recipe>
+			<p>Right-clicking this item sets the player to specify a channel. Sneaking and Right-clicking resets the player. This is used for private channels.</p>
+		</page>
+		<page id="modulelocation">
+			<title>Location Module</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:obsidianplate"/><stack item="minecraft:ender_eye"/>
+				<stack item="minecraft:redstone"/><stack item="minecraft:glowstone_dust"/>
+				<stack item="convenientadditions:modulelocation"/>
+			</smaller_recipe>
+			<p>Sneaking and Right-clicking a block sets the location. This location will be used for different things depending on the machine. Sneaking and Right-clicking in the air resets the location.</p>
+		</page>
+	</chapter>
+	<chapter id="tools">
+		<page id="index">
+			<title>Tools</title>
+			<link ref="tools:ironwrench">Iron Wrench</link>
+			<link ref="tools:adventurerspickaxe">Adventurer's Pickaxe</link>
+			<link ref="tools:mcds">Mob Containment Devices</link>
+		</page>
+		<page id="ironwrench">
+			<title>Iron Wrench</title>
+			<big_recipe>
+				<stack item="minecraft:iron_nugget"/><space /><stack item="minecraft:iron_nugget"/>
+				<space /><stack item="minecraft:iron_ingot"/><space />
+				<stack item="minecraft:iron_nugget"/><space /><stack item="minecraft:iron_nugget"/>
+				<stack item="convenientadditions:ironwrench"/>
+			</big_recipe>
+			<p>Right-click a block to rotate it. Sneak and right-click a machine to dismantle. Some blocks like the <link ref="machines:setprovider">Set Provider</link> and the <link ref="misc:seedbox">Seed Box</link> can be configured with this item.</p>
+		</page>
+		<page id="adventurerspickaxe">
+			<title>Adventurer's Pickaxe</title>
+			<smaller_recipe>
+				<stack item="minecraft:wooden_pickaxe"/><stack item="minecraft:wheat_seeds"/>
+				<space /><space />
+				<stack item="convenientadditions:adventurerspickaxe"/>
+			</smaller_recipe>
+			<p>This pickaxe improves as you use it. Some upgrades are applied at specific levels. One random upgrade is applied to the pickaxe at every level up. These can be influenced by the types of blocks you mine.</p>
+		</page>
+		<page>
+			<title>Level-Specific Upgrades:</title>
+			<p>5 - Mining Level up</p>
+			<p>10 - Magnetic</p>
+			<p>15 - Mining Level up</p>
+			<p>20 - Luck: 1</p>
+			<p>25 - Mining Level up</p>
+			<p>30 - Soulbound</p>
+			<p>35 - Luck: 2</p>
+			<p>45 - Luck: 3</p>
+			<p>55 - Luck: 4</p>
+		</page>
+		<page>
+			<title>Random Upgrades - Block Type</title>
+			<p>Mining Speed - Any</p>
+			<p>Soft Bonus Speed - Stone</p>
+			<p>Digging Speed - Shovel Blocks</p>
+			<p>Ore Vein Mining Size - Ores</p>
+			<p></p>
+			<p>Durability increases at each level up.</p>
+			<p>Craft the pickaxe with the item specified in the tooltip to repair it.</p>
+		</page>
+		<page id="mcds">
+			<title>Mob Containment Devices</title>
+			<big_recipe>
+				<stack item="minecraft:string"/><stack item="minecraft:slime_ball"/><stack item="minecraft:string"/>
+				<stack item="minecraft:slime_ball"/><stack item="convenientadditions:dislocationcore"/><stack item="minecraft:slime_ball"/>
+				<stack item="minecraft:string"/><stack item="minecraft:slime_ball"/><stack item="minecraft:string"/>
+				<stack item="convenientadditions:mobcatcher.regular"/>
+			</big_recipe>
+			<p>MCDs can be used to capture and transport mobs. Throw them at a valid mob to capture it with a certain chance depending on the MCD's strength.</p>
+		</page>
+		<page>
+			<p>Not all MCDs can capture hostile mobs though. The MCD will be destroyed if capturing fails. If an MCD contains a mob you can right-click at a block to release the mob.</p>
+			<p>MCDs are needed to craft <link ref="crafting_materials:soulgem">Soul Gems</link>.</p>
+			<p>Any similarity to Nintendo games are really actually absolutely purely incidental.</p>
+		</page>
+		<page>
+			<big_recipe>
+				<stack item="minecraft:prismarine_shard"/><stack item="minecraft:iron_ingot"/><stack item="minecraft:prismarine_shard"/>
+				<stack item="minecraft:iron_ingot"/><stack item="convenientadditions:dislocationcore"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:prismarine_shard"/><stack item="minecraft:iron_ingot"/><stack item="minecraft:prismarine_shard"/>
+				<stack item="convenientadditions:mobcatcher.super"/>
+			</big_recipe>
+			<big_recipe>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:shulker_shell"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:iron_bars"/><stack item="convenientadditions:dislocationcore"/><stack item="minecraft:iron_bars"/>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:shulker_shell"/><stack item="minecraft:iron_ingot"/>
+				<stack item="convenientadditions:mobcatcher.hyper"/>
+			</big_recipe>
+			<p>Mega MCDs can not be crafted but they can appear as dungeon loot.</p>
+		</page>
+	</chapter>
+	<chapter id="consumables">
+		<page id="index">
+			<title>Consumables</title>
+			<link ref="consumables:fertilizer">Fertilizer</link>
+			<link ref="consumables:bandage">Bandage</link>
+			<link ref="consumables:antidote">Antidote</link>
+			<link ref="consumables:compost">Compost</link>
+			<link ref="consumables:cheese">Cheese</link>
+			<link ref="consumables:cheesesandwich">Cheese Sandwich</link>
+			<link ref="consumables:potionlumbering">Potion of Lumbering</link>
+		</page>
+		<page id="fertilizer">
+			<title>Fertilizer</title>
+			<centered_stack>
+				<stack item="convenientadditions:fertilizer"/>
+			</centered_stack>
+			<p>Get it as an uncommon byproduct of the <link ref="misc:composter">Composter</link>. It's Bone Meal in better.</p>
+		</page>
+		<page id="bandage">
+			<title>Bandage</title>
+			<big_recipe>
+				<stack item="minecraft:string"/><stack item="minecraft:string"/><stack item="minecraft:string"/>
+				<stack item="minecraft:string"/><stack item="minecraft:string"/><stack item="minecraft:string"/>
+				<stack item="convenientadditions:sapbottle" meta="2"/><space /><space />
+				<stack item="convenientadditions:bandage"/>
+			</big_recipe>
+			<p>It takes a long time to apply the Bandage. When it is applied it has a strong healing effect.</p>
+		</page>
+		<page id="antidote">
+			<title>Antidote</title>
+			<smaller_recipe>
+				<stack item="minecraft:potion" tag='{Potion:"minecraft:water"}'/><stack item="convenientadditions:sapbottle" meta="2"/>
+				<stack item="minecraft:red_mushroom"/><stack item="minecraft:beetroot"/>
+				<stack item="convenientadditions:antidote"/>
+			</smaller_recipe>
+			<p>Drinking it removes Poison, Withering, Hunger and Nausea.</p>
+		</page>
+		<page id="compost">
+			<title>Compost</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:compost"/><stack item="convenientadditions:compost"/>
+				<stack item="convenientadditions:compost"/><stack item="convenientadditions:compost"/>
+				<stack item="convenientadditions:compostsoil"/>
+			</smaller_recipe>
+			<p>Compost is the main product of the <link ref="misc:composter">Composter</link>. It can be applied to Dirt, Grass or Farmland to yield Compost Soil. Compost Soil makes plants on top of it grow faster.</p>
+		</page>
+		<page>
+			<p>While Compost Soil slowly degrades over time it makes plants grow significantly faster even on higher degradation levels. Also it does not need a water source to be effective.</p>
+			<centered_stack>
+				<stack item="convenientadditions:compost" meta="1"/>
+			</centered_stack>
+			<p>Compost with spores has a small chance to yield Mycelium it is applied on grass.</p>
+		</page>
+		<page>
+			<p>You can also reapply Compost on degraded Compost Soil to reset the degree of degradation.</p>
+			<p>Compost Soil will turn back into Dirt if it degrades too much.</p>
+			<p></p>
+			<smaller_recipe>
+				<stack item="minecraft:dirt"/><stack item="convenientadditions:compost"/>
+				<space /><space />
+				<stack item="convenientadditions:compostsoil"/>
+			</smaller_recipe>
+		</page>
+		<page id="cheese">
+			<title>Cheese</title>
+			<furnace_recipe>
+				<stack item="minecraft:milk_bucket"/>
+				<stack item="convenientadditions:cheesebucket"/>
+			</furnace_recipe>
+			<smaller_recipe>
+				<stack item="convenientadditions:cheesebucket"/><space />
+				<space /><space />
+				<stack item="convenientadditions:cheese" count="2"/>
+			</smaller_recipe>
+			<p>It's a tasty food. In fact it's so tasty you can even eat it with a full hunger bar. However plain cheese is not that good of a food.</p>
+		</page>
+		<page id="cheesesandwich">
+			<title>Cheese Sandwich</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:cheese"/><stack item="minecraft:bread"/>
+				<space /><space />
+				<stack item="convenientadditions:cheesesandwich" count="2"/>
+			</smaller_recipe>
+			<p>It's better and tastier than just plain bread.</p>
+		</page>
+		<page id="potionlumbering">
+			<title>Potion of Lumbering</title>
+			<smaller_recipe>
+				<stack item="minecraft:potion" tag='{Potion:"minecraft:water"}'/><stack item="convenientadditions:sapbottle" meta="2"/>
+				<stack item="convenientadditions:cheese"/><stack item="minecraft:potato"/>
+				<stack item="convenientadditions:potionlumbering"/>
+			</smaller_recipe>
+			<p>Drinking it grants a buff that allows breaking wood logs more quickly.</p>
+		</page>
+	</chapter>
+	<chapter id="misc">
+		<page id="index">
+			<title>Miscellaneous</title>
+			<link ref="misc:composter">Composter</link>
+			<link ref="misc:treetap">Tree Tap</link>
+			<link ref="misc:treetap">Sap Bottle</link>
+			<link ref="misc:inventoryproxies">Inventory Proxies</link>
+			<link ref="misc:workstation">Work Station</link>
+			<link ref="misc:semisolidblock">Semi-Solid Block</link>
+			<link ref="misc:platform">Platform</link>
+			<link ref="misc:launchingarrows">Launching Arrows</link>
+			<link ref="misc:seedbox">Seed Box</link>
+			<link ref="misc:enderproofblocks">Ender-Proof Blocks</link>
+			<link ref="misc:displaycase">Display Case</link>
+			<link ref="misc:guidebook">The Convenient Guide</link>
+		</page>
+		<page>
+			<title>Powder Keg</title>
+			<big_recipe>
+				<stack item="minecraft:planks"/><stack item="minecraft:wooden_slab"/><stack item="minecraft:planks"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:gunpowder"/><stack item="minecraft:planks"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:wooden_slab"/><stack item="minecraft:planks"/>
+				<stack item="convenientadditions:powderkeg"/>
+			</big_recipe>
+			<p>Can be filled with gunpowder by right-clicking. It explodes if fire or a redstone signal is applied. The stength of the explosion depends on the amount of gunpowder contained.</p>
+		</page>
+		<page id="composter">
+			<title>Composter</title>
+			<big_recipe>
+				<stack item="minecraft:wooden_slab"/><space /><stack item="minecraft:wooden_slab"/>
+				<stack item="minecraft:wooden_slab"/><space /><stack item="minecraft:wooden_slab"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:planks"/><stack item="minecraft:planks"/>
+				<stack item="convenientadditions:composter"/>
+			</big_recipe>
+			<p>Throw items into the Composter to make it process them. It takes a while to process them though.</p>
+		</page>
+		<page>
+			<p>It can process most items that are organic.</p>
+			<p>Don't overflow it or it starts to smell horribly.</p>
+			<p></p>
+			<p>It can produce the following items:</p>
+			<link ref="consumables:compost">Compost</link>
+			<link ref="consumables:fertilizer">Fertilizer</link>
+			<link ref="crafting_materials:dirtchunk">Dirt Chunk</link>
+		</page>
+		<page id="treetap">
+			<title>Tree Tap</title>
+			<smaller_recipe>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:slime_ball"/>
+				<stack item="minecraft:stick"/><space />
+				<stack item="convenientadditions:treetap"/>
+			</smaller_recipe>
+			<smaller_recipe>
+				<stack item="minecraft:glass_bottle"/><stack item="minecraft:dye" meta="2"/>
+				<space /><space />
+				<stack item="convenientadditions:sapbottle"/>
+			</smaller_recipe>
+			<p>Plug it into a tree's logs and attatch a Sap Bottle to harvest it's sap.</p>
+		</page>
+		<page>
+			<centered_stack>
+				<stack item="convenientadditions:sapbottle" meta="2"/>
+			</centered_stack>
+			<p>Sap can be used as a sugar suplement in crafting recipes.</p>
+			<p></p>
+			<p>It's also used for the following:</p>
+			<link ref="consumables:antidote">Antidote</link>
+			<link ref="consumables:bandage">Bandage</link>
+			<link ref="consumables:potionlumbering">Potion of Lumbering</link>
+		</page>
+		<page id="inventoryproxies">
+			<title>Inventory Proxies</title>
+			<big_recipe>
+				<stack item="minecraft:stick"/><stack item="minecraft:hopper"/><stack item="minecraft:stick"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:chest"/><stack item="minecraft:planks"/>
+				<stack item="minecraft:stick"/><stack item="minecraft:hopper"/><stack item="minecraft:stick"/>
+				<stack item="convenientadditions:inventoryproxy" count="4"/>
+			</big_recipe>
+			<p>When interacting with this blocks inventory you instead access the inventory of the block that this block is pointing at.</p>
+		</page>
+		<page>
+			<smaller_recipe>
+				<stack item="convenientadditions:inventoryproxy"/><space />
+				<space /><space />
+				<stack item="convenientadditions:inventoryproxysided"/>
+			</smaller_recipe>
+			<p>The Side-Aware Proxy respects the side you access the proxy from and also accesses the accessed side of the target. The Regular Proxy just accesses the side that the proxy is pointing at.</p>
+		</page>
+		<page>
+			<smaller_recipe>
+				<stack item="convenientadditions:inventoryproxy"/><stack item="minecraft:comparator"/>
+				<space /><space />
+				<stack item="convenientadditions:inventoryproxyfiltered"/>
+			</smaller_recipe>
+			<p>The filtered proxy does not respect the side-accessed. However you can specify which items are allowed to go through it.</p>
+		</page>
+		<page id="workstation">
+			<title>Work Station</title>
+			<big_recipe>
+				<stack item="minecraft:cobblestone"/><stack item="minecraft:cobblestone"/><stack item="minecraft:cobblestone"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:crafting_table"/><stack item="minecraft:planks"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:chest"/><stack item="minecraft:planks"/>
+				<stack item="convenientadditions:workstation"/>
+			</big_recipe>
+			<p>The Work Station is a crafting table that keeps it's items. It also has 9 extra slots for handy storage.</p>
+		</page>
+		<page id="semisolidblock">
+			<title>Semi-Solid Block</title>
+			<big_recipe>
+				<stack item="minecraft:stained_glass"/><space /><stack item="minecraft:stained_glass"/>
+				<space /><stack item="minecraft:dye" meta="15"/><space />
+				<stack item="minecraft:stained_glass"/><space /><stack item="minecraft:stained_glass"/>
+				<stack item="convenientadditions:semisolidblock" count="4"/>
+			</big_recipe>
+			<p>It's a transparent block that is only solid when you don't sneak. It's available in all 16 colors.</p>
+		</page>
+		<page id="platform">
+			<title>Platform</title>
+			<big_recipe>
+				<stack item="minecraft:stained_glass_pane" meta="1"/><space /><stack item="minecraft:stained_glass_pane" meta="1"/>
+				<space /><stack item="minecraft:dye" meta="14"/><space />
+				<stack item="minecraft:stained_glass_pane" meta="1"/><space /><stack item="minecraft:stained_glass_pane" meta="1"/>
+				<stack item="convenientadditions:platform" count="4" meta="1"/>
+			</big_recipe>
+			<p>Platforms are only solid and visible from above as long as you don't sneak. They are available in all 16 colors.</p>
+		</page>
+		<page>
+			<big_recipe>
+				<stack item="convenientadditions:semisolidblock" meta="0"/><stack item="convenientadditions:semisolidblock" meta="1"/><stack item="convenientadditions:semisolidblock" meta="2"/>
+				<stack item="convenientadditions:semisolidblock" meta="3"/><stack item="minecraft:dye" meta="4"/><space />
+				<space /><space /><space />
+				<stack item="convenientadditions:semisolidblock" meta="11" count="4"/>
+			</big_recipe>
+			<big_recipe>
+				<stack item="convenientadditions:platform" meta="0"/><stack item="convenientadditions:platform" meta="1"/><stack item="convenientadditions:platform" meta="2"/>
+				<stack item="convenientadditions:platform" meta="3"/><stack item="minecraft:dye" meta="4"/><space />
+				<space /><space /><space />
+				<stack item="convenientadditions:platform" meta="11" count="4"/>
+			</big_recipe>
+		</page>
+		<page id="launchingarrows">
+			<title>Launching Arrows</title>
+			<p>Launching Arrows explode on impact with an Entity. When they are stuck in the ground they work as mines that trigger on close proximity. Stacking multiple arrows as a mine can be devestating to anyone who comes too close.</p>
+			<p>There are 3 types of Launching Arrows.</p>
+		</page>
+		<page>
+			<big_recipe>
+				<stack item="convenientadditions:slimekit"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="convenientadditions:launchingarrow" meta="2" count="8"/>
+			</big_recipe>
+			<p>The Slime Arrows' explosions don't deal any entity damage or block damage but knock the player way further than the other types. The can be used for vertical mobility or traps that send the victims flying.</p>
+		</page>
+		<page>
+			<big_recipe>
+				<stack item="convenientadditions:blastkit"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="convenientadditions:launchingarrow" meta="1" count="8"/>
+			</big_recipe>
+			<p>Blast Arrows damage entities but no blocks. They are good for simply attacking enemies.</p>
+		</page>
+		<page>
+			<big_recipe>
+				<stack item="convenientadditions:creeperkit"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
+				<stack item="convenientadditions:launchingarrow" meta="0" count="8"/>
+			</big_recipe>
+			<p>Creeper arrows deal a lot of damage to entities and blocks. They are nice if you want to blow stuff and people up and cause total mayham.</p>
+		</page>
+		<page id="seedbox">
+			<title>Seed Box</title>
+			<big_recipe>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:planks"/><stack item="minecraft:iron_ingot"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:hopper"/><stack item="minecraft:planks"/>
+				<stack item="minecraft:iron_ingot"/><stack item="minecraft:planks"/><stack item="minecraft:iron_ingot"/>
+				<stack item="convenientadditions:seedbox"/>
+			</big_recipe>
+			<p>You can insert items into the Seed Box to have them drop down from one of the output sides with special properties depending on the item.</p>
+		</page>
+		<page>
+			<p>The items will drop straight down without any randomness involved. The output sides can be configured using an iron wrench. The items will drop from a randomly picked unobstructed output side. This block doesn't have an inventory so inserted items are dropped instantaneously.</p>
+		</page>
+		<page>
+			<p>Seeds and plants dropped from this block will plant themselves on a valid surface.</p>
+			<p>Bone Meal, Fertilizer and Compost will automatically apply themselves if possible.</p>
+			<p>Animal feeding items will automatically feed themselves to close animals if possible.</p>
+		</page>
+		<page id="enderproofblocks">
+			<title>Ender-Proof Blocks</title>
+			<big_recipe>
+				<stack item="minecraft:obsidian"/><stack item="minecraft:iron_bars"/><stack item="minecraft:obsidian"/>
+				<stack item="minecraft:iron_bars"/><stack item="minecraft:water_bucket"/><stack item="minecraft:iron_bars"/>
+				<stack item="minecraft:obsidian"/><stack item="minecraft:iron_bars"/><stack item="minecraft:obsidian"/>
+				<stack item="convenientadditions:enderproofblock" count="6"/>
+			</big_recipe>
+			<big_recipe>
+				<stack item="minecraft:glass"/><stack item="minecraft:iron_bars"/><stack item="minecraft:glass"/>
+				<stack item="minecraft:iron_bars"/><stack item="minecraft:water_bucket"/><stack item="minecraft:iron_bars"/>
+				<stack item="minecraft:glass"/><stack item="minecraft:iron_bars"/><stack item="minecraft:glass"/>
+				<stack item="convenientadditions:enderproofglass" count="6"/>
+			</big_recipe>
+			<p>Prevents ender teleportation through it.</p>
+		</page>
+		<page id="displaycase">
+			<title>Display Case</title>
+			<big_recipe>
+				<stack item="minecraft:glass_pane"/><stack item="minecraft:glass_pane"/><stack item="minecraft:glass_pane"/>
+				<stack item="minecraft:glass_pane"/><space /><stack item="minecraft:glass_pane"/>
+				<stack item="minecraft:wooden_slab"/><stack item="minecraft:wooden_slab"/><stack item="minecraft:wooden_slab"/>
+				<stack item="convenientadditions:displaycase"/>
+			</big_recipe>
+			<p>A fancy way to display your items. Screw item frames!</p>
+		</page>
+		<page id="guidebook">
+			<title>The Convenient Guide</title>
+			<smaller_recipe>
+				<stack item="minecraft:book"/><stack item="minecraft:feather"/>
+				<stack item="minecraft:wheat_seeds"/><space />
+				<stack item="gbook:guidebook" tag='{Book:"convenientadditions:xml/book.xml"}'/>
+			</smaller_recipe>
+			<p>It's this handy book. It tries it's best to explain you all the stuff in this mod.</p>
+		</page>
+	</chapter>
+	<chapter id="building_blocks">
+		<page id="index">
+			<title>Building Blocks</title>
+			<link ref="building_blocks:irongolemblock">Iron Golem Block</link>
+			<link ref="building_blocks:cheeseblock">Cheese Block</link>
+		</page>
+		<page id="irongolemblock">
+			<title>Iron Golem Block</title>
+			<big_recipe>
+				<stack item="minecraft:iron_block"/><stack item="minecraft:iron_block"/><stack item="minecraft:iron_block"/>
+				<stack item="minecraft:iron_block"/><stack item="convenientadditions:soulgem" tag='{CONTAINED_ENTITY_ID:"minecraft:villager_golem"}'/><stack item="minecraft:iron_block"/>
+				<stack item="minecraft:iron_block"/><stack item="minecraft:iron_block"/><stack item="minecraft:iron_block"/>
+				<stack item="convenientadditions:irongolemblock" count="32"/>
+			</big_recipe>
+		</page>
+		<page id="cheeseblock">
+			<title>Cheese Block</title>
+			<big_recipe>
+				<stack item="convenientadditions:cheese"/><stack item="convenientadditions:cheese"/><stack item="convenientadditions:cheese"/>
+				<stack item="convenientadditions:cheese"/><stack item="convenientadditions:cheese"/><stack item="convenientadditions:cheese"/>
+				<stack item="convenientadditions:cheese"/><stack item="convenientadditions:cheese"/><stack item="convenientadditions:cheese"/>
+				<stack item="convenientadditions:cheeseblock"/>
+			</big_recipe>
+			<smaller_recipe>
+				<stack item="convenientadditions:cheeseblock"/><space />
+				<space /><space />
+				<stack item="convenientadditions:cheese" count="9"/>
+			</smaller_recipe>
+		</page>
+	</chapter>
+	<chapter id="crafting_materials">
+		<page id="index">
+			<title>Crafting Materials</title>
+			<link ref="crafting_materials:spikes">Spikes</link>
+			<link ref="crafting_materials:spikes">Obsidian Plate</link>
+			<link ref="crafting_materials:dislocationcore">Dislocation Core</link>
+			<link ref="crafting_materials:dislocationcore">Machine Block</link>
+			<link ref="crafting_materials:creeperkit">Creeper Kit</link>
+			<link ref="crafting_materials:creeperkit">Blast Kit</link>
+			<link ref="crafting_materials:slimekit">Slime Kit</link>
+			<link ref="crafting_materials:dirtchunk">Dirt Chunk</link>
+			<link ref="crafting_materials:soulgem">Soul Gem</link>
+		</page>
+		<page id="spikes">
+			<title>Spikes</title>
+			<big_recipe>
+				<stack item="minecraft:stick"/><stack item="minecraft:stick"/><stack item="minecraft:stick"/>
+				<stack item="minecraft:wooden_slab"/><stack item="minecraft:wooden_slab"/><stack item="minecraft:wooden_slab"/>
+				<space /><space /><space />
+				<stack item="convenientadditions:spikes" count="4"/>
+			</big_recipe>
+			<title>Obsidian Plate</title>
+			<smaller_recipe>
+				<stack item="minecraft:obsidian"/><stack item="minecraft:obsidian"/>
+				<stack item="minecraft:stone"/><space />
+				<stack item="convenientadditions:obsidianplate" count="6"/>
+			</smaller_recipe>
+		</page>
+		<page id="dislocationcore">
+			<title>Dislocation Core</title>
+			<big_recipe>
+				<space /><stack item="minecraft:ender_pearl"/><space />
+				<stack item="minecraft:dye" meta="4"/><stack item="minecraft:redstone"/><stack item="minecraft:dye" meta="4"/>
+				<space /><stack item="minecraft:ender_pearl"/><space />
+				<stack item="convenientadditions:dislocationcore" count="3"/>
+			</big_recipe>
+			<title>Machine Block</title>
+			<big_recipe>
+				<stack item="minecraft:stone"/><stack item="minecraft:iron_bars"/><stack item="minecraft:stone"/>
+				<stack item="minecraft:iron_bars"/><stack item="minecraft:piston"/><stack item="minecraft:iron_bars"/>
+				<stack item="minecraft:stone"/><stack item="minecraft:iron_bars"/><stack item="minecraft:stone"/>
+				<stack item="convenientadditions:machineblock" count="4"/>
+			</big_recipe>
+		</page>
+		<page id="creeperkit">
+			<title>Creeper Kit</title>
+			<big_recipe>
+				<stack item="minecraft:tnt"/><stack item="minecraft:gunpowder"/><stack item="minecraft:tnt"/>
+				<stack item="minecraft:gunpowder"/><stack item="minecraft:skull" meta="4"/><stack item="minecraft:gunpowder"/>
+				<stack item="minecraft:tnt"/><stack item="minecraft:gunpowder"/><stack item="minecraft:tnt"/>
+				<stack item="convenientadditions:creeperkit"/>
+			</big_recipe>
+			<title>Blast Kit</title>
+			<big_recipe>
+				<stack item="minecraft:tnt"/><stack item="minecraft:flint"/><stack item="minecraft:tnt"/>
+				<stack item="minecraft:flint"/><stack item="minecraft:gunpowder"/><stack item="minecraft:flint"/>
+				<stack item="minecraft:tnt"/><stack item="minecraft:flint"/><stack item="minecraft:tnt"/>
+				<stack item="convenientadditions:blastkit"/>
+			</big_recipe>
+		</page>
+		<page id="slimekit">
+			<title>Slime Kit</title>
+			<big_recipe>
+				<stack item="minecraft:gunpowder"/><stack item="minecraft:slime_ball"/><stack item="minecraft:gunpowder"/>
+				<stack item="minecraft:slime_ball"/><stack item="minecraft:tnt"/><stack item="minecraft:slime_ball"/>
+				<stack item="minecraft:gunpowder"/><stack item="minecraft:slime_ball"/><stack item="minecraft:gunpowder"/>
+				<stack item="convenientadditions:slimekit"/>
+			</big_recipe>
+		</page>
+		<page id="dirtchunk">
+			<title>Dirt Chunk</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:dirtchunk"/><stack item="convenientadditions:dirtchunk"/>
+				<stack item="convenientadditions:dirtchunk"/><stack item="convenientadditions:dirtchunk"/>
+				<stack item="minecraft:dirt"/>
+			</smaller_recipe>
+			<p>Dirt Chunks are a common byproduct of the <link ref="misc:composter">Composter</link>. They have no other purpose than making dirt with them.</p>
+		</page>
+		<page id="soulgem">
+			<title>Soulgem</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:mobcatcher.regular"/><stack item="minecraft:diamond"/>
+				<space /><space />
+				<stack item="convenientadditions:soulgem"/>
+			</smaller_recipe>
+			<p>Combining a <link ref="tools:mcds">Mob Containment Device</link> with a diamond yields Soul Gem of the contained entity. The actual entity is destroyed in this process and an empty MCD is returned. Soul Gems are used for crafting with mobs.</p>
+		</page>
+	</chapter>
+	<chapter id="topics">
+		<page id="player_transport">
+			<title>Topic: Player Transport</title>
+			<link ref="machines:blastpad">Blast Pad</link>
+			<link ref="machines:jumppad">Jump Pad</link>
+			<link ref="machines:hoverpad">Hover Pad</link>
+			<link ref="misc:launchingarrows">Slime Arrows</link>
+			<link ref="trinkets:index">Trinkets</link>
+		</page>
+		<page id="item_transport">
+			<title>Topic: Item Transport</title>
+			<link ref="machines:itemtransmitter">Item Transmitter</link>
+			<link ref="machines:itemreceiver">Item Receiver</link>
+			<link ref="machines:remoteinventoryproxy">Remote Inventory Proxy</link>
+			<link ref="machines:inventoryproxies">Inventory Proxies</link>
+		</page>
+		<page id="farming">
+			<title>Topic: Farming</title>
+			<link ref="misc:composter">Composter</link>
+			<link ref="consumables:fertilizer">Fertilizer</link>
+			<link ref="consumables:compost">Compost</link>
+		</page>
+	</chapter>
+</book>

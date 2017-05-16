@@ -28,6 +28,8 @@ tile.convenientadditions:enderProofGlass.name=Ender-Proof Glass
 tile.convenientadditions:ironFarm.name=Iron Factory
 tile.convenientadditions:ironGolemBlock.name=Iron Golem Block
 tile.convenientadditions:workStation.name=Work Station
+tile.convenientadditions:autoWorkStation.name=Automatic Work Station
+tile.convenientadditions:cheeseBlock.name=Cheese Block
 # platforms
 tile.convenientadditions:platform.black.name=Black Platform
 tile.convenientadditions:platform.red.name=Red Platform
@@ -87,6 +89,10 @@ item.convenientadditions:adventurersPickaxe.name=Adventurer's Pickaxe
 item.convenientadditions:dislocationCore.name=Dislocation Core
 item.convenientadditions:soulGem.name=Soul Gem
 item.convenientadditions:spikes.name=Spikes
+item.convenientadditions:cheese.name=Cheese
+item.convenientadditions:cheeseBucket.name=Cheese Bucket
+item.convenientadditions:cheeseSandwich.name=Cheese Sandwich
+item.convenientadditions:potionLumbering.name=Potion of Lumbering
 # mcds
 item.convenientadditions:mobCatcher.regular.name=Mob Containment Device
 item.convenientadditions:mobCatcher.super.name=Super MCD
@@ -120,6 +126,12 @@ item.convenientadditions:climbingClaws.name=Climbing Claws
 item.convenientadditions:spikedSole.name=Spiked Soles
 item.convenientadditions:climbingGear.name=Climbing Gear
 item.convenientadditions:minersBracelet.name=Miner's Bracelet
+
+
+
+### POTION NAMES ###
+
+potion.convenientadditions:lumbering.name=Lumbering
 
 
 
@@ -182,6 +194,7 @@ tooltip.convenientadditions:setProvider.info=Makes distributing sets of items ea
 tooltip.convenientadditions:storageMatrix.info=Has a large inventory but no GUI.
 tooltip.convenientadditions:remoteInventoryProxy.info=Mimics the specified block's inventory.
 tooltip.convenientadditions:ironFarm.info=Produces 1 iron ingot per minute.
+tooltip.convenientadditions:autoWorkStation.info=Can automatically craft items.
 # trinkets
 tooltip.convenientadditions:saturationRing.info=Keeps you saturated.
 tooltip.convenientadditions:sunlightRing.info=Portable Light Source
@@ -215,6 +228,7 @@ tooltip.convenientadditions:itemReceiver.additionalInfo=Use channel modules to d
 tooltip.convenientadditions:jumpPad.additionalInfo=Use location modules to define destinations.
 tooltip.convenientadditions:remoteInventoryProxy.additionalInfo=Use a location module to define the target.
 tooltip.convenientadditions:blazingRock.additionalInfo=Only works as fuel while glowing.
+tooltip.convenientadditions:autoWorkStation.additionalInfo=Use a wrench to configure its output faces.
 
 ## Item Categories
 tooltip.convenientadditions:itemCategory=Item Category: %s
@@ -230,6 +244,7 @@ tooltip.convenientadditions:itemCategory.buildingBlock=Building Block
 
 ## Misc
 tooltip.convenientadditions:storageMatrixHoldingInventory=(holding inventory)
+tooltip.convenientadditions:powderKeg.containedGunpowder=Holding %d/64 Gunpowder.
 tooltip.convenientadditions:compostSoil.effectiveness=Effectiveness: %d
 tooltip.convenientadditions:compostSoil.degradation=Degradation: %d
 tooltip.convenientadditions:compost.spores=Contains Spores
@@ -261,10 +276,13 @@ tooltip.convenientadditions:moduleLocationLocation=Location: %d, %d, %d (%d)
 tooltip.convenientadditions:moduleLocationNotSet=(sneak + use on a block to set location)
 tooltip.convenientadditions:moduleColorsPrefix=Colors: %s, %s, %s
 # set provider
-tooltip.convenientadditions:pushOn=Push on %s.
-tooltip.convenientadditions:pushAlways=Push always.
+tooltip.convenientadditions:activeOn=Active on %s.
+tooltip.convenientadditions:activeAlways=Always active.
+tooltip.convenientadditions:activeNever=Never active.
 tooltip.convenientadditions:dontPushIfOutputsNotEmpty=Don't push if output's not empty.
 tooltip.convenientadditions:pushEvenIfOutputsNotEmpty=Push even if output's not empty.
+tooltip.convenientadditions:keepItem=Always keep one item.
+tooltip.convenientadditions:keepItemNot=Use up all items.
 # mcds
 tooltip.convenientadditions:mobCatcherHoldingEntity=Holding: %s
 tooltip.convenientadditions:mobCatcherNotHoldingEntity=(throw at a mob to capture it)

@@ -5,6 +5,7 @@ import convenientadditions.api.util.Helper;
 import convenientadditions.base.block.CABlock;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -52,28 +53,34 @@ public class BlockCompostSoilTilled extends CABlock {
     public void updateTick(World world, BlockPos pos, IBlockState state, Random r) {
         if (!world.isRemote) {
             BlockPos posU = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
-            Block b = world.getBlockState(posU).getBlock();
-            IBlockState newB = world.getBlockState(posU);
+            IBlockState s = world.getBlockState(posU);
+            Block b = s.getBlock();
             int deg = state.getValue(BlockCompostSoil.DEGRADATION);
-            if (b instanceof IPlantable || b instanceof IGrowable) {
-                b.updateTick(world, posU, world.getBlockState(posU), r);
-                int i = deg;
-                if (r.nextInt(23) > i)
+            boolean flag=false;
+            if (b != null && (b instanceof IPlantable || b instanceof IGrowable)) {
+                if(b instanceof IGrowable)
+                    flag=((IGrowable)b).canGrow(world, posU, s, false);
+                b.updateTick(world, posU, world.getBlockState(posU), r); //trigger growth tick
+                int i = deg; //degradation: 0-10
+                if (r.nextInt(24) > i) //if random number(0-23) is bigger than degradation
                     b.updateTick(world, posU, world.getBlockState(posU), r);
                 i++;
-                if (r.nextInt(23) > i)
+                if (r.nextInt(24) > i)
                     b.updateTick(world, posU, world.getBlockState(posU), r);
                 i++;
-                if (r.nextInt(23) > i)
+                if (r.nextInt(24) > i)
+                    b.updateTick(world, posU, world.getBlockState(posU), r);
+                i++;
+                if (r.nextInt(24) > i)
                     b.updateTick(world, posU, world.getBlockState(posU), r);
             }
-            if (r.nextInt(4) == 0) {
+            if (r.nextInt(5+(flag?3:0)) == 0) {
                 if (deg < 10)
                     world.setBlockState(pos, state.withProperty(BlockCompostSoil.DEGRADATION, deg + 1));
                 else
-                    world.setBlockState(pos, Blocks.FARMLAND.getDefaultState());
+                    world.setBlockState(pos, Blocks.FARMLAND.getDefaultState().withProperty(BlockFarmland.MOISTURE,7));
             }
-            if (newB.getMaterial().isSolid())
+            if (s.getMaterial().isSolid())
                 world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState().withProperty(BlockCompostSoil.DEGRADATION, deg), 2);
         }
     }

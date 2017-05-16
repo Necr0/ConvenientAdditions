@@ -1,0 +1,24 @@
+<library>
+
+    <template id="smaller_recipe" height="44">
+        <image src="gbook:things" w="100" h="40" tx="0" ty="64" />
+
+        <element index="0" x="3" y="3" />
+        <element index="1" x="22" y="3" />
+        <element index="2" x="3" y="22" />
+        <element index="3" x="22" y="22" />
+
+        <element index="4" x="60" y="13" />
+    </template>
+
+    <template id="centered_stack" height="24">
+        <element index="0" x="37" y="3" />
+    </template>
+
+    <template id="furnace_recipe" height="28">
+        <image src="convenientadditions:gbook/things" x="10" w="63" h="24" tx="0" ty="0" />
+        <element index="0" x="14" y="4" />
+        <element index="1" x="53" y="4" />
+    </template>
+
+</library>
