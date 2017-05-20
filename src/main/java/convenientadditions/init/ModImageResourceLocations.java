@@ -29,6 +29,7 @@ public class ModImageResourceLocations {
     private static final String ICONS_POTION=ModConstants.Mod.MODID + ":textures/gui/icons_potion.png";
     public static final ImageResourceLocation LUMBERING = new ImageResourceLocation(ICONS_POTION, 0, 0, 18, 18);
     public static final ImageResourceLocation SPELUNKING = new ImageResourceLocation(ICONS_POTION, 18, 0, 18, 18);
-    public static final ImageResourceLocation GREENTHUMB = new ImageResourceLocation(ICONS_POTION, 36, 0, 18, 18);
-    public static final ImageResourceLocation HARVESTLUCK = new ImageResourceLocation(ICONS_POTION, 54, 0, 18, 18);
+    public static final ImageResourceLocation THORNS = new ImageResourceLocation(ICONS_POTION, 36, 0, 18, 18);
+    public static final ImageResourceLocation GREENTHUMB = new ImageResourceLocation(ICONS_POTION, 54, 0, 18, 18);
+    public static final ImageResourceLocation HARVESTLUCK = new ImageResourceLocation(ICONS_POTION, 72, 0, 18, 18);
 }

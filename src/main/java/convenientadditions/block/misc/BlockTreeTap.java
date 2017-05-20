@@ -43,9 +43,19 @@ public class BlockTreeTap extends CABlock {
         this.setDefaultAdditionalInfo(true);
     }
 
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
-        worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer).getOpposite()), 2);
+        if(facing.getAxis()!=Axis.Y)
+            return this.getStateFromMeta(meta).withProperty(FACING, facing);
+        for(EnumFacing f:EnumFacing.Plane.HORIZONTAL.facings()){
+            if(Helper.doesOreDictMatch(worldIn.getBlockState(pos.offset(f)),"logWood",false))
+                return this.getStateFromMeta(meta).withProperty(FACING, f);
+        }
+        for(EnumFacing f:EnumFacing.Plane.HORIZONTAL.facings()){
+            if(worldIn.getBlockState(pos.offset(f)).isSideSolid(worldIn,pos.offset(f),f.getOpposite()))
+                return this.getStateFromMeta(meta).withProperty(FACING, f);
+        }
+        return this.getStateFromMeta(meta).withProperty(FACING, EnumFacing.NORTH);
     }
 
     @Override

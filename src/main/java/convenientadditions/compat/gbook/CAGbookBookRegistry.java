@@ -2,7 +2,7 @@ package convenientadditions.compat.gbook;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigCompat;
 import gigaherz.guidebook.client.BookRegistryEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,7 +29,7 @@ public class CAGbookBookRegistry {
     @Optional.Method(modid="gbook")
     @SubscribeEvent
     public static void onFirstSpawn(EntityJoinWorldEvent event){
-        if(!ModConfig.compat_guideBookOnFirstSpawn)
+        if(!ModConfigCompat.gbook_onFirstSpawn)
             return;
         if(!event.getWorld().isRemote && event.getEntity() instanceof EntityPlayer){
             EntityPlayer p = (EntityPlayer)event.getEntity();

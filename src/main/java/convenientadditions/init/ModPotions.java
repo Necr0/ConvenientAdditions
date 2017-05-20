@@ -1,7 +1,7 @@
 package convenientadditions.init;
 
-import convenientadditions.PotionLumbering;
-import net.minecraftforge.common.MinecraftForge;
+import convenientadditions.potion.PotionLumbering;
+import convenientadditions.potion.PotionThorns;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -10,6 +10,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModPotions {
     public static void init(){
         GameRegistry.register(PotionLumbering.INSTANCE);
-        MinecraftForge.EVENT_BUS.register(PotionLumbering.INSTANCE);
+        GameRegistry.register(PotionThorns.INSTANCE);
     }
 }

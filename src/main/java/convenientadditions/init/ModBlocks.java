@@ -4,8 +4,8 @@ import convenientadditions.ModConstants;
 import convenientadditions.base.block.CABlock;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.base.item.ItemBlockMetadata;
-import convenientadditions.block.compostSoil.BlockCompostSoil;
-import convenientadditions.block.compostSoil.BlockCompostSoilTilled;
+import convenientadditions.block.misc.compostSoil.BlockCompostSoil;
+import convenientadditions.block.misc.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.machine.BlockBlastPad;
 import convenientadditions.block.machine.BlockMachineBlock;
 import convenientadditions.block.machine.autoWorkStation.BlockAutoWorkStation;
@@ -20,6 +20,7 @@ import convenientadditions.block.machine.remoteInventoryProxy.BlockRemoteInvento
 import convenientadditions.block.machine.setProvider.BlockSetProvider;
 import convenientadditions.block.machine.storageMatrix.BlockStorageMatrix;
 import convenientadditions.block.misc.BlockEnderProof;
+import convenientadditions.block.misc.BlockPunjiSticks;
 import convenientadditions.block.misc.BlockTreeTap;
 import convenientadditions.block.misc.composter.BlockComposter;
 import convenientadditions.block.misc.displayCase.BlockDisplayCase;
@@ -30,6 +31,7 @@ import convenientadditions.block.misc.platform.BlockPlatform;
 import convenientadditions.block.misc.platform.BlockSemiSolid;
 import convenientadditions.block.misc.powderkeg.BlockPowderKeg;
 import convenientadditions.block.misc.seedbox.BlockSeedBox;
+import convenientadditions.block.misc.storagecrate.BlockStorageCrate;
 import convenientadditions.block.misc.workStation.BlockWorkStation;
 import convenientadditions.block.technical.BlockPhantomPlatform;
 import convenientadditions.block.technical.BlockTempLight;
@@ -75,10 +77,13 @@ public class ModBlocks {
     public static final BlockIronFarm ironFarm = new BlockIronFarm();
     public static final BlockWorkStation workStation = new BlockWorkStation();
     public static final BlockAutoWorkStation autoWorkStation = new BlockAutoWorkStation();
+    public static final BlockPunjiSticks punjiSticks = new BlockPunjiSticks();
+    public static final BlockStorageCrate storageCrate = new BlockStorageCrate();
     //dummy
     public static final BlockMachineBlock machineBlock = new BlockMachineBlock();
     public static final Block ironGolemBlock = new CABlock(ModConstants.BlockNames.ironGolemBlock, Material.IRON).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.METAL).setHardness(5.0F).setResistance(10.0F);
     public static final Block cheeseBlock = new CABlock(ModConstants.BlockNames.cheeseBlock, Material.CLAY).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.SLIME).setHardness(0.5F);
+    public static final Block woodenTile = new CABlock(ModConstants.BlockNames.woodenTile, Material.WOOD).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
     public static void init() {
         registerBlock(composterBlock);
@@ -113,6 +118,9 @@ public class ModBlocks {
         registerBlock(workStation);
         registerBlock(autoWorkStation);
         registerBlock(cheeseBlock);
+        registerBlock(punjiSticks);
+        registerBlock(storageCrate);
+        registerBlock(woodenTile);
     }
 
     @SideOnly(Side.CLIENT)
@@ -148,6 +156,9 @@ public class ModBlocks {
         ModItems.registerItemBlockModel(workStation);
         ModItems.registerItemBlockModel(autoWorkStation);
         ModItems.registerItemBlockModel(cheeseBlock);
+        ModItems.registerItemBlockModel(punjiSticks);
+        ModItems.registerItemBlockModel(storageCrate);
+        ModItems.registerItemBlockModel(woodenTile);
     }
 
     public static void registerBlock(Block block) {

@@ -4,8 +4,8 @@ import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.EnumItemCategory;
+import convenientadditions.config.ModConfigMisc;
 import convenientadditions.init.ModBlocks;
-import convenientadditions.init.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -40,7 +40,7 @@ public class ItemCompost extends CAItem {
             else if (b == Blocks.FARMLAND)
                 world.setBlockState(pos, ModBlocks.compostSoilTilledBlock.getDefaultState());
             else if (b == Blocks.GRASS) {
-                if (player.getHeldItem(hand).getItemDamage() == 1 && world.rand.nextFloat() < ModConfig.composter_sporesMyceliumChance)
+                if (player.getHeldItem(hand).getItemDamage() == 1 && world.rand.nextFloat() < ModConfigMisc.composter_sporesMyceliumChance)
                     world.setBlockState(pos, Blocks.MYCELIUM.getDefaultState());
                 else
                     world.setBlockState(pos, ModBlocks.compostSoilBlock.getDefaultState(), 3);

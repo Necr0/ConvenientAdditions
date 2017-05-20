@@ -6,9 +6,10 @@ public class ModConstants {
         public static final String MODID = "convenientadditions";
         public static final String BUILD = "GRADLE:BUILD";
         public static final String VERSION = "GRADLE:VERSION-" + BUILD;
-        public static final String DEPENDENCIES = "required-after:forge@[13.20.0.2282 ,);after:baubles;after:jei;after:gbook";
+        public static final String DEPENDENCIES = "required-after:forge@[13.20.0.2282 ,);after:baubles;after:jei;after:gbook;after:theoneprobe";
         public static final String commonProxyClassPath = "convenientadditions.proxy.CommonProxy";
         public static final String clientProxyClassPath = "convenientadditions.proxy.ClientProxy";
+        public static final String guiFactoryClassPath = "convenientadditions.config.CAGuiFactory";
     }
 
     public static class ItemNames {
@@ -32,6 +33,9 @@ public class ModConstants {
         public static final String cheeseBucket = "cheeseBucket";
         public static final String cheeseSandwich = "cheeseSandwich";
         public static final String potionLumbering = "potionLumbering";
+        public static final String potionThorns = "potionThorns";
+        public static final String backpack = "backpack";
+        public static final String portableEnderRift = "portableEnderRift";
         //
         public static final String mobCatcher = "mobCatcher";
         public static final String mobCatcherRegular = "regular";
@@ -46,6 +50,7 @@ public class ModConstants {
         public static final String modulePlayer = "modulePlayer";
         public static final String moduleColor = "moduleColor";
         public static final String moduleLocation = "moduleLocation";
+        public static final String moduleText = "moduleText";
         //trinkets
         public static final String sunlightRing = "sunlightRing";
         public static final String saturationRing = "saturationRing";
@@ -103,6 +108,9 @@ public class ModConstants {
         public static final String workStation = "workStation";
         public static final String autoWorkStation = "autoWorkStation";
         public static final String cheeseBlock = "cheeseBlock";
+        public static final String punjiSticks = "punjiSticks";
+        public static final String storageCrate = "storageCrate";
+        public static final String woodenTile = "woodenTile";
         //
         public static final String tempLight = "tempLight";
         public static final String phantomPlatform = "phantomPlatform";
@@ -110,6 +118,7 @@ public class ModConstants {
 
     public static class PotionNames {
         public static final String lumbering="lumbering";
+        public static final String thorns="thorns";
     }
 
     public static class Entities {
@@ -129,6 +138,10 @@ public class ModConstants {
         public static class Waila {
             public static final String registerProviderFQCN = "convenientadditions.compat.waila.ConvAddWailaCallback.registerProvider";
         }
+
+        public static class TheOneProbe {
+            public static final String registerProviderFQCN = "convenientadditions.compat.oneprobe.ConvAddOneProbePlugin$GetTheOneProbe";
+        }
     }
 
     public static class Items {
@@ -138,5 +151,9 @@ public class ModConstants {
             public static final String[] unlocalizedMiningRepairMaterialNames = new String[]{ModConstants.Mod.MODID + ":repairMaterialWood", ModConstants.Mod.MODID + ":repairMaterialStone", ModConstants.Mod.MODID + ":repairMaterialIron", ModConstants.Mod.MODID + ":repairMaterialDiamond", ModConstants.Mod.MODID + ":repairMaterialCobalt"};
             public static final int[] miningLevelOreExperience = new int[]{3, 10, 18, 27, 37};
         }
+    }
+
+    public static class Dimensions {
+        public static final String plane_name="plane";
     }
 }

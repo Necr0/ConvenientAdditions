@@ -8,10 +8,7 @@ public class CommonProxy {
         return Side.SERVER;
     }
 
-    public void initWaila(){}
-
     public void registerRenderers() {}
-
 
     public World getClientWorld() {
         return null;

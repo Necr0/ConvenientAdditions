@@ -102,12 +102,4 @@ public class ContainerAutoWorkStation extends CAContainer {
         this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
 
-    /**
-     * Called when the container is closed.
-     */
-    public void onContainerClosed(EntityPlayer playerIn)
-    {
-        super.onContainerClosed(playerIn);
-    }
-
 }

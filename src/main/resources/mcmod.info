@@ -2,14 +2,14 @@
 {
   "modid": "convenientadditions",
   "name": "Convenient Additions",
-  "description": "Convenient Additions is a utility mod that aims to improve the vanilla Minecraft experience by adding a multitude of quality of life items and blocks.",
+  "description": "Convenient Additions is a utility mod that aims to improve the vanilla Minecraft experience by adding a multitude of quality-of-life items and blocks.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://mods.curse.com/project/252289-convenient-additions",
-  "updateUrl": "",
+  "updateUrl": "https://gist.githubusercontent.com/Necr0/3d9b396fb7f2ef32062f775572414f11/raw/ca_update.json",
   "authorList": ["Necro"],
   "credits": "",
-  "logoFile": "",
+  "logoFile": "assets/convenientadditions/logo.png",
   "screenshots": [],
   "dependencies": []
 }

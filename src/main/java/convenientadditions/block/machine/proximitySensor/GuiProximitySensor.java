@@ -16,7 +16,7 @@ import java.io.IOException;
  * Created by Necro on 3/12/2017.
  */
 public class GuiProximitySensor extends CAGuiScreen {
-    private static final ImageResourceLocation sensorGuiTextures = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/proximitysensor.png",0,0,168,34);
+    private static final ImageResourceLocation sensorGuiTextures = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/textmodule.png",0,0,168,34);
 
     public TileEntityProximitySensor te;
     public Slider range;

@@ -27,8 +27,13 @@ version = "${config.version}-build${config.build_number}"
 group= "necro.convenientadditions"
 
 repositories {
+    maven {
+        name = "tterrag maven"
+        url = "http://maven.tterrag.com/"
+    }
     maven { url = "http://dvs1.progwml6.com/files/maven" }
     maven { url = "http://mobiusstrip.eu/maven" }
+    maven { url = "http://tehnut.info/maven" }
     maven { url = "http://dogforce-games.com/maven" }
 }
 
@@ -38,9 +43,9 @@ dependencies {
     //)
     compile "mezz.jei:jei_${config.jei_version}:api"
     runtime "mezz.jei:jei_${config.jei_version}"
-    deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}:dev"
-    runtime "mcp.mobius.waila:Waila:${config.waila_version}"
+    deobfCompile "mcp.mobius.waila:Hwyla:${config.waila_version}"
     deobfCompile "gigaherz.guidebook:Guidebook-${config.guidebook_version}"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe:${config.oneprobe_version}"
 }
 
 minecraft {

@@ -1,6 +1,7 @@
 package convenientadditions.compat.waila.provider;
 
 import convenientadditions.api.util.Helper;
+import convenientadditions.block.misc.compostSoil.BlockCompostSoil;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -26,8 +27,8 @@ public class ProviderCompostSoil implements IWailaDataProvider {
 
     @Override
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        currenttip.add(Helper.localize("tooltip.convenientadditions:compostDegraded" + accessor.getMetadata()));
-        return  currenttip;
+        currenttip.add(Helper.localize("waila.convenientadditions:compostSoil.degradation", accessor.getBlockState().getValue(BlockCompostSoil.DEGRADATION)));
+        return currenttip;
     }
 
     @Override

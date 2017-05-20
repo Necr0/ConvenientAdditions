@@ -108,7 +108,7 @@ public class BlockPowderKeg extends CABlockContainer {
             TileEntityPowderKeg k = (TileEntityPowderKeg) w.getTileEntity(pos);
             int amount=k.inventory.getStackInSlot(0).getCount();
             if (amount > 0 && !w.isRemote) {
-                float strenght = (float) amount / 1.45F;
+                float strenght = (float) amount / 1.215F;
                 k.inventory.extractItem(0,64,false);
                 w.setBlockToAir(pos);
                 w.createExplosion(null, (double) pos.getX() + .5, (double) pos.getY() + .5, (double) pos.getZ() + .5, strenght, true);

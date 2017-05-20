@@ -1,4 +1,4 @@
-package convenientadditions.block.compostSoil;
+package convenientadditions.block.misc.compostSoil;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;

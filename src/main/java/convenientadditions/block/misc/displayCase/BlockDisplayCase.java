@@ -80,9 +80,9 @@ public class BlockDisplayCase extends CABlockContainer {
         return new TileEntityDisplayCase();
     }
 
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
-        worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer)), 2);
+        return this.getStateFromMeta(meta).withProperty(FACING, facing);
     }
 
     @Override

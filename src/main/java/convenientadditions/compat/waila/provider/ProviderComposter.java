@@ -4,7 +4,7 @@ package convenientadditions.compat.waila.provider;
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
 import convenientadditions.block.misc.composter.TileEntityComposter;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -32,7 +32,7 @@ public class ProviderComposter implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity te=accessor.getTileEntity();
         if(te!=null&&te instanceof TileEntityComposter){
-            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":compostingMass",((TileEntityComposter)te).content, ModConfig.composter_capacity, ((TileEntityComposter)te).getContentCapacityPercentage()));
+            currenttip.add(Helper.localize("waila." + ModConstants.Mod.MODID + ":compostingMass",((TileEntityComposter)te).content, ModConfigMisc.composter_capacity, ((TileEntityComposter)te).getContentCapacityPercentage()));
         }
         return  currenttip;
     }

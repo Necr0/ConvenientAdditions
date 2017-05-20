@@ -2,7 +2,7 @@ package convenientadditions.block.misc.composter.render;
 
 import convenientadditions.ModConstants;
 import convenientadditions.block.misc.composter.TileEntityComposter;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -15,7 +15,7 @@ public class RenderComposter extends TileEntitySpecialRenderer<TileEntityCompost
     public void renderTileEntityAt(TileEntityComposter t, double d0, double d1, double d2, float f, int dest) {
         if (t.content > 0) {
             GL11.glPushMatrix();
-            float d = (float) t.content / ModConfig.composter_capacity;
+            float d = (float) t.content / ModConfigMisc.composter_capacity;
             if (d > 1)
                 d = 1.02F;
             d *= .88F;

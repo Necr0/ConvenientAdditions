@@ -18,6 +18,7 @@ import convenientadditions.block.machine.proximitySensor.TileEntityProximitySens
 import convenientadditions.block.misc.seedbox.TileEntitySeedBox;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import convenientadditions.block.machine.storageMatrix.TileEntityStorageMatrix;
+import convenientadditions.block.misc.storagecrate.TileEntityStorageCrate;
 import convenientadditions.block.misc.workStation.TileEntityWorkStation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -41,5 +42,6 @@ public class ModTileEntities {
         GameRegistry.registerTileEntity(TileEntityIronFarm.class, ModConstants.BlockNames.ironFarm);
         GameRegistry.registerTileEntity(TileEntityWorkStation.class, ModConstants.BlockNames.workStation);
         GameRegistry.registerTileEntity(TileEntityAutoWorkStation.class, ModConstants.BlockNames.autoWorkStation);
+        GameRegistry.registerTileEntity(TileEntityStorageCrate.class, ModConstants.BlockNames.storageCrate);
     }
 }

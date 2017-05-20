@@ -1,7 +1,7 @@
 package convenientadditions.entity.behaviour;
 
 import convenientadditions.api.entity.specialitem.IEntitySpecialItemBehaviour;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.util.DamageSource;
@@ -9,6 +9,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BehaviourAutoFeed implements IEntitySpecialItemBehaviour {
@@ -31,7 +32,7 @@ public class BehaviourAutoFeed implements IEntitySpecialItemBehaviour {
         List<EntityAnimal> l=w.getEntitiesWithinAABB(EntityAnimal.class,new AxisAlignedBB(item.posX-1,item.posY-1,item.posZ-1,item.posX+1,item.posY+1,item.posZ+1));
         if(!item.getEntityItem().isEmpty()){
             for (EntityAnimal a:l) {
-                if(ModConfig.seedBox_autoFeedBlacklist.contains(EntityRegistry.getEntry(a.getClass()).getRegistryName().toString()))
+                if(Arrays.asList(ModConfigMisc.seedBox_autoFeedBlacklist).contains(EntityRegistry.getEntry(a.getClass()).getRegistryName().toString()))
                     continue;
 
                 if(a.getGrowingAge() == 0 && !a.isInLove() && a.isBreedingItem(item.getEntityItem()) ){

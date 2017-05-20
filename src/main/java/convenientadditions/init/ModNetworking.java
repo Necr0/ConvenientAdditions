@@ -11,6 +11,7 @@ import convenientadditions.api.network.PacketParticle;
 import convenientadditions.block.misc.inventoryProxy.filtered.MessageInventoryProxyFiltered;
 import convenientadditions.block.machine.setProvider.MessageSetProvider;
 import convenientadditions.item.module.color.MessageColorChannelModule;
+import convenientadditions.item.module.text.MessageTextChannelModule;
 import convenientadditions.item.trinket.doubleJump.PacketDoubleJump;
 import convenientadditions.item.relic.transmutationTome.MessageTransmutationTome;
 import net.minecraft.util.EnumParticleTypes;
@@ -35,6 +36,7 @@ public class ModNetworking {
         INSTANCE.registerMessage(PacketDoubleJump.class, PacketDoubleJump.class, i++, Side.SERVER);
         INSTANCE.registerMessage(MessageProximitySensor.class, MessageProximitySensor.class, i++, Side.SERVER);
         INSTANCE.registerMessage(MessageAutoWorkStation.class, MessageAutoWorkStation.class, i++, Side.SERVER);
+        INSTANCE.registerMessage(MessageTextChannelModule.class, MessageTextChannelModule.class, i++, Side.SERVER);
     }
 
     public static void spawnParticle(World w, EnumParticleTypes t, double x, double y, double z, double xs, double ys, double zs){

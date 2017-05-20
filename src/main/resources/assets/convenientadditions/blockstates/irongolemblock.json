@@ -3,7 +3,7 @@
     "defaults": {
         "model": "cube_all",
 		"textures": {
-			"all": "convenientadditions:blocks/irongolemblock"
+			"all": "convenientadditions:blocks/building_blocks/irongolemblock"
 		}
     },
 	"variants": {

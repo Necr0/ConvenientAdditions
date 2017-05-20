@@ -69,7 +69,7 @@ public class ContainerWorkStation extends CAContainer {
                     return ItemStack.EMPTY;
             }else if(fromSlot<19){
                 // From TE Inventory to Player Inventory
-                if (!this.mergeItemStack(current, 19, 5, true))
+                if (!this.mergeItemStack(current, 19, 55, true))
                     return ItemStack.EMPTY;
             } else {
                 // From Player Inventory to TE Inventory

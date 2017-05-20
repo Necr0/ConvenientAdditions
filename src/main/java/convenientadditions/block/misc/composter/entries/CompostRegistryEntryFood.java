@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.composter.entries;
 
 import convenientadditions.api.registry.compost.ICompostRegistryEntry;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
@@ -14,6 +14,6 @@ public class CompostRegistryEntryFood implements ICompostRegistryEntry {
 
     @Override
     public int getCompostingMass(ItemStack stack) {
-        return ((ItemFood) stack.getItem()).getHealAmount(stack) * ModConfig.composter_foodMultiplier;
+        return ((ItemFood) stack.getItem()).getHealAmount(stack) * ModConfigMisc.composter_foodMultiplier;
     }
 }

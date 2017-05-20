@@ -3,7 +3,7 @@ package convenientadditions.block.misc.inventoryProxy.filtered;
 import convenientadditions.api.block.tileentity.IItemProxy;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import convenientadditions.block.misc.inventoryProxy.TileEntityInventoryProxy;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -13,6 +13,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TileEntityInventoryProxyFiltered extends TileEntityInventoryProxy {
 
@@ -30,7 +31,7 @@ public class TileEntityInventoryProxyFiltered extends TileEntityInventoryProxy {
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
+        if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
             return null;
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {

@@ -11,22 +11,23 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = ModConstants.Mod.MODID, version = ModConstants.Mod.VERSION, dependencies = ModConstants.Mod.DEPENDENCIES)
+@Mod(modid = ModConstants.Mod.MODID, version = ModConstants.Mod.VERSION, dependencies = ModConstants.Mod.DEPENDENCIES, guiFactory = ModConstants.Mod.guiFactoryClassPath)
 public class ConvenientAdditions {
     @Instance(ModConstants.Mod.MODID)
     public static ConvenientAdditions INSTANCE;
     @SidedProxy(modId = ModConstants.Mod.MODID, serverSide = ModConstants.Mod.commonProxyClassPath, clientSide = ModConstants.Mod.clientProxyClassPath)
     public static CommonProxy PROXY;
-    public static CreativeTabs CREATIVETAB = new CreativeTabs(ModConstants.Mod.MODID) {
+    public static final CreativeTabs CREATIVETAB = new CreativeTabs(ModConstants.Mod.MODID) {
         @Override
         public ItemStack getTabIconItem() {
             return new ItemStack(ModBlocks.playerInterfaceBlock);
         }
     };
+    public static String configFile;
 
     @EventHandler
-    public void preinit(FMLPreInitializationEvent event) {
-        ModConfig.init();
+    public void preinit(FMLPreInitializationEvent event){
+        configFile=event.getSuggestedConfigurationFile().getAbsolutePath();
         ModBlocks.init();
         ModTileEntities.init();
         ModItems.init();
@@ -39,11 +40,11 @@ public class ConvenientAdditions {
         ModEventHandlers.init();
         ModCAAPI.init();
         ModPotions.init();
+        ModCompat.init();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         ModEntities.init();
-        PROXY.initWaila();
     }
 }

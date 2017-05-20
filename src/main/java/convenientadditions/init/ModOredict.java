@@ -1,5 +1,6 @@
 package convenientadditions.init;
 
+import convenientadditions.config.ModConfigGeneral;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -29,7 +30,7 @@ public class ModOredict {
         OreDictionary.registerOre("cheese", new ItemStack(ModItems.itemCheese));
         OreDictionary.registerOre("blockCheese", new ItemStack(ModBlocks.cheeseBlock));
 
-        if (ModConfig.sugarOreDictInit) {
+        if (ModConfigGeneral.sugarOreDictInit) {
             OreDictionary.registerOre("sugar", new ItemStack(Items.SUGAR));
             GameRegistry.addRecipe(new ShapelessOreRecipe(Items.PUMPKIN_PIE, Blocks.PUMPKIN, "egg", "sugar"));
             GameRegistry.addRecipe(new ShapelessOreRecipe(Items.FERMENTED_SPIDER_EYE, Blocks.BROWN_MUSHROOM, Items.SPIDER_EYE, "sugar"));
@@ -43,7 +44,7 @@ public class ModOredict {
                     'w', "cropWheat"));
         }
 
-        if (ModConfig.doorOreDictInit) {
+        if (ModConfigGeneral.doorOreDictInit) {
             OreDictionary.registerOre("door", Items.OAK_DOOR);
             OreDictionary.registerOre("door", Items.BIRCH_DOOR);
             OreDictionary.registerOre("door", Items.ACACIA_DOOR);

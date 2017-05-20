@@ -2,7 +2,7 @@ package convenientadditions.block.misc.inventoryProxy;
 
 import convenientadditions.api.block.tileentity.IItemProxy;
 import convenientadditions.base.block.CATileEntity;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -10,6 +10,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+
+import java.util.Arrays;
 
 public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy {
 
@@ -24,7 +26,7 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
+        if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
             return false;
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
@@ -39,7 +41,7 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
+        if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
             return null;
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
@@ -78,7 +80,7 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && !(te instanceof IItemProxy))
             return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, (sided ? f : getFacing().getOpposite()));
-        else if (te != null && proxyIndex < ModConfig.inventoryProxies_chainLimit)
+        else if (te != null && proxyIndex < ModConfigMisc.inventoryProxies_chainLimit)
             return ((IItemProxy) te).tryFetchItemHandler(sided ? f : getFacing().getOpposite(), proxyIndex + 1);
         else
             return super.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);

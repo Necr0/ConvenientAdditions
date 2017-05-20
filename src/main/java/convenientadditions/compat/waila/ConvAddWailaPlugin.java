@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ConvAddWailaPlugin {
 
     public static void init(){
-        FMLInterModComms.sendMessage("Waila", "register", ModConstants.Compat.Waila.registerProviderFQCN);
+        FMLInterModComms.sendMessage("waila", "register", ModConstants.Compat.Waila.registerProviderFQCN);
     }
 
 }

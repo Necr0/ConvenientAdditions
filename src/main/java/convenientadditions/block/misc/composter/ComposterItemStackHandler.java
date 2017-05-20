@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.composter;
 
 import convenientadditions.api.item.ICompostable;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -32,11 +32,11 @@ public class ComposterItemStackHandler implements IItemHandler, IItemHandlerModi
         int simulate_content = composter.getContentValue(stack);
         stack = stack.copy();
         while (!stack.isEmpty()) {
-            if (!(composter.content < ModConfig.composter_capacity && composter.getContentValue(stack) > 0) || (simulate && simulate_content > ModConfig.composter_capacity))
+            if (!(composter.content < ModConfigMisc.composter_capacity && composter.getContentValue(stack) > 0) || (simulate && simulate_content > ModConfigMisc.composter_capacity))
                 return stack;
             if (!simulate) {
                 composter.content += composter.getContentValue(stack);
-                composter.processing = (composter.content >= ModConfig.composter_progressContent);
+                composter.processing = (composter.content >= ModConfigMisc.composter_progressContent);
                 if (stack.getItem() instanceof ICompostable && ((ICompostable) stack.getItem()).hasShroomSpores(stack))
                     composter.spores = true;
                 else if (stack.getItem() == Items.MUSHROOM_STEW || stack.getItem() == ItemBlock.getItemFromBlock(Blocks.RED_MUSHROOM) || stack.getItem() == ItemBlock.getItemFromBlock(Blocks.BROWN_MUSHROOM))

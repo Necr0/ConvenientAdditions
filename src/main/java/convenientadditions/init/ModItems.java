@@ -2,7 +2,10 @@ package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.PotionLumbering;
+import convenientadditions.item.module.text.ItemTextChannelModule;
+import convenientadditions.item.misc.backpack.ItemBackpack;
+import convenientadditions.item.relic.ItemPortableEnderRift;
+import convenientadditions.potion.PotionLumbering;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.CAItemPotion;
 import convenientadditions.base.item.EnumItemCategory;
@@ -28,6 +31,7 @@ import convenientadditions.item.tools.mobCatcher.EnumMobCatcherType;
 import convenientadditions.item.tools.mobCatcher.ItemMobCatcher;
 import convenientadditions.item.trinket.*;
 import convenientadditions.item.trinket.doubleJump.ItemMultiJumpTrinket;
+import convenientadditions.potion.PotionThorns;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -58,7 +62,10 @@ public class ModItems {
     public static final Item itemCheese = new ItemFood(1,0.175f,false).setAlwaysEdible().setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.cheese).setCreativeTab(ConvenientAdditions.CREATIVETAB).setRegistryName(ModConstants.ItemNames.cheese);
     public static final ItemCheeseBucket itemCheeseBucket = new ItemCheeseBucket();
     public static final Item itemCheeseSandwich = new ItemFood(4,0.475f,false).setUnlocalizedName(ModConstants.Mod.MODID + ":" + ModConstants.ItemNames.cheeseSandwich).setCreativeTab(ConvenientAdditions.CREATIVETAB).setRegistryName(ModConstants.ItemNames.cheeseSandwich);
+    public static final ItemBackpack itemBackpack = new ItemBackpack();
+    public static final ItemPortableEnderRift itemPortableEnderRift = new ItemPortableEnderRift();
     public static final CAItemPotion itemPotionLumbering = new CAItemPotion(ModConstants.ItemNames.potionLumbering,new PotionEffect(PotionLumbering.INSTANCE,4200,0));
+    public static final CAItemPotion itemPotionThorns = new CAItemPotion(ModConstants.ItemNames.potionThorns,new PotionEffect(PotionThorns.INSTANCE,2100,0));
     //
     public static final ItemMobCatcher itemMobCatcherRegular = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherRegular, EnumMobCatcherType.DEFAULT);
     public static final ItemMobCatcher itemMobCatcherSuper = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherSuper, EnumMobCatcherType.SUPER);
@@ -69,6 +76,7 @@ public class ModItems {
     public static final ItemPlayerChannelModule itemModulePlayer = new ItemPlayerChannelModule();
     public static final ItemColorChannelModule itemModuleColor = new ItemColorChannelModule();
     public static final ItemLocationModule itemModuleLocation = new ItemLocationModule();
+    public static final ItemTextChannelModule itemModuleText = new ItemTextChannelModule();
     //dummy
     public static final CAItem itemDirtChunk = new CAItem(ModConstants.ItemNames.dirtChunk).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
     public static final CAItem itemObsidianPlate = new CAItem(ModConstants.ItemNames.obsidianPlate).setDefaultInfo(false).setCategory(EnumItemCategory.CRAFTING_MATERIAL);
@@ -130,7 +138,10 @@ public class ModItems {
         registerItem(itemCheese);
         registerItem(itemCheeseBucket);
         registerItem(itemCheeseSandwich);
+        registerItem(itemBackpack);
+        registerItem(itemPortableEnderRift);
         registerItem(itemPotionLumbering);
+        registerItem(itemPotionThorns);
         //
         registerItem(itemMobCatcherRegular);
         registerItem(itemMobCatcherSuper);
@@ -140,6 +151,7 @@ public class ModItems {
         //channel modules
         registerItem(itemModulePlayer);
         registerItem(itemModuleColor);
+        registerItem(itemModuleText);
         //
         registerItem(itemModuleLocation);
         //trinkets
@@ -200,11 +212,15 @@ public class ModItems {
         registerModelLocation(itemCheese);
         registerModelLocation(itemCheeseBucket);
         registerModelLocation(itemCheeseSandwich);
+        registerModelLocation(itemBackpack);
+        registerModelLocation(itemPortableEnderRift);
         registerModelLocation(itemPotionLumbering);
+        registerModelLocation(itemPotionThorns);
         //modules
         registerModelLocation(itemModulePlayer);
         registerModelLocation(itemModuleColor);
         registerModelLocation(itemModuleLocation);
+        registerModelLocation(itemModuleText);
         //trinkets
         registerModelLocation(itemSunlightRing);
         registerModelLocation(itemSaturationRing);

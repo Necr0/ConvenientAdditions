@@ -3,7 +3,7 @@ package convenientadditions.block.machine.remoteInventoryProxy;
 import convenientadditions.api.block.tileentity.IItemProxy;
 import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.base.block.CATileEntity;
-import convenientadditions.init.ModConfig;
+import convenientadditions.config.ModConfigMisc;
 import convenientadditions.item.module.ItemLocationModule;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -14,6 +14,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
 
 public class TileEntityRemoteInventoryProxy extends CATileEntity implements IItemProxy{
 
@@ -28,7 +29,7 @@ public class TileEntityRemoteInventoryProxy extends CATileEntity implements IIte
         BlockPos pos=getTargetLocation();
         if(pos==null||!getWorld().isBlockLoaded(pos))
             return false;
-        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(pos).getBlock().getRegistryName().toString()))
+        if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(pos).getBlock().getRegistryName().toString()))
             return false;
         TileEntity te = getWorld().getTileEntity(pos);
         if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
@@ -46,7 +47,7 @@ public class TileEntityRemoteInventoryProxy extends CATileEntity implements IIte
         BlockPos pos=getTargetLocation();
         if(pos==null||!getWorld().isBlockLoaded(pos))
             return null;
-        if (ModConfig.inventoryProxies_blacklist.contains(getWorld().getBlockState(pos).getBlock().getRegistryName().toString()))
+        if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(pos).getBlock().getRegistryName().toString()))
             return null;
         TileEntity te = getWorld().getTileEntity(pos);
         if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
@@ -77,7 +78,7 @@ public class TileEntityRemoteInventoryProxy extends CATileEntity implements IIte
         TileEntity te = getWorld().getTileEntity(getTargetLocation());
         if (te != null && !(te instanceof IItemProxy))
             return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);
-        else if (te != null && proxyIndex < ModConfig.inventoryProxies_chainLimit)
+        else if (te != null && proxyIndex < ModConfigMisc.inventoryProxies_chainLimit)
             return ((IItemProxy) te).tryFetchItemHandler(f, proxyIndex + 1);
         else
             return super.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);

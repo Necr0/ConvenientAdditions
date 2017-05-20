@@ -7,11 +7,9 @@ import convenientadditions.api.gui.ImageResourceLocation;
 public class GuiIronFarm extends CAGuiContainer {
 
     private static final ImageResourceLocation ironFarmGuiTextures = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/ironfarm.png",0,0,175,114);
-    public TileEntityIronFarm te;
 
     public GuiIronFarm(ContainerIronFarm container) {
         super(container,ironFarmGuiTextures);
-        this.te = container.te;
     }
 
     @Override

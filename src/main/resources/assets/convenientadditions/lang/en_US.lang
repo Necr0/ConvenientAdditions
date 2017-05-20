@@ -30,6 +30,9 @@ tile.convenientadditions:ironGolemBlock.name=Iron Golem Block
 tile.convenientadditions:workStation.name=Work Station
 tile.convenientadditions:autoWorkStation.name=Automatic Work Station
 tile.convenientadditions:cheeseBlock.name=Cheese Block
+tile.convenientadditions:punjiSticks.name=Punji Sticks
+tile.convenientadditions:storageCrate.name=Storage Crate
+tile.convenientadditions:woodenTile.name=Wooden Tile
 # platforms
 tile.convenientadditions:platform.black.name=Black Platform
 tile.convenientadditions:platform.red.name=Red Platform
@@ -93,6 +96,9 @@ item.convenientadditions:cheese.name=Cheese
 item.convenientadditions:cheeseBucket.name=Cheese Bucket
 item.convenientadditions:cheeseSandwich.name=Cheese Sandwich
 item.convenientadditions:potionLumbering.name=Potion of Lumbering
+item.convenientadditions:potionThorns.name=Potion of Thorns
+item.convenientadditions:backpack.name=Backpack
+item.convenientadditions:portableEnderRift.name=Portable Ender Chest
 # mcds
 item.convenientadditions:mobCatcher.regular.name=Mob Containment Device
 item.convenientadditions:mobCatcher.super.name=Super MCD
@@ -104,6 +110,7 @@ item.convenientadditions:obsidianPlate.name=Obsidian Plate
 item.convenientadditions:modulePlayer.name=Player Channel Module
 item.convenientadditions:moduleColor.name=Color Channel Module
 item.convenientadditions:moduleLocation.name=Location Module
+item.convenientadditions:moduleText.name=Text Channel Module
 # trinkets
 item.convenientadditions:sunlightRing.name=Ring of Sunlight
 item.convenientadditions:saturationRing.name=Ring of Saturation
@@ -132,6 +139,7 @@ item.convenientadditions:minersBracelet.name=Miner's Bracelet
 ### POTION NAMES ###
 
 potion.convenientadditions:lumbering.name=Lumbering
+potion.convenientadditions:thorns.name=Thorns
 
 
 
@@ -173,15 +181,20 @@ tooltip.convenientadditions:enderProofGlass.info=Prevents any kind of ender tele
 tooltip.convenientadditions:soulGem.info=Used for crafting with mob souls.
 tooltip.convenientadditions:displayCase.info=Used as a fancy way to present your items.
 tooltip.convenientadditions:workStation.info=It's a workbench that keeps it's items with extra inventory.
+tooltip.convenientadditions:punjiSticks.info=Deal damage to anything that dares to step on them.
+tooltip.convenientadditions:storageCrate.info=It's a big storage block.
+tooltip.convenientadditions:backpack.info=Can keep items and therefore increase your inventory's effective size.
 # relics
 tooltip.convenientadditions:blazingRock.info=Can sometimes be used as fuel.
 tooltip.convenientadditions:enderPlate.info=Allows walking on air.
 tooltip.convenientadditions:sunstone.info=Portable Light Source
 tooltip.convenientadditions:transmutationTome.info=Changes stuff using experience levels.
+tooltip.convenientadditions:portableEnderRift.info=Allows you to access your ender chest anywhere.
 # modules
 tooltip.convenientadditions:moduleLocation.info=Can store a block location.
 tooltip.convenientadditions:moduleColor.info=Used to specify wireless item channels.
 tooltip.convenientadditions:modulePlayer.info=Used to specify wireless item channels.
+tooltip.convenientadditions:moduleText.info=Used to specify wireless item channels.
 # machines
 tooltip.convenientadditions:blastPad.info=Blasts you upwards.
 tooltip.convenientadditions:hoverPad.info=Pushes you upwards.
@@ -275,6 +288,7 @@ tooltip.convenientadditions:modulePlayerNotSet=(right click to set player)
 tooltip.convenientadditions:moduleLocationLocation=Location: %d, %d, %d (%d)
 tooltip.convenientadditions:moduleLocationNotSet=(sneak + use on a block to set location)
 tooltip.convenientadditions:moduleColorsPrefix=Colors: %s, %s, %s
+tooltip.convenientadditions:moduleText.text=Key: "%s"
 # set provider
 tooltip.convenientadditions:activeOn=Active on %s.
 tooltip.convenientadditions:activeAlways=Always active.
@@ -387,6 +401,7 @@ jei.convenientadditions:transmutationTome.name=Tome of Transmutation
 ## Waila
 waila.convenientadditions:powerLevel=Power Level: %d
 waila.convenientadditions:compostingMass=%d/%d composting mass stored. (%d%%)
+waila.convenientadditions:compostSoil.degradation=Degradation: %d
 
 
 
@@ -397,6 +412,7 @@ message.convenientadditions:locationSetTo=Location set to %d, %d, %d (%d).
 message.convenientadditions:playerSetTo=Player set to %s.
 message.convenientadditions:locationReset=Location has been reset.
 message.convenientadditions:playerReset=Player has been reset.
+message.convenientadditions:jumpPad.outOfRange=The target location is outside of the maximum range.
 
 ## Adv Pick
 message.convenientadditions:adventurersPickaxeLevelUpMiningLevel=Mining Level increased to %d!

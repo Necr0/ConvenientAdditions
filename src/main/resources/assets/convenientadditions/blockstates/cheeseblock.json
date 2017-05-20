@@ -3,7 +3,7 @@
     "defaults": {
         "model": "cube_all",
 		"textures": {
-			"all": "convenientadditions:blocks/cheeseblock"
+			"all": "convenientadditions:blocks/building_blocks/cheeseblock"
 		}
     },
 	"variants": {

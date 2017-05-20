@@ -1,6 +1,6 @@
 package convenientadditions.compat.waila;
 
-import convenientadditions.block.compostSoil.BlockCompostSoil;
+import convenientadditions.block.misc.compostSoil.BlockCompostSoil;
 import convenientadditions.block.misc.composter.BlockComposter;
 import convenientadditions.block.machine.hoverPad.BlockHoverPad;
 import convenientadditions.block.misc.powderkeg.BlockPowderKeg;

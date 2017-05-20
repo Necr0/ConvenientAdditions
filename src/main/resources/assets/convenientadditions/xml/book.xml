@@ -34,6 +34,7 @@
 			<link ref="trinkets:climbingclaws">Climing Claws</link>
 			<link ref="misc:workstation">Work Station</link>
 			<link ref="misc:composter">Composter</link>
+			<link ref="misc:backpack">Backpack</link>
 			<link ref="trinkets:spikedsole">Spiked Soles</link>
 			<link ref="trinkets:climbinggear">Climbing Gear</link>
 		</page>
@@ -303,6 +304,7 @@
 			<link ref="relics:enderplate">Ender Plate</link>
 			<link ref="relics:blazingrock">Blazing Orb</link>
 			<link ref="relics:transmutationtome">Tome of Transmutation</link>
+			<link ref="relics:portableenderrift">Portable Ender Rift</link>
 		</page>
 		<page id="sunstone">
 			<title>Sunstone</title>
@@ -342,6 +344,16 @@
 				<stack item="convenientadditions:transmutationtome"/>
 			</smaller_recipe>
 			<p>This book can be used to transmute items using experience levels. Click the "?"-button in the upper-left corner to see a list of the available recipes.</p>
+		</page>
+		<page id="portableenderrift">
+			<title>Portable Ender Rift</title>
+			<big_recipe>
+				<space /><stack item="minecraft:obsidian"/><space />
+				<stack item="convenientadditions:dislocationcore"/><stack item="minecraft:ender_chest"/><stack item="convenientadditions:dislocationcore"/>
+				<space /><stack item="minecraft:obsidian"/><space />
+				<stack item="convenientadditions:portableenderrift"/>
+			</big_recipe>
+			<p>Right-click this item to open your ender chest's inventory whereever you are.</p>
 		</page>
 	</chapter>
 	<chapter id="machines">
@@ -445,7 +457,7 @@
 				<stack item="minecraft:stone"/><stack item="minecraft:gold_ingot"/><stack item="minecraft:stone"/>
 				<stack item="convenientadditions:jumppad"/>
 			</big_recipe>
-			<p>This block functions as a teleporter. If you don't specify the target locations it will teleport you to the closest Jump Pad straight upwards as soon as you jump.</p>
+			<p>This block functions as a teleporter. If you don't specify the target locations it will teleport you to the closest Jump Pad straight upwards as soon as you jump. The default maximum range is 256 blocks.</p>
 		</page>
 		<page>
 			<p>If you sneak it teleports you to the closest Jump Pad straight down. You can also right-click it to insert <link ref="modules:modulelocation">Location Modules</link> to target a specific Jump Pad in the same dimension.</p>
@@ -496,7 +508,8 @@
 			<title>Modules</title>
 			<link ref="modules:channelmodules">Channel Modules:</link>
 			<link ref="modules:modulecolor" indent="8">Color Channel Module</link>
-			<link ref="modules:moduleplayer" indent="8">Color Channel Module</link>
+			<link ref="modules:moduleplayer" indent="8">Player Channel Module</link>
+			<link ref="modules:moduletext" indent="8">Text Channel Module</link>
 			<link ref="modules:modulelocation">Location Module</link>
 		</page>
 		<page id="channelmodules">
@@ -525,6 +538,15 @@
 				<stack item="convenientadditions:moduleplayer"/>
 			</smaller_recipe>
 			<p>Right-clicking this item sets the player to specify a channel. Sneaking and Right-clicking resets the player. This is used for private channels.</p>
+		</page>
+		<page id="moduletext">
+			<title>Text Channel Module</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:obsidianplate"/><stack item="minecraft:ender_eye"/>
+				<stack item="minecraft:name_tag"/><space />
+				<stack item="convenientadditions:moduletext"/>
+			</smaller_recipe>
+			<p>Right-clicking this item shows a GUI. In this GUI you can set a text with up to 20 characters to specify a channel.</p>
 		</page>
 		<page id="modulelocation">
 			<title>Location Module</title>
@@ -625,6 +647,7 @@
 			<link ref="consumables:cheese">Cheese</link>
 			<link ref="consumables:cheesesandwich">Cheese Sandwich</link>
 			<link ref="consumables:potionlumbering">Potion of Lumbering</link>
+			<link ref="consumables:potionthorns">Potion of Thorns</link>
 		</page>
 		<page id="fertilizer">
 			<title>Fertilizer</title>
@@ -709,6 +732,15 @@
 			</smaller_recipe>
 			<p>Drinking it grants a buff that allows breaking wood logs more quickly.</p>
 		</page>
+		<page id="potionthorns">
+			<title>Potion of Thorns</title>
+			<smaller_recipe>
+				<stack item="minecraft:potion" tag='{Potion:"minecraft:water"}'/><stack item="minecraft:spider_eye"/>
+				<stack item="minecraft:poisonous_potato"/><stack item="minecraft:dye" meta="3"/>
+				<stack item="convenientadditions:potionthorns"/>
+			</smaller_recipe>
+			<p>Drinking it grants an effect that inflicts a part of direct physical damage taken to the attacker.</p>
+		</page>
 	</chapter>
 	<chapter id="misc">
 		<page id="index">
@@ -725,6 +757,9 @@
 			<link ref="misc:enderproofblocks">Ender-Proof Blocks</link>
 			<link ref="misc:displaycase">Display Case</link>
 			<link ref="misc:guidebook">The Convenient Guide</link>
+			<link ref="misc:backpack">Backpack</link>
+			<link ref="misc:storagecrate">Storage Crate</link>
+			<link ref="misc:punjisticks">Punji Sticks</link>
 		</page>
 		<page>
 			<title>Powder Keg</title>
@@ -935,11 +970,41 @@
 			</smaller_recipe>
 			<p>It's this handy book. It tries it's best to explain you all the stuff in this mod.</p>
 		</page>
+		<page id="backpack">
+			<title>Backpack</title>
+			<big_recipe>
+				<stack item="minecraft:string"/><stack item="minecraft:leather"/><stack item="minecraft:string"/>
+				<stack item="minecraft:leather"/><space /><stack item="minecraft:leather"/>
+				<stack item="minecraft:leather"/><stack item="minecraft:leather"/><stack item="minecraft:leather"/>
+				<stack item="convenientadditions:backpack"/>
+			</big_recipe>
+			<p>A neat handy backpack with 9 inventory slots. Right-click it to access it's inventory. It can hold anything but other backpacks.</p>
+		</page>
+		<page id="storagecrate">
+			<title>Storage Crate</title>
+			<big_recipe>
+				<stack item="minecraft:log"/><stack item="minecraft:log"/><stack item="minecraft:log"/>
+				<stack item="minecraft:log"/><stack item="minecraft:chest"/><stack item="minecraft:log"/>
+				<stack item="minecraft:log"/><stack item="minecraft:log"/><stack item="minecraft:log"/>
+				<stack item="convenientadditions:storagecrate"/>
+			</big_recipe>
+			<p>It's a crate with 4 chests worth of inventory space and it makes for a handy compact storage.</p>
+		</page>
+		<page id="punjisticks">
+			<title>Punji Sticks</title>
+			<smaller_recipe>
+				<stack item="convenientadditions:spikes"/><stack item="convenientadditions:spikes"/>
+				<stack item="minecraft:stone_slab"/><stack item="minecraft:stone_slab"/>
+				<stack item="convenientadditions:punjisticks"/>
+			</smaller_recipe>
+			<p>They deal reasonable damage to all living entities that touch it spikes but do not destroy items. The damage dealt penetrates armor. They can face any direction you like.</p>
+		</page>
 	</chapter>
 	<chapter id="building_blocks">
 		<page id="index">
 			<title>Building Blocks</title>
 			<link ref="building_blocks:irongolemblock">Iron Golem Block</link>
+			<link ref="building_blocks:irongolemblock">Wooden Tile</link>
 			<link ref="building_blocks:cheeseblock">Cheese Block</link>
 		</page>
 		<page id="irongolemblock">
@@ -949,6 +1014,13 @@
 				<stack item="minecraft:iron_block"/><stack item="convenientadditions:soulgem" tag='{CONTAINED_ENTITY_ID:"minecraft:villager_golem"}'/><stack item="minecraft:iron_block"/>
 				<stack item="minecraft:iron_block"/><stack item="minecraft:iron_block"/><stack item="minecraft:iron_block"/>
 				<stack item="convenientadditions:irongolemblock" count="32"/>
+			</big_recipe>
+			<title>Wooden Tile</title>
+			<big_recipe>
+				<stack item="minecraft:stick"/><stack item="minecraft:planks"/><stack item="minecraft:stick"/>
+				<stack item="minecraft:planks"/><stack item="minecraft:planks"/><stack item="minecraft:planks"/>
+				<stack item="minecraft:stick"/><stack item="minecraft:planks"/><stack item="minecraft:stick"/>
+				<stack item="convenientadditions:woodentile" count="8"/>
 			</big_recipe>
 		</page>
 		<page id="cheeseblock">
