@@ -9,6 +9,7 @@ import convenientadditions.entity.launchingArrow.EntityLaunchingArrow;
 import convenientadditions.entity.launchingArrow.RenderLaunchingArrow;
 import convenientadditions.entity.mobCatcher.EntityMobCatcher;
 import convenientadditions.init.ModBlocks;
+import convenientadditions.init.ModCompat;
 import convenientadditions.init.ModItems;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.world.World;
@@ -20,6 +21,11 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy {
     //public static int renderPass;
+
+    @Override
+    public void initWaila(){
+        ModCompat.init();
+    }
 
     public Side getSide() {
         return Side.CLIENT;

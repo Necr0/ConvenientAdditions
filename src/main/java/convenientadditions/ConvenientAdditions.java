@@ -40,7 +40,7 @@ public class ConvenientAdditions {
         ModEventHandlers.init();
         ModCAAPI.init();
         ModPotions.init();
-        ModCompat.init();
+        PROXY.initWaila();
     }
 
     @EventHandler

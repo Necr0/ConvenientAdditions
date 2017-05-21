@@ -1,11 +1,8 @@
 package convenientadditions.init;
 
-import convenientadditions.api.gui.ImageResourceLocation;
 import convenientadditions.ModConstants;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import convenientadditions.api.gui.ImageResourceLocation;
 
-@SideOnly(Side.CLIENT)
 public class ModImageResourceLocations {
     private static final String COMMON_ATLAS=ModConstants.Mod.MODID + ":textures/gui/common_atlas.png";
     public static final ImageResourceLocation RESET = new ImageResourceLocation(COMMON_ATLAS, 16, 0, 16, 16);

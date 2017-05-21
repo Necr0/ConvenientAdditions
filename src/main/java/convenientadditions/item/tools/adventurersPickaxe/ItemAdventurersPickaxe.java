@@ -47,17 +47,16 @@ public class ItemAdventurersPickaxe extends CAItem implements ISoulbound, IPlaye
             float f = (float) getToolProperty(stack, "mining_speed");
             return f + (state.getBlock().getHarvestLevel(state) < getHarvestLevel(stack, "pickaxe", null, state) ? (float) getToolProperty(stack, "mining_soft_speed") : 0f);
         }
-        if (state.getBlock().getHarvestTool(state).equals("shovel")) {
+        if (state.getBlock().getHarvestTool(state)!=null && state.getBlock().getHarvestTool(state).equals("shovel")) {
             return (float) getToolProperty(stack, "digging_speed");
         }
-        if (state.getBlock().getHarvestTool(state)==null)
-            return 1f;
         return 1.0f;
     }
 
     public boolean isEffective(IBlockState state) {
         Material m=state.getMaterial();
-        return m == Material.IRON || m == Material.ANVIL || m == Material.ROCK || state.getBlock().getHarvestTool(state).equals("pickaxe");
+        String tool=state.getBlock().getHarvestTool(state);
+        return m == Material.IRON || m == Material.ANVIL || m == Material.ROCK || (tool != null && tool.equals("pickaxe"));
     }
 
     @Override
