@@ -45,7 +45,6 @@ public class BlockCompostSoilTilled extends CABlock {
     public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plantable) {
         BlockPos plantPos = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
         EnumPlantType plantType = plantable.getPlantType(world, plantPos);
-        System.out.println(plantType.toString());
         return plantType == EnumPlantType.Crop || ModBlocks.compostSoilBlock.canSustainPlant(state,world,pos,side,plantable);
     }
 

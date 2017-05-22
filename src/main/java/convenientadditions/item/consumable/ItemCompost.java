@@ -7,6 +7,7 @@ import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.config.ModConfigMisc;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -32,6 +34,14 @@ public class ItemCompost extends CAItem {
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         IBlockState state = world.getBlockState(pos);
         Block b = state.getBlock();
+
+        //change to support applying compost on the plant instead of the soil
+        if(b != null && (b instanceof IPlantable || b instanceof IGrowable)) {
+            pos = pos.down();
+            state = world.getBlockState(pos);
+            b = state.getBlock();
+        }
+
         if (!(b == Blocks.DIRT || b == Blocks.FARMLAND || b == Blocks.GRASS || ((b == ModBlocks.compostSoilBlock || b == ModBlocks.compostSoilTilledBlock) && b.getMetaFromState(state) != 0)))
             return EnumActionResult.FAIL;
         if (!world.isRemote) {
