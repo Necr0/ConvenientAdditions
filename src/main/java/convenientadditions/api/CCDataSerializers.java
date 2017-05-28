@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CCDataSerializers {
+	public static boolean initialized=false;
+
 	public static final DataSerializer<List<Long>> LISTLONG=new DataSerializer<List<Long>>(){
 		@Override
 		public void write(PacketBuffer buf, List<Long> value) {
@@ -60,8 +62,11 @@ public class CCDataSerializers {
 		}
 	};
 
-	static{
+	public static void initSerializers(){
+		if(initialized)
+			return;
 		DataSerializers.registerSerializer(LISTLONG);
 		DataSerializers.registerSerializer(LISTSTRING);
+		initialized=true;
 	}
 }

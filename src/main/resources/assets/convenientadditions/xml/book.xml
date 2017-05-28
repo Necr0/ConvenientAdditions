@@ -664,7 +664,7 @@
 				<stack item="convenientadditions:sapbottle" meta="2"/><space /><space />
 				<stack item="convenientadditions:bandage"/>
 			</big_recipe>
-			<p>It takes a long time to apply the Bandage. When it is applied it has a strong healing effect.</p>
+			<p>When it is applied it has a strong healing effect that might be removed when you take damage.</p>
 		</page>
 		<page id="antidote">
 			<title>Antidote</title>
@@ -745,6 +745,7 @@
 	<chapter id="misc">
 		<page id="index">
 			<title>Miscellaneous</title>
+			<link ref="misc:powderkeg">Powder Keg</link>
 			<link ref="misc:composter">Composter</link>
 			<link ref="misc:treetap">Tree Tap</link>
 			<link ref="misc:treetap">Sap Bottle</link>
@@ -756,12 +757,14 @@
 			<link ref="misc:seedbox">Seed Box</link>
 			<link ref="misc:enderproofblocks">Ender-Proof Blocks</link>
 			<link ref="misc:displaycase">Display Case</link>
+		</page>
+		<page>
 			<link ref="misc:guidebook">The Convenient Guide</link>
 			<link ref="misc:backpack">Backpack</link>
 			<link ref="misc:storagecrate">Storage Crate</link>
 			<link ref="misc:punjisticks">Punji Sticks</link>
 		</page>
-		<page>
+		<page id="powderkeg">
 			<title>Powder Keg</title>
 			<big_recipe>
 				<stack item="minecraft:planks"/><stack item="minecraft:wooden_slab"/><stack item="minecraft:planks"/>
@@ -769,7 +772,10 @@
 				<stack item="minecraft:planks"/><stack item="minecraft:wooden_slab"/><stack item="minecraft:planks"/>
 				<stack item="convenientadditions:powderkeg"/>
 			</big_recipe>
-			<p>Can be filled with gunpowder by right-clicking. It explodes if fire or a redstone signal is applied. The stength of the explosion depends on the amount of gunpowder contained.</p>
+			<p>Can be filled with up to one stack of gunpowder by right-clicking. It explodes if fire or a redstone signal is applied.</p>
+		</page>
+		<page>
+			<p>The explosion's strength depends on the amount of gunpowder contained. A whole stack of gunpowder causes a huge explosion. It keeps it's items when broken.</p>
 		</page>
 		<page id="composter">
 			<title>Composter</title>
@@ -988,7 +994,7 @@
 				<stack item="minecraft:log"/><stack item="minecraft:log"/><stack item="minecraft:log"/>
 				<stack item="convenientadditions:storagecrate"/>
 			</big_recipe>
-			<p>It's a crate with 4 chests worth of inventory space and it makes for a handy compact storage.</p>
+			<p>It's a crate with 3 chests worth of inventory space and it makes for a handy compact storage.</p>
 		</page>
 		<page id="punjisticks">
 			<title>Punji Sticks</title>

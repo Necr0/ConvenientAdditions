@@ -3,13 +3,13 @@ package convenientadditions.item.consumable;
 import convenientadditions.ModConstants;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.EnumItemCategory;
+import convenientadditions.potion.PotionBandaged;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -43,7 +43,7 @@ public class ItemBandage extends CAItem {
         }
 
         if (!worldIn.isRemote) {
-            entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(10), 5 * 20, 2));
+            entityLiving.addPotionEffect(new PotionEffect(PotionBandaged.INSTANCE, 500, 0, false, false));
         }
 
         return stack;
@@ -62,7 +62,7 @@ public class ItemBandage extends CAItem {
 
     @Override
     public int getMaxItemUseDuration(ItemStack stack) {
-        return 70;
+        return 55;
     }
 
     @Override

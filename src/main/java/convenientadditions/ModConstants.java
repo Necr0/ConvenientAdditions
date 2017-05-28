@@ -119,6 +119,7 @@ public class ModConstants {
     public static class PotionNames {
         public static final String lumbering="lumbering";
         public static final String thorns="thorns";
+        public static final String bandaged="bandaged";
     }
 
     public static class Entities {

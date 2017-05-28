@@ -6,7 +6,6 @@ import convenientadditions.init.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -47,11 +46,9 @@ public class ContainerBackpack extends CAContainer {
 
     @Override
     public ItemStack slotClick(int index, int button, ClickType mode, EntityPlayer player) {
-        Item item1=getSlot(index).getStack().getItem();
-        Item item2=player.inventory.getStackInSlot(button).getItem();
         if(!canInteractWith(player)||
-                (index>0&&index<inventorySlots.size()&&(item1 instanceof ItemBackpack||Arrays.asList(ModConfigMisc.backpack_blacklist).contains(item1.getRegistryName())))||
-                (mode==ClickType.SWAP&&(item2 instanceof ItemBackpack||Arrays.asList(ModConfigMisc.backpack_blacklist).contains(item2.getRegistryName())))){
+                (index>0&&index<inventorySlots.size()&&(getSlot(index).getStack().getItem() instanceof ItemBackpack||Arrays.asList(ModConfigMisc.backpack_blacklist).contains(getSlot(index).getStack().getItem().getRegistryName())))||
+                (mode==ClickType.SWAP&&(player.inventory.getStackInSlot(button).getItem() instanceof ItemBackpack||Arrays.asList(ModConfigMisc.backpack_blacklist).contains(player.inventory.getStackInSlot(button).getItem().getRegistryName())))){
             player.closeScreen();
             return ItemStack.EMPTY;
         }

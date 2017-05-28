@@ -13,10 +13,10 @@ public class ContainerStorageCrate extends CAContainer {
     public ContainerStorageCrate(TileEntityStorageCrate ent, EntityPlayer p) {
         te = ent;
         //te inv
-        for (int k = 0; k < 8; ++k) {
+        for (int k = 0; k < 9; ++k) {
             for (int i1 = 0; i1 < 9; ++i1)
             {
-                this.addSlotToContainer(new SlotItemHandler(te.inv, i1 + k * 9, 8 + i1 * 18, 8 + k * 18));
+                this.addSlotToContainer(new SlotItemHandler(te.inv, i1 + k * 9, 8 + i1 * 18, 6 + k * 18));
             }
         }
         //player inventory
@@ -24,13 +24,13 @@ public class ContainerStorageCrate extends CAContainer {
         {
             for (int i1 = 0; i1 < 9; ++i1)
             {
-                this.addSlotToContainer(new Slot(p.inventory, i1 + k * 9 + 9, 8 + i1 * 18, 158 + k * 18));
+                this.addSlotToContainer(new Slot(p.inventory, i1 + k * 9 + 9, 8 + i1 * 18, 174 + k * 18));
             }
         }
         //hotbar
         for (int l = 0; l < 9; ++l)
         {
-            this.addSlotToContainer(new Slot(p.inventory, l, 8 + l * 18, 216));
+            this.addSlotToContainer(new Slot(p.inventory, l, 8 + l * 18, 232));
         }
     }
 

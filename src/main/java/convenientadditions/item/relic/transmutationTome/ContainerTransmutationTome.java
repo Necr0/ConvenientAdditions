@@ -169,7 +169,7 @@ public class ContainerTransmutationTome extends CAContainer implements IContaine
 
     public boolean isWorking() {
         if (isRecipeValid() && player.experienceLevel >= getLevelRequired()) {
-            if (canAddItemToSlot(getSlot(2), getResult(), true)) {
+            if (canAddItemToSlot(getSlot(2), getResult(), false)) {
                 return true;
             }
         }

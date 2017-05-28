@@ -1,15 +1,22 @@
 package convenientadditions.base.item;
 
+import convenientadditions.api.util.Helper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 /**
  * Created by Necro on 5/15/2017.
@@ -68,5 +75,22 @@ public class CAItemPotion extends CAItem {
     @Override
     public int getMaxItemUseDuration(ItemStack stack) {
         return 32;
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    {
+        String effectName = Helper.localize(effect.getEffectName()).trim();
+        if (effect.getAmplifier() > 0)
+            effectName = effectName + " " + Helper.localize("potion.potency." + effect.getAmplifier()).trim();
+        if (effect.getDuration() > 20)
+            effectName = effectName + " (" + Potion.getPotionDurationString(effect, 1F) + ")";
+        if (effect.getPotion().isBadEffect())
+            tooltip.add(TextFormatting.RED + effectName);
+        else
+            tooltip.add(TextFormatting.BLUE + effectName);
+
+        super.addInformation(stack,playerIn,tooltip,advanced);
     }
 }

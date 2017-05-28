@@ -29,4 +29,5 @@ public class ModImageResourceLocations {
     public static final ImageResourceLocation THORNS = new ImageResourceLocation(ICONS_POTION, 36, 0, 18, 18);
     public static final ImageResourceLocation GREENTHUMB = new ImageResourceLocation(ICONS_POTION, 54, 0, 18, 18);
     public static final ImageResourceLocation HARVESTLUCK = new ImageResourceLocation(ICONS_POTION, 72, 0, 18, 18);
+    public static final ImageResourceLocation BANDAGED = new ImageResourceLocation(ICONS_POTION, 90, 0, 18, 18);
 }
