@@ -25,7 +25,6 @@ public class ContainerTransmutationTome extends CAContainer implements IContaine
     EntityPlayer player;
     int currentDuration = 0;
     int currentProcess = 0;
-    @SideOnly(Side.CLIENT)
     float xpOverride = 1.0f;
 
     public ContainerTransmutationTome(EntityPlayer p) {

@@ -21,6 +21,9 @@ public class BehaviourAutoFertilizer implements IEntitySpecialItemBehaviour {
     @Override
     public void onItemEntityUpdate(EntityItem item) {
         World w = item.getEntityWorld();
+        if(w.isRemote)
+            return;
+
         BlockPos pos = new BlockPos(MathHelper.floor(item.posX), MathHelper.floor(item.posY), MathHelper.floor(item.posZ));
         tryApply(item.getEntityItem(),w,pos);
         if(!item.getEntityItem().isEmpty() && item.onGround){

@@ -26,7 +26,10 @@ public class BehaviourAutoCrops implements IEntitySpecialItemBehaviour {
 
     @Override
     public void onItemEntityUpdate(EntityItem item) {
-        World w = item.getEntityWorld();
+        World w=item.getEntityWorld();
+        if(w.isRemote)
+            return;
+
         int x = MathHelper.floor(item.posX), y = MathHelper.floor(item.posY-0.001d), z = MathHelper.floor(item.posZ);
         BlockPos pos = new BlockPos(x, y, z);
         BlockPos pos_e = new BlockPos(x, y + 1, z);
