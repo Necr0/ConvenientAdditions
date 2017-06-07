@@ -77,7 +77,7 @@ public class Slider implements IWidgetDrawable
     @Override
     public <T extends GuiScreen & IGui> void draw(T guiScreen, float partialTicks, int mouseX, int mouseY) {
         if(Mouse.isButtonDown(0) && isHovered(guiScreen,mouseX,mouseY)){
-            if(new Rectangle(getX()+1, getY()+1, getWidth()-2, getHeight()-2).contains(mouseX, mouseY))
+            if(new Rectangle(getX(), getY()+1, getWidth(), getHeight()-2).contains(mouseX, mouseY))
                 updateSlider(getRelativeXPosition(mouseX));
         }
 
@@ -89,7 +89,7 @@ public class Slider implements IWidgetDrawable
     }
 
     public float getRelativeXPosition(int mouseX){
-        return (mouseX-getX()+1)/((float)getWidth()-2);
+        return Math.min(Math.max((mouseX-getX()+1)/((float)getWidth()-2),0f),1f);
     }
 
     public void drawColoredRect(int startX, int startY, int width, int height, int color) {

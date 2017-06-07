@@ -36,6 +36,7 @@ public class ModConstants {
         public static final String potionThorns = "potionThorns";
         public static final String backpack = "backpack";
         public static final String portableEnderRift = "portableEnderRift";
+        public static final String slimeBucket = "slimeBucket";
         //
         public static final String mobCatcher = "mobCatcher";
         public static final String mobCatcherRegular = "regular";
@@ -75,6 +76,7 @@ public class ModConstants {
         public static final String minersBracelet = "minersBracelet";
         public static final String soulGem = "soulGem";
         public static final String spikes = "spikes";
+        public static final String parachute = "parachute";
     }
 
     public static class BlockNames {
@@ -111,6 +113,7 @@ public class ModConstants {
         public static final String punjiSticks = "punjiSticks";
         public static final String storageCrate = "storageCrate";
         public static final String woodenTile = "woodenTile";
+        public static final String passiveGenerator = "passiveGenerator";
         //
         public static final String tempLight = "tempLight";
         public static final String phantomPlatform = "phantomPlatform";

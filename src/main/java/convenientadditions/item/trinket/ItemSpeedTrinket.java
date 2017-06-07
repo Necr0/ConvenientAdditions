@@ -6,6 +6,7 @@ import convenientadditions.ModConstants;
 import convenientadditions.api.inventory.EnumInventory;
 import convenientadditions.api.inventory.InventoryIterator;
 import convenientadditions.api.inventory.SlotNotation;
+import convenientadditions.api.util.Helper;
 import convenientadditions.base.item.CAItem;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.entity.player.EntityPlayer;
@@ -59,21 +60,22 @@ public class ItemSpeedTrinket extends CAItem implements IBauble {
                     }
                 }
 
-                if(!player.onGround && !player.isInWater() && player.fallDistance!=0 && player.motionY<0 && !player.isElytraFlying()){
+                if(Helper.isEntityAirBorne(player) && player.motionY<-.1){
                     for (SlotNotation slot : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
                         ItemStack stack = slot.getItem();
                         if (!stack.isEmpty() && stack.getItem() instanceof ItemSpeedTrinket) {
                             ItemSpeedTrinket item=(ItemSpeedTrinket)stack.getItem();
                             if(item.glidingLift!=0){
-                                player.motionY=Math.max(player.motionY,item.glidingLift/2);
-                                player.fallDistance=0;
+                                player.motionY=Math.max(Math.min(-item.glidingLift,player.motionY+item.glidingLift),player.motionY);
+                                if(player.motionY>-0.666)
+                                    player.fallDistance=0;
                                 if(player.moveForward > 0F){
                                     for (SlotNotation slot1 : InventoryIterator.getIterable(player, EnumInventory.BAUBLES)) {
                                         ItemStack stack1 = slot1.getItem();
                                         if (!stack1.isEmpty() && stack1.getItem() instanceof ItemSpeedTrinket) {
                                             ItemSpeedTrinket item1=(ItemSpeedTrinket)stack1.getItem();
                                             if(item1.glidingSpeed>0){
-                                                player.moveRelative(0F, 1F, item1.glidingSpeed/5);
+                                                player.moveRelative(0F, 1F, item1.glidingSpeed);
                                                 break;
                                             }
                                         }

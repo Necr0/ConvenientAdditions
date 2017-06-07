@@ -4,6 +4,7 @@ import convenientadditions.init.*;
 import convenientadditions.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -15,14 +16,21 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class ConvenientAdditions {
     @Instance(ModConstants.Mod.MODID)
     public static ConvenientAdditions INSTANCE;
+
     @SidedProxy(modId = ModConstants.Mod.MODID, serverSide = ModConstants.Mod.commonProxyClassPath, clientSide = ModConstants.Mod.clientProxyClassPath)
     public static CommonProxy PROXY;
+
     public static final CreativeTabs CREATIVETAB = new CreativeTabs(ModConstants.Mod.MODID) {
         @Override
         public ItemStack getTabIconItem() {
             return new ItemStack(ModBlocks.playerInterfaceBlock);
         }
     };
+
+    static{
+        FluidRegistry.enableUniversalBucket();
+    }
+
     public static String configFile;
 
     @EventHandler

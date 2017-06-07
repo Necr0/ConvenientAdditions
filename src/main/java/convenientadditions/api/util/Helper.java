@@ -7,6 +7,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -155,5 +156,9 @@ public class Helper {
 		if(!pers.hasKey(modid))
 			pers.setTag(modid,new NBTTagCompound());
 		return pers.getCompoundTag(modid);
+	}
+
+	public static boolean isEntityAirBorne(EntityLivingBase player){
+		return (player.isAirBorne || (!player.onGround && !player.isInWater())) && !player.isElytraFlying();
 	}
 }

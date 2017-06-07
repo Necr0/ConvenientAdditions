@@ -2,7 +2,7 @@ package convenientadditions.item.relic.transmutationTome;
 
 import convenientadditions.api.gui.container.IContainerTickable;
 import convenientadditions.base.CAContainer;
-import convenientadditions.api.inventory.stackhandler.ItemStackHandlerOutputOnly;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerOutputOnly;
 import convenientadditions.api.registry.transmutationTome.TransmutationTomeRecipeHandler;
 import convenientadditions.init.ModItems;
 import convenientadditions.init.ModNetworking;

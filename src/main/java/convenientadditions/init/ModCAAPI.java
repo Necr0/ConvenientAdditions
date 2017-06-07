@@ -2,6 +2,7 @@ package convenientadditions.init;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.CCDataSerializers;
+import convenientadditions.api.capabilities.energy.CapabilityEnderFlux;
 import convenientadditions.api.entity.specialitem.BehaviourRegistry;
 import convenientadditions.api.entity.specialitem.behaviours.BehaviourAutoBoneMeal;
 import convenientadditions.api.registry.compost.CompostRegistry;
@@ -31,6 +32,7 @@ public class ModCAAPI {
 
     public static void init() {
         CCDataSerializers.initSerializers();
+        CapabilityEnderFlux.register();
         BEHAVIOUR_COMPOST = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"compost"), new BehaviourCompost());
         BEHAVIOUR_AUTO_BONEMEAL = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoBonemeal"), new BehaviourAutoBoneMeal());
         BEHAVIOUR_AUTO_FERTILIZER = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFertilizer"), new BehaviourAutoFertilizer());

@@ -1,4 +1,4 @@
-package convenientadditions.api.block.tileentity;
+package convenientadditions.api.capabilities.stackhandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;

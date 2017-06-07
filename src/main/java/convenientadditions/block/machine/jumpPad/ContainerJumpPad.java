@@ -41,13 +41,13 @@ public class ContainerJumpPad extends CAContainer {
             ItemStack current = slot.getStack();
             previous = current.copy();
 
-            if (fromSlot < 1) {
+            if (fromSlot < 2) {
                 // From TE Inventory to Player Inventory
-                if (!this.mergeItemStack(current, 1, 37, true))
+                if (!this.mergeItemStack(current, 2, 38, true))
                     return ItemStack.EMPTY;
             } else {
                 // From Player Inventory to TE Inventory
-                if (!this.mergeItemStack(current, 0, 1, false))
+                if (!this.mergeItemStack(current, 0, 2, false))
                     return ItemStack.EMPTY;
             }
 

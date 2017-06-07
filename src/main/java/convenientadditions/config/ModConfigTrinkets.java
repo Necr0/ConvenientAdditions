@@ -19,6 +19,7 @@ public class ModConfigTrinkets {
     public static boolean slime_balloon=true;
     public static boolean cloud_balloon=true;
     public static boolean ender_cloud_balloon=true;
+    public static boolean parachute=true;
     public static boolean wind_gem=true;
     public static boolean spiked_sole=true;
     public static boolean glider=true;

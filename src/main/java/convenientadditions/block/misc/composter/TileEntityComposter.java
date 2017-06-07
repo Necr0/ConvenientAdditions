@@ -2,6 +2,7 @@ package convenientadditions.block.misc.composter;
 
 import convenientadditions.api.registry.compost.CompostRegistry;
 import convenientadditions.api.util.Helper;
+import convenientadditions.base.block.CATileEntity;
 import convenientadditions.config.ModConfigMisc;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.state.IBlockState;
@@ -9,32 +10,23 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
 import java.util.Random;
 
-public class TileEntityComposter extends TileEntity implements ITickable {
+public class TileEntityComposter extends CATileEntity implements ITickable {
 
     public boolean processing = false;
     public int content = 0;
     public int progress = 0;
     public boolean spores = true;
-    ComposterItemStackHandler stackHandler;
-    public TileEntityComposter() {
-        super();
-        this.stackHandler = new ComposterItemStackHandler(this);
-    }
+    public IItemHandler stackHandler = addCapability(new ComposterItemStackHandler(this));
 
     public ItemStack insertStack(ItemStack stackIn) {
         ItemStack stack = stackHandler.insertItem(0, stackIn, false);
@@ -61,16 +53,6 @@ public class TileEntityComposter extends TileEntity implements ITickable {
         nbt.setInteger("progress", progress);
         nbt.setBoolean("progress", spores);
         return nbt;
-    }
-
-    public void readSyncNBT(NBTTagCompound nbt) {
-        this.processing = nbt.getBoolean("processing");
-        this.content = nbt.getInteger("content");
-    }
-
-    public void writeSyncNBT(NBTTagCompound nbt) {
-        nbt.setBoolean("processing", processing);
-        nbt.setInteger("content", content);
     }
 
     public int getContentCapacityPercentage() {
@@ -141,28 +123,5 @@ public class TileEntityComposter extends TileEntity implements ITickable {
 
     public int getContentValue(ItemStack itemStack) {
         return CompostRegistry.getCompostingMass(itemStack);
-    }
-
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket() {
-        NBTTagCompound nbt = new NBTTagCompound();
-        writeSyncNBT(nbt);
-        return new SPacketUpdateTileEntity(this.pos, 0, nbt);
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        readSyncNBT(pkt.getNbtCompound());
-    }
-
-    @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? true : super.hasCapability(capability, facing);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) stackHandler : super.getCapability(capability, facing);
     }
 }

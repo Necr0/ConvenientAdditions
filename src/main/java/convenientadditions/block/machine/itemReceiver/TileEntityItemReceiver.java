@@ -1,17 +1,17 @@
 package convenientadditions.block.machine.itemReceiver;
 
 import convenientadditions.api.IMatcher;
-import convenientadditions.api.inventory.stackhandler.CombinedItemStackHandler;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
+import convenientadditions.api.capabilities.stackhandler.CombinedItemStackHandler;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.IMatcherProvider;
+import convenientadditions.api.provider.itemnetwork.IItemProvider;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.base.block.CATileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -20,11 +20,7 @@ import java.util.ArrayList;
 
 public class TileEntityItemReceiver extends CATileEntity {
 
-    ItemStackHandlerAutoSaveRestricted channels;
-
-    public TileEntityItemReceiver() {
-        channels = new ItemStackHandlerAutoSaveRestricted(this, 3, IMatcherProvider.class);
-    }
+    ItemStackHandlerAutoSave channels = addAutoSavable(new ItemStackHandlerAutoSaveRestricted(this, 3, IMatcherProvider.class).setName("CHANNELS"));
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
@@ -40,29 +36,16 @@ public class TileEntityItemReceiver extends CATileEntity {
     public IItemHandler getItemHandler() {
         ArrayList<IItemHandler> tmp = new ArrayList<>();
         for (IMatcher m : getMatchers()) {
-            for (Tuple<World, BlockPos> t : ItemNetworkProvider.getEntries(m)) {
-                if (ItemNetworkProvider.getProvider(t.getFirst(), t.getSecond()).hasItemHandler()){
-                    IItemHandler a=ItemNetworkProvider.getProvider(t.getFirst(), t.getSecond()).getItemHandler();
+            for (Tuple<Integer, BlockPos> t : ItemNetworkProvider.getEntries(m)) {
+                IItemProvider provider=ItemNetworkProvider.getProvider(t.getFirst(), t.getSecond());
+                if (provider!=null && provider.hasItemHandler()){
+                    IItemHandler a=provider.getItemHandler();
                     if (!tmp.contains(a))
                         tmp.add(a);
                 }
             }
         }
         return new CombinedItemStackHandler(tmp);
-    }
-
-    @Override
-    public void readFromNBT(NBTTagCompound nbt) {
-        super.readFromNBT(nbt);
-        if (nbt.hasKey("CHANNELS") && nbt.getTag("CHANNELS") instanceof NBTTagCompound)
-            channels.deserializeNBT((NBTTagCompound) nbt.getTag("CHANNELS"));
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-        super.writeToNBT(nbt);
-        nbt.setTag("CHANNELS", channels.serializeNBT());
-        return nbt;
     }
 
     public IMatcher[] getMatchers() {

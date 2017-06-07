@@ -2,8 +2,8 @@ package convenientadditions.block.machine.setProvider;
 
 import convenientadditions.api.util.FillSetFilter;
 import convenientadditions.api.block.tileentity.IConfigurable;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveOutputOnly;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveOutputOnly;
 import convenientadditions.base.block.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,9 +26,9 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
     public boolean powered;
     public boolean filteredInput;
 
-    public ItemStackHandlerSPFiltered input;
-    public ItemStackHandlerAutoSaveOutputOnly output;
-    public ItemStackHandlerAutoSave filter;
+    public ItemStackHandlerAutoSave input = addAutoSavable(new ItemStackHandlerSPFiltered(this, 18).setName("INPUT"));
+    public ItemStackHandlerAutoSave output = addAutoSavable(new ItemStackHandlerAutoSaveOutputOnly(this, 18).setName("OUTPUT"));
+    public ItemStackHandlerAutoSave filter = addAutoSavable(new ItemStackHandlerAutoSave(this, 9).setName("FILTER"));
 
     public TileEntitySetProvider() {
         super();
@@ -37,9 +37,6 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
         }
         outletSides.put(EnumFacing.DOWN, EnumOutletMode.output);
         outletSides.put(EnumFacing.UP, EnumOutletMode.input);
-        this.input = new ItemStackHandlerSPFiltered(this, 18);
-        this.output = new ItemStackHandlerAutoSaveOutputOnly(this, 18);
-        this.filter = new ItemStackHandlerAutoSave(this, 9);
     }
 
     @Override
@@ -64,12 +61,6 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
                 outletSides.put(f, EnumOutletMode.fromByte(nbt.getByte("OUTLET_" + f.ordinal())));
             }
         }
-        if (nbt.hasKey("INPUT"))
-            input.deserializeNBT((NBTTagCompound) nbt.getTag("INPUT"));
-        if (nbt.hasKey("OUTPUT"))
-            output.deserializeNBT((NBTTagCompound) nbt.getTag("OUTPUT"));
-        if (nbt.hasKey("FILTER"))
-            filter.deserializeNBT((NBTTagCompound) nbt.getTag("FILTER"));
         if (nbt.hasKey("IGNOREDV"))
             ignoreDV = nbt.getBoolean("IGNOREDV");
         if (nbt.hasKey("IGNORENBT"))
@@ -90,9 +81,6 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
         for (EnumFacing f : EnumFacing.VALUES) {
             nbt.setByte("OUTLET_" + f.ordinal(), (byte) outletSides.get(f).ordinal());
         }
-        nbt.setTag("INPUT", input.serializeNBT());
-        nbt.setTag("OUTPUT", output.serializeNBT());
-        nbt.setTag("FILTER", filter.serializeNBT());
         nbt.setBoolean("IGNOREDV", ignoreDV);
         nbt.setBoolean("IGNORENBT", ignoreNBT);
         nbt.setBoolean("FILTERINPUT", filteredInput);
@@ -105,8 +93,7 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
     @Override
     public boolean configureSide(EnumFacing f) {
         outletSides.put(f, EnumOutletMode.fromByte((byte) (outletSides.get(f).ordinal() + 1)));
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
         return true;
     }
 
@@ -143,32 +130,27 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
 
     public void setIgnoreDV(boolean ignoreDV) {
         this.ignoreDV = ignoreDV;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     public void setIgnoreNBT(boolean ignoreNBT) {
         this.ignoreNBT = ignoreNBT;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     public void setFilterInput(boolean filterInput) {
         this.filteredInput = filterInput;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     public void setPushMode(byte resetMode) {
         this.pushMode = resetMode;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     public void setIgnoreOutput(boolean ignoreOutput) {
         this.ignoreOutput=ignoreOutput;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     public void updateRS(boolean power) {

@@ -1,7 +1,6 @@
 package convenientadditions.base.block;
 
 import convenientadditions.api.block.IDismantleable;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;

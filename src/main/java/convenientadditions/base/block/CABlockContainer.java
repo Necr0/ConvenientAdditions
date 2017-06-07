@@ -2,7 +2,7 @@ package convenientadditions.base.block;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;

@@ -1,19 +1,16 @@
 package convenientadditions.block.misc.storagecrate;
 
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import convenientadditions.base.block.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 
 /**
  * Created by Necro on 5/7/2017.
  */
 public class TileEntityStorageCrate extends CATileEntity {
-    public ItemStackHandlerAutoSave inv=new ItemStackHandlerAutoSave(this,81);
+    public ItemStackHandlerAutoSave inv=addCapability(new ItemStackHandlerAutoSave(this,81));
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
@@ -39,16 +36,5 @@ public class TileEntityStorageCrate extends CATileEntity {
         super.writeToNBT(nbt);
         nbt.setTag("INV", inv.serializeNBT());
         return nbt;
-    }
-
-    @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) inv : super.getCapability(capability, facing);
     }
 }

@@ -3,6 +3,7 @@ package convenientadditions.api.gui.widget.label;
 import convenientadditions.api.gui.widget.IWidgetDrawable;
 import convenientadditions.api.util.GuiHelper;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderHelper;
 
 public class CenteredLabel implements IWidgetDrawable {
     int posX,posY,color;
@@ -10,7 +11,7 @@ public class CenteredLabel implements IWidgetDrawable {
 
     public CenteredLabel(int posX, int posY, String text ){
         this.text=text;
-        this.color=0xFFFFFF;
+        this.color=0xffffff;
         this.posX=posX;
         this.posY=posY;
     }
@@ -29,7 +30,9 @@ public class CenteredLabel implements IWidgetDrawable {
 
     @Override
     public void draw(GuiScreen guiScreen, float partialTicks, int mouseX, int mouseY) {
-        guiScreen.drawCenteredString(GuiHelper.getFontRenderer(),text,posX,posY,color);
+        RenderHelper.disableStandardItemLighting();
+        GuiHelper.getFontRenderer().drawStringWithShadow(text,posX-(getWidth()/2),posY,color);
+        RenderHelper.enableStandardItemLighting();
     }
 
     @Override

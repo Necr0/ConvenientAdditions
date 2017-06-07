@@ -16,16 +16,15 @@ import java.util.List;
 
 public class TileEntitySeedBox extends CATileEntity implements IConfigurable {
 
-    public HashMap<EnumFacing, Boolean> outletSides = new HashMap<EnumFacing, Boolean>();
+    public HashMap<EnumFacing, Boolean> outletSides = new HashMap<>();
 
-    SeedBoxItemStackHandler stackHandler;
+    SeedBoxItemStackHandler stackHandler = new SeedBoxItemStackHandler(this);
 
     public TileEntitySeedBox() {
         super();
         for (EnumFacing f : EnumFacing.VALUES) {
             outletSides.put(f, (f == EnumFacing.DOWN));
         }
-        this.stackHandler = new SeedBoxItemStackHandler(this);
     }
 
     @Override

@@ -2,6 +2,7 @@ package convenientadditions.init;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
+import convenientadditions.item.ItemSlimeBucket;
 import convenientadditions.item.module.text.ItemTextChannelModule;
 import convenientadditions.item.misc.backpack.ItemBackpack;
 import convenientadditions.item.relic.ItemPortableEnderRift;
@@ -66,6 +67,7 @@ public class ModItems {
     public static final ItemPortableEnderRift itemPortableEnderRift = new ItemPortableEnderRift();
     public static final CAItemPotion itemPotionLumbering = new CAItemPotion(ModConstants.ItemNames.potionLumbering,new PotionEffect(PotionLumbering.INSTANCE,4200,0));
     public static final CAItemPotion itemPotionThorns = new CAItemPotion(ModConstants.ItemNames.potionThorns,new PotionEffect(PotionThorns.INSTANCE,2100,0));
+    public static final ItemSlimeBucket itemSlimeBucket = new ItemSlimeBucket();
     //
     public static final ItemMobCatcher itemMobCatcherRegular = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherRegular, EnumMobCatcherType.DEFAULT);
     public static final ItemMobCatcher itemMobCatcherSuper = new ItemMobCatcher(ModConstants.ItemNames.mobCatcherSuper, EnumMobCatcherType.SUPER);
@@ -94,12 +96,13 @@ public class ModItems {
     public static final ItemWaterTrinket itemFlowingWaterRune = new ItemWaterTrinket(ModConstants.ItemNames.flowingWaterRune,false,0f,1f);
     public static final ItemWaterTrinket itemTideAmulet = new ItemWaterTrinket(ModConstants.ItemNames.tideAmulet,true,.1f,1.2f);
     public static final ItemMultiJumpTrinket itemCloudJar = new ItemMultiJumpTrinket();
-    public static final ItemMultiJumpTrinket itemSlimeBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.slimeBalloon,0,.1325f,1f);
-    public static final ItemMultiJumpTrinket itemCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.cloudBalloon,1,.1325f,1.75f);
-    public static final ItemMultiJumpTrinket itemEnderCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.enderCloudBalloon,2,.2325f,2.6f);
+    public static final ItemMultiJumpTrinket itemSlimeBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.slimeBalloon,0,.1325f,1f,0f);
+    public static final ItemMultiJumpTrinket itemCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.cloudBalloon,1,.1325f,1.75f,0f);
+    public static final ItemMultiJumpTrinket itemEnderCloudBalloon = new ItemMultiJumpTrinket(ModConstants.ItemNames.enderCloudBalloon,2,.2325f,2.6f,0f);
+    public static final ItemMultiJumpTrinket parachute = new ItemMultiJumpTrinket(ModConstants.ItemNames.parachute,0,0f,0f,-.15f);
     public static final ItemSpeedTrinket itemWindGem = new ItemSpeedTrinket();
-    public static final ItemSpeedTrinket itemGlider = new ItemSpeedTrinket(ModConstants.ItemNames.glider,0f,-.375f,.1f);
-    public static final ItemSpeedTrinket itemValkyrieWings = new ItemSpeedTrinket(ModConstants.ItemNames.valkyrieWings,.125f,-.295f,.13775f);
+    public static final ItemSpeedTrinket itemGlider = new ItemSpeedTrinket(ModConstants.ItemNames.glider,0f,.0375f,.06875f);
+    public static final ItemSpeedTrinket itemValkyrieWings = new ItemSpeedTrinket(ModConstants.ItemNames.valkyrieWings,.125f,.0375f,.0765875f);
     public static final ItemNetherTrinket itemFireproofCloak = new ItemNetherTrinket();
     public static final ItemNetherTrinket itemNetherTalisman = new ItemNetherTrinket(ModConstants.ItemNames.netherTalisman,false,true,0f,0f,true);
     public static final ItemNetherTrinket itemNetherCloak = new ItemNetherTrinket(ModConstants.ItemNames.netherCloak,true,true,.5f,.5f,true);
@@ -142,6 +145,7 @@ public class ModItems {
         registerItem(itemPortableEnderRift);
         registerItem(itemPotionLumbering);
         registerItem(itemPotionThorns);
+        registerItem(itemSlimeBucket);
         //
         registerItem(itemMobCatcherRegular);
         registerItem(itemMobCatcherSuper);
@@ -165,6 +169,7 @@ public class ModItems {
         registerItem(itemSlimeBalloon);
         registerItem(itemCloudBalloon);
         registerItem(itemEnderCloudBalloon);
+        registerItem(parachute);
         registerItem(itemWindGem);
         registerItem(itemGlider);
         registerItem(itemValkyrieWings);
@@ -216,6 +221,7 @@ public class ModItems {
         registerModelLocation(itemPortableEnderRift);
         registerModelLocation(itemPotionLumbering);
         registerModelLocation(itemPotionThorns);
+        registerModelLocation(itemSlimeBucket);
         //modules
         registerModelLocation(itemModulePlayer);
         registerModelLocation(itemModuleColor);
@@ -232,6 +238,7 @@ public class ModItems {
         registerModelLocation(itemSlimeBalloon);
         registerModelLocation(itemCloudBalloon);
         registerModelLocation(itemEnderCloudBalloon);
+        registerModelLocation(parachute);
         registerModelLocation(itemWindGem);
         registerModelLocation(itemGlider);
         registerModelLocation(itemValkyrieWings);

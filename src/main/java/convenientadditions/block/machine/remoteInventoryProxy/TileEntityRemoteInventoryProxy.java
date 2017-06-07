@@ -1,7 +1,8 @@
 package convenientadditions.block.machine.remoteInventoryProxy;
 
 import convenientadditions.api.block.tileentity.IItemProxy;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.base.block.CATileEntity;
 import convenientadditions.config.ModConfigMisc;
 import convenientadditions.item.module.ItemLocationModule;
@@ -18,11 +19,7 @@ import java.util.Arrays;
 
 public class TileEntityRemoteInventoryProxy extends CATileEntity implements IItemProxy{
 
-    ItemStackHandlerAutoSaveRestricted target;
-
-    public TileEntityRemoteInventoryProxy(){
-        target=new ItemStackHandlerAutoSaveRestricted(this,1,ItemLocationModule.class);
-    }
+    ItemStackHandlerAutoSave target = addAutoSavable(new ItemStackHandlerAutoSaveRestricted(this,1,ItemLocationModule.class).setName("LOCATION"));
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {

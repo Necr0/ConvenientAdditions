@@ -17,8 +17,7 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
 
     public boolean sided = false;
 
-    public TileEntityInventoryProxy() {
-    }
+    public TileEntityInventoryProxy() {}
 
     public TileEntityInventoryProxy(boolean sided) {
         this.sided = sided;

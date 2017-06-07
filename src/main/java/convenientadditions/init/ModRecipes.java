@@ -34,8 +34,30 @@ public class ModRecipes {
                     'i', "ingotIron",
                     'n', "nuggetIron"));
 
-        if (ModConfigRelics.transmutationTome_recipe)
-            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemTransmutationTome, 1), Items.BOOK, Items.BLAZE_ROD, Items.ENDER_EYE, Items.WHEAT_SEEDS));
+        initCompost();
+        initBlocks();
+        initMachines();
+        initArrows();
+        initRelics();
+        initTrinkets();
+        initInventoryProxies();
+        initModules();
+        initTreeTap();
+        initAdvPickaxe();
+        initMCDs();
+        initMisc();
+        initCraftingItems();
+        initCheese();
+        initPotions();
+        initPlatforms();
+
+        if(Loader.isModLoaded("gbook") && ModConfigCompat.gbook_recipe)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(GameRegistry.makeItemStack("gbook:guidebook",0,1,"{Book:\"convenientadditions:xml/book.xml\"}"),
+                    Items.BOOK,Items.FEATHER,Items.WHEAT_SEEDS));
+    }
+
+    private static void initCraftingItems() {
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianPlate, 6), Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.STONE));
 
         if(ModConfigCraftingItems.dislocationCore)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemDislocationCore,3),
@@ -57,7 +79,9 @@ public class ModRecipes {
                     "hhh",
                     's', "stickWood",
                     'h', "slabWood"));
+    }
 
+    private static void initMisc() {
         if(ModConfigMisc.backpack_recipe)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemBackpack),
                     "sls",
@@ -66,23 +90,7 @@ public class ModRecipes {
                     'l', "leather",
                     's', "string"));
 
-        initCompost();
-        initBlocks();
-        initMachines();
-        initArrows();
-        initRelics();
-        initBaubles();
-        initInventoryProxies();
-        initModules();
-        initTreeTap();
-        initAdvPickaxe();
-        initMCDs();
-
-        if(Loader.isModLoaded("gbook") && ModConfigCompat.gbook_recipe)
-            GameRegistry.addRecipe(new ShapelessOreRecipe(GameRegistry.makeItemStack("gbook:guidebook",0,1,"{Book:\"convenientadditions:xml/book.xml\"}"),
-                    Items.BOOK,Items.FEATHER,Items.WHEAT_SEEDS));
-
-        initCheese();
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.SLIME_BALL,3),ModItems.itemSlimeBucket));
     }
 
     private static void initCompost() {
@@ -107,30 +115,6 @@ public class ModRecipes {
     }
 
     private static void initBlocks() {
-        if (ModConfigMisc.platform){
-            for(EnumDyeColor c:EnumDyeColor.values()){
-                String dye="dye"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
-                String pane="paneGlass"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
-                String block="blockGlass"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.platform, 4, c.getMetadata()),
-                        "p p",
-                        " d ",
-                        "p p",
-                        'd', dye,
-                        'p', pane));
-                ItemStack w=new ItemStack(ModBlocks.platform,1, OreDictionary.WILDCARD_VALUE);
-                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.platform, 4, c.getMetadata()),w,w,w,w,dye));
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.semiSolidBlock, 4, c.getMetadata()),
-                        "b b",
-                        " d ",
-                        "b b",
-                        'd', dye,
-                        'b', block));
-                w=new ItemStack(ModBlocks.semiSolidBlock,1, OreDictionary.WILDCARD_VALUE);
-                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.semiSolidBlock, 4, c.getMetadata()),w,w,w,w,dye));
-            }
-        }
-
         if (ModConfigMisc.powderKeg)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.powderKegBlock),
                     "psp",
@@ -141,7 +125,7 @@ public class ModRecipes {
                     'g', "gunpowder"));
 
         if (ModConfigMisc.seedBox_recipe)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.seedBoxBlock,
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.seedBoxBlock,2),
                     "tpt",
                     "php",
                     "tpt",
@@ -215,6 +199,32 @@ public class ModRecipes {
                     "sps",
                     's', "stickWood",
                     'p', "plankWood"));
+    }
+
+    private static void initPlatforms() {
+        if (ModConfigMisc.platform){
+            for(EnumDyeColor c:EnumDyeColor.values()){
+                String dye="dye"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
+                String pane="paneGlass"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
+                String block="blockGlass"+c.getUnlocalizedName().substring(0,1).toUpperCase()+c.getUnlocalizedName().substring(1);
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.platform, 4, c.getMetadata()),
+                        "p p",
+                        " d ",
+                        "p p",
+                        'd', dye,
+                        'p', pane));
+                ItemStack w=new ItemStack(ModBlocks.platform,1, OreDictionary.WILDCARD_VALUE);
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.platform, 4, c.getMetadata()),w,w,w,w,dye));
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.semiSolidBlock, 4, c.getMetadata()),
+                        "b b",
+                        " d ",
+                        "b b",
+                        'd', dye,
+                        'b', block));
+                w=new ItemStack(ModBlocks.semiSolidBlock,1, OreDictionary.WILDCARD_VALUE);
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.semiSolidBlock, 4, c.getMetadata()),w,w,w,w,dye));
+            }
+        }
     }
 
     private static void initMachines(){
@@ -405,9 +415,12 @@ public class ModRecipes {
                     'e', "chestEnder",
                     'd', ModItems.itemDislocationCore,
                     'o', "obsidian"));
+
+        if (ModConfigRelics.transmutationTome_recipe)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemTransmutationTome, 1), Items.BOOK, Items.BLAZE_ROD, Items.ENDER_EYE, Items.WHEAT_SEEDS));
     }
 
-    private static void initBaubles() {
+    private static void initTrinkets() {
         if (ModConfigTrinkets.ring_of_sunlight)
             GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemSunlightRing,
                     "ysy",
@@ -565,6 +578,14 @@ public class ModRecipes {
                     'd', "gemDiamond",
                     'p', Items.DIAMOND_PICKAXE));
 
+        if (ModConfigTrinkets.parachute)
+            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.parachute,
+                    "lll",
+                    "l l",
+                    "s s",
+                    'l', "leather",
+                    's', "string"));
+
     }
 
     private static void initInventoryProxies() {
@@ -587,7 +608,6 @@ public class ModRecipes {
     }
 
     private static void initModules() {
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianPlate, 6), Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.STONE));
         if (ModConfigModules.modulePlayer)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemModulePlayer), ModItems.itemObsidianPlate, Items.ENDER_EYE, new ItemStack(Items.SKULL, 1, 1)));
         if (ModConfigModules.moduleColor)
@@ -599,11 +619,10 @@ public class ModRecipes {
     }
 
     private static void initTreeTap() {
-        if (ModConfigMisc.treetap)
+        if (ModConfigMisc.treetap){
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemSapBottle), Items.GLASS_BOTTLE, new ItemStack(Items.DYE, 1, 2)));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetap), "ingotIron", "slimeball", "stickWood"));
-        if (ModConfigConsumables.antidote)
-            GameRegistry.addRecipe(new ShapelessNBTOreRecipe(new ItemStack(ModItems.itemAntidote), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.WATER), "sap", Blocks.RED_MUSHROOM, Items.BEETROOT));
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.treetap), "ingotIron", "slimeball", "stickWood"));
+        }
         if (ModConfigConsumables.bandage)
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemBandage), "string", "string", "string", "string", "string", "string", "sap"));
     }
@@ -691,9 +710,14 @@ public class ModRecipes {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.cheeseBlock,1),ModItems.itemCheese,ModItems.itemCheese,ModItems.itemCheese,ModItems.itemCheese,ModItems.itemCheese,ModItems.itemCheese,ModItems.itemCheese,ModItems.itemCheese,ModItems.itemCheese));
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemCheese,9),ModBlocks.cheeseBlock));
         }
+    }
+
+    private static void initPotions(){
         if(ModConfigConsumables.potion_lumbering)
             GameRegistry.addRecipe(new ShapelessNBTOreRecipe(new ItemStack(ModItems.itemPotionLumbering),PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.WATER),"cheese","sap","cropPotato"));
         if(ModConfigConsumables.potion_thorns)
             GameRegistry.addRecipe(new ShapelessNBTOreRecipe(new ItemStack(ModItems.itemPotionThorns),PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.WATER),Items.SPIDER_EYE,Items.POISONOUS_POTATO,new ItemStack(Items.DYE,1,3)));
+        if (ModConfigConsumables.antidote)
+            GameRegistry.addRecipe(new ShapelessNBTOreRecipe(new ItemStack(ModItems.itemAntidote), PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.WATER), "sap", Blocks.RED_MUSHROOM, Items.BEETROOT));
     }
 }

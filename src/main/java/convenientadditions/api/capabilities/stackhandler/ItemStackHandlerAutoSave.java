@@ -1,16 +1,20 @@
-package convenientadditions.api.block.tileentity;
+package convenientadditions.api.capabilities.stackhandler;
 
+import convenientadditions.api.capabilities.IAutoSavable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class ItemStackHandlerAutoSave extends ItemStackHandler implements IItemHandlerModifiable {
+public class ItemStackHandlerAutoSave extends ItemStackHandler implements IItemHandlerModifiable, IAutoSavable {
     public TileEntity te;
     public boolean causeUpdate=false;
     public int updateFlag=3;
+    public String name="INV";
 
     public ItemStackHandlerAutoSave(TileEntity tile, int slots) {
         super(slots);
@@ -50,5 +54,21 @@ public class ItemStackHandlerAutoSave extends ItemStackHandler implements IItemH
     public ItemStackHandlerAutoSave setUpdateFlag(int updateFlag) {
         this.updateFlag = updateFlag;
         return this;
+    }
+
+    public ItemStackHandlerAutoSave setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    @Override
+    public void loadFromTagCompound(NBTTagCompound nbt) {
+        if(nbt.hasKey(name, Constants.NBT.TAG_COMPOUND))
+            deserializeNBT(nbt.getCompoundTag(name));
+    }
+
+    @Override
+    public void saveToTagCompound(NBTTagCompound nbt) {
+        nbt.setTag(name,serializeNBT());
     }
 }

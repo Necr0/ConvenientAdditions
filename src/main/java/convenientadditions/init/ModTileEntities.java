@@ -2,6 +2,7 @@ package convenientadditions.init;
 
 import convenientadditions.ModConstants;
 import convenientadditions.block.machine.autoWorkStation.TileEntityAutoWorkStation;
+import convenientadditions.block.machine.enderFlux.passiveGenerator.TileEntityPassiveGenerator;
 import convenientadditions.block.misc.composter.TileEntityComposter;
 import convenientadditions.block.misc.displayCase.TileEntityDisplayCase;
 import convenientadditions.block.machine.ironFarm.TileEntityIronFarm;
@@ -43,5 +44,6 @@ public class ModTileEntities {
         GameRegistry.registerTileEntity(TileEntityWorkStation.class, ModConstants.BlockNames.workStation);
         GameRegistry.registerTileEntity(TileEntityAutoWorkStation.class, ModConstants.BlockNames.autoWorkStation);
         GameRegistry.registerTileEntity(TileEntityStorageCrate.class, ModConstants.BlockNames.storageCrate);
+        GameRegistry.registerTileEntity(TileEntityPassiveGenerator.class, ModConstants.BlockNames.passiveGenerator);
     }
 }

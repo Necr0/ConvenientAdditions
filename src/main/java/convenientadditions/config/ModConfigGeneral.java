@@ -13,4 +13,6 @@ public class ModConfigGeneral {
     public static boolean sugarOreDictInit=true;
     @Config.Comment("DON'T CHANGE THIS IF YOU DON'T KNOW WHAT IT IS!")
     public static boolean doorOreDictInit=true;
+    @Config.Comment("If harvesting slime from big slimes should be possible.")
+    public static boolean slimeHarvesting=true;
 }

@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.setProvider;
 
 import convenientadditions.api.util.ItemHelper;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 

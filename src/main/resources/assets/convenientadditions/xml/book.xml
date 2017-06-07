@@ -83,6 +83,7 @@
 				<link ref="trinkets:minersbracelet" indent="8">Miner's Bracelet</link>
 				<link ref="trinkets:saturationring" indent="8">Ring of Saturation</link>
 				<link ref="trinkets:sunlightring" indent="8">Ring of Sunlight</link>
+				<link ref="trinkets:parachute" indent="8">Parachute</link>
 		</page>
 		<page id="cloudjar">
 			<title>Cloud in a Jar</title>
@@ -143,7 +144,7 @@
 				<stack item="minecraft:leather"/><space /><stack item="minecraft:leather"/>
 				<stack item="convenientadditions:glider"/>
 			</big_recipe>
-			<p>When worn as a bauble it gives the wearer the ability to glide and fall slowly. This also prevents damage from falling.</p>
+			<p>When worn as a bauble it gives the wearer the ability to glide fast. It also slightly brakes your falling speed.</p>
 		</page>
 		<page id="valkyriewings">
 			<title>Valkyrie Wings</title>
@@ -295,6 +296,16 @@
 				<stack item="convenientadditions:sunlightring"/>
 			</big_recipe>
 			<p>When worn as a bauble the wearer will have an aura of light. This is the bauble equivalent of the <link ref="relics:sunstone">Sunstone</link>.</p>
+		</page>
+		<page id="parachute">
+			<title>Parachute</title>
+			<big_recipe>
+				<stack item="minecraft:leather"/><stack item="minecraft:leather"/><stack item="minecraft:leather"/>
+				<stack item="minecraft:leather"/><space /><stack item="minecraft:leather"/>
+				<stack item="minecraft:string"/><space /><stack item="minecraft:string"/>
+				<stack item="convenientadditions:parachute"/>
+			</big_recipe>
+			<p>When worn as a bauble the wearer can jump while falling and the parachute will brake their fall negating falling damage.</p>
 		</page>
 	</chapter>
 	<chapter id="relics">
@@ -929,7 +940,7 @@
 				<stack item="minecraft:iron_ingot"/><stack item="minecraft:planks"/><stack item="minecraft:iron_ingot"/>
 				<stack item="minecraft:planks"/><stack item="minecraft:hopper"/><stack item="minecraft:planks"/>
 				<stack item="minecraft:iron_ingot"/><stack item="minecraft:planks"/><stack item="minecraft:iron_ingot"/>
-				<stack item="convenientadditions:seedbox"/>
+				<stack item="convenientadditions:seedbox" count="2"/>
 			</big_recipe>
 			<p>You can insert items into the Seed Box to have them drop down from one of the output sides with special properties depending on the item.</p>
 		</page>

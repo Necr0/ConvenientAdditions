@@ -1,6 +1,6 @@
 package convenientadditions.block.misc.displayCase;
 
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 

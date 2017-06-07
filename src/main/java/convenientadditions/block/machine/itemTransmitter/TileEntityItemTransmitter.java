@@ -1,42 +1,22 @@
 package convenientadditions.block.machine.itemTransmitter;
 
 import convenientadditions.api.IMatcher;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSaveRestricted;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveRestricted;
 import convenientadditions.api.item.IMatcherProvider;
 import convenientadditions.api.provider.itemnetwork.IItemProvider;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
 import convenientadditions.base.block.CATileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.ArrayList;
 
 public class TileEntityItemTransmitter extends CATileEntity implements ITickable, IItemProvider {
 
-    ItemStackHandlerAutoSaveRestricted channels;
-    ItemStackHandlerAutoSave buffer;
-
-    public TileEntityItemTransmitter() {
-        channels = new ItemStackHandlerAutoSaveRestricted(this, 3, IMatcherProvider.class);
-        buffer = new ItemStackHandlerAutoSave(this, 9);
-    }
-
-    @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T)buffer : super.getCapability(capability, facing);
-    }
+    ItemStackHandlerAutoSave channels = addAutoSavable(new ItemStackHandlerAutoSaveRestricted(this, 3, IMatcherProvider.class).setName("CHANNELS"));
+    ItemStackHandlerAutoSave buffer = addCapability(addAutoSavable(new ItemStackHandlerAutoSave(this, 9).setName("BUFFER")));
 
     @Override
     public IItemHandler getItemHandler(){ return this.buffer; }
@@ -57,19 +37,5 @@ public class TileEntityItemTransmitter extends CATileEntity implements ITickable
     @Override
     public void update() {
         ItemNetworkProvider.addEntry(getWorld(), getPos());
-    }
-
-    @Override
-    public void readFromNBT(NBTTagCompound nbt) {
-        super.readFromNBT(nbt);
-        if (nbt.hasKey("CHANNELS") && nbt.getTag("CHANNELS") instanceof NBTTagCompound)
-            channels.deserializeNBT((NBTTagCompound) nbt.getTag("CHANNELS"));
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-        super.writeToNBT(nbt);
-        nbt.setTag("CHANNELS", channels.serializeNBT());
-        return nbt;
     }
 }

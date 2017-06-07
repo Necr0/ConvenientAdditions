@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.autoWorkStation;
 
 import convenientadditions.api.block.tileentity.IConfigurable;
-import convenientadditions.api.block.tileentity.ItemStackHandlerAutoSave;
+import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import convenientadditions.api.inventory.InventoryStackHandlerCrafting;
 import convenientadditions.api.util.Helper;
 import convenientadditions.api.util.ItemHelper;
@@ -26,8 +26,8 @@ import java.util.HashMap;
 public class TileEntityAutoWorkStation extends CATileEntity implements ITickable, IConfigurable {
     public HashMap<EnumFacing, TileEntitySetProvider.EnumOutletMode> outletSides = new HashMap<>();
 
-    public ItemStackHandlerAutoSave inv=new ItemStackHandlerAutoSave(this,18);
-    public ItemStackHandlerAutoSave grid=new ItemStackHandlerAWSFiltered(this,9);
+    public ItemStackHandlerAutoSave inv=addAutoSavable(new ItemStackHandlerAutoSave(this,18));
+    public ItemStackHandlerAutoSave grid=addAutoSavable(new ItemStackHandlerAWSFiltered(this,9).setName("GRID"));
     public InventoryStackHandlerCrafting craftMatrix;
     public boolean keepItem=false;
     public boolean filteredInput=false;
@@ -140,10 +140,6 @@ public class TileEntityAutoWorkStation extends CATileEntity implements ITickable
                 outletSides.put(f, TileEntitySetProvider.EnumOutletMode.fromByte(nbt.getByte("OUTLET_" + f.ordinal())));
             }
         }
-        if (nbt.hasKey("INV") && nbt.getTag("INV") instanceof NBTTagCompound)
-            inv.deserializeNBT((NBTTagCompound) nbt.getTag("INV"));
-        if (nbt.hasKey("GRID") && nbt.getTag("GRID") instanceof NBTTagCompound)
-            grid.deserializeNBT((NBTTagCompound) nbt.getTag("GRID"));
         if (nbt.hasKey("FILTERINPUT"))
             filteredInput = nbt.getBoolean("FILTERINPUT");
         if (nbt.hasKey("CRAFTMODE"))
@@ -160,8 +156,6 @@ public class TileEntityAutoWorkStation extends CATileEntity implements ITickable
         for (EnumFacing f : EnumFacing.VALUES) {
             nbt.setByte("OUTLET_" + f.ordinal(), (byte) outletSides.get(f).ordinal());
         }
-        nbt.setTag("INV", inv.serializeNBT());
-        nbt.setTag("GRID", grid.serializeNBT());
         nbt.setBoolean("FILTERINPUT", filteredInput);
         nbt.setByte("CRAFTMODE", craftMode);
         nbt.setBoolean("KEEPITEM", keepItem);
@@ -179,20 +173,17 @@ public class TileEntityAutoWorkStation extends CATileEntity implements ITickable
 
     public void setFilterInput(boolean filterInput) {
         this.filteredInput = filterInput;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     public void setCraftMode(byte resetMode) {
         this.craftMode = resetMode;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     public void setKeepItem(boolean ignoreOutput) {
         this.keepItem=ignoreOutput;
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
     }
 
     @Override
@@ -211,8 +202,7 @@ public class TileEntityAutoWorkStation extends CATileEntity implements ITickable
     @Override
     public boolean configureSide(EnumFacing f) {
         outletSides.put(f, TileEntitySetProvider.EnumOutletMode.fromByte((byte) (outletSides.get(f).ordinal() + 1)));
-        markDirty();
-        getWorld().notifyBlockUpdate(pos, getWorld().getBlockState(pos), getWorld().getBlockState(pos), 0);
+        causeUpdate(0);
         return true;
     }
 

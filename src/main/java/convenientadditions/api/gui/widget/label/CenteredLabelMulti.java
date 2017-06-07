@@ -4,6 +4,7 @@ import convenientadditions.api.gui.widget.IWidgetDrawable;
 import convenientadditions.api.util.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderHelper;
 
 import java.util.List;
 
@@ -32,8 +33,10 @@ public class CenteredLabelMulti implements IWidgetDrawable {
 
     @Override
     public void draw(GuiScreen guiScreen, float partialTicks, int mouseX, int mouseY) {
+        RenderHelper.disableStandardItemLighting();
         int i= (int) ((Minecraft.getSystemTime()/1000)%texts.size());
         guiScreen.drawCenteredString(GuiHelper.getFontRenderer(),texts.get(i),posX,posY,color);
+        RenderHelper.enableStandardItemLighting();
     }
 
     @Override

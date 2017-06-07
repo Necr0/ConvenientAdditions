@@ -12,7 +12,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.List;
 
-public class TileEntityPlayerInterface extends TileEntity implements ICapabilityProvider, ITickable {//IInventory {
+public class TileEntityPlayerInterface extends TileEntity implements ICapabilityProvider, ITickable {
 
     public boolean hasPlayer = false;
 

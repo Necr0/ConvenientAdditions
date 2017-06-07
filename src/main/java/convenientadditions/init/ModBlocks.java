@@ -4,11 +4,10 @@ import convenientadditions.ModConstants;
 import convenientadditions.base.block.CABlock;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.base.item.ItemBlockMetadata;
-import convenientadditions.block.misc.compostSoil.BlockCompostSoil;
-import convenientadditions.block.misc.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.machine.BlockBlastPad;
 import convenientadditions.block.machine.BlockMachineBlock;
 import convenientadditions.block.machine.autoWorkStation.BlockAutoWorkStation;
+import convenientadditions.block.machine.enderFlux.passiveGenerator.BlockPassiveGenerator;
 import convenientadditions.block.machine.hoverPad.BlockHoverPad;
 import convenientadditions.block.machine.ironFarm.BlockIronFarm;
 import convenientadditions.block.machine.itemReceiver.BlockItemReceiver;
@@ -22,6 +21,8 @@ import convenientadditions.block.machine.storageMatrix.BlockStorageMatrix;
 import convenientadditions.block.misc.BlockEnderProof;
 import convenientadditions.block.misc.BlockPunjiSticks;
 import convenientadditions.block.misc.BlockTreeTap;
+import convenientadditions.block.misc.compostSoil.BlockCompostSoil;
+import convenientadditions.block.misc.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.misc.composter.BlockComposter;
 import convenientadditions.block.misc.displayCase.BlockDisplayCase;
 import convenientadditions.block.misc.inventoryProxy.BlockInventoryProxyNormal;
@@ -38,7 +39,9 @@ import convenientadditions.block.technical.BlockTempLight;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemCloth;
@@ -79,6 +82,7 @@ public class ModBlocks {
     public static final BlockAutoWorkStation autoWorkStation = new BlockAutoWorkStation();
     public static final BlockPunjiSticks punjiSticks = new BlockPunjiSticks();
     public static final BlockStorageCrate storageCrate = new BlockStorageCrate();
+    public static final BlockPassiveGenerator passiveGenerator = new BlockPassiveGenerator();
     //dummy
     public static final BlockMachineBlock machineBlock = new BlockMachineBlock();
     public static final Block ironGolemBlock = new CABlock(ModConstants.BlockNames.ironGolemBlock, Material.IRON).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.METAL).setHardness(5.0F).setResistance(10.0F);
@@ -86,6 +90,7 @@ public class ModBlocks {
     public static final Block woodenTile = new CABlock(ModConstants.BlockNames.woodenTile, Material.WOOD).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
 
     public static void init() {
+
         registerBlock(composterBlock);
         registerBlock(powderKegBlock);
         registerBlock(playerInterfaceBlock);
@@ -121,6 +126,7 @@ public class ModBlocks {
         registerBlock(punjiSticks);
         registerBlock(storageCrate);
         registerBlock(woodenTile);
+        //registerBlock(passiveGenerator);
     }
 
     @SideOnly(Side.CLIENT)
@@ -169,5 +175,19 @@ public class ModBlocks {
     public static void registerBlock(Block block, ItemBlock item) {
         GameRegistry.register(block);
         GameRegistry.register(item.setRegistryName(block.getRegistryName()));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void registerFluidModel(Block block)
+    {
+        ModelLoader.setCustomMeshDefinition(ItemBlock.getItemFromBlock(block), stack -> new ModelResourceLocation(block.getRegistryName(), "fluid"));
+        ModelLoader.setCustomStateMapper(block, new StateMapperBase()
+        {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state)
+            {
+                return new ModelResourceLocation(block.getRegistryName(), "fluid");
+            }
+        });
     }
 }
