@@ -5,7 +5,7 @@ import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSav
 import convenientadditions.api.inventory.InventoryStackHandlerCrafting;
 import convenientadditions.api.util.Helper;
 import convenientadditions.api.util.ItemHelper;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;

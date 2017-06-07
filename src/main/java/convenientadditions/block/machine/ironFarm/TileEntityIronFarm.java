@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.ironFarm;
 
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveOutputOnly;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ITickable;

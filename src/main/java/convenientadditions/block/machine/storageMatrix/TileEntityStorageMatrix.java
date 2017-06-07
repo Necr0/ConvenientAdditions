@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.storageMatrix;
 
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityStorageMatrix extends CATileEntity {

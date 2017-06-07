@@ -1,34 +1,34 @@
-package convenientadditions.base.block;
+package convenientadditions.base.block.block;
 
-import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.StringHelper;
 import convenientadditions.base.item.EnumItemCategory;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class CABlock extends Block {
+public class CABlockFluidClassic extends BlockFluidClassic {
 
-    protected boolean defaultInfo=true;
+    protected boolean defaultInfo=false;
     protected boolean defaultAdditionalInfo=false;
     protected boolean defaultJoke=false;
     protected boolean baublesRequiredInfo=false;
     protected EnumItemCategory category=null;
 
-    public CABlock(Material materialIn) {
-        super(materialIn);
+    public CABlockFluidClassic(Fluid fluidIn,Material materialIn) {
+        super(fluidIn,materialIn);
     }
 
-    public CABlock(String name,Material materialIn) {
-        super(materialIn);
-        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + name).setCreativeTab(ConvenientAdditions.CREATIVETAB).setRegistryName(name);
+    public CABlockFluidClassic(String name, Fluid fluidIn, Material materialIn) {
+        super(fluidIn,materialIn);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + name).setRegistryName(name);
     }
 
     @Override
@@ -45,33 +45,33 @@ public class CABlock extends Block {
         super.addInformation(stack,player,tooltip,advanced);
     }
 
-    public CABlock setDefaultInfo(boolean defaultInfo) {
+    public CABlockFluidClassic setDefaultInfo(boolean defaultInfo) {
         this.defaultInfo = defaultInfo;
         return this;
     }
 
-    public CABlock setDefaultAdditionalInfo(boolean defaultAdditionalInfo) {
+    public CABlockFluidClassic setDefaultAdditionalInfo(boolean defaultAdditionalInfo) {
         this.defaultAdditionalInfo = defaultAdditionalInfo;
         return this;
     }
 
-    public CABlock setDefaultJoke(boolean defaultJoke) {
+    public CABlockFluidClassic setDefaultJoke(boolean defaultJoke) {
         this.defaultJoke = defaultJoke;
         return this;
     }
 
-    public CABlock setCategory(EnumItemCategory category) {
+    public CABlockFluidClassic setCategory(EnumItemCategory category) {
         this.category=category;
         return this;
     }
 
-    public CABlock setBaublesRequiredInfo(boolean baublesRequiredInfo) {
+    public CABlockFluidClassic setBaublesRequiredInfo(boolean baublesRequiredInfo) {
         this.baublesRequiredInfo = baublesRequiredInfo;
         return this;
     }
 
     @Override
-    public CABlock setSoundType(SoundType sound)
+    public CABlockFluidClassic setSoundType(SoundType sound)
     {
         this.blockSoundType = sound;
         return this;

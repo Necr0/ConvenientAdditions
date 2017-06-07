@@ -1,17 +1,15 @@
 package convenientadditions.block.machine.jumpPad;
 
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerJumpPad extends CAContainer {
-
-    public TileEntityJumpPad te;
+public class ContainerJumpPad extends CAContainerTileEntity {
 
     public ContainerJumpPad(TileEntityJumpPad ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //input
         addSlotToContainer(new SlotItemHandler(ent.location, 0, 44, 8));
         addSlotToContainer(new SlotItemHandler(ent.location, 1, 116, 8));

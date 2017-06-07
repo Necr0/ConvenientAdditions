@@ -1,36 +1,45 @@
-package convenientadditions.base.block;
+package convenientadditions.base.block.block;
 
-import convenientadditions.api.block.tileentity.IConfigurable;
+import convenientadditions.ConvenientAdditions;
+import convenientadditions.ModConstants;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class CABlockMachineConfigurable extends CABlockMachine {
-    public CABlockMachineConfigurable(String name, Material materialIn) {
-        super(name,materialIn);
+import javax.annotation.Nullable;
+
+public abstract class CABlockContainer extends CABlock {
+
+    public CABlockContainer(Material materialIn) {
+        super(materialIn);
+        this.setCreativeTab(ConvenientAdditions.CREATIVETAB);
+    }
+
+    public CABlockContainer(String name, Material materialIn) {
+        super(materialIn);
+        this.setUnlocalizedName(ModConstants.Mod.MODID + ":" + name).setCreativeTab(ConvenientAdditions.CREATIVETAB).setRegistryName(name);
     }
 
     @Override
-    public NonNullList<ItemStack> dismantleBlock(EntityPlayer player, World world, BlockPos pos, boolean returnDrops) {
-        dropItems(world,pos);
-        return super.dismantleBlock(player,world,pos,returnDrops);
-    }
+    public boolean hasTileEntity(IBlockState state){ return true; }
 
-    public void dropItems(World world, BlockPos pos){}
+    @Nullable
+    @Override
+    public abstract TileEntity createTileEntity(World world, IBlockState state);
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
         dropItems(world, pos);
         super.breakBlock(world, pos, state);
     }
+
+    public void dropItems(World world, BlockPos pos){}
 
     public void dropItemHandler(World world, BlockPos pos, ItemStackHandlerAutoSave handler, boolean clearHandler){
         for (ItemStack item : handler.getStacks()) {
@@ -48,14 +57,5 @@ public abstract class CABlockMachineConfigurable extends CABlockMachine {
         }
         if(clearHandler)
             handler.setStacks(NonNullList.withSize(handler.getSlots(),ItemStack.EMPTY));
-    }
-
-    @Override
-    public boolean rotateBlock(World worldObj, BlockPos pos, EnumFacing axis) {
-        TileEntity te = worldObj.getTileEntity(pos);
-        if (te != null && te instanceof IConfigurable) {
-            return ((IConfigurable) te).configureSide(axis);
-        }
-        return super.rotateBlock(worldObj, pos, axis);
     }
 }

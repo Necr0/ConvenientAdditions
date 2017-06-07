@@ -1,7 +1,7 @@
 package convenientadditions.block.misc;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlock;
+import convenientadditions.base.block.block.CABlock;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;

@@ -1,17 +1,15 @@
 package convenientadditions.block.machine.remoteInventoryProxy;
 
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerRemoteInventoryProxy extends CAContainer {
-
-    public TileEntityRemoteInventoryProxy te;
+public class ContainerRemoteInventoryProxy extends CAContainerTileEntity {
 
     public ContainerRemoteInventoryProxy(TileEntityRemoteInventoryProxy ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //input
         addSlotToContainer(new SlotItemHandler(ent.target, 0, 80, 8));
         //player inventory

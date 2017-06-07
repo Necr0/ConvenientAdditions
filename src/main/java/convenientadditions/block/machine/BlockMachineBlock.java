@@ -2,7 +2,7 @@ package convenientadditions.block.machine;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.block.IDismantleable;
-import convenientadditions.base.block.CABlock;
+import convenientadditions.base.block.block.CABlock;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;

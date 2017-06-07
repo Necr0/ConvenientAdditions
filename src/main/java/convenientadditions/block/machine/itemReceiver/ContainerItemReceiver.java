@@ -1,17 +1,15 @@
 package convenientadditions.block.machine.itemReceiver;
 
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerItemReceiver extends CAContainer {
-
-    public TileEntityItemReceiver te;
+public class ContainerItemReceiver extends CAContainerTileEntity {
 
     public ContainerItemReceiver(TileEntityItemReceiver ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //input
         for (int i = 0; i < 3; i++) {
             addSlotToContainer(new SlotItemHandler(ent.channels, i, i * 18 + 62, 8));

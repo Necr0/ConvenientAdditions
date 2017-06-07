@@ -2,7 +2,7 @@ package convenientadditions.block.misc;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.FloodFill;
-import convenientadditions.base.block.CABlock;
+import convenientadditions.base.block.block.CABlock;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

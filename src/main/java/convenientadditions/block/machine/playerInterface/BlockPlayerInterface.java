@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.playerInterface;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlockMachine;
+import convenientadditions.base.block.block.CABlockMachine;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;

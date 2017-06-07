@@ -2,18 +2,16 @@ package convenientadditions.block.machine.setProvider;
 
 import convenientadditions.api.gui.container.SlotFakeWithAmount;
 import convenientadditions.api.gui.container.SlotOutputOnly;
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerSetProvider extends CAContainer {
-
-    public TileEntitySetProvider te;
+public class ContainerSetProvider extends CAContainerTileEntity {
 
     public ContainerSetProvider(TileEntitySetProvider ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //input
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 9; j++) {

@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.platform;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlock;
+import convenientadditions.base.block.block.CABlock;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;

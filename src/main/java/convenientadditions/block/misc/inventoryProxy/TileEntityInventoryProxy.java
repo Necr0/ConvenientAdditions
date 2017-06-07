@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.inventoryProxy;
 
 import convenientadditions.api.block.tileentity.IItemProxy;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import convenientadditions.config.ModConfigMisc;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

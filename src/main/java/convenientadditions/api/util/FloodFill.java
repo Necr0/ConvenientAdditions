@@ -68,7 +68,7 @@ public class FloodFill {
 
     public static boolean doesContainBlockPos(Collection<BlockPos> c, BlockPos pos) {
         for (BlockPos p : c) {
-            if (Helper.areBlockPosEqual(pos, p))
+            if (pos.equals(p))
                 return true;
         }
         return false;

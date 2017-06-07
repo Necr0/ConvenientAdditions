@@ -1,25 +1,26 @@
 package convenientadditions.block.misc.workStation;
 
 import convenientadditions.api.inventory.InventoryStackHandlerCrafting;
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerWorkStation extends CAContainer {
-
-    public TileEntityWorkStation te;
+public class ContainerWorkStation extends CAContainerTileEntity {
     public World world;
     public InventoryStackHandlerCrafting craftMatrix;
     public InventoryCraftResult craftResult=new InventoryCraftResult();
 
     public ContainerWorkStation(TileEntityWorkStation ent, EntityPlayer p) {
-        te = ent;
-        world = te.getWorld();
-        craftMatrix=new InventoryStackHandlerCrafting(this,te.grid,3,3);
+        super(ent);
+        world = ent.getWorld();
+        craftMatrix=new InventoryStackHandlerCrafting(this,ent.grid,3,3);
         this.addSlotToContainer(new SlotCrafting(p, this.craftMatrix, this.craftResult, 0, 124, 26));
 
         for (int i = 0; i < 3; ++i)

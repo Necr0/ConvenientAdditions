@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.storagecrate;
 
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;

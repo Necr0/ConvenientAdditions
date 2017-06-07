@@ -2,7 +2,7 @@ package convenientadditions.block.misc.displayCase;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.block.CABlockContainer;
+import convenientadditions.base.block.block.CABlockContainer;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.SoundType;

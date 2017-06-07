@@ -1,4 +1,4 @@
-package convenientadditions.base.block;
+package convenientadditions.base.block.block;
 
 import convenientadditions.api.block.IDismantleable;
 import convenientadditions.base.item.EnumItemCategory;

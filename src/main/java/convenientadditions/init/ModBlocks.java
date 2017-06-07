@@ -1,7 +1,7 @@
 package convenientadditions.init;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlock;
+import convenientadditions.base.block.block.CABlock;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.base.item.ItemBlockMetadata;
 import convenientadditions.block.machine.BlockBlastPad;

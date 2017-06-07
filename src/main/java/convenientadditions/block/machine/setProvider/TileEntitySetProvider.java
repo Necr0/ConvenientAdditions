@@ -4,7 +4,7 @@ import convenientadditions.api.block.tileentity.IConfigurable;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveOutputOnly;
 import convenientadditions.api.util.FillSetFilter;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

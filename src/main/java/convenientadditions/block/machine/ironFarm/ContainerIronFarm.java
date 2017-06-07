@@ -1,17 +1,15 @@
 package convenientadditions.block.machine.ironFarm;
 
 import convenientadditions.api.gui.container.SlotOutputOnly;
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerIronFarm extends CAContainer {
-
-    public TileEntityIronFarm te;
+public class ContainerIronFarm extends CAContainerTileEntity {
 
     public ContainerIronFarm(TileEntityIronFarm ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //input
         addSlotToContainer(new SlotOutputOnly(ent.inv, 0, 80, 8));
         //player inventory

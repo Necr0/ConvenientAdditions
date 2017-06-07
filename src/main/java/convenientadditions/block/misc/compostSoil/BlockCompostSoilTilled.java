@@ -2,7 +2,7 @@ package convenientadditions.block.misc.compostSoil;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.block.CABlock;
+import convenientadditions.base.block.block.CABlock;
 import convenientadditions.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFarmland;

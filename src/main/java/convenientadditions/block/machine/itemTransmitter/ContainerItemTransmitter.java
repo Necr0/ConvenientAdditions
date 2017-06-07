@@ -1,17 +1,15 @@
 package convenientadditions.block.machine.itemTransmitter;
 
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerItemTransmitter extends CAContainer {
-
-    public TileEntityItemTransmitter te;
+public class ContainerItemTransmitter extends CAContainerTileEntity {
 
     public ContainerItemTransmitter(TileEntityItemTransmitter ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //input
         for (int i = 0; i < 3; i++) {
             addSlotToContainer(new SlotItemHandler(ent.channels, i, i * 18 + 62, 8));

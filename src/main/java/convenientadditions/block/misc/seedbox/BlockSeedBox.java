@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.seedbox;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlockConfigurable;
+import convenientadditions.base.block.block.CABlockConfigurable;
 import convenientadditions.base.item.EnumItemCategory;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

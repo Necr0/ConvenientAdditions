@@ -1,22 +1,20 @@
 package convenientadditions.block.misc.storagecrate;
 
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerStorageCrate extends CAContainer {
-
-    public TileEntityStorageCrate te;
+public class ContainerStorageCrate extends CAContainerTileEntity {
 
     public ContainerStorageCrate(TileEntityStorageCrate ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //te inv
         for (int k = 0; k < 9; ++k) {
             for (int i1 = 0; i1 < 9; ++i1)
             {
-                this.addSlotToContainer(new SlotItemHandler(te.inv, i1 + k * 9, 8 + i1 * 18, 6 + k * 18));
+                this.addSlotToContainer(new SlotItemHandler(ent.inv, i1 + k * 9, 8 + i1 * 18, 6 + k * 18));
             }
         }
         //player inventory

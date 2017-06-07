@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.workStation;
 
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 
 /**
  * Created by Necro on 5/7/2017.

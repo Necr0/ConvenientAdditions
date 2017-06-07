@@ -2,7 +2,7 @@ package convenientadditions.block.misc.seedbox;
 
 import convenientadditions.api.block.tileentity.IConfigurable;
 import convenientadditions.api.util.MathHelper;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

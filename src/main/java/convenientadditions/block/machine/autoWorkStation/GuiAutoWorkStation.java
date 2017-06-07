@@ -16,7 +16,7 @@ public class GuiAutoWorkStation extends CAGuiContainer {
 
     public GuiAutoWorkStation(ContainerAutoWorkStation container) {
         super(container,itemTransmitterGuiTextures);
-        this.te = container.te;
+        this.te = (TileEntityAutoWorkStation) container.tile;
     }
 
     @Override

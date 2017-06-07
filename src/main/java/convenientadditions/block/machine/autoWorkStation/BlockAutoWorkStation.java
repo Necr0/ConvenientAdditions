@@ -2,7 +2,7 @@ package convenientadditions.block.machine.autoWorkStation;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlockMachineConfigurable;
+import convenientadditions.base.block.block.CABlockMachineConfigurable;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import convenientadditions.handler.ModGuiHandler;

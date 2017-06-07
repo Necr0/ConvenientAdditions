@@ -2,7 +2,7 @@ package convenientadditions.block.machine.ironFarm;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlockMachine;
+import convenientadditions.base.block.block.CABlockMachine;
 import convenientadditions.handler.ModGuiHandler;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

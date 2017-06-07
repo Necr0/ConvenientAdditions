@@ -6,7 +6,7 @@ import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSav
 import convenientadditions.api.item.IMatcherProvider;
 import convenientadditions.api.provider.itemnetwork.IItemProvider;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.items.IItemHandler;

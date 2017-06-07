@@ -2,7 +2,7 @@ package convenientadditions.block.machine.jumpPad;
 
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveRestricted;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import convenientadditions.item.module.ItemLocationModule;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;

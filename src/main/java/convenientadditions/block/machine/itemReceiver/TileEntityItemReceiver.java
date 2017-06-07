@@ -7,13 +7,12 @@ import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSav
 import convenientadditions.api.item.IMatcherProvider;
 import convenientadditions.api.provider.itemnetwork.IItemProvider;
 import convenientadditions.api.provider.itemnetwork.ItemNetworkProvider;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.ArrayList;

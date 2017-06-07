@@ -2,7 +2,7 @@ package convenientadditions.block.misc.composter;
 
 import convenientadditions.api.registry.compost.CompostRegistry;
 import convenientadditions.api.util.Helper;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import convenientadditions.config.ModConfigMisc;
 import convenientadditions.init.ModItems;
 import net.minecraft.block.state.IBlockState;

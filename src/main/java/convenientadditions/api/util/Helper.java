@@ -54,20 +54,6 @@ public class Helper {
 		}
 		return false;
 	}
-
-	public static boolean areBlockStatesEqual(IBlockState state1,IBlockState state2, boolean ignoreMeta){
-		if(ignoreMeta){
-			if(state1.getBlock()==Blocks.REDSTONE_ORE&&state2.getBlock()==Blocks.LIT_REDSTONE_ORE)
-				return true;
-			else if(state2.getBlock()==Blocks.REDSTONE_ORE&&state1.getBlock()==Blocks.LIT_REDSTONE_ORE)
-				return true;
-		}
-		return ( (ignoreMeta && state1.getBlock()==state2.getBlock()) || state1==state2 );
-	}
-	
-	public static boolean areBlockPosEqual(BlockPos pos1,BlockPos pos2){
-		return pos1.getX()==pos2.getX()&&pos1.getY()==pos2.getY()&&pos1.getZ()==pos2.getZ();
-	}
 	
 	public static boolean canEntitySeeSky(Entity e){
 		return e.getEntityWorld().canBlockSeeSky(new BlockPos(e));

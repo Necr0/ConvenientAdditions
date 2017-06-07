@@ -2,7 +2,7 @@ package convenientadditions.block.misc.powderkeg;
 
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveRestricted;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.init.Items;
 
 public class TileEntityPowderKeg extends CATileEntity {

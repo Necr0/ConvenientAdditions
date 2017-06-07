@@ -1,4 +1,4 @@
-package convenientadditions.base.block;
+package convenientadditions.base.block.tileentity;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;

@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.displayCase;
 
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 
 /**
  * Created by Necro on 3/10/2017.

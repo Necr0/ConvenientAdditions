@@ -16,7 +16,7 @@ public class GuiInventoryProxyFiltered extends CAGuiContainer {
 
     public GuiInventoryProxyFiltered(ContainerInventoryProxyFiltered container) {
         super(container,filteredProxyGuiTextures);
-        this.te = container.te;
+        this.te = (TileEntityInventoryProxyFiltered) container.tile;
     }
 
     @Override

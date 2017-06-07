@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.enderFlux.passiveGenerator;
 
 import convenientadditions.api.capabilities.energy.EnderFluxStorageAutoSave;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.world.DimensionType;
 

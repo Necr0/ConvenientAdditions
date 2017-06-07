@@ -1,17 +1,15 @@
 package convenientadditions.block.misc.inventoryProxy.filtered;
 
-import convenientadditions.base.CAContainer;
 import convenientadditions.api.gui.container.SlotFake;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerInventoryProxyFiltered extends CAContainer {
-
-    public TileEntityInventoryProxyFiltered te;
+public class ContainerInventoryProxyFiltered extends CAContainerTileEntity {
 
     public ContainerInventoryProxyFiltered(TileEntityInventoryProxyFiltered ent, EntityPlayer p) {
-        te = ent;
+        super(ent);
         //input
         for (int i = 0; i < 3; i++) {
             addSlotToContainer(new SlotFake(ent.filter, i, i * 18 + 62, 8));
@@ -28,11 +26,7 @@ public class ContainerInventoryProxyFiltered extends CAContainer {
         }
     }
 
-    @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return true;
-    }
-
+    //TODO: Check this for errors
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
         ItemStack previous = null;

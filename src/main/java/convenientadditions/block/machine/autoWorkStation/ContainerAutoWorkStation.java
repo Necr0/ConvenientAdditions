@@ -1,7 +1,7 @@
 package convenientadditions.block.machine.autoWorkStation;
 
 import convenientadditions.api.inventory.InventoryStackHandlerCrafting;
-import convenientadditions.base.CAContainer;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
@@ -12,17 +12,15 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerAutoWorkStation extends CAContainer {
-
-    public TileEntityAutoWorkStation te;
+public class ContainerAutoWorkStation extends CAContainerTileEntity {
     public World world;
     public InventoryStackHandlerCrafting craftMatrix;
     public InventoryCraftResult craftResult=new InventoryCraftResult();
 
     public ContainerAutoWorkStation(TileEntityAutoWorkStation ent, EntityPlayer p) {
-        te = ent;
-        world = te.getWorld();
-        craftMatrix=new InventoryStackHandlerCrafting(this,te.grid,3,3);
+        super(ent);
+        world = tile.getWorld();
+        craftMatrix=new InventoryStackHandlerCrafting(this,ent.grid,3,3);
         this.addSlotToContainer(new SlotCrafting(p, this.craftMatrix, this.craftResult, 0, 124, 26));
 
         for (int i = 0; i < 3; ++i)

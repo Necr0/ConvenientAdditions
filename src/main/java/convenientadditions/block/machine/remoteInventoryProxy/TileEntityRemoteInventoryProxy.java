@@ -3,7 +3,7 @@ package convenientadditions.block.machine.remoteInventoryProxy;
 import convenientadditions.api.block.tileentity.IItemProxy;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveRestricted;
-import convenientadditions.base.block.CATileEntity;
+import convenientadditions.base.block.tileentity.CATileEntity;
 import convenientadditions.config.ModConfigMisc;
 import convenientadditions.item.module.ItemLocationModule;
 import net.minecraft.item.ItemStack;

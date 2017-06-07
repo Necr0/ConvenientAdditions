@@ -1,7 +1,7 @@
 package convenientadditions.block.misc.composter;
 
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlockContainer;
+import convenientadditions.base.block.block.CABlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

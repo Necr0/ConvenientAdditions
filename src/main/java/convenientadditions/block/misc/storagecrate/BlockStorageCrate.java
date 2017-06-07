@@ -2,7 +2,7 @@ package convenientadditions.block.misc.storagecrate;
 
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
-import convenientadditions.base.block.CABlockContainer;
+import convenientadditions.base.block.block.CABlockContainer;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.handler.ModGuiHandler;
 import net.minecraft.block.SoundType;

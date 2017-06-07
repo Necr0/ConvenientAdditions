@@ -3,7 +3,7 @@ package convenientadditions.block.machine.jumpPad;
 import convenientadditions.ConvenientAdditions;
 import convenientadditions.ModConstants;
 import convenientadditions.api.event.PlayerMovementEvent;
-import convenientadditions.base.block.CABlockMachine;
+import convenientadditions.base.block.block.CABlockMachine;
 import convenientadditions.handler.ModGuiHandler;
 import convenientadditions.init.ModNetworking;
 import net.minecraft.block.material.Material;

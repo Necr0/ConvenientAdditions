@@ -16,7 +16,7 @@ public class GuiSetProvider extends CAGuiContainer {
 
     public GuiSetProvider(ContainerSetProvider container) {
         super(container,setProviderGuiTextures);
-        this.te = container.te;
+        this.te = (TileEntitySetProvider) container.tile;
     }
 
     @Override
