@@ -18,12 +18,12 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CAGuiContainer extends GuiContainer implements IGui {
+public class CAGuiContainer extends GuiContainer implements IGui {
 	public List<IWidget> widgetList;
 	public ImageResourceLocation background;
 	public int leftX,topY;
 	
-	public CAGuiContainer(Container inventorySlotsIn,ImageResourceLocation bg) {
+	public CAGuiContainer(Container inventorySlotsIn, ImageResourceLocation bg) {
 		super(inventorySlotsIn);
 		widgetList=new ArrayList<>();
 		background=bg;

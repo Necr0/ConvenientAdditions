@@ -24,13 +24,13 @@ public class TileEntityItemReceiver extends CATileEntity {
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
+        return capability == ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) getItemHandler() : super.getCapability(capability, facing);
+        return capability == ITEM_HANDLER_CAPABILITY ? (T) getItemHandler() : super.getCapability(capability, facing);
     }
 
     public IItemHandler getItemHandler() {

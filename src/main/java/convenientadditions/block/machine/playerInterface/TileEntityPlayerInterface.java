@@ -1,18 +1,17 @@
 package convenientadditions.block.machine.playerInterface;
 
+import convenientadditions.base.block.CATileEntity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.List;
 
-public class TileEntityPlayerInterface extends TileEntity implements ICapabilityProvider, ITickable {
+public class TileEntityPlayerInterface extends CATileEntity implements ICapabilityProvider, ITickable {
 
     public boolean hasPlayer = false;
 
@@ -26,11 +25,10 @@ public class TileEntityPlayerInterface extends TileEntity implements ICapability
         }
     }
 
-
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         EntityPlayer p = getPlayer();
-        if (p != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        if (p != null && capability == ITEM_HANDLER_CAPABILITY)
             return p.hasCapability(capability, EnumFacing.DOWN);
         else
             return super.hasCapability(capability, facing);
@@ -39,7 +37,7 @@ public class TileEntityPlayerInterface extends TileEntity implements ICapability
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         EntityPlayer p = getPlayer();
-        if (p != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        if (p != null && capability == ITEM_HANDLER_CAPABILITY)
             return p.getCapability(capability, EnumFacing.DOWN);
         else
             return super.getCapability(capability, facing);

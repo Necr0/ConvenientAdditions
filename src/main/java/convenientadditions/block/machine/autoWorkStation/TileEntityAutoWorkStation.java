@@ -15,7 +15,6 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.HashMap;
@@ -188,13 +187,13 @@ public class TileEntityAutoWorkStation extends CATileEntity implements ITickable
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != TileEntitySetProvider.EnumOutletMode.disabled) || super.hasCapability(capability, facing);
+        return (capability == ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != TileEntitySetProvider.EnumOutletMode.disabled) || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != TileEntitySetProvider.EnumOutletMode.disabled) ?
+        return (capability == ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != TileEntitySetProvider.EnumOutletMode.disabled) ?
                 (outletSides.get(facing) == TileEntitySetProvider.EnumOutletMode.input ? (T) grid : (T) inv)
                 : super.getCapability(capability, facing);
     }

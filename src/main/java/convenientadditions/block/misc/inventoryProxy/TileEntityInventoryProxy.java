@@ -8,7 +8,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.Arrays;
@@ -28,7 +27,7 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
         if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
             return false;
         TileEntity te = getWorld().getTileEntity(getTarget());
-        if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (te != null && capability == ITEM_HANDLER_CAPABILITY) {
             if (!(te instanceof IItemProxy))
                 return te.hasCapability(capability, (sided ? facing : getFacing().getOpposite()));
             else
@@ -43,7 +42,7 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
         if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
             return null;
         TileEntity te = getWorld().getTileEntity(getTarget());
-        if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (te != null && capability == ITEM_HANDLER_CAPABILITY) {
             if (!(te instanceof IItemProxy))
                 return te.getCapability(capability, (sided ? facing : getFacing().getOpposite()));
             else
@@ -78,10 +77,10 @@ public class TileEntityInventoryProxy extends CATileEntity implements IItemProxy
     public IItemHandler tryFetchItemHandler(EnumFacing f, int proxyIndex) {
         TileEntity te = getWorld().getTileEntity(getTarget());
         if (te != null && !(te instanceof IItemProxy))
-            return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, (sided ? f : getFacing().getOpposite()));
+            return te.getCapability(ITEM_HANDLER_CAPABILITY, (sided ? f : getFacing().getOpposite()));
         else if (te != null && proxyIndex < ModConfigMisc.inventoryProxies_chainLimit)
             return ((IItemProxy) te).tryFetchItemHandler(sided ? f : getFacing().getOpposite(), proxyIndex + 1);
         else
-            return super.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);
+            return super.getCapability(ITEM_HANDLER_CAPABILITY, f);
     }
 }

@@ -30,4 +30,12 @@ public class ModImageResourceLocations {
     public static final ImageResourceLocation GREENTHUMB = new ImageResourceLocation(ICONS_POTION, 54, 0, 18, 18);
     public static final ImageResourceLocation HARVESTLUCK = new ImageResourceLocation(ICONS_POTION, 72, 0, 18, 18);
     public static final ImageResourceLocation BANDAGED = new ImageResourceLocation(ICONS_POTION, 90, 0, 18, 18);
+    //GUIS
+    public static final ImageResourceLocation GUI_IRON_FARM = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/ironfarm.png",0,0,175,114);
+    public static final ImageResourceLocation GUI_ITEM_RECEIVER = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemreceiver.png",0,0,175,114);
+    public static final ImageResourceLocation GUI_ITEM_TRANSMITTER = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/itemtransmitter.png",0,0,175,134);
+    public static final ImageResourceLocation GUI_REMOTE_INVENTORY_PROXY = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/remoteinventoryproxy.png",0,0,175,114);
+    public static final ImageResourceLocation GUI_WORK_STATION = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/workstation.png",0,0,176,172);
+    public static final ImageResourceLocation GUI_STORAGE_CRATE = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/storagecrate.png",0,0,175,253);
+    public static final ImageResourceLocation GUI_BACKPACK = new ImageResourceLocation(ModConstants.Mod.MODID + ":textures/gui/container/backpack.png",0,0,175,114);
 }

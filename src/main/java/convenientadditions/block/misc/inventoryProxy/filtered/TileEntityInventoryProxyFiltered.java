@@ -8,7 +8,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.Arrays;
@@ -26,7 +25,7 @@ public class TileEntityInventoryProxyFiltered extends TileEntityInventoryProxy {
         if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(getTarget()).getBlock().getRegistryName().toString()))
             return null;
         TileEntity te = getWorld().getTileEntity(getTarget());
-        if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (te != null && capability == ITEM_HANDLER_CAPABILITY) {
             if (!(te instanceof IItemProxy))
                 return (T) new ItemHandlerFilteredProxy(this, (IItemHandler) te.getCapability(capability, getFacing().getOpposite()));
             else

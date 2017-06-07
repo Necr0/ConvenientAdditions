@@ -1,9 +1,9 @@
 package convenientadditions.block.machine.setProvider;
 
-import convenientadditions.api.util.FillSetFilter;
 import convenientadditions.api.block.tileentity.IConfigurable;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSave;
 import convenientadditions.api.capabilities.stackhandler.ItemStackHandlerAutoSaveOutputOnly;
+import convenientadditions.api.util.FillSetFilter;
 import convenientadditions.base.block.CATileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,7 +11,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.HashMap;
 
@@ -163,13 +162,13 @@ public class TileEntitySetProvider extends CATileEntity implements IConfigurable
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != EnumOutletMode.disabled) || super.hasCapability(capability, facing);
+        return (capability == ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != EnumOutletMode.disabled) || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != EnumOutletMode.disabled) ?
+        return (capability == ITEM_HANDLER_CAPABILITY && outletSides.get(facing) != EnumOutletMode.disabled) ?
                 (outletSides.get(facing) == EnumOutletMode.input ? (T) input : (T) output)
                 : super.getCapability(capability, facing);
     }

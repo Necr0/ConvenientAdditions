@@ -1,44 +1,40 @@
 package convenientadditions.handler;
 
+import convenientadditions.api.gui.CAGuiContainer;
 import convenientadditions.block.machine.autoWorkStation.ContainerAutoWorkStation;
 import convenientadditions.block.machine.autoWorkStation.GuiAutoWorkStation;
 import convenientadditions.block.machine.autoWorkStation.TileEntityAutoWorkStation;
-import convenientadditions.block.misc.inventoryProxy.filtered.ContainerInventoryProxyFiltered;
-import convenientadditions.block.misc.inventoryProxy.filtered.GuiInventoryProxyFiltered;
-import convenientadditions.block.misc.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
 import convenientadditions.block.machine.ironFarm.ContainerIronFarm;
-import convenientadditions.block.machine.ironFarm.GuiIronFarm;
 import convenientadditions.block.machine.ironFarm.TileEntityIronFarm;
 import convenientadditions.block.machine.itemReceiver.ContainerItemReceiver;
-import convenientadditions.block.machine.itemReceiver.GuiItemReceiver;
 import convenientadditions.block.machine.itemReceiver.TileEntityItemReceiver;
 import convenientadditions.block.machine.itemTransmitter.ContainerItemTransmitter;
-import convenientadditions.block.machine.itemTransmitter.GuiItemTransmitter;
 import convenientadditions.block.machine.itemTransmitter.TileEntityItemTransmitter;
 import convenientadditions.block.machine.jumpPad.ContainerJumpPad;
 import convenientadditions.block.machine.jumpPad.GuiJumpPad;
 import convenientadditions.block.machine.jumpPad.TileEntityJumpPad;
+import convenientadditions.block.machine.proximitySensor.GuiProximitySensor;
+import convenientadditions.block.machine.proximitySensor.TileEntityProximitySensor;
 import convenientadditions.block.machine.remoteInventoryProxy.ContainerRemoteInventoryProxy;
-import convenientadditions.block.machine.remoteInventoryProxy.GuiRemoteInventoryProxy;
 import convenientadditions.block.machine.remoteInventoryProxy.TileEntityRemoteInventoryProxy;
 import convenientadditions.block.machine.setProvider.ContainerSetProvider;
 import convenientadditions.block.machine.setProvider.GuiSetProvider;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
-import convenientadditions.block.machine.proximitySensor.GuiProximitySensor;
-import convenientadditions.block.machine.proximitySensor.TileEntityProximitySensor;
+import convenientadditions.block.misc.inventoryProxy.filtered.ContainerInventoryProxyFiltered;
+import convenientadditions.block.misc.inventoryProxy.filtered.GuiInventoryProxyFiltered;
+import convenientadditions.block.misc.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
 import convenientadditions.block.misc.storagecrate.ContainerStorageCrate;
-import convenientadditions.block.misc.storagecrate.GuiStorageCrate;
 import convenientadditions.block.misc.storagecrate.TileEntityStorageCrate;
 import convenientadditions.block.misc.workStation.ContainerWorkStation;
 import convenientadditions.block.misc.workStation.GuiWorkStation;
 import convenientadditions.block.misc.workStation.TileEntityWorkStation;
+import convenientadditions.init.ModImageResourceLocations;
+import convenientadditions.item.misc.backpack.ContainerBackpack;
 import convenientadditions.item.module.color.GuiColorChannelModule;
 import convenientadditions.item.module.text.GuiTextChannelModule;
 import convenientadditions.item.relic.transmutationTome.ContainerTransmutationTome;
 import convenientadditions.item.relic.transmutationTome.GuiTransmutationTome;
 import convenientadditions.item.relic.transmutationTome.GuiTransmutationTomeRecipeLookup;
-import convenientadditions.item.misc.backpack.ContainerBackpack;
-import convenientadditions.item.misc.backpack.GuiBackpack;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -104,9 +100,9 @@ public class ModGuiHandler implements IGuiHandler {
             case GUI_COLOR_MODULE_ID:
                 return new GuiColorChannelModule(EnumHand.values()[x] == EnumHand.MAIN_HAND);
             case GUI_ITEM_TRANSMITTER_ID:
-                return new GuiItemTransmitter(new ContainerItemTransmitter((TileEntityItemTransmitter) world.getTileEntity(new BlockPos(x, y, z)), player));
+                return new CAGuiContainer(new ContainerItemTransmitter((TileEntityItemTransmitter) world.getTileEntity(new BlockPos(x, y, z)), player), ModImageResourceLocations.GUI_ITEM_TRANSMITTER);
             case GUI_ITEM_RECEIVER_ID:
-                return new GuiItemReceiver(new ContainerItemReceiver((TileEntityItemReceiver) world.getTileEntity(new BlockPos(x, y, z)), player));
+                return new CAGuiContainer(new ContainerItemReceiver((TileEntityItemReceiver) world.getTileEntity(new BlockPos(x, y, z)), player), ModImageResourceLocations.GUI_ITEM_RECEIVER);
             case GUI_FILTERED_PROXY_ID:
                 return new GuiInventoryProxyFiltered(new ContainerInventoryProxyFiltered((TileEntityInventoryProxyFiltered) world.getTileEntity(new BlockPos(x, y, z)), player));
             case GUI_TRANSMUTATION_TOME_ID:
@@ -118,17 +114,17 @@ public class ModGuiHandler implements IGuiHandler {
             case GUI_PROXIMITY_SENSOR_ID:
                 return new GuiProximitySensor((TileEntityProximitySensor)world.getTileEntity(new BlockPos(x,y,z)));
             case GUI_REMOTE_PROXY_ID:
-                return new GuiRemoteInventoryProxy(new ContainerRemoteInventoryProxy((TileEntityRemoteInventoryProxy) world.getTileEntity(new BlockPos(x,y,z)),player));
+                return new CAGuiContainer(new ContainerRemoteInventoryProxy((TileEntityRemoteInventoryProxy) world.getTileEntity(new BlockPos(x,y,z)),player),ModImageResourceLocations.GUI_REMOTE_INVENTORY_PROXY);
             case GUI_IRON_FARM_ID:
-                return new GuiIronFarm(new ContainerIronFarm((TileEntityIronFarm) world.getTileEntity(new BlockPos(x,y,z)),player));
+                return new CAGuiContainer(new ContainerIronFarm((TileEntityIronFarm) world.getTileEntity(new BlockPos(x,y,z)),player), ModImageResourceLocations.GUI_IRON_FARM);
             case GUI_WORK_STATION_ID:
                 return new GuiWorkStation(new ContainerWorkStation((TileEntityWorkStation) world.getTileEntity(new BlockPos(x,y,z)),player));
             case GUI_AUTO_WORK_STATION_ID:
                 return new GuiAutoWorkStation(new ContainerAutoWorkStation((TileEntityAutoWorkStation) world.getTileEntity(new BlockPos(x,y,z)),player));
             case GUI_STORAGE_CRATE_ID:
-                return new GuiStorageCrate(new ContainerStorageCrate((TileEntityStorageCrate) world.getTileEntity(new BlockPos(x,y,z)),player));
+                return new CAGuiContainer(new ContainerStorageCrate((TileEntityStorageCrate) world.getTileEntity(new BlockPos(x,y,z)),player), ModImageResourceLocations.GUI_STORAGE_CRATE);
             case GUI_BACKPACK_ID:
-                return new GuiBackpack(new ContainerBackpack(player));
+                return new CAGuiContainer(new ContainerBackpack(player), ModImageResourceLocations.GUI_BACKPACK);
             case GUI_TEXT_MODULE_ID:
                 return new GuiTextChannelModule(player.getHeldItem(EnumHand.values()[x]),EnumHand.values()[x] == EnumHand.MAIN_HAND);
             default:

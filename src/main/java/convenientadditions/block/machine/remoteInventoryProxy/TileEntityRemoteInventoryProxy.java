@@ -11,7 +11,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
@@ -29,7 +28,7 @@ public class TileEntityRemoteInventoryProxy extends CATileEntity implements IIte
         if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(pos).getBlock().getRegistryName().toString()))
             return false;
         TileEntity te = getWorld().getTileEntity(pos);
-        if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (te != null && capability == ITEM_HANDLER_CAPABILITY) {
             if (!(te instanceof IItemProxy))
                 return te.hasCapability(capability, facing);
             else
@@ -47,7 +46,7 @@ public class TileEntityRemoteInventoryProxy extends CATileEntity implements IIte
         if (Arrays.asList(ModConfigMisc.inventoryProxies_blacklist).contains(getWorld().getBlockState(pos).getBlock().getRegistryName().toString()))
             return null;
         TileEntity te = getWorld().getTileEntity(pos);
-        if (te != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (te != null && capability == ITEM_HANDLER_CAPABILITY) {
             if (!(te instanceof IItemProxy))
                 return te.getCapability(capability, facing);
             else
@@ -74,10 +73,10 @@ public class TileEntityRemoteInventoryProxy extends CATileEntity implements IIte
             return null;
         TileEntity te = getWorld().getTileEntity(getTargetLocation());
         if (te != null && !(te instanceof IItemProxy))
-            return te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);
+            return te.getCapability(ITEM_HANDLER_CAPABILITY, f);
         else if (te != null && proxyIndex < ModConfigMisc.inventoryProxies_chainLimit)
             return ((IItemProxy) te).tryFetchItemHandler(f, proxyIndex + 1);
         else
-            return super.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, f);
+            return super.getCapability(ITEM_HANDLER_CAPABILITY, f);
     }
 }

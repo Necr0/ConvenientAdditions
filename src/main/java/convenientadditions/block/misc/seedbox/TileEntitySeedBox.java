@@ -1,14 +1,13 @@
 package convenientadditions.block.misc.seedbox;
 
-import convenientadditions.api.util.MathHelper;
 import convenientadditions.api.block.tileentity.IConfigurable;
+import convenientadditions.api.util.MathHelper;
 import convenientadditions.base.block.CATileEntity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,12 +79,12 @@ public class TileEntitySeedBox extends CATileEntity implements IConfigurable {
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && !isOutput(facing) || super.hasCapability(capability, facing);
+        return capability == ITEM_HANDLER_CAPABILITY && !isOutput(facing) || super.hasCapability(capability, facing);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && !isOutput(facing) ? (T) stackHandler : super.getCapability(capability, facing);
+        return capability == ITEM_HANDLER_CAPABILITY && !isOutput(facing) ? (T) stackHandler : super.getCapability(capability, facing);
     }
 }
