@@ -21,6 +21,7 @@ public class TileEntityPlayerInterface extends CATileEntity implements ICapabili
             if (hasTarget() != hasPlayer) {
                 hasPlayer = hasTarget();
                 this.getWorld().markBlockRangeForRenderUpdate(pos,pos);
+                this.getWorld().notifyNeighborsOfStateChange(pos,getBlockType(),true);
             }
         }
     }

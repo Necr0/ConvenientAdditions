@@ -1,6 +1,7 @@
 package convenientadditions.block.machine.proximitySensor;
 
 import convenientadditions.api.network.PacketBase;
+import convenientadditions.base.block.tileentity.CAContainerTileEntity;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -38,7 +39,7 @@ public class MessageProximitySensor extends PacketBase<MessageProximitySensor> {
 
     @Override
     public MessageProximitySensor onMessage(MessageProximitySensor message, MessageContext ctx) {
-        if(ctx.side==Side.CLIENT)
+        if(ctx.side==Side.CLIENT || ctx.getServerHandler().player.getDistanceSq(message.pos) > CAContainerTileEntity.MAX_DISTANCE)
             return null;
         if(message.range>=.5d&&message.range<=15d&&message.range%.5==0){
             TileEntity te=ctx.getServerHandler().player.world.getTileEntity(message.pos);
