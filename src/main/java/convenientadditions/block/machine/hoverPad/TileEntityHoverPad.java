@@ -25,7 +25,7 @@ public class TileEntityHoverPad extends CATileEntity implements ITickable {
         for (EntityLivingBase e : l) {
             double acc=max_acc/Math.max(1,1+(.5d*(e.posY-pos.getY())));
             if (e instanceof EntityPlayer && e.isSneaking())
-                e.addVelocity(0, acc/4, 0);
+                e.addVelocity(0, acc/2.25d, 0);
             else
                 e.addVelocity(0, acc, 0);
             if (e.motionY > -.666)
