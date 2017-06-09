@@ -19,11 +19,11 @@ public class TileEntityHoverPad extends CATileEntity implements ITickable {
         double mult = getWorld().isBlockIndirectlyGettingPowered(pos) / 15d;
         if (mult == 0d)
             return;
-        double max_acc=mult*.3d;
-        double max_range=max_acc*20;
+        double max_acc=mult*.515d+.075d;
+        double max_range=max_acc*80;
         List<EntityLivingBase> l = Helper.getEntitiesInAABBStrict(getWorld(),EntityLivingBase.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + checkForObstuctions(max_range), pos.getZ() + 1));
         for (EntityLivingBase e : l) {
-            double acc=max_acc/Math.max(1,.125*(e.posY-(pos.getY())));
+            double acc=max_acc/Math.max(1,1+(.5d*(e.posY-pos.getY())));
             if (e instanceof EntityPlayer && e.isSneaking())
                 e.addVelocity(0, acc/4, 0);
             else

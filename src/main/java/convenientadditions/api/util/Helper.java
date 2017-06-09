@@ -19,7 +19,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -151,6 +150,6 @@ public class Helper {
 	}
 
 	public static <T extends Entity> List<T> getEntitiesInAABBStrict(World world, Class<? extends T> clazz, AxisAlignedBB aabb){
-		return world.getEntitiesWithinAABB(clazz,aabb,(T t)->aabb.isVecInside(new Vec3d(t.posX,t.posY,t.posZ)));
+		return world.getEntitiesWithinAABB(clazz,aabb,(T t)->aabb.expand(0,.0000001d,0).isVecInside(t.getPositionVector()));
 	}
 }
