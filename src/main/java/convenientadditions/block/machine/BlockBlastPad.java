@@ -36,7 +36,6 @@ public class BlockBlastPad extends CABlock implements IDismantleable {
 
     @Override
     public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos from) {
-        float str= EntityLaunchingArrow.EnumLaunchingArrowVariant.slime.strength*(float)Math.log(world.isBlockIndirectlyGettingPowered(pos)+1)*.25f;
         if(state.getValue(READY) && world.isBlockIndirectlyGettingPowered(pos)>0){
             List<EntityLivingBase> l = Helper.getEntitiesInAABBStrict(world, EntityLivingBase.class, new AxisAlignedBB(pos.up()));
             for (EntityLivingBase e : l) {

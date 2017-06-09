@@ -12,7 +12,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import java.util.List;
 
 public class TileEntityHoverPad extends CATileEntity implements ITickable {
-    public static final int RANGE = 15;
 
     @Override
     public void update() {
