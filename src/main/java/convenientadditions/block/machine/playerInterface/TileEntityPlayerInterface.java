@@ -1,5 +1,6 @@
 package convenientadditions.block.machine.playerInterface;
 
+import convenientadditions.api.util.Helper;
 import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -45,7 +46,7 @@ public class TileEntityPlayerInterface extends CATileEntity implements ICapabili
     }
 
     public EntityPlayer getPlayer() {
-        List<EntityPlayer> l = getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())));
+        List<EntityPlayer> l = Helper.getEntitiesInAABBStrict(getWorld(),EntityPlayer.class, new AxisAlignedBB(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())));
         if (l.size() > 0)
             return l.get(0);
         else
@@ -53,6 +54,6 @@ public class TileEntityPlayerInterface extends CATileEntity implements ICapabili
     }
 
     public boolean hasTarget() {
-        return getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1)).size() > 0;
+        return Helper.getEntitiesInAABBStrict(getWorld(),EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1)).size() > 0;
     }
 }

@@ -1,5 +1,6 @@
 package convenientadditions.block.machine.hoverPad;
 
+import convenientadditions.api.util.Helper;
 import convenientadditions.base.block.tileentity.CATileEntity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,7 +21,7 @@ public class TileEntityHoverPad extends CATileEntity implements ITickable {
             return;
         double max_acc=mult*.3d;
         double max_range=max_acc*20;
-        List<EntityLivingBase> l = getWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + checkForObstuctions(max_range), pos.getZ() + 1));
+        List<EntityLivingBase> l = Helper.getEntitiesInAABBStrict(getWorld(),EntityLivingBase.class, new AxisAlignedBB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + checkForObstuctions(max_range), pos.getZ() + 1));
         for (EntityLivingBase e : l) {
             double acc=max_acc/Math.max(1,.125*(e.posY-(pos.getY())));
             if (e instanceof EntityPlayer && e.isSneaking())
