@@ -41,7 +41,7 @@ public class BlockHoverPad extends CABlockMachine {
     }
 
     @Override
-    public int getMetaFromState(IBlockState state){return 0; }
+    public int getMetaFromState(IBlockState state){return 0;}
 
     @Override
     protected BlockStateContainer createBlockState() {

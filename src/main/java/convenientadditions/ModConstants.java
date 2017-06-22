@@ -113,7 +113,7 @@ public class ModConstants {
         public static final String punjiSticks = "punjiSticks";
         public static final String storageCrate = "storageCrate";
         public static final String woodenTile = "woodenTile";
-        public static final String passiveGenerator = "passiveGenerator";
+        public static final String clearGlass = "clearGlass";
         //
         public static final String tempLight = "tempLight";
         public static final String phantomPlatform = "phantomPlatform";

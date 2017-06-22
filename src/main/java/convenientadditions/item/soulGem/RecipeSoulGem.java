@@ -25,27 +25,23 @@ public class RecipeSoulGem implements IRecipe, ICustomCraftingRecipe {
         ItemStack mcdS=new ItemStack(ModItems.itemMobCatcherSuper);
         ItemStack mcdH=new ItemStack(ModItems.itemMobCatcherHyper);
         ItemStack mcdM=new ItemStack(ModItems.itemMobCatcherHyper);
-        inputs= Arrays.asList(new ItemStack[]{
-                ModItems.itemMobCatcherRegular.setMob(mcdR.copy(),"minecraft:sheep"),
+        inputs= Arrays.asList(ModItems.itemMobCatcherRegular.setMob(mcdR.copy(),"minecraft:sheep"),
                 ModItems.itemMobCatcherRegular.setMob(mcdS.copy(),"minecraft:pig"),
                 ModItems.itemMobCatcherRegular.setMob(mcdH.copy(),"minecraft:creeper"),
                 ModItems.itemMobCatcherRegular.setMob(mcdM.copy(),"minecraft:villager"),
                 ModItems.itemMobCatcherRegular.setMob(mcdR.copy(),"minecraft:bat"),
                 ModItems.itemMobCatcherRegular.setMob(mcdS.copy(),"minecraft:villager_golem"),
                 ModItems.itemMobCatcherRegular.setMob(mcdH.copy(),"minecraft:spider"),
-                ModItems.itemMobCatcherRegular.setMob(mcdH.copy(),"minecraft:enderman")
-        });
+                ModItems.itemMobCatcherRegular.setMob(mcdH.copy(),"minecraft:enderman"));
         ItemStack gem=new ItemStack(ModItems.itemSoulGem);
-        results=Arrays.asList(new ItemStack[]{
-                ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:sheep"),
+        results=Arrays.asList(ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:sheep"),
                 ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:pig"),
                 ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:creeper"),
                 ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:villager"),
                 ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:bat"),
                 ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:villager_golem"),
                 ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:spider"),
-                ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:enderman")
-        });
+                ModItems.itemSoulGem.setEntityId(gem.copy(),"minecraft:enderman"));
     }
 
     public ItemStack getRecipeOutput() {

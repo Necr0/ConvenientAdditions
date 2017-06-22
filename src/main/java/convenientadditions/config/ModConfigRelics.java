@@ -26,4 +26,6 @@ public class ModConfigRelics {
     public static boolean transmutationTome_dirtMutation=true;
     public static boolean transmutationTome_purification=true;
     public static boolean transmutationTome_misc=true;
+    public static boolean transmutationTome_elytra=true;
+    public static boolean transmutationTome_dragonEgg=true;
 }

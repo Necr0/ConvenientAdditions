@@ -23,8 +23,8 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class ModRecipes {
 
     public static void init() {
-        RecipeSorter.register("ShapedNBTOreRecipee", ShapedNBTOreRecipe.class, Category.SHAPED, "");
-        RecipeSorter.register("ShapelessNBTOreRecipee", ShapelessNBTOreRecipe.class, Category.SHAPELESS, "");
+        RecipeSorter.register("ShapedNBTOreRecipe", ShapedNBTOreRecipe.class, Category.SHAPED, "");
+        RecipeSorter.register("ShapelessNBTOreRecipe", ShapelessNBTOreRecipe.class, Category.SHAPELESS, "");
 
         if (ModConfigTools.ironWrench)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemIronWrench, 1),
@@ -53,11 +53,11 @@ public class ModRecipes {
 
         if(Loader.isModLoaded("gbook") && ModConfigCompat.gbook_recipe)
             GameRegistry.addRecipe(new ShapelessOreRecipe(GameRegistry.makeItemStack("gbook:guidebook",0,1,"{Book:\"convenientadditions:xml/book.xml\"}"),
-                    Items.BOOK,Items.FEATHER,Items.WHEAT_SEEDS));
+                    Items.BOOK,"feather",Items.WHEAT_SEEDS));
     }
 
     private static void initCraftingItems() {
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianPlate, 6), Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.STONE));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.itemObsidianPlate, 6), "obsidian", "obsidian", "stone"));
 
         if(ModConfigCraftingItems.dislocationCore)
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemDislocationCore,3),
@@ -199,6 +199,9 @@ public class ModRecipes {
                     "sps",
                     's', "stickWood",
                     'p', "plankWood"));
+
+        if (ModConfigBuildingBlocks.clearGlass)
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.clearGlass,4),Blocks.GLASS,Blocks.GLASS,Blocks.GLASS,Blocks.GLASS));
     }
 
     private static void initPlatforms() {
@@ -314,7 +317,7 @@ public class ModRecipes {
                     'g', "ingotGold",
                     'e', Items.ENDER_EYE,
                     'm', ModBlocks.machineBlock,
-                    'c', "chest",
+                    'c', "chestWood",
                     's', "stone",
                     'd', ModItems.itemDislocationCore));
 
@@ -398,7 +401,7 @@ public class ModRecipes {
                     'g', "dustGlowstone"));
 
         if (ModConfigRelics.enderPlate)
-            GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.itemEnderPlate,
+            GameRegistry.addRecipe(new ShapedNBTOreRecipe(ModItems.itemEnderPlate,
                     "epe",
                     "bsb",
                     "epe",
@@ -537,8 +540,8 @@ public class ModRecipes {
                     "iwy",
                     "swl",
                     "swl",
-                    'i',new ItemStack(Items.DYE,1,0),
-                    'w',Blocks.WOOL,
+                    'i',"dyeBlack",
+                    'w',new ItemStack(Blocks.WOOL,OreDictionary.WILDCARD_VALUE),
                     'y',"string",
                     's',"slimeball",
                     'l',"leather"));

@@ -2,23 +2,22 @@ package convenientadditions.init;
 
 import convenientadditions.ModConstants;
 import convenientadditions.block.machine.autoWorkStation.TileEntityAutoWorkStation;
-import convenientadditions.block.machine.enderFlux.passiveGenerator.TileEntityPassiveGenerator;
-import convenientadditions.block.misc.composter.TileEntityComposter;
-import convenientadditions.block.misc.displayCase.TileEntityDisplayCase;
-import convenientadditions.block.machine.ironFarm.TileEntityIronFarm;
 import convenientadditions.block.machine.hoverPad.TileEntityHoverPad;
-import convenientadditions.block.misc.inventoryProxy.TileEntityInventoryProxy;
-import convenientadditions.block.misc.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
+import convenientadditions.block.machine.ironFarm.TileEntityIronFarm;
 import convenientadditions.block.machine.itemReceiver.TileEntityItemReceiver;
 import convenientadditions.block.machine.itemTransmitter.TileEntityItemTransmitter;
 import convenientadditions.block.machine.jumpPad.TileEntityJumpPad;
 import convenientadditions.block.machine.playerInterface.TileEntityPlayerInterface;
-import convenientadditions.block.machine.remoteInventoryProxy.TileEntityRemoteInventoryProxy;
-import convenientadditions.block.misc.powderkeg.TileEntityPowderKeg;
 import convenientadditions.block.machine.proximitySensor.TileEntityProximitySensor;
-import convenientadditions.block.misc.seedbox.TileEntitySeedBox;
+import convenientadditions.block.machine.remoteInventoryProxy.TileEntityRemoteInventoryProxy;
 import convenientadditions.block.machine.setProvider.TileEntitySetProvider;
 import convenientadditions.block.machine.storageMatrix.TileEntityStorageMatrix;
+import convenientadditions.block.misc.composter.TileEntityComposter;
+import convenientadditions.block.misc.displayCase.TileEntityDisplayCase;
+import convenientadditions.block.misc.inventoryProxy.TileEntityInventoryProxy;
+import convenientadditions.block.misc.inventoryProxy.filtered.TileEntityInventoryProxyFiltered;
+import convenientadditions.block.misc.powderkeg.TileEntityPowderKeg;
+import convenientadditions.block.misc.seedbox.TileEntitySeedBox;
 import convenientadditions.block.misc.storagecrate.TileEntityStorageCrate;
 import convenientadditions.block.misc.workStation.TileEntityWorkStation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -44,6 +43,5 @@ public class ModTileEntities {
         GameRegistry.registerTileEntity(TileEntityWorkStation.class, ModConstants.BlockNames.workStation);
         GameRegistry.registerTileEntity(TileEntityAutoWorkStation.class, ModConstants.BlockNames.autoWorkStation);
         GameRegistry.registerTileEntity(TileEntityStorageCrate.class, ModConstants.BlockNames.storageCrate);
-        GameRegistry.registerTileEntity(TileEntityPassiveGenerator.class, ModConstants.BlockNames.passiveGenerator);
     }
 }

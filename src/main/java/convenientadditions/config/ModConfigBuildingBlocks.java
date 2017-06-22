@@ -12,4 +12,5 @@ public class ModConfigBuildingBlocks {
     public static boolean ironGolemBlock=true;
     public static boolean woodenTile=true;
     public static boolean cheeseBlock=true;
+    public static boolean clearGlass=true;
 }

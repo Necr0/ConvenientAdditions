@@ -2,7 +2,6 @@ package convenientadditions.init;
 
 import convenientadditions.ModConstants;
 import convenientadditions.api.CCDataSerializers;
-import convenientadditions.api.capabilities.energy.CapabilityEnderFlux;
 import convenientadditions.api.entity.specialitem.BehaviourRegistry;
 import convenientadditions.api.entity.specialitem.behaviours.BehaviourAutoBoneMeal;
 import convenientadditions.api.registry.compost.CompostRegistry;
@@ -32,7 +31,6 @@ public class ModCAAPI {
 
     public static void init() {
         CCDataSerializers.initSerializers();
-        CapabilityEnderFlux.register();
         BEHAVIOUR_COMPOST = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"compost"), new BehaviourCompost());
         BEHAVIOUR_AUTO_BONEMEAL = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoBonemeal"), new BehaviourAutoBoneMeal());
         BEHAVIOUR_AUTO_FERTILIZER = BehaviourRegistry.addBehaviour(new ResourceLocation(ModConstants.Mod.MODID,"autoFertilizer"), new BehaviourAutoFertilizer());
@@ -96,6 +94,7 @@ public class ModCAAPI {
         int time_short = 2 * 20;
         int time_medium = 5 * 20;
         int time_long = 8 * 20;
+        int time_very_long = 14 * 20;
         if (ModConfigRelics.transmutationTome_oreDoubling) {
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.COAL_ORE, 4), new ItemStack(Items.FLINT, 1), new ItemStack(Items.COAL, 8), time_short, 1);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.IRON_ORE, 4), new ItemStack(Items.FLINT, 1), new ItemStack(Items.IRON_INGOT, 8), time_medium, 3);
@@ -183,6 +182,12 @@ public class ModCAAPI {
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.NETHERRACK, 16), new ItemStack(Items.CHORUS_FRUIT, 1), new ItemStack(Blocks.END_STONE, 16), time_medium, 5);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.END_STONE, 16), new ItemStack(Items.BLAZE_POWDER, 1), new ItemStack(Blocks.NETHERRACK, 16), time_medium, 5);
             TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Blocks.SAND, 5), new ItemStack(Blocks.STONE, 1), new ItemStack(Blocks.GRAVEL, 5), time_short, 2);
+        }
+        if (ModConfigRelics.transmutationTome_dragonEgg) {
+            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(Items.EGG, 1), new ItemStack(Items.DRAGON_BREATH, 1), new ItemStack(Blocks.DRAGON_EGG, 1), time_very_long, 42);
+        }
+        if (ModConfigRelics.transmutationTome_elytra) {
+            TransmutationTomeRecipeHandler.INSTANCE.addRecipe(new ItemStack(ModItems.itemGlider, 1), new ItemStack(Items.DRAGON_BREATH, 1), new ItemStack(Items.ELYTRA, 1), time_very_long, 16);
         }
     }
 }

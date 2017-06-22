@@ -3,7 +3,6 @@ package convenientadditions.base.block.tileentity;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import convenientadditions.api.capabilities.IAutoSavable;
-import convenientadditions.api.capabilities.energy.IEnderFluxStorage;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -27,8 +26,6 @@ public abstract class CATileEntity extends TileEntity {
     public static Capability<IFluidHandler> FLUID_HANDLER_CAPABILITY = null;
     @CapabilityInject(IEnergyStorage.class)
     public static Capability<IEnergyStorage> ENERGY = null;
-    @CapabilityInject(IEnderFluxStorage.class)
-    public static Capability<IEnderFluxStorage> ENDER_FLUX=null;
 
     public List<IAutoSavable> autoSavables = new ArrayList<>();
     public Table<Capability,Optional<EnumFacing>,Object> mapped_capabilities = HashBasedTable.create();
@@ -118,8 +115,6 @@ public abstract class CATileEntity extends TileEntity {
             addCapability(FLUID_HANDLER_CAPABILITY,(IFluidHandler) implementation, faces);
         else if(implementation instanceof IEnergyStorage)
             addCapability(ENERGY,(IEnergyStorage) implementation, faces);
-        else if(implementation instanceof IEnderFluxStorage)
-            addCapability(ENDER_FLUX,(IEnderFluxStorage) implementation, faces);
         return implementation;
     }
 }

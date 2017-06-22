@@ -33,6 +33,7 @@ tile.convenientadditions:cheeseBlock.name=Cheese Block
 tile.convenientadditions:punjiSticks.name=Punji Sticks
 tile.convenientadditions:storageCrate.name=Storage Crate
 tile.convenientadditions:woodenTile.name=Wooden Tile
+tile.convenientadditions:clearGlass.name=Clear Glass
 # platforms
 tile.convenientadditions:platform.black.name=Black Platform
 tile.convenientadditions:platform.red.name=Red Platform
@@ -424,3 +425,19 @@ message.convenientadditions:adventurersPickaxeLevelUpLuck=Luck increased to %d!
 message.convenientadditions:adventurersPickaxeLevelUpSilktouch=Silktouch mode unlocked!
 message.convenientadditions:adventurersPickaxeLevelUpMagnetic=Ore Magnet unlocked!
 message.convenientadditions:adventurersPickaxeLevelUpSoulbound=Soulbound unlocked!
+
+
+
+### CONFIG ###
+convenientadditions=Convenient Additions
+convenientadditions_building_blocks=Building Blocks
+convenientadditions_compatibility=Compatibility
+convenientadditions_consumables=Consumables
+convenientadditions_crafting_items=Crafting Materials
+convenientadditions_general=General
+convenientadditions_machines=Machines
+convenientadditions_misc=Miscellaneous
+convenientadditions_modules=Modules
+convenientadditions_relics=Relics
+convenientadditions_tools=Tools
+convenientadditions_trinkets=Trinkets

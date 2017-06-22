@@ -2,12 +2,12 @@ package convenientadditions.init;
 
 import convenientadditions.ModConstants;
 import convenientadditions.base.block.block.CABlock;
+import convenientadditions.base.block.block.CABlockCTGTransparentA;
 import convenientadditions.base.item.EnumItemCategory;
 import convenientadditions.base.item.ItemBlockMetadata;
 import convenientadditions.block.machine.BlockBlastPad;
 import convenientadditions.block.machine.BlockMachineBlock;
 import convenientadditions.block.machine.autoWorkStation.BlockAutoWorkStation;
-import convenientadditions.block.machine.enderFlux.passiveGenerator.BlockPassiveGenerator;
 import convenientadditions.block.machine.hoverPad.BlockHoverPad;
 import convenientadditions.block.machine.ironFarm.BlockIronFarm;
 import convenientadditions.block.machine.itemReceiver.BlockItemReceiver;
@@ -18,13 +18,14 @@ import convenientadditions.block.machine.proximitySensor.BlockProximitySensor;
 import convenientadditions.block.machine.remoteInventoryProxy.BlockRemoteInventoryProxy;
 import convenientadditions.block.machine.setProvider.BlockSetProvider;
 import convenientadditions.block.machine.storageMatrix.BlockStorageMatrix;
-import convenientadditions.block.misc.BlockEnderProof;
+import convenientadditions.block.misc.enderProof.BlockEnderProof;
 import convenientadditions.block.misc.BlockPunjiSticks;
 import convenientadditions.block.misc.BlockTreeTap;
 import convenientadditions.block.misc.compostSoil.BlockCompostSoil;
 import convenientadditions.block.misc.compostSoil.BlockCompostSoilTilled;
 import convenientadditions.block.misc.composter.BlockComposter;
 import convenientadditions.block.misc.displayCase.BlockDisplayCase;
+import convenientadditions.block.misc.enderProof.BlockEnderProofGlass;
 import convenientadditions.block.misc.inventoryProxy.BlockInventoryProxyNormal;
 import convenientadditions.block.misc.inventoryProxy.BlockInventoryProxySided;
 import convenientadditions.block.misc.inventoryProxy.filtered.BlockInventoryProxyFiltered;
@@ -76,18 +77,18 @@ public class ModBlocks {
     public static final BlockDisplayCase displayCase = new BlockDisplayCase();
     public static final BlockRemoteInventoryProxy remoteInventoryProxy = new BlockRemoteInventoryProxy();
     public static final BlockEnderProof enderProofBlock = new BlockEnderProof();
-    public static final Block enderProofGlass = new BlockEnderProof(ModConstants.BlockNames.enderProofGlass, Material.GLASS).setHardness(5.0F).setResistance(10.0F);
+    public static final BlockEnderProofGlass enderProofGlass = new BlockEnderProofGlass();
     public static final BlockIronFarm ironFarm = new BlockIronFarm();
     public static final BlockWorkStation workStation = new BlockWorkStation();
     public static final BlockAutoWorkStation autoWorkStation = new BlockAutoWorkStation();
     public static final BlockPunjiSticks punjiSticks = new BlockPunjiSticks();
     public static final BlockStorageCrate storageCrate = new BlockStorageCrate();
-    public static final BlockPassiveGenerator passiveGenerator = new BlockPassiveGenerator();
     //dummy
     public static final BlockMachineBlock machineBlock = new BlockMachineBlock();
     public static final Block ironGolemBlock = new CABlock(ModConstants.BlockNames.ironGolemBlock, Material.IRON).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.METAL).setHardness(5.0F).setResistance(10.0F);
     public static final Block cheeseBlock = new CABlock(ModConstants.BlockNames.cheeseBlock, Material.CLAY).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.SLIME).setHardness(0.5F);
     public static final Block woodenTile = new CABlock(ModConstants.BlockNames.woodenTile, Material.WOOD).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.WOOD).setHardness(2.0F).setResistance(5.0F);
+    public static final Block clearGlass = new CABlockCTGTransparentA(ModConstants.BlockNames.clearGlass, Material.GLASS).setDefaultInfo(false).setCategory(EnumItemCategory.BUILDING_BLOCK).setSoundType(SoundType.GLASS).setHardness(0.3F);
 
     public static void init() {
 
@@ -126,6 +127,7 @@ public class ModBlocks {
         registerBlock(punjiSticks);
         registerBlock(storageCrate);
         registerBlock(woodenTile);
+        registerBlock(clearGlass);
         //registerBlock(passiveGenerator);
     }
 
@@ -165,6 +167,7 @@ public class ModBlocks {
         ModItems.registerItemBlockModel(punjiSticks);
         ModItems.registerItemBlockModel(storageCrate);
         ModItems.registerItemBlockModel(woodenTile);
+        ModItems.registerItemBlockModel(clearGlass);
     }
 
     public static void registerBlock(Block block) {

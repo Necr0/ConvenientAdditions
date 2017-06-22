@@ -78,7 +78,7 @@ public class FloodFill {
         public String ore;
         public Block block;
         public IBlockState state;
-        public Class<? extends Block> clazz;
+        public Class clazz;
         public int mode=0;//0=ore,1=Block,2=BlockState
 
         public BlockMatcher(int mode){
@@ -112,7 +112,7 @@ public class FloodFill {
                     state=(IBlockState)obj;
                     break;
                 case 3:
-                    clazz=(Class<? extends Block>) obj;
+                    clazz=(Class)obj;
                     break;
             }
             return this;

@@ -30,6 +30,10 @@ public class ModOredict {
         OreDictionary.registerOre("cheese", new ItemStack(ModItems.itemCheese));
         OreDictionary.registerOre("blockCheese", new ItemStack(ModBlocks.cheeseBlock));
 
+        OreDictionary.registerOre("blockGlassColorless", new ItemStack(ModBlocks.clearGlass));
+        OreDictionary.registerOre("blockGlass", new ItemStack(ModBlocks.clearGlass));
+        OreDictionary.registerOre("blockGlass", new ItemStack(ModBlocks.enderProofGlass));
+
         if (ModConfigGeneral.sugarOreDictInit) {
             OreDictionary.registerOre("sugar", new ItemStack(Items.SUGAR));
             GameRegistry.addRecipe(new ShapelessOreRecipe(Items.PUMPKIN_PIE, Blocks.PUMPKIN, "egg", "sugar"));
