@@ -905,7 +905,7 @@
 		</page>
 		<page id="launchingarrows">
 			<title>Launching Arrows</title>
-			<p>Launching Arrows explode on impact with an Entity. When they are stuck in the ground they work as mines that trigger on close proximity. Stacking multiple arrows as a mine can be devestating to anyone who comes too close.</p>
+			<p>Launching Arrows explode on impact with an Entity.</p>
 			<p>There are 3 types of Launching Arrows.</p>
 		</page>
 		<page>
@@ -915,7 +915,7 @@
 				<stack item="minecraft:arrow"/><stack item="minecraft:arrow"/><stack item="minecraft:arrow"/>
 				<stack item="convenientadditions:launchingarrow" meta="2" count="8"/>
 			</big_recipe>
-			<p>The Slime Arrows' explosions don't deal any entity damage or block damage but knock the player way further than the other types. The can be used for vertical mobility or traps that send the victims flying.</p>
+			<p>The Slime Arrows' explosions don't deal any entity damage or block damage but knock the player way further than the other types. The can be used for vertical mobility or traps that send the victims flying. When they are stuck in the ground they work as mines that trigger on close proximity.</p>
 		</page>
 		<page>
 			<big_recipe>
